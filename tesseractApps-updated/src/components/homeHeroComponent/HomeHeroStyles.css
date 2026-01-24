@@ -1,0 +1,105 @@
+#home-hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* grid-template-columns: 1fr 1fr; */
+  background-image: var(--color-background-gradient);
+  /* padding-top: 100px; */
+  /* padding-top: 110px; */
+}
+.hero-backround-image {
+  max-width: 400px;
+}
+#home-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  max-width: 600px;
+  text-align: center;
+}
+#home-text-heading {
+  font-size: 36px;
+  font-weight: 600;
+  font-style: semi-bold;
+  margin-bottom: 0px;
+  color: black;
+  max-width: 800px;
+  font-family: Roboto;
+  line-height: 44px;
+}
+#home-text-subText {
+  font-size: 24px;
+  font-weight: 300;
+  font-style: light;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  line-height: 37px;
+  color: var(--color-secondary);
+}
+#home-store-links-container {
+  display: flex;
+  gap: 1rem;
+}
+.home-store-links {
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+}
+#home-social-links-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 46px;
+  margin-bottom: 34px;
+  cursor: pointer;
+}
+#home-get-started-button {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 6px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 170px;
+  min-height: 48px;
+  justify-content: center;
+  gap: 20px;
+  font-size: 20px;
+  font-weight: 400;
+}
+.arrow-icon {
+  fill: white;
+}
+#home-button-subtext {
+  margin-top: 15px;
+  margin-bottom: 60px;
+  color: var(--color-text-gray);
+}
+#home-tesseract-logo {
+  margin-top: 115px;
+}
+@media (max-width: 1280px) {
+  .hero-backround-image {
+    transform: scale(0.5);
+  }
+}
+@media (max-width: 1050px) {
+  .hero-backround-image {
+    display: none;
+  }
+  #hero-arcs-svg {
+    display: none;
+  }
+}
+@media (max-width: 450px) {
+  #home-hero-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 0;
+  }
+  #home-text-heading {
+    font-size: 40px;
+  }
+}

@@ -1,0 +1,237 @@
+#dialog-close-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+}
+#bookADemo-container {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  flex-wrap: wrap;
+  height: 100%;
+}
+#bookADemo-text-section {
+  background-color: var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+#bookADemo-form-section {
+  padding-inline: 100px;
+  padding-block: 200px;
+}
+#bookADemo-navbar-logo {
+  cursor: pointer;
+  margin-top: 25px;
+  margin-left: 80px;
+  max-width: 200px;
+}
+#bookADemo-header-container {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  flex-wrap: wrap;
+}
+#bookADemo-navbar-logo-container {
+  background-color: var(--color-secondary);
+}
+#bookADemo-text {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 50px;
+  letter-spacing: 0%;
+  color: white;
+}
+#bookADemo-subText {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  color: white;
+}
+#bookADemo-text-section {
+  padding-inline: 80px;
+  padding-top: 200px;
+}
+#bookADemo-image {
+  position: absolute;
+  bottom: 80px;
+  left: 120px;
+}
+#bookADemo-form-fields-container {
+  display: flex;
+  max-width: 6800px;
+  flex-wrap: wrap;
+  column-gap: 35px;
+  row-gap: 27px;
+}
+.bookADemo-field-select {
+  border: 1px solid #caddff;
+  max-height: 65px;
+  width: fit-content;
+  border-radius: 10px;
+  background-color: #e9f3fd;
+  cursor: pointer;
+  padding: 20px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0%;
+}
+.bookADemo-field-select:hover {
+  border-color: #3175da;
+}
+.bookADemo-field-select.selected {
+  background-color: #9bd0ff;
+}
+#bookADemo-form-section {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  margin-bottom: 40px;
+}
+
+#bookADemo-form-question {
+  font-weight: 400;
+  font-size: 24px;
+
+  line-height: 30px;
+  letter-spacing: 0%;
+}
+
+#bookADemo-Buttons-Container {
+  display: flex;
+  padding-inline: 0px;
+  margin-block: 100px;
+  column-gap: 35px;
+}
+.bookADemo-Button-alt,
+.bookADemo-Button {
+  border: 1px solid #0c78ba;
+  padding-block: 10px;
+  padding-inline: 20px;
+  border-radius: 10px;
+  color: "0c78ba";
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0%;
+}
+.bookADemo-Button {
+  color: white;
+  background-color: #0c78ba;
+}
+.bookaADemo-inputs {
+  height: 42px;
+  border-radius: 6px;
+  padding-inline: 10px;
+}
+#bookADemo-Success-Container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-secondary);
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.bookADemo-Success-image {
+  max-width: 200px;
+  position: relative;
+  bottom: 100px;
+}
+.bookADemo-Success-image-man {
+  max-width: 300px;
+  position: absolute;
+  bottom: 50px;
+}
+.bookADemo-success-text {
+  position: relative;
+  bottom: 100px;
+  color: white;
+}
+#bookADemo-Success-Title {
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 40px;
+  line-height: 50px;
+  margin-bottom: 30px;
+}
+#bookADemo-success-message {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 50px;
+  width: 60%;
+  text-align: center;
+}
+#bookADemo-form-multiple {
+  font-weight: 300;
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: var(--color-text-gray);
+}
+@media (max-width: 1350px) {
+  #bookADemo-header-container {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: hidden;
+  }
+  #bookADemo-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #bookADemo-image {
+    display: none;
+  }
+  #bookADemo-header-container {
+    background-color: var(--color-secondary);
+  }
+  #bookADemo-text-section {
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+@media (max-width: 755px) {
+  #bookADemo-text-section {
+    padding-inline: 30px;
+    box-sizing: border-box;
+  }
+  #bookADemo-form-section {
+    padding-inline: 30px;
+    box-sizing: border-box;
+  }
+  .bookADemo-field-select {
+    max-height: fit-content;
+    max-width: 90%;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 580px) {
+  #bookADemo-form-fields-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #bookADemo-container,
+  #bookADemo-header-container {
+    overflow-x: hidden;
+  }
+  .bookADemo-field-select {
+    width: 100%;
+  }
+  #bookADemo-form-section {
+    padding-inline: 0;
+  }
+  #bookADemo-form-question {
+    padding-inline: 30px;
+  }
+  #bookADemo-form-section {
+    width: 100%;
+  }
+  #bookADemo-textInput {
+    width: 100%;
+  }
+}

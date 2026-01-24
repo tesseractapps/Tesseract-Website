@@ -1,0 +1,8 @@
+#contact-info-container {
+  margin: 0px 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  /* padding-top: 110px; */
+}

@@ -1,0 +1,11 @@
+#app-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--color-secondary);
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 18px;
+}
