@@ -1,0 +1,15 @@
+#release-notes-container {
+  max-width: 80%;
+  margin: 10px auto;
+  /* padding-top: 110px; */
+}
+#release-notes-container h1 {
+  color: var(--color-primary);
+}
+#release-notes-container h2 {
+  color: var(--color-primary);
+}
+#release-notes-container li {
+  color: var(--color-text-gray);
+  font-size: 18px;
+}

@@ -1,0 +1,21 @@
+#careers-text {
+  max-width: 600px;
+}
+#careers-container {
+  margin: 50px 15%;
+  /* padding-top: 110px; */
+}
+#careers-current-openings {
+  margin: 100px 0;
+}
+#current-openings-title {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#careers-bottom-text {
+  color: var(--color-text-gray);
+  font-size: 18px;
+  text-align: center;
+}

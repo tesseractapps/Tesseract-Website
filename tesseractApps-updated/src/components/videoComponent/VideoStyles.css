@@ -1,0 +1,95 @@
+.video-container {
+  position: relative;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 105px;
+}
+
+.video {
+  width: 83%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  border-radius: 45px;
+}
+
+/* Overlay play button */
+.overlay {
+  width: 83%;
+  border-radius: 45px;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: white;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  background-image: linear-gradient(to bottom, #0c78ba, #ffffff),
+    url("https://www.w3schools.com/html/mov_bbb.mp4");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.overlay-play-background {
+  background-color: #0567a31c;
+  padding: 0;
+  border-radius: 50px;
+  transition: ease 0.5s;
+}
+.play-icon {
+  position: relative;
+  left: 5px;
+  bottom: 0px;
+}
+.play-icon-background {
+  background-color: var(--color-primary);
+  padding: 5px 13px;
+  border-radius: 60%;
+}
+.overlay-play-background:hover {
+  background-color: #0c78ba2a;
+  padding: 25px 28px;
+  border-radius: 70px;
+}
+.overlay:hover {
+  opacity: 0.7;
+}
+
+/* Controls bar */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.controls button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.controls input[type="range"] {
+  width: 100px;
+}
+
+@media (max-width: 600px) {
+  .video {
+    width: 95%;
+  }
+  .overlay {
+    width: 95%;
+  }
+}

@@ -1,0 +1,115 @@
+#expo-banner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+#expo-banner-close-icon {
+  cursor: pointer;
+}
+
+#expo-banner-form-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
+  gap: 16px; /* spacing between items */
+  max-width: 800px;
+  width: 100%;
+  margin: 0 20px;
+  margin-top: 50px;
+}
+#expo-banner-form-container > :last-child {
+  margin-right: 30px;
+  grid-column: span 2; /* make last element stretch across 2 columns */
+}
+#expo-banner-image {
+  max-width: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+#expo-banner-title {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 120%;
+  letter-spacing: -2%;
+  margin-bottom: 5px;
+  color: var(--color-primary);
+}
+#expo-banner-subtitle {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  color: var(--color-text-gray-light);
+}
+.expo-banner-button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 235px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-block: 20px;
+  display: block;
+}
+#expo-banner-link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline;
+}
+.expo-banner-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  max-width: 80%;
+}
+.expo-banner-input-label {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: var(--color-text-gray);
+}
+.expo-banner-input {
+  padding: 10px;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.expo-banner-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  border-width: 2px;
+}
+.expo-banner-checkbox {
+  transform: scale(1.5);
+  margin: 0 15px;
+}
+#expo-banner-image-close-icon {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+@media (max-width: 700px) {
+  .expo-banner-input-container {
+    max-width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  #expo-banner-form-container {
+    grid-template-columns: 1fr; /* single column */
+  }
+  #expo-banner-form-container > :last-child {
+    margin-right: 30px;
+    grid-column: span 1; /* make last element stretch across 2 columns */
+  }
+}
