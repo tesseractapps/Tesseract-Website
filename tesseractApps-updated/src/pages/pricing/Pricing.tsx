@@ -42,7 +42,8 @@ import { useMetaTags } from "../../utils/useMetaTags";
 const Pricing = () => {
   useMetaTags({
     title: "TesseractApps Pricing | NDIS Software Plans & Packages | Australia",
-    description: "View TesseractApps pricing plans for NDIS providers. Choose from Starter, Standard, Professional, or Premium packages. 7-day free trial, no credit card required. Get 10% off with full accounting suite."
+    description:
+      "View TesseractApps pricing plans for NDIS providers. Choose from Starter, Standard, Professional, or Premium packages. 7-day free trial, no credit card required. Get 10% off with full accounting suite.",
   });
   const imageArr1 = [p1, p2];
   const imageArr2 = [p3, p5];
@@ -79,7 +80,7 @@ const Pricing = () => {
       setTimeout(() => {
         if (document.hasFocus()) {
           alert(
-            "If your email client didn't open, please email us at: sales@tesseractapps.com"
+            "If your email client didn't open, please email us at: sales@tesseractapps.com",
           );
         }
       }, 1000);
@@ -122,7 +123,7 @@ const Pricing = () => {
             </button>
           </div>
           <h2 className="pricing-hero-bottom-text">
-            No credit card is required. Free onboarding included.
+            No credit card is required.
           </h2>
         </div>
         <div id="paricing-hero-images-container">
@@ -409,7 +410,7 @@ const Pricing = () => {
                                 </div>
                               </div>
                             );
-                          }
+                          },
                         )}
                     </div>
 

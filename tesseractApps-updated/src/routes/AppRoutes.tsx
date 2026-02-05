@@ -38,6 +38,7 @@ import Blog9 from "../pages/blogPost/Blog9";
 import Blog10 from "../pages/blogPost/Blog10";
 import Blog11 from "../pages/blogPost/Blog11";
 import NDISComplianceBlog from "../pages/blogPost/NDISComplianceBlog";
+import January2026ProductUpdate from "../pages/blogPost/January2026ProductUpdate";
 // import BookADemoPage from "../pages/bookADemo/BookADemo";
 
 const AppRoutes = () => {
@@ -110,17 +111,36 @@ const AppRoutes = () => {
       <Route path="/careers" element={<Careers />} />
       <Route path="/contact-us" element={<ContactInformation />} />
       <Route path="/protecting-participant-data" element={<Blogpost />} />
-      <Route path="/future-proofing-disability-services" element={<FutureProofingBlog />} />
+      <Route
+        path="/future-proofing-disability-services"
+        element={<FutureProofingBlog />}
+      />
       <Route path="/hidden-costs-workforce-management" element={<Blog4 />} />
-      <Route path="/sydney-disability-workability-expo-2025" element={<Blog5 />} />
+      <Route
+        path="/sydney-disability-workability-expo-2025"
+        element={<Blog5 />}
+      />
       <Route path="/canberra-ndis-expo" element={<CanberraNDISExpoBlog />} />
-      <Route path="/beyond-compliance-care-quality" element={<BeyondComplianceBlog />} />
-      <Route path="/manual-rostering-hidden-costs" element={<ManualRosteringBlog />} />
+      <Route
+        path="/beyond-compliance-care-quality"
+        element={<BeyondComplianceBlog />}
+      />
+      <Route
+        path="/manual-rostering-hidden-costs"
+        element={<ManualRosteringBlog />}
+      />
       <Route path="/future-proof-ndis-organisation-2025" element={<Blog8 />} />
       <Route path="/top-3-compliance-myths-busted" element={<Blog9 />} />
       <Route path="/common-payroll-pitfalls-ndis" element={<Blog10 />} />
       <Route path="/melbourne-expo-2025" element={<Blog11 />} />
-      <Route path="/ndis-compliance-audit-failures-2026" element={<NDISComplianceBlog />} />
+      <Route
+        path="/ndis-compliance-audit-failures-2026"
+        element={<NDISComplianceBlog />}
+      />
+      <Route
+        path="/whats-new-in-2026-product-update-january-2026"
+        element={<January2026ProductUpdate />}
+      />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms-and-Conditions" element={<TermsAndConditions />} />
       <Route path="/administrator" element={<ByRole />} />

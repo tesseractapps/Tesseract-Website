@@ -45,9 +45,7 @@ const HomeHeroComponent = () => {
           <div>Try It Free</div>
           {/* <ArrowRight className="arrow-icon" /> */}
         </div>
-        <div id="home-button-subtext">
-          No credit card is required. Free onboarding included.
-        </div>
+        <div id="home-button-subtext">No credit card is required.</div>
         {/* <div id="home-store-links-container">
           <img
             src={ios}

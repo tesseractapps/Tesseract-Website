@@ -5,12 +5,14 @@ import image4 from "../assets/image1.webp";
 import blog5 from "../assets/Blog5Image3.webp";
 import blog6 from "../assets/expo-canberra1.webp";
 import authorImage from "../assets/BELLE BAI - MARKETING EXECUTIVE.webp";
+import authorImage2 from "../assets/bec mcfarland.webp";
 import blog7 from "../assets/Why Manual Rostering Is Costing You More Than You Think.webp";
 import blog8 from "../assets/Beyond Compliance_ How TesseractApps NDIS Software Elevates Care Quality and Staff Experience.webp";
 import blog9 from "../assets/Cover page for Top 3 Compliance Myths Busted-DESKTOP-VQ2C97V.webp";
 import blog10 from "../assets/Cover page for Avoid These Common Payroll Pitfalls A Guide for NDIS Provider.webp";
 import Blog11 from "../assets/MelbourneExpo.webp";
 import blog13 from "../assets/Why NDIS Providers Fail Compliance Audits in 2026 _ How to Fix It.webp";
+import blog14 from "../assets/January 2026 Release Notes.webp";
 export const ourBlogDummyData = [
   {
     id: 1,
@@ -202,6 +204,20 @@ export const ourBlogDummyData = [
     authorImage: authorImage,
     comments: 0,
     categories: ["NDIS"],
+  },
+  {
+    id: 13,
+    slug: "/whats-new-in-2026-product-update-january-2026",
+    title: "January 2026 Product Update – What’s New This Month?",
+    description: `We’ve been busy behind the scenes this month, rolling out a stack 
+            of improvements designed to make rostering smoother, compliance clearer, 
+            and day-to-day admin just a little less painful. `,
+    image: blog14,
+    date: "2026-01-30",
+    author: "Bec McFarland",
+    authorImage: authorImage2,
+    comments: 0,
+    categories: ["Releases"],
   },
 ];
 export const footerProductsData = {
@@ -656,7 +672,7 @@ export const pricingDummyData = {
           },
         },
         {
-          title: "Quote",
+          title: "Quote Generator",
           subTitle: "Create a contact quickly for quoting",
           data1: {
             value: true,
@@ -780,7 +796,7 @@ export const pricingDummyData = {
           subTitle: "Pre-built audit-ready templates",
           data1: {
             value: true,
-            text: "Basic Froms",
+            text: "Basic Forms",
           },
           data2: {
             value: true,
@@ -2482,7 +2498,7 @@ export const SubPagesDummyData = {
       backgroundColor: "var(--color-secondary)",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included. ",
+        conclusion: "No credit card is required.   ",
       },
     },
     // section2: {
@@ -3519,7 +3535,7 @@ export const byRoleData = {
       description: `Run your organisation efficiently with TesseractApps. Manage modules, users, and settings from a secure dashboard. Maintain compliance and protect sensitive data. `,
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included. ",
+        conclusion: "No credit card is required.   ",
       },
     },
     details: {
@@ -3641,7 +3657,7 @@ export const byRoleData = {
         "Manage your workforce efficiently with TesseractApps. Plan shifts, track attendance, and optimise staff allocation from one secure platform. Maintain coverage, reduce conflicts, and ensure compliance. ",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included. ",
+        conclusion: "No credit card is required.   ",
       },
     },
     details: {
@@ -3742,7 +3758,7 @@ export const byRoleData = {
         "Manage your finance processes efficiently with TesseractApps. Track payroll, invoices, budgets, and reporting from one secure platform. Ensure accuracy, compliance, and full financial visibility. ",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included. ",
+        conclusion: "No credit card is required.   ",
       },
     },
     details: {
@@ -3848,7 +3864,7 @@ export const byRoleData = {
         "Manage your daily tasks efficiently with TesseractApps. Access schedules, update participant records, and track sessions from one secure platform. Stay compliant, organised, and connected to your team. ",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included. ",
+        conclusion: "No credit card is required.   ",
       },
     },
     details: {
@@ -3956,7 +3972,7 @@ export const byRoleData = {
         "Manage your workforce efficiently with TesseractApps. Oversee recruitment, onboarding, leave, and staff development from a single, secure platform. Ensure compliance, track performance, and optimise HR processes. ",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included. ",
+        conclusion: "No credit card is required.   ",
       },
     },
     details: {
@@ -4063,7 +4079,7 @@ export const byRoleData = {
         "Manage your services and personal information with TesseractApps. View your schedules, track support sessions, and access documents securely. Stay informed and engaged in your care journey.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included. ",
+        conclusion: "No credit card is required.   ",
       },
     },
     details: {
@@ -4168,7 +4184,7 @@ export const byIndustryData = {
       page: "NDIS Industry",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included. ",
+        conclusion: "No credit card is required.   ",
       },
     },
     details: {
@@ -4840,7 +4856,7 @@ export const byCareData = {
         "TesseractApps is designed for NDIS disability support organisations. From participant management and rostering to compliance tracking and payroll, our platform helps you deliver quality care while staying fully NDIS-compliant.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.",
+        conclusion: "No credit card is required.  ",
       },
     },
     details: {
@@ -4962,7 +4978,7 @@ export const byCareData = {
         "Manage participant goals, track progress, connect with providers, and maintain compliance.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.",
+        conclusion: "No credit card is required.  ",
       },
     },
     details: {
@@ -6512,7 +6528,7 @@ export const productsDetailsData = {
         "Plan, approve, and manage shifts efficiently with TesseractApps. Keep your workforce organised, reduce conflicts, and ensure proper coverage across all sites.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.",
+        conclusion: "No credit card is required.  ",
       },
     },
     section2: {
@@ -6659,7 +6675,7 @@ export const productsDetailsData = {
       image: timesheetNew, // Replace with actual image import
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.",
+        conclusion: "No credit card is required.  ",
       },
     },
     section2: {
@@ -6800,7 +6816,7 @@ export const productsDetailsData = {
         "Manage your organisation efficiently with TesseractApps. Oversee users, modules, settings, and compliance from a single, secure dashboard.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -6932,7 +6948,7 @@ export const productsDetailsData = {
         "Control who sees what with TesseractApps. Assign roles, scale permissions, and monitor activity to keep your organisation secure and compliant.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -7075,7 +7091,7 @@ export const productsDetailsData = {
         "Oversee recruitment, onboarding, staff records, and performance with TesseractApps. Keep all HR processes in one secure platform to ensure accuracy, compliance, and operational efficiency.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.",
+        conclusion: "No credit card is required.  ",
       },
     },
     section2: {
@@ -7218,7 +7234,7 @@ export const productsDetailsData = {
         "Digitally sign and manage documents with TesseractApps. Maintain compliance, streamline approvals, and keep accurate audit trails for all critical records.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -7350,7 +7366,7 @@ export const productsDetailsData = {
         "Record staff start and end times digitally with TesseractApps. Ensure accurate attendance, streamline payroll, and maintain compliance with ease.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.",
+        conclusion: "No credit card is required.  ",
       },
     },
     section2: {
@@ -7493,7 +7509,7 @@ export const productsDetailsData = {
         "Track participant information, support plans, and service delivery with TesseractApps. Ensure accurate records, improve care quality, and maintain compliance.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -7625,7 +7641,7 @@ export const productsDetailsData = {
         "Track, manage, and report incidents with TesseractApps. Ensure staff and participant safety, maintain compliance, and keep accurate records in real time.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -7757,7 +7773,7 @@ export const productsDetailsData = {
         "Centralise all your documents with TesseractApps. Keep care plans, agreements, policies, and records organised, secure, and easily accessible.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -7890,7 +7906,7 @@ export const productsDetailsData = {
         "Access real-time insights and manage workflows efficiently with TesseractApps. Track performance, compliance, and tasks specific to each role, all from a single, secure dashboard.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -8044,7 +8060,7 @@ export const productsDetailsData = {
         "Send messages, share files, and collaborate with your team securely. TesseractApps ChaT keeps communication private, organised, and integrated with your workflows.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -8187,7 +8203,7 @@ export const productsDetailsData = {
         "Keep your personal and work details up to date with TesseractApps. Access schedules, leave balances, certifications, and preferences from a single, secure portal.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -8308,7 +8324,7 @@ export const productsDetailsData = {
         "Create, manage, and submit digital forms with TesseractApps. Capture participant information, staff records, and operational data efficiently and accurately.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -8451,7 +8467,7 @@ export const productsDetailsData = {
         "Manage payroll, track budgets, and process invoices efficiently with TesseractApps. Integrate finance workflows with rostering, HR, and participant management to maintain accuracy and compliance.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -8593,7 +8609,7 @@ export const productsDetailsData = {
         "Provide staff with accessible, personalised training through TesseractApps. Track progress, ensure compliance, and support professional development across your organisation.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.    ",
+        conclusion: "No credit card is required.      ",
       },
     },
     section2: {
@@ -8724,7 +8740,7 @@ export const productsDetailsData = {
         "TesseractApps is built on Salesforce, giving you a secure, scalable, and reliable platform to manage staff, participants, and operations across your organisation.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.",
+        conclusion: "No credit card is required.  ",
       },
     },
     section2: {
@@ -8839,7 +8855,7 @@ export const productsDetailsData = {
         "TesseractApps integrates with Xero to provide accurate, secure, and efficient payroll and financial management for your organisation.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included.",
+        conclusion: "No credit card is required.  ",
       },
     },
     section2: {

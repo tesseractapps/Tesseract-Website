@@ -7,7 +7,8 @@ import { useMetaTags } from "../../utils/useMetaTags";
 const Blog = () => {
   useMetaTags({
     title: "TesseractApps Blog | NDIS Industry Insights & Tips | Australia",
-    description: "Expert articles on NDIS compliance, workforce management, digital transformation, and care sector innovation. Stay informed with industry updates and practical tips."
+    description:
+      "Expert articles on NDIS compliance, workforce management, digital transformation, and care sector innovation. Stay informed with industry updates and practical tips.",
   });
   const navigate = useNavigate();
   const [categoryFilter, setCategoryFilter] = useState("All");
@@ -20,13 +21,20 @@ const Blog = () => {
       categoryFilter === "All"
         ? ourBlogDummyData
         : ourBlogDummyData.filter((blog) =>
-            blog?.categories?.includes(categoryFilter)
+            blog?.categories?.includes(categoryFilter),
           )
     ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     // Sort by date in descending order
     setBlogsData(filteredData);
   }, [categoryFilter]); //
-  const categories = ["All", "NDIS", "Aged Care", "Events", "Business"];
+  const categories = [
+    "All",
+    "NDIS",
+    "Aged Care",
+    "Events",
+    "Business",
+    "Releases",
+  ];
   return (
     <div id="blog-container">
       <div className="heading">BLOG</div>
