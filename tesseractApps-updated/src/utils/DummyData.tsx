@@ -804,7 +804,7 @@ export const pricingDummyData = {
           },
           data3: {
             value: true,
-            text: "AI Froms",
+            text: "AI Forms",
           },
           data4: {
             value: true,
@@ -9734,3 +9734,4 @@ export const signupFormData = [
     },
   ],
 ];
+
