@@ -152,12 +152,27 @@ const RequestADemo = () => {
     // setFormData(demoFormInitialState);
   }
   const confirmationMail = () => {
+        const scheduledDate = new Date(formData.preferredTime);
+
+    // Date: dd/mm/yyyy
+    const date = scheduledDate.toLocaleDateString('en-AU', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+
+    // Time: hh:mm AM/PM (12 hour)
+    const time = scheduledDate.toLocaleTimeString('en-AU', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    }).toUpperCase();;
     sendEmail(
       formData.fullName,
       formData.email,
       bookDemoConfirmationEmailTemplate.subject,
-      bookDemoConfirmationEmailTemplate.text(formData.fullName),
-      bookDemoConfirmationEmailTemplate.html(formData.fullName)
+      bookDemoConfirmationEmailTemplate.text(formData.fullName,date,time),
+      bookDemoConfirmationEmailTemplate.html(formData.fullName,date,time)
     )
       .then((response) => {
         console.log("Confirmation email sent successfully:", response);

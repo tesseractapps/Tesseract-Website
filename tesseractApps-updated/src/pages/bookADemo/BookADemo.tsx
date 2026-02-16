@@ -206,19 +206,19 @@ const BookADemo = () => {
   const confirmationMail = () => {
     const scheduledDate = new Date(formData.schedule);
 
-// Date: dd/mm/yyyy
-const date = scheduledDate.toLocaleDateString('en-AU', {
-  day: '2-digit',
-  month: '2-digit',
-  year: 'numeric'
-});
+    // Date: dd/mm/yyyy
+    const date = scheduledDate.toLocaleDateString('en-AU', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
 
-// Time: hh:mm AM/PM (12 hour)
-const time = scheduledDate.toLocaleTimeString('en-AU', {
-  hour: '2-digit',
-  minute: '2-digit',
-  hour12: true
-}).toUpperCase();;
+    // Time: hh:mm AM/PM (12 hour)
+    const time = scheduledDate.toLocaleTimeString('en-AU', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    }).toUpperCase();;
 
     sendEmail(
       formData.firstName,
