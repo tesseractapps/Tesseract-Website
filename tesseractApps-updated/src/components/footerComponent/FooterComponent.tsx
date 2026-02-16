@@ -38,7 +38,7 @@ const FooterComponent = () => {
       sendTextEmail(
         newsletterSubscriptionEmailTemplate.email,
         newsletterSubscriptionEmailTemplate.subject,
-        newsletterSubscriptionEmailTemplate.body(newsletterEmail)
+        newsletterSubscriptionEmailTemplate.body(newsletterEmail),
       )
         .then((response) => {
           console.log("Email sent successfully:", response);
@@ -77,7 +77,7 @@ const FooterComponent = () => {
       newsletterEmail,
       newsletterConfirmationEmailTemplate.subject,
       newsletterConfirmationEmailTemplate.text(newsletterEmail.split("@")[0]),
-      newsletterConfirmationEmailTemplate.html(newsletterEmail.split("@")[0])
+      newsletterConfirmationEmailTemplate.html(newsletterEmail.split("@")[0]),
     )
       .then((response) => {
         console.log("Confirmation email sent successfully:", response);
@@ -103,7 +103,7 @@ const FooterComponent = () => {
       setTimeout(() => {
         if (document.hasFocus()) {
           alert(
-            "If your email client didn't open, please email us at: sales@tesseractapps.com"
+            "If your email client didn't open, please email us at: sales@tesseractapps.com",
           );
         }
       }, 1000);
@@ -120,7 +120,7 @@ const FooterComponent = () => {
       setTimeout(() => {
         if (document.hasFocus()) {
           alert(
-            "If your email client didn't open, please email us at: sales@tesseractapps.com"
+            "If your email client didn't open, please email us at: sales@tesseractapps.com",
           );
         }
       }, 1000);
@@ -147,7 +147,7 @@ const FooterComponent = () => {
           <div id="footer-column1-item">
             <div className="footer-heading">About the company</div>
             <div className="footer-text footer-about-text">
-              At Tesseract Apps, we provide tailored solutions that simplify
+              At TesseractApps, we provide tailored solutions that simplify
               care management, accounting, compliance, and HR, helping care
               providers run their operations efficiently and stay compliant.
               <br></br>
@@ -403,7 +403,7 @@ const FooterComponent = () => {
         About the company
       </div>
       <div className="footer-text footer-about-text">
-        At Tesseract Apps, we provide tailored solutions that simplify care
+        At TesseractApps, we provide tailored solutions that simplify care
         management, accounting, compliance, and HR, helping care providers run
         their operations efficiently and stay compliant.
         <br></br>
@@ -506,7 +506,7 @@ const FooterComponent = () => {
       </div>
       <div id="footer-divider" />
       <div id="footer-bottom">
-        Tesseract Apps would like to acknowledge the Traditional Custodians of
+        TesseractApps would like to acknowledge the Traditional Custodians of
         the land on which we operate, and pay our respects to their elders past
         and present.
         <div id="footer-bottom-images">
@@ -515,7 +515,7 @@ const FooterComponent = () => {
         </div>{" "}
         <div id="footer-bottom-divider"> | </div>{" "}
         <div id="footer-bottom-text">
-          © 2025 Tesseract Apps. All rights reserved.
+          © 2026 TesseractApps. All rights reserved.
         </div>
       </div>
     </div>

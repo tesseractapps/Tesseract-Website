@@ -7,8 +7,10 @@ import { useMetaTags } from "../../utils/useMetaTags";
 
 const FutureProofingBlog = () => {
   useMetaTags({
-    title: "Future-Proofing Your NDIS Business | Technology Trends | TesseractApps",
-    description: "Learn how to future-proof your NDIS business with technology. Digital transformation strategies, automation trends, and compliance preparation for providers."
+    title:
+      "Future-Proofing Your NDIS Business | Technology Trends | TesseractApps",
+    description:
+      "Learn how to future-proof your NDIS business with technology. Digital transformation strategies, automation trends, and compliance preparation for providers.",
   });
 
   // const navigate = useNavigate();
@@ -78,7 +80,7 @@ const FutureProofingBlog = () => {
                 <p>
                   Manual methods, such as spreadsheets or paper-based records,
                   often result in costly delays and gaps. In contrast, NDIS
-                  management platforms like Tesseract Apps offer:
+                  management platforms like TesseractApps offer:
                 </p>
                 <ul>
                   <li>Automatic time-stamped logs</li>
@@ -116,10 +118,10 @@ const FutureProofingBlog = () => {
 
           <section className="section highlight-section">
             <h2 className="section-title">
-              How Tesseract Apps Helps NDIS Providers Thrive
+              How TesseractApps Helps NDIS Providers Thrive
             </h2>
             <p>
-              At Tesseract Apps, we specialise in scalable, integrated NDIS
+              At TesseractApps, we specialise in scalable, integrated NDIS
               provider software built on Salesforce, tailored to the needs of
               Australian disability service organisations.
             </p>
@@ -188,7 +190,7 @@ const FutureProofingBlog = () => {
             </h2>
             <p>
               With the NDIS set to exceed 800,000 participants by 2026, there’s
-              never been a better time to upgrade your systems. Tesseract Apps
+              never been a better time to upgrade your systems. TesseractApps
               gives you the tools to scale sustainably, reduce admin costs, and
               exceed compliance expectations.
             </p>

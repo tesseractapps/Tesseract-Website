@@ -1,5 +1,5 @@
 import "./BookADemo.css";
-import { Dialog } from "@mui/material";
+import { Dialog, Stepper, Step, StepLabel } from "@mui/material";
 import closeIcon from "../../assets/close.webp";
 import Slide from "@mui/material/Slide";
 import { useEffect, useState } from "react";
@@ -96,21 +96,21 @@ const BookADemo = () => {
     return false;
   };
 
-  const handleButtonPress = (
-    event: React.MouseEvent<HTMLDivElement>,
+  const handlePrevious = () => {
+    if (currentStep !== 0) {
+      setCurrentStep((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    setCurrentStep((prev) => prev + 1);
+  };
+
+  const handleOptionSelect = (
+    value: string,
     id: string,
     multiselect: boolean
   ) => {
-    if (event.currentTarget.className === "bookADemo-Button-alt") {
-      if (currentStep !== 0) {
-        setCurrentStep((prev) => prev - 1);
-      }
-      return;
-    }
-    if (event.currentTarget.className === "bookADemo-Button" || !multiselect) {
-      setCurrentStep((prev) => prev + 1);
-    }
-    const value = event.currentTarget.getAttribute("data-value");
     if (!value || !id) return;
 
     setFormData((prev) => {
@@ -129,9 +129,11 @@ const BookADemo = () => {
       // single select
       return { ...prev, [id]: value };
     });
-    console.log(
-      event.currentTarget.className === "bookADemo-Button" || !multiselect
-    );
+
+    // Auto-advance for single select
+    if (!multiselect) {
+      handleNext();
+    }
   };
 
   // console.log(formData);
@@ -202,12 +204,28 @@ const BookADemo = () => {
       });
   };
   const confirmationMail = () => {
+    const scheduledDate = new Date(formData.schedule);
+
+// Date: dd/mm/yyyy
+const date = scheduledDate.toLocaleDateString('en-AU', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric'
+});
+
+// Time: hh:mm AM/PM (12 hour)
+const time = scheduledDate.toLocaleTimeString('en-AU', {
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: true
+}).toUpperCase();;
+
     sendEmail(
       formData.firstName,
       formData.email,
       bookDemoConfirmationEmailTemplate.subject,
-      bookDemoConfirmationEmailTemplate.text(formData.firstName),
-      bookDemoConfirmationEmailTemplate.html(formData.firstName)
+      bookDemoConfirmationEmailTemplate.text(formData.firstName,date,time),
+      bookDemoConfirmationEmailTemplate.html(formData.firstName,date,time)
     )
       .then((response) => {
         console.log("Confirmation email sent successfully:", response);
@@ -216,6 +234,14 @@ const BookADemo = () => {
         console.error("Error sending confirmation email:", error);
       });
   };
+  const getVisualStep = (internalStep: number) => {
+    if (internalStep <= 3) return 0; // Organisation (Steps 0-3)
+    if (internalStep <= 5) return 1; // Needs (Steps 4-5)
+    return 2; // Contact (Step 6)
+  };
+
+  const hiddenSteps = ["Organisation", "Needs", "Contact"];
+
   const handleLogoClick = () => {
     navigate("/");
     setTimeout(() => {
@@ -232,40 +258,27 @@ const BookADemo = () => {
       fullScreen
       slots={{ transition: Slide }}
       slotProps={{ transition: { direction: "up" } }}
-      sx={{ margin: "auto", maxWidth: "1920px" }}
+      sx={{ '& .MuiDialog-paper': { padding: 0, margin: 0, overflow: 'hidden' } }}
     >
       <Alert setAlertData={setAlertData} alertData={alertData} />
-      <div
-        id="bookADemo-header-container"
-        style={showSuccess ? { backgroundColor: "var(--color-secondary)" } : {}}
-      >
-        <div id="bookADemo-navbar-logo-container">
-          <img
-            src={logo_small}
-            alt="tesseract logo"
-            id="bookADemo-navbar-logo"
-            width={200}
-            onClick={handleLogoClick}
-          />
-        </div>
-        <img
-          src={closeIcon}
-          alt="close icon"
-          id="dialog-close-icon"
-          style={
-            showSuccess ? { filter: "invert(1)" } : { filter: "invert(0)" }
+
+      <img
+        src={closeIcon}
+        alt="close icon"
+        id="dialog-close-icon"
+        style={
+          showSuccess ? { filter: "invert(1)" } : { filter: "invert(0)" }
+        }
+        onClick={() => {
+          console.log("Book a Demo Close Route ", closeRoute);
+          if (closeRoute != "") {
+            navigate(closeRoute, { replace: true });
+          } else {
+            navigate("/", { replace: true });
           }
-          onClick={() => {
-            console.log("Book a Demo Close Route ", closeRoute);
-            if (closeRoute != "") {
-              navigate(closeRoute, { replace: true });
-            } else {
-              navigate("/", { replace: true });
-            }
-            resetForm();
-          }}
-        />
-      </div>
+          resetForm();
+        }}
+      />
 
       {showSuccess ? (
         <div id="bookADemo-Success-Container">
@@ -274,13 +287,10 @@ const BookADemo = () => {
             alt="success image"
             className="bookADemo-Success-image"
           />
-          <div id="bookADemo-Success-Title" className="bookADemo-success-text">
+          <div id="bookADemo-Success-Title">
             Successfully Sent
           </div>
-          <div
-            id="bookADemo-success-message"
-            className="bookADemo-success-text"
-          >
+          <div id="bookADemo-success-message">
             Thank you! Your demo has been successfully booked. Our team will
             contact you shortly to confirm the details.
           </div>
@@ -292,34 +302,45 @@ const BookADemo = () => {
         </div>
       ) : (
         <div id="bookADemo-container">
+
+          {/* Left Panel */}
           <div id="bookADemo-text-section">
+            <img
+              src={logo_small}
+              alt="tesseract logo"
+              id="bookADemo-navbar-logo"
+              onClick={handleLogoClick}
+            />
             <div id="bookADemo-text">{bookADemoFormData[currentStep].text}</div>
             <div id="bookADemo-subText">
               {bookADemoFormData[currentStep].subText}
-
-              <img
-                src={bookADemoFormData[currentStep].image}
-                alt="book-a-demo-text"
-                id="bookADemo-image"
-              />
             </div>
+            <img
+              src={bookADemoFormData[currentStep].image}
+              alt="book-a-demo-visual"
+              id="bookADemo-image"
+            />
           </div>
+
+          {/* Right Panel */}
           <div id="bookADemo-form-section">
-            <div
-              id="bookADemo-form-question"
-              style={
-                !bookADemoFormData[currentStep].multiSelect
-                  ? { marginBottom: "40px" }
-                  : {}
-              }
-            >
+            <div style={{ width: '100%', marginBottom: '40px' }}>
+              <Stepper activeStep={getVisualStep(currentStep)} alternativeLabel>
+                {hiddenSteps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+            </div>
+
+            <div id="bookADemo-form-question">
               {bookADemoFormData[currentStep].question}
             </div>
-            {bookADemoFormData[currentStep].multiSelect ? (
+            {bookADemoFormData[currentStep].multiSelect && (
               <div id="bookADemo-form-multiple">Select Multiple</div>
-            ) : (
-              ""
             )}
+
             <div id="bookADemo-form-fields-container">
               {bookADemoFormData[currentStep].fields.map((field, index) => (
                 <React.Fragment key={field.displayName + index}>
@@ -328,15 +349,15 @@ const BookADemo = () => {
                       className={
                         "bookADemo-field-select" +
                         (currentId &&
-                        isSelected(formData, currentId, field.value)
+                          isSelected(formData, currentId, field.value)
                           ? " selected"
                           : "")
                       }
-                      onClick={(event) =>
-                        handleButtonPress(
-                          event,
+                      onClick={() =>
+                        handleOptionSelect(
+                          field.value,
                           bookADemoFormData[currentStep].id ?? "",
-                          bookADemoFormData[currentStep].multiSelect
+                          bookADemoFormData[currentStep].multiSelect ?? false
                         )
                       }
                       data-value={field.value}
@@ -356,6 +377,7 @@ const BookADemo = () => {
                         },
                       }}
                       onChange={handleInputChange}
+                      fullWidth
                     />
                   ) : (
                     <TextField
@@ -365,45 +387,33 @@ const BookADemo = () => {
                       variant="outlined"
                       type="text"
                       onChange={handleInputChange}
+                      fullWidth
                     />
                   )}
                 </React.Fragment>
               ))}
             </div>
+
             <div id="bookADemo-Buttons-Container">
-              {currentStep != 0 ? (
-                <div
+              {currentStep != 0 && (
+                <button
                   className="bookADemo-Button-alt"
-                  onClick={(event) =>
-                    handleButtonPress(
-                      event,
-                      bookADemoFormData[currentStep].id ?? "",
-                      bookADemoFormData[currentStep].multiSelect
-                    )
-                  }
+                  onClick={handlePrevious}
                 >
                   Previous
-                </div>
-              ) : (
-                ""
+                </button>
               )}
+
               {currentStep != 0 &&
-              bookADemoFormData[currentStep].multiSelect ? (
-                <div
-                  className="bookADemo-Button"
-                  onClick={(event) =>
-                    handleButtonPress(
-                      event,
-                      bookADemoFormData[currentStep].id ?? "",
-                      bookADemoFormData[currentStep].multiSelect
-                    )
-                  }
-                >
-                  Next
-                </div>
-              ) : (
-                ""
-              )}
+                bookADemoFormData[currentStep].multiSelect && (
+                  <button
+                    className="bookADemo-Button"
+                    onClick={handleNext}
+                  >
+                    Next
+                  </button>
+                )}
+
               {Object.values(formData).every((value) => {
                 if (Array.isArray(value)) {
                   return value.length > 0; // arrays must have at least one selection
@@ -411,9 +421,9 @@ const BookADemo = () => {
                 return value.trim() !== ""; // strings must not be empty
               }) &&
                 currentStep > 5 && (
-                  <div className="bookADemo-Button" onClick={handleSubmit}>
+                  <button className="bookADemo-Button" onClick={handleSubmit}>
                     Submit
-                  </div>
+                  </button>
                 )}
             </div>
           </div>

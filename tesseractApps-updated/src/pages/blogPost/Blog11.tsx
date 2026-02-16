@@ -5,7 +5,8 @@ import { useMetaTags } from "../../utils/useMetaTags";
 const Blog11 = () => {
   useMetaTags({
     title: "NDIS Industry Trends 2025 | Care Sector Outlook | TesseractApps",
-    description: "Explore NDIS industry trends for 2025. Technology adoption, regulatory changes, workforce challenges, and opportunities for Australian care providers."
+    description:
+      "Explore NDIS industry trends for 2025. Technology adoption, regulatory changes, workforce challenges, and opportunities for Australian care providers.",
   });
 
   return (
@@ -18,14 +19,14 @@ const Blog11 = () => {
       <article className="blog-post">
         <header className="blog-header">
           <h1 className="blog-title">
-            Tesseract Apps at the Melbourne Expo 2025 Driving Smarter NDIS
+            TesseractApps at the Melbourne Expo 2025 Driving Smarter NDIS
             Operations
           </h1>
         </header>
 
         <div className="blog-content">
           <p className="intro-paragraph">
-            Tesseract Apps was proud to showcase our NDIS management platform at
+            TesseractApps was proud to showcase our NDIS management platform at
             the <strong>Melbourne Expo 2025</strong>, connecting with providers
             across Victoria to demonstrate how technology can simplify
             compliance, reduce administrative workload, and improve participant
@@ -62,7 +63,7 @@ const Blog11 = () => {
           <section className="section">
             <p>
               With <strong>ISO 27001 and ISO 9001 certifications</strong>,
-              Tesseract Apps ensures data security and operational excellence,
+              TesseractApps ensures data security and operational excellence,
               helping providers focus on what matters most – delivering quality
               care.
             </p>
@@ -70,7 +71,7 @@ const Blog11 = () => {
 
           <section className="section highlight-section">
             <h2 className="section-title">
-              Why Providers Choose Tesseract Apps
+              Why Providers Choose TesseractApps
             </h2>
             <p>
               At Melbourne Expo 2025, we engaged with NDIS providers to discuss:
@@ -98,7 +99,7 @@ const Blog11 = () => {
             <h2 className="section-title">Stay Ahead in NDIS Compliance</h2>
             <p>
               If you missed us at Melbourne Expo, you can still discover how
-              Tesseract Apps can transform your NDIS operations. Request a
+              TesseractApps can transform your NDIS operations. Request a
               personalised demo today and see how our platform helps providers
               stay <strong>compliant, efficient, and future-ready</strong>.
             </p>

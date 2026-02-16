@@ -96,9 +96,7 @@ const NDISComplianceBlog = () => {
                   documentation at all times. This requires:
                 </p>
                 <ul>
-                  <li>
-                    A single digital document repository with version control
-                  </li>
+                  <li>A single digital document hub with version control</li>
                   <li>Policies aligned to real operational practices</li>
                   <li>Annual policy reviews with documented approval</li>
                   <li>

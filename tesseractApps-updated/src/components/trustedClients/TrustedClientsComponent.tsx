@@ -19,6 +19,7 @@ import company19 from "../../assets/ImprovedAbility.webp";
 import company20 from "../../assets/RCG-Logo_2[12038376].webp";
 import company21 from "../../assets/Company-YDCS-.webp";
 // import company19 from "../../assets/Aussie Care Health Services Pty Ltd.webp";
+import company22 from "../../assets/KS PNG Logo.webp";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -46,6 +47,7 @@ const TrustedClientsComponent = () => {
     company19,
     company20,
     company21,
+    company22
   ];
   return (
     <div id="trusted-clients-container">

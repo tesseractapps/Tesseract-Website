@@ -4,8 +4,10 @@ import { useMetaTags } from "../../utils/useMetaTags";
 
 const Teams = () => {
   useMetaTags({
-    title: "Meet the TesseractApps Team | Leadership & Experts | Australian Tech",
-    description: "Meet the diverse team behind TesseractApps - technologists, product specialists, and industry experts committed to solving real-world workforce management challenges."
+    title:
+      "Meet the TesseractApps Team | Leadership & Experts | Australian Tech",
+    description:
+      "Meet the diverse team behind TesseractApps - technologists, product specialists, and industry experts committed to solving real-world workforce management challenges.",
   });
 
   return (
@@ -13,7 +15,7 @@ const Teams = () => {
       <div className="heading">TEAM</div>
       <div className="subheading">The people behind the platform.</div>
       <div className="text" id="team-text">
-        Tesseract Apps is led by a diverse team of technologists, product
+        TesseractApps is led by a diverse team of technologists, product
         specialists, and industry experts committed to solving real-world
         challenges. Their collective experience in workforce management,
         compliance, and innovative technology ensures that our solutions stay

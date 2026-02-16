@@ -178,8 +178,8 @@ export const ourBlogDummyData = [
     id: 11,
     slug: "/melbourne-expo-2025",
     title:
-      "Tesseract Apps at the Melbourne Expo 2025 Driving Smarter NDIS Operations",
-    description: `Tesseract Apps was proud to showcase our NDIS management platform at
+      "TesseractApps at the Melbourne Expo 2025 Driving Smarter NDIS Operations",
+    description: `TesseractApps was proud to showcase our NDIS management platform at
             the Melbourne Expo 2025, connecting with providers across Victoria
             to demonstrate how technology can simplify compliance, reduce
             administrative workload, and improve participant outcomes.`,
@@ -233,7 +233,7 @@ export const footerProductsData = {
     "Clock In & Clock Out",
     "Participant Management",
     "Incident Management",
-    "Repository",
+    "Documents",
   ],
   2: [
     "Role based Dashboard",
@@ -299,7 +299,7 @@ export const navBarDummyData = {
       links: [
         { title: "Admin Console", subTitle: "System Oversight" },
         { title: "Access Control Panel", subTitle: "Access Rights" },
-        { title: "Repository", subTitle: "Document Hub" },
+        { title: "Documents" },
         { title: "", subTitle: "" },
         { title: "", subTitle: "" },
         { title: "", subTitle: "" },
@@ -499,7 +499,7 @@ export const pricingCardsDummyData = {
       featuresText:
         "Full‑featured platform with custom dashboards and enterprise‑grade support. ",
       features: [
-        "Custom onboarding & dedicated account manager",
+        "Custom onboarding process & dedicated account manager",
         "Geo-location, sleepover tracking, voice notes & client signatures",
         "Advanced risk management (NDIS Risk Matrix)",
         "HR insights & unlimited storage",
@@ -525,7 +525,7 @@ export const pricingCardsDummyData = {
         "Basic Dashboards & Insights",
         "Core Admin & User Access",
         "My Profile",
-        "Repository for Document management",
+        "Documents management",
         "T-sign",
         "Payroll and accounting",
       ],
@@ -549,7 +549,7 @@ export const pricingCardsDummyData = {
         "Advanced HR & Recruitment",
         "Group Messaging & Collaboration",
         "Accounting & Payroll Integration",
-        "Exportable Reports & Repository ",
+        "Exportable Reports & Documents ",
         "Dedicated Support Chat",
       ],
       optionalAddons: ["AI"],
@@ -568,7 +568,7 @@ export const pricingDummyData = {
       data: [
         {
           title: "Sign-Up",
-          subTitle: "Quick registration for NDIS providers",
+          subTitle: "Quick registration process for NDIS providers.",
           data1: {
             value: true,
             text: "",
@@ -588,7 +588,7 @@ export const pricingDummyData = {
         },
         {
           title: "Onboarding",
-          subTitle: "Guided setup for staff, participants & compliance",
+          subTitle: "Guided setup for staff, participants, and compliance",
           data1: {
             value: true,
             text: "1 complimentary session",
@@ -603,7 +603,7 @@ export const pricingDummyData = {
           },
           data4: {
             value: true,
-            text: "Custom onboarding",
+            text: "Custom onboarding process",
           },
         },
         {
@@ -672,7 +672,7 @@ export const pricingDummyData = {
           },
         },
         {
-          title: "Quote Generator",
+          title: "Quote",
           subTitle: "Create a contact quickly for quoting",
           data1: {
             value: true,
@@ -1433,7 +1433,7 @@ export const pricingDummyData = {
         },
         {
           title: "Audit Reports",
-          subTitle: "Generate NDIA-ready documents",
+          subTitle: "Generate NDIA-ready Documents",
           data1: {
             value: true,
             text: "",
@@ -1918,7 +1918,7 @@ export const pricingDummyData = {
         },
         {
           title: "Document Automation",
-          subTitle: "Auto-generate NDIA-compliant documents",
+          subTitle: "Auto-generate NDIA-compliant Documents",
           data1: {
             value: false,
             text: "",
@@ -2026,19 +2026,19 @@ export const pricingDummyData = {
           subTitle: "Compliant invoicing & financial reporting",
           data1: {
             value: true,
-            text: "Optional (10% off)",
+            text: "Optional add-on (10% off)",
           },
           data2: {
             value: true,
-            text: "Optional (10% off)",
+            text: "Optional add-on (10% off)",
           },
           data3: {
             value: true,
-            text: "Optional (10% off)",
+            text: "Optional add-on (10% off)",
           },
           data4: {
             value: true,
-            text: "Optional (10% off)",
+            text: "Optional add-on (10% off)",
           },
         },
         {
@@ -2174,7 +2174,7 @@ import AdminConsoleImage from "../assets/Admin.webp";
 import HRImageF from "../assets/features-HR.webp";
 import ParticipantsImage from "../assets/Participants Management.webp";
 import ChatImage from "../assets/Chat and Notification.webp";
-// import RepoImage from "../assets/Repository.webp";
+// import RepoImage from "../assets/Documents.webp";
 import RepoImageF from "../assets/features-Repository.webp";
 // import AccountingImage from "../assets/accounting.webp";
 import AccountingImageF from "../assets/features-Accounting.webp";
@@ -2233,7 +2233,7 @@ export const featuresDummyData = [
   },
   {
     id: 7,
-    title: "Repository",
+    title: "Documents",
     description:
       "Safely store and organize files of staff and participants with role-based access and digital signatures.",
     image: RepoImageF,
@@ -2362,7 +2362,7 @@ export const testimonialDummyData = [
     id: 1,
     rating: 5,
     testimonial:
-      "Tesseract Apps has made a big difference in how we run our NDIS operations. Having everything like rostering, payroll, and participant management in one system makes life a lot easier. It was a bit tricky to get the hang of at the start, but once you get used to it the platform is really straightforward and saves a lot of time.",
+      "TesseractApps has made a big difference in how we run our NDIS operations. Having everything like rostering, payroll, and participant management in one system makes life a lot easier. It was a bit tricky to get the hang of at the start, but once you get used to it the platform is really straightforward and saves a lot of time.",
     authorImage: seedDiability,
     author: "Seed Disability Services ",
     authorTitle: "",
@@ -2391,7 +2391,7 @@ export const testimonialDummyData = [
   {
     id: 4,
     rating: 4,
-    testimonial: `“Revolutionizing NDIS Workforce Management and IT Solutions. Tesseract Apps has streamlined our operations with its all-in-one platform for NDIS care providers and IT consultants. Liking the fact that Tesseract centralizes timesheets, HR, payroll, contracts, and compliance - carrying out transactions is now a breeze with the sense of security added. Onboarding was smooth, thanks to the responsive customer support. The admin console provides full organizational control, while the role-based dashboards and mobile access empower our team to stay informed and productive from anywhere. Since switching from another provider, we've saved time, reduced errors. The platform’s reliability (99.9% uptime) and automation capabilities have significantly reduced manual work and improved compliance. Tesseract Apps isn’t just software—it’s a Game-Changer. Highly recommended for anyone seeking a smart, intuitive design, scalable and user-friendly solution.”`,
+    testimonial: `“Revolutionizing NDIS Workforce Management and IT Solutions. TesseractApps has streamlined our operations with its all-in-one platform for NDIS  care providers and IT consultants. Liking the fact that Tesseract centralizes timesheets, HR, payroll, contracts, and compliance - carrying out transactions is now a breeze with the sense of security added. Onboarding was smooth, thanks to the responsive customer support. The admin console provides full organizational control, while the role-based dashboards and mobile access empower our team to stay informed and productive from anywhere. Since switching from another provider, we've saved time, reduced errors. The platform’s reliability (99.9% uptime) and automation capabilities have significantly reduced manual work and improved compliance. TesseractApps isn’t just software—it’s a Game-Changer. Highly recommended for anyone seeking a smart, intuitive design, scalable and user-friendly solution.”`,
     authorImage: nexus,
     author: "Nexus IT",
     authorTitle: "",
@@ -2400,9 +2400,9 @@ export const testimonialDummyData = [
 export const accordiaDummyData = [
   {
     id: 1,
-    question: "Is Tesseract Apps NDIS-compliant?",
+    question: "Is TesseractApps NDIS-compliant?",
     answer:
-      "Yes. Tesseract Apps is purpose-built to align with NDIS regulations. Our platform supports invoicing, claims, participant management, and incident reporting in line with the NDIS Practice Standards.",
+      "Yes. TesseractApps is purpose-built to align with NDIS regulations. Our platform supports invoicing, claims, participant management, and incident reporting in line with the NDIS Practice Standards.",
   },
   {
     id: 2,
@@ -2426,7 +2426,7 @@ export const accordiaDummyData = [
     id: 4,
     question: "Can I Customize the Modules I Use?",
     answer:
-      "Absolutely! Tesseract Apps offers flexible, modular plans so you can choose only the features your organisation needs, from HR to scheduling to compliance.",
+      "Absolutely! TesseractApps offers flexible, modular plans so you can choose only the features your organisation needs, from HR to scheduling to compliance.",
   },
   {
     id: 5,
@@ -2442,13 +2442,13 @@ export const accordiaDummyData = [
   },
   {
     id: 7,
-    question: "Can support workers use Tesseract Apps on mobile?",
+    question: "Can support workers use TesseractApps on mobile?",
     answer:
-      "Yes. Tesseract Apps is mobile-friendly. Support workers can log notes, check rosters, and receive alerts in real time — from any device, anywhere.",
+      "Yes. TesseractApps is mobile-friendly. Support workers can log notes, check rosters, and receive alerts in real time — from any device, anywhere.",
   },
   {
     id: 8,
-    question: "How do I get started with Tesseract Apps?",
+    question: "How do I get started with TesseractApps?",
     answer:
       "You can start by selecting the Request a Demo option. Our team will guide you through the setup and ensure the platform is tailored to your organisation's specific needs.",
   },
@@ -2605,7 +2605,7 @@ export const SubPagesDummyData = {
         },
         {
           image: repoNew,
-          title: "Repository",
+          title: "Documents",
           description:
             " Store and share documents in one secure place. Version control keeps every edit tracked and ensures files are always easy to find.",
         },
@@ -2662,7 +2662,7 @@ export const itemsPageDummyData = {
   },
   "Case Studies": {
     heading: "Case Studies",
-    subHeading: "Real results from care providers using Tesseract Apps.",
+    subHeading: "Real results from care providers using TesseractApps.",
     text: "Learn how organisations across the NDIS, aged care, and allied health sectors improved their workflows and compliance using our platform.",
   },
   Whitepapers: {
@@ -2938,7 +2938,7 @@ export const faqPageDummyData = [
           {
             question: "What is the Risk Profile?",
             answer:
-              "It documents participant-specific risks to support safe care planning.",
+              "It Documents participant-specific risks to support safe care planning.",
           },
         ],
       },
@@ -2962,11 +2962,11 @@ export const faqPageDummyData = [
         ],
       },
       {
-        title: "Repository",
+        title: "Documents",
         faq: [
           {
-            question: "What is the repository used for?",
-            answer: "It stores and manages internal documents securely.",
+            question: "What is the Documents used for?",
+            answer: "It stores and manages internal Documents securely.",
           },
           {
             question: "Who can delete files?",
@@ -3129,11 +3129,11 @@ export const aboutUsPageData = {
   "Our Story": {
     title: "Our Story",
     data: [
-      "Tesseract Apps was born from a simple yet impactful conversation during a local cricket match in 2022—an exchange that sparked the vision for a smarter, more connected way to support care and NDIS providers.",
+      "TesseractApps was born from a simple yet impactful conversation during a local cricket match in 2022—an exchange that sparked the vision for a smarter, more connected way to support care and NDIS providers.",
       "In 2023, we built our foundation with a Human-Centred Design approach, grounded in empathy, user research, and real-world collaboration. Through rapid prototyping, iterative development, and continuous feedback from care professionals, we ensured every feature addressed real operational challenges.",
       "By mid-2024, we launched the beta version of our first product, T-NDIS, and onboarded over 10 providers whose practical insights were instrumental in refining the platform.",
-      "In January 2025, Tesseract Apps officially went live—delivering a fully operational, market-ready solution that integrates everything we learned from our early adopters.",
-      "Today, Tesseract Apps stands as a powerful, Salesforce-based platform purpose-built for the Australian care sector. We help organisations navigate NDIS compliance, simplify operations, and ultimately deliver better outcomes for participants and staff alike.",
+      "In January 2025, TesseractApps officially went live—delivering a fully operational, market-ready solution that integrates everything we learned from our early adopters.",
+      "Today, TesseractApps stands as a powerful, Salesforce-based platform purpose-built for the Australian care sector. We help organisations navigate NDIS compliance, simplify operations, and ultimately deliver better outcomes for participants and staff alike.",
     ],
   },
   "Our Mission & Vision": [
@@ -3532,7 +3532,7 @@ export const byRoleData = {
       image: adminImage,
       title: "Full control in one place",
       page: "Administrator",
-      description: `Run your organisation efficiently with TesseractApps. Manage modules, users, and settings from a secure dashboard. Maintain compliance and protect sensitive data. `,
+      description: `Run your organisation efficiently using TesseractApps. Manage modules, users, and settings from a secure dashboard, maintaining compliance and protecting sensitive data. `,
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
         conclusion: "No credit card is required.   ",
@@ -3544,60 +3544,60 @@ export const byRoleData = {
           dot: dots.dot1,
           title: "Roster Management",
           description:
-            "Create and adjust staff schedules easily. Approve shifts and monitor attendance. Administrators maintain proper coverage and reduce scheduling conflicts.",
+            "Create and adjust staff schedules easily, approve shifts, and monitor attendance, ensuring administrators maintain proper coverage and reduce scheduling conflicts.",
         },
         {
           dot: dots.dot2,
           title: "Payroll and Accounting",
-          description: `Process payroll, reconcile costs, and generate invoices. Link payments to accounting systems and track participant budgets. Administrators ensure accurate payments and maintain financial compliance.`,
+          description: `Process payroll, reconcile costs, and generate invoices, linking payments to accounting systems and tracking participant budgets. Administrators ensure accurate payments and maintain financial compliance.`,
         },
         {
           dot: dots.dot3,
           title: "Compliance Tracker",
           description:
-            "Monitor staff training, certifications, and audit requirements. Receive automated alerts for upcoming deadlines. Administrators stay audit-ready and reduce compliance risks.",
+            "Monitor staff training, certifications, and audit requirements, receiving automated alerts for upcoming deadlines. Administrators stay audit-ready and reduce compliance risks.",
         },
         {
           dot: dots.dot4,
           title: "User Management",
           description:
-            "Add, update, or remove users. Assign roles and permissions, and track system activity. Administrators maintain security and control access across the organisation. ",
+            "Add, update, or remove users, assign roles and permissions, and track system activity. Administrators maintain security and control access across the organisation. ",
         },
         {
           dot: dots.dot5,
-          title: "Repository and T-Sign",
+          title: "Documents and T-Sign",
           description:
-            "Store documents securely and approve digitally. Track revisions and maintain full audit trails. Administrators protect sensitive data and ensure records remain compliant.",
+            "Store documents securely and approve digitally, tracking revisions and maintaining full audit trails. Administrators protect sensitive data and ensure records remain compliant.",
         },
         {
           dot: dots.dot6,
           title: "Role-Based Dashboard",
           description:
-            "Monitor operations in one place. Track staff activity, performance, compliance, and workflows in real time. Administrators make informed decisions quickly.",
+            "Monitor operations in one place, tracking staff activity, performance, compliance, and workflows in real-time. Administrators make informed decisions quickly.",
         },
         {
           dot: dots.dot5,
           title: "Communication Tools",
           description:
-            "Send messages, share files, and update teams instantly. Administrators improve collaboration and ensure clear communication across departments.",
+            "Send messages, share files, and update teams instantly, improving collaboration and ensuring clear communication across departments.",
         },
         {
           dot: dots.dot4,
           title: "Training Hub",
           description:
-            "Deliver role-based training to staff. Provide tutorials, mobile-friendly courses, and personalised learning. Administrators track progress and support staff development. ",
+            "Deliver role-based training to staff, providing tutorials, mobile-friendly courses, and personalised learning, while administrators track progress and support staff development. ",
         },
         {
           dot: dots.dot3,
           title: "Operational Efficiency",
           description:
-            "Connect rostering, payroll, HR, and compliance into one workflow. Approve shifts and leave through mobile or desktop. Administrators reduce manual steps and streamline operations. ",
+            "Connect rostering, payroll, HR, and compliance into one workflow, approving shifts and leave through mobile or desktop. Administrators reduce manual steps and streamline operations. ",
         },
         {
           dot: dots.dot2,
           title: "Security and Audit Control",
           description:
-            "Control access with role-based permissions. Protect sensitive data, track audit histories, and ensure every record is fully traceable. Administrators maintain regulatory compliance effortlessly. ",
+            "Control access with role-based permissions, protect sensitive data, track audit histories, and ensure every record is fully traceable. Administrators maintain regulatory compliance effortlessly. ",
         },
       ],
     },
@@ -3605,13 +3605,13 @@ export const byRoleData = {
       {
         title: "Management and Compliance",
         description:
-          "TesseractApps provides a centralised dashboard where administrators can manage all users, modules, and system settings in one place. Compliance tracking and automated alerts ensure staff certifications and trainings remain current. Audit logs and secure data storage protect sensitive information and maintain organisational accountability.",
+          "TesseractApps provides a centralised dashboard for administrators to manage all users, modules, and system settings in one place. Compliance tracking and automated alerts ensure that staff certifications and training remain up to date. Audit logs and secure data storage protect sensitive information while maintaining organisational accountability.",
         images: [one],
       },
       {
         title: "Reporting and Workflow Efficiency ",
         description:
-          "Reporting tools and dashboards offer real-time insights into staff performance, service delivery, and operational metrics. Workflow automation reduces manual tasks, allowing administrators to focus on improving efficiency, streamlining processes, and maintaining full oversight of the organisation.",
+          "Reporting tools and dashboards provide real-time insights into staff performance, service delivery, and operational metrics. Workflow automation reduces manual tasks, allowing administrators to focus on improving efficiency, streamlining processes, and maintaining full organisational oversight.",
         images: [two],
       },
     ],
@@ -3654,7 +3654,7 @@ export const byRoleData = {
       title: "Full control over staffing and schedules ",
       page: "Roster Manager",
       description:
-        "Manage your workforce efficiently with TesseractApps. Plan shifts, track attendance, and optimise staff allocation from one secure platform. Maintain coverage, reduce conflicts, and ensure compliance. ",
+        "Manage your workforce efficiently using TesseractApps. Plan shifts, track attendance, and optimise staff allocation from a single secure platform. Maintain coverage, reduce conflicts, and ensure compliance. ",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
         conclusion: "No credit card is required.   ",
@@ -3665,47 +3665,47 @@ export const byRoleData = {
         {
           dot: dots.dot1,
           title: "Roster Management",
-          description: `Create, adjust, and approve staff schedules with ease. Track attendance and availability in real time. Roster Managers maintain proper coverage, reduce scheduling conflicts, and balance workloads. `,
+          description: `Create, adjust, and approve staff schedules with ease, tracking attendance and availability in real-time. Roster Managers ensure proper coverage, reduce scheduling conflicts, and balance workloads effectively. `,
         },
         {
           dot: dots.dot2,
           title: "Timesheets and Attendance",
-          description: `Monitor staff hours, submit and approve timesheets, and link shifts to payroll. Ensure accurate reporting and reduce errors in staff payments. `,
+          description: `Monitor staff hours, submit and approve timesheets, and link shifts to payroll for seamless integration. Ensure accurate reporting, reducing errors in staff payments. `,
         },
         {
           dot: dots.dot3,
           title: "Compliance Tracker",
-          description: `Track mandatory trainings, certifications, and shift requirements. Receive automated alerts for missing documentation or upcoming deadlines. Roster Managers stay compliant and reduce risk. `,
+          description: `Track mandatory training, certifications, and shift requirements. Receive automated alerts for missing documentation or upcoming deadlines, ensuring compliance. Roster Managers stay compliant and reduce risk. `,
         },
         {
           dot: dots.dot4,
           title: "User Management",
-          description: `Assign shifts and access permissions to staff. Track activity across sites and teams. Roster Managers maintain control of workforce access and responsibilities. `,
+          description: ` Assign shifts and access permissions to staff, tracking activity across sites and teams. Roster Managers maintain control of workforce access and responsibilities. `,
         },
         {
           dot: dots.dot5,
           title: "Role-Based Dashboard",
-          description: `Monitor roster performance, attendance, and compliance in real time. Gain insights into staff availability, absences, and workload balance. `,
+          description: `Monitor roster performance, attendance, and compliance in real-time using the Role-Based Dashboard. Gain insights into staff availability, absences, and workload balance. `,
         },
         {
           dot: dots.dot6,
           title: "Communication Tools",
-          description: `Notify staff of shifts, changes, and updates instantly. Share important documents and collaborate with team members across locations. `,
+          description: `Notify staff instantly about shifts, changes, and updates. Share important documents and collaborate with team members across different locations. `,
         },
         {
           dot: dots.dot1,
           title: "Operational Efficiency",
-          description: `Connect rostering, payroll, and compliance workflows into a single system. Automate shift approvals and streamline schedule updates to reduce manual tasks. `,
+          description: `Connect rostering, payroll, and compliance workflows into one integrated system. Automate shift approvals and streamline schedule updates, reducing manual tasks. `,
         },
         {
           dot: dots.dot2,
           title: "Reporting and Insights",
-          description: `Generate reports on shift coverage, staff performance, and attendance trends. Make informed decisions about workforce allocation and planning. `,
+          description: `Generate reports on shift coverage, staff performance, and attendance trends for better planning. Make informed decisions about workforce allocation and planning using real-time insights. `,
         },
         {
           dot: dots.dot3,
           title: "Security and Audit Control",
-          description: `Ensure shift records and timesheets are secure and fully auditable. Maintain transparency and compliance across all workforce activities. `,
+          description: `Ensure shift records and timesheets are secure, fully auditable, and compliant with regulations. Maintain transparency and compliance across all workforce activities, ensuring accountability. `,
         },
       ],
     },
@@ -3713,13 +3713,13 @@ export const byRoleData = {
       {
         title: "Optimised Workforce Management",
         description:
-          "TesseractApps allows Roster Managers to balance workloads, assign staff based on skills or availability, and manage leave seamlessly. Real-time dashboards provide visibility into shift coverage, staff utilisation, and upcoming absences, enabling informed decisions that reduce overtime, prevent burnout, and improve service delivery.",
+          "TesseractApps enables Roster Managers to balance workloads, assign staff based on skills or availability, and manage leave seamlessly. Real-time dashboards provide visibility into shift coverage, staff utilisation, and upcoming absences, enabling informed decisions that reduce overtime, prevent burnout, and enhance service delivery.",
         images: [one],
       },
       {
         title: "Reporting and Workflow Efficiency",
         description:
-          "Dashboards and reporting tools provide insights into staffing levels, shift coverage, attendance patterns, and workload distribution. Automation reduces manual scheduling and approval tasks, allowing Roster Managers to focus on workforce optimisation and operational efficiency.",
+          "Dashboards and reporting tools offer insights into staffing levels, shift coverage, attendance patterns, and workload distribution. Automation reduces manual scheduling and approval tasks, allowing Roster Managers to focus on workforce optimisation and improving operational efficiency.",
         images: [two],
       },
     ],
@@ -3755,7 +3755,7 @@ export const byRoleData = {
       title: "Streamline Financial Operations",
       page: "Accountant",
       description:
-        "Manage your finance processes efficiently with TesseractApps. Track payroll, invoices, budgets, and reporting from one secure platform. Ensure accuracy, compliance, and full financial visibility. ",
+        "Manage your financial processes efficiently using TesseractApps. Track payroll, invoices, budgets, and reporting from a single secure platform. Ensure accuracy, compliance, and full financial visibility. ",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
         conclusion: "No credit card is required.   ",
@@ -3766,47 +3766,47 @@ export const byRoleData = {
         {
           dot: dots.dot1,
           title: "Payroll Management",
-          description: `Process staff pay runs, reconcile costs, and track allowances. Link payroll to timesheets for accurate payments. Accountants maintain accuracy and reduce errors. `,
+          description: `Process staff pay runs, reconcile costs, and track allowances efficiently. Link payroll to timesheets for accurate and timely payments. Accountants ensure accuracy and reduce errors. `,
         },
         {
           dot: dots.dot2,
           title: "Invoicing and Billing",
-          description: `Generate invoices for services and participants. Automate billing for funded services and link to accounting systems. Accountants ensure timely payments and financial compliance. `,
+          description: `Generate invoices for services and participants, streamlining the billing process. Automate billing for funded services, linking to accounting systems for seamless financial management. Accountants ensure timely payments and maintain financial compliance. `,
         },
         {
           dot: dots.dot3,
           title: "Budget and Funding Tracker",
-          description: `Monitor participant budgets, funding allocations, and expenses. Track spending and reconcile costs efficiently. Accountants maintain financial control and accountability. `,
+          description: `Monitor participant budgets, funding allocations, and expenses in real-time. Track spending and reconcile costs efficiently for accurate financial control. Accountants maintain financial control and accountability. `,
         },
         {
           dot: dots.dot4,
           title: "Reporting and Insights",
-          description: `Generate financial reports, audit-ready statements, and budget summaries. Export data easily for management review or regulatory requirements. Accountants gain clear visibility over operations. `,
+          description: `Generate financial reports, audit-ready statements, and budget summaries for quick review. Export data easily for management review or regulatory reporting requirements. Accountants gain clear visibility over operations. `,
         },
         {
           dot: dots.dot5,
           title: "Role-Based Dashboard",
-          description: `Monitor all financial metrics in real time. Track payroll, expenses, invoices, and budgets from a single dashboard. Make informed decisions quickly. `,
+          description: `Monitor all financial metrics in real-time using the role-based dashboard. Track payroll, expenses, invoices, and budgets from one dashboard for easy visibility. Make informed decisions quickly with real-time financial insights. `,
         },
         {
           dot: dots.dot6,
           title: "Compliance Tracker",
-          description: `Stay compliant with taxation, auditing, and NDIS reporting requirements. Receive automated alerts for upcoming deadlines. Accountants reduce risk and ensure accurate reporting. `,
+          description: `Stay compliant with taxation, auditing, and NDIS reporting requirements, ensuring timely action. Receive automated alerts for upcoming deadlines, ensuring you never miss a crucial date. Accountants minimise risk and ensure accurate financial reporting. `,
         },
         {
           dot: dots.dot1,
-          title: "Secure Document Repository",
-          description: `Store financial records, invoices, and reports securely. Track revisions, maintain audit trails, and ensure data is only accessible to authorised staff. `,
+          title: "Secure Document Documents",
+          description: `Store financial records, invoices, and reports securely with role-based access control. Track revisions, maintain audit trails, and ensure data is accessible only to authorised staff. `,
         },
         {
           dot: dots.dot2,
           title: "Operational Efficiency",
-          description: `Connect payroll, invoicing, accounting, and compliance workflows into one platform. Automate recurring processes and reduce manual tasks. Accountants streamline operations and minimise errors. `,
+          description: `Connect payroll, invoicing, accounting, and compliance workflows seamlessly on one platform. Automate recurring processes and reduce manual tasks to improve operational efficiency. Accountants streamline operations and minimise errors in financial management. `,
         },
         {
           dot: dots.dot3,
           title: "Communication Tools",
-          description: `Share financial updates, reports, and notifications with managers or external stakeholders securely. Improve transparency and collaboration across teams. `,
+          description: `Share financial updates, reports, and notifications securely with managers or external stakeholders. Improve transparency and collaboration across teams with secure communication tools. `,
         },
       ],
     },
@@ -3814,13 +3814,13 @@ export const byRoleData = {
       {
         title: "Financial Management and Compliance",
         description:
-          "TesseractApps provides a centralised platform where accountants can manage payroll, invoicing, budgets, and financial reporting in one place. Automated alerts and compliance tracking ensure deadlines, taxation, and auditing requirements are always met. Secure storage and audit logs protect sensitive financial data.",
+          "TesseractApps provides a centralised platform for accountants to manage payroll, invoicing, budgets, and financial reporting. Automated alerts and compliance tracking ensure deadlines, taxation, and auditing requirements are met on time. Secure storage and audit logs protect sensitive financial data, maintaining full compliance.",
         images: [one],
       },
       {
         title: "Reporting and Workflow Efficiency ",
         description:
-          "Dashboards and reporting tools offer real-time insights into payroll, spending, and financial performance. Automation reduces manual processes, allowing accountants to focus on accuracy, analysis, and strategic financial planning. ",
+          "Dashboards and reporting tools provide staff real-time visibility into payroll, spending, and financial performance. Automation reduces manual processes, allowing accountants to focus on accuracy, analysis, and strategic financial planning. ",
         images: [two],
       },
     ],
@@ -3861,7 +3861,7 @@ export const byRoleData = {
       title: "Deliver Care with Confidence ",
       page: "NDIS Staff",
       description:
-        "Manage your daily tasks efficiently with TesseractApps. Access schedules, update participant records, and track sessions from one secure platform. Stay compliant, organised, and connected to your team. ",
+        "Manage your daily tasks efficiently using TesseractApps. Access schedules, update participant records, and track sessions from a single secure platform. Stay compliant, organised, and connected to your team. ",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
         conclusion: "No credit card is required.   ",
@@ -3872,47 +3872,47 @@ export const byRoleData = {
         {
           dot: dots.dot1,
           title: "Participant Management",
-          description: `View participant profiles, care plans, and session histories. Update progress notes and record visit details securely. NDIS staff maintain accurate participant records and improve service quality. `,
+          description: `View participant profiles, care plans, and session histories, updating progress notes and recording visit details securely. NDIS staff maintain accurate participant records, improving service quality. `,
         },
         {
           dot: dots.dot2,
           title: "Roster and Timesheets",
-          description: `Access your schedule, submit timesheets, and track shifts. Receive notifications for changes or approvals. Staff stay on top of rosters and ensure accurate work hours. `,
+          description: `Access your schedule, submit timesheets, and track shifts, receiving notifications for changes or approvals. Staff stay on top of rosters, ensuring accurate work hours. `,
         },
         {
           dot: dots.dot3,
           title: "Compliance Tracker",
-          description: `Track mandatory training, certifications, and required qualifications. Automated alerts notify you of upcoming deadlines. NDIS staff maintain compliance effortlessly. `,
+          description: `Track mandatory training, certifications, and required qualifications, with automated alerts notifying you of upcoming deadlines. NDIS staff maintain compliance with ease. `,
         },
         {
           dot: dots.dot4,
           title: "Communication Tools",
-          description: `Send and receive messages with supervisors and colleagues. Share updates, files, or important notifications instantly. Staff improve collaboration and response times. `,
+          description: `Send and receive messages with supervisors and colleagues, sharing updates, files, or important notifications instantly. Staff improve collaboration and response times. `,
         },
         {
           dot: dots.dot5,
           title: "T-Sign and Digital Documents",
-          description: `Sign care plans, agreements, and other documents digitally. Maintain a secure audit trail and reduce paperwork. Staff save time and remain compliant. `,
+          description: `Sign care plans, agreements, and other documents digitally, maintaining a secure audit trail and reducing paperwork. Staff save time and remain compliant. `,
         },
         {
           dot: dots.dot6,
           title: "Role-Based Dashboard",
-          description: `Monitor your own tasks, shifts, and progress in one view. Access quick summaries of participant sessions, attendance, and key responsibilities. `,
+          description: `Monitor your tasks, shifts, and progress in one view. Access quick summaries of participant sessions, attendance, and key responsibilities. `,
         },
         {
           dot: dots.dot1,
           title: "Training Hub",
-          description: `Access role-based training, tutorials, and step-by-step learning courses. Track your progress and ensure you meet mandatory requirements. `,
+          description: `Access role-based training, tutorials, and step-by-step learning courses, tracking your progress. Track progress and ensure you meet mandatory requirements efficiently. `,
         },
         {
           dot: dots.dot2,
           title: "Operational Efficiency",
-          description: `Submit leave requests, update profiles, and log care sessions from mobile or desktop. Reduce manual paperwork and focus on delivering care. `,
+          description: `Submit leave requests, update profiles, and log care sessions via mobile or desktop. Reduce manual paperwork, allowing you to focus on delivering care. `,
         },
         {
           dot: dots.dot3,
           title: "Security and Privacy",
-          description: `Protect participant information and personal staff data. Access and update records only with authorised permissions, ensuring compliance with NDIS standards. `,
+          description: `Protect participant and personal staff data. Access and update records only with authorised permissions, ensuring compliance with NDIS standards. `,
         },
       ],
     },
@@ -3921,13 +3921,13 @@ export const byRoleData = {
       {
         title: "Care Management and Compliance ",
         description:
-          "TesseractApps provides NDIS staff with a centralised platform to manage participants, schedules, and tasks efficiently. Automated alerts ensure staff certifications, training, and compliance requirements are always up to date. Digital records and audit trails protect sensitive participant and staff information. ",
+          "TesseractApps provides NDIS staff with a centralised platform to manage participants, schedules, and tasks. Automated alerts ensure that staff certifications, training, and compliance requirements are kept up to date. Digital records and audit trails protect sensitive participant and staff data. ",
         images: [one],
       },
       {
         title: "Reporting and Workflow Efficiency ",
         description:
-          "Dashboards and reporting tools give staff real-time visibility into their schedules, session records, and participant progress. Automation reduces manual reporting and paperwork, allowing staff to focus on care delivery and operational tasks.   ",
+          "Dashboards and reporting tools provide staff real-time visibility into schedules, session records, and participant progress. Automation reduces manual reporting and paperwork, allowing staff to focus on care delivery and operational efficiency.   ",
         images: [two],
       },
     ],
@@ -3969,7 +3969,7 @@ export const byRoleData = {
       title: " Simplify HR Operations ",
       page: "HR Manager",
       description:
-        "Manage your workforce efficiently with TesseractApps. Oversee recruitment, onboarding, leave, and staff development from a single, secure platform. Ensure compliance, track performance, and optimise HR processes. ",
+        "Manage your workforce efficiently using TesseractApps. Oversee recruitment, onboarding, leave, and staff development from one secure platform. Ensure compliance, track performance, and optimise HR processes. ",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
         conclusion: "No credit card is required.   ",
@@ -3980,47 +3980,47 @@ export const byRoleData = {
         {
           dot: dots.dot1,
           title: "HR Operations",
-          description: `Manage recruitment, onboarding, and employee records in one system. Track staff profiles, qualifications, and leave. HR Managers ensure workforce information is accurate, up to date, and accessible. `,
+          description: `Manage recruitment, onboarding, and employee records in a single system. Track staff profiles, qualifications, and leave, ensuring workforce information is accurate, up-to-date, and accessible for HR Managers. `,
         },
         {
           dot: dots.dot2,
           title: "Payroll Integration",
-          description: `Link HR data to payroll and accounting. Track hours, leave, and staff allowances to ensure accurate pay. HR Managers reduce errors and maintain financial compliance. `,
+          description: `Link HR data to payroll and accounting systems, tracking hours, leave, and staff allowances to ensure accurate pay. HR Managers minimise errors and maintain financial compliance. `,
         },
         {
           dot: dots.dot3,
           title: "Compliance Tracker",
-          description: `Monitor mandatory training, certifications, and regulatory requirements. Receive automated alerts for upcoming deadlines. HR Managers stay audit-ready and reduce compliance risks. `,
+          description: `Monitor mandatory training, certifications, and regulatory requirements efficiently. Receive automated alerts for upcoming deadlines, ensuring timely action. HR Managers remain audit-ready and mitigate compliance risks. `,
         },
         {
           dot: dots.dot4,
           title: "Role-Based Dashboard",
-          description: `Monitor workforce metrics, leave balances, training progress, and staff performance in real time. Gain insights to inform HR decisions and workforce planning. `,
+          description: `Monitor workforce metrics, leave balances, training progress, and staff performance in real-time. Gain valuable insights to inform HR decisions and workforce planning. `,
         },
         {
           dot: dots.dot5,
           title: "User Management",
-          description: `Assign roles and permissions, track user activity, and control access to sensitive HR data. HR Managers maintain security and accountability across the organisation. `,
+          description: `Assign roles and permissions, track user activity, and control access to sensitive HR data securely. HR Managers ensure security and accountability across the organisation. `,
         },
         {
           dot: dots.dot6,
           title: "Training Hub",
-          description: `Deliver role-based training to employees. Provide tutorials, mobile-friendly courses, and personalised learning paths. Track progress and ensure compliance. `,
+          description: `Deliver role-based training to employees, ensuring they are equipped with the necessary skills.  Provide tutorials, mobile-friendly courses, and personalised learning paths to staff. Track training progress and ensure compliance with organisational standards. `,
         },
         {
           dot: dots.dot1,
           title: "Communication Tools",
-          description: `Notify staff about HR updates, policy changes, or training requirements instantly. Share documents and collaborate across teams. `,
+          description: `Notify staff instantly about HR updates, policy changes, or training requirements. Share documents and collaborate seamlessly across teams. `,
         },
         {
           dot: dots.dot2,
           title: "Operational Efficiency",
-          description: `Automate HR workflows such as leave approvals, onboarding checklists, and performance reviews. Reduce manual tasks and streamline HR operations. `,
+          description: `Automate HR workflows, including leave approvals, onboarding checklists, and performance reviews. Reduce manual tasks and optimise HR operations for greater efficiency. `,
         },
         {
           dot: dots.dot3,
           title: "Security and Audit Control",
-          description: `Maintain secure, traceable employee records. Track audits, document changes, and ensure compliance with organisational and regulatory standards. `,
+          description: ` Maintain secure and traceable employee records that are easily accessible. Track audits, document changes, and ensure compliance with organisational and regulatory standards efficiently. `,
         },
       ],
     },
@@ -4028,13 +4028,13 @@ export const byRoleData = {
       {
         title: "HR Management and Compliance ",
         description:
-          "TesseractApps provides a centralised dashboard where HR Managers can manage all staff records, qualifications, leave, and training requirements. Automated alerts notify managers of upcoming deadlines or missing documentation, keeping compliance and workforce readiness on track. ",
+          "TesseractApps provides a centralised dashboard that allows HR Managers to manage all staff records, qualifications, leave, and training requirements. Automated alerts notify managers of upcoming deadlines or missing documentation, ensuring compliance and workforce readiness. ",
         images: [one],
       },
       {
         title: "Reporting and Workflow Efficiency ",
         description:
-          "Dashboards and reporting tools provide insights into HR metrics, staff performance, training completion, and leave patterns. Automation reduces manual HR tasks, allowing managers to focus on workforce planning, staff development, and operational efficiency. ",
+          "Dashboards and reporting tools offer insights into HR metrics, staff performance, training completion, and leave patterns. Automation reduces manual HR tasks, allowing managers to focus on workforce planning, staff development, and improving operational efficiency. ",
         images: [two],
       },
     ],
@@ -4076,7 +4076,7 @@ export const byRoleData = {
       title: "Access Your Care and Support Easily ",
       page: "Participant",
       description:
-        "Manage your services and personal information with TesseractApps. View your schedules, track support sessions, and access documents securely. Stay informed and engaged in your care journey.",
+        "Manage your services and personal information using TesseractApps. View your schedules, track support sessions, and access documents securely on one platform. Stay informed and engaged in your care journey.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
         conclusion: "No credit card is required.   ",
@@ -4087,37 +4087,37 @@ export const byRoleData = {
         {
           dot: dots.dot1,
           title: "Personal Dashboard",
-          description: `View your upcoming sessions, support staff, and service plans in one place. Keep track of your schedule and upcoming appointments efficiently. `,
+          description: `View your upcoming sessions, support staff, and service plans in one place for easy access. Track your schedule and upcoming appointments efficiently. `,
         },
         {
           dot: dots.dot2,
           title: "Service Tracking",
-          description: `Monitor your care sessions and participant goals. Update progress notes and communicate outcomes with your support team. Participants stay informed about the services they receive. `,
+          description: `Monitor your care sessions and goals, ensuring that progress is tracked. Update progress notes and communicate outcomes with your support team to stay aligned. Participants remain informed about the services they receive. `,
         },
         {
           dot: dots.dot3,
           title: "Document Access",
-          description: `Access agreements, care plans, invoices, and other important documents securely. Digital storage ensures your records are organised and easy to retrieve. `,
+          description: `Access agreements, care plans, invoices, and other important documents securely, keeping everything organised. Digital storage ensures that your records are organised and easily retrievable. `,
         },
         {
           dot: dots.dot4,
           title: "Communication Tools",
-          description: `Message your support staff and coordinators directly. Share updates, ask questions, and receive timely responses. Participants maintain clear communication with their care team. `,
+          description: `Message your support staff and coordinators directly for quick communication. Share updates, ask questions, and receive timely responses to stay informed. Participants maintain clear and direct communication with their care team. `,
         },
         {
           dot: dots.dot5,
           title: "Notifications and Alerts",
-          description: `Receive reminders for upcoming appointments, session changes, and important updates. Participants stay on top of their care schedule without missing critical tasks. `,
+          description: `Receive reminders for upcoming appointments, session changes, and important updates, staying on top of your care schedule. Participants stay on top of their care schedule, ensuring they never miss critical tasks. `,
         },
         {
           dot: dots.dot6,
           title: "Feedback and Reporting",
-          description: `Provide feedback on services and support staff. Track your progress and review completed sessions. Participants are empowered to actively participate in their care planning. `,
+          description: `Provide feedback on services and support staff, helping improve care delivery. Track your progress and review completed sessions to monitor your care journey. Participants are empowered to actively engage in their care planning and decision-making. `,
         },
         {
           dot: dots.dot1,
           title: "Security and Privacy",
-          description: `All personal and care information is stored securely. Access is controlled, and data is protected according to NDIS standards, ensuring participant privacy. `,
+          description: `All personal and care information is securely stored, ensuring privacy. Access is controlled, and data is protected according to NDIS standards, safeguarding participant privacy. `,
         },
       ],
     },
@@ -4126,13 +4126,13 @@ export const byRoleData = {
       {
         title: "Centralised Access and Transparency",
         description:
-          "TesseractApps gives participants a single platform to view schedules, documents, and service updates. Notifications and reminders keep participants informed about upcoming appointments and any changes to their support. Secure access protects personal information while ensuring transparency and engagement. ",
+          "TesseractApps provides participants with a single platform to view schedules, documents, and service updates easily. Notifications and reminders ensure participants are informed about upcoming appointments and any changes to their support. Secure access protects personal information while ensuring transparency and engagement in care. ",
         images: [one],
       },
       {
         title: "Participation and Workflow Efficiency",
         description:
-          "Participants can track their goals, provide feedback, and communicate with their care team in real time. Digital records and automated alerts reduce confusion, improve engagement, and make managing support services simple and convenient. ",
+          "Participants can track their goals, provide feedback, and communicate with their care team in real-time. Digital records and automated alerts reduce confusion, improve engagement, and simplify the management of support services. ",
         images: [two],
       },
     ],
@@ -4180,7 +4180,7 @@ export const byIndustryData = {
       image: ndisIndustry,
       title: "Complete Workforce & Compliance Solution for NDIS Providers",
       description:
-        "TesseractApps delivers a secure, integrated platform built for NDIS organisations. From participant management to rostering, payroll, and compliance, we simplify your operations so you can focus on quality care. ",
+        "TesseractApps provides a secure, integrated platform designed for NDIS organisations. From participant management to rostering, payroll, and compliance, we simplify your operations, allowing you to focus on quality care. ",
       page: "NDIS Industry",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
@@ -4193,27 +4193,27 @@ export const byIndustryData = {
         {
           dot: dots.dot1,
           title: "Compliance Made Simple",
-          description: `NDIS providers face strict quality and safeguard standards. TesseractApps automates compliance tracking, certification alerts, incident reporting, and audit logs—always keeping your organisation audit-ready. `,
+          description: `NDIS providers face strict quality and safeguard standards. TesseractApps automates compliance tracking, certification alerts, incident reporting, and audit logs to keep your organisation audit-ready. `,
         },
         {
           dot: dots.dot2,
           title: "Participant-Centred Management",
-          description: `Centralise participant profiles, care plans, and service agreements. Link supports to staff schedules and ensure every participant receives the right service, at the right time. `,
+          description: `Centralise participant profiles, care plans, and service agreements, linking support to staff schedules to ensure every participant receives the right service at the right time. `,
         },
         {
           dot: dots.dot3,
           title: "Efficient Workforce Management",
-          description: `Smart rostering, timesheets, and payroll automation reduce administrative overhead. Staff can submit shifts, clock in/out, and request leave via mobile or desktop, while managers approve and track everything in real time. `,
+          description: `Smart rostering, timesheets, and payroll automation reduce administrative overhead. Staff can submit shifts, clock in/out, and request leave via mobile or desktop, while managers approve and track everything in real-time. `,
         },
         {
           dot: dots.dot4,
           title: "Financial Control & NDIS Claims",
-          description: `Automate payroll, generate invoices, and reconcile payments with bank feeds. Ensure accurate billing and compliant NDIS claims with minimal effort. `,
+          description: `Automate payroll, generate invoices, and reconcile payments with bank feeds to ensure accurate billing and compliant NDIS claims with minimal effort. `,
         },
         {
           dot: dots.dot5,
           title: "Secure Communication & Data Protection",
-          description: `Use ChaT for instant, encrypted communication across your workforce. Share updates, files, and care information while protecting participant privacy with role-based access. `,
+          description: `Use ChaT for instant, encrypted communication across your workforce, sharing updates, files, and care information while protecting participant privacy with role-based access. `,
         },
       ],
     },
@@ -4223,47 +4223,47 @@ export const byIndustryData = {
         {
           dot: dots.dot1,
           title: "Roster Management",
-          description: `Match staff skills with participant needs and ensure compliance-ready schedules. `,
+          description: `Match staff skills with participant needs to ensure compliance-ready schedules. `,
         },
         {
           dot: dots.dot2,
           title: "Timesheets & Payroll",
-          description: `Automate approvals, reduce errors, and ensure accurate payments. `,
+          description: `Automate approvals, reduce errors, and ensure timely, accurate payments. `,
         },
         {
           dot: dots.dot3,
           title: "Participant Management",
-          description: `Keep all participant data and care plans in one secure place. `,
+          description: `Keep all participant data and care plans in one secure location. `,
         },
         {
           dot: dots.dot4,
           title: "Incident Management",
-          description: `Report, track, and resolve incidents in real time with full audit trails. `,
+          description: `Report, track, and resolve incidents in real-time with full audit trails. `,
         },
         {
           dot: dots.dot5,
           title: "T-Sign (Digital Signatures)",
-          description: `Capture participant and staff approvals instantly and securely. `,
+          description: `Capture participant and staff approvals instantly and securely using T-Sign. `,
         },
         {
           dot: dots.dot6,
-          title: "Repository (Document Hub)",
-          description: `Store, control, and retrieve NDIS-related files quickly. `,
+          title: "Documents",
+          description: `Store, control, and retrieve NDIS-related files efficiently. `,
         },
         {
           dot: dots.dot1,
           title: "HR & Training Hub",
-          description: `Track inductions, qualifications, and ongoing training. `,
+          description: `Track inductions, qualifications, and ongoing training for all staff. `,
         },
         {
           dot: dots.dot2,
           title: "Compliance Tracker",
-          description: `Automated alerts for expiring certifications and NDIS standards. `,
+          description: `Receive automated alerts for expiring certifications and NDIS standards. `,
         },
         {
           dot: dots.dot3,
           title: "Role-Based Dashboard",
-          description: `Monitor performance, compliance, and service delivery in real time. `,
+          description: `Monitor performance, compliance, and service delivery in real-time with the Role-Based Dashboard. `,
         },
       ],
     },
@@ -4300,7 +4300,7 @@ export const byIndustryData = {
       title: "Smarter Workforce & Compliance Platform",
       page: "ICT",
       description:
-        "TesseractApps helps ICT companies simplify workforce scheduling, project tracking, payroll, and compliance—all in one secure, scalable platform.",
+        "TesseractApps helps ICT companies simplify workforce scheduling, project tracking, payroll, and compliance on one secure, scalable platform.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -4312,57 +4312,57 @@ export const byIndustryData = {
         {
           dot: dots.dot1,
           title: "Timesheet",
-          description: `Track time and manage invoices in one place. Submit, approve, and review shifts quickly. Reduce errors and see staff activity clearly. `,
+          description: `Track time and manage invoices in one place, submitting, approving, and reviewing shifts quickly to reduce errors and clearly see staff activity. `,
         },
         {
           dot: dots.dot2,
           title: "Admin Console",
-          description: `Control your operations from one platform. Set up shifts, manage sites, enforce compliance, and update records securely. `,
+          description: `Control operations from one platform, setting up shifts, managing sites, enforcing compliance, and updating records securely. `,
         },
         {
           dot: dots.dot3,
           title: "Access Control Panel",
-          description: `Give the right access to the right people. Add multiple users, scale permissions, and monitor activity easily. `,
+          description: `Give the right access to the right people, adding multiple users, scaling permissions, and monitoring activity easily. `,
         },
         {
           dot: dots.dot4,
           title: "HR Operations",
-          description: `Handle your workforce from hire to recognition. Keep profiles updated, track leave and qualifications, and monitor training progress. `,
+          description: `Handle your workforce from hiring to recognition, keeping profiles updated, tracking leave and qualifications, and monitoring training progress. `,
         },
         {
           dot: dots.dot5,
           title: "T-Sign",
-          description: `Approve documents digitally with full security. Set multiple approval levels to keep audit trails accurate and compliant. `,
+          description: `Approve documents digitally with full security, setting multiple approval levels to keep audit trails accurate and compliant. `,
         },
         {
           dot: dots.dot6,
-          title: "Repository",
-          description: `Store and organise all documents securely. Control access, track edits, and retrieve files quickly. `,
+          title: "Documents",
+          description: `Store and organise all documents securely, controlling access, tracking edits, and retrieving files quickly. `,
         },
         {
           dot: dots.dot1,
           title: "Role-Based Dashboard",
-          description: `Monitor your operations in one place. Track shifts, staff activity, HR metrics, and performance updates instantly. `,
+          description: `Monitor operations in one place, tracking shifts, staff activity, HR metrics, and performance updates instantly. `,
         },
         {
           dot: dots.dot2,
           title: "Cha-T",
-          description: `Communicate securely with your team. Send messages, share files, and receive live project updates. `,
+          description: `Communicate securely with your team, sending messages, sharing files, and receiving live project updates. `,
         },
         {
           dot: dots.dot3,
           title: "My Profile",
-          description: `Manage your personal and work information in one portal. Track leave, view schedules, and update preferences. `,
+          description: `Manage personal and work information in one portal, tracking leave, viewing schedules, and updating preferences. `,
         },
         {
           dot: dots.dot4,
           title: "Accounting",
-          description: `Automate payroll and link invoices to live bank feeds. Generate financial reports and maintain compliance with minimal effort. `,
+          description: `Automate payroll and link invoices to live bank feeds, generating financial reports and maintaining compliance with minimal effort. `,
         },
         {
           dot: dots.dot5,
           title: "T Learning Hub",
-          description: `Deliver role-based training to every team member. Access step-by-step tutorials, mobile-friendly courses, and personalised learning content anytime. `,
+          description: `Deliver role-based training to every team member, accessing step-by-step tutorials, mobile-friendly courses, and personalised learning content anytime. `,
         },
       ],
     },
@@ -4371,19 +4371,19 @@ export const byIndustryData = {
       {
         title: "Operational Efficiency",
         description:
-          "Manage all ICT workflows from a single platform. Connect timesheets, rosters, HR, and finance for seamless operations. Staff submit shifts and leave through mobile or desktop tools. Managers track activity, approve tasks, and monitor performance in real time. Automated workflows reduce manual steps, minimise errors, and keep operations transparent. ",
+          "Manage all ICT workflows from a single platform, connecting timesheets, rosters, HR, and finance for seamless operations. Staff submit shifts and leave via mobile or desktop tools, while managers track activity, approve tasks, and monitor performance in real time. Automated workflows reduce manual steps, minimise errors, and ensure operational transparency. ",
         images: [one],
       },
       {
         title: "Compliance and Security",
         description:
-          "Keep your ICT operations fully compliant with industry regulations and standards. Protect sensitive staff, project, and financial data with role-based access controls and secure digital approvals. Track audits and document histories accurately. Every record is fully traceable and accessible only to authorised users, ensuring ICT compliance and operational accountability. ",
+          "Keep ICT operations fully compliant with industry regulations and standards, protecting sensitive staff, project, and financial data with role-based access controls and secure digital approvals. Track audits and document histories accurately, ensuring that every record is fully traceable and accessible only to authorised users, ensuring compliance and operational accountability. ",
         images: [two],
       },
       {
         title: "Streamlined ICT Operations",
         description:
-          "TesseractApps helps ICT managers manage staff, shifts, projects, and system settings efficiently from a single secure platform. Automated alerts notify you of compliance requirements, training expirations, or scheduling conflicts. Audit logs and secure data storage protect sensitive information, reduce errors, and improve ICT operational efficiency. ",
+          "TesseractApps helps ICT managers efficiently manage staff, shifts, projects, and system settings from a single secure platform. Automated alerts notify you of compliance requirements, training expirations, or scheduling conflicts, while audit logs and secure data storage protect sensitive information, reduce errors, and improve ICT operational efficiency. ",
         images: [three],
       },
     ],
@@ -4397,9 +4397,9 @@ export const byIndustryData = {
             "HR Operations tracks employee profiles, leave, qualifications, and training. You manage hiring, onboarding, and performance in one portal. Staff progress is visible in real time.",
         },
         {
-          question: "How are documents approved and stored securely",
+          question: "How are Documents approved and stored securely",
           answer:
-            "T-Sign approves documents digitally with multiple approval levels. The Repository stores files safely, tracks edits, and provides fast retrieval. Every record is traceable.",
+            "T-Sign approves Documents digitally with multiple approval levels. The Documents stores files safely, tracks edits, and provides fast retrieval. Every record is traceable.",
         },
         {
           question: "What insights does the Role-Based Dashboard provide",
@@ -4425,7 +4425,7 @@ export const byIndustryData = {
       title: "Smarter Workforce Management for Retail & Hospitality",
       page: "Retail & Hospitality",
       description:
-        "TesseractApps helps retailers, restaurants, and hospitality providers manage staff schedules, payroll, compliance, and communication in one secure platform. Improve team efficiency, reduce manual work, and deliver seamless customer service.",
+        "TesseractApps helps retailers, restaurants, and hospitality providers manage staff schedules, payroll, compliance, and communication on one secure platform. Improve team efficiency, reduce manual work, and deliver seamless customer service.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -4437,32 +4437,32 @@ export const byIndustryData = {
         {
           dot: dots.dot1,
           title: "Roster Management",
-          description: `Create flexible staff schedules that adapt to peak hours, seasonal demand, or last-minute changes. Approve shifts instantly to maintain full coverage. `,
+          description: `Create flexible staff schedules that adapt to peak hours, seasonal demand, or last-minute changes, and approve shifts instantly to maintain full coverage. `,
         },
         {
           dot: dots.dot2,
           title: "Clock In & Clock Out",
-          description: `Track staff attendance in real time with mobile or desktop access. Monitor late arrivals, overtime, and break compliance. `,
+          description: `Track staff attendance in real time with mobile or desktop access, monitoring late arrivals, overtime, and break compliance. `,
         },
         {
           dot: dots.dot3,
           title: "Payroll & Accounting",
-          description: `Automate payroll by linking timesheets to payments. Generate invoices and integrate with accounting systems for seamless financial management. `,
+          description: `Automate payroll by linking timesheets to payments, generating invoices, and integrating with accounting systems for seamless financial management. `,
         },
         {
           dot: dots.dot4,
           title: "User & Role Management",
-          description: `Assign permissions for managers, supervisors, and staff. Ensure security and clarity in responsibilities across the organisation. `,
+          description: `Assign permissions for managers, supervisors, and staff to ensure security and clarity in responsibilities across the organisation. `,
         },
         {
           dot: dots.dot5,
           title: "Training Hub",
-          description: `Provide role-based training for new hires and ongoing staff development. Track progress and ensure team readiness during high-demand seasons. `,
+          description: `Provide role-based training for new hires and ongoing staff development, tracking progress and ensuring team readiness during high-demand seasons. `,
         },
         {
           dot: dots.dot6,
           title: "Communication Tools (ChaT)",
-          description: `Send updates instantly to teams, share policies, and broadcast announcements. Keep staff aligned and reduce miscommunication. `,
+          description: `Send updates instantly to teams, share policies, and broadcast announcements to keep staff aligned and reduce miscommunication. `,
         },
       ],
     },
@@ -4472,13 +4472,13 @@ export const byIndustryData = {
         {
           title: "Operational Challenges in Retail & Hospitality",
           description:
-            "Managers often face last-minute shift changes, high staff turnover, and compliance with workplace laws. Payroll errors, miscommunication, and scheduling conflicts directly impact service quality and staff morale. ",
+            "Managers often face last-minute shift changes, high staff turnover, and compliance challenges with workplace laws. Payroll errors, miscommunication, and scheduling conflicts directly impact service quality and staff morale. ",
           images: [accountingImage],
         },
         {
           title: "How TesseractApps Helps",
           description:
-            "With TesseractApps, retail and hospitality organisations can automate rostering, payroll, and compliance tracking. Our centralised platform ensures real-time staff visibility, reduces administrative work, and gives managers the tools they need to deliver efficient, customer-focused service. ",
+            "With TesseractApps, retail and hospitality organisations can automate rostering, payroll, and compliance tracking efficiently. Our centralised platform ensures real-time staff visibility, reduces administrative work, and provides managers with the tools they need to deliver efficient, customer-focused service. ",
           images: [accountingImage],
         },
       ],
@@ -4522,7 +4522,7 @@ export const byIndustryData = {
       title: "Unified Management Across All Your Locations",
       page: "Multi-Site Businesses",
       description:
-        "TesseractApps empowers multi-site businesses to manage staff, compliance, payroll, and communication across multiple locations from one secure, centralised platform. Gain full visibility and control while reducing manual work.",
+        "TesseractApps empowers multi-site businesses to manage staff, compliance, payroll, and communication across locations from one secure, centralised platform. Gain full visibility and control, while reducing manual work.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -4534,42 +4534,42 @@ export const byIndustryData = {
         {
           dot: dots.dot1,
           title: "Centralised Dashboard",
-          description: `Oversee all sites from one place. Track performance, staffing levels, and compliance metrics across every location. `,
+          description: `Oversee all sites from one place, tracking performance, staffing levels, and compliance metrics across every location. `,
         },
         {
           dot: dots.dot2,
           title: "Roster Management",
-          description: `Build location-specific rosters while keeping oversight at the organisational level. Avoid scheduling conflicts and ensure adequate coverage at all sites. `,
+          description: `Build location-specific rosters while maintaining oversight at the organisational level, avoiding scheduling conflicts and ensuring adequate coverage at all sites. `,
         },
         {
           dot: dots.dot3,
           title: "Clock In & Clock Out",
-          description: `Enable staff to log hours at different branches with accuracy. Monitor attendance and ensure compliance with wage and hour requirements. `,
+          description: `Enable staff to log hours at different branches accurately, monitor attendance, and ensure compliance with wage and hour requirements. `,
         },
         {
           dot: dots.dot4,
           title: "Payroll & Accounting",
-          description: `Consolidate payroll across multiple locations. Reconcile costs, allocate expenses per site, and generate accurate invoices and reports. `,
+          description: `Consolidate payroll across multiple locations, reconcile costs, allocate expenses per site, and generate accurate invoices and reports. `,
         },
         {
           dot: dots.dot5,
           title: "Access Control Panel",
-          description: `Define permissions by location, department, or role. Ensure managers control their site while maintaining corporate-level oversight. `,
+          description: `Define permissions by location, department, or role to ensure managers control their site while maintaining corporate-level oversight. `,
         },
         {
           dot: dots.dot6,
           title: "Compliance Tracking",
-          description: `Stay audit-ready across all branches. Monitor certifications, workplace safety, and HR compliance for each site. `,
+          description: `Stay audit-ready across all branches, monitoring certifications, workplace safety, and HR compliance for each site. `,
         },
         {
           dot: dots.dot1,
           title: "Communication Tools (ChaT)",
-          description: `Broadcast updates organisation-wide or communicate with a single site instantly. Improve collaboration across dispersed teams. `,
+          description: `Broadcast updates organisation-wide or communicate instantly with a single site to improve collaboration across dispersed teams. `,
         },
         {
           dot: dots.dot2,
           title: "Reporting & Analytics",
-          description: `Generate reports by site, by region, or across the entire organisation. Compare KPIs, monitor performance, and identify areas for improvement. `,
+          description: `Generate reports by site, region, or across the entire organisation, comparing KPIs, monitoring performance, and identifying areas for improvement. `,
         },
       ],
     },
@@ -4579,13 +4579,13 @@ export const byIndustryData = {
         {
           title: "Challenges of Running Multi-Site Businesses",
           description:
-            "Managing multiple sites often means dealing with inconsistent processes, siloed communication, payroll complexities, and compliance risks. Lack of visibility makes it difficult to make data-driven decisions or ensure efficiency across every branch. ",
+            "Managing multiple sites often involves dealing with inconsistent processes, siloed communication, payroll complexities, and compliance risks. Lack of visibility makes it difficult to make data-driven decisions or ensure efficiency across every branch. ",
           images: [accountingImage],
         },
         {
           title: "How TesseractApps Helps",
           description:
-            "TesseractApps provides a centralised solution to standardise operations across all sites. With unified dashboards, automated payroll, role-based access, and secure communication, multi-site businesses gain complete control without sacrificing local flexibility. This ensures consistency, reduces admin overhead, and improves both staff and customer experiences. ",
+            "TesseractApps provides a centralised solution to standardise operations across all sites efficiently. With unified dashboards, automated payroll, role-based access, and secure communication, multi-site businesses gain complete control without compromising local flexibility. This ensures consistency, reduces administrative overhead, and improves both staff and customer experiences. ",
           images: [accountingImage],
         },
       ],
@@ -4627,7 +4627,7 @@ export const byIndustryData = {
       title: "Smarter Workforce & Compliance Management for Construction",
       page: "Construction",
       description:
-        "TesseractApps helps construction companies manage crews, projects, compliance, and payroll seamlessly across sites. Keep your workforce safe, schedules on track, and reporting effortless—all from one platform.",
+        "TesseractApps helps construction companies seamlessly manage crews, projects, compliance, and payroll across sites. Keep your workforce safe, schedules on track, and reporting effortless, all from one platform.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -4639,47 +4639,47 @@ export const byIndustryData = {
         {
           dot: dots.dot1,
           title: "Roster & Crew Management",
-          description: `Assign workers to shifts and sites with ease. Manage rosters for multiple projects, track attendance, and adjust schedules in real time.`,
+          description: `Assign workers to shifts and sites with ease, managing rosters for multiple projects, tracking attendance, and adjusting schedules in real-time.`,
         },
         {
           dot: dots.dot2,
           title: "Clock In & Clock Out",
-          description: `Enable workers to log hours from site via mobile. Track attendance, overtime, and shift changes accurately for payroll and compliance.`,
+          description: `Enable workers to log hours from the site via mobile, tracking attendance, overtime, and shift changes accurately for payroll and compliance.`,
         },
         {
           dot: dots.dot3,
           title: "Payroll & Accounting",
-          description: `Automate payroll for permanent, part-time, and contract workers. Reconcile site-specific costs, generate invoices, and integrate directly with accounting systems.`,
+          description: `Automate payroll for permanent, part-time, and contract workers, reconcile site-specific costs, generate invoices, and integrate directly with accounting systems.`,
         },
         {
           dot: dots.dot4,
           title: "Compliance Tracking",
-          description: `Monitor licences, certifications, and safety training. Receive alerts before expiry dates to ensure workers remain site-compliant and audit-ready.`,
+          description: `Monitor licences, certifications, and safety training, receiving alerts before expiry dates to ensure workers remain site-compliant and audit-ready.`,
         },
         {
           dot: dots.dot5,
           title: "Incident Management",
-          description: `Log and report safety incidents directly from site. Maintain compliance with workplace health and safety regulations.`,
+          description: `Log and report safety incidents directly from the site, maintaining compliance with workplace health and safety regulations.`,
         },
         {
           dot: dots.dot6,
           title: "Forms & Custom Forms",
-          description: `Create digital safety checklists, induction forms, or project-specific documentation. Collect data directly on mobile, eliminating paper processes.`,
+          description: `Create digital safety checklists, induction forms, or project-specific documentation, collecting data directly on mobile to eliminate paper processes.`,
         },
         {
           dot: dots.dot1,
           title: "Access Control Panel",
-          description: `Define site-specific permissions. Ensure site managers control their teams while central administration maintains full oversight.`,
+          description: `Define site-specific permissions, ensuring site managers control their teams while central administration maintains full oversight.`,
         },
         {
           dot: dots.dot2,
-          title: "Repository & T-Sign (Digital Signatures)",
-          description: `Store project documents, permits, and contracts securely. Capture digital approvals and signatures to speed up workflows.`,
+          title: "Documents & T-Sign (Digital Signatures)",
+          description: `Store project documents, permits, and contracts securely, capturing digital approvals and signatures to speed up workflows.`,
         },
         {
           dot: dots.dot3,
           title: "Reporting & Analytics",
-          description: `Gain visibility into labour costs, project progress, and compliance status across multiple construction sites.`,
+          description: `Gain visibility into labour costs, project progress, and compliance status across multiple sites.`,
         },
       ],
     },
@@ -4689,13 +4689,13 @@ export const byIndustryData = {
         {
           title: "Challenges in Construction",
           description:
-            "Managing a dispersed workforce across multiple job sites makes payroll, compliance, and reporting complex. Safety regulations, incident tracking, and training certifications add layers of administration that can slow projects down.",
+            "Managing a dispersed workforce across multiple job sites makes payroll, compliance, and reporting more complex. Safety regulations, incident tracking, and training certifications add layers of administration that can slow projects down.",
           images: [accountingImage],
         },
         {
           title: "How TesseractApps Helps",
           description:
-            "TesseractApps simplifies operations by centralising workforce management, compliance tracking, payroll, and communication. With mobile-first tools, workers and managers can access everything they need on-site, while administrators have full oversight across every project. This reduces admin overhead, improves safety compliance, and keeps projects moving efficiently.",
+            "TesseractApps simplifies operations by centralising workforce management, compliance tracking, payroll, and communication tools. With mobile-first tools, workers and managers can access everything they need on-site, while administrators maintain full oversight across every project. This reduces administrative overhead, improves safety compliance, and keeps projects moving efficiently.",
           images: [accountingImage],
         },
       ],
@@ -4737,7 +4737,7 @@ export const byIndustryData = {
       title: "Streamlined Workforce & Compliance Management for Manufacturing",
       page: "Manufacturing",
       description:
-        "TesseractApps helps manufacturing businesses optimise workforce scheduling, maintain compliance, track production teams, and simplify payroll—all from a single platform. Stay audit-ready, reduce downtime, and keep your operations efficient.",
+        "TesseractApps helps manufacturing businesses optimise workforce scheduling, maintain compliance, track production teams, and simplify payroll from one platform. Stay audit-ready, reduce downtime, and keep your operations efficient.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -4749,47 +4749,47 @@ export const byIndustryData = {
         {
           dot: dots.dot1,
           title: "Roster & Shift Management",
-          description: `Plan and manage rotating shifts, overtime, and multiple production lines. Ensure every shift is covered while reducing scheduling conflicts.`,
+          description: `Plan and manage rotating shifts, overtime, and multiple production lines, ensuring every shift is covered while reducing scheduling conflicts.`,
         },
         {
           dot: dots.dot2,
           title: "Clock In & Clock Out",
-          description: `Enable staff to log hours via mobile or kiosk devices. Track attendance, overtime, and shift swaps accurately to support payroll and compliance.`,
+          description: `Enable staff to log hours via mobile or kiosk devices, tracking attendance, overtime, and shift swaps accurately to support payroll and compliance.`,
         },
         {
           dot: dots.dot3,
           title: "Payroll & Accounting",
-          description: `Automate payroll for full-time, casual, and contract staff. Integrate with accounting systems for seamless invoicing, cost reconciliation, and expense management.`,
+          description: `Automate payroll for full-time, casual, and contract staff, integrating with accounting systems for seamless invoicing, cost reconciliation, and expense management.`,
         },
         {
           dot: dots.dot4,
           title: "Compliance & Training Tracker",
-          description: `Track workplace health & safety certifications, equipment training, and compliance requirements. Receive automated alerts before renewals or expiry.`,
+          description: `Track workplace health & safety certifications, equipment training, and compliance requirements, receiving automated alerts before renewals or expiry.`,
         },
         {
           dot: dots.dot5,
           title: "Incident Management",
-          description: `Log workplace accidents, near-misses, and safety breaches in real time. Maintain complete audit trails to support compliance with WHS standards.`,
+          description: `Log workplace accidents, near-misses, and safety breaches in real time, maintaining complete audit trails to support compliance with WHS standards.`,
         },
         {
           dot: dots.dot6,
           title: "Forms & Custom Forms",
-          description: `Create digital inspection checklists, quality assurance forms, or incident reports. Collect data electronically to eliminate paper records.`,
+          description: `Create digital inspection checklists, quality assurance forms, or incident reports, collecting data electronically to eliminate paper records.`,
         },
         {
           dot: dots.dot1,
-          title: "Repository & T-Sign (Digital Signatures)",
-          description: `Securely store SOPs, safety manuals, and employee contracts. Capture approvals digitally with T-Sign to speed up compliance workflows.`,
+          title: "Documents & T-Sign (Digital Signatures)",
+          description: `Securely store SOPs, safety manuals, and employee contracts, capturing approvals digitally with T-Sign to speed up compliance workflows.`,
         },
         {
           dot: dots.dot2,
           title: "Role-Based Dashboard",
-          description: `Get real-time visibility into staff performance, production activity, and compliance status across your facility.`,
+          description: `Get real-time visibility into staff performance, production activity, and compliance status across your facility using the role-based dashboard.`,
         },
         {
           dot: dots.dot3,
           title: "Communication Tools (ChaT)",
-          description: `Improve collaboration between supervisors, operators, and management. Share updates instantly and ensure teams stay connected.`,
+          description: `Improve collaboration between supervisors, operators, and management, sharing updates instantly to ensure teams stay connected.`,
         },
       ],
     },
@@ -4797,13 +4797,13 @@ export const byIndustryData = {
       {
         title: "Operational Efficiency",
         description:
-          "TesseractApps centralises workforce management, rostering, and shift tracking in one platform. Real-time dashboards provide visibility into staff activity, attendance, and production schedules, helping your manufacturing operations run smoothly.",
+          "TesseractApps centralises workforce management, rostering, and shift tracking on one platform. Real-time dashboards provide visibility into staff activity, attendance, and production schedules, helping your manufacturing operations run smoothly and efficiently.",
         images: [one],
       },
       {
         title: "Compliance and Resource Management",
         description:
-          "TesseractApps ensures staff training, certifications, and safety documentation remain current. Automated alerts, digital approvals, and secure document storage reduce administrative tasks and maintain regulatory compliance. Resources and workflows are optimised for productivity and safety.",
+          "TesseractApps ensures staff training, certifications, and safety documentation remain up to date. Automated alerts, digital approvals, and secure document storage reduce administrative tasks while maintaining regulatory compliance. Resources and workflows are optimised for enhanced productivity and safety.",
         images: [two],
       },
     ],
@@ -4830,7 +4830,7 @@ export const byIndustryData = {
         {
           question: "How does it reduce paperwork?",
           answer:
-            "With digital forms, T-Sign for approvals, and a secure repository, paperwork is replaced with streamlined digital workflows.",
+            "With digital forms, T-Sign for approvals, and a secure Documents, paperwork is replaced with streamlined digital workflows.",
         },
         {
           question: "Does it support multiple sites or production lines?",
@@ -4853,7 +4853,7 @@ export const byCareData = {
       title: "Simplifying Workforce & Compliance for NDIS Providers",
       page: "Disability Support (NDIS)",
       description:
-        "TesseractApps is designed for NDIS disability support organisations. From participant management and rostering to compliance tracking and payroll, our platform helps you deliver quality care while staying fully NDIS-compliant.",
+        "TesseractApps is designed for NDIS disability support organisations, simplifying operations and ensuring compliance. From participant management and rostering to compliance tracking and payroll, our platform helps you deliver quality care while remaining fully NDIS-compliant.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
         conclusion: "No credit card is required.  ",
@@ -4866,61 +4866,61 @@ export const byCareData = {
           dot: dots.dot1,
           title: "Participant Management",
           description:
-            "Manage participant profiles, care plans, funding, and service agreements in one secure system. Link supports directly to staff schedules for seamless delivery.",
+            "Manage participant profiles, care plans, funding, and service agreements in one secure system, linking support directly to staff schedules for seamless delivery.",
         },
         {
           dot: dots.dot2,
           title: "Roster & Workforce Scheduling",
           description:
-            "Assign shifts based on participant needs, staff availability, and compliance requirements. Reduce rostering conflicts and ensure coverage across multiple locations.",
+            "Assign shifts based on participant needs, staff availability, and compliance requirements, reducing rostering conflicts and ensuring coverage across multiple locations.",
         },
         {
           dot: dots.dot3,
           title: "Timesheets & Payroll",
           description:
-            "Automate timesheet approvals and payroll processing. Integrate with accounting systems to manage invoicing, reimbursements, and NDIS claims accurately.",
+            "Automate timesheet approvals and payroll processing, integrating with accounting systems to manage invoicing, reimbursements, and NDIS claims accurately.",
         },
         {
           dot: dots.dot4,
           title: "Compliance Tracker",
           description:
-            "Track staff certifications, NDIS standards, and audit requirements. Automated alerts always keep your workforce compliant and audit-ready.",
+            "Track staff certifications, NDIS standards, and audit requirements, with automated alerts keeping your workforce compliant and audit-ready.",
         },
         {
           dot: dots.dot5,
           title: "Incident Management",
           description:
-            "Report, track, and resolve incidents in real time. Maintain full compliance with NDIS Quality and Safeguards requirements.",
+            "Report, track, and resolve incidents in real-time, maintaining full compliance with NDIS Quality and Safeguards requirements.",
         },
         {
           dot: dots.dot6,
           title: "T-Sign (Digital Signatures)",
           description:
-            "Capture participant approvals and staff signatures securely. Reduce paperwork and maintain digital audit trails for NDIS compliance.",
+            "Capture participant approvals and staff signatures securely, reducing paperwork and maintaining digital audit trails for NDIS compliance.",
         },
         {
           dot: dots.dot1,
-          title: "Repository (Document Hub)",
+          title: "Documents",
           description:
-            "Store service agreements, compliance documents, and care notes securely. Ensure instant access to approved staff with role-based permissions.",
+            "Store service agreements, compliance documents, and care notes securely, ensuring instant access to approved staff with role-based permissions.",
         },
         {
           dot: dots.dot2,
           title: "HR & Training Hub",
           description:
-            "Onboard new staff quickly with digital induction packs. Track ongoing training, CPD hours, and NDIS-mandated learning requirements.",
+            "Onboard new staff quickly with digital induction packs, tracking ongoing training, CPD hours, and NDIS-mandated learning requirements.",
         },
         {
           dot: dots.dot3,
           title: "Role-Based Dashboard",
           description:
-            "Get real-time insights into participant support, staff performance, compliance risks, and funding utilisation.",
+            "Get real-time insights into participant support, staff performance, compliance risks, and funding utilisation using the role-based dashboard.",
         },
         {
           dot: dots.dot4,
           title: "ChaT (Secure Communication)",
           description:
-            "Enable teams to communicate securely while protecting sensitive participant information. Share care updates instantly between staff.",
+            "Enable teams to communicate securely while protecting sensitive participant information, sharing care updates instantly between staff.",
         },
       ],
     },
@@ -4928,13 +4928,13 @@ export const byCareData = {
       {
         title: "Efficient Participant and Staff Management",
         description:
-          "TesseractApps centralises participant records, staff rostering, and support session tracking in one platform. Real-time dashboards provide visibility into service delivery, attendance, and care schedules, helping your organisation coordinate NDIS support effectively.",
+          "TesseractApps centralises participant records, staff rostering, and support session tracking on one platform. Real-time dashboards provide visibility into service delivery, attendance, and care schedules, helping your organisation coordinate NDIS support efficiently.",
         images: [one],
       },
       {
         title: "Compliance and Care Quality",
         description:
-          "TesseractApps ensures staff qualifications, mandatory training, and documentation remain current. Automated alerts, digital approvals, and secure document storage maintain compliance and reduce administrative work. Staff can focus on delivering high-quality care while you maintain oversight and accountability.",
+          "TesseractApps ensures staff qualifications, mandatory training, and documentation are kept up to date. Automated alerts, digital approvals, and secure document storage maintain compliance, reducing administrative work. Staff can focus on delivering high-quality care while you maintain full oversight and accountability.",
         images: [two],
       },
     ],
@@ -4975,7 +4975,7 @@ export const byCareData = {
       title: "Support Coordination Solutions",
       page: "Support Coordination",
       description:
-        "Manage participant goals, track progress, connect with providers, and maintain compliance.",
+        "Manage participant goals, track progress, connect with providers, and ensure compliance.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
         conclusion: "No credit card is required.  ",
@@ -4988,49 +4988,49 @@ export const byCareData = {
           dot: dots.dot1,
           title: "Participant Profiles & Care Plans",
           description:
-            "Keep all participant information, NDIS goals, and service agreements in one place. Easily update plans and link services to participant outcomes.",
+            "Keep all participant information, NDIS goals, and service agreements in one place, easily updating plans and linking services to participant outcomes.",
         },
         {
           dot: dots.dot2,
           title: "Provider & Service Management",
           description:
-            "Track service providers, compare costs, and coordinate multiple supports. Ensure participants receive the right mix of services within their budgets.",
+            "Track service providers, compare costs, and coordinate multiple supports to ensure participants receive the right mix of services within their budgets.",
         },
         {
           dot: dots.dot3,
           title: "Budget & Funding Oversight",
           description:
-            "Monitor participant NDIS budgets in real time. Generate financial reports, prevent overspending, and ensure funds are used effectively.",
+            "Monitor participant NDIS budgets in real-time, generating financial reports, preventing overspending, and ensuring funds are used effectively.",
         },
         {
           dot: dots.dot4,
           title: "Compliance & Documentation",
           description:
-            "Maintain records of meetings, agreements, and progress notes. Stay aligned with NDIS Quality and Safeguards requirements through audit-ready logs.",
+            "Maintain records of meetings, agreements, and progress notes, staying aligned with NDIS Quality and Safeguards requirements through audit-ready logs.",
         },
         {
           dot: dots.dot5,
           title: "Secure Communication (ChaT)",
           description:
-            "Communicate with participants, families, and service providers securely. Share updates and documents instantly while protecting sensitive information.",
+            "Communicate securely with participants, families, and service providers, sharing updates and documents instantly while protecting sensitive information.",
         },
         {
           dot: dots.dot6,
           title: "Progress & Outcomes Tracking",
           description:
-            "Measure participant progress against their goals. Generate reports that demonstrate outcomes and support ongoing NDIS plan reviews.",
+            "Measure participant progress against their goals, generating reports that demonstrate outcomes and support ongoing NDIS plan reviews.",
         },
         {
           dot: dots.dot1,
           title: "Incident & Risk Management",
           description:
-            "Log and track incidents, manage risks, and ensure participant safety and compliance in line with NDIS requirements.",
+            "Log and track incidents, manage risks, and ensure participant safety and compliance with NDIS requirements.",
         },
         {
           dot: dots.dot2,
           title: "Digital Signatures (T-Sign)",
           description:
-            "Capture participant and provider approvals digitally. Reduce paperwork and create secure audit trails for all agreements.",
+            "Capture participant and provider approvals digitally, reducing paperwork and creating secure audit trails for all agreements.",
         },
       ],
     },
@@ -5038,13 +5038,13 @@ export const byCareData = {
       {
         title: "Efficient Participant and Service Management",
         description:
-          "TesseractApps centralises participant records, support plans, and staff scheduling in one platform. Real-time dashboards provide visibility into sessions, service delivery, and team assignments, helping coordinators manage care efficiently.",
+          "TesseractApps centralises participant records, support plans, and staff scheduling on one platform. Real-time dashboards provide visibility into sessions, service delivery, and team assignments, helping coordinators efficiently manage care.",
         images: [one],
       },
       {
         title: "Compliance and Oversight",
         description:
-          "TesseractApps tracks staff qualifications, mandatory training, and documentation automatically. Automated alerts, digital approvals, and secure document storage maintain compliance while reducing administrative work. Coordinators can focus on participant outcomes while you maintain operational oversight.",
+          "TesseractApps automatically tracks staff qualifications, mandatory training, and documentation. Automated alerts, digital approvals, and secure document storage maintain compliance and reduce administrative work. Coordinators can focus on participant outcomes while maintaining operational oversight.",
         images: [two],
       },
     ],
@@ -5086,7 +5086,7 @@ export const byCareData = {
       title: "Efficient Workforce and Care Management for Aged Care Providers",
       page: "Aged Care Services",
       description:
-        "TesseractApps helps aged care organisations manage staff, schedules, participant care, compliance, and payroll in one secure platform. Deliver consistent, high-quality care while reducing administrative work.",
+        "TesseractApps helps aged care organisations manage staff, schedules, participant care, compliance, and payroll from one secure platform. Deliver consistent, high-quality care while reducing administrative work.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -5099,43 +5099,43 @@ export const byCareData = {
           dot: dots.dot1,
           title: "Participant Management",
           description:
-            "Maintain detailed resident profiles, care plans, and service agreements. Link staff schedules to individual care needs for personalised support.",
+            "Maintain detailed resident profiles, care plans, and service agreements, linking staff schedules to individual care needs for personalised support.",
         },
         {
           dot: dots.dot2,
           title: "Roster & Shift Management",
           description:
-            "Assign caregivers to shifts, track attendance, and adjust schedules quickly to meet changing care requirements. Ensure coverage and reduce conflicts.",
+            "Assign caregivers to shifts, track attendance, and adjust schedules quickly to meet changing care requirements, ensuring coverage and reducing conflicts.",
         },
         {
           dot: dots.dot3,
           title: "Timesheets & Payroll",
           description:
-            "Streamline timesheet approvals, payroll processing, and expense tracking. Link hours worked directly to invoicing and accounting systems.",
+            "Streamline timesheet approvals, payroll processing, and expense tracking, linking hours worked directly to invoicing and accounting systems.",
         },
         {
           dot: dots.dot4,
           title: "Compliance & Training Tracker",
           description:
-            "Monitor staff qualifications, certifications, and mandatory training. Receive automated alerts for renewals and maintain audit-ready records.",
+            "Monitor staff qualifications, certifications, and mandatory training, receiving automated alerts for renewals and maintaining audit-ready records.",
         },
         {
           dot: dots.dot5,
           title: "Incident Management",
           description:
-            "Log incidents, accidents, or care issues in real time. Track follow-ups and maintain compliance with aged care regulations.",
+            "Log incidents, accidents, or care issues in real-time, tracking follow-ups and maintaining compliance with aged care regulations.",
         },
         {
           dot: dots.dot6,
           title: "T-Sign (Digital Signatures)",
           description:
-            "Capture approvals for care plans, consents, and agreements digitally. Reduce paperwork while keeping secure audit trails.",
+            "Capture approvals for care plans, consents, and agreements digitally, reducing paperwork while maintaining secure audit trails.",
         },
         {
           dot: dots.dot1,
-          title: "Repository (Document Hub)",
+          title: "Documents",
           description:
-            "Store policies, care notes, and agreements securely. Assign access based on role and maintain easy retrieval.",
+            "Store policies, care notes, and agreements securely, assigning access based on roles and ensuring easy retrieval.",
         },
         {
           dot: dots.dot2,
@@ -5147,13 +5147,13 @@ export const byCareData = {
           dot: dots.dot3,
           title: "Secure Communication (ChaT)",
           description:
-            "Facilitate collaboration between care teams, management, and families while protecting sensitive information.",
+            "Facilitate collaboration between care teams, management, and families, protecting sensitive information.",
         },
         {
           dot: dots.dot4,
           title: "Training Hub",
           description:
-            "Provide role-specific training and learning content for staff. Track progress and ensure compliance with industry standards.",
+            "Provide role-specific training and learning content for staff, tracking progress and ensuring compliance with industry standards.",
         },
       ],
     },
@@ -5161,13 +5161,13 @@ export const byCareData = {
       {
         title: "Efficient Care and Staff Management",
         description:
-          "TesseractApps centralises resident records, staff rostering, and care session tracking in one platform. Real-time dashboards provide visibility into schedules, attendance, and service delivery, helping your organisation coordinate aged care efficiently.",
+          "TesseractApps centralises resident records, staff rostering, and care session tracking on one platform. Real-time dashboards provide visibility into schedules, attendance, and service delivery, helping your organisation efficiently coordinate aged care.",
         images: [one],
       },
       {
         title: "Compliance and Quality Assurance",
         description:
-          "TesseractApps tracks staff certifications, mandatory training, and documentation automatically. Automated alerts, digital approvals, and secure document storage maintain compliance while reducing administrative work. Staff can focus on providing quality care while you maintain oversight and accountability.",
+          "TesseractApps automatically tracks staff certifications, mandatory training, and documentation. Automated alerts, digital approvals, and secure document storage maintain compliance and reduce administrative work. Staff can focus on providing quality care while you maintain full oversight and accountability.",
         images: [two],
       },
     ],
@@ -5209,7 +5209,7 @@ export const byCareData = {
       title: "Simplified Operations and Compliance for Childcare Centres",
       page: "Childcare Services",
       description:
-        "TesseractApps helps childcare centres manage staff, schedules, enrolments, compliance, and billing in one secure platform. Focus on delivering quality care while reducing administrative workload.",
+        "TesseractApps helps childcare centres manage staff, schedules, enrolments, compliance, and billing from one secure platform. Focus on delivering quality care while reducing administrative workload.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -5222,61 +5222,61 @@ export const byCareData = {
           dot: dots.dot1,
           title: "Child & Participant Management",
           description:
-            "Maintain profiles for every child, track attendance, developmental progress, and special needs. Link care plans to staff schedules for consistent support.",
+            "Maintain profiles for every child, tracking attendance, developmental progress, and special needs, and link care plans to staff schedules for consistent support.",
         },
         {
           dot: dots.dot2,
           title: "Roster & Shift Management",
           description:
-            "Schedule staff across multiple rooms and age groups. Monitor attendance and adjust shifts to maintain safe staff-to-child ratios.",
+            "Schedule staff across multiple rooms and age groups, monitoring attendance and adjusting shifts to maintain safe staff-to-child ratios.",
         },
         {
           dot: dots.dot3,
           title: "Timesheets & Payroll",
           description:
-            "Automate staff timesheets and payroll processing. Track hours, overtime, and leave while integrating with accounting systems.",
+            "Automate staff timesheets and payroll processing, tracking hours, overtime, and leave while integrating with accounting systems.",
         },
         {
           dot: dots.dot4,
           title: "Compliance & Training Tracker",
           description:
-            "Monitor staff certifications, mandatory training, and safety compliance. Automated alerts keep your team audit-ready.",
+            "Monitor staff certifications, mandatory training, and safety compliance, with automated alerts keeping your team audit-ready.",
         },
         {
           dot: dots.dot5,
           title: "Incident Management",
           description:
-            "Record incidents, health concerns, or accidents immediately. Track follow-ups to maintain safety standards and regulatory compliance.",
+            "Record incidents, health concerns, or accidents immediately, tracking follow-ups to maintain safety standards and regulatory compliance.",
         },
         {
           dot: dots.dot6,
           title: "T-Sign (Digital Signatures)",
           description:
-            "Capture enrolment forms, permissions, and approvals digitally. Reduce paperwork and maintain secure audit trails.",
+            "Capture enrolment forms, permissions, and approvals digitally, reducing paperwork and maintaining secure audit trails.",
         },
         {
           dot: dots.dot1,
-          title: "Repository (Document Hub)",
+          title: "Documents",
           description:
-            "Store policies, care plans, and parent communications securely. Control access based on staff roles.",
+            "Store policies, care plans, and parent communications securely, controlling access based on staff roles.",
         },
         {
           dot: dots.dot2,
           title: "Role-Based Dashboard",
           description:
-            "Track staff performance, room occupancy, compliance, and operational metrics in real time.",
+            "Track staff performance, room occupancy, compliance, and operational metrics in real-time.",
         },
         {
           dot: dots.dot3,
           title: "Secure Communication (ChaT)",
           description:
-            "Communicate securely with staff, families, and management. Share updates, files, and announcements instantly.",
+            "Communicate securely with staff, families, and management, sharing updates, files, and announcements instantly.",
         },
         {
           dot: dots.dot4,
           title: "Training Hub",
           description:
-            "Deliver role-specific training to educators and staff. Track progress and ensure compliance with childcare regulations.",
+            "Deliver role-specific training to educators and staff, tracking progress and ensuring compliance with childcare regulations.",
         },
       ],
     },
@@ -5284,13 +5284,13 @@ export const byCareData = {
       {
         title: "Efficient Child and Staff Management",
         description:
-          "TesseractApps centralises enrolment records, staff rostering, and activity scheduling in one platform. Real-time dashboards provide visibility into attendance, class schedules, and staff allocation, helping your childcare centre operate efficiently.",
+          "TesseractApps centralises enrolment records, staff rostering, and activity scheduling on one platform. Real-time dashboards provide visibility into attendance, class schedules, and staff allocation, helping your childcare centre operate smoothly and efficiently.",
         images: [one],
       },
       {
         title: "Compliance and Safety Oversight",
         description:
-          "TesseractApps tracks staff qualifications, mandatory training, and regulatory documentation automatically. Automated alerts, digital approvals, and secure document storage maintain compliance and reduce administrative work. Staff can focus on childcare and engagement while you maintain safety and operational oversight.",
+          "TesseractApps automatically tracks staff qualifications, mandatory training, and regulatory documentation. Automated alerts, digital approvals, and secure document storage maintain compliance, reducing administrative work. Staff can focus on childcare and engagement, while you maintain safety and operational oversight.",
         images: [two],
       },
     ],
@@ -5331,7 +5331,7 @@ export const byCareData = {
       title: "Streamline Operations for Allied Health Providers",
       page: "Allied Health Services",
       description:
-        "TesseractApps helps allied health organisations manage clients, appointments, staff, compliance, and billing from one secure platform. Improve service delivery while reducing administrative work.",
+        "TesseractApps helps allied health organisations manage clients, appointments, staff, compliance, and billing on one secure platform. Improve service delivery while reducing administrative work.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -5344,61 +5344,61 @@ export const byCareData = {
           dot: dots.dot1,
           title: "Client & Patient Management",
           description:
-            "Maintain detailed client records, therapy plans, and session notes. Link appointments and care plans to assigned practitioners for consistent care.",
+            "Maintain detailed client records, therapy plans, and session notes, linking appointments and care plans to assigned practitioners for consistent care.",
         },
         {
           dot: dots.dot2,
           title: "Appointment Scheduling & Roster Management",
           description:
-            "Schedule staff across multiple locations or services. Track session attendance and ensure staff availability aligns with client needs.",
+            "Schedule staff across multiple locations or services, tracking session attendance and ensuring staff availability aligns with client needs.",
         },
         {
           dot: dots.dot3,
           title: "Timesheets & Payroll",
           description:
-            "Automate timesheet approvals, payroll processing, and billing. Link client sessions to invoicing and funding streams.",
+            "Automate timesheet approvals, payroll processing, and billing, linking client sessions to invoicing and funding streams.",
         },
         {
           dot: dots.dot4,
           title: "Compliance & Training Tracker",
           description:
-            "Monitor staff registrations, certifications, and mandatory training. Receive automated alerts for renewals to remain audit-ready.",
+            "Monitor staff registrations, certifications, and mandatory training, receiving automated alerts for renewals to remain audit-ready.",
         },
         {
           dot: dots.dot5,
           title: "Incident & Risk Management",
           description:
-            "Log incidents, follow up on issues, and maintain records in line with regulatory requirements.",
+            "Log incidents, follow up on issues, and maintain records in compliance with regulatory requirements.",
         },
         {
           dot: dots.dot6,
           title: "T-Sign (Digital Signatures)",
           description:
-            "Securely capture client and staff approvals digitally. Reduce paperwork and maintain audit trails for compliance.",
+            "Securely capture client and staff approvals digitally, reducing paperwork and maintaining audit trails for compliance.",
         },
         {
           dot: dots.dot1,
-          title: "Repository (Document Hub)",
+          title: "Documents",
           description:
-            "Store care plans, therapy notes, and client agreements securely. Control access based on roles and maintain easy retrieval.",
+            "Store care plans, therapy notes, and client agreements securely, controlling access based on roles and ensuring easy retrieval.",
         },
         {
           dot: dots.dot2,
           title: "Role-Based Dashboard",
           description:
-            "Track staff performance, client progress, session attendance, and operational metrics in real time.",
+            "Track staff performance, client progress, session attendance, and operational metrics in real-time.",
         },
         {
           dot: dots.dot3,
           title: "Secure Communication (ChaT)",
           description:
-            "Communicate securely with staff, clients, and other providers. Share updates, documents, and therapy instructions instantly.",
+            "Communicate securely with staff, clients, and other providers, sharing updates, documents, and therapy instructions instantly.",
         },
         {
           dot: dots.dot4,
           title: "Training Hub",
           description:
-            "Provide role-specific training to practitioners and support staff. Track completion and compliance with professional development requirements.",
+            "Provide role-specific training to practitioners and support staff, tracking completion and compliance with professional development requirements.",
         },
       ],
     },
@@ -5406,13 +5406,13 @@ export const byCareData = {
       {
         title: "Streamlined Patient and Staff Management",
         description:
-          "TesseractApps centralises client records, appointment scheduling, and staff rostering in one platform. Real-time dashboards give visibility into sessions, attendance, and service delivery, helping your organisation manage care efficiently.",
+          "TesseractApps centralises client records, appointment scheduling, and staff rostering on one platform. Real-time dashboards provide visibility into sessions, attendance, and service delivery, helping your organisation manage care efficiently.",
         images: [one],
       },
       {
         title: "Compliance and Professional Development",
         description:
-          "TesseractApps tracks staff certifications, mandatory training, and documentation automatically. Automated alerts, digital approvals, and secure document storage ensure compliance while reducing administrative work. Staff can focus on client care and professional growth while you maintain oversight.",
+          "TesseractApps automatically tracks staff certifications, mandatory training, and documentation. Automated alerts, digital approvals, and secure document storage ensure compliance and reduce administrative work. Staff can focus on client care and professional growth, while you maintain full oversight.",
         images: [two],
       },
     ],
@@ -5453,7 +5453,7 @@ export const byCareData = {
       title: "Streamlined Operations for Home & Community Care Providers",
       page: "Home & Community Care Services",
       description:
-        "TesseractApps helps HACC organisations manage clients, staff, schedules, compliance, and billing in one secure platform. Focus on delivering high-quality care while reducing administrative burden.",
+        "TesseractApps helps HACC organisations manage clients, staff, schedules, compliance, and billing from one secure platform. Focus on delivering high-quality care while reducing administrative burdens.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -5466,61 +5466,61 @@ export const byCareData = {
           dot: dots.dot1,
           title: "Client Management",
           description:
-            "Maintain detailed client profiles, care plans, and service agreements. Track visit history, support needs, and goals for personalised care.",
+            "Maintain detailed client profiles, care plans, and service agreements, tracking visit history, support needs, and goals for personalised care.",
         },
         {
           dot: dots.dot2,
           title: "Roster & Workforce Scheduling",
           description:
-            "Assign staff to visits efficiently, monitor attendance, and adjust schedules to meet changing client needs. Ensure adequate coverage and reduce conflicts.",
+            "Assign staff to visits efficiently, monitoring attendance and adjusting schedules to meet changing client needs, ensuring adequate coverage and reducing conflicts.",
         },
         {
           dot: dots.dot3,
           title: "Timesheets & Payroll",
           description:
-            "Automate timesheet approvals and payroll processing. Link hours worked directly to invoicing and funding for accurate financial management.",
+            "Automate timesheet approvals and payroll processing, linking hours worked directly to invoicing and funding for accurate financial management.",
         },
         {
           dot: dots.dot4,
           title: "Compliance & Training Tracker",
           description:
-            "Monitor staff certifications, mandatory training, and safety compliance. Receive automated alerts for renewals to remain audit-ready.",
+            "Monitor staff certifications, mandatory training, and safety compliance, receiving automated alerts for renewals to remain audit-ready.",
         },
         {
           dot: dots.dot5,
           title: "Incident & Risk Management",
           description:
-            "Record incidents or health concerns in real time. Track follow-ups to maintain compliance with regulatory standards and ensure client safety.",
+            "Record incidents or health concerns in real-time, tracking follow-ups to maintain compliance with regulatory standards and ensure client safety.",
         },
         {
           dot: dots.dot6,
           title: "T-Sign (Digital Signatures)",
           description:
-            "Capture client approvals, consents, and staff acknowledgements digitally. Maintain secure audit trails and reduce paperwork.",
+            "Capture client approvals, consents, and staff acknowledgements digitally, maintaining secure audit trails and reducing paperwork.",
         },
         {
           dot: dots.dot1,
-          title: "Repository (Document Hub)",
+          title: "Documents",
           description:
-            "Store policies, care notes, and agreements securely. Assign role-based access and retrieve documents quickly when needed.",
+            "Store policies, care notes, and agreements securely, assigning role-based access and ensuring quick retrieval of documents when needed.",
         },
         {
           dot: dots.dot2,
           title: "Role-Based Dashboard",
           description:
-            "Get real-time insights into staff performance, client care, compliance, and operational efficiency across your services.",
+            "Get real-time insights into staff performance, client care, compliance, and operational efficiency across all services.",
         },
         {
           dot: dots.dot3,
           title: "Secure Communication (ChaT)",
           description:
-            "Facilitate communication between staff, management, and clients securely. Share updates, files, and care instructions instantly.",
+            "Facilitate secure communication between staff, management, and clients, sharing updates, files, and care instructions instantly.",
         },
         {
           dot: dots.dot4,
           title: "Training Hub",
           description:
-            "Provide role-specific training to staff, track progress, and ensure compliance with industry standards and funding requirements.",
+            "Provide role-specific training to staff, tracking progress and ensuring compliance with industry standards and funding requirements.",
         },
       ],
     },
@@ -5528,13 +5528,13 @@ export const byCareData = {
       {
         title: "Efficient Care Coordination",
         description:
-          "TesseractApps centralises participant management, staff rostering, and visit tracking in one platform. Real-time dashboards provide visibility into care schedules, attendance, and service delivery, helping your organisation coordinate care efficiently.",
+          "TesseractApps centralises participant management, staff rostering, and visit tracking on one platform. Real-time dashboards provide visibility into care schedules, attendance, and service delivery, helping your organisation efficiently coordinate care.",
         images: [one],
       },
       {
         title: "Compliance and Staff Support",
         description:
-          "TesseractApps ensures staff certifications, training, and documentation remain up to date. Automated alerts, digital approvals, and secure document storage maintain compliance while reducing administrative work. Staff can focus on delivering quality care while you maintain oversight and accountability.",
+          "TesseractApps ensures staff certifications, training, and documentation are kept up to date. Automated alerts, digital approvals, and secure document storage maintain compliance and reduce administrative work. Staff can focus on delivering quality care while you maintain full oversight and accountability.",
         images: [two],
       },
     ],
@@ -5581,7 +5581,7 @@ export const byBusinessType = {
       title: "Simplify Operations for Small Businesses",
       page: "Small Businesses",
       description:
-        "TesseractApps helps small businesses manage staff, schedules, payroll, compliance, and communication in one secure platform. Reduce administrative workload and focus on growing your business.",
+        "TesseractApps helps small businesses manage staff, schedules, payroll, compliance, and communication from one secure platform. Reduce administrative workload, allowing you to focus on growing your business.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -5594,61 +5594,61 @@ export const byBusinessType = {
           dot: dots.dot1,
           title: "Roster & Staff Scheduling",
           description:
-            "Plan and manage shifts efficiently. Track attendance, approve leave, and ensure coverage without conflicts.",
+            "Plan and manage shifts efficiently, track attendance, approve leave, and ensure coverage without conflicts.",
         },
         {
           dot: dots.dot2,
           title: "Timesheets & Payroll",
           description:
-            "Automate timesheet approvals and payroll processing. Link hours to invoicing and accounting systems for accurate payments.",
+            "Automate timesheet approvals and payroll processing, linking hours to invoicing and accounting systems for accurate payments.",
         },
         {
           dot: dots.dot3,
           title: "HR & Staff Management",
           description:
-            "Maintain staff profiles, track certifications, and manage training requirements. Assign roles and permissions with ease.",
+            "Maintain staff profiles, track certifications, and manage training requirements, assigning roles and permissions with ease.",
         },
         {
           dot: dots.dot4,
           title: "Compliance Tracker",
           description:
-            "Monitor workplace compliance, staff certifications, and audit requirements. Receive automated alerts to stay audit-ready.",
+            "Monitor workplace compliance, staff certifications, and audit requirements, receiving automated alerts to stay audit-ready.",
         },
         {
           dot: dots.dot5,
           title: "Clock In & Clock Out",
           description:
-            "Allow staff to log hours via mobile or desktop. Track attendance and overtime in real time.",
+            "Allow staff to log hours via mobile or desktop, tracking attendance and overtime in real-time.",
         },
         {
           dot: dots.dot6,
           title: "T-Sign (Digital Signatures)",
           description:
-            "Capture approvals and agreements digitally. Maintain secure audit trails and reduce paperwork.",
+            "Capture approvals and agreements digitally, maintaining secure audit trails and reducing paperwork.",
         },
         {
           dot: dots.dot1,
-          title: "Repository (Document Hub)",
+          title: "Documents",
           description:
-            "Store policies, contracts, and business documents securely. Assign role-based access and retrieve files quickly.",
+            "Store policies, contracts, and business documents securely, assigning role-based access and ensuring quick retrieval of files.",
         },
         {
           dot: dots.dot2,
           title: "Secure Communication (ChaT)",
           description:
-            "Send messages, share files, and communicate securely with your team in real time.",
+            "Send messages, share files, and communicate securely with your team in real-time.",
         },
         {
           dot: dots.dot3,
           title: "Role-Based Dashboard",
           description:
-            "Monitor staff activity, payroll, compliance, and operational metrics from a single dashboard.",
+            "Monitor staff activity, payroll, compliance, and operational metrics from one dashboard.",
         },
         {
           dot: dots.dot4,
           title: "Training Hub",
           description:
-            "Provide role-based training for your team. Track progress and ensure all staff meet regulatory and operational requirements.",
+            "Provide role-based training for your team, tracking progress and ensuring all staff meet regulatory and operational requirements.",
         },
       ],
     },
@@ -5656,13 +5656,13 @@ export const byBusinessType = {
       {
         title: "Challenges for Small Businesses",
         description:
-          "Small businesses often face limited resources, fragmented systems, and time-consuming administrative tasks. Managing staff, payroll, and compliance manually can slow growth and increase risk.",
+          "Small businesses often face limited resources, fragmented systems, and time-consuming administrative tasks that hinder growth. Managing staff, payroll, and compliance manually can slow growth and increase operational risks.",
         images: [one],
       },
       {
         title: "How TesseractApps Helps",
         description:
-          "TesseractApps centralises workforce management, payroll, compliance, and communication into a single platform. Automation and dashboards reduce administrative effort, improve oversight, and let business owners focus on growth and customer satisfaction.",
+          "TesseractApps centralises workforce management, payroll, compliance, and communication into one platform. Automation and dashboards reduce administrative effort, improve oversight, and allow business owners to focus on growth and customer satisfaction.",
         images: [two],
       },
     ],
@@ -5703,7 +5703,7 @@ export const byBusinessType = {
       title: "Enterprise Workforce Management Solutions",
       page: "Enterprises",
       description:
-        "TesseractApps helps enterprise organisations manage large teams, multiple departments, compliance, and finance in one secure platform. Streamline operations, reduce administrative complexity, and maintain oversight across the organisation.",
+        "TesseractApps helps enterprise organisations manage large teams, multiple departments, compliance, and finance from one secure platform. Streamline operations, reduce administrative complexity, and maintain oversight across the organisation efficiently.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -5716,61 +5716,61 @@ export const byBusinessType = {
           dot: dots.dot1,
           title: "Multi-Department Roster & Scheduling",
           description:
-            "Coordinate shifts and schedules across departments and locations. Ensure coverage, reduce conflicts, and optimise workforce allocation.",
+            "Coordinate shifts and schedules across departments and locations, ensuring coverage, reducing conflicts, and optimising workforce allocation.",
         },
         {
           dot: dots.dot2,
           title: "Timesheets & Payroll",
           description:
-            "Automate payroll for large teams. Link hours and projects to accounting systems for accurate reporting and compliance.",
+            "Automate payroll for large teams, linking hours and projects to accounting systems for accurate reporting and compliance.",
         },
         {
           dot: dots.dot3,
           title: "HR & Staff Management",
           description:
-            "Maintain employee records, track certifications, and manage roles and permissions at scale. Streamline onboarding and ongoing HR processes.",
+            "Maintain employee records, track certifications, and manage roles and permissions at scale efficiently. Streamline onboarding and ongoing HR processes, improving workflow efficiency.",
         },
         {
           dot: dots.dot4,
           title: "Compliance Tracker",
           description:
-            "Monitor certifications, mandatory training, and regulatory requirements across the organisation. Receive automated alerts for renewals and audits.",
+            "Monitor certifications, mandatory training, and regulatory requirements across the organisation with ease. Receive automated alerts for renewals and audits, ensuring timely compliance.",
         },
         {
           dot: dots.dot5,
           title: "Clock In & Clock Out",
           description:
-            "Track attendance for staff across multiple locations and departments via mobile or desktop. Monitor overtime and shift swaps in real time.",
+            "Track attendance for staff across multiple locations and departments via mobile or desktop, ensuring real-time accuracy. Monitor overtime and shift swaps in real-time, maintaining proper staffing levels.",
         },
         {
           dot: dots.dot6,
           title: "T-Sign (Digital Signatures)",
           description:
-            "Capture approvals, contracts, and internal documents digitally. Maintain secure audit trails for compliance and accountability.",
+            "Capture approvals, contracts, and internal documents digitally, reducing paperwork. Maintain secure audit trails for compliance and accountability, ensuring transparency.",
         },
         {
           dot: dots.dot1,
-          title: "Repository (Document Hub)",
+          title: "Documents",
           description:
-            "Centralise company policies, contracts, reports, and documents. Assign role-based access for secure, fast retrieval across teams.",
+            "Centralise company policies, contracts, reports, and documents for easy access. Assign role-based access for secure and fast retrieval across teams.",
         },
         {
           dot: dots.dot2,
           title: "Role-Based Dashboard",
           description:
-            "Gain real-time insights into workforce performance, operations, compliance, and financial metrics across the enterprise.",
+            "Gain real-time insights into workforce performance, operations, compliance, and financial metrics across the enterprise using the role-based dashboard.",
         },
         {
           dot: dots.dot3,
           title: "Secure Communication (ChaT)",
           description:
-            "Communicate across teams, departments, and sites securely. Share updates, documents, and announcements instantly.",
+            "Communicate securely across teams, departments, and sites, sharing updates, documents, and announcements instantly.",
         },
         {
           dot: dots.dot4,
           title: "Training Hub",
           description:
-            "Deliver enterprise-wide role-based training. Track employee progress and maintain compliance with regulatory and professional standards.",
+            "Deliver role-based training across the enterprise, ensuring every employee receives the right training. Track employee progress and maintain compliance with regulatory and professional standards effectively.",
         },
       ],
     },
@@ -5778,13 +5778,13 @@ export const byBusinessType = {
       {
         title: "Challenges for Enterprises",
         description:
-          "Large organisations face complex workforce management, multi-department coordination, strict compliance requirements, and high administrative overhead. Disconnected systems make oversight and operational consistency difficult.",
+          "Large organisations face complex workforce management, multi-department coordination, strict compliance requirements, and high administrative overhead that can hinder efficiency. Disconnected systems make oversight and operational consistency more challenging.",
         images: [one],
       },
       {
         title: "How TesseractApps Helps",
         description:
-          "TesseractApps centralises HR, payroll, compliance, communication, and operations into one secure platform. Automation, real-time dashboards, and secure document storage reduce manual work, provide oversight, and allow leaders to focus on strategic growth and organisational efficiency.",
+          "TesseractApps centralises HR, payroll, compliance, communication, and operations into one secure platform, streamlining processes. Automation, real-time dashboards, and secure document storage reduce manual work, provide comprehensive oversight, and enable leaders to focus on strategic growth and organisational efficiency.",
         images: [two],
       },
     ],
@@ -5826,7 +5826,7 @@ export const byBusinessType = {
       title: "Management for Franchise Networks",
       page: "Franchises",
       description:
-        "TesseractApps helps franchise owners and managers oversee multiple locations, staff, schedules, compliance, and finances from a single platform. Ensure consistency, efficiency, and growth across your network.",
+        "TesseractApps helps franchise owners and managers oversee multiple locations, staff, schedules, compliance, and finances on a single platform. Ensure consistency, efficiency, and growth throughout your network.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -5839,55 +5839,55 @@ export const byBusinessType = {
           dot: dots.dot1,
           title: "Multi-Site Roster & Scheduling",
           description:
-            "Manage staff schedules across multiple locations. Ensure proper coverage, reduce conflicts, and maintain operational efficiency at every site.",
+            "Manage staff schedules across multiple locations efficiently. Ensure proper coverage, reduce conflicts, and maintain operational efficiency at each site.",
         },
         {
           dot: dots.dot2,
           title: "Timesheets & Payroll",
           description:
-            "Automate payroll processing for all franchise locations. Link hours to accounting systems for accurate reporting and cost tracking.",
+            "Automate payroll processing for all franchise locations seamlessly. Link hours to accounting systems for accurate reporting and effective cost tracking.",
         },
         {
           dot: dots.dot3,
           title: "HR & Staff Management",
           description:
-            "Maintain employee profiles across the network. Track training, certifications, and roles, and assign permissions to control access across locations.",
+            "Maintain employee profiles across your entire network. Track training, certifications, and roles, and assign permissions to control access across all locations.",
         },
         {
           dot: dots.dot4,
           title: "Compliance Tracker",
           description:
-            "Monitor compliance requirements, certifications, and audits for every location. Receive automated alerts to maintain franchise-wide regulatory standards.",
+            "Monitor compliance requirements, certifications, and audits across every location. Receive automated alerts to ensure franchise-wide regulatory compliance.",
         },
         {
           dot: dots.dot5,
           title: "Clock In & Clock Out",
           description:
-            "Allow staff to log hours via mobile or desktop at any site. Track attendance, overtime, and shift swaps in real time.",
+            "Allow staff to log hours via mobile or desktop at any site, ensuring accuracy. Track attendance, overtime, and shift swaps in real-time for efficient management.",
         },
         {
           dot: dots.dot6,
           title: "T-Sign (Digital Signatures)",
           description:
-            "Digitally capture approvals, contracts, and internal documents. Maintain secure, centralised audit trails for every location.",
+            "Digitally capture approvals, contracts, and internal documents securely. Maintain secure, centralised audit trails for all locations.",
         },
         {
           dot: dots.dot1,
-          title: "Repository (Document Hub)",
+          title: "Documents",
           description:
-            "Store policies, SOPs, agreements, and franchise documents securely. Assign role-based access and retrieve files quickly when needed.",
+            "Store policies, SOPs, agreements, and franchise documents securely and centrally. Assign role-based access and ensure quick retrieval of files when needed.",
         },
         {
           dot: dots.dot2,
           title: "Role-Based Dashboard",
           description:
-            "Monitor operational metrics, staff performance, payroll, and compliance across all franchise locations from a single view.",
+            "Monitor operational metrics, staff performance, payroll, and compliance across all franchise locations from a unified view.",
         },
         {
           dot: dots.dot3,
           title: "Secure Communication (ChaT)",
           description:
-            "Communicate instantly across the franchise network. Share updates, files, and announcements securely with teams at each location.",
+            "Communicate instantly across the franchise network, ensuring seamless communication. Share updates, files, and announcements securely with teams across each location.",
         },
       ],
     },
@@ -5895,13 +5895,13 @@ export const byBusinessType = {
       {
         title: "Operations and Consistency",
         description:
-          "TesseractApps lets you manage staff, schedules, payroll, and compliance across multiple locations from one platform. Real-time dashboards provide visibility into operations, ensuring consistency and efficiency across your franchise network.",
+          "TesseractApps allows you to manage staff, schedules, payroll, and compliance across multiple locations from one platform. Real-time dashboards provide visibility into operations, ensuring consistency and efficiency throughout your franchise network.",
         images: [one],
       },
       {
         title: "Automation and Risk Reduction",
         description:
-          "TesseractApps reduces administrative work and standardises workflows. Automated alerts, digital approvals, and secure document storage maintain compliance and protect sensitive information. Staff can focus on delivering quality service while you maintain oversight of the entire network.",
+          "TesseractApps reduces administrative work and standardises workflows, improving efficiency. Automated alerts, digital approvals, and secure document storage ensure compliance and protect sensitive information. Staff can focus on delivering quality service while you maintain complete oversight of the entire network.",
         images: [two],
       },
     ],
@@ -5942,7 +5942,7 @@ export const byBusinessType = {
       title: "Workforce Solutions for Startups",
       page: "Startups",
       description:
-        "TesseractApps helps startups manage staff, schedules, payroll, compliance, and communication in one central platform. Reduce administrative overhead and focus on growth and innovation.",
+        "TesseractApps helps startups manage staff, schedules, payroll, compliance, and communication from one central platform. Reduce administrative overhead, allowing you to focus on growth and innovation.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -5955,61 +5955,61 @@ export const byBusinessType = {
           dot: dots.dot1,
           title: "Roster & Staff Scheduling",
           description:
-            "Create and adjust shifts quickly. Track attendance and manage leave efficiently, even with small or rapidly growing teams.",
+            "Create and adjust shifts quickly, tracking attendance and managing leave efficiently, even with small or rapidly growing teams.",
         },
         {
           dot: dots.dot2,
           title: "Timesheets & Payroll",
           description:
-            "Automate payroll processing and link hours worked directly to invoices and accounting systems. Ensure timely, accurate payments for all staff.",
+            "Automate payroll processing, linking hours worked directly to invoices and accounting systems for seamless financial management. Ensure timely and accurate payments for all staff members.",
         },
         {
           dot: dots.dot3,
           title: "HR & Staff Management",
           description:
-            "Maintain team profiles, track training and certifications, and assign roles and permissions. Keep your startup compliant as it grows.",
+            "Maintain team profiles, track training and certifications, and assign roles and permissions as your startup grows. Keep your startup compliant while it grows efficiently.",
         },
         {
           dot: dots.dot4,
           title: "Compliance Tracker",
           description:
-            "Monitor certifications, mandatory training, and audit requirements. Receive automated alerts to stay compliant without added effort.",
+            " Monitor certifications, mandatory training, and audit requirements across your team. Receive automated alerts to ensure compliance without added effort.",
         },
         {
           dot: dots.dot5,
           title: "Clock In & Clock Out",
           description:
-            "Allow employees to log hours via mobile or desktop. Track time, overtime, and shift changes in real time.",
+            "Allow employees to log hours via mobile or desktop, ensuring accurate tracking. Track time, overtime, and shift changes in real-time for efficient monitoring.",
         },
         {
           dot: dots.dot6,
           title: "T-Sign (Digital Signatures)",
           description:
-            "Securely capture agreements, approvals, and contracts digitally. Reduce paperwork and maintain audit-ready records.",
+            "Securely capture agreements, approvals, and contracts digitally, reducing paperwork. Reduce paperwork while maintaining audit-ready records for compliance.",
         },
         {
           dot: dots.dot1,
-          title: "Repository (Document Hub)",
+          title: "Documents",
           description:
-            "Store company policies, contracts, and key documents securely. Assign role-based access and retrieve files quickly.",
+            "Store company policies, contracts, and key documents securely for easy access. Assign role-based access and ensure quick retrieval of files when needed.",
         },
         {
           dot: dots.dot2,
           title: "Secure Communication (ChaT)",
           description:
-            "Communicate securely with your team, share files, and collaborate in real time.",
+            "Communicate securely with your team, sharing files and collaborating in real-time.",
         },
         {
           dot: dots.dot3,
           title: "Role-Based Dashboard",
           description:
-            "Monitor staff activity, compliance, payroll, and operational metrics from one central dashboard.",
+            "Monitor staff activity, compliance, payroll, and operational metrics from a single central dashboard.",
         },
         {
           dot: dots.dot4,
           title: "Training Hub",
           description:
-            "Provide role-specific training for staff. Track progress and ensure team members meet industry or regulatory requirements.",
+            "Provide role-specific training to staff, ensuring they have the necessary skills. Track progress and ensure team members meet industry standards or regulatory requirements.",
         },
       ],
     },
@@ -6017,13 +6017,13 @@ export const byBusinessType = {
       {
         title: "Streamlined Operations",
         description:
-          "TesseractApps centralises workforce management, payroll, rostering, and compliance in one platform. Automation reduces manual tasks, helping your startup operate efficiently with limited resources. Real-time dashboards give you visibility into staff performance, schedules, and operational workflows.",
+          "TesseractApps centralises workforce management, payroll, rostering, and compliance from one platform. Automation reduces manual tasks, helping your startup operate efficiently, even with limited resources. Real-time dashboards provide visibility into staff performance, schedules, and operational workflows.",
         images: [one],
       },
       {
         title: "Scalability and Growth Support",
         description:
-          "TesseractApps provides tools to manage growth smoothly. Track budgets, monitor compliance, and onboard new staff quickly. Workflow automation and integrated training ensure your team stays productive and compliant as your startup expands.",
+          "TesseractApps provides tools to manage growth seamlessly. Track budgets, monitor compliance, and onboard new staff members quickly. Workflow automation and integrated training ensure that your team remains productive and compliant as your startup grows.",
         images: [two],
       },
     ],
@@ -6070,7 +6070,7 @@ export const byBusinessProblem = {
       title: "Manage Compliance and Reduce Risk",
       page: "Compliance & Risk Management",
       description:
-        "TesseractApps helps organisations maintain regulatory compliance, track certifications, and manage operational risks efficiently. Protect your organisation and ensure audit readiness.",
+        "TesseractApps helps organisations maintain regulatory compliance, track certifications, and manage operational risks seamlessly. Protect your organisation while ensuring audit readiness.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -6083,49 +6083,49 @@ export const byBusinessProblem = {
           dot: dots.dot1,
           title: "Compliance Tracker",
           description:
-            "Monitor staff certifications, mandatory training, and regulatory requirements. Receive automated alerts for upcoming renewals or expirations.",
+            "Monitor staff certifications, mandatory training, and regulatory requirements effectively. Receive automated alerts for upcoming renewals or expirations, ensuring timely action.",
         },
         {
           dot: dots.dot2,
           title: "Incident & Risk Management",
           description:
-            "Record incidents, assess risks, and track follow-ups. Maintain detailed histories for accountability and reporting.",
+            "Record incidents, assess risks, and track follow-ups for complete accountability. Maintain detailed histories for accountability, reporting, and audit purposes.",
         },
         {
           dot: dots.dot3,
           title: "Audit Logs & Reporting",
           description:
-            "Generate audit-ready reports on compliance, training, and incidents. Maintain transparency for regulators and management.",
+            "Generate audit-ready reports on compliance, training, and incidents for regulatory transparency. Ensure transparency for regulators and management by keeping accurate and up-to-date records.",
         },
         {
           dot: dots.dot4,
           title: "T-Sign (Digital Signatures)",
           description:
-            "Capture approvals, consents, and agreements digitally. Maintain secure, traceable audit trails.",
+            "Capture approvals, consents, and agreements digitally, reducing paperwork and maintaining secure audit trails. Maintain secure and traceable audit trails for every approval, consent, and agreement.",
         },
         {
           dot: dots.dot5,
-          title: "Repository (Document Hub)",
+          title: "Documents",
           description:
-            "Store policies, procedures, and compliance documents securely. Assign role-based access and track revisions.",
+            "Store policies, procedures, and compliance documents securely in one central location. Assign role-based access and track document revisions for secure, easy retrieval.",
         },
         {
           dot: dots.dot6,
           title: "Role-Based Dashboard",
           description:
-            "Monitor compliance and risk metrics in real time. Identify gaps, trends, and potential issues quickly.",
+            "Monitor compliance and risk metrics in real-time using a role-based dashboard. Identify gaps, trends, and potential issues quickly to address risks efficiently.",
         },
         {
           dot: dots.dot1,
           title: "Workflow Automation",
           description:
-            "Automate recurring compliance tasks, notifications, and approvals. Reduce manual work and ensure consistency across the organisation.",
+            "Automate recurring compliance tasks, notifications, and approvals to reduce manual work. Reduce manual work and ensure consistency in compliance processes across the organisation.",
         },
         {
           dot: dots.dot2,
           title: "Training Hub",
           description:
-            "Deliver mandatory and role-specific compliance training. Track completion and maintain records for audits.",
+            "Deliver mandatory and role-specific compliance training to all staff. Track training completion and maintain detailed records for audits and compliance verification.",
         },
       ],
     },
@@ -6133,13 +6133,13 @@ export const byBusinessProblem = {
       {
         title: "Oversight and Risk Visibility",
         description:
-          "TesseractApps centralises compliance tracking, incident reporting, and risk management. Track staff certifications, mandatory training, and regulatory requirements automatically. Dashboards display real-time compliance and risk status. Reporting tools give you insights to make informed operational decisions.",
+          "TesseractApps centralises compliance tracking, incident reporting, and risk management on one platform. Track staff certifications, mandatory training, and regulatory requirements automatically with ease. Dashboards provide real-time visibility into compliance and risk status, enabling better decision-making. Reporting tools offer insights to make informed operational decisions and improve risk management.",
         images: [one],
       },
       {
         title: "Security and Operational Efficiency",
         description:
-          "TesseractApps reduces administrative work while keeping audit records complete. Use T-Sign for secure digital approvals. Assign role-based access to protect sensitive data. Centralised document storage and automated workflows ensure compliance tasks are completed on time. Training tools help staff meet regulatory standards consistently.",
+          "TesseractApps reduces administrative work while keeping audit records accurate and complete. Use T-Sign for secure digital approvals and maintain a full audit trail. Assign role-based access to protect sensitive data and ensure only authorised personnel can access it. Centralised document storage and automated workflows ensure that compliance tasks are completed on time. Training tools help staff consistently meet regulatory standards and professional development requirements.",
         images: [two],
       },
     ],
@@ -6180,7 +6180,7 @@ export const byBusinessProblem = {
       title: "Enhance Employee Engagement Across Your Organisation",
       page: "Employee Engagement",
       description:
-        "TesseractApps helps organisations improve communication, recognition, training, and collaboration to boost staff satisfaction and productivity.",
+        "TesseractApps helps organisations improve communication, recognition, training, and collaboration, boosting staff satisfaction and productivity.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -6193,49 +6193,49 @@ export const byBusinessProblem = {
           dot: dots.dot1,
           title: "Communication Tools (ChaT)",
           description:
-            "Send messages, share updates, and collaborate securely across teams. Keep employees informed and connected.",
+            "Send messages, share updates, and collaborate securely across teams to keep employees connected. Keep employees informed and engaged in real-time.",
         },
         {
           dot: dots.dot2,
           title: "Role-Based Dashboard",
           description:
-            "Monitor staff activity, engagement metrics, and performance in real time. Identify areas for support and development.",
+            "Monitor staff activity, engagement metrics, and performance in real-time for better oversight. Identify areas needing support and development to foster employee growth.",
         },
         {
           dot: dots.dot3,
           title: "Recognition & Feedback",
           description:
-            "Capture achievements, provide feedback, and celebrate staff milestones to foster a motivated workforce.",
+            "Capture achievements, provide feedback, and celebrate staff milestones to maintain a motivated workforce.",
         },
         {
           dot: dots.dot4,
           title: "Training Hub",
           description:
-            "Deliver role-specific training and professional development opportunities. Track progress and encourage continuous learning.",
+            "Deliver role-specific training and professional development opportunities, ensuring continuous learning. Track progress and encourage ongoing learning and development for all staff.",
         },
         {
           dot: dots.dot5,
           title: "T-Sign (Digital Signatures)",
           description:
-            "Facilitate approvals, acknowledgements, and internal agreements digitally. Reduce administrative friction and promote accountability.",
+            "Facilitate digital approvals, acknowledgements, and internal agreements for better efficiency. Reduce administrative friction while promoting accountability across teams.",
         },
         {
           dot: dots.dot6,
           title: "Surveys & Polls",
           description:
-            "Gather employee feedback efficiently. Use insights to improve workplace culture and processes.",
+            "Gather employee feedback quickly and efficiently for better workplace insights. Use insights to enhance workplace culture and refine internal processes.",
         },
         {
           dot: dots.dot1,
           title: "Workflow Automation",
           description:
-            "Automate routine administrative tasks, approvals, and notifications. Allow employees to focus on meaningful work and engagement initiatives.",
+            "Automate routine administrative tasks, approvals, and notifications to improve efficiency. Allow employees to focus on meaningful work and engagement initiatives by reducing administrative burdens.",
         },
         {
           dot: dots.dot2,
-          title: "Repository (Document Hub)",
+          title: "Documents",
           description:
-            "Provide easy access to policies, guidelines, and resources. Ensure employees have the information they need to perform effectively.",
+            "Provide easy access to policies, guidelines, and resources to support staff performance.",
         },
       ],
     },
@@ -6243,13 +6243,13 @@ export const byBusinessProblem = {
       {
         title: "Communication and Collaboration",
         description:
-          "TesseractApps provides secure messaging and file sharing tools to keep teams connected. Staff receive updates, announcements, and feedback instantly, improving engagement and collaboration across your organisation.",
+          "TesseractApps provides secure messaging and file-sharing tools, keeping teams connected and informed. Staff receive updates, announcements, and feedback instantly, enhancing engagement and collaboration across your organisation.",
         images: [one],
       },
       {
         title: "Recognition and Development",
         description:
-          "TesseractApps supports staff motivation through role-based training, progress tracking, and recognition of achievements. Automated workflows reduce administrative tasks, allowing employees to focus on meaningful work and growth opportunities.",
+          "TesseractApps boosts staff motivation through role-based training, progress tracking, and recognition of achievements. Automated workflows reduce administrative tasks, enabling employees to focus on meaningful work and career growth opportunities.",
         images: [two],
       },
     ],
@@ -6291,7 +6291,7 @@ export const byBusinessProblem = {
       title: "Save Time Across Your Organisation",
       page: "Time Efficiency",
       description:
-        "TesseractApps helps organisations streamline workflows, automate routine tasks, and manage staff and resources efficiently. Spend less time on administration and more time on strategic work.",
+        "TesseractApps helps organisations streamline workflows, automate routine tasks, and manage staff and resources seamlessly. Spend less time on administrative tasks and more time on strategic work.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -6304,43 +6304,43 @@ export const byBusinessProblem = {
           dot: dots.dot1,
           title: "Roster & Shift Automation",
           description:
-            "Plan and adjust staff schedules quickly. Reduce manual roster creation and avoid scheduling conflicts.",
+            "Plan and adjust staff schedules efficiently, saving time on manual processes. Reduce manual roster creation and avoid scheduling conflicts, ensuring smooth operations.",
         },
         {
           dot: dots.dot2,
           title: "Timesheets & Payroll Automation",
           description:
-            "Automate timesheet approvals, payroll calculations, and reconciliations. Reduce errors and manual processing time.",
+            "Automate timesheet approvals, payroll calculations, and reconciliations, reducing errors and time spent. Reduce errors and cut down manual processing time, improving efficiency.",
         },
         {
           dot: dots.dot3,
           title: "Workflow Automation",
           description:
-            "Streamline repetitive administrative tasks such as approvals, notifications, and reporting. Save hours every week.",
+            "Streamline repetitive administrative tasks, such as approvals, notifications, and reporting, saving hours every week.",
         },
         {
           dot: dots.dot4,
           title: "Role-Based Dashboard",
           description:
-            "Access real-time insights into staff activity, attendance, and operational metrics. Make decisions faster with instant data.",
+            "Access real-time insights into staff activity, attendance, and operational metrics for better decision-making. Make informed decisions faster with instant access to data.",
         },
         {
           dot: dots.dot5,
-          title: "Secure Document Management (Repository & T-Sign)",
+          title: "Secure Document Management (Documents & T-Sign)",
           description:
-            "Store, approve, and retrieve documents digitally. Reduce time spent on paperwork and approvals.",
+            "Store, approve, and retrieve documents digitally, reducing time spent on paperwork and approvals.",
         },
         {
           dot: dots.dot6,
           title: "Communication Tools (ChaT)",
           description:
-            "Send messages, share files, and collaborate instantly with teams. Minimise delays and keep everyone aligned.",
+            "Send messages, share files, and collaborate instantly with teams, reducing delays and keeping everyone aligned.",
         },
         {
           dot: dots.dot1,
           title: "Training Hub",
           description:
-            "Deliver onboarding and role-specific training efficiently. Track progress automatically without manual follow-ups.",
+            "Deliver onboarding and role-specific training efficiently, ensuring staff are up to speed quickly. Track progress automatically, eliminating the need for manual follow-ups.",
         },
       ],
     },
@@ -6348,13 +6348,13 @@ export const byBusinessProblem = {
       {
         title: "Workflow and Task Automation",
         description:
-          "TesseractApps centralises rostering, timesheets, approvals, and administrative tasks in one platform. Automated workflows reduce repetitive work, speed up approvals, and help staff complete tasks efficiently. Real-time dashboards give you clear visibility into operations and staff activity.",
+          "TesseractApps centralises rostering, timesheets, approvals, and administrative tasks on one platform, improving workflow efficiency. Automated workflows reduce repetitive work, speed up approvals, and help staff complete tasks more efficiently. Real-time dashboards provide clear visibility into operations and staff activity for informed decision-making.",
         images: [one],
       },
       {
         title: "Productivity and Operational Oversight",
         description:
-          "TesseractApps helps your organisation save time while maintaining accuracy and compliance. Mobile and desktop tools allow staff to submit shifts, leave, and reports quickly. Managers track performance, attendance, and workflows in real time, ensuring decisions are informed and operations run smoothly.",
+          "TesseractApps helps your organisation save time while maintaining accuracy and ensuring compliance. Mobile and desktop tools allow staff to submit shifts, leave, and reports quickly and efficiently. Managers can track performance, attendance, and workflows in real-time, ensuring decisions are informed and operations run smoothly.",
         images: [two],
       },
     ],
@@ -6395,7 +6395,7 @@ export const byBusinessProblem = {
       title: "Reduce Operational Costs and Maximise Efficiency",
       page: "Cost Optimisation",
       description:
-        "TesseractApps helps organisations optimise staffing, payroll, and resource management to reduce overheads while maintaining compliance and service quality.",
+        "TesseractApps helps organisations optimise staffing, payroll, and resource management, reducing overheads while maintaining compliance and service quality.",
       cta: {
         buttons: [{ title: "Register your interest", navigate: "bookADemo" }],
         conclusion: "",
@@ -6408,43 +6408,43 @@ export const byBusinessProblem = {
           dot: dots.dot1,
           title: "Roster Optimisation",
           description:
-            "Assign staff efficiently based on skills, availability, and demand. Reduce overtime, avoid under- or over-staffing, and minimise labour costs.",
+            "Assign staff efficiently based on skills, availability, and demand, ensuring optimal staffing levels. Reduce overtime, avoid under- or over-staffing, and minimise labour costs effectively.",
         },
         {
           dot: dots.dot2,
           title: "Payroll & Budget Tracking",
           description:
-            "Monitor payroll expenses in real time. Track budgets against actuals and reconcile costs for accurate financial control.",
+            "Monitor payroll expenses in real-time for better financial control. Track budgets against actuals and reconcile costs, ensuring accurate financial control.",
         },
         {
           dot: dots.dot3,
           title: "Resource Allocation",
           description:
-            "Manage assets, equipment, and supplies efficiently. Reduce waste and ensure resources are used where they add the most value.",
+            "Manage assets, equipment, and supplies efficiently, reducing waste and maximising resource value. Reduce waste and ensure resources are used where they provide the most value.",
         },
         {
           dot: dots.dot4,
           title: "Reporting & Insights",
           description:
-            "Generate detailed reports on staffing, budget utilisation, and operational efficiency. Make data-driven decisions to reduce costs.",
+            "Generate detailed reports on staffing, budget utilisation, and operational efficiency for informed decision-making. Make data-driven decisions that effectively reduce costs.",
         },
         {
           dot: dots.dot5,
           title: "Automated Alerts & Notifications",
           description:
-            "Receive alerts for budget overruns, overtime spikes, or underutilised resources. Take proactive steps to control expenses.",
+            "Receive alerts for budget overruns, overtime spikes, or underutilised resources to take proactive steps. Take proactive steps to control expenses and avoid budget discrepancies.",
         },
         {
           dot: dots.dot6,
           title: "Compliance & Audit Tracking",
           description:
-            "Ensure cost-saving measures do not compromise regulatory or quality requirements. Track all changes for audit readiness.",
+            "Ensure cost-saving measures do not compromise regulatory or quality standards. Track all changes for audit readiness and compliance verification.",
         },
         {
           dot: dots.dot1,
           title: "Role-Based Dashboard",
           description:
-            "Monitor costs, payroll, staffing, and resource utilisation from a single view. Identify areas for improvement instantly.",
+            "Monitor costs, payroll, staffing, and resource utilisation from one unified view. Identify areas for improvement instantly, allowing for swift corrective actions.",
         },
       ],
     },
@@ -6452,13 +6452,13 @@ export const byBusinessProblem = {
       {
         title: "Spend Control and Visibility",
         description:
-          "TesseractApps centralises workforce, payroll, and resource management in one platform. Automated alerts and real-time dashboards help you monitor costs, track budgets, and identify overspending. You gain clear visibility into operational expenses and staffing efficiency.",
+          "TesseractApps centralises workforce, payroll, and resource management on one platform for ease of access. Automated alerts and real-time dashboards help monitor costs, track budgets, and identify overspending instantly. Gain clear visibility into operational expenses and staffing efficiency to make informed decisions.",
         images: [one],
       },
       {
         title: "Efficiency and Compliance",
         description:
-          "TesseractApps reduces unnecessary expenditure while maintaining compliance. Automation streamlines payroll, resource allocation, and reporting. Workflow tools help you optimise staffing, control costs, and make data-driven financial decisions across your organisation.",
+          "TesseractApps reduces unnecessary expenditure while ensuring compliance with regulatory standards. Automation streamlines payroll, resource allocation, and reporting, reducing manual tasks. Workflow tools help optimise staffing, control costs, and make data-driven financial decisions across your organisation.",
         images: [two],
       },
     ],
@@ -6506,7 +6506,7 @@ import tsign from "../assets/Product Sign.webp";
 // import clockInAndOut from "../assets/Product Sign in.webp";
 import participantManagement from "../assets/partispant management.webp";
 import incidentManagement from "../assets/incident.webp";
-import repository from "../assets/Product Repository.webp";
+import Documents from "../assets/Product Repository.webp";
 import roleBasedDashboard from "../assets/Product Rolebase dashboard.webp";
 // import forms from "../assets/Forms.webp";
 import prodForms from "../assets/Product Forms.webp";
@@ -6525,10 +6525,10 @@ export const productsDetailsData = {
       image: rosternew,
       title: "Streamline Staff Scheduling",
       description:
-        "Plan, approve, and manage shifts efficiently with TesseractApps. Keep your workforce organised, reduce conflicts, and ensure proper coverage across all sites.",
+        "Efficiently plan, approve, and manage shifts with TesseractApps. Keep your workforce organised, reduce conflicts, and ensure proper coverage across all sites.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.  ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -6538,37 +6538,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Create and Adjust Shifts",
           description:
-            "Easily build rosters for teams. Adjust schedules in real time to accommodate changes in staff availability.",
+            "Easily build rosters for teams and adjust schedules in real time to accommodate changes in staff availability.",
         },
         {
           dot: dots.dot2,
           title: "Attendance Tracking",
           description:
-            "Monitor staff check-ins and attendance. Ensure accurate timesheets for payroll and reporting purposes.",
+            "Monitor staff attendance and ensure accurate timesheets for payroll and reporting.",
         },
         {
           dot: dots.dot3,
           title: "Automated Approvals",
           description:
-            "Set rules for shift approvals. Reduce delays and ensure managers can quickly authorise schedules.",
+            "Set rules for shift approvals to reduce delays and enable managers to quickly authorise schedules.",
         },
         {
           dot: dots.dot4,
           title: "Staff Notifications",
           description:
-            "Send automated alerts to staff about upcoming shifts, changes, or cancellations. Keep teams informed and reduce miscommunication.",
+            "Send automated alerts to staff about upcoming shifts, changes, or cancellations to keep teams informed and reduce miscommunication.",
         },
         {
           dot: dots.dot5,
           title: "Compliance Integration",
           description:
-            "Track mandatory trainings and qualifications when scheduling staff. Ensure shifts are assigned only to qualified personnel.",
+            "Track mandatory trainings and qualifications when scheduling staff to ensure shifts are assigned only to qualified personnel.",
         },
         {
           dot: dots.dot6,
           title: "Reporting and Insights",
           description:
-            "Generate reports on coverage, shift patterns, and staff performance. Use dashboards to optimise scheduling and workload distribution.",
+            "Generate reports on coverage, shift patterns, and staff performance using dashboards to optimise scheduling and workload distribution.",
         },
       ],
     },
@@ -6581,16 +6581,16 @@ export const productsDetailsData = {
       },
     ],
     section4: {
-      title: "How Roster Management Helps Your Team",
+      title: "How Roster Management Can Help Your Team",
       points: [
         {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Gain full visibility of staffing levels, track attendance, and maintain compliance with minimal manual work.",
+            "Gain full visibility of staffing levels, track attendance, and maintain compliance with minimal effort.",
           images: [accountingImage],
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -6602,7 +6602,7 @@ export const productsDetailsData = {
             "Easily create, update, and approve rosters, balance workloads, and reduce scheduling conflicts across teams.",
           images: [accountingImage],
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "Roster Manager",
             type: "text",
           },
@@ -6614,7 +6614,7 @@ export const productsDetailsData = {
             "Link rostering with leave, qualifications, and payroll to ensure smooth workforce management and accurate records.",
           images: [accountingImage],
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "HR Manager",
             type: "text",
           },
@@ -6626,7 +6626,7 @@ export const productsDetailsData = {
             " Access schedules, submit availability, and receive shift updates instantly, keeping your day organised and tasks clear.",
           images: [accountingImage],
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -6671,11 +6671,11 @@ export const productsDetailsData = {
     hero: {
       title: "Simplify Staff Time Tracking ",
       description:
-        "Record, approve, and manage staff hours efficiently with TesseractApps. Ensure accurate payroll, reduce errors, and maintain compliance. ",
+        "Efficiently record, approve, and manage staff hours with TesseractApps. Ensure accurate payroll, reduce errors, and stay compliant.",
       image: timesheetNew, // Replace with actual image import
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.  ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -6685,37 +6685,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Submit and Approve Timesheets",
           description:
-            "Staff can submit hours digitally. Managers can review and approve with one click, reducing delays and errors.",
+            "Staff can submit hours digitally, and managers can review and approve with one click, reducing delays and errors.",
         },
         {
           dot: dots.dot2,
           title: "Integration with Payroll",
           description:
-            "Automatically link approved timesheets to payroll. Ensure accurate payments and reduce manual reconciliation.",
+            "Automatically link approved timesheets to payroll, ensuring accurate payments and reducing manual reconciliation.",
         },
         {
           dot: dots.dot3,
           title: "Attendance Tracking",
           description:
-            "Monitor check-ins, check-outs, and shift duration in real time. Ensure staff attendance records are precise.",
+            "Monitor attendance and shift duration in real time to ensure precise staff records.",
         },
         {
           dot: dots.dot4,
           title: "Automated Alerts",
           description:
-            "Receive notifications for missing or overdue timesheets. Keep payroll processes on schedule.",
+            "Receive notifications for missing or overdue timesheets to keep payroll processes on schedule.",
         },
         {
           dot: dots.dot5,
           title: "Compliance Checks",
           description:
-            "Verify that staff have completed mandatory training and certifications before approving hours. Maintain regulatory compliance effortlessly.",
+            "Verify staff training and certification before approving hours to maintain compliance effortlessly.",
         },
         {
           dot: dots.dot6,
           title: "Reporting and Insights",
           description:
-            "Generate detailed reports on staff hours, overtime, and attendance. Use dashboards to identify patterns and optimise workforce productivity.",
+            "Generate detailed reports on staff hours, overtime, and attendance, and use dashboards to identify patterns and optimise productivity.",
         },
       ],
     },
@@ -6726,9 +6726,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Track staff hours, verify compliance, and ensure payroll accuracy without manual paperwork.",
+            "Track staff hours, verify compliance, and ensure payroll accuracy with minimal manual work.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -6739,7 +6739,7 @@ export const productsDetailsData = {
           description:
             "Monitor shift completion, approve timesheets quickly, and integrate with rostering to maintain coverage.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "Roster Manager",
             type: "text",
           },
@@ -6750,7 +6750,7 @@ export const productsDetailsData = {
           description:
             "Link timesheets to leave and payroll, track overtime, and manage workforce records accurately.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "HR Manager",
             type: "text",
           },
@@ -6759,9 +6759,9 @@ export const productsDetailsData = {
           dot: dots.dot4,
           title: "For NDIS Staff",
           description:
-            "Submit hours easily, receive approval notifications, and track your work in real time.",
+            "Easily submit hours, receive approval notifications, and track your work in real time.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -6772,7 +6772,7 @@ export const productsDetailsData = {
       {
         title: "Time Management and Accuracy",
         description:
-          "TesseractApps Timesheets centralises time tracking for staff and managers. Automated approvals, payroll integration, and compliance checks reduce administrative work, eliminate errors, and keep workforce records accurate and audit-ready. ",
+          "TesseractApps Timesheets centralises time tracking for both staff and managers. Automated approvals, payroll integration, and compliance checks reduce administrative work, eliminate errors, and keep workforce records accurate and audit-ready. ",
         images: [adminConsole],
       },
     ],
@@ -6813,10 +6813,10 @@ export const productsDetailsData = {
       image: adminConsoleNew,
       title: "Full Control in One Place",
       description:
-        "Manage your organisation efficiently with TesseractApps. Oversee users, modules, settings, and compliance from a single, secure dashboard.",
+        "Manage your organisation efficiently using TesseractApps. Oversee users, modules, settings, and compliance from one secure dashboard.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -6826,37 +6826,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "User Management",
           description:
-            "Add, update, or remove users. Assign roles and permissions to control access and protect sensitive data.",
+            "Add, update, or remove users, and assign roles and permissions to control access and protect sensitive data.",
         },
         {
           dot: dots.dot2,
           title: "System Configuration",
           description:
-            "Set up modules and workflows to match your organisation. Automate recurring tasks for consistency.",
+            "Set up modules and workflows to match your organisation's needs and automate recurring tasks for consistency.",
         },
         {
           dot: dots.dot3,
           title: "Compliance Oversight",
           description:
-            "Track staff certifications, mandatory trainings, and audit requirements. Receive automated alerts for upcoming deadlines.",
+            "Track staff certifications, mandatory training, and audit requirements, receiving automated alerts for upcoming deadlines.",
         },
         {
           dot: dots.dot4,
           title: "Audit Logs",
           description:
-            "Maintain detailed logs of system activity. Ensure transparency and accountability across the organisation.",
+            "Maintain detailed logs of system activity to ensure transparency and accountability across the organisation.",
         },
         {
           dot: dots.dot5,
           title: "Reporting and Insights",
           description:
-            "Generate reports on user activity, system usage, and operational metrics. Use dashboards to make informed decisions quickly.",
+            "Generate reports on user activity, system usage, and operational metrics, using dashboards to make informed decisions quickly.",
         },
         {
           dot: dots.dot6,
           title: "Integration with Other Modules",
           description:
-            "Connect rostering, timesheets, HR, payroll, and compliance tools for a complete operational view.",
+            "Connect rostering, timesheets, HR, payroll, and compliance tools for a complete operational overview.",
         },
       ],
     },
@@ -6864,7 +6864,7 @@ export const productsDetailsData = {
       {
         title: "System Management",
         description:
-          "TesseractApps Admin Console centralises management of your organisation’s modules and settings. Automation, audit logs, and role-based access reduce manual work, enhance security, and keep operations compliant and organised.",
+          "TesseractApps Admin Console centralises the management of your organisation’s modules and settings. Automation, audit logs, and role-based access reduce manual work, enhance security, and keep operations compliant and organised.",
         images: [adminConsole2],
       },
     ],
@@ -6875,9 +6875,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Maintain full control over system settings, user roles, and compliance tracking from a central location.",
+            "Maintain full control over system settings, user roles, and compliance tracking from one central location.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -6886,9 +6886,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For HR Managers and Roster Managers",
           description:
-            "Monitor staff access, track activities, and ensure workflows are followed efficiently.",
+            "Monitor staff access, track activities, and ensure workflows are followed efficiently using the Admin Console.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "HR Manager",
             type: "text",
           },
@@ -6897,9 +6897,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For Accountants",
           description:
-            "Access system data to support payroll, financial reporting, and regulatory compliance.",
+            "Access system data to support payroll, financial reporting, and regulatory compliance easily.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Accountant",
             type: "text",
           },
@@ -6945,10 +6945,10 @@ export const productsDetailsData = {
       image: accessNew,
       title: "Manage Access and Permissions Securely",
       description:
-        "Control who sees what with TesseractApps. Assign roles, scale permissions, and monitor activity to keep your organisation secure and compliant.",
+        "Control who can access what with TesseractApps. Assign roles, scale permissions, and monitor activity to keep your organisation secure and compliant efficiently.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -6958,37 +6958,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Role-Based Permissions",
           description:
-            "Assign different access levels to staff, managers, and administrators. Ensure sensitive data is only accessible to authorised personnel.",
+            "Assign different access levels to staff, managers, and administrators to ensure sensitive data is only accessible to authorised personnel.",
         },
         {
           dot: dots.dot2,
           title: "User Group Management",
           description:
-            "Organise users into groups based on teams, departments, or roles. Apply consistent permissions across multiple users efficiently.",
+            "Organise users into groups based on teams, departments, or roles, applying consistent permissions across multiple users efficiently.",
         },
         {
           dot: dots.dot3,
           title: "Access Monitoring",
           description:
-            "Track logins, system activity, and document access. Identify unusual activity and maintain accountability.",
+            "Track logins, system activity, and document access to identify unusual activity and maintain accountability.",
         },
         {
           dot: dots.dot4,
           title: "Integration with Modules",
           description:
-            "Link access permissions to rostering, timesheets, HR, payroll, and compliance modules. Control workflows and visibility across the organisation.",
+            "Link access permissions to rostering, timesheets, HR, payroll, and compliance modules to control workflows and visibility across the organisation.",
         },
         {
           dot: dots.dot5,
           title: "Automated Alerts",
           description:
-            "Receive notifications for unauthorised access attempts or changes to user roles. Respond quickly to security issues.",
+            "Receive notifications for unauthorised access attempts or changes to user roles, enabling quick responses to security issues.",
         },
         {
           dot: dots.dot6,
           title: "Reporting and Audit Trails",
           description:
-            "Generate detailed reports on user access and activity. Maintain full audit-ready records for compliance purposes.",
+            "Generate detailed reports on user access and activity, maintaining full audit-ready records for compliance purposes.",
         },
       ],
     },
@@ -6996,7 +6996,7 @@ export const productsDetailsData = {
       {
         title: "Access Management",
         description:
-          "TesseractApps Access Control Panel centralises permission management across all modules. Role-based access, monitoring, and automated alerts improve security, reduce errors, and ensure your organisation complies with regulatory standards.",
+          "TesseractApps Access Control Panel centralises permission management across all modules for enhanced security. Role-based access, monitoring, and automated alerts improve security, reduce errors, and ensure your organisation complies with regulatory standards.",
         images: [accessControlPanel],
       },
     ],
@@ -7007,9 +7007,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Maintain complete oversight of user permissions and system security from one central dashboard.",
+            "Maintain complete oversight of user permissions and system security using one central dashboard.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -7018,9 +7018,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For HR Managers and Roster Managers",
           description:
-            "Control staff access to personal data, schedules, and operational tools. Ensure workflows comply with internal policies.",
+            "Control staff access to personal data, schedules, and operational tools to ensure workflows comply with internal policies.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Roster Manager",
             type: "text",
           },
@@ -7029,9 +7029,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For Accountants",
           description:
-            "Restrict access to financial records, payroll, and sensitive participant data. Maintain regulatory compliance.",
+            "Restrict access to financial records, payroll, and sensitive participant data to maintain regulatory compliance.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Accountant",
             type: "text",
           },
@@ -7040,9 +7040,9 @@ export const productsDetailsData = {
           dot: dots.dot4,
           title: "For NDIS Staff",
           description:
-            "Access only the tools and information necessary for their role, reducing errors and protecting privacy.",
+            "Access only the tools and information necessary for their role, reducing errors and ensuring privacy protection.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -7088,10 +7088,10 @@ export const productsDetailsData = {
       image: hrnew,
       title: "Manage Your Workforce Efficiently",
       description:
-        "Oversee recruitment, onboarding, staff records, and performance with TesseractApps. Keep all HR processes in one secure platform to ensure accuracy, compliance, and operational efficiency.",
+        "Oversee recruitment, onboarding, staff records, and performance using TesseractApps. Keep all HR processes in one secure platform, ensuring accuracy, compliance, and operational efficiency.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.  ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -7101,37 +7101,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Recruitment and Onboarding",
           description:
-            "Track job applications, manage candidate profiles, and streamline onboarding processes. Ensure new hires are set up correctly from day one.",
+            "Track job applications, manage candidate profiles, and streamline onboarding. Ensure new hires are correctly set up from day one.",
         },
         {
           dot: dots.dot2,
           title: "Employee Records Management",
           description:
-            "Maintain up-to-date staff profiles, qualifications, and employment history. Store sensitive information securely and access it easily when needed.",
+            "Maintain up-to-date staff profiles, qualifications, and employment history. Store sensitive information securely and access it easily when required.",
         },
         {
           dot: dots.dot3,
           title: "Leave and Attendance Tracking",
           description:
-            "Monitor leave balances, approvals, and absences. Integrate with timesheets and payroll for accurate tracking.",
+            "Monitor leave balances, approvals, and absences, integrating with timesheets and payroll for accurate tracking.",
         },
         {
           dot: dots.dot4,
           title: "Performance and Training",
           description:
-            "Track employee performance, certifications, and training completion. Use dashboards to monitor progress and compliance.",
+            "Track employee performance, certifications, and training completion using dashboards to monitor progress and compliance.",
         },
         {
           dot: dots.dot5,
           title: "Role-Based Permissions",
           description:
-            "Assign access levels for HR staff and managers. Control who can view or edit sensitive employee data.",
+            "Assign access levels for HR staff and managers to control who can view or edit sensitive employee data.",
         },
         {
           dot: dots.dot6,
           title: "Reporting and Insights",
           description:
-            "Generate HR reports on staff performance, leave trends, training completion, and compliance. Use data to optimise workforce planning.",
+            "Generate HR reports on staff performance, leave trends, training completion, and compliance, using data to optimise workforce planning.",
         },
       ],
     },
@@ -7139,7 +7139,7 @@ export const productsDetailsData = {
       {
         title: "HR Management and Efficiency",
         description:
-          "TesseractApps HR Operations centralises all HR workflows in one platform. Automated processes for recruitment, onboarding, leave, and performance reduce manual tasks and ensure staff records are accurate, secure, and compliant.",
+          "TesseractApps HR Operations centralises all HR workflows on one platform. Automated processes for recruitment, onboarding, leave, and performance reduce manual tasks and ensure staff records are accurate, secure, and compliant.",
         images: [hrOperations],
       },
     ],
@@ -7150,9 +7150,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Maintain complete oversight of employee records, leave, and training while ensuring security and compliance.",
+            "Maintain complete oversight of employee records, leave, and training while ensuring security and compliance with TesseractApps.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -7161,9 +7161,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For HR Managers",
           description:
-            "Simplify recruitment, onboarding, and performance tracking, and link HR data directly to payroll and rostering.",
+            "Simplify recruitment, onboarding, and performance tracking, linking HR data directly to payroll and rostering.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "HR Manager",
             type: "text",
           },
@@ -7172,9 +7172,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For Roster Managers",
           description:
-            "Access HR insights to manage staff availability, qualifications, and leave for accurate scheduling.",
+            "Access HR insights to manage staff availability, qualifications, and leave for more accurate scheduling.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "Roster Manager",
             type: "text",
           },
@@ -7183,9 +7183,9 @@ export const productsDetailsData = {
           dot: dots.dot4,
           title: "For NDIS Staff",
           description:
-            "Update personal profiles, track leave balances, and monitor training requirements easily.",
+            "Update personal profiles, track leave balances, and monitor training requirements with ease.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -7231,10 +7231,10 @@ export const productsDetailsData = {
       image: tsignNew,
       title: "Approve Documents Securely and Efficiently",
       description:
-        "Digitally sign and manage documents with TesseractApps. Maintain compliance, streamline approvals, and keep accurate audit trails for all critical records.",
+        "Digitally sign and manage documents using TesseractApps. Maintain compliance, streamline approvals, and ensure accurate audit trails for all critical records.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -7244,37 +7244,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Secure Digital Signatures",
           description:
-            "Sign documents electronically with full security. Replace manual signatures while ensuring authenticity and traceability.",
+            "Sign documents electronically with full security to replace manual signatures while ensuring authenticity and traceability.",
         },
         {
           dot: dots.dot2,
           title: "Multi-Level Approvals",
           description:
-            "Set multiple approval levels for different types of documents. Ensure the right people sign at the right stage.",
+            "Set multiple approval levels for different types of documents to ensure the right people sign at the right stage.",
         },
         {
           dot: dots.dot3,
           title: "Compliance and Audit Tracking",
           description:
-            "Maintain full audit trails for all signed documents. Easily demonstrate compliance with organisational policies and regulatory standards.",
+            "Maintain full audit trails for all signed documents, easily demonstrating compliance with organisational policies and regulatory standards.",
         },
         {
           dot: dots.dot4,
           title: "Document Notifications",
           description:
-            "Automatically notify staff and managers when documents require signing. Reduce delays and improve workflow efficiency.",
+            "Automatically notify staff and managers when documents require signing to reduce delays and improve workflow efficiency.",
         },
         {
           dot: dots.dot5,
-          title: "Integration with Repository",
+          title: "Integration with Documents",
           description:
-            "Store signed documents securely in the central repository. Track versions, revisions, and access permissions.",
+            "Store signed documents securely in the central repository, tracking versions, revisions, and access permissions.",
         },
         {
           dot: dots.dot6,
           title: "Reporting and Insights",
           description:
-            "Generate reports on signed documents, pending approvals, and completed workflows. Use data to improve process management.",
+            "Generate reports on signed documents, pending approvals, and completed workflows to use data for improving process management.",
         },
       ],
     },
@@ -7282,7 +7282,7 @@ export const productsDetailsData = {
       {
         title: "Digital Approval",
         description:
-          "TesseractApps T-Sign centralises all digital signatures and approval workflows in one secure platform. Automated notifications, multi-level approvals, and audit-ready records reduce administrative burden, improve compliance, and save time.",
+          "TesseractApps T-Sign centralises digital signatures and approval workflows on one secure platform. Automated notifications, multi-level approvals, and audit-ready records reduce administrative burden, improve compliance, and save time.",
         images: [tsign],
       },
     ],
@@ -7295,7 +7295,7 @@ export const productsDetailsData = {
           description:
             "Maintain oversight of all approvals, track document history, and ensure compliance without manual paperwork.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -7304,9 +7304,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For HR and Roster Managers",
           description:
-            "Streamline approvals for staff onboarding, contracts, and rostering changes efficiently.",
+            "Streamline approvals for staff onboarding, contracts, and rostering changes efficiently using T-Sign.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Roster Manager",
             type: "text",
           },
@@ -7315,9 +7315,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For NDIS Staff",
           description:
-            "Sign care plans, agreements, and mandatory documents digitally. Reduce delays and stay compliant.",
+            "Sign care plans, agreements, and mandatory documents digitally to reduce delays and stay compliant.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -7329,7 +7329,7 @@ export const productsDetailsData = {
       title: "Q&A: T-Sign",
       faqData: [
         {
-          question: "How do I sign documents digitally?",
+          question: "How do I sign Documents digitally?",
           answer:
             "Use T-Sign to apply secure electronic signatures directly within the platform, replacing manual signatures.",
         },
@@ -7344,9 +7344,9 @@ export const productsDetailsData = {
             "All signatures are traceable, and audit logs maintain a full history of approvals, meeting regulatory requirements.",
         },
         {
-          question: "Can I store signed documents securely?",
+          question: "Can I store signed Documents securely?",
           answer:
-            "Yes. Signed documents are saved in the repository with access control, tracking edits and revisions.",
+            "Yes. Signed Documents are saved in the Documents with access control, tracking edits and revisions.",
         },
         {
           question: "Can I get insights into pending and completed approvals?",
@@ -7363,10 +7363,10 @@ export const productsDetailsData = {
       image: clockiN,
       title: "Track Staff Attendance Accurately",
       description:
-        "Record staff start and end times digitally with TesseractApps. Ensure accurate attendance, streamline payroll, and maintain compliance with ease.",
+        "Digitally record staff start and end times with TesseractApps. Ensure accurate attendance, streamline payroll, and easily maintain compliance.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.  ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -7376,37 +7376,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Digital Check-In and Check-Out",
           description:
-            "Staff can clock in and out from mobile or desktop devices. Records are captured in real time for accuracy.",
+            "Staff can clock in and out from mobile or desktop devices, with records captured in real time for accuracy.",
         },
         {
           dot: dots.dot2,
           title: "GPS and Location Tracking",
           description:
-            "Confirm staff location during clock-ins for on-site and remote shifts. Ensure accountability and accurate reporting.",
+            "Confirm staff location during clock-ins for both on-site and remote shifts to ensure accountability and accurate reporting.",
         },
         {
           dot: dots.dot3,
           title: "Integration with Timesheets and Payroll",
           description:
-            "Clock-in data automatically updates timesheets and links to payroll. Reduce manual entry and prevent errors.",
+            "Clock-in data automatically updates timesheets and links to payroll, reducing manual entry and preventing errors.",
         },
         {
           dot: dots.dot4,
           title: "Shift Notifications",
           description:
-            "Receive alerts for missed or late clock-ins and check-outs. Keep managers informed and maintain coverage.",
+            "Receive alerts for missed or late clock-ins and check-outs to keep managers informed and maintain coverage.",
         },
         {
           dot: dots.dot5,
           title: "Compliance Monitoring",
           description:
-            "Track hours worked against staff certifications and qualifications. Ensure shifts are compliant with regulatory standards.",
+            "Track hours worked against staff certifications and qualifications to ensure shifts comply with regulatory standards.",
         },
         {
           dot: dots.dot6,
           title: "Reporting and Insights",
           description:
-            "Generate attendance reports, review late arrivals, and track shift durations. Use dashboards to optimise workforce management.",
+            "Generate attendance reports, track late arrivals, and monitor shift durations. Use dashboards to optimise and streamline workforce management.",
         },
       ],
     },
@@ -7414,7 +7414,7 @@ export const productsDetailsData = {
       {
         title: "Attendance and Efficiency",
         description:
-          "TesseractApps Clock In & Clock Out centralises attendance tracking across all teams. Real-time data, automated alerts, and seamless integration with timesheets and payroll reduce errors, improve accountability, and simplify workforce management. ",
+          "TesseractApps Clock In & Clock Out centralises attendance tracking for all teams. Real-time data, automated alerts, and seamless integration with timesheets and payroll reduce errors, improve accountability, and simplify workforce management. ",
         images: [accessControl],
       },
     ],
@@ -7425,9 +7425,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Monitor staff attendance in real time, ensure accurate records, and maintain compliance with minimal effort.",
+            "Monitor staff attendance in real time, ensure accurate records, and maintain compliance with ease.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -7438,7 +7438,7 @@ export const productsDetailsData = {
           description:
             "Track shift start and end times, receive alerts for anomalies, and ensure adequate coverage.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "Roster Manager",
             type: "text",
           },
@@ -7449,7 +7449,7 @@ export const productsDetailsData = {
           description:
             "Integrate attendance data with leave, timesheets, and payroll to maintain accurate employee records.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "HR Manager",
             type: "text",
           },
@@ -7458,9 +7458,9 @@ export const productsDetailsData = {
           dot: dots.dot4,
           title: "For NDIS Staff",
           description:
-            "Clock in and out easily, receive shift notifications, and ensure your hours are recorded accurately.",
+            "Easily clock in and out, receive shift notifications, and ensure your hours are accurately recorded.",
           cta: {
-            title: "For more information",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -7506,10 +7506,10 @@ export const productsDetailsData = {
       image: participantNew,
       title: "Manage Participants Efficiently",
       description:
-        "Track participant information, support plans, and service delivery with TesseractApps. Ensure accurate records, improve care quality, and maintain compliance.",
+        "Track participant information, support plans, and service delivery using TesseractApps. Ensure accurate records, improve care quality, and maintain compliance with ease.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -7519,37 +7519,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Participant Profiles",
           description:
-            "Create and update participant records with detailed personal, health, and support information. Keep all data organised and accessible.",
+            "Create and update participant records with detailed personal, health, and support information to keep data organised and accessible.",
         },
         {
           dot: dots.dot2,
           title: "Care Plans and Goals",
           description:
-            "Manage support plans, goals, and progress notes. Track participant outcomes and ensure care aligns with their needs.",
+            "Manage support plans, goals, and progress notes, tracking participant outcomes to ensure care aligns with their needs.",
         },
         {
           dot: dots.dot3,
           title: "Session Tracking",
           description:
-            "Record visits, attendance, and services provided. Verify hours for funding, reporting, and audit purposes.",
+            "Record visits, attendance, and services provided, verifying hours for funding, reporting, and audit purposes.",
         },
         {
           dot: dots.dot4,
           title: "Compliance Checks",
           description:
-            "Monitor mandatory requirements, funding limits, and approvals. Ensure all services meet regulatory and organisational standards.",
+            "Monitor mandatory requirements, funding limits, and approvals to ensure all services meet regulatory and organisational standards.",
         },
         {
           dot: dots.dot5,
           title: "Reporting and Insights",
           description:
-            "Generate reports on participant progress, session frequency, and service utilisation. Use dashboards to monitor outcomes and optimise care.",
+            "Generate reports on participant progress, session frequency, and service utilisation, using dashboards to monitor outcomes and optimise care.",
         },
         {
           dot: dots.dot6,
           title: "Document Management",
           description:
-            "Attach and manage care plans, agreements, and other important documents securely. Ensure quick access and audit-ready records.",
+            "Attach and manage care plans, agreements, and other important documents securely, ensuring quick access and audit-ready records.",
         },
       ],
     },
@@ -7557,7 +7557,7 @@ export const productsDetailsData = {
       {
         title: "Participant Management",
         description:
-          "TesseractApps Participant Management centralises all participant information, care plans, and session tracking in one platform. Automated alerts, secure storage, and reporting tools reduce errors, improve care quality, and maintain compliance with NDIS standards.",
+          "TesseractApps Participant Management centralises participant information, care plans, and session tracking on one platform. Automated alerts, secure storage, and reporting tools reduce errors, improve care quality, and maintain compliance with NDIS standards.",
         images: [participantManagement],
       },
     ],
@@ -7568,9 +7568,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For NDIS Staff",
           description:
-            "Access participant details, update session notes, and track care plans easily. Stay informed about the participants you support.",
+            "Access participant details, update session notes, and track care plans easily to stay informed about the participants you support.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -7579,9 +7579,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For Administrators and Managers",
           description:
-            "Monitor service delivery, compliance, and participant outcomes. Ensure staff are providing quality care efficiently.",
+            "Monitor service delivery, compliance, and participant outcomes to ensure staff are providing quality care efficiently.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -7590,9 +7590,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For HR and Payroll Teams",
           description:
-            "Verify staff hours against participant sessions for accurate payroll and funding reporting.",
+            "Verify staff hours against participant sessions for accurate payroll and funding reporting purposes.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "HR Manager",
             type: "text",
           },
@@ -7638,10 +7638,10 @@ export const productsDetailsData = {
       image: incidentNew,
       title: "Record and Resolve Incidents Efficiently",
       description:
-        "Track, manage, and report incidents with TesseractApps. Ensure staff and participant safety, maintain compliance, and keep accurate records in real time.",
+        "Track, manage, and report incidents using TesseractApps. Ensure staff and participant safety, maintain compliance, and keep accurate real-time records.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -7651,37 +7651,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Incident Reporting",
           description:
-            "Log incidents quickly with detailed information about what happened, when, and who was involved. Capture all necessary details for accurate records.",
+            "Log incidents quickly with detailed information about what happened, when, and who was involved, capturing all necessary details for accurate records.",
         },
         {
           dot: dots.dot2,
           title: "Investigation and Follow-Up",
           description:
-            "Assign tasks, track investigations, and ensure timely resolution. Keep all parties informed and accountable.",
+            "Assign tasks, track investigations, and ensure timely resolution, keeping all parties informed and accountable.",
         },
         {
           dot: dots.dot3,
           title: "Compliance and Audit Tracking",
           description:
-            "Ensure all incidents are managed according to organisational and NDIS regulatory requirements. Maintain audit-ready documentation.",
+            "Ensure all incidents are managed according to organisational and NDIS regulatory requirements, maintaining audit-ready documentation.",
         },
         {
           dot: dots.dot4,
           title: "Notifications and Alerts",
           description:
-            "Automatically notify managers, supervisors, or relevant staff about new incidents. Ensure prompt attention and response.",
+            "Automatically notify managers, supervisors, or relevant staff about new incidents to ensure prompt attention and response.",
         },
         {
           dot: dots.dot5,
           title: "Reporting and Insights",
           description:
-            "Generate reports on incident trends, types, and resolutions. Use dashboards to identify patterns and improve risk management.",
+            "Generate reports on incident trends, types, and resolutions, using dashboards to identify patterns and improve risk management.",
         },
         {
           dot: dots.dot6,
           title: "Document Management",
           description:
-            "Attach photos, reports, or supporting documentation to each incident record. Keep files secure and accessible for audits.",
+            "Attach photos, reports, or supporting documentation to each incident record, keeping files secure and accessible for audits.",
         },
       ],
     },
@@ -7689,7 +7689,7 @@ export const productsDetailsData = {
       {
         title: "Incident Management",
         description:
-          "TesseractApps Incident Management centralises incident reporting, investigation, and resolution. Automated alerts, secure document storage, and reporting tools reduce administrative burden, improve safety outcomes, and ensure regulatory compliance.",
+          "TesseractApps Incident Management centralises incident reporting, investigations, and resolutions. Automated alerts, secure document storage, and reporting tools reduce administrative burden, improve safety outcomes, and ensure regulatory compliance.",
         images: [incidentManagement],
       },
     ],
@@ -7700,9 +7700,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Maintain oversight of all incidents, track resolution status, and ensure compliance with policies and regulations. ",
+            "Maintain oversight of all incidents, track resolution status, and ensure compliance with policies and regulations efficiently. ",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -7711,9 +7711,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For Roster Managers and HR",
           description:
-            "Quickly access incident records to inform staffing, training, and workforce planning decisions.",
+            "Quickly access incident records to inform staffing, training, and workforce planning decisions effectively.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Roster Manager",
             type: "text",
           },
@@ -7722,9 +7722,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For NDIS Staff",
           description:
-            "Report incidents easily, track follow-ups, and stay informed about resolution progress.",
+            "Report incidents easily, track follow-ups, and stay informed about the progress of resolutions.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -7764,16 +7764,16 @@ export const productsDetailsData = {
     },
   },
 
-  Repository: {
-    page: "Repository (Document Hub)",
+  Documents: {
+    page: "Documents",
     hero: {
       image: repoNew,
       title: "Store and Manage Documents Securely",
       description:
-        "Centralise all your documents with TesseractApps. Keep care plans, agreements, policies, and records organised, secure, and easily accessible.",
+        "Centralise all your Documents using TesseractApps. Keep care plans, agreements, policies, and records organised, secure, and easily accessible at all times.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -7783,37 +7783,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Centralised Document Storage",
           description:
-            "Store all organisational documents in one secure location. Reduce clutter and ensure quick access when needed.",
+            "Store all organisational documents in one secure location to reduce clutter and ensure quick access when needed.",
         },
         {
           dot: dots.dot2,
           title: "Version Control and Revisions",
           description:
-            "Track edits, updates, and revisions for every document. Maintain a full history of changes to ensure accuracy and accountability.",
+            "Track edits, updates, and revisions for every document, maintaining a full history of changes to ensure accuracy and accountability.",
         },
         {
           dot: dots.dot3,
           title: "Access Control",
           description:
-            "Assign permissions to individuals or groups. Ensure only authorised staff can view or edit sensitive documents.",
+            "Assign permissions to individuals or groups to ensure only authorised staff can view or edit sensitive documents.",
         },
         {
           dot: dots.dot4,
           title: "Compliance and Audit Trails",
           description:
-            "Maintain records in line with regulatory standards. Track who accessed or modified documents to stay audit-ready.",
+            "Maintain records in line with regulatory standards, tracking who accessed or modified documents to stay audit-ready.",
         },
         {
           dot: dots.dot5,
           title: "Integration with Other Modules",
           description:
-            "Link documents to rostering, participant management, payroll, HR, and T-Sign workflows. Keep all related records connected.",
+            "Link documents to rostering, participant management, payroll, HR, and T-Sign workflows to keep all related records connected.",
         },
         {
           dot: dots.dot6,
           title: "Search and Retrieval",
           description:
-            "Quickly search and retrieve documents using filters and keywords. Reduce time spent hunting for files and improve workflow efficiency.",
+            "Quickly search and retrieve documents using filters and keywords to reduce time spent hunting for files and improve workflow efficiency.",
         },
       ],
     },
@@ -7821,20 +7821,20 @@ export const productsDetailsData = {
       {
         title: "Document Management",
         description:
-          "TesseractApps Repository centralises all documents in a secure, organised hub. Role-based access, version tracking, and integration with workflows improve efficiency, accountability, and regulatory compliance.",
-        images: [repository],
+          "TesseractApps Documents hub centralises all documents in a secure, organised hub for easy access. Role-based access, version tracking, and integration with workflows improve efficiency, accountability, and regulatory compliance.",
+        images: [Documents],
       },
     ],
     section4: {
-      title: "How Repository Helps Your Team",
+      title: "How Documents Helps Your Team",
       points: [
         {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Maintain control over all organisational documents, monitor access, and ensure compliance with ease. ",
+            "Maintain control over all organisational documents, monitor access, and ensure compliance easily. ",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -7843,9 +7843,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For HR and Roster Managers",
           description:
-            "Store contracts, care schedules, and staff records securely. Access files when needed to support operational decisions.",
+            "Store contracts, care schedules, and staff records securely, accessing files when needed to support operational decisions.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Roster Manager",
             type: "text",
           },
@@ -7854,9 +7854,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For NDIS Staff",
           description:
-            "Access care plans, agreements, and mandatory documents relevant to your role. Update files where permitted and stay informed.",
+            "Access care plans, agreements, and mandatory documents relevant to your role, updating files where permitted and staying informed.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -7865,12 +7865,12 @@ export const productsDetailsData = {
     },
 
     faqSection: {
-      title: "Q&A: Repository (Document Hub)",
+      title: "Q&A: documents",
       faqData: [
         {
           question: "How can I store documents securely?",
           answer:
-            "All files are saved in a secure, central repository with role-based access permissions.",
+            "All files are saved in a secure, central documents with role-based access permissions.",
         },
         {
           question: "Can I track changes and revisions?",
@@ -7903,10 +7903,10 @@ export const productsDetailsData = {
       image: rollbased,
       title: "Monitor Your Operations in One Place",
       description:
-        "Access real-time insights and manage workflows efficiently with TesseractApps. Track performance, compliance, and tasks specific to each role, all from a single, secure dashboard.",
+        "Access real-time insights and manage workflows efficiently using TesseractApps. Track performance, compliance, and tasks specific to each role, all from one secure, centralised dashboard.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -7916,37 +7916,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Customised Views by Role",
           description:
-            "Display relevant metrics and tasks for each role. Administrators, managers, and staff see only the information they need to make decisions.",
+            "Display relevant metrics and tasks for each role, ensuring that administrators, managers, and staff see only the information they need to make decisions.",
         },
         {
           dot: dots.dot2,
           title: "Real-Time Monitoring",
           description:
-            "Track staff activity, shift completion, and operational workflows instantly. Ensure proper coverage and task progress without delay.",
+            "Track staff activity, shift completion, and operational workflows instantly to ensure proper coverage and task progress without delay.",
         },
         {
           dot: dots.dot3,
           title: "Compliance and Audit Tracking",
           description:
-            "View upcoming certifications, trainings, and regulatory requirements. Receive alerts for deadlines and maintain audit-ready records.",
+            "View upcoming certifications, training, and regulatory requirements, receiving alerts for deadlines and maintaining audit-ready records.",
         },
         {
           dot: dots.dot4,
           title: "Task Management",
           description:
-            "Assign, track, and monitor tasks across teams. Keep workflows organised and ensure accountability.",
+            "Assign, track, and monitor tasks across teams to keep workflows organised and ensure accountability.",
         },
         {
           dot: dots.dot5,
           title: "Performance Analytics",
           description:
-            "Access reports and insights on staff performance, service delivery, and operational efficiency. Use data to improve decision-making and resource allocation.",
+            "Access reports and insights on staff performance, service delivery, and operational efficiency, using data to improve decision-making and resource allocation.",
         },
         {
           dot: dots.dot6,
           title: "Integration with Other Modules",
           description:
-            "Connect rostering, timesheets, HR, and payroll data for a complete operational overview. Make informed decisions based on accurate, consolidated information.",
+            "Connect rostering, timesheets, HR, and payroll data for a complete operational overview, enabling informed decisions based on accurate, consolidated information.",
         },
       ],
     },
@@ -7957,9 +7957,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Monitor all operations, compliance, and performance metrics from one central dashboard. Maintain visibility and control effortlessly.",
+            "Monitor all operations, compliance, and performance metrics from a central dashboard, maintaining visibility and control effortlessly.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -7968,9 +7968,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For Roster Managers",
           description:
-            "Track shift completion, attendance, and workforce allocation in real time. Adjust schedules and resources quickly.",
+            "Track shift completion, attendance, and workforce allocation in real time, adjusting schedules and resources quickly.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Roster Manager",
             type: "text",
           },
@@ -7979,9 +7979,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For HR Managers",
           description:
-            "View leave, training, and performance metrics across teams. Make data-driven decisions about staff development and workforce planning.",
+            "View leave, training, and performance metrics across teams to make data-driven decisions about staff development and workforce planning.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "HR Manager",
             type: "text",
           },
@@ -7990,9 +7990,9 @@ export const productsDetailsData = {
           dot: dots.dot4,
           title: "For Accountants",
           description:
-            "Access financial and payroll insights linked to operational activity for accurate reporting.",
+            "Access financial and payroll insights linked to operational activity for accurate, comprehensive reporting.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Accountant",
             type: "text",
           },
@@ -8001,9 +8001,9 @@ export const productsDetailsData = {
           dot: dots.dot5,
           title: "For NDIS Staff",
           description:
-            "View tasks, schedules, and progress updates relevant to your role. Stay organised and informed.",
+            "View tasks, schedules, and progress updates relevant to your role to stay organised and informed.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -8014,7 +8014,7 @@ export const productsDetailsData = {
       {
         title: "Insights and Efficiency",
         description:
-          "TesseractApps Role-Based Dashboard consolidates critical operational data in one platform. Customised views, real-time monitoring, and integrated reporting reduce manual tracking, improve transparency, and help your team act quickly on insights.",
+          "TesseractApps Role-Based Dashboard consolidates critical operational data onto one platform. Customised views, real-time monitoring, and integrated reporting reduce manual tracking, improve transparency, and help your team act quickly on insights.",
         images: [roleBasedDashboard],
       },
     ],
@@ -8057,10 +8057,10 @@ export const productsDetailsData = {
       image: chatNew,
       title: "Communicate Safely and Effectively",
       description:
-        "Send messages, share files, and collaborate with your team securely. TesseractApps ChaT keeps communication private, organised, and integrated with your workflows.",
+        "Send messages, share files, and collaborate securely with your team. TesseractApps ChaT keeps communication private, organised, and integrated with your workflows.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -8070,37 +8070,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Real-Time Messaging",
           description:
-            "Send and receive messages instantly. Keep teams connected and informed no matter where they are.",
+            "Send and receive messages instantly to keep teams connected and informed, no matter where they are.",
         },
         {
           dot: dots.dot2,
           title: "File Sharing",
           description:
-            "Share documents, images, and forms safely within the platform. Reduce email dependency and keep records centralised.",
+            "Share documents, images, and forms securely within the platform to reduce email dependency and keep records centralised.",
         },
         {
           dot: dots.dot3,
           title: "Group and Role-Based Chats",
           description:
-            "Create groups for teams, departments, or projects. Control who can participate and see specific conversations.",
+            "Create groups for teams, departments, or projects, and control who can participate and view specific conversations.",
         },
         {
           dot: dots.dot4,
           title: "Integration with Modules",
           description:
-            "Link messages to rostering, HR, participant management, and forms. Keep communication aligned with operational workflows.",
+            "Link messages to rostering, HR, participant management, and forms to keep communication aligned with operational workflows.",
         },
         {
           dot: dots.dot5,
           title: "Notifications and Alerts",
           description:
-            "Receive instant notifications for new messages, shared files, or task updates. Ensure timely responses and accountability.",
+            "Receive instant notifications for new messages, shared files, or task updates to ensure timely responses and accountability.",
         },
         {
           dot: dots.dot6,
           title: "Secure and Compliant",
           description:
-            "All communication is encrypted and stored securely. Maintain privacy, compliance, and audit trails for sensitive information.",
+            "All communication is encrypted and stored securely to maintain privacy, compliance, and audit trails for sensitive information.",
         },
       ],
     },
@@ -8108,7 +8108,7 @@ export const productsDetailsData = {
       {
         title: "Secure Communication",
         description:
-          "TesseractApps ChaT centralises team communication in a secure environment. Real-time messaging, role-based groups, and module integration streamline collaboration, improve response times, and maintain compliance.",
+          "TesseractApps ChaT centralises team communication in a secure, compliant environment. Real-time messaging, role-based groups, and module integration streamline collaboration, improve response times, and maintain compliance.",
         images: [prodChat],
       },
     ],
@@ -8119,9 +8119,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Monitor communication channels, manage group access, and ensure messages comply with organisational policies.",
+            "Monitor communication channels, manage group access, and ensure compliance with organisational policies.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -8130,9 +8130,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For Roster Managers",
           description:
-            "Coordinate shifts, update teams, and resolve operational issues in real time.",
+            "Coordinate shifts, update teams, and resolve operational issues in real-time.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Roster Manager",
             type: "text",
           },
@@ -8141,9 +8141,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For HR Managers",
           description:
-            "Share policy updates, training information, and staff notifications efficiently.",
+            "Share policy updates, training information, and staff notifications efficiently with TesseractApps ChaT.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "HR Manager",
             type: "text",
           },
@@ -8152,9 +8152,9 @@ export const productsDetailsData = {
           dot: dots.dot4,
           title: "For NDIS Staff",
           description:
-            "Communicate with colleagues and supervisors securely. Share files, report updates, and access important announcements quickly.",
+            "Communicate securely with colleagues and supervisors, share files, report updates, and access important announcements quickly.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -8200,10 +8200,10 @@ export const productsDetailsData = {
       image: myProfileNew,
       title: "Manage Your Information Efficiently",
       description:
-        "Keep your personal and work details up to date with TesseractApps. Access schedules, leave balances, certifications, and preferences from a single, secure portal.",
+        "Keep your personal and work details up-to-date with TesseractApps. Access schedules, leave balances, certifications, and preferences through a single, secure portal.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -8213,37 +8213,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Personal Information Management",
           description:
-            "Update your contact details, emergency contacts, and personal preferences easily. Ensure your information is always current.",
+            "Easily update your contact details, emergency contacts, and personal preferences to ensure your information is always current.",
         },
         {
           dot: dots.dot2,
           title: "Leave and Availability",
           description:
-            "Track leave balances, submit leave requests, and update availability. Managers can view and approve requests seamlessly.",
+            "Track leave balances, submit leave requests, and update availability, with managers able to view and approve requests seamlessly.",
         },
         {
           dot: dots.dot3,
           title: "Training and Certifications",
           description:
-            "View completed training, upcoming courses, and mandatory certifications. Stay compliant with all role requirements.",
+            "View completed training, upcoming courses, and mandatory certifications to stay compliant with all role requirements.",
         },
         {
           dot: dots.dot4,
           title: "Shift and Schedule Access",
           description:
-            "Check your upcoming shifts, submit timesheets, and view past attendance records. Stay organised and aware of responsibilities.",
+            "Check your upcoming shifts, submit timesheets, and view past attendance records to stay organised and aware of your responsibilities.",
         },
         {
           dot: dots.dot5,
           title: "Notifications and Alerts",
           description:
-            "Receive reminders for shifts, training, or pending approvals. Stay informed and proactive in managing your tasks.",
+            "Receive reminders for shifts, training, and pending approvals to stay informed and proactive in managing your tasks.",
         },
         {
           dot: dots.dot6,
           title: "Secure and Role-Based Access",
           description:
-            "Access is tailored to your role. Your data is stored securely and only accessible to authorised personnel.",
+            "Access is tailored to your role, with your data stored securely and only accessible by authorised personnel.",
         },
       ],
     },
@@ -8251,7 +8251,7 @@ export const productsDetailsData = {
       {
         title: "Personal Management",
         description:
-          "TesseractApps My Profile provides a secure portal for staff to manage their personal, training, and work-related information. Automated notifications and integration with rostering and HR ensure your details are always current and accurate.",
+          "TesseractApps My Profile provides a secure portal for staff to manage personal, training, and work-related information. Automated notifications and integration with rostering and HR ensure your details are always current and accurate.",
         images: [myProfile],
       },
     ],
@@ -8262,9 +8262,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For NDIS Staff",
           description:
-            "Update personal details, track shifts, and manage training progress independently. Maintain accurate records and reduce administrative follow-ups.",
+            "Update personal details, track shifts, and manage training progress independently to maintain accurate records and reduce administrative follow-ups.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -8273,9 +8273,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For Administrators and Managers",
           description:
-            "View staff profiles, monitor leave, training, and attendance efficiently. Ensure data accuracy and compliance across your organisation.",
+            "View staff profiles, monitor leave, training, and attendance efficiently, ensuring data accuracy and compliance across your organisation.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -8321,10 +8321,10 @@ export const productsDetailsData = {
       image: formsNew,
       title: "Streamline Data Collection and Reporting",
       description:
-        "Create, manage, and submit digital forms with TesseractApps. Capture participant information, staff records, and operational data efficiently and accurately.",
+        "Create, manage, and submit digital forms using TesseractApps. Capture participant information, staff records, and operational data efficiently and accurately with TesseractApps.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -8334,37 +8334,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Custom Form Builder",
           description:
-            "Design forms to match your organisation’s needs. Include fields for text, checkboxes, signatures, and more.",
+            "Design forms to match your organisation’s needs, including fields for text, checkboxes, signatures, and more.",
         },
         {
           dot: dots.dot2,
           title: "Digital Submission",
           description:
-            "Submit forms digitally from mobile or desktop. Reduce paper use and streamline data collection.",
+            "Submit forms digitally from mobile or desktop to reduce paper use and streamline data collection.",
         },
         {
           dot: dots.dot3,
           title: "Integration with Modules",
           description:
-            "Link forms to participant management, HR, rostering, payroll, or compliance workflows. Keep all records connected and up to date.",
+            "Link forms to participant management, HR, rostering, payroll, or compliance workflows, keeping all records connected and up to date.",
         },
         {
           dot: dots.dot4,
           title: "Approval Workflows",
           description:
-            "Set up automated approvals and notifications. Ensure forms are reviewed and processed efficiently.",
+            "Set up automated approvals and notifications to ensure forms are reviewed and processed efficiently.",
         },
         {
           dot: dots.dot5,
           title: "Reporting and Analytics",
           description:
-            "Generate reports from submitted forms. Analyse data for compliance, audits, and operational insights.",
+            "Generate reports from submitted forms and analyse data for compliance, audits, and operational insights.",
         },
         {
           dot: dots.dot6,
           title: "Secure Storage and Access",
           description:
-            "Store all forms in the central repository with role-based access. Ensure sensitive data is protected and easily retrievable.",
+            "Store all forms in a central repository with role-based access to ensure sensitive data is protected and easily retrievable.",
         },
       ],
     },
@@ -8372,7 +8372,7 @@ export const productsDetailsData = {
       {
         title: "Form Management",
         description:
-          "TesseractApps Forms centralises all data collection in one platform. Automated workflows, integration with modules, and secure storage reduce administrative work, improve accuracy, and support compliance.",
+          "TesseractApps Forms centralises data collection in one platform. Automated workflows, integration with modules, and secure storage reduce administrative work, improve accuracy, and support compliance.",
         images: [prodForms],
       },
     ],
@@ -8385,7 +8385,7 @@ export const productsDetailsData = {
           description:
             "Monitor all form submissions, track approvals, and ensure compliance with organisational standards.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -8394,9 +8394,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For HR Managers",
           description:
-            "Collect staff information, manage onboarding, and track training through custom forms.",
+            "Collect staff information, manage onboarding, and track training using custom forms.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "HR Manager",
             type: "text",
           },
@@ -8405,9 +8405,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For Roster Managers",
           description:
-            "Capture shift updates, leave requests, and operational data efficiently.",
+            "Capture shift updates, leave requests, and operational data efficiently using custom forms.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Roster Manager",
             type: "text",
           },
@@ -8416,9 +8416,9 @@ export const productsDetailsData = {
           dot: dots.dot4,
           title: "For NDIS Staff",
           description:
-            "Submit care plans, incident reports, and participant updates digitally. Reduce errors and improve communication.",
+            "Submit care plans, incident reports, and participant updates digitally to reduce errors and improve communication.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -8452,7 +8452,7 @@ export const productsDetailsData = {
         {
           question: "Is data secure?",
           answer:
-            "All forms are stored securely in the repository with role-based access and full audit trails.",
+            "All forms are stored securely in the documents with role-based access and full audit trails.",
         },
       ],
     },
@@ -8464,10 +8464,10 @@ export const productsDetailsData = {
       image: accountingNew,
       title: "Simplify Payroll and Financial Management",
       description:
-        "Manage payroll, track budgets, and process invoices efficiently with TesseractApps. Integrate finance workflows with rostering, HR, and participant management to maintain accuracy and compliance.",
+        "Manage payroll, track budgets, and process invoices efficiently using TesseractApps. Integrate finance workflows with rostering, HR, and participant management to ensure accuracy and compliance.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -8477,37 +8477,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Payroll Processing",
           description:
-            "Process pay runs individually or in bulk. Track hours, leave, and allowances to ensure accurate staff payments.",
+            "Process pay runs individually or in bulk, tracking hours, leave, and allowances to ensure accurate staff payments.",
         },
         {
           dot: dots.dot2,
           title: "Budget and Cost Tracking",
           description:
-            "Monitor participant funding, staff costs, and program budgets. Ensure spending aligns with organisational and regulatory requirements.",
+            "Monitor participant funding, staff costs, and program budgets to ensure spending aligns with organisational and regulatory requirements.",
         },
         {
           dot: dots.dot3,
           title: "Invoice Generation",
           description:
-            "Create invoices for services delivered, link to participant funding, and export to accounting systems. Reduce errors and save time.",
+            "Create invoices for services delivered, link them to participant funding, and export to accounting systems to reduce errors and save time.",
         },
         {
           dot: dots.dot4,
           title: "Bank Integration",
           description:
-            "Connect payroll and invoicing to live bank feeds for seamless reconciliation and reporting.",
+            "Connect payroll and invoicing to live bank feeds for smooth reconciliation and reporting.",
         },
         {
           dot: dots.dot5,
           title: "Compliance Management",
           description:
-            "Ensure all financial processes meet NDIS and organisational compliance standards. Maintain audit-ready records for every transaction.",
+            "Ensure all financial processes meet NDIS and organisational compliance standards, maintaining audit-ready records for every transaction.",
         },
         {
           dot: dots.dot6,
           title: "Reporting and Insights",
           description:
-            "Generate financial reports on payroll, budgets, and service funding. Use dashboards for real-time insights and informed decision-making.",
+            "Generate financial reports on payroll, budgets, and service funding, using dashboards for real-time insights and informed decision-making.",
         },
       ],
     },
@@ -8515,7 +8515,7 @@ export const productsDetailsData = {
       {
         title: "Financial Management",
         description:
-          "TesseractApps Accounting centralises payroll, budgeting, and invoicing in one platform. Automated calculations, bank integrations, and compliance tracking reduce errors, save time, and provide full visibility of financial operations.",
+          "TesseractApps Accounting centralises payroll, budgeting, and invoicing on one platform. Automated calculations, bank integrations, and compliance tracking reduce errors, save time, and provide full visibility of financial operations.",
         images: [accounting],
       },
     ],
@@ -8526,9 +8526,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Monitor overall financial health, approve payroll, and maintain compliance with one central platform.",
+            "Monitor overall financial health, approve payroll, and maintain compliance using one central platform.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -8537,9 +8537,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For Accountants",
           description:
-            "Track costs, reconcile accounts, and generate reports efficiently. Reduce errors and save time on manual calculations.",
+            "Track costs, reconcile accounts, and generate reports efficiently to reduce errors and save time on manual calculations.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Accountant",
             type: "text",
           },
@@ -8548,9 +8548,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For HR Managers and Roster Managers",
           description:
-            "Link staff hours and attendance to payroll for accurate payments and budget management.",
+            "Link staff hours and attendance to payroll for accurate payments and effective budget management.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "HR Manager",
             type: "text",
           },
@@ -8559,9 +8559,9 @@ export const productsDetailsData = {
           dot: dots.dot4,
           title: "For NDIS Staff",
           description:
-            "View payslips, track approved hours, and ensure submitted timesheets are processed correctly.",
+            "View payslips, track approved hours, and ensure submitted timesheets are processed accurately.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -8606,10 +8606,10 @@ export const productsDetailsData = {
       image: TLEARNINGNEW,
       title: "Deliver Role-Based Training with Ease",
       description:
-        "Provide staff with accessible, personalised training through TesseractApps. Track progress, ensure compliance, and support professional development across your organisation.",
+        "Provide staff with accessible, personalised training using TesseractApps. Track progress, ensure compliance, and support professional development across your organisation efficiently.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.      ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -8619,37 +8619,37 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Role-Based Courses",
           description:
-            "Assign training based on staff roles, responsibilities, and compliance requirements. Ensure everyone receives the right learning content.",
+            "Assign training based on staff roles, responsibilities, and compliance requirements to ensure everyone receives the right learning content.",
         },
         {
           dot: dots.dot2,
           title: "Mobile-Friendly Learning",
           description:
-            "Access courses and tutorials from mobile devices or desktops. Learn anytime, anywhere without disrupting workflows.",
+            "Access courses and tutorials from mobile devices or desktops to learn anytime, anywhere without disrupting workflows.",
         },
         {
           dot: dots.dot3,
           title: "Interactive Tutorials",
           description:
-            "Engage staff with step-by-step guides, quizzes, and practical exercises to reinforce learning.",
+            "Engage staff with step-by-step guides, quizzes, and practical exercises to reinforce their learning.",
         },
         {
           dot: dots.dot4,
           title: "Compliance Tracking",
           description:
-            "Monitor completion of mandatory training and certifications. Receive automated alerts for upcoming or overdue courses.",
+            "Monitor completion of mandatory training and certifications, receiving automated alerts for upcoming or overdue courses.",
         },
         {
           dot: dots.dot5,
           title: "Progress Reports",
           description:
-            "Generate insights on staff progress, course completion rates, and knowledge gaps. Use reports to guide development and staffing decisions.",
+            "Generate insights on staff progress, course completion rates, and knowledge gaps to guide development and staffing decisions.",
         },
         {
           dot: dots.dot6,
           title: "Integration with Other Modules",
           description:
-            "Link training with HR, rostering, and compliance modules. Ensure training records are accurate and easily auditable.",
+            "Link training with HR, rostering, and compliance modules to ensure training records are accurate and easily auditable.",
         },
       ],
     },
@@ -8657,7 +8657,7 @@ export const productsDetailsData = {
       {
         title: "Learning Management",
         description:
-          "TesseractApps T Learning Hub centralises training across your organisation. Automated assignments, progress tracking, and integrated reporting streamline professional development, ensure compliance, and support continuous improvement.",
+          "TesseractApps T Learning Hub centralises training for your organisation. Automated assignments, progress tracking, and integrated reporting streamline professional development, ensure compliance, and support continuous improvement.",
         images: [tLearingHub],
       },
     ],
@@ -8668,9 +8668,9 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "For Administrators",
           description:
-            "Assign courses, monitor compliance, and maintain training records in one central platform.",
+            "Assign courses, monitor compliance, and maintain training records using one central platform.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "Administrator",
             type: "text",
           },
@@ -8679,9 +8679,9 @@ export const productsDetailsData = {
           dot: dots.dot2,
           title: "For HR Managers",
           description:
-            "Manage onboarding, professional development, and mandatory training efficiently.",
+            "Manage onboarding, professional development, and mandatory training efficiently with T-Sign.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "HR Manager",
             type: "text",
           },
@@ -8690,9 +8690,9 @@ export const productsDetailsData = {
           dot: dots.dot3,
           title: "For NDIS Staff",
           description:
-            "Access personalised learning content, track progress, and stay compliant with role requirements.",
+            "Access personalised learning content, track progress, and stay compliant with role requirements easily.",
           cta: {
-            title: "For more information  ",
+            title: "Learn more",
             navigate: "NDIS Staff",
             type: "text",
           },
@@ -8737,10 +8737,10 @@ export const productsDetailsData = {
       image: salesforce,
       title: "Centralise Participant and Service Data",
       description:
-        "TesseractApps is built on Salesforce, giving you a secure, scalable, and reliable platform to manage staff, participants, and operations across your organisation.",
+        "TesseractApps is built on Salesforce, providing a secure, scalable, and reliable platform to manage staff, participants, and operations across your organisation.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.  ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -8750,31 +8750,31 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Secure and Scalable Platform",
           description:
-            "Manage your participant, staff, and service data in one system. Salesforce ensures enterprise-grade security and supports organisational growth without disruption.",
+            "Manage your participant, staff, and service data in one system, with Salesforce ensuring enterprise-grade security and supporting organisational growth without disruption.",
         },
         {
           dot: dots.dot2,
           title: "Centralised Data Management",
           description:
-            "Store all participant records, staff profiles, and service information in one location. Reduce duplication, improve accuracy, and access data instantly when needed.",
+            "Store all participant records, staff profiles, and service information in one location to reduce duplication, improve accuracy, and access data instantly when needed.",
         },
         {
           dot: dots.dot3,
           title: "Real-Time Insights",
           description:
-            "Dashboards and reporting tools give real-time visibility into participant engagement, staff performance, and operational metrics. Make informed decisions quickly.",
+            "Dashboards and reporting tools provide real-time visibility into participant engagement, staff performance, and operational metrics, helping you make informed decisions quickly.",
         },
         {
           dot: dots.dot4,
           title: "Automation and Workflow",
           description:
-            "Automate tasks such as approvals, notifications, and compliance tracking. Reduce manual work and ensure consistent processes across your organisation.",
+            "Automate tasks such as approvals, notifications, and compliance tracking to reduce manual work and ensure consistent processes across your organisation.",
         },
         {
           dot: dots.dot5,
           title: "Seamless Integration",
           description:
-            "Connect TesseractApps with other Salesforce apps and third-party systems. Maintain a single source of truth for data and workflows across platforms.",
+            "Connect TesseractApps with other Salesforce apps and third-party systems to maintain a single source of truth for data and workflows across platforms.",
         },
       ],
     },
@@ -8786,31 +8786,31 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Participant Management",
           description:
-            "Track participant details, goals, and services with integrated Salesforce data.",
+            "Track participant details, goals, and services using integrated Salesforce data.",
         },
         {
           dot: dots.dot2,
           title: "Staff Management",
           description:
-            "Maintain profiles, qualifications, and training records in one place.",
+            "Maintain profiles, qualifications, and training records in a central location.",
         },
         {
           dot: dots.dot3,
           title: "Service Tracking",
           description:
-            "Monitor service delivery, session attendance, and participant progress efficiently.",
+            "Monitor service delivery, session attendance, and participant progress effectively.",
         },
         {
           dot: dots.dot4,
           title: "Reporting and Analytics",
           description:
-            "Generate customised reports and dashboards to track performance and outcomes.",
+            "Generate customised reports and dashboards to track performance and outcomes accurately.",
         },
         {
           dot: dots.dot5,
           title: "Compliance and Audit Readiness",
           description:
-            "Maintain regulatory compliance with automated alerts, digital approvals, and secure data storage.",
+            "Maintain regulatory compliance through automated alerts, digital approvals, and secure data storage.",
         },
       ],
     },
@@ -8852,10 +8852,10 @@ export const productsDetailsData = {
       image: accounting,
       title: "Simplify Payroll and Invoicing",
       description:
-        "TesseractApps integrates with Xero to provide accurate, secure, and efficient payroll and financial management for your organisation.",
+        "TesseractApps integrates with Xero to offer accurate, secure, and efficient payroll and financial management for your organisation.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required.  ",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -8865,31 +8865,31 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Automated Payroll Processing",
           description:
-            "Sync timesheets and roster data with Xero to calculate staff pay accurately. Reduce manual entry and minimise errors.",
+            "Sync timesheets and roster data with Xero to calculate staff pay accurately, reducing manual entry and minimising errors.",
         },
         {
           dot: dots.dot2,
           title: "Accurate Invoicing",
           description:
-            "Generate invoices automatically and export them to Xero. Track payments, reconcile accounts, and manage participant budgets efficiently.",
+            "Generate invoices automatically and export them to Xero, tracking payments, reconciling accounts, and managing participant budgets efficiently.",
         },
         {
           dot: dots.dot3,
           title: "Real-Time Financial Insights",
           description:
-            "Dashboards provide instant visibility into payroll expenses, cash flow, and operational costs. Make informed decisions quickly.",
+            "Dashboards provide instant visibility into payroll expenses, cash flow, and operational costs to help you make informed decisions quickly.",
         },
         {
           dot: dots.dot4,
           title: "Compliance and Reporting",
           description:
-            "Maintain compliance with financial regulations. Generate audit-ready reports, track payroll changes, and keep complete records for accountability.",
+            "Maintain compliance with financial regulations by generating audit-ready reports, tracking payroll changes, and keeping complete records for accountability.",
         },
         {
           dot: dots.dot5,
           title: "Seamless Integration",
           description:
-            "Connect TesseractApps with Xero to maintain a single source of truth for financial data. Synchronise updates automatically and reduce administrative work.",
+            "Connect TesseractApps with Xero to maintain a single source of truth for financial data, synchronising updates automatically to reduce administrative work.",
         },
       ],
     },
@@ -8901,31 +8901,31 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Payroll Automation",
           description:
-            "Process pay runs, leave, allowances, and deductions directly from TesseractApps to Xero.",
+            "Process pay runs, leave, allowances, and deductions directly from TesseractApps to Xero efficiently.",
         },
         {
           dot: dots.dot2,
           title: "Invoice Management",
           description:
-            "Create and export invoices for funded services or clients. Track payment status and reconcile with accounting records.",
+            "Create and export invoices for funded services or clients, tracking payment status and reconciling with accounting records.",
         },
         {
           dot: dots.dot3,
           title: "Financial Reporting",
           description:
-            "Generate reports on staff costs, participant budgets, and operational expenditure for review or audits.",
+            "Generate reports on staff costs, participant budgets, and operational expenditure for reviews or audits.",
         },
         {
           dot: dots.dot4,
           title: "Budget Tracking",
           description:
-            "Monitor participant funding, service costs, and overall budgets. Receive alerts for overages or discrepancies.",
+            "Monitor participant funding, service costs, and overall budgets, receiving alerts for overages or discrepancies.",
         },
         {
           dot: dots.dot5,
           title: "Audit Readiness",
           description:
-            "Maintain complete financial records with secure storage, approval workflows, and traceable changes.",
+            "Maintain complete financial records with secure storage, approval workflows, and traceable changes for full accountability.",
         },
       ],
     },
@@ -8967,10 +8967,10 @@ export const productsDetailsData = {
       image: wyzed,
       title: "Streamline Training and Learning",
       description:
-        "TesseractApps integrates with Wyzed to deliver role-based training, track progress, and maintain compliance across your organisation.",
+        "TesseractApps integrates with Wyzed to provide role-based training, track progress, and maintain compliance across your organisation.",
       cta: {
         buttons: [{ title: "Try It Free", navigate: "Signup" }],
-        conclusion: "No credit card is required. Free onboarding included",
+        conclusion: "No credit card is required.",
       },
     },
     section2: {
@@ -8980,31 +8980,31 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Role-Based Training",
           description:
-            "Assign courses and learning paths to staff based on roles. Ensure everyone receives relevant training and skills development.",
+            "Assign courses and learning paths to staff based on their roles, ensuring everyone receives relevant training and skills development.",
         },
         {
           dot: dots.dot2,
           title: "Progress Tracking",
           description:
-            "Monitor staff training completion in real time. Identify gaps and provide targeted support to improve performance.",
+            "Monitor staff training completion in real-time, identifying gaps and providing targeted support to improve performance.",
         },
         {
           dot: dots.dot3,
           title: "Compliance and Audit Readiness",
           description:
-            "Track mandatory training for regulatory compliance. Generate reports to demonstrate audit readiness and maintain records securely.",
+            "Track mandatory training for regulatory compliance, generating reports to demonstrate audit readiness and securely maintaining records.",
         },
         {
           dot: dots.dot4,
           title: "Centralised Learning Hub",
           description:
-            "Deliver training through a single platform. Staff access courses anytime, on desktop or mobile, ensuring flexibility and engagement.",
+            "Deliver training through a single platform, allowing staff to access courses anytime, on desktop or mobile, ensuring flexibility and engagement.",
         },
         {
           dot: dots.dot5,
           title: "Seamless Integration",
           description:
-            "Connect TesseractApps with Wyzed to synchronise staff profiles, roles, and training records automatically. Reduce administrative work and ensure accurate data.",
+            "Connect TesseractApps with Wyzed to synchronise staff profiles, roles, and training records automatically, reducing administrative work and ensuring accurate data.",
         },
       ],
     },
@@ -9016,31 +9016,31 @@ export const productsDetailsData = {
           dot: dots.dot1,
           title: "Course Management",
           description:
-            "Create, assign, and manage role-specific training courses.",
+            "Create, assign, and manage training courses specific to each role.",
         },
         {
           dot: dots.dot2,
           title: "Progress Reporting",
           description:
-            "Track completion, assessment results, and certifications for all staff.",
+            "Track completion, assessment results, and certifications for every staff member.",
         },
         {
           dot: dots.dot3,
           title: "Compliance Tracking",
           description:
-            "Monitor mandatory training and generate reports for audits.",
+            "Monitor mandatory training, generating reports for audits.",
         },
         {
           dot: dots.dot4,
           title: "Mobile-Friendly Learning",
           description:
-            "Allow staff to access training anytime, anywhere, on desktop or mobile devices.",
+            "Allow staff to access training anytime, anywhere, on desktop or mobile devices for added convenience.",
         },
         {
           dot: dots.dot5,
           title: "Automated Notifications",
           description:
-            "Send reminders for upcoming or overdue training to ensure compliance.",
+            "Send reminders for upcoming or overdue training, ensuring compliance.",
         },
       ],
     },
@@ -9675,9 +9675,8 @@ export const signupFormData = [
       type: "select",
       options: [
         { name: "NDIS Provider", value: "NDIS Provider" },
-        { name: "Aged Care Service", value: "Aged Care Service" },
+        { name: "Aged Care", value: "Aged Care" },
         { name: "Childcare", value: "Childcare" },
-        { name: "Allied Health", value: "Allied Health" },
         { name: "Allied Health", value: "Allied Health" },
         { name: "Other", value: "Other" },
       ],
@@ -9734,4 +9733,3 @@ export const signupFormData = [
     },
   ],
 ];
-

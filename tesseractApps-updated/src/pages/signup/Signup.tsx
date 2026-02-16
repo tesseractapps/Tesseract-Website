@@ -4,11 +4,10 @@ import closeIcon from "../../assets/close.webp";
 import { useEffect, useState } from "react";
 import Alert from "../../components/alert/Alert";
 import { sendEmail, sendTextEmail } from "../../services/AppService";
-// import logo_small from "../../assets/tesseract_logo_small.webp";
+import logo_small from "../../assets/popup-logo.webp";
 // import signinBackground from "../../assets/Signin-background.webp";
 import {
   Box,
-  Button,
   Dialog,
   Step,
   StepLabel,
@@ -412,20 +411,10 @@ const Signup = () => {
       fullScreen
       slots={{ transition: Slide }}
       slotProps={{ transition: { direction: "up" } }}
-      sx={{ margin: "auto", maxWidth: "1920px" }}
+      sx={{ '& .MuiDialog-paper': { padding: 0, margin: 0, overflow: 'hidden' } }}
     >
-      {/* <div id="dialog-header">
-        <div id="navbar-logo">
-          <img src={logo_small} alt="tesseract logo" />
-          TesseractApps
-        </div>
-        <img
-          src={closeIcon}
-          alt="close icon"
-          id="dialog-close-icon"
-          onClick={() => handleDialog(false)}
-        />
-      </div> */}
+      <Alert setAlertData={setAlertData} alertData={alertData} />
+
       <img
         src={closeIcon}
         alt="close icon"
@@ -440,17 +429,25 @@ const Signup = () => {
           }, 100);
         }}
       />
+
       <div id="signup-container">
-        <Alert setAlertData={setAlertData} alertData={alertData} />
-        {/* <div id="signup-image-container">
-          <span id="signup-image-text">
-            We build simple, so you can deliver smart.
-          </span>
-          <img src={signupImage} alt="signupImage" id="signup-image" />
-        </div> */}
-        <div id="signup-image-container"></div>
+
+        {/* Left Panel */}
+        <div id="signup-text-section">
+          {/* Reuse the small logo from top of file imports if available, otherwise just text/structure */}
+          <div id="signup-navbar-logo">
+            <img src={logo_small} alt="tesseract logo" width={200} />
+          </div>
+          <div id="signup-text">Start your free trial</div>
+          <div id="signup-subText">
+            No credit card required. Get full access to TesseractApps features and see how we can transform your workforce management.
+          </div>
+          {/* Optional: Add a decorative image here if desired, similar to BookADemo */}
+        </div>
+
+        {/* Right Panel */}
         <div id="signup-form-container">
-          <Box sx={{ width: "100%" }}>
+          <Box sx={{ width: "100%", marginBottom: '40px' }}>
             <Stepper activeStep={activeStep} alternativeLabel>
               {steps.map((label, index) => {
                 const stepProps: { completed?: boolean } = {};
@@ -472,155 +469,149 @@ const Signup = () => {
                 );
               })}
             </Stepper>
-            <React.Fragment>
-              <Typography sx={{ mt: 2, mb: 1 }}>
-                Step {activeStep + 1}
-              </Typography>
-              <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
-                {signupFormData[activeStep].map((field) => (
-                  <div key={field.id} className="signup-form-field">
-                    <label className="signup-form-label">
-                      {field.label}
-                      {field.required && (
-                        <span className="required-indicator"> * </span>
-                      )}
-                    </label>
-                    {field.type === "select" ? (
-                      field.options ? (
-                        <div className="select-options-container">
-                          {field.options.map((option) => (
-                            <div
-                              className={
-                                "select-option" +
-                                (field.id != "features"
-                                  ? option.value ===
-                                    signupData[field.id as keyof signupType]
-                                    ? " selected"
-                                    : ""
-                                  : signupData[
-                                      field.id as keyof signupType
-                                    ].includes(option.value)
-                                  ? " selected"
-                                  : "")
-                              }
-                              onClick={() => {
-                                handleClickSelection(field.id, option.value);
-                              }}
-                            >
-                              {option.value}
-                            </div>
-                          ))}
-                          {signupData[field.id as keyof signupType].includes(
-                            "other"
-                          ) ? (
-                            <input
-                              type="text"
-                              className={getInputClass(
-                                field.id as keyof signupType
-                              )}
-                              placeholder="Please specify"
-                              name="otherFeature"
-                              value={
-                                signupData[
-                                  "otherFeature" as keyof signupType
-                                ] || ""
-                              }
-                              onChange={inputChangeHandler}
-                            />
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                      ) : (
-                        <div></div>
-                      )
-                    ) : field.type === "checkbox" ? (
-                      <div className="checkbox-group">
-                        {field.options &&
-                          field.options.map((option) => (
-                            <label
-                              key={option.value}
-                              className="checkbox-label"
-                            >
-                              <input
-                                type="checkbox"
-                                name={field.id}
-                                value={option.value}
-                                checked={
-                                  Array.isArray(
-                                    signupData[field.id as keyof signupType]
-                                  ) &&
-                                  (
-                                    signupData[
-                                      field.id as keyof signupType
-                                    ] as string[]
-                                  ).includes(option.value)
-                                }
-                                onChange={inputChangeHandler}
-                                className="checkbox-input"
-                              />
-                              {option.name}
-                            </label>
-                          ))}
-                      </div>
-                    ) : (
-                      <input
-                        type={field.type || "text"}
-                        name={field.id}
-                        value={signupData[field.id as keyof signupType] || ""}
-                        onChange={inputChangeHandler}
-                        className={getInputClass(field.id as keyof signupType)}
-                        placeholder={"Enter " + field.label}
-                      />
-                    )}
-                    {signupErrors[field.id as keyof signupErrorsTypes] &&
-                      (field.id as keyof signupErrorsTypes) !== "features" && (
-                        <span className="error-text">
-                          {signupErrors[field.id as keyof signupErrorsTypes]}
-                        </span>
-                      )}
-                  </div>
-                ))}
-                <div className="signup-bottom-buttons-container">
-                  <Button
-                    color="inherit"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    sx={{
-                      mr: 1,
-                      color: "var(--color-primary)",
-                      border: "1px solid var(--color-primary)",
-                      borderColor:
-                        activeStep === 0
-                          ? "transparent"
-                          : "var(--color-primary)",
-                    }}
-                  >
-                    Back
-                  </Button>
-                  {isStepOptional(activeStep) && (
-                    <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                      Skip
-                    </Button>
+          </Box>
+
+          <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
+            {signupFormData[activeStep].map((field) => (
+              <div key={field.id} className="signup-form-field">
+                <label className="signup-form-label">
+                  {field.label}
+                  {field.required && (
+                    <span className="required-indicator"> * </span>
                   )}
-                  <Button
-                    onClick={
-                      activeStep === steps.length - 1
-                        ? submitHandler
-                        : handleNext
-                    }
-                    sx={{
-                      backgroundColor: "var(--color-primary)",
-                      color: "white",
-                    }}
-                  >
-                    {activeStep === steps.length - 1
-                      ? "Submit Request"
-                      : "Next"}
-                  </Button>
-                </div>
-              </Box>
-            </React.Fragment>
+                </label>
+                {field.type === "select" ? (
+                  field.options ? (
+                    <div className="select-options-container">
+                      {field.options.map((option) => (
+                        <div
+                          className={
+                            "select-option" +
+                            (field.id != "features"
+                              ? option.value ===
+                                signupData[field.id as keyof signupType]
+                                ? " selected"
+                                : ""
+                              : signupData[
+                                field.id as keyof signupType
+                              ].includes(option.value)
+                                ? " selected"
+                                : "")
+                          }
+                          onClick={() => {
+                            handleClickSelection(field.id, option.value);
+                          }}
+                        >
+                          {option.value}
+                        </div>
+                      ))}
+                      {signupData[field.id as keyof signupType].includes(
+                        "other"
+                      ) ? (
+                        <input
+                          type="text"
+                          className={getInputClass(
+                            field.id as keyof signupType
+                          )}
+                          placeholder="Please specify"
+                          name="otherFeature"
+                          value={
+                            signupData[
+                            "otherFeature" as keyof signupType
+                            ] || ""
+                          }
+                          onChange={inputChangeHandler}
+                          style={{ marginTop: '10px' }}
+                        />
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  ) : (
+                    <div></div>
+                  )
+                ) : field.type === "checkbox" ? (
+                  <div className="checkbox-group">
+                    {field.options &&
+                      field.options.map((option) => (
+                        <label
+                          key={option.value}
+                          className="checkbox-label"
+                        >
+                          <input
+                            type="checkbox"
+                            name={field.id}
+                            value={option.value}
+                            checked={
+                              Array.isArray(
+                                signupData[field.id as keyof signupType]
+                              ) &&
+                              (
+                                signupData[
+                                field.id as keyof signupType
+                                ] as string[]
+                              ).includes(option.value)
+                            }
+                            onChange={inputChangeHandler}
+                            className="checkbox-input"
+                          />
+                          {option.name}
+                        </label>
+                      ))}
+                  </div>
+                ) : (
+                  <input
+                    type={field.type || "text"}
+                    name={field.id}
+                    value={signupData[field.id as keyof signupType] || ""}
+                    onChange={inputChangeHandler}
+                    className={getInputClass(field.id as keyof signupType)}
+                    placeholder={"Enter " + field.label}
+                  />
+                )}
+                {signupErrors[field.id as keyof signupErrorsTypes] &&
+                  (field.id as keyof signupErrorsTypes) !== "features" && (
+                    <span className="error-text">
+                      {signupErrors[field.id as keyof signupErrorsTypes]}
+                    </span>
+                  )}
+              </div>
+            ))}
+
+            <div className="signup-bottom-buttons-container">
+              <div style={{ display: 'flex' }}>
+                <button
+                  className="bookADemo-Button-alt"
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  style={{
+                    marginRight: '15px',
+                    visibility: activeStep === 0 ? "hidden" : "visible",
+                  }}
+                >
+                  Back
+                </button>
+
+                {isStepOptional(activeStep) && (
+                  <button className="bookADemo-Button-alt" onClick={handleSkip} style={{ marginRight: '15px' }}>
+                    Skip
+                  </button>
+                )}
+              </div>
+
+              <button
+                onClick={
+                  activeStep === steps.length - 1
+                    ? submitHandler
+                    : handleNext
+                }
+                className="bookADemo-Button"
+              >
+                {activeStep === steps.length - 1
+                  ? "Submit Request"
+                  : "Next"}
+              </button>
+            </div>
           </Box>
         </div>
       </div>

@@ -4,7 +4,8 @@ import { useMetaTags } from "../../utils/useMetaTags";
 const ReleaseNotes = () => {
   useMetaTags({
     title: "Release Notes | Product Updates & New Features | TesseractApps",
-    description: "Stay updated with TesseractApps latest features and improvements. Browse release notes for all platform updates, bug fixes, and new functionality."
+    description:
+      "Stay updated with TesseractApps latest features and improvements. Browse release notes for all platform updates, bug fixes, and new functionality.",
   });
 
   return (

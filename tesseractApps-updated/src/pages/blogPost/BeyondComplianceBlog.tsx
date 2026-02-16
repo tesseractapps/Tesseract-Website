@@ -7,8 +7,10 @@ import { useMetaTags } from "../../utils/useMetaTags";
 
 const BeyondComplianceBlog = () => {
   useMetaTags({
-    title: "Beyond Compliance: Building Quality Care | NDIS Excellence | TesseractApps",
-    description: "Move beyond basic NDIS compliance to deliver quality care. Strategies for provider excellence, participant outcomes, and operational improvement."
+    title:
+      "Beyond Compliance: Building Quality Care | NDIS Excellence | TesseractApps",
+    description:
+      "Move beyond basic NDIS compliance to deliver quality care. Strategies for provider excellence, participant outcomes, and operational improvement.",
   });
 
   const appNavigate = useAppNavigate();

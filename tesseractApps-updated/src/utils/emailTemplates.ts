@@ -43,7 +43,7 @@ export const newsletterSubscriptionEmailTemplate = {
   email: "sales@tesseractapps.com",
   subject: "Request for newsletter subscription",
   body: (
-    email: string
+    email: string,
   ) => `${email} has requested a subscription for our newsletter.\n
         Email: ${email}\n
         \n
@@ -85,20 +85,36 @@ export const bookDemoEmailTemplate = {
 };
 
 export const bookDemoConfirmationEmailTemplate = {
-  subject: "TesseractApps request for Demo",
-  text: (fullName: string) => `Dear ${fullName},\n
+  subject: "Your TesseractApps Demo Is Confirmed",
+  text: (fullName: string,date: string,time: string) => `Dear ${fullName},\n
       \n
-      Thank you for your request.\n
-        We have received your request for a demo and will be in touch within one business day.
+      Thank you for booking a demo with TesseractApps! We’re excited to show you how our platform can help you save time, reduce audit risks, and simplify your processes
       \n
+      Demo Details:\n
+      •	Date: ${date}\n
+      •	Time: ${time}\n
+      If you have any questions or need to reschedule, simply reply to this email or contact us at:\n
+      •	Phone: 1300 252 808 \n
+      •	Email: sales@tesseractapps.com\n
+      We look forward to demonstrating how TesseractApps can support your organisation.\n
       Best regards,\n
       Team TesseractApps\n
       [Our Website: www.tesseractapps.com.au]\n
       [+61261332819,02 6133 2800] | [sales@tesseractapps.com]`,
-  html: (fullName: string) => `
+  html: (fullName: string,date: string,time: string) => `
     <div>Dear ${fullName},</div>
-    <p>Thank you for your request.</p>
-    <p>We have received your request for a demo and will be in touch within one business day.</p>
+    <p>Thank you for booking a demo with TesseractApps! We’re excited to show you how our platform can help you save time, reduce audit risks, and simplify your processes.</p>
+    <p><strong>Demo Details:</strong></p>
+    <ul>
+      <li><strong>Date: ${date}</strong></li>
+      <li><strong>Time: ${time}</strong></li>
+    </ul>
+    <p>If you have any questions or need to reschedule, simply reply to this email or contact us at:</p>
+    <ul>
+      <li><strong>Phone: 1300 252 808</strong></li>
+      <li><strong>Email: sales@tesseractapps.com</strong></li>
+    </ul>
+    <p>We look forward to demonstrating how TesseractApps can support your organisation.</p>
     <div>
     <p>Warm regards,</p>
         <p>Team TesseractApps</p>
@@ -212,7 +228,7 @@ export const signupConfirmationEmailTemplate = {
   subject: "Thank You for Signing Up! We've Received Your Details",
   text: (firstName: string) => `Hi ${firstName},\n
     \n
-      Thank you for signing up with Tesseract Apps!\n
+      Thank you for signing up with TesseractApps!\n
       We've received your details and our team is currently reviewing them. One of our representatives will get in touch with you soon to guide you through the next steps.\n
       If you have any immediate questions, feel free to reach out to us at [sales@tesseractapps.com] or call us at [+61261332819, 1300 252 808].\n
       We're excited to connect with you soon!\n
@@ -225,7 +241,7 @@ export const signupConfirmationEmailTemplate = {
 
   html: (firstName: string) => `
     <div>Hi ${firstName},</div>
-    <p>Thank you for signing up with Tesseract Apps!</p>
+    <p>Thank you for signing up with TesseractApps!</p>
     <p>We've received your details and our team is currently reviewing them. One of our representatives will get in touch with you soon to guide you through the next steps.
       If you have any immediate questions, feel free to reach out to us at [sales@tesseractapps.com] or call us at [+61261332819, 1300 252 808].
       We're excited to connect with you soon!

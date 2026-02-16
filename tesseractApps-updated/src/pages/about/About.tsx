@@ -20,8 +20,10 @@ import { useMetaTags } from "../../utils/useMetaTags";
 
 const About = () => {
   useMetaTags({
-    title: "About TesseractApps | Our Story, Mission & Team | Australian NDIS Software",
-    description: "Learn about TesseractApps - founded in 2022 to simplify NDIS compliance and care management. Meet our team of technologists and industry experts building the future of workforce technology in Australia."
+    title:
+      "About TesseractApps | Our Story, Mission & Team | Australian NDIS Software",
+    description:
+      "Learn about TesseractApps - founded in 2022 to simplify NDIS compliance and care management. Meet our team of technologists and industry experts building the future of workforce technology in Australia.",
   });
 
   const location = useLocation();
@@ -70,7 +72,7 @@ const About = () => {
     setTimeout(() => {
       if (document.hasFocus()) {
         alert(
-          "If your email client didn't open, please email us at: sales@tesseractapps.com"
+          "If your email client didn't open, please email us at: sales@tesseractapps.com",
         );
       }
     }, 1000);
@@ -90,11 +92,11 @@ const About = () => {
             common frustrations in care management and NDIS compliance. <br />
             <br />
             In 2023, we built our platform with input from real care providers.
-            We tested features in actual workflows, refined processes, and
-            removed unnecessary complexity. <br />
+            We tested features in real workflows, refined processes, and removed
+            unnecessary complexity. <br />
             <br />
-            By mid-2024, T-NDIS beta launched. Providers gave feedback that
-            shaped the system for day-to-day operations. <br />
+            By mid-2024, the T-NDIS beta was launched. Providers provided
+            feedback that shaped the system for day-to-day operations. <br />
             <br />
             In January 2025, TesseractApps became fully operational and ready
             for the market. <br />
@@ -133,7 +135,7 @@ const About = () => {
           businesses beyond limits.
         </div>
         <div id="about-our-team-text">
-          Tesseractapps is where technology meets purpose. From NDIS and ICT
+          TesseractApps is where technology meets purpose. From NDIS and ICT
           applications to HR and Accounting operations, we design, develop, and
           deliver custom solutions that help businesses achieve their goals with
           precision and innovation.
@@ -149,7 +151,7 @@ const About = () => {
             The people behind the platform.
           </div>
           <div id="about-image-overlay-text">
-            Tesseract Apps is led by a diverse team of technologists, product
+            TesseractApps is led by a diverse team of technologists, product
             specialists, and industry experts committed to solving real-world
             challenges. Their collective experience in workforce management,
             compliance, and innovative technology ensures that our solutions

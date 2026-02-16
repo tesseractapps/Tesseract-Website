@@ -4,7 +4,8 @@ import { useMetaTags } from "../../utils/useMetaTags";
 const TermsAndConditions = () => {
   useMetaTags({
     title: "Terms & Conditions | Service Agreement | TesseractApps Australia",
-    description: "TesseractApps terms and conditions for NDIS software services. Understand your rights, subscription terms, data ownership, and service agreements."
+    description:
+      "TesseractApps terms and conditions for NDIS software services. Understand your rights, subscription terms, data ownership, and service agreements.",
   });
 
   return (
@@ -24,7 +25,7 @@ const TermsAndConditions = () => {
       </div>
 
       <p className="text terms-and-conditions-text">
-        Welcome to Tesseract Apps, a cloud-based workforce management platform
+        Welcome to TesseractApps, a cloud-based workforce management platform
         built for NDIS providers and care organisations across Australia. These
         Terms and Conditions (“Terms”) govern your access to and use of our Site
         and services, including any related mobile applications, APIs,

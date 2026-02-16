@@ -295,10 +295,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         path: "/role-based-dashboard",
         data: productsDetailsData["Role Based Dashboard"],
       },
-      "/repository": {
-        name: "Repository",
-        path: "/repository",
-        data: productsDetailsData["Repository"],
+      "/Documents": {
+        name: "Documents",
+        path: "/Documents",
+        data: productsDetailsData["Documents"],
       },
       "/chat": {
         name: "ChaT",

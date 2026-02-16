@@ -620,7 +620,7 @@ const NavBarComponent = ({
                               </div>
                               {Array.isArray(
                                 navBarDummyData["Solutions"][
-                                  "BY BUSINESS PROBLEM"
+                                "BY BUSINESS PROBLEM"
                                 ]
                               ) &&
                                 navBarDummyData["Solutions"][
@@ -748,7 +748,7 @@ const NavBarComponent = ({
                 onMouseLeave={() => {
                   if (label == "Pricing") closePopup();
                 }}
-                // onMouseLeave={shouldHavePopup ? closePopup : undefined}
+              // onMouseLeave={shouldHavePopup ? closePopup : undefined}
               >
                 {label}
               </div>
@@ -769,7 +769,7 @@ const NavBarComponent = ({
               handleSignup(true);
             }}
           >
-            <div className="navbar-requestDemo-text">Try It Free</div>
+            <div className="navbar-requestDemo-text">Try For Free</div>
           </div>
 
           <div
@@ -1126,7 +1126,7 @@ const searchKeywords = [
   "Clock In & Clock Out",
   "Participant Management",
   "Incident Management",
-  "Repository",
+  "Documents",
   "Role based Dashboard",
   "My Profile",
   "Forms",

@@ -5,7 +5,8 @@ import { useMetaTags } from "../../utils/useMetaTags";
 const Blogpost = () => {
   useMetaTags({
     title: "NDIS Workforce Insights | Industry Blog | TesseractApps",
-    description: "Discover insights on NDIS workforce management, compliance best practices, and digital transformation strategies for Australian care providers."
+    description:
+      "Discover insights on NDIS workforce management, compliance best practices, and digital transformation strategies for Australian care providers.",
   });
 
   return (
@@ -95,10 +96,10 @@ const Blogpost = () => {
 
           <section className="section highlight-section">
             <h2 className="section-title">
-              How Tesseract Apps Protects Your Data
+              How TesseractApps Protects Your Data
             </h2>
             <p>
-              At <strong>Tesseract Apps</strong>, we understand the critical
+              At <strong>TesseractApps</strong>, we understand the critical
               importance of safeguarding participant data. Built on the{" "}
               <strong>Salesforce platform</strong>, our software inherits{" "}
               <strong>
@@ -129,7 +130,7 @@ const Blogpost = () => {
               <div className="security-feature">
                 <h3 className="feature-title">Audit Trails and Monitoring</h3>
                 <p>
-                  Using <strong>Salesforce Shield</strong>, Tesseract Apps
+                  Using <strong>Salesforce Shield</strong>, TesseractApps
                   maintains detailed logs of user actions:
                 </p>
                 <ul>
@@ -193,7 +194,7 @@ const Blogpost = () => {
               reality for care providers across Australia. For NDIS and aged
               care organisations, protecting participant data is not only a
               compliance issue under the NDIS Practice Standards, but a moral
-              obligation. At Tesseract Apps, we combine the convenience of the
+              obligation. At TesseractApps, we combine the convenience of the
               cloud with the rigour of enterprise-level security to give
               providers peace of mind and help them focus on what matters most,
               delivering quality care.

@@ -4,7 +4,8 @@ import { useMetaTags } from "../../utils/useMetaTags";
 const Careers = () => {
   useMetaTags({
     title: "Careers at TesseractApps | Join Our Team | Australian Tech Jobs",
-    description: "Join TesseractApps and help shape the future of care and workforce technology. We're looking for passionate individuals who want to make a real impact through innovation."
+    description:
+      "Join TesseractApps and help shape the future of care and workforce technology. We're looking for passionate individuals who want to make a real impact through innovation.",
   });
 
   return (
@@ -14,7 +15,7 @@ const Careers = () => {
         Join Us in Shaping the Future of Care and Workforce Technology
       </div>
       <div className="text" id="careers-text">
-        Tesseract Apps is growing fast, and we’re looking for passionate, driven
+        TesseractApps is growing fast, and we’re looking for passionate, driven
         individuals who want to make a real impact through innovation and
         user-centered technology.
       </div>

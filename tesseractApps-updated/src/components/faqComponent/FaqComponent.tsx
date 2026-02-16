@@ -22,7 +22,7 @@ const FaqComponent = () => {
   return (
     <div id="faq-container">
       <div className="heading">FAQ's</div>
-      <div className="subheading">Have a question about Tesseract Apps?</div>
+      <div className="subheading">Have a question about TesseractApps?</div>
       <div className="text" id="faq-text">
         We’re here to help.
       </div>

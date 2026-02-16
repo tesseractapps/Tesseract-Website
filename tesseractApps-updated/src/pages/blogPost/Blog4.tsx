@@ -6,8 +6,10 @@ import { useMetaTags } from "../../utils/useMetaTags";
 
 const Blog4 = () => {
   useMetaTags({
-    title: "Hidden Costs of Poor Workforce Management | NDIS Providers | TesseractApps",
-    description: "Discover the hidden costs of poor workforce management for NDIS providers. Compliance risks, staff turnover, and inefficiency impacts on your bottom line."
+    title:
+      "Hidden Costs of Poor Workforce Management | NDIS Providers | TesseractApps",
+    description:
+      "Discover the hidden costs of poor workforce management for NDIS providers. Compliance risks, staff turnover, and inefficiency impacts on your bottom line.",
   });
 
   // const navigate = useNavigate();

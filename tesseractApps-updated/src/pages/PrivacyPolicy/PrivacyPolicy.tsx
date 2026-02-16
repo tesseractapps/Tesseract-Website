@@ -4,7 +4,8 @@ import { useMetaTags } from "../../utils/useMetaTags";
 const PrivacyPolicy = () => {
   useMetaTags({
     title: "Privacy Policy | Data Protection | TesseractApps Australia",
-    description: "TesseractApps privacy policy. Learn how we collect, use, and protect your personal information. Data hosted securely in Australia, compliant with Privacy Act 1988."
+    description:
+      "TesseractApps privacy policy. Learn how we collect, use, and protect your personal information. Data hosted securely in Australia, compliant with Privacy Act 1988.",
   });
 
   return (
@@ -17,7 +18,7 @@ const PrivacyPolicy = () => {
       </div>
 
       <div className="text privacy-policy-text">
-        Company Name: Tesseract Apps Pty Ltd
+        Company Name: TesseractApps Pty Ltd
       </div>
       <div className="text privacy-policy-text">
         Website: https://tesseractapps.com.au/
@@ -27,7 +28,7 @@ const PrivacyPolicy = () => {
       </div>
 
       <p className="text privacy-policy-text">
-        At Tesseract Apps, we are committed to protecting your privacy and
+        At TesseractApps, we are committed to protecting your privacy and
         ensuring the security of your personal information. This Privacy Policy
         outlines how we collect, use, disclose, and safeguard your data when you
         use our website and NDIS workforce management services. By accessing
@@ -40,7 +41,7 @@ const PrivacyPolicy = () => {
         1. Australian Privacy Principles Compliance
       </div>
       <div className="text privacy-policy-text">
-        Tesseract Apps is committed to complying with the Privacy Act 1988 (Cth)
+        TesseractApps is committed to complying with the Privacy Act 1988 (Cth)
         and the 13 Australian Privacy Principles (APPs). We also acknowledge and
         comply with the requirements introduced by the Privacy and Other
         Legislation Amendment Act 2024, which strengthens privacy protections
@@ -198,7 +199,7 @@ const PrivacyPolicy = () => {
         5. Overseas Disclosure
       </div>
       <div className="text privacy-policy-text">
-        Tesseract Apps is built on Salesforce Hyperforce infrastructure, with
+        TesseractApps is built on Salesforce Hyperforce infrastructure, with
         data hosted in Australia. However, in limited circumstances, personal
         information may be processed by overseas service providers who support
         our platform operations.
@@ -389,7 +390,9 @@ const PrivacyPolicy = () => {
         long as necessary to fulfil the purposes for which it was collected, or
         as required by law.
       </div>
-      <div className="text privacy-policy-text">Our retention practices include:</div>
+      <div className="text privacy-policy-text">
+        Our retention practices include:
+      </div>
       <ul>
         <li className="text privacy-policy-text">
           Retaining employment and payroll records as required by taxation and
@@ -422,7 +425,9 @@ const PrivacyPolicy = () => {
         certain features of our site.
       </div>
 
-      <div className="heading privacy-policy-heading">12. Third-Party Links</div>
+      <div className="heading privacy-policy-heading">
+        12. Third-Party Links
+      </div>
       <div className="text privacy-policy-text">
         Our website may contain links to third-party websites. We are not
         responsible for the privacy practices of these sites. We encourage you
@@ -526,12 +531,8 @@ const PrivacyPolicy = () => {
       <div className="subheading privacy-policy-subheading">
         Office of the Australian Information Commissioner (OAIC):
       </div>
-      <div className="text privacy-policy-text">
-        Website: www.oaic.gov.au
-      </div>
-      <div className="text privacy-policy-text">
-        Phone: 1300 363 992
-      </div>
+      <div className="text privacy-policy-text">Website: www.oaic.gov.au</div>
+      <div className="text privacy-policy-text">Phone: 1300 363 992</div>
       <div className="text privacy-policy-text">
         Email: enquiries@oaic.gov.au
       </div>
@@ -556,7 +557,7 @@ const PrivacyPolicy = () => {
       <div className="text privacy-policy-text">
         <strong>Privacy Officer</strong>
       </div>
-      <div className="text privacy-policy-text">Tesseract Apps Pty Ltd</div>
+      <div className="text privacy-policy-text">TesseractApps Pty Ltd</div>
       <div className="text privacy-policy-text">
         Email: privacy@tesseractapps.com
       </div>
