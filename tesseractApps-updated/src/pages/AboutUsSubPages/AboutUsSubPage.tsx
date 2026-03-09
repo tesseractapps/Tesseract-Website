@@ -18,7 +18,7 @@ const AboutUsSubPage = () => {
           return (
             <div key={index} className="about-us-page-data">
               {item.image && item.title != "Our Vision" && (
-                <img
+                <img loading="lazy"
                   src={item.image}
                   alt="image-alt"
                   className="about-us-page-image"
@@ -32,7 +32,7 @@ const AboutUsSubPage = () => {
               </div>
               <br></br>
               {item.image && item.title == "Our Vision" && (
-                <img
+                <img loading="lazy"
                   src={item.image}
                   alt="image-alt"
                   className="about-us-page-image"

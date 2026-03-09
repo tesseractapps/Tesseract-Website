@@ -6,7 +6,7 @@ import {
   bookDemoConfirmationEmailTemplate,
   bookDemoEmailTemplate,
 } from "../../utils/emailTemplates";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 type demoFormType = {
   fullName: string;
   email: string;
@@ -35,11 +35,6 @@ const demoFormErrorState: demoFormType = {
   preferredTime: "Required",
 };
 const RequestADemo = () => {
-  useMetaTags({
-    title: "Book a Demo | See TesseractApps in Action | NDIS Software Australia",
-    description: "Book a free demo of TesseractApps NDIS software. See how our platform can streamline your rostering, compliance, and participant management. No obligation."
-  });
-
   const [formData, setFormData] = useState(demoFormInitialState);
   const [formErrors, setFormErrors] = useState(demoFormInitialState);
   const [checkbox, setCheckbox] = useState(false);
@@ -152,27 +147,31 @@ const RequestADemo = () => {
     // setFormData(demoFormInitialState);
   }
   const confirmationMail = () => {
-        const scheduledDate = new Date(formData.preferredTime);
+    const scheduledDate = new Date(formData.preferredTime);
+    const isValidSchedule = !Number.isNaN(scheduledDate.getTime());
+    const date = isValidSchedule
+      ? scheduledDate.toLocaleDateString("en-AU", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        })
+      : "To be confirmed";
+    const time = isValidSchedule
+      ? scheduledDate
+          .toLocaleTimeString("en-AU", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          })
+          .toUpperCase()
+      : "To be confirmed";
 
-    // Date: dd/mm/yyyy
-    const date = scheduledDate.toLocaleDateString('en-AU', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    });
-
-    // Time: hh:mm AM/PM (12 hour)
-    const time = scheduledDate.toLocaleTimeString('en-AU', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true
-    }).toUpperCase();;
     sendEmail(
       formData.fullName,
       formData.email,
       bookDemoConfirmationEmailTemplate.subject,
-      bookDemoConfirmationEmailTemplate.text(formData.fullName,date,time),
-      bookDemoConfirmationEmailTemplate.html(formData.fullName,date,time)
+      bookDemoConfirmationEmailTemplate.text(formData.fullName, date, time),
+      bookDemoConfirmationEmailTemplate.html(formData.fullName, date, time)
     )
       .then((response) => {
         console.log("Confirmation email sent successfully:", response);
@@ -184,6 +183,10 @@ const RequestADemo = () => {
 
   return (
     <div id="request-demo-container">
+      <SEO
+        title="Book a Demo | See TesseractApps in Action | NDIS Software Australia"
+        description="Book a free demo of TesseractApps NDIS software. See how our platform can streamline your rostering, compliance, and participant management. No obligation."
+      />
       <Alert setAlertData={setAlertData} alertData={alertData} />
       <div className="heading">Book a Demo</div>
       <div className="subheading" id="request-demo-text">
@@ -196,7 +199,7 @@ const RequestADemo = () => {
             <div className="request-demo-title">Head Office:</div>
             <div className="request-demo-description">
               TesseractApps <br />
-              28 Thynne St, Bruce ACT 2617, Canberra, ACT, Australia
+              Phillip ACT 2606, Australia
             </div>
             <div className="request-demo-title">Phone:</div>
             <div className="request-demo-description">
@@ -286,7 +289,7 @@ const RequestADemo = () => {
                 type="text"
                 id="organisation"
                 name="organisation"
-                autoComplete="organization"
+                autoComplete="organisation"
                 placeholder="Organisation"
                 className={
                   "request-demo-input " +

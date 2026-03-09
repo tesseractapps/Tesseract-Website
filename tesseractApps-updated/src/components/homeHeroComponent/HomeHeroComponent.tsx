@@ -1,6 +1,7 @@
 // import VideoComponent from "../videoComponent/VideoComponent";
 import "./HomeHeroStyles.css";
-import logo_small from "../../assets/tesseract_logo_small.webp";
+// Logo served from public/ so the preload link in index.html matches the exact URL
+// const logo_small = "/svg-logos/T Blue.svg";
 // import ios from "../../assets/mobile_ios.webp";
 // import android from "../../assets/mobile_android.webp";
 // import facebook from "../../assets/facebook.webp";
@@ -14,40 +15,42 @@ import logo_small from "../../assets/tesseract_logo_small.webp";
 import HeroArcsLeftComponent from "../HeroArcsComponent/HeroArcsComponent.tsx";
 import HeroArcsRightComponent from "../HeroArcsComponent/HeroArcsComponent.tsx";
 import { homeLeftArcsData, homeRightArcsData } from "../../utils/DummyData";
-import { useAppContext } from "../../contexts/AppContext.tsx";
-// import { useNavigate } from "react-router-dom";
+import useAppNavigate from "../../hooks/useAppNavigate";
 const HomeHeroComponent = () => {
-  // const navigate = useNavigate();
-  const { handleSignup } = useAppContext();
-  const HandleClick = (name: string) => {
-    if (name == "Signup") {
-      handleSignup(true);
-    }
-  };
+  const appNavigate = useAppNavigate();
   return (
     <div id="home-hero-container">
       {/* <VideoComponent /> */}
-      {/* <img
+      {/* <img loading="lazy"
         src={heroImage1}
         alt="hero background image 1"
         className="hero-backround-image"
       /> */}
       <HeroArcsLeftComponent pendulums={homeLeftArcsData} />
       <div id="home-text-container">
-        <img src={logo_small} alt="tesseract logo" id="home-tesseract-logo" />
-        <h1 id="home-text-heading">End-to-End Workforce Management Software</h1>
+        {/* <img
+          loading="eager"
+          fetchPriority="high"
+          src={logo_small}
+          alt="tesseract logo"
+          id="home-tesseract-logo"
+          width="59"
+          height="59"
+        /> */}
+        <div id="home-tesseract-logo" role="img" aria-label="Tesseract Apps Logo" />
+        <h1 id="home-text-heading">End-to-End Workforce <br /> Management Software</h1>
         <h2 id="home-text-subText">
-          TesseractApps simplifies compliance, team management, NDIS-related care and service delivery for care providers and IT consultants on a secure, scalable platform.
+          TesseractApps streamlines compliance, team management, NDIS-related care and service delivery for providers, all on a secure, scalable platform.
         </h2>
-        <div className="cta-button" onClick={() => HandleClick("Signup")}>
-          <div>Try For Free</div>
+        <div className="cta-button" onClick={() => appNavigate("/signup")}>
+          <div>Begin Your Journey</div>
           {/* <ArrowRight className="arrow-icon" /> */}
         </div>
         <div id="home-button-subtext">
           No credit card is required.
         </div>
         {/* <div id="home-store-links-container">
-          <img
+          <img loading="lazy"
             src={ios}
             alt="ios"
             id="ios-store"
@@ -56,7 +59,7 @@ const HomeHeroComponent = () => {
               HandleClick("ios");
             }}
           />
-          <img
+          <img loading="lazy"
             src={android}
             alt="android"
             id="android-store"
@@ -67,7 +70,7 @@ const HomeHeroComponent = () => {
           />
         </div> */}
         {/* <div id="home-social-links-container">
-          <img
+          <img loading="lazy"
             src={facebook}
             alt="facebook-link"
             className="home-social-links"
@@ -75,7 +78,7 @@ const HomeHeroComponent = () => {
               HandleClick("facebook");
             }}
           />
-          <img
+          <img loading="lazy"
             src={youtube}
             alt="youtube-link"
             className="home-social-links"
@@ -83,7 +86,7 @@ const HomeHeroComponent = () => {
               HandleClick("youtube");
             }}
           />
-          <img
+          <img loading="lazy"
             src={linkedin}
             alt="linkedin-link"
             className="home-social-links"
@@ -91,7 +94,7 @@ const HomeHeroComponent = () => {
               HandleClick("linkedin");
             }}
           />
-          <img
+          <img loading="lazy"
             src={instagram}
             alt="instagram-link"
             className="home-social-links"
@@ -102,7 +105,7 @@ const HomeHeroComponent = () => {
         </div> */}
       </div>
       <HeroArcsRightComponent pendulums={homeRightArcsData} />
-      {/* <img
+      {/* <img loading="lazy"
         src={heroImage2}
         alt="hero background image 2"
         className="hero-backround-image"

@@ -44,7 +44,7 @@ const AddBlog = () => {
         <button onClick={handleButtonClick} id="add-blog-upload-button">
           Select
         </button>
-        <img src={imageIcon} alt="Upload" id="image-icon" />
+        <img loading="lazy" src={imageIcon} alt="Upload" id="image-icon" />
         <input
           type="file"
           ref={fileInputRef}
@@ -62,8 +62,8 @@ const AddBlog = () => {
         ></textarea>
       </div>
       <div id="add-blog-action-icons">
-        <img src={textFormat} alt="TextFormat" className="blog-action-icon" />
-        <img src={deleteIcon} alt="Delete" className="blog-action-icon" />
+        <img loading="lazy" src={textFormat} alt="TextFormat" className="blog-action-icon" />
+        <img loading="lazy" src={deleteIcon} alt="Delete" className="blog-action-icon" />
       </div>
     </div>
   );

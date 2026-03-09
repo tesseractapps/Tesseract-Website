@@ -6,8 +6,8 @@ import AboutSelectedToolComponent from "../../components/aboutSelectedToolCompon
 import FaqProductComponent from "../../components/faqProductComponent/faqProductComponent";
 import { useAppContext } from "../../contexts/AppContext";
 import ComingSoon from "../comingSoon/ComingSoon";
-import { useMetaTags } from "../../utils/useMetaTags";
 import { getMetaTags } from "../../utils/metaTagsConfig";
+import SEO from "../../components/common/SEO";
 
 interface productDetailsTypes {
   data: {
@@ -80,7 +80,6 @@ const ProductDetails = () => {
   const { getRoute } = useAppContext();
   const path = location.pathname.replace(/\/$/, "");
   const metaTags = getMetaTags(path);
-  useMetaTags(metaTags);
 
   const data: productDetailsTypes["data"] =
     (location.state as any)?.data ?? getRoute(path)?.data ?? null;
@@ -89,6 +88,7 @@ const ProductDetails = () => {
   }
   return (
     <div id="product-details-container">
+      <SEO {...metaTags} />
       {data.hero && (
         <DetailsHeroComponent data={{ ...data.hero, page: data.page }} />
       )}

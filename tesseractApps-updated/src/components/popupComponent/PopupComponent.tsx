@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./PopupStyles.css";
 
@@ -73,6 +73,23 @@ const PopupComponent = ({
       }
     }
   }, [currentLink, position, isOpen]);
+
+  // After render, clamp the popup so it never overflows the viewport edges.
+  // Using marginLeft avoids re-render and runs before browser paint.
+  useLayoutEffect(() => {
+    if (!isOpen || !popupRef.current) return;
+    const el = popupRef.current;
+    // Reset first so previous clamping doesn't compound
+    el.style.marginLeft = "0px";
+    const rect = el.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const margin = 12;
+    if (rect.right > vw - margin) {
+      el.style.marginLeft = `${vw - margin - rect.right}px`;
+    } else if (rect.left < margin) {
+      el.style.marginLeft = `${margin - rect.left}px`;
+    }
+  }, [isOpen, position, currentLink, transformStyle]);
 
   if (!isOpen || !containerRef.current) return null;
 

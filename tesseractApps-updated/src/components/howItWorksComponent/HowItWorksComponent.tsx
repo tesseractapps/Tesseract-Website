@@ -1,26 +1,7 @@
 import "./HowItWorksStyles.css";
 import { howItWorksDummyData } from "../../utils/DummyData";
-import dividerLine from "../../assets/divider_line.webp";
-import { useEffect, useState } from "react";
+// import dividerLine from "../../assets/divider_line.webp";
 const HowItWorksComponent = () => {
-  const divderRowsInitialValues = [2, 3, 5, 6];
-  const [dividerRows, setDividerRows] = useState(divderRowsInitialValues);
-  useEffect(() => {
-    const handleResize = () => {
-      const windowWidth = window.innerWidth;
-      if (windowWidth < 1480) {
-        setDividerRows([2, 4, 6]);
-      } else {
-        setDividerRows(divderRowsInitialValues);
-      }
-    };
-
-    handleResize(); // Run initially on mount
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
     <div id="howItWorks-container">
       <div className="heading ">Get Started with TesseractApps</div>
@@ -32,17 +13,20 @@ const HowItWorksComponent = () => {
         {howItWorksDummyData.map((data, index) => {
           return (
             <div key={data.id + index} className="howItWorks-card">
-              {dividerRows.includes(data.id) && (
-                <img
-                  src={dividerLine}
-                  alt="dividerLine"
-                  className="howItWorks-dividerLine"
-                />
-              )}
-              <img
+              {/* <img loading="lazy"
+                src={dividerLine}
+                alt=""
+                aria-hidden="true"
+                className="howItWorks-dividerLine"
+                width="120"
+                height="3"
+              /> */}
+              <img loading="lazy"
                 src={data.image}
-                alt="howItWorks-card-image"
+                alt={data.title}
                 className="howItWorks-card-image"
+                width="180"
+                height="180"
               />
               <div className="howItWorks-card-data">
                 <div className="howItWorks-card-title-number">0{data.id}</div>

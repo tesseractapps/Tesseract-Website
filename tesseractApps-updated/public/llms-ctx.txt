@@ -1,0 +1,72 @@
+--- Start of home.md ---
+
+# TesseractApps - Home
+
+TesseractApps is an Australian SaaS company providing all-in-one workforce management and compliance software purpose-built for NDIS providers, aged care, allied health, and disability support organisations.
+
+## Value Proposition
+Automate rostering, timesheets, payroll, participant management, and NDIS compliance — replacing manual spreadsheets and disconnected tools with a single integrated platform.
+
+## Key Features
+- Smart Rostering & Scheduling
+- NDIS Compliance Automation
+- Time & Attendance (Clock In/Out)
+- Participant Management
+- Incident Management
+- HR Operations & Document Signing
+
+
+--- End of home.md ---
+
+
+
+--- Start of about.md ---
+
+# About TesseractApps
+
+TesseractApps is an Australian B2B SaaS company helping care providers modernise their operations. The platform is built on Salesforce infrastructure and holds ISO 27001 and ISO 9001 certifications.
+
+## Target Audience
+NDIS Providers, Aged Care Services, Allied Health Professionals, Disability Support Services, Home & Community Care.
+
+## Certifications
+ISO 27001 (Information Security), ISO 9001 (Quality Management)
+
+
+--- End of about.md ---
+
+
+
+--- Start of product.md ---
+
+# Tesseract Care Management Software
+
+Tesseract Care Management Software is an all-in-one platform built specifically for NDIS & Care Providers.
+
+## Product Features
+- **Roster Management**: Intelligent rostering and scheduling solutions
+- **Timesheet**: Time tracking and attendance management
+- **Admin Console**: Centralized administrative control panel
+- **Access Control Panel**: Role-based access and permissions management
+- **HR Operations**: Human resources management tools
+- **T-Sign**: Electronic signature and document signing
+- **Clock In & Clock Out**: Staff attendance and time tracking system
+- **Participant Management**: NDIS participant care and service coordination
+- **Incident Management**: Incident reporting and tracking system
+- **Forms**: Digital forms and data collection
+- **Accounting**: Financial management and payroll integration
+- **T Learning Hub**: Training and professional development platform
+
+
+--- End of product.md ---
+
+
+
+--- Start of pricing.md ---
+
+# TesseractApps Pricing
+
+Please visit our official website at https://tesseractapps.com.au/pricing for the most up-to-date information regarding our subscription options, customized enterprise plans, and features included in each tier.
+
+
+--- End of pricing.md ---

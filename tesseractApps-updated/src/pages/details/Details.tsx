@@ -12,7 +12,7 @@ const Details = () => {
       <DetailsHeroComponent />
       <AboutSelectedToolComponent />
       <DetailsDataComponent />
-      {/* <img
+      {/* <img loading="lazy"
         id="details-selecetd-tool"
         src={selectedTool}
         alt="details-selecetd-tool"

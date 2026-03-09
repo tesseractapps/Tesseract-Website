@@ -1,362 +1,729 @@
-#about-our-comapany-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 100px;
-  margin-top: 115px;
-  margin-bottom: 90px;
-  flex-wrap: wrap;
-}
-#about-our-comapany-image {
-  max-width: 640px;
+/* ─────────────────────────────────────────
+   GLOBAL FONT
+───────────────────────────────────────── */
+#about-container {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--color-secondary);
 }
 
-#about-our-company-heading {
-  font-family: Roboto;
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 120%;
-  letter-spacing: -3%;
-  margin-bottom: 15px;
-}
-#about-our-company-text {
-  max-width: 840px;
-  line-height: 140%;
-  font-size: 24px;
-  font-weight: 300;
-  font-family: "inter";
-}
-#about-vision-mission-container {
-  display: flex;
-  justify-content: center;
-  column-gap: 50px;
-  flex-wrap: wrap;
-}
-.about-vision-mission {
-  width: 760px;
-  padding: 20px;
-  margin-bottom: 150px;
-}
-#about-vision-container {
-  background-color: #e9f3ff;
-}
-#about-mission-container {
-  background-color: #fff6e8;
-}
-.about-vision-mission-heading {
-  font-family: Roboto;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 180%;
-  letter-spacing: 0%;
-  margin-bottom: 10px;
-}
-.about-vision-mission-text {
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 180%;
-  letter-spacing: 0%;
-  font-family: "inter", sans-serif;
-}
-#about-our-team-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+#about-hero {
+  background: linear-gradient(160deg, var(--color-secondary) 0%, #003f7a 100%);
+  padding: 96px 0 80px;
+  text-align: center;
   position: relative;
-  margin-bottom: 250px;
+  overflow: hidden;
 }
-#about-our-team-image {
-  width: 85%;
-  object-fit: contain;
+
+#about-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(12, 120, 186, 0.25) 0%, transparent 70%);
+  pointer-events: none;
 }
-#about-our-team-heading {
-  font-family: Roboto;
-  font-weight: 600;
-  font-size: 48px;
-  line-height: 60px;
-  letter-spacing: 0%;
+
+#about-hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+}
+
+#about-hero-label {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(12, 120, 186, 0.18);
+  color: #7dc4f0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(12, 120, 186, 0.3);
+}
+
+#about-hero-heading {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  margin: 0 0 1.25rem;
+}
+
+#about-hero-sub {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────
+   OUTER WRAPPER
+───────────────────────────────────────── */
+#about-outer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px 100px;
+}
+
+/* ─────────────────────────────────────────
+   SECTION LABEL (reused across sections)
+───────────────────────────────────────── */
+.about-section-label {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(12, 120, 186, 0.08);
+  color: var(--color-primary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+/* ─────────────────────────────────────────
+   OUR STORY
+───────────────────────────────────────── */
+#about-story {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr; */
+  gap: 64px;
+  align-items: center;
   text-align: center;
-  max-width: 70%;
-  margin-bottom: 40px;
+  padding: 80px 0 72px;
+  border-bottom: 1px solid #eef2f7;
 }
-#about-our-team-text {
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 37px;
-  letter-spacing: 0%;
-  text-align: center;
-  max-width: 76%;
-  margin-bottom: 20px;
-  font-family: "inter", sans-serif;
+
+#about-story-image {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 12px 48px rgba(0, 42, 82, 0.12);
 }
-#about-our-team-title {
-  font-family: Roboto;
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 68px;
-  letter-spacing: 0%;
-  text-align: center;
-  margin-bottom: 25px;
-}
-#about-image-overlay-container {
+
+#about-story-text-block {
   display: flex;
   flex-direction: column;
-  /* position: absolute;
-  bottom: -250px; */
-  max-width: 70%;
-  background-color: white;
-  opacity: 0.7;
-  padding: 50px 80px;
-  border-radius: 40px;
-  border: 1px solid #d9d9d9;
-  /* margin-bottom: 100px; */
 }
-#about-image-overlay-heading {
-  font-family: Roboto;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 68px;
-  letter-spacing: 0%;
-  margin-bottom: 10px;
+
+#about-story-heading {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0 0 1.25rem;
 }
-#about-image-overlay-text {
-  font-weight: 300;
-  font-style: Light;
-  font-size: 20px;
-  line-height: 20px;
-  letter-spacing: 0%;
-  margin-bottom: 55px;
-  font-family: "inter", sans-serif;
+
+#about-story-text {
+  font-size: 1rem;
+  color: var(--color-text-gray);
+  line-height: 1.8;
 }
-#about-image-overlay-links-container {
-  display: flex;
-  column-gap: 75px;
-  row-gap: 50px;
-  flex-wrap: wrap;
+
+#about-story-text p {
+  margin: 0 0 1rem;
 }
-.about-image-overlay-link {
-  font-weight: 500;
-  font-style: Medium;
-  font-size: 20px;
-  min-width: 100px;
-  letter-spacing: 0%;
+#about-story-text p:last-child {
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────
+   MISSION & VISION
+───────────────────────────────────────── */
+#about-mv-section {
+  padding: 72px 0;
+  border-bottom: 1px solid #eef2f7;
+}
+
+#about-mv-header {
   text-align: center;
-  text-decoration: underline;
-  text-decoration-style: solid;
-  text-decoration-thickness: 1.2px;
-  text-decoration-skip-ink: auto;
-  color: var(--color-primary);
-  cursor: pointer;
+  margin-bottom: 48px;
 }
-#about-team-images-container {
+
+#about-mv-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+#about-mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.about-mv-card {
+  border-radius: 16px;
+  padding: 36px;
+  box-sizing: border-box;
+}
+
+#about-mv-mission {
+  background: linear-gradient(135deg, #e9f3ff 0%, #d4eaff 100%);
+  border: 1px solid #c5dcf5;
+}
+
+#about-mv-vision {
+  background: linear-gradient(135deg, #fff6e8 0%, #fdecd0 100%);
+  border: 1px solid #f5ddb0;
+}
+
+.about-mv-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
-  margin: 0 auto;
-  width: 90%;
-  margin-bottom: 35px;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 1.375rem;
 }
-#about-team-images-line {
-  border: 1px solid #e0e0e0;
-  width: 100%;
-  height: 1px;
+
+#about-mv-mission .about-mv-icon {
+  background: rgba(12, 120, 186, 0.12);
 }
-#about-team-image-Heading {
-  font-family: Roboto;
-  font-weight: 400;
-  font-style: Regular;
-  font-size: 24px;
-  line-height: 37px;
-  letter-spacing: 0%;
-  color: var(--color-primary);
-  margin-right: 20px;
+
+#about-mv-vision .about-mv-icon {
+  background: rgba(230, 150, 30, 0.15);
 }
-#about-team-images {
-  display: flex;
-  gap: 85px;
-  padding-bottom: 10px;
-  flex-wrap: wrap;
-  width: 90%;
-  margin: 0 auto;
-  margin-bottom: 60px;
-}
-.about-team-image-card {
-  border-radius: 20px;
-  overflow: hidden;
-  background-color: #f0f7fe;
-  text-align: center;
-}
-.about-team-image-card-image {
-  border-radius: 20px;
-  height: 330px;
-  width: 260px;
-  object-fit: cover;
-}
-.about-team-image-card-text {
-  padding: 20px 0;
-  font-family: "inter", sans-serif;
-}
-.about-team-image-card-name {
-  font-family: Roboto;
+
+.about-mv-card-heading {
+  font-size: 1.25rem;
   font-weight: 700;
-  font-style: Bold;
-  font-size: 20px;
-  line-height: 30px;
-  letter-spacing: 0%;
-  text-align: center;
-  margin-bottom: 5px;
+  color: var(--color-secondary);
+  margin: 0 0 12px;
 }
-.about-team-image-card-designation {
-  font-weight: 400;
-  font-style: Regular;
-  font-size: 20px;
-  line-height: 30px;
-  letter-spacing: 0%;
-  text-align: center;
+
+.about-mv-card-text {
+  font-size: 0.9375rem;
+  color: var(--color-text-gray2);
+  line-height: 1.7;
+  margin: 0;
 }
-#about-careers-container {
+
+/* ─────────────────────────────────────────
+   TEAM SECTION
+───────────────────────────────────────── */
+#about-team-section {
+  padding: 72px 0;
+  border-bottom: 1px solid #eef2f7;
+}
+
+#about-team-header {
+  margin-bottom: 48px;
+}
+
+#about-team-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+#about-team-sub {
+  font-size: 1rem;
+  color: var(--color-text-gray);
+  line-height: 1.65;
+  max-width: 640px;
+  margin: 0;
+}
+
+#about-team-banner {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-bottom: 48px;
+  box-shadow: 0 8px 32px rgba(0, 42, 82, 0.1);
+  max-height: 420px;
+}
+
+#about-team-grid-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#about-team-grid-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e0e8f0;
+}
+
+#about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.about-team-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f5f9fe;
+  border: 1px solid #e4edf7;
+  text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.about-team-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 42, 82, 0.1);
+  transform: translateY(-3px);
+}
+
+.about-team-card-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.about-team-card-body {
+  padding: 16px 12px;
+}
+
+.about-team-card-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 4px;
+}
+
+.about-team-card-role {
+  font-size: 0.8125rem;
+  color: var(--color-text-gray);
+  line-height: 1.4;
+}
+
+/* ─────────────────────────────────────────
+   CAREERS / OPENINGS
+───────────────────────────────────────── */
+#about-careers-section {
+  padding: 72px 0;
+  border-bottom: 1px solid #eef2f7;
+}
+
+#about-careers-header {
+  margin-bottom: 12px;
+}
+
+#about-careers-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+#about-careers-sub {
+  font-size: 1rem;
+  color: var(--color-text-gray);
+  line-height: 1.65;
+  max-width: 600px;
+  margin: 0 0 40px;
+}
+
+/* ── Job card ── */
+.about-job-card {
+  border: 1.5px solid #dde4ed;
+  border-radius: 16px;
+  padding: 36px;
+  background: #fff;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 16px rgba(0, 42, 82, 0.05);
+}
+
+.about-job-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.about-job-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.about-job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about-job-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  background: #f0f5fa;
+  color: var(--color-secondary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  border: 1px solid #dde4ed;
+}
+
+.about-apply-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 11px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.15s, box-shadow 0.15s;
+  font-family: "Inter", sans-serif;
+}
+.about-apply-btn:hover {
+  opacity: 0.88;
+  box-shadow: 0 4px 16px rgba(12, 120, 186, 0.25);
+}
+
+.about-job-summary {
+  font-size: 0.9375rem;
+  color: var(--color-text-gray);
+  line-height: 1.7;
+  margin: 0 0 28px;
+}
+
+.about-job-sections {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  width: 80%;
+  gap: 24px;
 }
-#about-careers-heading {
-  font-family: Roboto;
+
+.about-job-section {
+  border-top: 1px solid #eef2f7;
+  padding-top: 22px;
+}
+
+.about-section-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.about-section-text {
+  font-size: 0.9375rem;
+  color: var(--color-text-gray);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.about-subsection-label {
+  font-size: 0.875rem;
   font-weight: 600;
-  font-style: SemiBold;
-  font-size: 36px;
-  line-height: 68px;
-  letter-spacing: 0%;
+  color: var(--color-secondary);
+  margin-bottom: 8px;
+}
+
+.about-job-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.about-job-list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--color-text-gray);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.about-job-list--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+  row-gap: 6px;
+}
+
+.about-job-footer {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid #eef2f7;
+  font-size: 0.875rem;
+  color: var(--color-text-gray);
+}
+
+.about-contact-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+.about-contact-link:hover {
+  text-decoration: underline;
+}
+
+#about-careers-bottom-text {
+  font-size: 0.9375rem;
+  color: var(--color-text-gray);
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────
+   CONTACT SECTION
+───────────────────────────────────────── */
+#about-contact-section {
+  padding: 72px 0 0;
+}
+
+#about-contact-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+#about-contact-sub {
+  font-size: 1rem;
+  color: var(--color-text-gray);
+  line-height: 1.65;
+  max-width: 560px;
+  margin: 0 0 36px;
+}
+
+#about-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.about-contact-card {
+  background: var(--color-background-gradient);
+  border: 1.5px solid #dde4ed;
+  border-radius: 16px;
+  padding: 28px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about-contact-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(12, 120, 186, 0.1);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.about-contact-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 16px;
+}
+
+.about-contact-card-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
   margin-bottom: 20px;
 }
-#about-careers-text {
-  font-weight: 300;
-  font-style: Light;
-  font-size: 20px;
-  line-height: 20px;
-  letter-spacing: 0%;
-  margin-bottom: 40px;
-  font-family: "inter";
+
+.about-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--color-text-gray);
+  line-height: 1.5;
 }
-#about-careers-button {
-  background: var(--color-primary);
-  width: 250px;
-  height: 50px;
-  opacity: 1;
-  border-radius: 6px;
+
+.about-contact-row-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.about-contact-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 0.875rem;
   font-weight: 600;
-  font-size: 20px;
-  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
   border: none;
   cursor: pointer;
-  margin-bottom: 60px;
+  transition: opacity 0.15s;
+  font-family: "Inter", sans-serif;
+  width: fit-content;
+  margin-top: auto;
 }
-#about-contact-us-container {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 80%;
+.about-contact-cta:hover {
+  opacity: 0.88;
 }
-#about-contact-us-heading {
-  font-family: Roboto;
-  font-weight: 600;
-  font-style: SemiBold;
-  font-size: 36px;
-  line-height: 68px;
-  letter-spacing: 0%;
-  margin-bottom: 20px;
+
+.about-contact-card-note {
+  font-size: 0.8125rem;
+  color: var(--color-text-gray);
+  line-height: 1.55;
+  margin: 0;
 }
-#about-contact-us-text {
-  font-weight: 300;
-  font-style: Light;
-  font-size: 20px;
-  line-height: 20px;
-  letter-spacing: 0%;
-  margin-bottom: 40px;
-  font-family: "inter", sans-serif;
+
+.hyper-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
 }
-@media (max-width: 1130px) {
-  #about-image-overlay-container {
-    bottom: -280px;
-  }
-  #about-our-team-container {
-    margin-bottom: 300px;
-  }
+.hyper-link:hover {
+  text-decoration: underline;
 }
-@media (max-width: 970px) {
-  #about-image-overlay-container {
-    bottom: -350px;
+
+/* ─────────────────────────────────────────
+   RESPONSIVE  ≤ 1024px
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+  #about-outer {
+    padding: 0 32px 80px;
   }
-  #about-our-team-container {
-    margin-bottom: 390px;
+
+  #about-contact-grid {
+    grid-template-columns: 1fr 1fr;
   }
-}
-@media (max-width: 940px) {
-  #about-image-overlay-container {
-    bottom: -350px;
-    padding: 30px 50px;
+
+  #about-story {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 0 56px;
   }
-  #about-our-team-container {
-    margin-bottom: 400px;
+
+  #about-story-image {
+    max-height: 360px;
+    object-fit: cover;
   }
-}
-@media (max-width: 800px) {
-  #about-image-overlay-container {
-    bottom: -450px;
+
+  #about-story-heading {
+    font-size: 1.875rem;
   }
-  #about-our-team-container {
-    margin-bottom: 490px;
+
+  #about-mv-grid {
+    grid-template-columns: 1fr;
   }
 }
-@media (max-width: 750px) {
-  #about-image-overlay-container {
-    bottom: -500px;
+
+/* ─────────────────────────────────────────
+   RESPONSIVE  ≤ 768px
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  #about-hero {
+    padding: 72px 0 60px;
   }
-  #about-our-team-container {
-    margin-bottom: 520px;
+
+  #about-hero-heading {
+    font-size: 2.25rem;
   }
-  .about-image-overlay-link {
-    max-width: fit-content;
+
+  #about-outer {
+    padding: 0 20px 60px;
+  }
+
+  #about-story-heading,
+  #about-mv-heading,
+  #about-team-heading,
+  #about-careers-heading,
+  #about-contact-heading {
+    font-size: 1.625rem;
+  }
+
+  #about-team-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+
+  #about-contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-job-card {
+    padding: 22px;
+  }
+
+  .about-job-two-col,
+  .about-job-list--grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-job-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-apply-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
-@media (max-width: 640px) {
-  #about-image-overlay-container {
-    bottom: -650px;
+
+/* ─────────────────────────────────────────
+   RESPONSIVE  ≤ 480px
+───────────────────────────────────────── */
+@media (max-width: 480px) {
+  #about-hero-heading {
+    font-size: 1.875rem;
   }
-  #about-our-team-container {
-    margin-bottom: 670px;
+
+  #about-hero-sub {
+    font-size: 1rem;
   }
-  #about-our-comapany-image {
-    width: 80%;
+
+  #about-outer {
+    padding: 0 16px 48px;
   }
-}
-@media (max-width: 540px) {
-  #about-image-overlay-container {
-    bottom: -750px;
-    max-width: 80%;
-  }
-  #about-our-team-container {
-    margin-bottom: 770px;
-  }
-  .about-image-overlay-link {
-    max-width: 100px;
-  }
-  #about-image-overlay-links-container {
-    column-gap: 15px;
-  }
-}
-@media (max-width: 454px) {
-  #about-image-overlay-links-container {
-    column-gap: 0px;
-  }
-}
-@media (max-width: 432px) {
-  #about-image-overlay-container {
-    padding: 30px 20px;
-  }
-}
-@media (max-width: 346px) {
-  #about-image-overlay-container {
-    padding: 30px 10px;
-    max-width: 90%;
+
+  #about-team-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }

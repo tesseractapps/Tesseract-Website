@@ -3,9 +3,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   gap: 50px;
-  margin: 0 138px;
+  padding: 0 80px;
+  box-sizing: border-box;
 }
 #trusted-clients-header {
   font-size: 20px;
@@ -34,22 +35,22 @@
   gap: 100px;
 }
 .clients-swiper {
-  width: fit-content;
-  height: fit-content;
+  flex: 1;
+  min-width: 0;
   margin-top: 20px;
 }
 
-.clients-slider-image {
-  width: 200px;
-  max-width: 250px;
-  height: 180px;
-  padding: 0 15px;
-  object-fit: contain;
+.clients-swiper .keen-slider__slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
 }
 
-.clients-slider-image:last-of-type {
-  padding-left: 0;
-  margin-left: 200px;
+.clients-slider-image {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
 }
 .inner {
   position: relative;
@@ -83,42 +84,35 @@ section {
 }
 
 @media (max-width: 1300px) {
-  .clients-slider-image:last-of-type {
-    margin-left: 50px;
-  }
   #trusted-clients-container {
-    width: 88%;
+    padding: 0 60px;
   }
 }
 
 @media (max-width: 1100px) {
-  .clients-slider-image:last-of-type {
-    margin-left: 30px;
-  }
   #trusted-clients-container {
-    width: 85%;
-    margin: 0 120px;
+    padding: 0 40px;
   }
 }
 
 @media (max-width: 880px) {
   #trusted-clients-container {
-    flex-shrink: 1;
-    width: 80%;
-    margin: 0 100px;
+    padding: 0 30px;
+    gap: 30px;
   }
 }
+
 @media (max-width: 660px) {
   #trusted-clients-container {
-    width: 90%;
-    flex-shrink: 2;
-    margin: 0 50px;
+    padding: 0 20px;
+    gap: 20px;
   }
 }
+
 @media (max-width: 640px) {
   #trusted-clients-container {
     flex-wrap: wrap;
-    width: 95%;
-    margin: 10px;
+    padding: 0 16px;
+    gap: 16px;
   }
 }

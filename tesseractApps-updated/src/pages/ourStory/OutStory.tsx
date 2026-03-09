@@ -7,13 +7,9 @@ import ourStoryImage4 from "../../assets/our-story-4.webp";
 import ourStoryImage5 from "../../assets/our-story-5.webp";
 
 import { useEffect } from "react";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const OurStory = () => {
-  useMetaTags({
-    title: "Our Story | TesseractApps Journey from 2022 to Today | NDIS Software",
-    description: "Discover how TesseractApps evolved from a 2022 conversation about NDIS compliance challenges to a fully operational workforce management platform helping care providers across Australia."
-  });
   // const imageRef = useRef<HTMLImageElement | null>(null);
   // console.log(window.innerWidth);
   // useEffect(() => {
@@ -43,12 +39,16 @@ const OurStory = () => {
   }, []);
   return (
     <div id="our-story-container">
+      <SEO
+        title="Our Story | TesseractApps Journey from 2022 to Today | NDIS Software"
+        description="Discover how TesseractApps evolved from a 2022 conversation about NDIS compliance challenges to a fully operational workforce management platform helping care providers across Australia."
+      />
       {window.innerWidth > 800 && (
         <>
           <div id="our-story-title" className="subheading">
             Our Story
           </div>
-          <img src={ourStoryImage} alt="our-story-image" id="our-story-image" />
+          <img loading="lazy" src={ourStoryImage} alt="our-story-image" id="our-story-image" />
         </>
       )}
       {window.innerWidth < 800 && (
@@ -56,27 +56,27 @@ const OurStory = () => {
           <div id="our-story-title" className="subheading">
             Our Story
           </div>
-          <img
+          <img loading="lazy"
             src={ourStoryImage1}
             alt="our-story-image1"
             id="our-story-image1"
           />
-          <img
+          <img loading="lazy"
             src={ourStoryImage2}
             alt="our-story-image2"
             id="our-story-image3"
           />
-          <img
+          <img loading="lazy"
             src={ourStoryImage3}
             alt="our-story-image3"
             id="our-story-image3"
           />
-          <img
+          <img loading="lazy"
             src={ourStoryImage4}
             alt="our-story-image4"
             id="our-story-image4"
           />
-          <img
+          <img loading="lazy"
             src={ourStoryImage5}
             alt="our-story-image5"
             id="our-story-image5"

@@ -6,8 +6,8 @@ import DetailsDataComponent from "../../components/detailsDataComponent/DetailsD
 import FaqProductComponent from "../../components/faqProductComponent/faqProductComponent";
 import { useAppContext } from "../../contexts/AppContext";
 import ComingSoon from "../comingSoon/ComingSoon";
-import { useMetaTags } from "../../utils/useMetaTags";
 import { getMetaTags } from "../../utils/metaTagsConfig";
+import SEO from "../../components/common/SEO";
 interface byroleTypes {
   data: {
     hero: {
@@ -76,7 +76,6 @@ const ByIndustry = () => {
   const { getRoute } = useAppContext();
   const path = location.pathname.replace(/\/$/, "");
   const metaTags = getMetaTags(path);
-  useMetaTags(metaTags);
 
   const data: byroleTypes["data"] =
     (location.state as any)?.data ?? getRoute(path)?.data ?? null;
@@ -85,6 +84,7 @@ const ByIndustry = () => {
   }
   return (
     <div id="byindustry-container">
+      <SEO {...metaTags} />
       {data.hero && <DetailsHeroComponent data={data.hero} />}
       {data.details && <AboutSelectedToolComponent data={data.details} />}
       {data.details2 && (

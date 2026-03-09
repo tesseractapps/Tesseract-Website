@@ -253,7 +253,7 @@ const ExpoPage = ({ showBanner, handleBannerClose }: PopupProps) => {
         <Alert setAlertData={setAlertData} alertData={alertData} />
         <div id="expo-page-header">
           <AppLogo />
-          <img
+          <img loading="lazy"
             src={closeIcon}
             alt="close icon"
             id="expo-page-close-icon"
@@ -270,7 +270,7 @@ const ExpoPage = ({ showBanner, handleBannerClose }: PopupProps) => {
         <div id="Expo-page-hero-container">
           <div id="expo-page-offer">
             {" "}
-            <img
+            <img loading="lazy"
               src={giftIcon}
               alt="gift-icon"
               style={{ fill: "white", width: "18px" }}
@@ -295,12 +295,12 @@ const ExpoPage = ({ showBanner, handleBannerClose }: PopupProps) => {
           <div id="expo-page-time-venue-container">
             <div className="expo-page-time-venue">
               {" "}
-              {/* <img src={CalenderIcon} alt="Calendar Icon" /> */}
+              {/* <img loading="lazy" src={CalenderIcon} alt="Calendar Icon" /> */}
               <CalenderIcon />
               21-22 November 2025
             </div>
             <div className="expo-page-time-venue">
-              <img src={locationIcon} alt="Location Icon" />
+              <img loading="lazy" src={locationIcon} alt="Location Icon" />
               Melbourne Exhibition Centre - Door 1
             </div>
           </div>

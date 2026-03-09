@@ -3,16 +3,9 @@
 import "./BlogPostStyles.css";
 import blogImage from "../../assets/Beyond Compliance_ How TesseractApps NDIS Software Elevates Care Quality and Staff Experience.webp"; // replace with actual image
 import useAppNavigate from "../../hooks/useAppNavigate";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const BeyondComplianceBlog = () => {
-  useMetaTags({
-    title:
-      "Beyond Compliance: Building Quality Care | NDIS Excellence | TesseractApps",
-    description:
-      "Move beyond basic NDIS compliance to deliver quality care. Strategies for provider excellence, participant outcomes, and operational improvement.",
-  });
-
   const appNavigate = useAppNavigate();
   // const navigate = useNavigate();
   function handleClick(name: string) {
@@ -21,7 +14,12 @@ const BeyondComplianceBlog = () => {
 
   return (
     <div className="blog-container">
-      <img
+      <SEO
+        title="Beyond Compliance: Building Quality Care | NDIS Excellence | TesseractApps"
+        description="Move beyond basic NDIS compliance to deliver quality care. Strategies for provider excellence, participant outcomes, and operational improvement."
+        type="article"
+      />
+      <img loading="lazy"
         src={blogImage}
         alt="TesseractApps NDIS Software"
         className="blog-image"

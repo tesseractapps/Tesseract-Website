@@ -1,11 +1,37 @@
 #app-logo {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
   color: var(--color-secondary);
   cursor: pointer;
   text-decoration: none;
   display: flex;
   align-items: center;
-  position: relative;
-  top: 18px;
+  gap: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* The T mark SVG has its content exactly centered in the viewBox.
+   background-size: 700% at 44×44 zooms in so the mark fills the box precisely. */
+#app-logo-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background-image: url('/svg-logos/T Blue.svg');
+  background-repeat: no-repeat;
+  background-size: 400%;
+  background-position: 50% 50%;
+}
+
+@media (max-width: 500px) {
+  #app-logo {
+    font-size: 18px;
+    gap: 8px;
+  }
+
+  #app-logo-icon {
+    width: 36px;
+    height: 36px;
+  }
 }

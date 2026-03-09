@@ -3,16 +3,9 @@
 import "./BlogPostStyles.css";
 import blogImage from "../../assets/blog2.webp";
 import useAppNavigate from "../../hooks/useAppNavigate";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const FutureProofingBlog = () => {
-  useMetaTags({
-    title:
-      "Future-Proofing Your NDIS Business | Technology Trends | TesseractApps",
-    description:
-      "Learn how to future-proof your NDIS business with technology. Digital transformation strategies, automation trends, and compliance preparation for providers.",
-  });
-
   // const navigate = useNavigate();
   const appNavigate = useAppNavigate();
   function handleClick(name: string) {
@@ -20,7 +13,12 @@ const FutureProofingBlog = () => {
   }
   return (
     <div className="blog-container">
-      <img
+      <SEO
+        title="Future-Proofing Your NDIS Business | Technology Trends | TesseractApps"
+        description="Learn how to future-proof your NDIS business with technology. Digital transformation strategies, automation trends, and compliance preparation for providers."
+        type="article"
+      />
+      <img loading="lazy"
         src={blogImage}
         alt="Protecting Participant Data Image"
         className="blog-image"

@@ -42,7 +42,7 @@ const FaqComponent = () => {
               }}
             >
               <AccordionSummary
-                expandIcon={<img src={ArrowDown} alt="arrow" />}
+                expandIcon={<img loading="lazy" src={ArrowDown} alt="arrow" />}
               >
                 <Typography
                   sx={{ fontSize: "22px", fontWeight: 600, textAlign: "left" }}

@@ -305,3 +305,49 @@ p {
     width: 100%;
   }
 }
+
+/* GEO Elements Styles */
+.key-takeaways {
+  background-color: #f0f4ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #0056b3;
+}
+
+.key-takeaways h3 {
+  margin-top: 0;
+  color: #0056b3;
+}
+
+.key-takeaways ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.key-takeaways li {
+  margin-bottom: 0.5rem;
+}
+
+.key-takeaways li:last-child {
+  margin-bottom: 0;
+}
+
+.faq-section {
+  margin-top: 3rem;
+}
+
+.faq-item {
+  margin-bottom: 1.5rem;
+}
+
+.faq-question {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #1a365d;
+}
+
+.faq-answer {
+  color: #4a5568;
+}

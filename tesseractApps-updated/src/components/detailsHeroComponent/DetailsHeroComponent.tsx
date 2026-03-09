@@ -62,7 +62,7 @@ const DetailsHeroComponent = ({
     >
       {displayTitle && <div id="details-hero-page-title">{data.page}</div>}
       {pagesWithRightImage.includes(data.page) && (
-        <img
+        <img loading="lazy"
           id="details-hero-image"
           src={data.image}
           alt="details-hero-image"
@@ -174,14 +174,14 @@ const DetailsHeroComponent = ({
         )}
       </div>
       {!pagesWithRightImage.includes(data.page) && data.page !== "Product" && (
-        <img
+        <img loading="lazy"
           id="details-hero-image"
           src={data.image}
           alt="details-hero-image"
         />
       )}
       {data.page == "Product" ? (
-        <img
+        <img loading="lazy"
           src={productHeroImage}
           alt="product image"
           id="details-product-bottom-image"

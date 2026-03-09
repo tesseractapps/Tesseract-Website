@@ -104,7 +104,7 @@ const AboutSelectedToolComponent = ({
             return (
               <div key={index} className={"selected-tool-data"}>
                 {data.type != 2 && dividerRows.includes(index + 1) && (
-                  <img
+                  <img loading="lazy"
                     src={dividerLine}
                     alt="dividerLine"
                     className="selected-dividerLine"

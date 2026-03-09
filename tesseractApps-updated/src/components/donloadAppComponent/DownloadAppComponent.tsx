@@ -11,9 +11,9 @@ const DownloadAppComponent = () => {
           turpis elementum amet vitae et etiam nec. Varius volutpat hac
           adipiscing tincidunt pretium.
         </div>
-        <img id="links-image" src={mobileLinks} alt="mobile links image" />
+        <img loading="lazy" id="links-image" src={mobileLinks} alt="mobile links image" />
       </div>
-      <img id="download-image" src={mockup} alt="download image" />
+      <img loading="lazy" id="download-image" src={mockup} alt="download image" />
     </div>
   );
 };

@@ -2,16 +2,9 @@
 // import { AppNavigate } from "../../routes/AppNavigate";
 import blog4 from "../../assets/image1.webp";
 import useAppNavigate from "../../hooks/useAppNavigate";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const Blog4 = () => {
-  useMetaTags({
-    title:
-      "Hidden Costs of Poor Workforce Management | NDIS Providers | TesseractApps",
-    description:
-      "Discover the hidden costs of poor workforce management for NDIS providers. Compliance risks, staff turnover, and inefficiency impacts on your bottom line.",
-  });
-
   // const navigate = useNavigate();
   const appNavigate = useAppNavigate();
   function handleClick(name: string) {
@@ -19,7 +12,12 @@ const Blog4 = () => {
   }
   return (
     <div className="blog-container">
-      <img
+      <SEO
+        title="Hidden Costs of Poor Workforce Management | NDIS Providers | TesseractApps"
+        description="Discover the hidden costs of poor workforce management for NDIS providers. Compliance risks, staff turnover, and inefficiency impacts on your bottom line."
+        type="article"
+      />
+      <img loading="lazy"
         src={blog4}
         alt="Workforce Management Challenges Image"
         className="blog-image"
@@ -34,7 +32,7 @@ const Blog4 = () => {
         <div className="blog-content">
           <p className="intro-paragraph">
             NDIS service providers rely on having their operations staffed
-            properly. But too many organizations don't realize how much bad
+            properly. But too many organisations don't realize how much bad
             workforce management can rip into their bottom line. It's easy to
             see where the money is being spent in the form of staffing hours,
             but the hidden costs associated with overtime, absence, compliance,

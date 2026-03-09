@@ -1,15 +1,13 @@
 import "./PrivacyPolicy.css";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const PrivacyPolicy = () => {
-  useMetaTags({
-    title: "Privacy Policy | Data Protection | TesseractApps Australia",
-    description:
-      "TesseractApps privacy policy. Learn how we collect, use, and protect your personal information. Data hosted securely in Australia, compliant with Privacy Act 1988.",
-  });
-
   return (
     <div id="privacy-policy-container">
+      <SEO
+        title="Privacy Policy | Data Protection | TesseractApps Australia"
+        description="TesseractApps privacy policy. Learn how we collect, use, and protect your personal information. Data hosted securely in Australia, compliant with Privacy Act 1988."
+      />
       <div id="privacy-policy-title" className="heading">
         Privacy Policy
       </div>
@@ -566,7 +564,7 @@ const PrivacyPolicy = () => {
       </div>
       <div className="text privacy-policy-text">Phone: 1300 252 808</div>
       <div className="text privacy-policy-text">
-        Address: TesseractApps, Bruce ACT 2617
+        Address: TesseractApps, Phillip ACT 2606
       </div>
     </div>
   );

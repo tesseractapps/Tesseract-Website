@@ -1,17 +1,16 @@
 import "./BlogPostStyles.css";
 import blogImage from "../../assets/blog1.webp";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const Blogpost = () => {
-  useMetaTags({
-    title: "NDIS Workforce Insights | Industry Blog | TesseractApps",
-    description:
-      "Discover insights on NDIS workforce management, compliance best practices, and digital transformation strategies for Australian care providers.",
-  });
-
   return (
     <div className="blog-container">
-      <img
+      <SEO
+        title="NDIS Workforce Insights | Industry Blog | TesseractApps"
+        description="Discover insights on NDIS workforce management, compliance best practices, and digital transformation strategies for Australian care providers."
+        type="article"
+      />
+      <img loading="lazy"
         src={blogImage}
         alt="Protecting Participant Data Image"
         className="blog-image"

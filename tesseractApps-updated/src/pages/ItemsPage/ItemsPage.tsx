@@ -83,7 +83,7 @@ const ItemsPage = () => {
             className="items-page-card"
             key={index}
           >
-            <img
+            <img loading="lazy"
               src={blog.image}
               alt="blog-image"
               className="items-card-image"

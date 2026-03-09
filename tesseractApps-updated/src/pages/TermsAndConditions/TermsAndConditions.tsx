@@ -1,15 +1,13 @@
 import "./TermsAndConditions.css";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const TermsAndConditions = () => {
-  useMetaTags({
-    title: "Terms & Conditions | Service Agreement | TesseractApps Australia",
-    description:
-      "TesseractApps terms and conditions for NDIS software services. Understand your rights, subscription terms, data ownership, and service agreements.",
-  });
-
   return (
     <div id="terms-and-conditions-container">
+      <SEO
+        title="Terms & Conditions | Service Agreement | TesseractApps Australia"
+        description="TesseractApps terms and conditions for NDIS software services. Understand your rights, subscription terms, data ownership, and service agreements."
+      />
       <h1 className="heading">Terms & Conditions</h1>
       <div
         id="terms-and-conditions-date"
@@ -268,7 +266,7 @@ const TermsAndConditions = () => {
         <br />
         Phone: 1300 252 808
         <br />
-        Address: TesseractApps, Bruce ACT 2617
+        Address: TesseractApps, Phillip ACT 2606
       </p>
     </div>
   );

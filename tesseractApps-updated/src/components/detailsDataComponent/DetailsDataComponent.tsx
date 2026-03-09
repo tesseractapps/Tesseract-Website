@@ -33,16 +33,16 @@ const DetailsDataComponent = ({
     >
       {componentType == 1 && data.images && data.images.length > 1 && (
         <div id="details-data-image-collage">
-          <img src={data.images[0]} alt="details image 1" />
+          <img loading="lazy" src={data.images[0]} alt="details image 1" />
           <div id="details-data-image-collage-item">
-            <img src={data.images[1]} alt="details image 2" />
-            <img src={data.images[2]} alt="details image 3" />
+            <img loading="lazy" src={data.images[1]} alt="details image 2" />
+            <img loading="lazy" src={data.images[2]} alt="details image 3" />
           </div>
         </div>
       )}
       {componentType == 1 && data.images && data.images.length == 1 && (
         <div id="details-data-image">
-          <img
+          <img loading="lazy"
             src={data.images[0]}
             alt="details image 1"
             className="details-data-image"
@@ -89,16 +89,16 @@ const DetailsDataComponent = ({
       </div>
       {componentType == 2 && data.images && data.images.length > 1 && (
         <div id="details-data-image-collage">
-          <img src={data.images[0]} alt="details image 1" />
+          <img loading="lazy" src={data.images[0]} alt="details image 1" />
           <div id="details-data-image-collage-item">
-            <img src={data.images[1]} alt="details image 2" />
-            <img src={data.images[2]} alt="details image 3" />
+            <img loading="lazy" src={data.images[1]} alt="details image 2" />
+            <img loading="lazy" src={data.images[2]} alt="details image 3" />
           </div>
         </div>
       )}
       {componentType == 2 && data.images && data.images.length == 1 && (
         <div id="details-data-image">
-          <img
+          <img loading="lazy"
             src={data.images[0]}
             alt="details image 1"
             className="details-data-image"

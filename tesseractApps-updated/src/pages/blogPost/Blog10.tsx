@@ -2,13 +2,9 @@ import { useNavigate } from "react-router-dom";
 import blogImage from "../../assets/Cover page for Avoid These Common Payroll Pitfalls A Guide for NDIS Provider.webp";
 // import useAppNavigate from "../../hooks/useAppNavigate";
 import "./BlogPostStyles.css";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const Blog10 = () => {
-  useMetaTags({
-    title: "Common Payroll Pitfalls for NDIS Providers | Avoid Mistakes | TesseractApps",
-    description: "Avoid common payroll mistakes as an NDIS provider. SCHADS Award compliance, timesheet accuracy, and payroll processing best practices."
-  });
   const appNavigate = useNavigate();
 
   function handleClick(name: string) {
@@ -17,7 +13,12 @@ const Blog10 = () => {
 
   return (
     <div className="blog-container">
-      <img src={blogImage} alt="blogImage Image" className="blog-image" />
+      <SEO
+        title="Common Payroll Pitfalls for NDIS Providers | Avoid Mistakes | TesseractApps"
+        description="Avoid common payroll mistakes as an NDIS provider. SCHADS Award compliance, timesheet accuracy, and payroll processing best practices."
+        type="article"
+      />
+      <img loading="lazy" src={blogImage} alt="blogImage Image" className="blog-image" />
       <article className="blog-post">
         <header className="blog-header">
           <h1 className="blog-title">

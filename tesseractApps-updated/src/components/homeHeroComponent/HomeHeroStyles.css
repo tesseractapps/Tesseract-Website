@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: calc(100vh - 72px);
+  min-height: calc(100svh - 72px);
   /* grid-template-columns: 1fr 1fr; */
   background-image: var(--color-background-gradient);
   /* padding-top: 100px; */
@@ -26,7 +28,7 @@
   margin-bottom: 0px;
   color: black;
   max-width: 800px;
-  font-family: Roboto;
+  font-family: inherit;
   line-height: 44px;
 }
 #home-text-subText {
@@ -78,7 +80,13 @@
   color: var(--color-text-gray);
 }
 #home-tesseract-logo {
-  margin-top: 115px;
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  background-image: url('/svg-logos/T Blue.svg');
+  background-repeat: no-repeat;
+  background-size: 400%;
+  background-position: 50% 50%;
 }
 @media (max-width: 1280px) {
   .hero-backround-image {
@@ -93,6 +101,14 @@
     display: none;
   }
 }
+
+@media (max-width: 500px) {
+  #home-hero-container {
+    min-height: calc(100vh - 64px);
+    min-height: calc(100svh - 64px);
+  }
+}
+
 @media (max-width: 450px) {
   #home-hero-container {
     display: flex;

@@ -41,7 +41,7 @@ const FaqProductComponent = ({ data }: faqProductionTypes) => {
               marginBottom: "5px",
             }}
           >
-            <AccordionSummary expandIcon={<img src={ArrowDown} alt="arrow" />}>
+            <AccordionSummary expandIcon={<img loading="lazy" src={ArrowDown} alt="arrow" />}>
               <Typography
                 sx={{
                   fontSize: "26px",

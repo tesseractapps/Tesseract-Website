@@ -1,50 +1,33 @@
 import { useRef } from "react";
 import "./App.css";
 import NavBarComponent from "./components/navBarComponent/NavBarComponent";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useLocation } from "react-router-dom";
 import FooterComponent from "./components/footerComponent/FooterComponent";
 import AppRoutes from "./routes/AppRoutes";
-import Signup from "./pages/signup/Signup";
-import BookADemo from "./pages/bookADemo/BookADemo";
-// import ExpoBanner from "./components/exporBanner/ExpoBanner";
-import { useAppContext } from "./contexts/AppContext";
-// import ExpoPage from "./pages/expoPage/ExpoPage";
-// import SignupFlow from "./pages/signupflow/SignupFlow";
+
+const FULLSCREEN_ROUTES = ["/book-a-demo", "/signup"];
+
+function AppInner() {
+  const location = useLocation();
+  const isFullscreen = FULLSCREEN_ROUTES.includes(location.pathname);
+  const portalContainerRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <>
+      {!isFullscreen && <NavBarComponent portalContainerRef={portalContainerRef} />}
+      <div ref={portalContainerRef} />
+      <main role="main">
+        <AppRoutes />
+      </main>
+      {!isFullscreen && <FooterComponent />}
+    </>
+  );
+}
 
 function App() {
-  const {
-    signUp,
-    bookADemo,
-    // expoBanner, setExpoBanner
-  } = useAppContext();
-  const displayCondition = signUp || bookADemo;
-
-  const portalContainerRef = useRef<HTMLDivElement>(null);
   return (
     <BrowserRouter>
-      <Signup />
-      <BookADemo />
-      {!displayCondition && (
-        <NavBarComponent portalContainerRef={portalContainerRef} />
-      )}
-
-      <div ref={portalContainerRef} />
-      {/* {!(signUp || bookADemo) && expoBanner && (
-        // <ExpoBanner
-        //   showBanner={expoBanner}
-        //   handleBannerClose={() => {
-        //     setExpoBanner(false);
-        //   }}
-        // />
-        <ExpoPage
-          showBanner={expoBanner}
-          handleBannerClose={() => {
-            setExpoBanner(false);
-          }}
-        />
-      )} */}
-      {!displayCondition && <AppRoutes />}
-      {!displayCondition && <FooterComponent />}
+      <AppInner />
     </BrowserRouter>
   );
 }

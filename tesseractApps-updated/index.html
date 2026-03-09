@@ -8,18 +8,18 @@
       name="google-site-verification"
       content="p9yERlPqjSzaYB4LbryJj16mIN7felv8PU6W3vz1z_Q"
     />
-    <meta name="msvalidate.01" content="D1539D8098024CEC7EC40F19A5FA349A" />
 
     <!-- DNS Prefetch and Preconnect for third-party domains -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <!-- Both preconnects with correct crossorigin for CORS font files -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" as="style" />
     <link rel="preload" href="/tesseract_logo.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/tesseract_logo_small.webp" as="image" type="image/webp" fetchpriority="high" />
 
     <!-- Load fonts asynchronously -->
     <link
@@ -35,6 +35,7 @@
       />
     </noscript>
     <link
+
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
       media="print"
@@ -58,9 +59,9 @@
         --color-secondary: #002a52;
         --color-alt-secondary: #243b8c;
         --color-background-gradient: linear-gradient(to right, #f5fdfe, #f0f7fe);
-        --color-text-gray: #676767;
+        --color-text-gray: #555555;
         --color-text-gray2: #4d525f;
-        --color-text-gray-light: #616161b4;
+        --color-text-gray-light: #4d4d4d;
         --color-text-dark-gray: #343434;
         --color-background-light-gray: #eaeaea;
         --color-background-light-gray2: rgb(236, 236, 236);
@@ -78,9 +79,9 @@
         align-items: center;
         background-image: var(--color-background-gradient);
         padding: 20px 50px;
-        min-width: max-content;
         width: 100%;
         max-width: 1920px;
+        box-sizing: border-box;
       }
       .navbar-container {
         position: fixed;
@@ -138,21 +139,53 @@
       }
     </style>
 
-    <!-- Google Tag Manager - Already async -->
+    <!-- Organization structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TesseractApps",
+      "url": "https://tesseractapps.com.au",
+      "logo": "https://tesseractapps.com.au/tesseract_logo.webp",
+      "sameAs": [],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://tesseractapps.com.au/contact-us"
+      }
+    }
+    </script>
+
+    <!-- Google Tag Manager — deferred until after first user interaction or page idle -->
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-TXGJDB6N");
+      (function () {
+        function loadGTM() {
+          if (window._gtmLoaded) return;
+          window._gtmLoaded = true;
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, "script", "dataLayer", "GTM-TXGJDB6N");
+        }
+        // Load after first interaction or after page is idle (whichever is first)
+        ["click", "scroll", "keydown", "touchstart", "mousemove"].forEach(function (e) {
+          window.addEventListener(e, loadGTM, { once: true, passive: true });
+        });
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(loadGTM, { timeout: 4000 });
+        } else {
+          setTimeout(loadGTM, 4000);
+        }
+      })();
     </script>
     <!-- End Google Tag Manager -->
-    <title>Tesseract</title>
+    <title>TesseractApps — Workforce Management Software for NDIS &amp; Care Providers</title>
   </head>
   <body>
     <div id="portal-root"></div>

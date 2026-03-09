@@ -1,17 +1,14 @@
 import "./TeamsStyles.css";
 import { teamsPageData } from "../../utils/DummyData";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const Teams = () => {
-  useMetaTags({
-    title:
-      "Meet the TesseractApps Team | Leadership & Experts | Australian Tech",
-    description:
-      "Meet the diverse team behind TesseractApps - technologists, product specialists, and industry experts committed to solving real-world workforce management challenges.",
-  });
-
   return (
     <div id="teams-container">
+      <SEO
+        title="Meet the TesseractApps Team | Leadership & Experts | Australian Tech"
+        description="Meet the diverse team behind TesseractApps - technologists, product specialists, and industry experts committed to solving real-world workforce management challenges."
+      />
       <div className="heading">TEAM</div>
       <div className="subheading">The people behind the platform.</div>
       <div className="text" id="team-text">
@@ -30,7 +27,7 @@ const Teams = () => {
           {teamsPageData.CEO.map((data, index) => {
             return (
               <div key={index} className="team-image-card">
-                <img src={data.image} alt="person" className="team-image" />
+                <img loading="lazy" src={data.image} alt="person" className="team-image" />
 
                 <div className="team-name-container">
                   <div className="team-name">{data.name}</div>
@@ -48,7 +45,7 @@ const Teams = () => {
           {teamsPageData.Directors.map((data, index) => {
             return (
               <div key={index} className="team-image-card">
-                <img src={data.image} alt="person" className="team-image" />
+                <img loading="lazy" src={data.image} alt="person" className="team-image" />
 
                 <div className="team-name-container">
                   <div className="team-name">{data.name}</div>
@@ -68,7 +65,7 @@ const Teams = () => {
           {teamsPageData["BUSINESS & MARKETING"].map((data, index) => {
             return (
               <div key={index} className="team-image-card">
-                <img src={data.image} alt="person" className="team-image" />
+                <img loading="lazy" src={data.image} alt="person" className="team-image" />
 
                 <div className="team-name-container">
                   <div className="team-name">{data.name}</div>
@@ -88,7 +85,7 @@ const Teams = () => {
           {teamsPageData.Team.map((data, index) => {
             return (
               <div key={index} className="team-image-card">
-                <img src={data.image} alt="person" className="team-image" />
+                <img loading="lazy" src={data.image} alt="person" className="team-image" />
 
                 <div className="team-name-container">
                   <div className="team-name">{data.name}</div>
@@ -106,7 +103,7 @@ const Teams = () => {
           {teamsPageData.map((data, index) => {
             return (
               <div key={index} className="team-image-card">
-                <img src={data.image} alt="person" className="team-image" />
+                <img loading="lazy" src={data.image} alt="person" className="team-image" />
 
                 <div className="team-name-container">
                   <div className="team-name">{data.name}</div>

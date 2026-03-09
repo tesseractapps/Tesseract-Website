@@ -4,15 +4,10 @@ import blog5 from "../../assets/Blog5Image3.webp";
 import blogImage1 from "../../assets/Blog5Image1.webp";
 import blogVideo from "../../assets/Sydney expo 2025.mp4";
 import useAppNavigate from "../../hooks/useAppNavigate";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 // import blogImage2 from "../../assets/Blog5Image2.webp";
 
 const Blog5 = () => {
-  useMetaTags({
-    title: "NDIS Compliance Guide | Provider Requirements | TesseractApps",
-    description: "Essential NDIS compliance guide for providers. Understand Quality and Safeguards requirements, documentation needs, and how technology can help you stay compliant."
-  });
-
   // const navigate = useNavigate();
   const appNavigate = useAppNavigate();
   function handleClick(name: string) {
@@ -20,7 +15,12 @@ const Blog5 = () => {
   }
   return (
     <div className="blog-container">
-      <img
+      <SEO
+        title="NDIS Compliance Guide | Provider Requirements | TesseractApps"
+        description="Essential NDIS compliance guide for providers. Understand Quality and Safeguards requirements, documentation needs, and how technology can help you stay compliant."
+        type="article"
+      />
+      <img loading="lazy"
         src={blog5}
         alt="Workforce Management Challenges Image"
         className="blog-image"
@@ -51,12 +51,12 @@ const Blog5 = () => {
 
           <section className="section">
             <div className="blogs-images-section">
-              <img
+              <img loading="lazy"
                 src={blogImage1}
                 alt="Blocg 5 Image 1"
                 className="blog-section-image"
               />
-              <img
+              <img loading="lazy"
                 src={blog5}
                 alt="Blocg 5 Image 1"
                 className="blog-section-image"

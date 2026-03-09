@@ -62,7 +62,12 @@
 }
 .author-image {
   width: 40px;
+  height: 40px;
   border-radius: 25px;
+}
+.star-image {
+  width: 14px;
+  height: 14px;
 }
 .testimonial-text-container {
   min-height: 200px;

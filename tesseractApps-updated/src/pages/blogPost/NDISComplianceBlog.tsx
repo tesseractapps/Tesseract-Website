@@ -4,6 +4,8 @@ import "./BlogPostStyles.css";
 // import blogImage from "../../assets/NDIS Compliance Audits 2026.png";
 import blogImage from "../../assets/Why NDIS Providers Fail Compliance Audits in 2026 _ How to Fix It.webp";
 
+import SEO from "../../components/common/SEO";
+
 const NDISComplianceBlog = () => {
   // const navigate = useNavigate();
 
@@ -13,7 +15,12 @@ const NDISComplianceBlog = () => {
 
   return (
     <div className="blog-container">
-      <img
+      <SEO
+        title="Why NDIS Providers Fail Compliance Audits in 2026 | How to Fix It"
+        description="NDIS compliance audits are not failing providers because of poor care delivery. They fail because providers cannot demonstrate compliance with evidence."
+        type="article"
+      />
+      <img loading="lazy"
         src={blogImage}
         alt="NDIS Compliance Audits 2026 Why Providers Fail and How to Fix It"
         className="blog-image"

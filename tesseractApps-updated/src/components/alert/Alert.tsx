@@ -40,7 +40,7 @@ const Alert = ({ alertData, setAlertData }: alertType) => {
       <div id="alert-message-container">
         <div id="alert-message-header">
           <div />
-          <img
+          <img loading="lazy"
             src={close}
             alt="alert-message-close"
             id="alert-message-close"

@@ -18,17 +18,15 @@ import p3 from "../../assets/p3.webp";
 // import p4 from "../../assets/p4.webp";
 import p5 from "../../assets/p6.webp";
 import pricingStar from "../../assets/pricing-star.webp";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  FormControlLabel,
-  Switch,
-  Typography,
-} from "@mui/material";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+import Typography from "@mui/material/Typography";
 import React from "react";
 import { useAppContext } from "../../contexts/AppContext";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 // import useAppNavigate from "../../hooks/useAppNavigate";
 // import { AppNavigate } from "../../routes/AppNavigate";
 // type PricingDataTickItemTypes = {
@@ -40,10 +38,6 @@ import { useMetaTags } from "../../utils/useMetaTags";
 //   data4?: { value: boolean; text: string };
 // };
 const Pricing = () => {
-  useMetaTags({
-    title: "TesseractApps Pricing | NDIS Software Plans & Packages | Australia",
-    description: "View TesseractApps pricing plans for NDIS providers. Choose from Starter, Standard, Professional, or Premium packages. 7-day free trial, no credit card required. Get 10% off with full accounting suite."
-  });
   const imageArr1 = [p1, p2];
   const imageArr2 = [p3, p5];
   // const navigate = useNavigate();
@@ -97,10 +91,14 @@ const Pricing = () => {
   // const categories = ["ndis", "ict"];
   return (
     <div id="pricing-container">
+      <SEO
+        title="TesseractApps Pricing | NDIS Software Plans & Packages | Australia"
+        description="View TesseractApps pricing plans for NDIS providers. Choose from Starter, Standard, Professional, or Premium packages. 7-day free trial, no credit card required. Get 10% off with full accounting suite."
+      />
       <div id="pricing-her-container">
         <div id="paricing-hero-images-container">
           {imageArr1.map((image) => (
-            <img src={image} alt="ph-image" className="paricing-hero-images" />
+            <img loading="lazy" src={image} alt="ph-image" className="paricing-hero-images" />
           ))}
         </div>
         <div>
@@ -117,7 +115,7 @@ const Pricing = () => {
               className="cta-button pricing-button-primary button-contain"
               onClick={handleTryItFree}
             >
-              Try For Free
+              Begin Your Journey
             </button>
           </div>
           <h2 className="pricing-hero-bottom-text">
@@ -126,7 +124,7 @@ const Pricing = () => {
         </div>
         <div id="paricing-hero-images-container">
           {imageArr2.map((image) => (
-            <img src={image} alt="ph-image" className="paricing-hero-images" />
+            <img loading="lazy" src={image} alt="ph-image" className="paricing-hero-images" />
           ))}
         </div>
       </div>
@@ -213,7 +211,7 @@ const Pricing = () => {
           }}
         />
       </div>
-      {/* <img src={priceBg} alt="price" id="price-bg" /> */}
+      {/* <img loading="lazy" src={priceBg} alt="price" id="price-bg" /> */}
 
       {pricingCardsDummyData[selectedTab].length > 0 && (
         <div id="pricing-data-container">
@@ -231,7 +229,7 @@ const Pricing = () => {
                   >
                     {index == 1 && selectedTab == "ndis" ? (
                       <div id="pricing-most-popular-container">
-                        <img
+                        <img loading="lazy"
                           src={pricingStar}
                           alt="pricing start"
                           id="pricing-most-popular-star"
@@ -301,7 +299,7 @@ const Pricing = () => {
                             className="pricing-tick-data-container"
                           >
                             <div className="pricing-tick-icon-container">
-                              <img
+                              <img loading="lazy"
                                 src={index == 1 ? tickBlue : tickBlack}
                                 alt="pricing-tick-icon"
                                 className="pricing-tick-icon"
@@ -381,7 +379,7 @@ const Pricing = () => {
                     maxHeight: "40px",
                     overflow: "hidden",
                   }}
-                  expandIcon={<img src={ArrowDown} alt="arrow" />}
+                  expandIcon={<img loading="lazy" src={ArrowDown} alt="arrow" />}
                 >
                   <Typography component="span">
                     <div className="pricing-data-heading">{data.heading}</div>
@@ -516,7 +514,7 @@ const Pricing = () => {
         </div>
         <div id="pricing-help-links">
           <div className="pricing-links-container">
-            <img src={call} alt="" className="pricing-links-image" />
+            <img loading="lazy" src={call} alt="" className="pricing-links-image" />
             <div
               className="pricing-links-data-container"
               onClick={() => handleFooterActions("phone")}
@@ -526,7 +524,7 @@ const Pricing = () => {
             </div>
           </div>
           <div className="pricing-links-container">
-            <img src={mark_email} alt="" className="pricing-links-image" />
+            <img loading="lazy" src={mark_email} alt="" className="pricing-links-image" />
             <div
               className="pricing-links-data-container"
               onClick={() => handleFooterActions("email")}
@@ -559,7 +557,7 @@ const PricingDataItem: React.FC<PricingDataItemProps> = ({
   return (
     <div className={className}>
       {data.text == "" && (
-        <img
+        <img loading="lazy"
           src={data.value ? tick : remove}
           alt={data.value ? "tick" : "remove"}
           className={`pricing-data-tick ${data.value ? "pricing-data-tick-success" : ""

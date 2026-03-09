@@ -203,7 +203,7 @@ const ExpoBanner = ({ showBanner, handleBannerClose }: PopupProps) => {
           <div id="alert-message-container">
             <div id="alert-message-header">
               <div />
-              <img
+              <img loading="lazy"
                 src={closeIcon}
                 alt="alert-message-close"
                 id="alert-message-close"
@@ -260,7 +260,7 @@ const ExpoBanner = ({ showBanner, handleBannerClose }: PopupProps) => {
                     event updates.
                   </div>
                 </div>
-                <img
+                <img loading="lazy"
                   src={closeIcon}
                   alt="close icon"
                   onClick={handleBannerClose}
@@ -429,13 +429,13 @@ const ExpoBanner = ({ showBanner, handleBannerClose }: PopupProps) => {
             </>
           ) : (
             <>
-              <img
+              <img loading="lazy"
                 src={closeIcon}
                 alt="close icon"
                 onClick={handleBannerClose}
                 id="expo-banner-image-close-icon"
               />
-              <img
+              <img loading="lazy"
                 src={expoBannerImage}
                 alt="expo banner image"
                 id="expo-banner-image"

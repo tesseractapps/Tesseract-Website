@@ -6,7 +6,7 @@ import {
   expertTalkConfirmationEmailTemplate,
   expertTalkEmailTemplate,
 } from "../../utils/emailTemplates";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 type demoFormType = {
   fullName: string;
   email: string;
@@ -35,11 +35,6 @@ const demoFormErrorState: demoFormType = {
   preferredTime: "Required",
 };
 const SalesPage = () => {
-  useMetaTags({
-    title: "Talk to an Expert | Sales Enquiry | TesseractApps",
-    description: "Speak directly with our NDIS software specialists. Contact TesseractApps sales team for expert advice on workforce management solutions for your care business."
-  });
-
   const [formData, setFormData] = useState(demoFormInitialState);
   const [formErrors, setFormErrors] = useState(demoFormInitialState);
   const [checkbox, setCheckbox] = useState(false);
@@ -167,6 +162,10 @@ const SalesPage = () => {
   };
   return (
     <div id="request-demo-container">
+      <SEO
+        title="Talk to an Expert | Sales Enquiry | TesseractApps"
+        description="Speak directly with our NDIS software specialists. Contact TesseractApps sales team for expert advice on workforce management solutions for your care business."
+      />
       <Alert setAlertData={setAlertData} alertData={alertData} />
       <div className="heading">Talk to an expert</div>
 
@@ -261,7 +260,7 @@ const SalesPage = () => {
                 type="text"
                 id="organisation"
                 name="organisation"
-                autoComplete="organization"
+                autoComplete="organisation"
                 placeholder="Organisation"
                 className={
                   "request-demo-input " +

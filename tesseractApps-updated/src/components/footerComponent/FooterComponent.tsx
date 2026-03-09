@@ -8,7 +8,7 @@ import flagsImag2 from "../../assets/flagImage2.webp";
 import localAward from "../../assets/2025_CANB_WINNER_LBA.webp";
 import iso27001 from "../../assets/JAS-ANZ ISMS.webp";
 import iso9001 from "../../assets/JAS-ANZ QMS.webp";
-import { footerProductsData } from "../../utils/DummyData";
+import { footerProductsData } from "../../utils/NavData";
 // import { useNavigate } from "react-router-dom";
 // import { AppNavigate } from "../../routes/AppNavigate";
 import { useState } from "react";
@@ -133,9 +133,9 @@ const FooterComponent = () => {
   function handleProductDataClick(name: string) {
     // console.log(name);
     if (name == "Careers")
-      return appNavigate("About", { targetId: "about-careers-heading" });
+      return appNavigate("/careers");
     if (name == "Contact Us")
-      return appNavigate("About", { targetId: "contact-info-text-container" });
+      return appNavigate("About", { targetId: "about-contact-section" });
     if (name) return appNavigate(name);
   }
   const productLinks = footerProductsData;
@@ -166,25 +166,25 @@ const FooterComponent = () => {
               </span>
             </div>
             <div id="footer-social-links">
-              <img
+              <img loading="lazy"
                 src={facebook}
                 alt="Facebook"
                 className="footer-social-icon"
                 onClick={() => HandleSocialLinksClick("facebook")}
               ></img>
-              <img
+              <img loading="lazy"
                 src={instagram}
                 alt="Instagram"
                 className="footer-social-icon"
                 onClick={() => HandleSocialLinksClick("instagram")}
               ></img>
-              <img
+              <img loading="lazy"
                 src={linkedin}
                 alt="LinkedIn"
                 className="footer-social-icon"
                 onClick={() => HandleSocialLinksClick("linkedin")}
               ></img>
-              <img
+              <img loading="lazy"
                 src={youtube}
                 alt="YouTube"
                 className="footer-social-icon"
@@ -351,6 +351,15 @@ const FooterComponent = () => {
             >
               Blog
             </div>
+            <a
+              className="footer-text"
+              href="/rss.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
+            >
+              RSS Feed
+            </a>
           </div>
 
           <div className="footer-column">
@@ -433,20 +442,29 @@ const FooterComponent = () => {
           </div>
         </div>
         <div id="footer-awards-container">
-          <img
+          <img loading="lazy"
             src={iso27001}
-            alt="ISO 27001"
+            alt="ISO 27001 certification badge"
             className="footer-award-image footer-award-image2"
+            width="638"
+            height="100"
+            decoding="async"
           />
-          <img
+          <img loading="lazy"
             src={iso9001}
-            alt="ISO 9001"
+            alt="ISO 9001 certification badge"
             className="footer-award-image footer-award-image2"
+            width="638"
+            height="100"
+            decoding="async"
           />
-          <img
+          <img loading="lazy"
             src={localAward}
-            alt="Local Business Award"
+            alt="Local Business Award trophy"
             className="footer-award-image"
+            width="528"
+            height="120"
+            decoding="async"
           />
         </div>
         <div>
@@ -477,47 +495,71 @@ const FooterComponent = () => {
           </div>
           <br />
           <div id="footer-social-links">
-            <img
+            <img loading="lazy"
               src={facebook}
-              alt="Facebook"
+              alt="Visit TesseractApps on Facebook"
               className="footer-social-icon"
+              width="24"
+              height="24"
+              decoding="async"
               onClick={() => HandleSocialLinksClick("facebook")}
             ></img>
-            <img
+            <img loading="lazy"
               src={instagram}
-              alt="Instagram"
+              alt="Visit TesseractApps on Instagram"
               className="footer-social-icon"
+              width="24"
+              height="24"
+              decoding="async"
               onClick={() => HandleSocialLinksClick("instagram")}
             ></img>
-            <img
+            <img loading="lazy"
               src={linkedin}
-              alt="LinkedIn"
+              alt="Visit TesseractApps on LinkedIn"
               className="footer-social-icon"
+              width="24"
+              height="24"
+              decoding="async"
               onClick={() => HandleSocialLinksClick("linkedin")}
             ></img>
-            <img
+            <img loading="lazy"
               src={youtube}
-              alt="YouTube"
+              alt="Visit TesseractApps on YouTube"
               className="footer-social-icon"
+              width="24"
+              height="24"
+              decoding="async"
               onClick={() => HandleSocialLinksClick("youtube")}
             ></img>
           </div>
         </div>
       </div>
       <div id="footer-divider" />
-      <div id="footer-bottom">
-        TesseractApps would like to acknowledge the Traditional Custodians of
-        the land on which we operate, and pay our respects to their elders past
-        and present.
-        <div id="footer-bottom-images">
-          <img src={flagsImag1} alt="Flag Image 1" />
-          <img src={flagsImag2} alt="Flag Image 2" />
-        </div>{" "}
-        <div id="footer-bottom-divider"> | </div>{" "}
-        <div id="footer-bottom-text">
-          © 2026 TesseractApps. All rights reserved.
+        <div id="footer-bottom">
+          TesseractApps would like to acknowledge the Traditional Custodians of
+          the land on which we operate, and pay our respects to their elders
+          past and present.
+          <div id="footer-bottom-images">
+            <img loading="lazy"
+              src={flagsImag1}
+              alt="Aboriginal and Torres Strait Islander flags"
+              width="47"
+              height="33"
+              decoding="async"
+            />
+            <img loading="lazy"
+              src={flagsImag2}
+              alt="Australian national flag"
+              width="48"
+              height="33"
+              decoding="async"
+            />
+          </div>{" "}
+          <div id="footer-bottom-divider"> | </div>{" "}
+          <div id="footer-bottom-text">
+            © 2026 TesseractApps. All rights reserved.
+          </div>
         </div>
-      </div>
     </div>
   );
 };

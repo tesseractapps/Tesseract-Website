@@ -2,25 +2,95 @@
 // import { appNavigate } from "../../routes/AppRoutes";
 import "./BlogPostStyles.css";
 import blogImage from "../../assets/Why Manual Rostering Is Costing You More Than You Think.webp";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const ManualRosteringBlog = () => {
-  useMetaTags({
-    title:
-      "Why Manual Rostering Costs More Than You Think | NDIS | TesseractApps",
-    description:
-      "Calculate the true cost of manual rostering for your NDIS business. Time waste, errors, compliance risks, and how automation delivers ROI.",
-  });
-
-  // const navigate = useNavigate();
-
-  // function handleClick(name: string) {
-  //   appNavigate(name, navigate);
-  // }
-
   return (
     <div className="blog-container">
-      <img
+      <SEO
+        title="Why Manual Rostering Costs More Than You Think | NDIS | TesseractApps"
+        description="Calculate the true cost of manual rostering for your NDIS business. Time waste, errors, compliance risks, and how automation delivers ROI."
+        type="article"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Article",
+              "headline": "Why Manual Rostering Costs More Than You Think",
+              "description":
+                "Calculate the true cost of manual rostering for your NDIS business. Time waste, errors, compliance risks, and how automation delivers ROI.",
+              "image": "https://tesseractapps.com.au/assets/Why%20Manual%20Rostering%20Is%20Costing%20You%20More%20Than%20You%20Think.webp",
+              "author": {
+                "@type": "Organization",
+                "name": "TesseractApps"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "TesseractApps",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://tesseractapps.com.au/tesseract_logo.webp"
+                }
+              },
+              "datePublished": "2025-01-15T08:00:00+11:00",
+              "dateModified": "2025-02-18T10:00:00+11:00"
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://tesseractapps.com.au"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blogs",
+                  "item": "https://tesseractapps.com.au/blogs"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Why Manual Rostering Costs More Than You Think",
+                  "item": "https://tesseractapps.com.au/manual-rostering-hidden-costs"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What are the hidden costs of manual rostering in NDIS?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Manual rostering leads to lost productivity (10-15 hours/week), compliance risks (audits/fines), higher labor costs due to overstaffing, and reduced staff retention."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How does automated rostering improve NDIS compliance?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Automated systems like TesseractApps prevent non-compliant shifts by checking qualifications, fatigue management rules, and mandatory breaks in real-time."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can smart rostering save money for NDIS providers?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. By optimizing labor allocation, preventing unnecessary overtime, and reducing administrative hours, providers can significantly lower operational costs."
+                  }
+                }
+              ]
+            }
+          ]
+        }}
+      />
+      <img loading="lazy"
         src={blogImage}
         alt="Manual Rostering Costs"
         className="blog-image"
@@ -33,6 +103,15 @@ const ManualRosteringBlog = () => {
         </header>
 
         <div className="blog-content">
+          <div className="key-takeaways">
+            <h3>Key Takeaways</h3>
+            <ul>
+              <li><strong>Hidden Costs:</strong> Manual processes waste 10-15 management hours weekly.</li>
+              <li><strong>Compliance Risk:</strong> Human error leads to missed certifications and award breaches.</li>
+              <li><strong>Solution:</strong> Automated rostering ensures compliance, optimizes costs, and boosts staff retention.</li>
+            </ul>
+          </div>
+
           <p className="intro-paragraph">
             Australia’s care and disability services sector is under pressure.
             Providers must balance compliance, workforce constraints, and
@@ -177,6 +256,22 @@ const ManualRosteringBlog = () => {
               strategic step to future-proof your organisation, improve staff
               engagement, and deliver better outcomes for participants.
             </p>
+          </section>
+
+          <section className="section faq-section">
+            <h2 className="section-title">Frequently Asked Questions</h2>
+            <div className="faq-item">
+              <h3 className="faq-question">What are the main risks of manual rostering?</h3>
+              <p className="faq-answer">The main risks include compliance breaches (missing mandatory breaks or qualifications), payroll errors, and high administrative burnout. These can lead to costly fines and staff turnover.</p>
+            </div>
+            <div className="faq-item">
+              <h3 className="faq-question">How much time can I save with automated rostering?</h3>
+              <p className="faq-answer">Providers typically save between 10 to 15 hours per week in administrative time, allowing managers to focus more on participant care and business growth.</p>
+            </div>
+            <div className="faq-item">
+              <h3 className="faq-question">Is TesseractApps suitable for small NDIS providers?</h3>
+              <p className="faq-answer">Yes, TesseractApps is scalable and designed to help providers of all sizes—from startups to established organizations—manage their workforce efficiently and compliantly.</p>
+            </div>
           </section>
 
           <section className="sources-section">

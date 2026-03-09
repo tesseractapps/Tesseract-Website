@@ -25,3 +25,11 @@ dist-ssr
 
 tesseractWebsite
 tesseractWebsite.pub
+.claude/settings.local.json
+.claude/settings.local.json
+stats.html
+
+# Generated image thumbnails (rebuilt by prebuild script)
+src/assets/thumbs/
+temp
+temp

@@ -4,13 +4,9 @@ import "./BlogPostStyles.css";
 import blogImage from "../../assets/Cover page for Top 3 Compliance Myths Busted-DESKTOP-VQ2C97V.webp";
 // import useAppNavigate from "../../hooks/useAppNavigate";
 import { useNavigate } from "react-router-dom";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const Blog9 = () => {
-  useMetaTags({
-    title: "Top 3 NDIS Compliance Myths Busted | Provider Guide | TesseractApps",
-    description: "Debunking common NDIS compliance myths. Understand what's really required, avoid costly mistakes, and simplify your compliance approach."
-  });
   const navigate = useNavigate();
 
   // function handleClick(name: string) {
@@ -22,7 +18,12 @@ const Blog9 = () => {
   }
   return (
     <div className="blog-container">
-      <img
+      <SEO
+        title="Top 3 NDIS Compliance Myths Busted | Provider Guide | TesseractApps"
+        description="Debunking common NDIS compliance myths. Understand what's really required, avoid costly mistakes, and simplify your compliance approach."
+        type="article"
+      />
+      <img loading="lazy"
         src={blogImage}
         alt="Manual Rostering Costs"
         className="blog-image"

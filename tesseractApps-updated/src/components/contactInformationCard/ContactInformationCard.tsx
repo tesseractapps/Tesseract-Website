@@ -10,7 +10,7 @@ const ContactInformationCard = () => {
   };
   return (
     <div id="contact-info-text-container">
-      <img src={contactUsImage} alt="contact us image" id="contact-us-image" />
+      <img loading="lazy" src={contactUsImage} alt="contact us image" id="contact-us-image" />
       <div id="contact-info-sales" className="contact-info">
         <div id="contact-info-upper">
           <div className="contact-info-headingh">Contact Sales:</div>
@@ -36,8 +36,7 @@ const ContactInformationCard = () => {
         <div className="contact-info-headingh">Head Office:</div>
         <div className="contact-info-text">
           TesseractApps <br />
-          {/* 28 Thynne St, Bruce ACT 2617, Canberra, ACT, Australia */}
-          TesseractApps, Bruce ACT 2617
+          TesseractApps, Phillip ACT 2606
         </div>
         <div className="contact-info-text">Phone:</div>
         <div className="contact-info-text">

@@ -1,15 +1,13 @@
 import "./ReleaseNotes.css";
-import { useMetaTags } from "../../utils/useMetaTags";
+import SEO from "../../components/common/SEO";
 
 const ReleaseNotes = () => {
-  useMetaTags({
-    title: "Release Notes | Product Updates & New Features | TesseractApps",
-    description:
-      "Stay updated with TesseractApps latest features and improvements. Browse release notes for all platform updates, bug fixes, and new functionality.",
-  });
-
   return (
     <div id="release-notes-container">
+      <SEO
+        title="Release Notes | Product Updates & New Features | TesseractApps"
+        description="Stay updated with TesseractApps latest features and improvements. Browse release notes for all platform updates, bug fixes, and new functionality."
+      />
       <h1>What's New?</h1>
       <h2>v1.29.0</h2>
       <ul>
@@ -48,7 +46,7 @@ const ReleaseNotes = () => {
           <br />
           Staff documents
           <br />
-          Organization documents
+          Organisation documents
           <br />
           Participant documents
           <br />
@@ -92,7 +90,7 @@ const ReleaseNotes = () => {
           <b>Compliance Report for Each Staff:</b> Implemented a comprehensive
           compliance report at the staff level. This report provides visibility
           into document status, training completion, and overall compliance,
-          helping organizations meet audit and regulatory requirements.
+          helping organisations meet audit and regulatory requirements.
         </li>
         <br />
         <li>

@@ -54,10 +54,15 @@ interface PendulumState {
 
 const HeroArcsComponent = ({ pendulums }: { pendulums: PendulumConfig[] }) => {
   const navigate = useAppNavigate();
+  const svgRef = useRef<SVGSVGElement | null>(null);
   const groupRefs = useRef<Record<string, SVGGElement | null>>({});
   const backgroundCircleRefs = useRef<Record<string, SVGCircleElement | null>>(
     {}
   );
+  // Pre-sampled point lookup table — populated once at mount, never in RAF
+  const pathSamplesRef = useRef<Record<string, Array<{ x: number; y: number }>>>({});
+  // Track visibility to pause RAF when off-screen
+  const visibleRef = useRef(true);
 
   // tooltip state
   const [tooltip, setTooltip] = useState<{
@@ -87,6 +92,40 @@ const HeroArcsComponent = ({ pendulums }: { pendulums: PendulumConfig[] }) => {
     ) as Record<string, PendulumState>
   );
 
+  // Cache path elements and lengths once after mount (getTotalLength forces layout - never call in RAF)
+  useEffect(() => {
+    const SAMPLE_COUNT = 256;
+    for (const pendulum of pendulums) {
+      const path = document.getElementById(
+        `arc-${pendulum.id}`
+      ) as SVGPathElement | null;
+      if (path) {
+        const totalLen = path.getTotalLength();
+        // Pre-sample the path once at mount — eliminates per-frame DOM reads in the RAF loop
+        const samples: Array<{ x: number; y: number }> = [];
+        for (let i = 0; i < SAMPLE_COUNT; i++) {
+          const pt = path.getPointAtLength((i / (SAMPLE_COUNT - 1)) * totalLen);
+          samples.push({ x: pt.x, y: pt.y });
+        }
+        pathSamplesRef.current[pendulum.id] = samples;
+      }
+    }
+  }, [pendulums]);
+
+  // Pause animation when component scrolls off-screen
+  useEffect(() => {
+    const el = svgRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const onEnter = (id: string, label: string) => () => {
     stateRef.current[id].paused = true;
     const g = groupRefs.current[id];
@@ -108,12 +147,33 @@ const HeroArcsComponent = ({ pendulums }: { pendulums: PendulumConfig[] }) => {
     let raf = 0;
     let lastTime = performance.now();
 
+    // easing function (cosine ease-in-out) - defined outside loop
+    const easeInOut = (t: number) => 0.5 - 0.5 * Math.cos(Math.PI * t);
+
     const tick = (now: number) => {
+      if (!visibleRef.current) {
+        // Off-screen: keep lastTime current to avoid a large dt spike on resume
+        lastTime = now;
+        raf = requestAnimationFrame(tick);
+        return;
+      }
+
       const dt = (now - lastTime) / 1000;
       lastTime = now;
 
+      // --- Phase 1: update state and compute positions (all reads) ---
+      const updates: Array<{
+        group: SVGGElement;
+        x: number;
+        y: number;
+        circle: SVGCircleElement | null;
+        r: number;
+      }> = [];
+
       for (const pendulum of pendulums) {
         const s = stateRef.current[pendulum.id];
+        const samples = pathSamplesRef.current[pendulum.id];
+        if (!samples || samples.length === 0) continue;
 
         // swing motion
         if (!s.paused) {
@@ -129,47 +189,46 @@ const HeroArcsComponent = ({ pendulums }: { pendulums: PendulumConfig[] }) => {
           }
         }
 
-        // apply start + end buffer with easing
         const effectiveRange = 100 - pendulum.bufferStart - pendulum.bufferEnd;
-
-        // easing function (cosine ease-in-out)
-        const easeInOut = (t: number) => 0.5 - 0.5 * Math.cos(Math.PI * t);
-        // const easeInOutCubic = (t: number) =>
-        //   t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-        // const easeInOutSine = (t: number) =>
-        //   0.5 - 0.5 * Math.cos(Math.PI * t);
-        // map linear progress -> eased
         const easedProgress = easeInOut(s.progress);
-
         const offsetPct =
           (pendulum.bufferStart + easedProgress * effectiveRange) / 100;
 
-        const path = document.getElementById(
-          `arc-${pendulum.id}`
-        ) as SVGPathElement | null;
-        if (path) {
-          const pathLen = path.getTotalLength();
-          const pt = path.getPointAtLength(offsetPct * pathLen);
+        // Pure JS array lookup — zero DOM access, no forced layout per frame
+        const fracIdx = offsetPct * (samples.length - 1);
+        const i0 = Math.floor(fracIdx);
+        const i1 = Math.min(i0 + 1, samples.length - 1);
+        const frac = fracIdx - i0;
+        const pt = {
+          x: samples[i0].x + frac * (samples[i1].x - samples[i0].x),
+          y: samples[i0].y + frac * (samples[i1].y - samples[i0].y),
+        };
 
-          const group = groupRefs.current[pendulum.id];
-          if (group) {
-            group.setAttribute("transform", `translate(${pt.x},${pt.y})`);
-          }
+        const group = groupRefs.current[pendulum.id];
+        if (!group) continue;
 
-          // heartbeat pulse
-          const backgroundCircle = backgroundCircleRefs.current[pendulum.id];
-          if (backgroundCircle) {
-            if (!s.paused) {
-              const pulsePhase = 0.5 + 0.5 * Math.sin(now / 800);
-              s.pulse =
-                pendulum.minScale +
-                pulsePhase * (pendulum.maxScale - pendulum.minScale);
-            }
-            const baseRadius = pendulum.iconSize * 1.1;
-            backgroundCircle.setAttribute("r", String(baseRadius * s.pulse));
-          }
+        // heartbeat pulse
+        if (!s.paused) {
+          const pulsePhase = 0.5 + 0.5 * Math.sin(now / 800);
+          s.pulse =
+            pendulum.minScale +
+            pulsePhase * (pendulum.maxScale - pendulum.minScale);
         }
+        const baseRadius = pendulum.iconSize * 1.1;
+
+        updates.push({
+          group,
+          x: pt.x,
+          y: pt.y,
+          circle: backgroundCircleRefs.current[pendulum.id] ?? null,
+          r: baseRadius * s.pulse,
+        });
+      }
+
+      // --- Phase 2: apply all DOM writes (batch to avoid layout thrashing) ---
+      for (const { group, x, y, circle, r } of updates) {
+        group.setAttribute("transform", `translate(${x},${y})`);
+        if (circle) circle.setAttribute("r", String(r));
       }
 
       raf = requestAnimationFrame(tick);
@@ -181,6 +240,7 @@ const HeroArcsComponent = ({ pendulums }: { pendulums: PendulumConfig[] }) => {
 
   return (
     <svg
+      ref={svgRef}
       viewBox="0 0 300 400"
       width="30%"
       style={{ background: "transparent" }}

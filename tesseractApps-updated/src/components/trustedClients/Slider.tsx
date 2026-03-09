@@ -12,10 +12,12 @@ const Slider: React.FC<BannerProps> = ({ images, speed = 5000 }) => {
           <section key={idx} style={{ ["--speed" as any]: `${speed}ms` }}>
             {images.map((image, index) => (
               <div className="image" key={`${index}-${idx}`}>
-                <img
+                <img loading="lazy"
                   src={image}
-                  alt={index + "" + image}
+                  alt={`Client logo ${index + 1}`}
                   className="clients-slider-image"
+                  
+                  decoding="async"
                 />
               </div>
             ))}

@@ -1,14 +1,17 @@
 import "./FeaturesStyles.css";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { featuresDummyData } from "../../utils/DummyData";
 import useAppNavigate from "../../hooks/useAppNavigate";
 // import { AppNavigate } from "../../routes/AppNavigate";
 import ArrowLeft from "../arrows/ArrowLeft";
 import ArrowRight from "../arrows/ArrowRight";
-const FeaturesComponent = () => {
+
+// Inner component: contains useKeenSlider — only mounts when shell is in view
+// Deferring mount until intersection avoids the offsetWidth reflow during initial page load.
+const FeaturesSlider = () => {
   // const navigate = useNavigate();
   const appNavigate = useAppNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -79,27 +82,9 @@ const FeaturesComponent = () => {
   const clickHandler = (name: string) => {
     appNavigate(name);
   };
-  const location = useLocation();
 
-  useEffect(() => {
-    if (location.hash) {
-      const targetId = location.hash.replace("#", "");
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth", block: "end" });
-      }
-    }
-  }, [location]);
   return (
-    <div id="features-container">
-      <div className="heading">FEATURES</div>
-      <h1 className="subheading features-subheading">
-        How TesseractApps Supports Your Team.
-      </h1>
-      <h2 className="text features-text">
-        Manage your team, automate compliance, and deliver high quality NDIS
-        services in one platform.
-      </h2>
+    <>
       <div className="features-buttons">
         <div
           className="arrow-container"
@@ -124,10 +109,12 @@ const FeaturesComponent = () => {
               className="keen-slider__slide features-card"
               onClick={() => clickHandler(feature.title)}
             >
-              <img
+              <img loading="lazy"
                 className="features-card-image"
                 src={feature.image}
                 alt={feature.title}
+                width="60"
+                height="60"
               />
               <h2 className="features-card-title">{feature.title}</h2>
               <h3 className="features-card-description">
@@ -137,6 +124,56 @@ const FeaturesComponent = () => {
           ))}
         </div>
       </div>
+    </>
+  );
+};
+
+const FeaturesComponent = () => {
+  const shellRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  // Hash-based scroll navigation stays in the shell so it works regardless of slider init state
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace("#", "");
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth", block: "end" });
+      }
+    }
+  }, [location]);
+
+  useEffect(() => {
+    const el = shellRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // one-shot: init slider once, never re-observe
+        }
+      },
+      { rootMargin: "200px" } // pre-init 200px before entering viewport
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div id="features-container" ref={shellRef}>
+      <div className="heading">FEATURES</div>
+      <h1 className="subheading features-subheading">
+        How TesseractApps Supports Your Team.
+      </h1>
+      <h2 className="text features-text">
+        Manage your team, automate compliance, and deliver high quality NDIS
+        services in one platform.
+      </h2>
+      {isInView
+        ? <FeaturesSlider />
+        : <div style={{ minHeight: "200px" }} aria-hidden="true" />
+      }
     </div>
   );
 };
