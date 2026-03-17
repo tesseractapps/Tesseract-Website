@@ -1,11 +1,8 @@
-// import { useNavigate } from "react-router-dom";
-// import { AppNavigate } from "../../routes/AppNavigate";
 import blog4 from "../../assets/image1.webp";
 import useAppNavigate from "../../hooks/useAppNavigate";
 import SEO from "../../components/common/SEO";
 
 const Blog4 = () => {
-  // const navigate = useNavigate();
   const appNavigate = useAppNavigate();
   function handleClick(name: string) {
     appNavigate(name);

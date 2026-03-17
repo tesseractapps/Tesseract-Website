@@ -1,12 +1,9 @@
-// import { useNavigate } from "react-router-dom";
-// import { AppNavigate } from "../../routes/AppNavigate";
 import "./BlogPostStyles.css";
 import blogImage from "../../assets/blog2.webp";
 import useAppNavigate from "../../hooks/useAppNavigate";
 import SEO from "../../components/common/SEO";
 
 const FutureProofingBlog = () => {
-  // const navigate = useNavigate();
   const appNavigate = useAppNavigate();
   function handleClick(name: string) {
     appNavigate(name);

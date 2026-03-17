@@ -1,0 +1,129 @@
+#request-demo-container {
+  /* padding-top: 110px; */
+}
+#request-demo-text {
+  max-width: 900px;
+  margin-bottom: 60px;
+  line-height: 28px;
+}
+#request-demo-heading {
+  font-size: 64px;
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+#request-demo-content {
+  display: flex;
+}
+.request-demo-form-element {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+.request-demo-input-group {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+}
+#request-demo-form {
+  padding: 30px;
+  border: 1px solid lightgray;
+  border-radius: 25px;
+}
+.request-demo-input {
+  height: 45px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  margin: 20px 0;
+  min-width: 200px;
+  padding: 0 10px;
+}
+.request-demo-select {
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  margin: 20px 0;
+  min-width: 200px;
+  padding: 0 10px;
+  color: grey;
+}
+.request-demo-select option {
+  color: black; /* Makes all dropdown options black */
+}
+.request-demo-select:valid {
+  color: black; /* When an actual option is selected */
+}
+#request-demo-button {
+  background-color: var(--color-primary);
+  color: white;
+  border: 0;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+#request-demo-texts {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  border: 1px solid lightgray;
+  border-radius: 25px;
+  background-color: var(--color-background-light-gray);
+}
+#request-demo-content {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 100px;
+}
+
+#request-demo-form-subtext {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--color-text-gray);
+}
+.request-demo-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.request-demo-description {
+  color: var(--color-text-gray);
+  font-size: 18px;
+  margin-bottom: 10px;
+  line-height: 30px;
+}
+#request-demo-agree-checkbox {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+.error {
+  border-color: red;
+}
+.error::placeholder {
+  color: red;
+}
+@media (max-width: 450px) {
+  #request-demo-content {
+    flex-wrap: wrap;
+  }
+  #request-demo-form {
+    transform: scale(0.8);
+  }
+}
+@media (max-width: 370px) {
+  #request-demo-content {
+    flex-wrap: wrap;
+  }
+  .request-demo-form {
+    transform: scale(0.9);
+  }
+  #request-demo-form {
+    max-width: 430px;
+    padding: 0 !important;
+  }
+}

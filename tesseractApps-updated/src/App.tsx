@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import "./App.css";
-import NavBarComponent from "./components/navBarComponent/NavBarComponent";
+import NavBarComponent from "./components/layout/navBarComponent/NavBarComponent";
 import { BrowserRouter, useLocation } from "react-router-dom";
-import FooterComponent from "./components/footerComponent/FooterComponent";
+import FooterComponent from "./components/layout/footerComponent/FooterComponent";
 import AppRoutes from "./routes/AppRoutes";
 
 const FULLSCREEN_ROUTES = ["/book-a-demo", "/signup"];

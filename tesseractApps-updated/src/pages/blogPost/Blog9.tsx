@@ -1,8 +1,5 @@
-// import { useNavigate } from "react-router-dom";
-// import { appNavigate } from "../../routes/AppRoutes";
 import "./BlogPostStyles.css";
 import blogImage from "../../assets/Cover page for Top 3 Compliance Myths Busted-DESKTOP-VQ2C97V.webp";
-// import useAppNavigate from "../../hooks/useAppNavigate";
 import { useNavigate } from "react-router-dom";
 import SEO from "../../components/common/SEO";
 

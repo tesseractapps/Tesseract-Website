@@ -10,18 +10,18 @@ import Home from "../pages/home/Home";
 
 // All other pages are lazy-loaded — they only download when the user navigates to them
 const Blog = lazy(() => import("../pages/blog/Blog"));
-const Details = lazy(() => import("../pages/details/Details"));
-const Pricing = lazy(() => import("../pages/pricing/Pricing"));
-const RequestADemo = lazy(() => import("../pages/requestADemo/RequestADemo"));
-const AddBlog = lazy(() => import("../pages/addBlog/AddBlog"));
-const SubPage = lazy(() => import("../pages/SubPage/SubPage"));
-const ItemsPage = lazy(() => import("../pages/ItemsPage/ItemsPage"));
-const OutStory = lazy(() => import("../pages/ourStory/OutStory"));
-const AboutUsSubPage = lazy(() => import("../pages/AboutUsSubPages/AboutUsSubPage"));
-const FAQ = lazy(() => import("../pages/faq/FAQ"));
-const Teams = lazy(() => import("../pages/teams/Teams"));
-const Careers = lazy(() => import("../pages/careers/Careers"));
-const ContactInformation = lazy(() => import("../pages/contactInformation/ContactInformation"));
+const Details = lazy(() => import("../pages/products/details/Details"));
+const Pricing = lazy(() => import("../pages/marketing/pricing/Pricing"));
+const RequestADemo = lazy(() => import("../pages/forms/requestADemo/RequestADemo"));
+const AddBlog = lazy(() => import("../pages/resources/addBlog/AddBlog"));
+const SubPage = lazy(() => import("../pages/products/subPage/SubPage"));
+const ItemsPage = lazy(() => import("../pages/resources/itemsPage/ItemsPage"));
+const OurStory = lazy(() => import("../pages/marketing/ourStory/OurStory"));
+const AboutUsSubPage = lazy(() => import("../pages/resources/aboutUsSubPages/AboutUsSubPage"));
+const FAQ = lazy(() => import("../pages/resources/faq/FAQ"));
+const Teams = lazy(() => import("../pages/resources/teams/Teams"));
+const Careers = lazy(() => import("../pages/marketing/careers/Careers"));
+const ContactInformation = lazy(() => import("../pages/forms/contactInformation/ContactInformation"));
 const Blogpost = lazy(() => import("../pages/blogPost/Blogpost"));
 const FutureProofingBlog = lazy(() => import("../pages/blogPost/FutureProofingBlog"));
 const Blog4 = lazy(() => import("../pages/blogPost/Blog4"));
@@ -29,16 +29,16 @@ const Blog5 = lazy(() => import("../pages/blogPost/Blog5"));
 const CanberraNDISExpoBlog = lazy(() => import("../pages/blogPost/CanberraNDISExpoBlog"));
 const BeyondComplianceBlog = lazy(() => import("../pages/blogPost/BeyondComplianceBlog"));
 const ManualRosteringBlog = lazy(() => import("../pages/blogPost/ManualRosteringBlog"));
-const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy/PrivacyPolicy"));
-const TermsAndConditions = lazy(() => import("../pages/TermsAndConditions/TermsAndConditions"));
-const ByRole = lazy(() => import("../pages/byRole/ByRole"));
-const ByIndustry = lazy(() => import("../pages/byIndustry/ByIndustry"));
-const ProductDetails = lazy(() => import("../pages/productDetails/ProductDetails"));
-const ReleaseNotes = lazy(() => import("../pages/ReleaseNotes/ReleaseNotes"));
-const ComingSoon = lazy(() => import("../pages/comingSoon/ComingSoon"));
-const SalesPage = lazy(() => import("../pages/salesPage/SalesPage"));
-const About = lazy(() => import("../pages/about/About"));
-const Whitepapers = lazy(() => import("../pages/whitepapers/Whitepapers"));
+const PrivacyPolicy = lazy(() => import("../pages/legal/privacyPolicy/PrivacyPolicy"));
+const TermsAndConditions = lazy(() => import("../pages/legal/termsAndConditions/TermsAndConditions"));
+const ByRole = lazy(() => import("../pages/solutions/byRole/ByRole"));
+const ByIndustry = lazy(() => import("../pages/solutions/byIndustry/ByIndustry"));
+const ProductDetails = lazy(() => import("../pages/products/productDetails/ProductDetails"));
+const ReleaseNotes = lazy(() => import("../pages/legal/releaseNotes/ReleaseNotes"));
+const ComingSoon = lazy(() => import("../pages/marketing/comingSoon/ComingSoon"));
+const SalesPage = lazy(() => import("../pages/forms/salesPage/SalesPage"));
+const About = lazy(() => import("../pages/marketing/about/About"));
+const Whitepapers = lazy(() => import("../pages/resources/whitepapers/Whitepapers"));
 const Blog8 = lazy(() => import("../pages/blogPost/Blog8"));
 const Blog9 = lazy(() => import("../pages/blogPost/Blog9"));
 const Blog10 = lazy(() => import("../pages/blogPost/Blog10"));
@@ -46,8 +46,8 @@ const Blog11 = lazy(() => import("../pages/blogPost/Blog11"));
 const NDISComplianceBlog = lazy(() => import("../pages/blogPost/NDISComplianceBlog"));
 const BlogPostPage = lazy(() => import("../pages/blogPost/BlogPostPage"));
 const StudioPage = lazy(() => import("../pages/studio/StudioPage"));
-const BookADemo = lazy(() => import("../pages/bookADemo/BookADemo"));
-const Signup = lazy(() => import("../pages/signup/Signup"));
+const BookADemo = lazy(() => import("../pages/forms/bookADemo/BookADemo"));
+const Signup = lazy(() => import("../pages/forms/signup/Signup"));
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -55,15 +55,10 @@ const AppRoutes = () => {
   const {
     getRoute,
     setCloseRoute,
-    setExpoBanner,
   } = useAppContext();
 
   useEffect(() => {
     const cleanPath = location.pathname.replace(/\/$/, "");
-    if (cleanPath === "/expo") {
-      setExpoBanner(true);
-      return;
-    }
     setCloseRoute(cleanPath || "/");
     if ((location.state as any)?.data) return;
     sessionStorage.setItem("prevPath", location.pathname);
@@ -133,7 +128,7 @@ const AppRoutes = () => {
         <Route path="/case-studies" element={<ItemsPage />} />
         <Route path="/whitepapers" element={<Whitepapers />} />
         <Route path="/support-documentation" element={<ItemsPage />} />
-        <Route path="/our-story" element={<OutStory />} />
+        <Route path="/our-story" element={<OurStory />} />
         <Route path="/our-mission-and-vision" element={<AboutUsSubPage />} />
         <Route path="/help-center" element={<FAQ />} />
         <Route path="/team" element={<Teams />} />
@@ -153,7 +148,7 @@ const AppRoutes = () => {
         <Route path="/melbourne-expo-2025" element={<Blog11 />} />
         <Route path="/ndis-compliance-audit-failures-2026" element={<NDISComplianceBlog />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-and-Conditions" element={<TermsAndConditions />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/administrator" element={<ByRole />} />
         <Route path="/roster-manager" element={<ByRole />} />
         <Route path="/ndis-staff" element={<ByRole />} />
@@ -190,7 +185,7 @@ const AppRoutes = () => {
         <Route path="/participant-management" element={<ProductDetails />} />
         <Route path="/incident-management" element={<ProductDetails />} />
         <Route path="/role-based-dashboard" element={<ProductDetails />} />
-        <Route path="/Documents" element={<ProductDetails />} />
+        <Route path="/documents" element={<ProductDetails />} />
         <Route path="/chat" element={<ProductDetails />} />
         <Route path="/my-profile" element={<ProductDetails />} />
         <Route path="/forms" element={<ProductDetails />} />

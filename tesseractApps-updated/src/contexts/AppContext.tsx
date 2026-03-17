@@ -1,18 +1,12 @@
 // src/contexts/AppContext.tsx
 import { createContext, useContext, ReactNode, useMemo, useState } from "react";
-import {
-  // aboutUsPageData,
-  byBusinessProblem,
-  byBusinessType,
-  byCareData,
-  byIndustryData,
-  byRoleData,
-  itemsPageDummyData,
-  productsDetailsData,
-  SubPagesDummyData,
-} from "../utils/DummyData";
+import { byBusinessProblem, byBusinessType, byCareData, byIndustryData } from "../data/industryData";
+import { byRoleData } from "../data/rolesData";
+import { itemsPageDummyData } from "../data/itemsData";
+import { productsDetailsData } from "../data/productsData";
+import { SubPagesDummyData } from "../data/subPagesData";
 
-export type RouteConfig = {
+type RouteConfig = {
   name: string;
   path: string;
   data?: any;
@@ -28,21 +22,14 @@ type AppContextType = {
   handleBookADemo: (value?: boolean) => void;
   closeRoute: string;
   setCloseRoute: React.Dispatch<React.SetStateAction<string>>;
-  expoBanner: boolean;
-  setExpoBanner: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const location = window.location.pathname;
-  // console.log("location:", location);
   const [signUp, setSignUp] = useState(false);
   const [bookADemo, setBookADemo] = useState(false);
   const [closeRoute, setCloseRoute] = useState("");
-  const [expoBanner, setExpoBanner] = useState(
-    location == "/privacy-policy" ? false : true
-  );
   const handleSignup = (value?: boolean) => {
     if (value != undefined) {
       setSignUp(value);
@@ -66,7 +53,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       "/requestDemo": { name: "Book a Demo", path: "/requestDemo" },
       "/book-a-demo": { name: "Book a Demo", path: "/book-a-demo" },
       "/signup": { name: "SignUp", path: "/signup" },
-      "/expo": { name: "SignUp", path: "/expo" },
       "/blogs": {
         name: "Blog",
         path: "/blogs",
@@ -77,7 +63,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         path: "/whitepapers",
         data: itemsPageDummyData["Whitepapers"],
       },
-      // "/careers": { name: "Careers", path: "/careers" },
       "/contact-us": { name: "Contact Us", path: "/contact-us" },
       "/privacy-policy": { name: "Privacy Policy", path: "/privacy-policy" },
       "/terms-and-Conditions": {
@@ -88,16 +73,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       "/careers": { name: "Careers", path: "/careers" },
       "/about": { name: "About", path: "/about" },
       "/help-center": { name: "Help Center", path: "/help-center" },
-      // "/our-story": {
-      //   name: "Our Story",
-      //   path: "/our-story",
-      //   data: aboutUsPageData["Our Story"],
-      // },
-      // "/our-mission-and-vision": {
-      //   name: "Our Mission & Vision",
-      //   path: "/our-mission-and-vision",
-      //   data: aboutUsPageData["Our Mission & Vision"],
-      // },
 
       // ------------------- By Role -------------------
       "/administrator": {
@@ -391,8 +366,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         handleBookADemo,
         closeRoute,
         setCloseRoute,
-        expoBanner,
-        setExpoBanner,
       }}
     >
       {children}

@@ -1,7 +1,7 @@
 import { Studio } from 'sanity'
 import { useEffect } from 'react'
 import config from '../../../sanity.config'
-import './StudioPage.css'
+import './StudioPageStyles.css'
 
 export default function StudioPage() {
   useEffect(() => {

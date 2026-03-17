@@ -1,5 +1,3 @@
-// import { useNavigate } from "react-router-dom";
-// import { appNavigate } from "../../routes/AppRoutes";
 import "./BlogPostStyles.css";
 import blogImage from "../../assets/Why Manual Rostering Is Costing You More Than You Think.webp";
 import SEO from "../../components/common/SEO";

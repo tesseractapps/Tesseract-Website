@@ -1,0 +1,226 @@
+/* ─────────────────────────────────────────
+   FEATURES / KEY FEATURES SECTION
+   (AboutSelectedToolComponent)
+───────────────────────────────────────── */
+
+#selected-tool-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 6% 72px;
+  background: #ffffff;
+}
+
+/* ── Section label (pill badge) ── */
+#selected-tool-heading {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(12, 120, 186, 0.08);
+  color: var(--color-primary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 0.875rem;
+  font-family: "Inter", sans-serif;
+}
+
+/* ── Section heading ── */
+#selected-tool-subheading {
+  font-family: "Inter", -apple-system, sans-serif;
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.03em;
+  line-height: 1.22;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 0 48px;
+}
+
+#selected-tool-text {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text-gray);
+  text-align: center;
+  max-width: 560px;
+  line-height: 1.7;
+  margin: -24px 0 48px;
+}
+
+/* ── Cards grid ──
+   3 columns on desktop, 2 on tablet, 1 on mobile
+   Use repeat(3, 1fr) so 4-card rows stay balanced (2+2) */
+#selected-tool-data-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1080px;
+}
+
+/* ── Individual feature card (type-1: default gradient bg) ── */
+.selected-tool-data {
+  background: linear-gradient(135deg, #f5fdfe 0%, #f0f7fe 100%);
+  border: 1px solid #dde4ed;
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+}
+
+.selected-tool-data:hover {
+  box-shadow: 0 8px 28px rgba(0, 42, 82, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ── Type-2: outer card becomes transparent shell, inner div is the surface ── */
+.selected-tool-data:has(> .selected-tool-card-inner) {
+  background: transparent;
+  border-color: transparent;
+  padding: 0;
+}
+
+/* Inner colored div for type-2 — padding via CSS, only color stays inline */
+.selected-tool-card-inner {
+  border-radius: 16px;
+  padding: 26px 22px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Divider line — hidden, cards replace it ── */
+.selected-dividerLine {
+  display: none;
+}
+
+/* ── Dot/icon ── */
+.selected-tool-data svg {
+  flex-shrink: 0;
+  margin-bottom: 14px;
+  display: block;
+}
+
+/* ── Feature title ── */
+.selected-tool-title {
+  font-family: "Inter", -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  line-height: 1.3;
+  margin: 0 0 8px;
+}
+
+/* ── Feature description ── */
+.selected-tool-description {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--color-text-gray);
+  margin: 0 0 6px;
+  max-width: 100%;
+}
+
+.selected-tool-description-point-title {
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.selected-tool-description-point-description {
+  font-size: 0.875rem;
+  color: var(--color-text-gray);
+  line-height: 1.6;
+}
+
+/* ── Lists inside cards ── */
+.selected-tool-data ul {
+  padding-left: 1.1rem;
+  margin: 4px 0 6px;
+}
+
+.selected-tool-data li {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  color: var(--color-text-gray);
+  line-height: 1.65;
+  margin-bottom: 3px;
+}
+
+/* ── CTA link ── */
+.selected-tool-cta-link {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  margin-top: auto;
+  padding-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.15s ease;
+  text-decoration: none;
+}
+
+.selected-tool-cta-link:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
+  #selected-tool-data-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  #selected-tool-subheading {
+    font-size: 1.625rem;
+  }
+}
+
+/* Phablet: still 2 columns until tight */
+@media (max-width: 700px) {
+  #selected-tool-container {
+    padding: 60px 5% 56px;
+  }
+
+  #selected-tool-subheading {
+    font-size: 1.5rem;
+    margin-bottom: 32px;
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 520px) {
+  #selected-tool-container {
+    padding: 48px 4% 44px;
+  }
+
+  #selected-tool-data-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  #selected-tool-subheading {
+    font-size: 1.375rem;
+  }
+
+  .selected-tool-data {
+    padding: 22px 18px;
+  }
+}

@@ -1,35 +1,32 @@
-// import FaqComponent from "../../components/faqComponent/FaqComponent";
 import { Suspense, lazy, useEffect } from "react";
-import HomeHeroComponent from "../../components/homeHeroComponent/HomeHeroComponent";
-// import MirroredArcsComponent from "../../components/mirroredArcsComponent/MirroredArcsComponent";
-// import VideoComponent from "../../components/videoComponent/VideoComponent";
+import HomeHeroComponent from "../../components/sections/homeHeroComponent/HomeHeroComponent";
 import "./HomeStyles.css";
 import SEO from "../../components/common/SEO";
 
 // All below-fold components are lazy-loaded — they don't block the initial render
 const FeaturesComponent = lazy(
-  () => import("../../components/featuresComponent/FeaturesComponent"),
+  () => import("../../components/sections/featuresComponent/FeaturesComponent"),
 );
 const HowItWorksComponent = lazy(
-  () => import("../../components/howItWorksComponent/HowItWorksComponent"),
+  () => import("../../components/sections/howItWorksComponent/HowItWorksComponent"),
 );
 const TrustedClientsComponent = lazy(
   () =>
     import(
-      "../../components/trustedClients/TrustedClientsComponent"
+      "../../components/sections/trustedClients/TrustedClientsComponent"
     ),
 );
 const ResultsComponent = lazy(
-  () => import("../../components/resultsComponent/ResultsComponent"),
+  () => import("../../components/sections/resultsComponent/ResultsComponent"),
 );
 const TestimonialComponent = lazy(
   () =>
     import(
-      "../../components/testimonialComponent/TestimonialComponent"
+      "../../components/sections/testimonialComponent/TestimonialComponent"
     ),
 );
 const OurBlogComponent = lazy(
-  () => import("../../components/ourBlogComponent/OurBlogComponent"),
+  () => import("../../components/sections/ourBlogComponent/OurBlogComponent"),
 );
 
 const Home = () => {

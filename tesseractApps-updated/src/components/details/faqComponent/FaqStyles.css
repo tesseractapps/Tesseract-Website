@@ -1,0 +1,19 @@
+#faq-container {
+  margin: 0 8%;
+}
+#faq-text {
+  max-width: none;
+}
+
+#accordian-container {
+  margin: 50px 0;
+}
+#accordian-text-details {
+  font-size: 18px;
+  font-weight: 400;
+}
+@media (max-width: 450px) {
+  #faq-container {
+    margin: 0;
+  }
+}

@@ -1,5 +1,3 @@
-// import { useNavigate } from "react-router-dom";
-// import { appNavigate } from "../../routes/AppRoutes";
 import "./BlogPostStyles.css";
 import blog5 from "../../assets/expo-canberra1.webp"; // replace with actual expo image
 import blog6 from "../../assets/expo-canberra2.webp";
@@ -7,7 +5,6 @@ import blogVideo from "../../assets/Canberra Expo 2025.mp4"; // replace with act
 import SEO from "../../components/common/SEO";
 
 const CanberraNDISExpoBlog = () => {
-  // const navigate = useNavigate();
   // function handleClick(name: string) {
   //   appNavigate(name, navigate);
   // }

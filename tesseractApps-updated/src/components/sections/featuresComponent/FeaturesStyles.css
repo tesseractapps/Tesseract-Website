@@ -1,0 +1,76 @@
+#features-container {
+  margin: 25px 0;
+}
+.features-subheading {
+  max-width: 650px !important;
+}
+.features-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 30px;
+}
+.features-text {
+  max-width: 550px !important;
+  margin-bottom: 45px !important;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dot.active {
+  background: var(--color-primary); /* your primary color */
+}
+.features-card {
+  min-width: 310px;
+  max-width: 310px;
+  cursor: pointer;
+}
+.features-card:hover .features-card-title {
+  color: var(--color-primary);
+}
+.features-card-image {
+  min-width: 50px;
+  max-width: 60px;
+  min-height: 50px;
+}
+.features-card-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+.features-card-description {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text-gray);
+  margin: 10px 0;
+}
+.features-buttons {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  top: 120px;
+  z-index: 100;
+}
+
+#features-prev,
+#features-next {
+  margin: 0 30px;
+}
+.features-button:hover {
+  opacity: 1;
+}
+.features-slider {
+  padding: 30px 5%;
+}
+@media (max-width: 450px) {
+  .features-buttons {
+    top: 300px;
+  }
+}

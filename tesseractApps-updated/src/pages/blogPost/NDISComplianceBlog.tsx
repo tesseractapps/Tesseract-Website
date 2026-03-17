@@ -1,13 +1,9 @@
-// import { useNavigate } from "react-router-dom";
-// import { appNavigate } from "../../routes/AppRoutes";
 import "./BlogPostStyles.css";
-// import blogImage from "../../assets/NDIS Compliance Audits 2026.png";
 import blogImage from "../../assets/Why NDIS Providers Fail Compliance Audits in 2026 _ How to Fix It.webp";
 
 import SEO from "../../components/common/SEO";
 
 const NDISComplianceBlog = () => {
-  // const navigate = useNavigate();
 
   // function handleClick(name: string) {
   //   appNavigate(name, navigate);

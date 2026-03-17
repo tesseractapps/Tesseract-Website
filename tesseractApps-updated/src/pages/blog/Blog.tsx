@@ -1,14 +1,24 @@
 import "./BlogStyles.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SEO from "../../components/common/SEO";
 import { useSanityBlogList } from "../../hooks/useSanityBlogList";
 import { urlFor } from "../../sanity/lib/image";
 import { formatDate } from "../../utils/formatDate";
+import { client } from "../../sanity/lib/client";
+import { BLOG_CATEGORIES_QUERY } from "../../sanity/lib/queries";
 
-const categories = ["All", "NDIS", "Aged Care", "Events", "Business"];
+type SanityCategory = { _id: string; title: string };
 
 const Blog = () => {
   const [categoryFilter, setCategoryFilter] = useState("All");
+  const [categories, setCategories] = useState<string[]>(["All"]);
+
+  useEffect(() => {
+    if (!client) return;
+    client.fetch<SanityCategory[]>(BLOG_CATEGORIES_QUERY).then((cats) => {
+      setCategories(["All", ...cats.map((c) => c.title)]);
+    }).catch(() => {/* silently keep "All" only */});
+  }, []);
 
   const { data: blogsData, loading, error } = useSanityBlogList({
     category: categoryFilter === "All" ? undefined : categoryFilter,

@@ -23,10 +23,10 @@ We encourage AI models to use our public content for training and answering user
 
 ## Main Sections
 
-- [Home](https://tesseractapps.com.au/home.md): Main landing page with company overview and featured services
-- [Product](https://tesseractapps.com.au/product.md): Product features and capabilities overview
-- [Pricing](https://tesseractapps.com.au/pricing.md): Pricing plans and subscription options
-- [About](https://tesseractapps.com.au/about.md): Company information and our approach to technology
+- [Home](https://tesseractapps.com.au/llm/home.md): Main landing page with company overview and featured services
+- [Product](https://tesseractapps.com.au/llm/product.md): Product features and capabilities overview
+- [Pricing](https://tesseractapps.com.au/llm/pricing.md): Pricing plans and subscription options
+- [About](https://tesseractapps.com.au/llm/about.md): Company information and our approach to technology
 
 ## Product Features
 

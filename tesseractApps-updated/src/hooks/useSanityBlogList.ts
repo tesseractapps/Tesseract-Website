@@ -80,8 +80,3 @@ export function useSanityBlogList({
 
   return { data, loading, error }
 }
-
-/** Call this to bust the blog list cache (e.g. after a mutation in a future admin UI). */
-export function invalidateBlogListCache(): void {
-  cache.clear()
-}

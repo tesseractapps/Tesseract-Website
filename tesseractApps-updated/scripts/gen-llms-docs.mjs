@@ -2,6 +2,10 @@ import fs from 'fs';
 import path from 'path';
 
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
+const LLM_DIR = path.join(PUBLIC_DIR, 'llm');
+
+// Ensure the llm subdirectory exists
+fs.mkdirSync(LLM_DIR, { recursive: true });
 
 // Core pages content
 const pages = {
@@ -60,11 +64,11 @@ let aggregatedContext = '';
 
 for (const key of pageKeys) {
   const content = pages[key];
-  const filePath = path.join(PUBLIC_DIR, key);
+  const filePath = path.join(LLM_DIR, key);
   
   // Write individual .md file
   fs.writeFileSync(filePath, content, 'utf8');
-  console.log(`Generated: public/${key}`);
+  console.log(`Generated: public/llm/${key}`);
   
   // Append to aggregated context
   aggregatedContext += `\n\n--- Start of ${key} ---\n\n`;

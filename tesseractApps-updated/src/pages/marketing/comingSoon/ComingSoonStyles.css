@@ -1,0 +1,9 @@
+#comming-soon-container {
+  display: flex;
+  justify-content: center;
+  /* padding-top: 110px; */
+}
+#coming-soon-image {
+  max-width: 100%;
+  object-fit: contain;
+}
