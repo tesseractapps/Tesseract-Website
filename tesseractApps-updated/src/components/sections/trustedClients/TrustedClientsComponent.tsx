@@ -13,6 +13,8 @@ import company19 from "../../../assets/thumbs/ImprovedAbility-thumb.webp";
 import company20 from "../../../assets/thumbs/RCG-Logo-thumb.webp";
 import company21 from "../../../assets/thumbs/Company-YDCS-thumb.webp";
 import company22 from "../../../assets/KS PNG Logo.webp";
+import company23 from "../../../assets/embrace logo.webp";
+import company24 from "../../../assets/AveryCareLogo.webp";
 
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
@@ -93,7 +95,9 @@ const TrustedClientsComponent = () => {
     company19,
     company20,
     company21,
-    company22
+    company22,
+    company23,
+    company24
   ];
 
   const shellRef = useRef<HTMLDivElement>(null);

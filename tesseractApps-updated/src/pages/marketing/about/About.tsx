@@ -26,12 +26,14 @@ const teamMembers = [
   { name: "Revanth", role: "Founder & CEO", image: RevanthImage },
   { name: "Kranthi", role: "Co-Founder", image: KranthiImage },
   { name: "Bec McFarland", role: "HR Manager", image: BecImage },
-  { name: "Belle Bai", role: "Marketing Executive", image: BelleBaiImage },
+  { name: "Belle Bai", role: "Marketing Specialist", image: BelleBaiImage },
   { name: "Darshan Shelat", role: "Solutions Consultant", image: darshanImage },
   { name: "Maheshwari", role: "Operations Manager", image: maheshwariImage },
   { name: "Deepakraj", role: "Software Engineer", image: deepakrajImage },
   { name: "Meghna", role: "Accounts Manager", image: meghnaImage },
   { name: "Sai Krishna", role: "Test Engineer", image: saiKrishnaImage },
+  { name: "Theo Kimutai", role: "ICT Solutions Consultant", image: deepakrajImage },
+  { name: "Jack Leverett", role: "ICT Solutions Consultant", image: darshanImage },
 ];
 
 const About = () => {
