@@ -33,10 +33,22 @@ const useAppNavigate = () => {
         if (
           defaultRoute &&
           key !== "Solutions" &&
-          key !== "Resources"
+          key !== "Resources" &&
+          key !== "Capabilities" &&
+          !key.startsWith("/solutions/") &&
+          !key.startsWith("/capabilities/") &&
+          !key.startsWith("/blog/")
         ) {
           navigate("/coming-soon", { replace });
+          return false;
         }
+        
+        // If it's a dynamic slug route that wasn't in AppContext, just navigate directly
+        if (key.startsWith("/")) {
+          navigate(key, { replace });
+          return true;
+        }
+        
         return false;
       }
 

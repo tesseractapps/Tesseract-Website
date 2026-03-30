@@ -45,7 +45,7 @@ export const accordiaDummyData = [
     id: 7,
     question: "Can support workers use TesseractApps on mobile?",
     answer:
-      "Yes. TesseractApps is mobile-friendly. Support workers can log notes, check rosters, and receive alerts in real time — from any device, anywhere.",
+      "Yes. TesseractApps is mobile-friendly. Support workers can log notes, check rosters, and receive alerts in real time, from any device, anywhere.",
   },
   {
     id: 8,

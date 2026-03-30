@@ -7,6 +7,7 @@ import SanityImage from '../../components/sanity/sanity-image'
 import PortableTextRenderer from '../../components/sanity/portable-text'
 import { urlFor } from '../../sanity/lib/image'
 import { formatDate } from '../../utils/formatDate'
+import { buildBreadcrumbSchema, buildGraphSchema } from '../../utils/schemaHelpers'
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -58,7 +59,7 @@ export default function BlogPostPage() {
   }
 
   const seo = post.seo
-  const siteUrl = 'https://www.tesseractapps.com.au'
+  const siteUrl = 'https://tesseractapps.com.au'
   const postUrl = `${siteUrl}/blog/${post.slug?.current ?? ''}`
 
   const metaTitle = seo?.metaTitle ?? post.title ?? ''
@@ -70,13 +71,19 @@ export default function BlogPostPage() {
     (post.mainImage ? urlFor(post.mainImage).width(1200).height(630).auto('format').url() : undefined)
   const ogImageAlt = post.mainImage?.alt ?? post.title ?? ''
 
-  const autoBlogPostingSchema = !seo?.schemaMarkup ? {
-    '@context': 'https://schema.org',
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: 'Home', url: siteUrl },
+    { name: 'Blog', url: `${siteUrl}/blogs` },
+    { name: post.title ?? '', url: postUrl },
+  ])
+
+  const blogPostingSchema = !seo?.schemaMarkup ? {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.excerpt,
     url: postUrl,
     datePublished: post.publishedAt,
+    ...(post._updatedAt && { dateModified: post._updatedAt }),
     ...(post.mainImage && { image: ogImage }),
     ...(post.author?.name && {
       author: {
@@ -92,7 +99,11 @@ export default function BlogPostPage() {
     },
     ...(post.category?.title && { articleSection: post.category.title }),
     ...(post.tags && post.tags.length > 0 && { keywords: post.tags.join(', ') }),
-  } : undefined
+  } : null
+
+  const structuredData = blogPostingSchema
+    ? buildGraphSchema(blogPostingSchema, breadcrumbSchema)
+    : buildGraphSchema(breadcrumbSchema)
 
   const validRelatedPosts = post.relatedPosts?.filter(
     (r) => r.slug?.current && r.slug.current.length > 0
@@ -122,7 +133,7 @@ export default function BlogPostPage() {
         canonical={seo?.canonicalUrl ?? postUrl}
         noIndex={seo?.noIndex ?? false}
         schemaMarkup={seo?.schemaMarkup ?? undefined}
-        structuredData={autoBlogPostingSchema}
+        structuredData={structuredData}
       />
 
       {/* Hero image */}
@@ -141,7 +152,7 @@ export default function BlogPostPage() {
       )}
 
       <div className="bpp-outer">
-        {/* Header card — pulls up over hero */}
+        {/* Header card, pulls up over hero */}
         <div className={`bpp-header${hasHero ? '' : ' bpp-header--no-hero'}`}>
           {post.category?.title && (
             <div className="bpp-category">{post.category.title}</div>
@@ -153,7 +164,7 @@ export default function BlogPostPage() {
             <p className="bpp-excerpt">{post.excerpt}</p>
           )}
 
-          {/* <div className="bpp-meta">
+          <div className="bpp-meta">
             {post.author && (
               <div className="bpp-author">
                 {post.author.avatar?.asset && (
@@ -185,7 +196,7 @@ export default function BlogPostPage() {
                 <span className="bpp-reading-time">{post.readingTime} min read</span>
               </>
             )}
-          </div> */}
+          </div>
 
           {post.tags && post.tags.length > 0 && (
             <div className="bpp-tags">

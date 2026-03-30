@@ -5,7 +5,7 @@ import { BrowserRouter, useLocation } from "react-router-dom";
 import FooterComponent from "./components/layout/footerComponent/FooterComponent";
 import AppRoutes from "./routes/AppRoutes";
 
-const FULLSCREEN_ROUTES = ["/book-a-demo", "/signup"];
+const FULLSCREEN_ROUTES: string[] = [];
 
 function AppInner() {
   const location = useLocation();

@@ -4,9 +4,9 @@ interface MetaTags {
 }
 
 const DEFAULT: MetaTags = {
-  title: "TesseractApps – End-to-End Workforce Management Software",
+  title: "#1 NDIS Software for Providers | TesseractApps",
   description:
-    "TesseractApps streamlines compliance, team management, NDIS-related care and service delivery for providers, all on a secure, scalable platform.",
+    "Purpose-built NDIS software connecting rostering, payroll, compliance & participant management. NDIS compliant. Australian-built. From $39.99/seat/month.",
 };
 
 const META_MAP: Record<string, MetaTags> = {
@@ -16,8 +16,8 @@ const META_MAP: Record<string, MetaTags> = {
     description: "Explore TesseractApps' full suite of workforce management products.",
   },
   "/roster-management": {
-    title: "Roster Management – TesseractApps",
-    description: "Simplify shift scheduling and roster management with TesseractApps.",
+    title: "NDIS Rostering Software | TesseractApps",
+    description: "Auto-schedule NDIS support workers against participant needs. SCHADS Award enforcement at rostering. Manage SIL sleepovers and credentials automatically.",
   },
   "/clock-in-and-clock-out": {
     title: "Clock In & Clock Out – TesseractApps",
@@ -28,24 +28,24 @@ const META_MAP: Record<string, MetaTags> = {
     description: "Create and manage digital forms for compliance and care delivery.",
   },
   "/timesheet": {
-    title: "Timesheet Management – TesseractApps",
-    description: "Automate timesheet collection, approval, and payroll integration.",
+    title: "NDIS Timesheet & Payroll Software | TesseractApps",
+    description: "Automate NDIS timesheets with built-in SCHADS Award interpretation. 3-layer reconciliation before payroll runs. Geo-verified clock-ins reduce payroll errors.",
   },
   "/participant-management": {
-    title: "Participant Management – TesseractApps",
-    description: "Manage NDIS participants efficiently with TesseractApps.",
+    title: "NDIS Participant Management Software | TesseractApps",
+    description: "Centralised NDIS participant profiles with care plans, real-time funding visibility & goal tracking. NDIS compliant. Purpose-built for Australian providers.",
   },
   "/accounting": {
-    title: "Accounting – TesseractApps",
-    description: "Integrated accounting tools for care providers and NDIS businesses.",
+    title: "NDIS Accounting Software | TesseractApps",
+    description: "NDIS-integrated accounting connecting timesheets, payroll, claiming & Xero. Eliminates manual reconciliation and reduces revenue leakage for care providers.",
   },
   "/admin-console": {
     title: "Admin Console – TesseractApps",
     description: "Centralised administration and control for your organisation.",
   },
   "/incident-management": {
-    title: "Incident Management – TesseractApps",
-    description: "Log, track, and resolve incidents with our compliance-ready system.",
+    title: "NDIS Incident Management Software | TesseractApps",
+    description: "Mobile NDIS incident logging with automatic escalation triggers. Timestamped audit trails satisfy NDIS Quality and Safeguards Commission reporting requirements.",
   },
   "/t-learning-hub": {
     title: "T-Learning Hub – TesseractApps",
@@ -89,8 +89,8 @@ const META_MAP: Record<string, MetaTags> = {
   },
   // Industry / Solutions
   "/ndis-industry": {
-    title: "NDIS Industry Solutions – TesseractApps",
-    description: "Purpose-built tools for NDIS providers to manage care and compliance.",
+    title: "NDIS Provider Software | TesseractApps",
+    description: "NDIS-native platform connecting rostering, payroll, compliance & claiming. Quality and Safeguards compliant. Award-winning. Free demo available.",
   },
   "/ict-industry": {
     title: "ICT Industry Solutions – TesseractApps",
@@ -113,12 +113,12 @@ const META_MAP: Record<string, MetaTags> = {
     description: "Streamline workforce management for manufacturing operations.",
   },
   "/disability-support-ndis": {
-    title: "Disability Support & NDIS – TesseractApps",
-    description: "All-in-one platform for disability support and NDIS service delivery.",
+    title: "Disability Support Worker Software | TesseractApps",
+    description: "Schedule NDIS disability support workers with SCHADS Award enforcement. Geo-verified clock-ins, participant management & automated claiming. Australian-built.",
   },
   "/support-coordination": {
-    title: "Support Coordination – TesseractApps",
-    description: "Tools to help support coordinators manage participants and services.",
+    title: "NDIS Support Coordination Software | TesseractApps",
+    description: "Purpose-built tools for NDIS Support Coordinators. Manage participant plans, track service bookings, and stay on top of funding in one centralised platform.",
   },
   "/aged-care-services": {
     title: "Aged Care Services – TesseractApps",
@@ -153,8 +153,8 @@ const META_MAP: Record<string, MetaTags> = {
     description: "Get your workforce operations right from day one with TesseractApps.",
   },
   "/compliance": {
-    title: "Compliance Management – TesseractApps",
-    description: "Stay compliant with automated compliance tracking and reporting.",
+    title: "NDIS Compliance Software | TesseractApps",
+    description: "Continuous NDIS Practice Standards monitoring. Audit-ready evidence retrieved instantly, not assembled at the last minute. ISO 27001 & ISO 9001 certified.",
   },
   "/employee-engagement": {
     title: "Employee Engagement – TesseractApps",

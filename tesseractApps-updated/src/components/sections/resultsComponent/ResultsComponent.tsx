@@ -31,7 +31,7 @@ const ResultsComponent = () => {
         {/* <div className="results-card">
           <div className="results-card-title">500+ Active Users</div>
           <div className="results-card-text">
-            Supporting thousands of workers, participants, and managers daily —
+            Supporting thousands of workers, participants, and managers daily,
             streamlining operations at every level.
           </div>
         </div> */}

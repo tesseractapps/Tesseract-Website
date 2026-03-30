@@ -11,7 +11,7 @@ import { urlFor } from "../../../sanity/lib/image";
 import { formatDate } from "../../../utils/formatDate";
 import type { BlogListItem } from "../../../../sanity.types";
 
-// Inner component: contains useKeenSlider — only mounts when shell is in view
+// Inner component: contains useKeenSlider, only mounts when shell is in view
 // Deferring mount until intersection avoids the offsetWidth reflow during initial page load.
 const OurBlogSlider = ({ posts }: { posts: BlogListItem[] }) => {
   const getPerView = () => {

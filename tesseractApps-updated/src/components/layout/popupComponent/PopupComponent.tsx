@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import "./PopupStyles.css";
 
@@ -28,8 +28,6 @@ const PopupComponent = ({
   currentLink,
 }: PopupProps) => {
   const popupRef = useRef<HTMLDivElement>(null);
-  const [transformStyle, setTransformStyle] =
-    React.useState("translateX(-50%)");
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -50,46 +48,22 @@ const PopupComponent = ({
     };
   }, [isOpen, onClose]);
 
-  useEffect(() => {
-    if (currentLink == "Product" && isOpen && position) {
-      const innerWidth = window.innerWidth;
-      switch (true) {
-        case innerWidth < 1720 && innerWidth > 1660:
-          setTransformStyle("translateX(-45%)");
-          break;
-        case innerWidth < 1660 && innerWidth > 1540:
-          setTransformStyle("translateX(-35%)");
-          break;
-        case innerWidth < 1540 && innerWidth > 1484:
-          setTransformStyle("translateX(-30%)");
-          break;
-        case innerWidth < 1484:
-          setTransformStyle("translateX(-25%)");
-          break;
-
-        default:
-          setTransformStyle("translateX(-50%)");
-          break;
-      }
-    }
-  }, [currentLink, position, isOpen]);
-
-  // After render, clamp the popup so it never overflows the viewport edges.
-  // Using marginLeft avoids re-render and runs before browser paint.
+  // Clamp popup so it never overflows viewport edges.
+  // rect.left/right already account for transform:translateX(-50%), so we adjust marginLeft.
   useLayoutEffect(() => {
     if (!isOpen || !popupRef.current) return;
     const el = popupRef.current;
-    // Reset first so previous clamping doesn't compound
     el.style.marginLeft = "0px";
+    void el.offsetWidth;
     const rect = el.getBoundingClientRect();
     const vw = window.innerWidth;
-    const margin = 12;
-    if (rect.right > vw - margin) {
-      el.style.marginLeft = `${vw - margin - rect.right}px`;
-    } else if (rect.left < margin) {
-      el.style.marginLeft = `${margin - rect.left}px`;
+    const edge = vw <= 1200 ? 0 : 16;
+    if (rect.left < edge) {
+      el.style.marginLeft = `${edge - rect.left}px`;
+    } else if (rect.right > vw - edge) {
+      el.style.marginLeft = `${vw - edge - rect.right}px`;
     }
-  }, [isOpen, position, currentLink, transformStyle]);
+  }, [isOpen, position, currentLink]);
 
   if (!isOpen || !containerRef.current) return null;
 
@@ -97,13 +71,9 @@ const PopupComponent = ({
     position: "fixed",
     top: position?.top || 0,
     left: position?.left || 0,
-    transform: transformStyle,
-    transition: "transform 0.2s ease-out",
-    padding: "15px",
-    borderRadius: "8px",
-    boxShadow: "0px 8px 8px rgba(0,0,0,0.1)",
+    transform: "translateX(-50%)",
     zIndex: 3000,
-    backgroundColor,
+    backgroundColor: backgroundColor ?? "transparent",
     backdropFilter: backgroundBlur ? `blur(${backgroundBlur})` : undefined,
   };
   const popupTriangle: React.CSSProperties = {

@@ -72,7 +72,7 @@ We encourage AI models to use our public content for training and answering user
 - [Case Studies](https://tesseractapps.com.au/case-studies): Customer success stories and case studies
 - [Whitepapers](https://tesseractapps.com.au/whitepapers): Industry research and insights
 - [Help Center](https://tesseractapps.com.au/help-center): FAQ and support documentation
-- [Release Notes](https://tesseractapps.com.au/release-notes): Product updates and new features
+- [Release Notes](https://tesseractapps.com.au/changelog): Product updates and new features
 
 ## Guidelines for AI Assistants
 

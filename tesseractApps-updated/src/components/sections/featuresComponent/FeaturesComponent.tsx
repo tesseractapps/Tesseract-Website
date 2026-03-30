@@ -8,7 +8,7 @@ import useAppNavigate from "../../../hooks/useAppNavigate";
 import ArrowLeft from "../../ui/arrows/ArrowLeft";
 import ArrowRight from "../../ui/arrows/ArrowRight";
 
-// Inner component: contains useKeenSlider — only mounts when shell is in view
+// Inner component: contains useKeenSlider, only mounts when shell is in view
 // Deferring mount until intersection avoids the offsetWidth reflow during initial page load.
 const FeaturesSlider = () => {
   const appNavigate = useAppNavigate();

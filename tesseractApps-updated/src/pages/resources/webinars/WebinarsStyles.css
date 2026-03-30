@@ -1,0 +1,149 @@
+#wb-hero {
+  position: relative;
+  background: linear-gradient(150deg, #002a52 0%, #0b1f3a 55%, #0c2a46 100%);
+  padding: 72px 0 80px;
+  overflow: hidden;
+}
+
+#wb-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(12, 120, 186, 0.14) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+#wb-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+#wb-hero-label {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(12, 120, 186, 0.15);
+  color: #5bb8f5;
+  border: 1px solid rgba(12, 120, 186, 0.35);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  margin-bottom: 20px;
+}
+
+#wb-hero-heading {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+  max-width: 740px;
+}
+
+#wb-hero-sub {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  max-width: 680px;
+  margin: 0;
+}
+
+#wb-content {
+  background: #f8fafc;
+  padding: 72px 0 96px;
+}
+
+#wb-outer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+#wb-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0c78ba;
+  margin-bottom: 8px;
+}
+
+#wb-section-heading {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  color: #002a52;
+  letter-spacing: -0.02em;
+  margin: 0 0 32px;
+}
+
+#wb-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 760px));
+}
+
+.wb-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.wb-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #002a52;
+  letter-spacing: -0.015em;
+  margin: 0 0 10px;
+}
+
+.wb-summary {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #4a5568;
+  margin: 0 0 16px;
+}
+
+.wb-schedule {
+  display: inline-flex;
+  padding: 5px 12px;
+  border-radius: 16px;
+  background: rgba(12, 120, 186, 0.1);
+  color: #0c78ba;
+  border: 1px solid rgba(12, 120, 186, 0.25);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  #wb-hero {
+    padding: 56px 0 64px;
+  }
+
+  #wb-hero-inner,
+  #wb-outer {
+    padding: 0 24px;
+  }
+
+  #wb-content {
+    padding: 52px 0 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  #wb-hero-inner,
+  #wb-outer {
+    padding: 0 20px;
+  }
+
+  .wb-title {
+    font-size: 20px;
+  }
+}

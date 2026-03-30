@@ -2,7 +2,7 @@ import "./BookADemoStyles.css";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import { useState } from "react";
 import { bookADemoFormData } from "../../../data/formData";
-import logo_white from "../../../../public/svg-logos/white-logo.svg";
+import logo_white from "../../../../public/svg-logos/white_logo.svg";
 import React from "react";
 import { sendEmail, sendTextEmail } from "../../../services/appService";
 import Alert from "../../../components/ui/alert/Alert";
@@ -51,6 +51,23 @@ const formEmptyData: formDataType = {
   schedule: "",
 };
 
+const PATHWAY_STEPS = [
+  "Referral",
+  "Intake",
+  "Service Agreement",
+  "Funding Allocation",
+  "Roster Planning",
+  "Service Delivery",
+  "Case Notes",
+  "Incident Management",
+  "Timesheets",
+  "Payroll",
+  "NDIS Claims & Invoicing",
+  "Reconciliation",
+  "Reporting",
+  "Audit Evidence",
+];
+
 const isLastStep = (step: number) => step === bookADemoFormData.length - 1;
 const isFirstStep = (step: number) => step === 0;
 
@@ -85,7 +102,7 @@ const BookADemo = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const handleClose = () => navigate("/");
+  const handleClose = () => navigate(-1);
 
   const handleLogoClick = () => navigate("/");
 
@@ -268,10 +285,15 @@ const BookADemo = () => {
                 <li>No credit card required</li>
                 <li>Full Access to All features for 7 days</li>
               </ul>
-
-              <button type="button" id="bookADemo-why-link" onClick={() => navigate("/")}>
-                Why TesseractApps? <ChevronRight size={14} />
-              </button>
+              
+              {/* Service Pathway */}
+              <div id="bookADemo-pathway-heading">Your Service Pathway</div>
+              <div id="bookADemo-pathway-subheading">End-to-End Operations Covered</div>
+              <ul id="bookADemo-pathway-list">
+                {PATHWAY_STEPS.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ul>
             </div>
           </div>
 
@@ -296,7 +318,7 @@ const BookADemo = () => {
                 <div id="bookADemo-form-hint">{stepData.hint}</div>
               )}
 
-              {/* Steps 0 & 1 — option cards */}
+              {/* Steps 0 & 1, option cards */}
               {!isLastStep(currentStep) && (
                 <>
                   <div id="bookADemo-cards-grid">
@@ -337,7 +359,7 @@ const BookADemo = () => {
                 </>
               )}
 
-          {/* Step 2 — details + schedule */}
+          {/* Step 2, details + schedule */}
           {isLastStep(currentStep) && (
             <div id="bookADemo-details-layout">
               <div id="bookADemo-details-left">

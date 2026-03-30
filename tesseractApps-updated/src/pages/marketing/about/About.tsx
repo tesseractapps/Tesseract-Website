@@ -1,16 +1,9 @@
 import "./AboutStyles.css";
-import RevanthImage from "../../../assets/REVANTH-CEO.webp";
-import KranthiImage from "../../../assets/KRANTHI KAKKERLA - CO FOUNDER.webp";
-import BelleBaiImage from "../../../assets/11.webp";
-import darshanImage from "../../../assets/5.webp";
-import maheshwariImage from "../../../assets/8.webp";
-import deepakrajImage from "../../../assets/4.webp";
-import meghnaImage from "../../../assets/13.webp";
-import saiKrishnaImage from "../../../assets/2.webp";
-import BecImage from "../../../assets/16.webp";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import SEO from "../../../components/common/SEO";
+import { useSanityTeamMembers } from "../../../hooks/useSanityTeamMembers";
+import SanityImage from "../../../components/sanity/sanity-image";
 import {
   Target,
   Telescope,
@@ -22,23 +15,21 @@ import {
 } from "lucide-react";
 import useAppNavigate from "../../../hooks/useAppNavigate";
 
-const teamMembers = [
-  { name: "Revanth", role: "Founder & CEO", image: RevanthImage },
-  { name: "Kranthi", role: "Co-Founder", image: KranthiImage },
-  { name: "Bec McFarland", role: "HR Manager", image: BecImage },
-  { name: "Belle Bai", role: "Marketing Specialist", image: BelleBaiImage },
-  { name: "Darshan Shelat", role: "Solutions Consultant", image: darshanImage },
-  { name: "Maheshwari", role: "Operations Manager", image: maheshwariImage },
-  { name: "Deepakraj", role: "Software Engineer", image: deepakrajImage },
-  { name: "Meghna", role: "Accounts Manager", image: meghnaImage },
-  { name: "Sai Krishna", role: "Test Engineer", image: saiKrishnaImage },
-  { name: "Theo Kimutai", role: "ICT Solutions Consultant", image: deepakrajImage },
-  { name: "Jack Leverett", role: "ICT Solutions Consultant", image: darshanImage },
-];
+// const ICON_MAP: Record<string, React.ReactNode> = {
+//   dollar: <DollarSign size={13} strokeWidth={2.5} />,
+//   home: <Home size={13} strokeWidth={2.5} />,
+//   trending: <TrendingUp size={13} strokeWidth={2.5} />,
+//   users: <Users size={13} strokeWidth={2.5} />,
+//   zap: <Zap size={13} strokeWidth={2.5} />,
+//   heart: <Heart size={13} strokeWidth={2.5} />,
+//   map: <MapPin size={13} strokeWidth={2.5} />,
+// };
 
 const About = () => {
   const location = useLocation();
   const appNavigate = useAppNavigate();
+  const { data: teamMembers, loading: teamLoading } = useSanityTeamMembers();
+  // const { data: jobs, loading: jobsLoading } = useSanityJobListings();
 
   useEffect(() => {
     const targetId = location.state?.targetId;
@@ -69,9 +60,9 @@ const About = () => {
       <section id="about-hero">
         <div id="about-hero-inner">
           <div id="about-hero-label">About TesseractApps</div>
-          <h1 id="about-hero-heading">Built for the people who care for people</h1>
+          <h1 id="about-hero-heading">We can't do what you do, but we can help you with software</h1>
           <p id="about-hero-sub">
-            We're an Australian technology company on a mission to simplify workforce management, NDIS compliance, and care delivery — so providers can focus on what truly matters.
+            The Difference We Bring. TesseractApps started with a simple insight: care providers weren't struggling with care, they were struggling with systems. We built technology to remove that burden.
           </p>
         </div>
       </section>
@@ -87,16 +78,32 @@ const About = () => {
             id="about-story-image"
           /> */}
           <div id="about-story-text-block">
-              <div id="about-mv-header">
-            <div className="about-section-label">Our Story</div>
-            <h2 id="about-mv-heading">From a conversation to a platform</h2>
-          </div>
+            <div id="about-story-header">
+              <div className="about-section-label">Our Story</div>
+              <h2 id="about-story-heading">Our Journey</h2>
+            </div>
             <div id="about-story-text">
-              <p>TesseractApps started in 2022 from a conversation that revealed common frustrations in care management and NDIS compliance.</p>
-              <p>In 2023, we built our platform with input from real care providers. We tested features in real workflows, refined processes, and removed unnecessary complexity.</p>
-              <p>By mid-2024, the T-NDIS beta was launched. Providers provided feedback that shaped the system for day-to-day operations.</p>
-              <p>In January 2025, TesseractApps became fully operational and ready for the market.</p>
-              <p>Today, TesseractApps offers a Salesforce-based platform that helps you save time, reduce errors, and stay compliant — managing staff, participants, and services in one place.</p>
+              <div id="about-story-timeline">
+                <div className="about-timeline-item">
+                  <div className="about-timeline-year">2023 – Founded</div>
+                  <p className="about-timeline-desc">We started by listening to the people who deliver care every day.</p>
+                </div>
+                <div className="about-timeline-item">
+                  <div className="about-timeline-year">2024 – Platform Development</div>
+                  <p className="about-timeline-desc">Built our platform with real providers in real workflows. Every feature tested, refined, and simplified.</p>
+                </div>
+                <div className="about-timeline-item">
+                  <div className="about-timeline-year">2025 – T NDIS Beta Launch</div>
+                  <p className="about-timeline-desc">Provider feedback shaped the platform into a practical, daily operational system.</p>
+                </div>
+                <div className="about-timeline-item">
+                  <div className="about-timeline-year">Market-Ready</div>
+                  <p className="about-timeline-desc">TesseractApps became fully operational and ready to serve providers.</p>
+                </div>
+              </div>
+              <p id="about-story-commitment">
+                We are committed to creating practical, meaningful solutions that support the people delivering care every day. Clarity, collaboration, and real-world impact guide every feature we design.
+              </p>
             </div>
           </div>
         </section>
@@ -135,7 +142,7 @@ const About = () => {
             <div className="about-section-label">The team</div>
             <h2 id="about-team-heading">The people behind the platform</h2>
             <p id="about-team-sub">
-              TesseractApps is led by a diverse team of technologists, product specialists, and industry experts committed to solving real-world challenges in workforce management and care services.
+              We're an energetic and passionate team with diverse backgrounds and deep expertise, united by a shared commitment to making care simpler.
             </p>
           </div>
           {/* <img
@@ -146,132 +153,136 @@ const About = () => {
           /> */}
           {/* <div id="about-team-grid-label">Management</div> */}
           <div id="about-team-grid">
-            {teamMembers.map((member) => (
-              <div className="about-team-card" key={member.name}>
-                <img
-                  loading="lazy"
-                  src={member.image}
-                  alt={member.name}
-                  className="about-team-card-image"
-                />
-                <div className="about-team-card-body">
-                  <div className="about-team-card-name">{member.name}</div>
-                  <div className="about-team-card-role">{member.role}</div>
-                </div>
-              </div>
-            ))}
+            {teamLoading
+              ? [0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                  <div key={i} className="about-team-card about-team-card--skeleton">
+                    <div className="about-team-card-image about-skeleton-image" />
+                    <div className="about-team-card-body">
+                      <div className="about-skeleton-line about-skeleton-line--name" />
+                      <div className="about-skeleton-line about-skeleton-line--role" />
+                    </div>
+                  </div>
+                ))
+              : teamMembers.map((member) => (
+                  <div className="about-team-card" key={member._id}>
+                    <SanityImage
+                      src={member.photo}
+                      alt={member.photo?.alt ?? member.name}
+                      className="about-team-card-image"
+                      width={300}
+                      height={400}
+                      loading="lazy"
+                    />
+                    <div className="about-team-card-body">
+                      <div className="about-team-card-name">{member.name}</div>
+                      <div className="about-team-card-role">{member.role}</div>
+                    </div>
+                  </div>
+                ))}
           </div>
         </section>
 
         {/* ── Careers ── */}
         {/* <section id="about-careers-section">
-          <div className="about-section-label">Careers</div>
-          <h2 id="about-careers-heading">Are you looking for an opportunity?</h2>
+          <div className="about-section-label">Join Us</div>
+          <h2 id="about-careers-heading">Careers</h2>
           <p id="about-careers-sub">
-            TesseractApps is growing quickly and we're looking for passionate, driven individuals who want to make a real impact through innovation and user-centred technology.
+            TesseractApps is building the future of care and workforce technology. Our culture is grounded in clear thinking, operational excellence, continuous improvement, and a strong focus on user needs.
           </p>
 
-          <div className="about-job-card">
-            <div className="about-job-header">
-              <div>
-                <div className="about-job-title">ICT Sales and Solution Specialist</div>
-                <div className="about-job-meta">
-                  <span className="about-job-tag">
-                    <DollarSign size={13} strokeWidth={2.5} /> Up to $180K OTE
-                  </span>
-                  <span className="about-job-tag">
-                    <Home size={13} strokeWidth={2.5} /> Hybrid
-                  </span>
-                  <span className="about-job-tag">
-                    <TrendingUp size={13} strokeWidth={2.5} /> Full Sales Cycle
-                  </span>
+          <div id="about-careers-jobs-list">
+            {jobsLoading && (
+              <div className="about-job-card about-job-card--skeleton" />
+            )}
+            {!jobsLoading && jobs.length === 0 && (
+              <p id="about-careers-bottom-text">
+                No open roles at the moment, but we'd love to hear from you.{" "}
+                <a
+                  href="mailto:careers@tesseractapps.com?subject=Career%20Opportunity%20Enquiry"
+                  className="about-contact-link"
+                >
+                  Send your resume
+                </a>
+              </p>
+            )}
+            {!jobsLoading && jobs.map((job) => (
+              <div className="about-job-card" key={job._id}>
+                <div className="about-job-header">
+                  <div>
+                    <div className="about-job-title">{job.title}</div>
+                    {job.tags && job.tags.length > 0 && (
+                      <div className="about-job-meta">
+                        {job.tags.map((tag, i) => (
+                          <span key={i} className="about-job-tag">
+                            {ICON_MAP[tag.icon ?? ""]} {tag.label}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <a
+                    className="about-apply-btn"
+                    href={`mailto:${job.contactEmail}?subject=Application%3A%20${encodeURIComponent(job.title ?? "")}`}
+                  >
+                    Apply Now
+                  </a>
+                </div>
+
+                <p className="about-job-summary">{job.summary}</p>
+
+                {job.sections && job.sections.length > 0 && (
+                  <div className="about-job-sections">
+                    {job.sections.map((section, si) => (
+                      <div className="about-job-section" key={si}>
+                        <div className="about-section-heading">{section.heading}</div>
+                        {section.layout === "prose" && section.body && (
+                          <p className="about-section-text">{section.body}</p>
+                        )}
+                        {section.layout === "list" && section.items && (
+                          <ul className="about-job-list">
+                            {section.items.map((item, ii) => <li key={ii}>{item}</li>)}
+                          </ul>
+                        )}
+                        {section.layout === "two-col" && (
+                          <div className="about-job-two-col">
+                            <div>
+                              {section.col1Heading && (
+                                <div className="about-subsection-label">{section.col1Heading}</div>
+                              )}
+                              <ul className="about-job-list">
+                                {(section.col1Items ?? []).map((item, ii) => <li key={ii}>{item}</li>)}
+                              </ul>
+                            </div>
+                            <div>
+                              {section.col2Heading && (
+                                <div className="about-subsection-label">{section.col2Heading}</div>
+                              )}
+                              <ul className="about-job-list">
+                                {(section.col2Items ?? []).map((item, ii) => <li key={ii}>{item}</li>)}
+                              </ul>
+                            </div>
+                          </div>
+                        )}
+                        {section.layout === "inline-list" && section.items && (
+                          <ul className="about-job-list about-job-list--grid">
+                            {section.items.map((item, ii) => <li key={ii}>{item}</li>)}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className="about-job-footer">
+                  <span>Enquiries: </span>
+                  <a href={`mailto:${job.contactEmail}`} className="about-contact-link">
+                    {job.contactEmail}
+                  </a>
+                  <span>, {job.contactName}</span>
                 </div>
               </div>
-              <a
-                className="about-apply-btn"
-                href="mailto:bec.mcfarland@tesseractapps.com?subject=Application%20%E2%80%93%20ICT%20Sales%20and%20Solution%20Specialist"
-              >
-                Apply Now
-              </a>
-            </div>
-
-            <p className="about-job-summary">
-              Are you a natural hunter who thrives on building relationships, uncovering opportunities, and closing deals? At TesseractApps, we're looking for a driven ICT Solution Specialist to help expand our footprint across the healthcare and NDIS services sector.
-            </p>
-
-            <div className="about-job-sections">
-              <div className="about-job-section">
-                <div className="about-section-heading">About the Role</div>
-                <p className="about-section-text">
-                  You will manage the entire sales lifecycle — lead generation, discovery, product demonstrations, closing deals, and supporting successful client implementations. This is not a purely transactional role; it combines consultative sales, solution design, onboarding support, and relationship management.
-                </p>
-              </div>
-
-              <div className="about-job-section">
-                <div className="about-section-heading">What You'll Be Doing</div>
-                <div className="about-job-two-col">
-                  <div>
-                    <div className="about-subsection-label">Sales &amp; Business Development</div>
-                    <ul className="about-job-list">
-                      <li>Identify and engage prospective clients through outbound and inbound outreach</li>
-                      <li>Build and manage your own sales pipeline</li>
-                      <li>Deliver tailored product demonstrations aligned to client needs</li>
-                      <li>Manage opportunities through the full sales lifecycle from lead to close</li>
-                      <li>Represent TesseractApps at industry events and forums</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <div className="about-subsection-label">Client Onboarding &amp; Relationships</div>
-                    <ul className="about-job-list">
-                      <li>Support onboarding including data migration and system integrations</li>
-                      <li>Design workflows and automation aligned to client requirements</li>
-                      <li>Build strong, long-term client partnerships</li>
-                      <li>Act as a trusted advisor helping clients improve operational outcomes</li>
-                      <li>Identify opportunities for account growth</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="about-job-section">
-                <div className="about-section-heading">What We're Looking For</div>
-                <ul className="about-job-list">
-                  <li>SaaS sales, business development, or solution consulting experience</li>
-                  <li>Strong communication and relationship-building skills</li>
-                  <li>Confidence explaining technology in simple, practical terms</li>
-                  <li>A proactive, self-motivated approach with a problem-solving mindset</li>
-                  <li>Experience in the healthcare or NDIS sector is highly desirable but not essential</li>
-                </ul>
-              </div>
-
-              <div className="about-job-section">
-                <div className="about-section-heading">Why Join Us?</div>
-                <ul className="about-job-list about-job-list--grid">
-                  <li>OTE up to $180K (base + commission)</li>
-                  <li>Hybrid working environment</li>
-                  <li>Innovative SaaS platform in fast-growing sector</li>
-                  <li>Collaborative team culture focused on growth</li>
-                  <li>Career pathways into Senior or Sales Leadership roles</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="about-job-footer">
-              Enquiries:{" "}
-              <a href="mailto:bec.mcfarland@tesseractapps.com" className="about-contact-link">
-                bec.mcfarland@tesseractapps.com
-              </a>
-              {" "}— Bec McFarland, HR Manager
-            </div>
+            ))}
           </div>
-
-          <p id="about-careers-bottom-text">
-            Don't see the right role? Send your resume to{" "}
-            <a href="mailto:bec.mcfarland@tesseractapps.com" className="about-contact-link">
-              bec.mcfarland@tesseractapps.com
-            </a>{" "}
-            and we'll reach out if the perfect opportunity comes up.
-          </p>
         </section> */}
 
         {/* ── Contact ── */}
@@ -319,14 +330,14 @@ const About = () => {
               <div className="about-contact-card-rows">
                 <div className="about-contact-row">
                   <MapPin size={14} className="about-contact-row-icon" />
-                  <span>TesseractApps, Phillip ACT 2606</span>
+                  <span>TesseractApps, Canberra, ACT, Australia</span>
                 </div>
                 <div className="about-contact-row">
                   <Phone size={14} className="about-contact-row-icon" />
                   <span>1300 252 808 &nbsp;/&nbsp; 02 6133 2800</span>
                 </div>
               </div>
-              <button type="button" className="about-contact-cta about-contact-cta-seconday" onClick={() => appNavigate("/signup")}>
+              <button type="button" className="about-contact-cta" onClick={() => appNavigate("/signup")}>
                 Begin Your Journey
               </button>
             </div>
@@ -346,9 +357,23 @@ const About = () => {
                 </div>
               </div>
               <p className="about-contact-card-note">
-                For collaborations, media enquiries, or partnership opportunities.
+                For collaborations, media enquiries, or partnership opportunities, our marketing team is here to help.
               </p>
             </div>
+          </div>
+
+          <div id="about-contact-not-ready">
+            <h3 id="about-not-ready-heading">Not Ready to Talk Yet?</h3>
+            <p id="about-not-ready-sub">
+              See how governance‑first technology can simplify your operations, strengthen compliance, and give your team more time to focus on delivering quality care.
+            </p>
+            <button type="button" className="about-contact-cta" onClick={() => appNavigate("/signup")}>
+              Begin Your Journey
+            </button>
+          </div>
+
+          <div id="about-contact-social">
+            <p>Follow us on social media for updates, insights, and news.</p>
           </div>
         </section>
 

@@ -43,6 +43,7 @@ type PendulumConfig = {
   startPos: number; // initial swing position
   initialDirection: number; // initial swing direction
   label: string; // tooltip text
+  slug:string
 };
 
 interface PendulumState {
@@ -59,7 +60,7 @@ const HeroArcsComponent = ({ pendulums }: { pendulums: PendulumConfig[] }) => {
   const backgroundCircleRefs = useRef<Record<string, SVGCircleElement | null>>(
     {}
   );
-  // Pre-sampled point lookup table — populated once at mount, never in RAF
+  // Pre-sampled point lookup table, populated once at mount, never in RAF
   const pathSamplesRef = useRef<Record<string, Array<{ x: number; y: number }>>>({});
   // Track visibility to pause RAF when off-screen
   const visibleRef = useRef(true);
@@ -101,7 +102,7 @@ const HeroArcsComponent = ({ pendulums }: { pendulums: PendulumConfig[] }) => {
       ) as SVGPathElement | null;
       if (path) {
         const totalLen = path.getTotalLength();
-        // Pre-sample the path once at mount — eliminates per-frame DOM reads in the RAF loop
+        // Pre-sample the path once at mount, eliminates per-frame DOM reads in the RAF loop
         const samples: Array<{ x: number; y: number }> = [];
         for (let i = 0; i < SAMPLE_COUNT; i++) {
           const pt = path.getPointAtLength((i / (SAMPLE_COUNT - 1)) * totalLen);
@@ -194,7 +195,7 @@ const HeroArcsComponent = ({ pendulums }: { pendulums: PendulumConfig[] }) => {
         const offsetPct =
           (pendulum.bufferStart + easedProgress * effectiveRange) / 100;
 
-        // Pure JS array lookup — zero DOM access, no forced layout per frame
+        // Pure JS array lookup, zero DOM access, no forced layout per frame
         const fracIdx = offsetPct * (samples.length - 1);
         const i0 = Math.floor(fracIdx);
         const i1 = Math.min(i0 + 1, samples.length - 1);
@@ -272,7 +273,7 @@ const HeroArcsComponent = ({ pendulums }: { pendulums: PendulumConfig[] }) => {
               onMouseLeave={onLeave(it.id)}
               style={{ cursor: "pointer" }}
               onClick={() => {
-                navigate(it.label);
+                navigate(it.slug);
               }}
             >
               <circle
@@ -293,6 +294,8 @@ const HeroArcsComponent = ({ pendulums }: { pendulums: PendulumConfig[] }) => {
                 style={{
                   pointerEvents: "none",
                   userSelect: "none",
+                  filter: "invert(1)",
+                  transform:"scale(1.2)"
                 }}
               />
             </g>

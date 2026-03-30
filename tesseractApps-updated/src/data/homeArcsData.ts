@@ -1,11 +1,11 @@
-import humanResourceIvon from "../assets/hero-T Sign.webp";
-import heroIncident from "../assets/hero-Incident  Register.webp";
-import heroHr from "../assets/hero-Human  Resources.webp";
-import roster from "../assets/hero-Roster  Management.webp";
-import heroAccounting from "../assets/hero-Account  Management.webp";
-import heroperformance from "../assets/hero-Performance  Management.webp";
-import heropayroll from "../assets/hero-Payroll 2.webp";
-import heroparticipant from "../assets/hero-Participants.webp";
+import accountingIcon from "../assets/accounting.webp";
+import chatIcon from "../assets/chat.webp";
+import dashboardIcon from "../assets/dashboard.webp";
+import invoiceIcon from "../assets/invoice.webp";
+import tflowIcon from "../assets/iteration.webp";
+import schedulingIcon from "../assets/schedule.webp";
+import incidentIcon from "../assets/incident.webp";
+import participantIcon from "../assets/participant.webp";
 
 export const homeLeftArcsData = [
   {
@@ -15,7 +15,7 @@ export const homeLeftArcsData = [
     r: 420,
     startAngle: 120,
     endAngle: 60,
-    icon: humanResourceIvon,
+    icon: accountingIcon,
     duration: 40,
     bufferStart: 8,
     bufferEnd: 8,
@@ -27,7 +27,8 @@ export const homeLeftArcsData = [
     mirror: false,
     startPos: 0.8,
     initialDirection: -1,
-    label: "T-sign",
+    label: "Accounting",
+    slug:"/capabilities/accounting-financial-reporting"
   },
   {
     id: "p2",
@@ -36,7 +37,7 @@ export const homeLeftArcsData = [
     r: 380,
     startAngle: 120,
     endAngle: 60,
-    icon: heroIncident,
+    icon: chatIcon,
     duration: 35,
     bufferStart: 5,
     bufferEnd: 5,
@@ -48,7 +49,8 @@ export const homeLeftArcsData = [
     mirror: false,
     startPos: 0.2,
     initialDirection: 1,
-    label: "Incident Management",
+    label: "ChaT",
+    slug:"/capabilities/chat"
   },
   {
     id: "p3",
@@ -57,7 +59,7 @@ export const homeLeftArcsData = [
     r: 330,
     startAngle: 120,
     endAngle: 60,
-    icon: heroHr,
+    icon: dashboardIcon,
     duration: 50,
     bufferStart: 5,
     bufferEnd: 5,
@@ -69,7 +71,8 @@ export const homeLeftArcsData = [
     mirror: false,
     startPos: 0.5,
     initialDirection: -1,
-    label: "HR Operations",
+    label: "Dashboards & Reporting",
+    slug:"/capabilities/dashboards-reporting"
   },
   {
     id: "p4",
@@ -78,7 +81,7 @@ export const homeLeftArcsData = [
     r: 280,
     startAngle: 120,
     endAngle: 60,
-    icon: roster,
+    icon: invoiceIcon,
     duration: 45,
     bufferStart: 5,
     bufferEnd: 5,
@@ -90,7 +93,8 @@ export const homeLeftArcsData = [
     mirror: false,
     startPos: 0.8,
     initialDirection: 1,
-    label: "Roster Management",
+    label: "Invoicing",
+    slug:"/capabilities/ndis-claiming-invoicing"
   },
 ];
 
@@ -103,7 +107,7 @@ export const homeRightArcsData = [
     r: 280,
     startAngle: 120,
     endAngle: 60,
-    icon: heroAccounting,
+    icon: tflowIcon,
     duration: 45,
     bufferStart: 5,
     bufferEnd: 5,
@@ -115,7 +119,8 @@ export const homeRightArcsData = [
     mirror: true,
     startPos: 0.5,
     initialDirection: 1,
-    label: "Account Management",
+    label: "T-Flow Automation",
+    slug:"/capabilities/t-flow-automation"
   },
   {
     id: "p6",
@@ -124,7 +129,7 @@ export const homeRightArcsData = [
     r: 330,
     startAngle: 120,
     endAngle: 60,
-    icon: heroperformance,
+    icon: schedulingIcon,
     duration: 50,
     bufferStart: 5,
     bufferEnd: 5,
@@ -136,7 +141,8 @@ export const homeRightArcsData = [
     mirror: true,
     startPos: 0.8,
     initialDirection: -1,
-    label: "Performance Management",
+    label: "Rostering & Scheduling",
+    slug:"/capabilities/rostering-scheduling"
   },
   {
     id: "p7",
@@ -145,7 +151,7 @@ export const homeRightArcsData = [
     r: 380,
     startAngle: 120,
     endAngle: 60,
-    icon: heropayroll,
+    icon: incidentIcon,
     duration: 35,
     bufferStart: 5,
     bufferEnd: 5,
@@ -157,7 +163,8 @@ export const homeRightArcsData = [
     mirror: true,
     startPos: 0.1,
     initialDirection: 1,
-    label: "Accounting",
+    label: "Incident Management",
+    slug:"/capabilities/incidents-management-reporting"
   },
   {
     id: "p8",
@@ -166,7 +173,7 @@ export const homeRightArcsData = [
     r: 420,
     startAngle: 120,
     endAngle: 60,
-    icon: heroparticipant,
+    icon: participantIcon,
     duration: 40,
     bufferStart: 10,
     bufferEnd: 10,
@@ -179,6 +186,7 @@ export const homeRightArcsData = [
     startPos: 0.6,
     initialDirection: -1,
     label: "Participant Management",
+    slug:"/capabilities/participant-management"
   },
 ];
 

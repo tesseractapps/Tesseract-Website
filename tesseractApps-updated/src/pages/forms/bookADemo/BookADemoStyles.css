@@ -19,35 +19,13 @@
    CLOSE BUTTON
 ───────────────────────────────────────── */
 #dialog-close-btn {
-  position: fixed;
-  top: 16px;
-  right: 20px;
-  z-index: 1300;
-  background: white;
-  border: 1.5px solid #d0d7de;
-  border-radius: 6px;
-  padding: 7px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--color-text-dark-gray);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.2s, background 0.2s;
-  letter-spacing: 0.01em;
-}
-
-#dialog-close-btn:hover {
-  background: #f6f8fa;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  display: none;
 }
 
 /* ─────────────────────────────────────────
    PAGE WRAPPER
 ───────────────────────────────────────── */
 #bookADemo-page {
-  position: fixed;
-  inset: 0;
-  z-index: 1200;
   background: #fff;
   overflow: hidden;
 }
@@ -58,10 +36,10 @@
 #bookADemo-container {
   display: grid;
   grid-template-columns: 350px 1fr;
-  grid-template-rows: 100vh;
-  grid-template-rows: 100dvh;
-  height: 100vh;
-  height: 100dvh;
+  grid-template-rows: calc(100vh - 68px);
+  grid-template-rows: calc(100dvh - 68px);
+  height: calc(100vh - 68px);
+  height: calc(100dvh - 68px);
   width: 100%;
   overflow: hidden;
 }
@@ -262,6 +240,52 @@
 
 #bookADemo-why-link:hover {
   color: rgba(255, 255, 255, 0.9);
+}
+
+/* ─── Service Pathway ─── */
+#bookADemo-pathway-heading {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+
+#bookADemo-pathway-subheading {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 10px;
+}
+
+#bookADemo-pathway-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+#bookADemo-pathway-list li {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.4;
+}
+
+#bookADemo-pathway-list li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.2;
 }
 
 /* ─── Illustration ─── */
@@ -676,7 +700,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 68px);
   background: linear-gradient(135deg, var(--color-secondary) 0%, #0a3d6b 100%);
   padding: 40px 24px;
   box-sizing: border-box;
@@ -781,29 +805,23 @@
 @media (max-width: 1024px) {
   #bookADemo-container {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    height: 100vh;
-    height: 100dvh;
+    grid-template-rows: 1fr;
+    height: calc(100vh - 68px);
+    height: calc(100dvh - 68px);
     overflow: hidden;
   }
 
-  /* Slim nav bar — taller than before, logo + step pill only */
+  /* Slim sidebar row hidden — real navbar handles navigation on tablet/mobile */
   #bookADemo-sidebar {
-    flex-direction: row;
-    align-items: center;
-    padding: 18px 28px;
-    gap: 0;
-    overflow: hidden;
+    display: none;
   }
 
   #bookADemo-sidebar-body {
-    display: none; /* all sidebar content hidden on tablet/mobile */
+    display: none;
   }
 
   #bookADemo-navbar-logo {
-    max-width: 110px;
-    margin-bottom: 0;
-    flex-shrink: 0;
+    display: none;
   }
 
   /* Stepper — tighter, smaller text & icons */
@@ -863,19 +881,13 @@
    MOBILE  (≤ 768px)
 ───────────────────────────────────────── */
 @media (max-width: 768px) {
-  #dialog-close-btn {
-    top: 10px;
-    right: 10px;
-    font-size: 11px;
-    padding: 5px 11px;
+  #bookADemo-container {
+    height: calc(100vh - 60px);
+    height: calc(100dvh - 60px);
   }
 
   #bookADemo-sidebar {
-    padding: 16px 18px;
-  }
-
-  #bookADemo-navbar-logo {
-    max-width: 88px;
+    display: none;
   }
 
   #bookADemo-stepper-wrapper {
@@ -955,11 +967,7 @@
 ───────────────────────────────────────── */
 @media (max-width: 480px) {
   #bookADemo-sidebar {
-    padding: 14px 14px;
-  }
-
-  #bookADemo-navbar-logo {
-    max-width: 80px;
+    display: none;
   }
 
   #bookADemo-stepper-wrapper .MuiStepLabel-label {

@@ -36,7 +36,7 @@ export const pricingCardsDummyData = {
         "Add smarter rostering, funds tracking, and incident logging. .",
       features: [
         "Budget tracker & document access",
-        "Incident logging (SIRS-ready)",
+        "Incident logging",
         "Worker records & leave management",
         "Access controls & secure messaging",
         "Participant monitoring & case notes",

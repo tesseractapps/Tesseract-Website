@@ -6,10 +6,19 @@
  * Outputs go to src/assets/thumbs/ — import those in components instead of originals.
  */
 
-import sharp from "sharp";
 import { existsSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+
+// sharp is a devDependency — not installed in Vercel/AWS production builds.
+// Thumbs are committed to git so this script is a no-op when sharp is absent.
+let sharp;
+try {
+  sharp = (await import("sharp")).default;
+} catch {
+  console.log("gen-home-thumbs: sharp not available, skipping (thumbs are pre-committed).");
+  process.exit(0);
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const assetsDir = join(__dirname, "../src/assets");
@@ -43,6 +52,9 @@ const jobs = [
   { src: "ImprovedAbility.webp",                    out: "ImprovedAbility-thumb.webp",width: 400, height: 240, fit: "inside" },
   { src: "RCG-Logo_2[12038376].webp",               out: "RCG-Logo-thumb.webp",       width: 400, height: 240, fit: "inside" },
   { src: "Company-YDCS-.webp",                      out: "Company-YDCS-thumb.webp",   width: 400, height: 240, fit: "inside" },
+  { src: "KS PNG Logo.webp",                      out: "KS PNG Logo.webp",   width: 400, height: 240, fit: "inside" },
+  { src: "embrace logo.webp",                      out: "embrace logo.webp",   width: 400, height: 240, fit: "inside" },
+  { src: "AveryCareLogo.webp",                      out: "AveryCareLogo.webp",   width: 400, height: 240, fit: "inside" },
 ];
 
 let generated = 0;

@@ -48,7 +48,7 @@ export const featuresDummyData = [
     id: 5,
     title: "Participant Management",
     description:
-      "Track progress, log notes, monitor goals, and stay on top of participant needs — all in one place.",
+      "Track progress, log notes, monitor goals, and stay on top of participant needs, all in one place.",
     image: ParticipantsImage,
   },
   {

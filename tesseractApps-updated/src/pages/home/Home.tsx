@@ -3,7 +3,7 @@ import HomeHeroComponent from "../../components/sections/homeHeroComponent/HomeH
 import "./HomeStyles.css";
 import SEO from "../../components/common/SEO";
 
-// All below-fold components are lazy-loaded — they don't block the initial render
+// All below-fold components are lazy-loaded, they don't block the initial render
 const FeaturesComponent = lazy(
   () => import("../../components/sections/featuresComponent/FeaturesComponent"),
 );

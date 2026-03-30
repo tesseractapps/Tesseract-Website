@@ -3,7 +3,7 @@ import { useState } from "react";
 import React from "react";
 import Alert from "../../../components/ui/alert/Alert";
 import { sendEmail, sendTextEmail } from "../../../services/appService";
-import logo_white from "../../../../public/svg-logos/white-logo.svg";
+import logo_white from "../../../../public/svg-logos/white_logo.svg";
 import { Box, Step, StepLabel, Stepper } from "@mui/material";
 import {
   signupConfirmationEmailTemplate,
@@ -59,6 +59,7 @@ const INDUSTRY_OPTIONS = [
 
 /* ── Service pathway steps (sidebar) ── */
 const PATHWAY_STEPS = [
+  "Referral",
   "Intake",
   "Service Agreement",
   "Funding Allocation",
@@ -90,7 +91,7 @@ const Signup = () => {
   const [isSubmitting, setIsSubmitting]   = useState(false);
   const [alertData, setAlertData]         = useState(alertInitialData);
 
-  const handleClose = () => navigate("/");
+  const handleClose = () => navigate(-1);
 
   /* ── Validation per step ── */
   const validateStep = (step: number): boolean => {
@@ -207,7 +208,7 @@ const Signup = () => {
             <div id="signup-success-title">You're all set!</div>
             <div id="signup-success-message">
               Thank you for choosing TesseractApps. We've received your details and are setting up your account.
-              Keep an eye on your inbox — we'll send you an email with your login details and next steps shortly.
+              Keep an eye on your inbox, we'll send you an email with your login details and next steps shortly.
             </div>
             <div id="signup-success-help-heading">Need help?</div>
             <div id="signup-success-help-text">
@@ -324,7 +325,7 @@ const Signup = () => {
                     <div className="su-field">
                       <label className="su-label" htmlFor="abn">
                         ABN Number <span className="su-required">*</span>
-                        <span className="su-label-note"> — Verified via ABR</span>
+                        <span className="su-label-note">, Verified via ABR</span>
                       </label>
                       <input
                         className={"su-input" + (formErrors.abn ? " su-input-error" : "")}

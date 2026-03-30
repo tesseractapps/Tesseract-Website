@@ -1,8 +1,5 @@
 // src/contexts/AppContext.tsx
 import { createContext, useContext, ReactNode, useMemo, useState } from "react";
-import { byBusinessProblem, byBusinessType, byCareData, byIndustryData } from "../data/industryData";
-import { byRoleData } from "../data/rolesData";
-import { itemsPageDummyData } from "../data/itemsData";
 import { productsDetailsData } from "../data/productsData";
 import { SubPagesDummyData } from "../data/subPagesData";
 
@@ -50,170 +47,77 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       // ------------------- Static pages -------------------
       "/": { name: "Home", path: "/" },
       "/pricing": { name: "Pricing", path: "/pricing" },
+      "/platform": { name: "Platform", path: "/platform" },
       "/requestDemo": { name: "Book a Demo", path: "/requestDemo" },
+      "/requestdemo": { name: "Book a Demo", path: "/requestdemo" },
       "/book-a-demo": { name: "Book a Demo", path: "/book-a-demo" },
       "/signup": { name: "SignUp", path: "/signup" },
-      "/blogs": {
-        name: "Blog",
-        path: "/blogs",
-        data: itemsPageDummyData["Blog"],
-      },
-      "/whitepapers": {
-        name: "Whitepapers",
-        path: "/whitepapers",
-        data: itemsPageDummyData["Whitepapers"],
-      },
+
+      "/capabilities": { name: "Capabilities", path: "/capabilities" },
+      "/solutions": { name: "Solutions", path: "/solutions" },
+
+      // ------------------- Capability pages -------------------
+      "/capabilities/rostering-scheduling": { name: "Rostering & Scheduling", path: "/capabilities/rostering-scheduling" },
+      "/capabilities/timesheets-payroll": { name: "Timesheets & Payroll Alignment", path: "/capabilities/timesheets-payroll" },
+      "/capabilities/workforce-management": { name: "Workforce Management", path: "/capabilities/workforce-management" },
+      "/capabilities/participant-management": { name: "Participant Management", path: "/capabilities/participant-management" },
+      "/capabilities/incidents": { name: "Incidents", path: "/capabilities/incidents" },
+      "/capabilities/compliance-audit": { name: "Compliance & Audit Readiness", path: "/capabilities/compliance-audit" },
+      "/capabilities/ndis-claiming": { name: "NDIS Claiming & Invoicing", path: "/capabilities/ndis-claiming" },
+      "/capabilities/accounting-reporting": { name: "Accounting & Financial Reporting", path: "/capabilities/accounting-reporting" },
+      "/capabilities/dashboards-reporting": { name: "Dashboards & Reporting", path: "/capabilities/dashboards-reporting" },
+      "/blogs": { name: "Blog", path: "/blogs" },
+      "/whitepapers": { name: "Whitepapers", path: "/whitepapers" },
+      "/case-studies": { name: "Case Studies", path: "/case-studies" },
+      "/webinars": { name: "Webinars", path: "/webinars" },
       "/contact-us": { name: "Contact Us", path: "/contact-us" },
       "/privacy-policy": { name: "Privacy Policy", path: "/privacy-policy" },
-      "/terms-and-Conditions": {
+      "/terms-and-conditions": {
         name: "Terms & Conditions",
-        path: "/terms-and-Conditions",
+        path: "/terms-and-conditions",
       },
-      "/release-notes": { name: "Release Notes", path: "/release-notes" },
+      "/changelog": { name: "Release Notes", path: "/changelog" },
       "/careers": { name: "Careers", path: "/careers" },
       "/about": { name: "About", path: "/about" },
-      "/help-center": { name: "Help Center", path: "/help-center" },
+      "/help-center": { name: "Help Centre", path: "/help-center" },
+      "/help-centre": { name: "Help Centre", path: "/help-centre" },
 
-      // ------------------- By Role -------------------
-      "/administrator": {
-        name: "Administrator",
-        path: "/administrator",
-        data: byRoleData["Administrator"],
-      },
-      "/roster-manager": {
-        name: "Roster Manager",
-        path: "/roster-manager",
-        data: byRoleData["Roster Manager"],
-      },
-      "/ndis-staff": {
-        name: "NDIS Staff",
-        path: "/ndis-staff",
-        data: byRoleData["NDIS Staff"],
-      },
-      "/hr-manager": {
-        name: "HR Manager",
-        path: "/hr-manager",
-        data: byRoleData["HR Manager"],
-      },
-      "/accountant": {
-        name: "Accountant",
-        path: "/accountant",
-        data: byRoleData["Accountant"],
-      },
-      "/participant": {
-        name: "Participant",
-        path: "/participant",
-        data: byRoleData["Participant"],
-      },
+      // ------------------- By Stage (active, Sanity CMS, no hardcoded data) -------------------
+      "/solutions/start": { name: "Start", path: "/solutions/start" },
+      "/solutions/growth": { name: "Growth", path: "/solutions/growth" },
+      "/solutions/scale": { name: "Scale", path: "/solutions/scale" },
+      "/solutions/enterprise": { name: "Enterprise", path: "/solutions/enterprise" },
 
-      // ------------------- By Industry -------------------
-      "/ndis-industry": {
-        name: "NDIS",
-        path: "/ndis-industry",
-        data: byIndustryData["NDIS Industry"],
+      // ------------------- By Care (active, Sanity CMS, no hardcoded data) -------------------
+      "/solutions/disability-support-ndis": {
+        name: "Disability Support (NDIS Providers)",
+        path: "/solutions/disability-support-ndis",
       },
-      "/ict-industry": {
-        name: "ICT",
-        path: "/ict-industry",
-        data: byIndustryData["ICT Industry"],
+      "/solutions/support-coordination": {
+        name: "Support Coordination",
+        path: "/solutions/support-coordination",
       },
-      "/retail-hospitality": {
-        name: "Retail & Hospitality",
-        path: "/retail-hospitality",
-        data: byIndustryData["Retail & Hospitality"],
+      "/solutions/allied-health-services": {
+        name: "Allied Health Practices",
+        path: "/solutions/allied-health-services",
       },
-      "/multi-site-businesses": {
-        name: "Multi-site Businesses",
-        path: "/multi-site-businesses",
-        data: byIndustryData["Multi-Site Businesses"],
+      "/solutions/sil": {
+        name: "Supported Independent Living",
+        path: "/solutions/sil",
       },
-      "/construction": {
-        name: "Construction",
-        path: "/construction",
-        data: byIndustryData["Construction"],
-      },
-      "/manufacturing": {
-        name: "Manufacturing",
-        path: "/manufacturing",
-        data: byIndustryData["Manufacturing"],
-      },
-
-      // ------------------- By Care -------------------
+      // Legacy paths preserved so getRoute() resolves for setCloseRoute etc.
       "/disability-support-ndis": {
         name: "Disability Support (NDIS Providers)",
         path: "/disability-support-ndis",
-        data: byCareData["Disability Support (NDIS)"],
       },
       "/support-coordination": {
         name: "Support Coordination",
         path: "/support-coordination",
-        data: byCareData["Support Coordination"],
-      },
-      "/aged-care-services": {
-        name: "Aged Care Services",
-        path: "/aged-care-services",
-        data: byCareData["Aged Care Services"],
-      },
-      "/child-care-services": {
-        name: "Childcare Services",
-        path: "/child-care-services",
-        data: byCareData["Childcare Services"],
       },
       "/allied-health-services": {
         name: "Allied Health Practices",
         path: "/allied-health-services",
-        data: byCareData["Allied Health Services"],
       },
-      "/home-community-care-services": {
-        name: "Home & Community Care",
-        path: "/home-community-care-services",
-        data: byCareData["Home & Community Care Services"],
-      },
-
-      // ------------------- By Business Type -------------------
-      "/small-businesses": {
-        name: "Small Businesses",
-        path: "/small-businesses",
-        data: byBusinessType["Small Businesses"],
-      },
-      "/enterprise": {
-        name: "Enterprise",
-        path: "/enterprise",
-        data: byBusinessType["Enterprises"],
-      },
-      "/franchise": {
-        name: "Franchises",
-        path: "/franchise",
-        data: byBusinessType["Franchises"],
-      },
-      "/startups": {
-        name: "Startups",
-        path: "/startups",
-        data: byBusinessType["Startups"],
-      },
-
-      // ------------------- By Business Problem -------------------
-      "/compliance": {
-        name: "Compliance",
-        path: "/compliance",
-        data: byBusinessProblem["Compliance"],
-      },
-      "/employee-engagement": {
-        name: "Employee Engagement",
-        path: "/employee-engagement",
-        data: byBusinessProblem["Employee Engagement"],
-      },
-      "/time-efficiency": {
-        name: "Time Efficiency",
-        path: "/time-efficiency",
-        data: byBusinessProblem["Time Efficiency"],
-      },
-      "/cost-optimisation": {
-        name: "Cost Optimisation",
-        path: "/cost-optimisation",
-        data: byBusinessProblem["Cost Optimisation"],
-      },
-
       // ------------------- Product Details -------------------
       "/product": {
         name: "Product",

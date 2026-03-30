@@ -1,84 +1,43 @@
 import { createClient } from '@sanity/client';
 import fs from 'fs';
 import path from 'path';
+import { loadEnv } from 'vite';
 
 const SITE_URL = 'https://tesseractapps.com.au';
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
 
-// --- Sanity client (uses same env vars as the app, but via process.env for Node) ---
-const projectId = process.env.VITE_SANITY_PROJECT_ID;
-const dataset = process.env.VITE_SANITY_DATASET ?? 'production';
-const apiVersion = process.env.VITE_SANITY_API_VERSION ?? '2024-01-01';
+// --- Sanity client ---
+// Node scripts do not automatically load .env.local like Vite runtime does,
+// so we load env files explicitly and then allow real process env to override.
+const mode = process.env.NODE_ENV || 'production';
+const env = loadEnv(mode, process.cwd(), '');
+
+const projectId = process.env.VITE_SANITY_PROJECT_ID || env.VITE_SANITY_PROJECT_ID;
+const dataset = process.env.VITE_SANITY_DATASET || env.VITE_SANITY_DATASET || 'production';
+const apiVersion = process.env.VITE_SANITY_API_VERSION || env.VITE_SANITY_API_VERSION || '2024-01-01';
 
 // --- Static site pages (not blog posts) for sitemap only ---
 const STATIC_PAGES = [
   { loc: '/', priority: '1.0' },
-  { loc: '/product' },
-  { loc: '/scheduling' },
-  { loc: '/time-management' },
-  { loc: '/hr-management' },
-  { loc: '/communication' },
-  { loc: '/roster-management' },
-  { loc: '/timesheet' },
-  { loc: '/admin-console' },
-  { loc: '/access-control-panel' },
-  { loc: '/hr-operations' },
-  { loc: '/t-sign' },
-  { loc: '/clock-in-and-clock-out' },
-  { loc: '/participant-management' },
-  { loc: '/incident-management' },
-  { loc: '/role-based-dashboard' },
-  { loc: '/documents' },
-  { loc: '/chat' },
-  { loc: '/my-profile' },
-  { loc: '/forms' },
-  { loc: '/accounting' },
-  { loc: '/t-learning-hub' },
-  { loc: '/salesforce-integration' },
-  { loc: '/xero' },
-  { loc: '/wyzed' },
-  { loc: '/ndis-industry' },
-  { loc: '/ict-industry' },
-  { loc: '/retail-hospitality' },
-  { loc: '/multi-site-businesses' },
-  { loc: '/construction' },
-  { loc: '/manufacturing' },
-  { loc: '/disability-support-ndis' },
-  { loc: '/support-coordination' },
-  { loc: '/aged-care-services' },
-  { loc: '/child-care-services' },
-  { loc: '/allied-health-services' },
-  { loc: '/home-community-care-services' },
-  { loc: '/administrator' },
-  { loc: '/roster-manager' },
-  { loc: '/ndis-staff' },
-  { loc: '/hr-manager' },
-  { loc: '/accountant' },
-  { loc: '/participant' },
-  { loc: '/small-businesses' },
-  { loc: '/enterprise' },
-  { loc: '/franchise' },
-  { loc: '/startups' },
-  { loc: '/compliance' },
-  { loc: '/employee-engagement' },
-  { loc: '/time-efficiency' },
-  { loc: '/cost-optimisation' },
-  { loc: '/case-studies' },
-  { loc: '/support-documentation' },
-  { loc: '/our-mission-and-vision' },
-  { loc: '/book-a-demo' },
-  { loc: '/blogs' },
-  { loc: '/whitepapers' },
-  { loc: '/help-center' },
-  { loc: '/release-notes' },
-  { loc: '/privacy-policy' },
-  { loc: '/terms-and-conditions' },
+  { loc: '/capabilities' },
+  { loc: '/solutions' },
+  { loc: '/platform' },
   { loc: '/pricing' },
+  { loc: '/case-studies' },
+  { loc: '/webinars' },
+  { loc: '/whitepapers' },
+  { loc: '/blogs' },
+  { loc: '/help-center' },
+  { loc: '/changelog' },
   { loc: '/about' },
   { loc: '/our-story' },
+  { loc: '/our-mission-and-vision' },
   { loc: '/team' },
   { loc: '/careers' },
   { loc: '/contact-us' },
+  { loc: '/book-a-demo' },
+  { loc: '/privacy-policy' },
+  { loc: '/terms-and-conditions' },
 ];
 
 // --- Helpers ---
@@ -116,7 +75,8 @@ async function fetchSanityPosts() {
         "slug": slug.current,
         title,
         excerpt,
-        publishedAt
+        publishedAt,
+        _updatedAt
       }
     `);
     console.log(`[generate-sitemap] Fetched ${posts.length} posts from Sanity.`);
@@ -127,8 +87,43 @@ async function fetchSanityPosts() {
   }
 }
 
+// --- Fetch CMS dynamic pages (capabilities, solutions, competitors) ---
+async function fetchSanityCmsPages() {
+  if (!projectId) return { capabilityPages: [], solutionPages: [], competitorPages: [] };
+
+  const client = createClient({ projectId, dataset, apiVersion, useCdn: false });
+
+  try {
+    const [capabilityPages, solutionPages, competitorPages] = await Promise.all([
+      client.fetch(`
+        *[_type == "capabilityPage"] | order(order asc) {
+          "slug": slug.current,
+          _updatedAt
+        }
+      `),
+      client.fetch(`
+        *[_type == "solutionPage"] | order(order asc) {
+          "slug": slug.current,
+          _updatedAt
+        }
+      `),
+      client.fetch(`
+        *[_type == "competitorPage"] | order(order asc) {
+          "slug": slug.current,
+          _updatedAt
+        }
+      `),
+    ]);
+    console.log(`[generate-sitemap] Fetched ${capabilityPages.length} capability pages, ${solutionPages.length} solution pages, ${competitorPages.length} competitor pages.`);
+    return { capabilityPages, solutionPages, competitorPages };
+  } catch (err) {
+    console.warn('[generate-sitemap] Sanity CMS page fetch failed — dynamic pages may be missing from sitemap.', err.message);
+    return { capabilityPages: [], solutionPages: [], competitorPages: [] };
+  }
+}
+
 // --- Generate sitemap.xml ---
-function buildSitemap(posts, staticPages) {
+function buildSitemap(posts, staticPages, capabilityPages, solutionPages, competitorPages) {
   const now = new Date().toISOString().slice(0, 10);
 
   const staticUrls = staticPages.map(p => `  <url>
@@ -140,8 +135,29 @@ function buildSitemap(posts, staticPages) {
 
   const blogUrls = posts.map(p => `  <url>
     <loc>${`${SITE_URL}/blog/${p.slug}`}</loc>
-    <lastmod>${lastmod(p.publishedAt)}</lastmod>
+    <lastmod>${lastmod(p._updatedAt ?? p.publishedAt)}</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`).join('\n');
+
+  const capabilityUrls = capabilityPages.map(p => `  <url>
+    <loc>${SITE_URL}/capabilities/${p.slug}</loc>
+    <lastmod>${lastmod(p._updatedAt)}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>`).join('\n');
+
+  const solutionUrls = solutionPages.map(p => `  <url>
+    <loc>${SITE_URL}/solutions/${p.slug}</loc>
+    <lastmod>${lastmod(p._updatedAt)}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>`).join('\n');
+
+  const competitorUrls = competitorPages.map(p => `  <url>
+    <loc>${SITE_URL}/tesseract-vs/${p.slug}</loc>
+    <lastmod>${lastmod(p._updatedAt)}</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>`).join('\n');
 
@@ -151,6 +167,12 @@ function buildSitemap(posts, staticPages) {
 ${staticUrls}
 
 ${blogUrls}
+
+${capabilityUrls}
+
+${solutionUrls}
+
+${competitorUrls}
 
 </urlset>`;
 }
@@ -188,9 +210,12 @@ ${items}
 
 // --- Main ---
 async function main() {
-  const posts = await fetchSanityPosts();
+  const [posts, { capabilityPages, solutionPages, competitorPages }] = await Promise.all([
+    fetchSanityPosts(),
+    fetchSanityCmsPages(),
+  ]);
 
-  const sitemap = buildSitemap(posts, STATIC_PAGES);
+  const sitemap = buildSitemap(posts, STATIC_PAGES, capabilityPages, solutionPages, competitorPages);
   fs.writeFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), sitemap, 'utf8');
   console.log('[generate-sitemap] Written: public/sitemap.xml');
 

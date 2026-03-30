@@ -39,7 +39,7 @@ export function useSanityBlogList({
       return
     }
 
-    // Serve from cache immediately — no loading state shown on repeated mounts
+    // Serve from cache immediately, no loading state shown on repeated mounts
     if (cache.has(cacheKey)) {
       setData(cache.get(cacheKey)!)
       setLoading(false)

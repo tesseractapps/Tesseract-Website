@@ -1,5 +1,4 @@
 :root {
-  overflow-x: hidden;
   max-width: 1920px;
   font-family: "Inter", sans-serif;
 
@@ -23,7 +22,6 @@
     margin-top: 25px;
     margin-bottom: 10px;
     text-transform: uppercase;
-    font-family: "roboto", sans-serif;
     /* margin-top: 50px; */
   }
   .subheading {
@@ -31,7 +29,6 @@
     font-weight: 700;
     text-align: center;
     margin: 10px auto;
-    font-family: "roboto", sans-serif;
   }
   .text {
     font-size: 20px;
@@ -88,8 +85,35 @@
     text-decoration: underline;
   }
 }
+html {
+  margin: 0;
+  max-width: 100%;
+}
+
 body {
   margin: 0;
+  overflow-x: hidden;
+  overflow-x: clip; /* overrides above in modern browsers; clip doesn't break position:sticky unlike hidden */
+  max-width: 100%;
+}
+
+main[role="main"] {
+  padding-top: 68px;
+}
+
+@media (max-width: 500px) {
+  main[role="main"] {
+    padding-top: 60px;
+  }
+}
+
+/* ── MUI font override — force Inter across all MUI components ── */
+.MuiTypography-root,
+.MuiAccordion-root,
+.MuiAccordionSummary-root,
+.MuiAccordionDetails-root,
+.MuiButtonBase-root {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
 }
 
 /* ── Full-page loader (Suspense fallback + Sanity fetch) ── */
@@ -111,6 +135,62 @@ body {
   border: 4px solid #e8edf4;
   border-top-color: var(--color-primary);
   animation: app-spin 0.75s linear infinite;
+}
+
+/* ── Shared dark-section CTA block (used across Solutions, Capabilities, Platform, Competitor pages) ── */
+.sll-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.sll-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: #0c78ba;
+  color: #fff;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.sll-btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.sll-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.sll-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.sll-cta-sub-note {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 12px 0 0;
+  text-align: center;
 }
 /* XS: Extra Small (<360px) */
 @media (max-width: 359px) {

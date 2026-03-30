@@ -105,8 +105,8 @@ export const signupFormData = [
           value: "Book a Demo - schedule a session with TesseractApps team",
         },
         {
-          name: "Begin Your Journey",
-          value: "Begin Your Journey – no credit card required",
+          name: "Start Free Trial",
+          value: "Start Free Trial – no credit card required",
         },
       ],
     },

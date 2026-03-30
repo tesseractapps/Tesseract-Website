@@ -20,7 +20,7 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useEffect, useRef, useState } from "react";
 
-// Inner component: contains useKeenSlider — only mounts when shell is in view
+// Inner component: contains useKeenSlider, only mounts when shell is in view
 // Deferring mount until intersection avoids the offsetWidth reflow during initial page load.
 const TrustedClientsSlider = ({ companiesImages }: { companiesImages: string[] }) => {
   const animation = { duration: 20000, easing: (t: number) => t };
