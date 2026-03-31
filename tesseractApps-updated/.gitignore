@@ -30,6 +30,6 @@ tesseractWebsite.pub
 stats.html
 
 # Generated image thumbnails (rebuilt by prebuild script)
-src/assets/thumbs/
+# src/assets/thumbs/
 temp
 temp
