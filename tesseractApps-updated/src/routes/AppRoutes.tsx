@@ -8,41 +8,30 @@ import "../pages/capabilities/CapabilityPageStyles.css";
 import "../pages/solutions/solutionPage/SolutionPageStyles.css";
 import "../pages/competitors/CompetitorPageStyles.css";
 
-// Home stays as eager import — it is the "/" route and must render immediately
-// import Home from "../pages/home/Home";
-const HomeV4 = lazy(() => import("../pages/home/HomeV4"));
+import Home from "../pages/home/Home";
 
-// All other pages are lazy-loaded — they only download when the user navigates to them
-const Blog = lazy(() => import("../pages/blog/Blog"));
-const CapabilitiesListing = lazy(() => import("../pages/capabilities/CapabilitiesListing"));
-const CapabilityPage = lazy(() => import("../pages/capabilities/CapabilityPage"));
 const Platform = lazy(() => import("../pages/platform/Platform"));
-const Details = lazy(() => import("../pages/products/details/Details"));
 const Pricing = lazy(() => import("../pages/marketing/pricing/Pricing"));
-const RequestADemo = lazy(() => import("../pages/forms/requestADemo/RequestADemo"));
-const SubPage = lazy(() => import("../pages/products/subPage/SubPage"));
-const OurStory = lazy(() => import("../pages/marketing/ourStory/OurStory"));
-const AboutUsSubPage = lazy(() => import("../pages/resources/aboutUsSubPages/AboutUsSubPage"));
 const FAQ = lazy(() => import("../pages/resources/faq/FAQ"));
-const CaseStudies = lazy(() => import("../pages/resources/caseStudies/CaseStudies"));
-const Webinars = lazy(() => import("../pages/resources/webinars/Webinars"));
-const Teams = lazy(() => import("../pages/resources/teams/Teams"));
-const Careers = lazy(() => import("../pages/marketing/careers/Careers"));
-const ContactInformation = lazy(() => import("../pages/forms/contactInformation/ContactInformation"));
 const PrivacyPolicy = lazy(() => import("../pages/legal/privacyPolicy/PrivacyPolicy"));
 const TermsAndConditions = lazy(() => import("../pages/legal/termsAndConditions/TermsAndConditions"));
 const ReleaseNotes = lazy(() => import("../pages/legal/releaseNotes/ReleaseNotes"));
-const ComingSoon = lazy(() => import("../pages/marketing/comingSoon/ComingSoon"));
-const SalesPage = lazy(() => import("../pages/forms/salesPage/SalesPage"));
+const Careers = lazy(() => import("../pages/marketing/careers/Careers"));
+const Blog = lazy(() => import("../pages/blog/Blog"));
+const BlogPostPage = lazy(() => import("../pages/blogPost/BlogPostPage"));
+const CapabilitiesListing = lazy(() => import("../pages/capabilities/CapabilitiesListing"));
+const CapabilityPage = lazy(() => import("../pages/capabilities/CapabilityPage"));
+const SolutionsListing = lazy(() => import("../pages/solutions/SolutionsListing"));
+const SolutionPage = lazy(() => import("../pages/solutions/solutionPage/SolutionPage"));
+const ContactInformation = lazy(() => import("../pages/forms/contactInformation/ContactInformation"));
 const About = lazy(() => import("../pages/marketing/about/About"));
 const Whitepapers = lazy(() => import("../pages/resources/whitepapers/Whitepapers"));
-const BlogPostPage = lazy(() => import("../pages/blogPost/BlogPostPage"));
 const StudioPage = lazy(() => import("../pages/studio/StudioPage"));
 const BookADemo = lazy(() => import("../pages/forms/bookADemo/BookADemo"));
 const Signup = lazy(() => import("../pages/forms/signup/Signup"));
-const SolutionsListing = lazy(() => import("../pages/solutions/SolutionsListing"));
-const SolutionPage = lazy(() => import("../pages/solutions/solutionPage/SolutionPage"));
 const CompetitorPage = lazy(() => import("../pages/competitors/CompetitorPage"));
+const NDISGlossary = lazy(() => import("../pages/resources/glossary/NDISGlossary"));
+const SitemapPage = lazy(() => import("../pages/resources/sitemapPage/SitemapPage"));
 const NotFound = lazy(() => import("../pages/notFound/NotFound"));
 
 const AppRoutes = () => {
@@ -60,6 +49,11 @@ const AppRoutes = () => {
       return;
     }
     const cleanPath = location.pathname.replace(/\/$/, "");
+    // Redirect trailing slash URLs to their canonical non-slash equivalent
+    if (location.pathname !== cleanPath && cleanPath !== "") {
+      navigate(cleanPath + location.search + location.hash, { replace: true });
+      return;
+    }
     setCloseRoute(cleanPath || "/");
     if ((location.state as any)?.data) return;
     sessionStorage.setItem("prevPath", location.pathname);
@@ -76,9 +70,25 @@ const AppRoutes = () => {
   return (
     <Suspense fallback={<div className="app-page-loader"><div className="app-page-spinner" /></div>}>
       <Routes>
-        <Route path="/" element={<HomeV4 />} />
-        {/* <Route path="/home-v4" element={<Home />} /> */}
-        {/* Blog listing — own Suspense so skeleton shows directly */}
+        <Route path="/" element={<Home />} />
+        <Route path="/book-a-demo" element={<BookADemo />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/platform" element={<Platform />} />
+        <Route path="/capabilities" element={<CapabilitiesListing />} />
+        <Route path="/solutions" element={<SolutionsListing />} />
+        <Route path="/whitepapers" element={<Whitepapers />} />
+        <Route path="/help-centre" element={<FAQ />} />
+        <Route path="/help-center" element={<FAQ />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/contact-us" element={<ContactInformation />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/changelog" element={<ReleaseNotes />} />
+        <Route path="/ndis-glossary" element={<NDISGlossary />} />
+        <Route path="/sitemap" element={<SitemapPage />} />
+
         <Route
           path="/blogs"
           element={
@@ -118,12 +128,7 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-        <Route path="/requestdemo" element={<RequestADemo />} />
-        <Route path="/requestDemo" element={<RequestADemo />} />
-        <Route path="/salesPage" element={<SalesPage />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="/platform" element={<Platform />} />
-        <Route path="/capabilities" element={<CapabilitiesListing />} />
+
         <Route
           path="/capabilities/:slug"
           element={
@@ -145,8 +150,7 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-        <Route path="/solutions" element={<SolutionsListing />} />
-        {/* Sanity CMS dynamic solution pages */}
+
         <Route
           path="/solutions/:slug"
           element={
@@ -168,7 +172,7 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-        {/* Sanity CMS dynamic competitor comparison pages */}
+
         <Route
           path="/tesseract-vs/:slug"
           element={
@@ -200,28 +204,7 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-        <Route path="/product" element={<SubPage />} />
-        <Route path="/scheduling" element={<SubPage />} />
-        <Route path="/time-management" element={<SubPage />} />
-        <Route path="/hr-management" element={<SubPage />} />
-        <Route path="/communication" element={<SubPage />} />
-        <Route path="/case-studies" element={<CaseStudies />} />
-        <Route path="/webinars" element={<Webinars />} />
-        <Route path="/whitepapers" element={<Whitepapers />} />
-        <Route path="/support-documentation" element={<FAQ />} />
-        <Route path="/our-story" element={<OurStory />} />
-        <Route path="/our-mission-and-vision" element={<AboutUsSubPage />} />
-        <Route path="/help-center" element={<FAQ />} />
-        <Route path="/help-centre" element={<FAQ />} />
-        <Route path="/team" element={<Teams />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/contact-us" element={<ContactInformation />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-        <Route path="/changelog" element={<ReleaseNotes />} />
-        <Route path="/coming-soon" element={<ComingSoon />} />
-        {/* Sanity CMS dynamic blog posts — own Suspense so skeleton shows directly */}
+
         <Route
           path="/blog/:slug"
           element={
@@ -244,13 +227,10 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
+
         {/* Sanity Studio — embedded at /studio */}
         <Route path="/studio/*" element={<StudioPage />} />
-        {/* any remaining single-route pages */}
-        <Route path="/details" element={<Details />} />
 
-        <Route path="/book-a-demo" element={<BookADemo />} />
-        <Route path="/signup" element={<Signup />} />
         {/* Catch-all 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>

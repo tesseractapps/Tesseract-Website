@@ -29,20 +29,20 @@ const Blog = () => {
       <SEO
         title="TesseractApps Blog | NDIS Industry Insights & Tips | Australia"
         description="Expert articles on NDIS compliance, workforce management, digital transformation, and care sector innovation. Stay informed with industry updates and practical tips."
-        url="https://www.tesseractapps.com.au/blogs"
-        canonical="https://www.tesseractapps.com.au/blogs"
+        url="https://tesseractapps.com.au/blogs"
+        canonical="https://tesseractapps.com.au/blogs"
         type="website"
         structuredData={{
           '@context': 'https://schema.org',
           '@type': 'Blog',
           name: 'TesseractApps Blog',
           description: 'Expert articles on NDIS compliance, workforce management, digital transformation, and care sector innovation.',
-          url: 'https://www.tesseractapps.com.au/blogs',
+          url: 'https://tesseractapps.com.au/blogs',
           publisher: {
             '@type': 'Organization',
             name: 'TesseractApps',
-            url: 'https://www.tesseractapps.com.au',
-            logo: { '@type': 'ImageObject', url: 'https://www.tesseractapps.com.au/tesseract_logo.webp' },
+            url: 'https://tesseractapps.com.au',
+            logo: { '@type': 'ImageObject', url: 'https://tesseractapps.com.au/tesseract_logo.webp' },
           },
         }}
       />

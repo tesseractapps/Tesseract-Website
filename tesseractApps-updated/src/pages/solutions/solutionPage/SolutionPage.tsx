@@ -1,8 +1,12 @@
 import "./SolutionPageStyles.css";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, Navigate } from "react-router-dom";
 import { useSanitySolutionPage } from "../../../hooks/useSanitySolutionPage";
+import { useSanityBlogList } from "../../../hooks/useSanityBlogList";
 import SEO from "../../../components/common/SEO";
+import { formatDate } from "../../../utils/formatDate";
+import { urlFor } from "../../../sanity/lib/image";
 import { buildBreadcrumbSchema, buildGraphSchema } from "../../../utils/schemaHelpers";
+import Breadcrumb from "../../../components/common/Breadcrumb";
 
 // ── Skeleton ─────────────────────────────────────────────────────────────────
 
@@ -73,6 +77,7 @@ export { SolutionPageSkeleton };
 const SolutionPage = () => {
   const { slug = "" } = useParams<{ slug: string }>();
   const { page, loading, error } = useSanitySolutionPage(slug);
+  const { data: blogPosts } = useSanityBlogList({ from: 0, to: 100 });
   const navigate = useNavigate();
 
   if (loading) return <SolutionPageSkeleton />;
@@ -90,15 +95,7 @@ const SolutionPage = () => {
   }
 
   if (!page) {
-    return (
-      <div id="sol-page">
-        <div id="sol-not-found">
-          <h2>Solution not found</h2>
-          <p>This solution page doesn't exist or hasn't been published yet.</p>
-          <Link to="/">Return to homepage</Link>
-        </div>
-      </div>
-    );
+    return <Navigate to="/not-found" replace />;
   }
 
   const metaTitle = page.seo?.metaTitle ?? `${page.heroHeading} | TesseractApps`;
@@ -119,6 +116,45 @@ const SolutionPage = () => {
     .filter((s) => s.trim().length > 20)
     .slice(0, 3);
 
+  const solutionTerms = Array.from(new Set(
+    [
+      page.title,
+      page.heroHeading,
+      page.heroSubtitle ?? "",
+      page.navCategory,
+      ...page.whatYouGet,
+      ...page.isThisRightForYou,
+      slug.replace(/-/g, " "),
+    ]
+      .join(" ")
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter((term) => term.length >= 4)
+  ));
+
+  const relevantBlogs = blogPosts
+    .map((post) => {
+      const title = (post.title ?? "").toLowerCase();
+      const excerpt = (post.excerpt ?? "").toLowerCase();
+      const tags = (post.tags ?? []).map((tag) => tag.toLowerCase());
+
+      let score = 0;
+      for (const term of solutionTerms) {
+        if (tags.some((tag) => tag.includes(term) || term.includes(tag))) score += 5;
+        if (title.includes(term)) score += 3;
+        if (excerpt.includes(term)) score += 1;
+      }
+
+      return { post, score };
+    })
+    .filter(({ post, score }) => Boolean(post.slug?.current) && score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return (b.post.publishedAt ?? "").localeCompare(a.post.publishedAt ?? "");
+    })
+    .slice(0, 3)
+    .map(({ post }) => post);
+
   return (
     <div id="sol-page">
       <SEO
@@ -134,6 +170,14 @@ const SolutionPage = () => {
       {/* ── Hero ── */}
       <section id="sol-hero">
         <div id="sol-hero-inner">
+          <Breadcrumb
+            variant="light"
+            steps={[
+              { name: "Home", href: "/" },
+              { name: "Solutions", href: "/solutions" },
+              { name: page.title },
+            ]}
+          />
           <div className="sol-hero-tag">{page.navCategory.replace("BY ", "")}</div>
           <h1 className="sol-hero-heading">{page.heroHeading}</h1>
           {page.heroSubtitle && (
@@ -264,6 +308,47 @@ const SolutionPage = () => {
                     )}
                     <span className="sol-related-arrow">
                       Explore <IconArrowRight />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Further Reading ── */}
+      {relevantBlogs.length > 0 && (
+        <section id="sol-reading">
+          <div className="sol-outer">
+            <div className="sol-section-label">Further Reading</div>
+            <h2 className="sol-section-heading">Related guides from our blog.</h2>
+            <div className="sol-reading-grid">
+              {relevantBlogs.map((post) => (
+                <Link
+                  key={post._id}
+                  to={`/blog/${post.slug?.current}`}
+                  className="sol-reading-card"
+                >
+                  {post.mainImage?.asset && (
+                    <img
+                      className="sol-reading-image"
+                      src={urlFor(post.mainImage).width(720).height(420).fit("crop").auto("format").url()}
+                      alt={post.mainImage.alt ?? post.title ?? "Blog post image"}
+                      loading="lazy"
+                      width={360}
+                      height={210}
+                    />
+                  )}
+                  <div className="sol-reading-body">
+                    <h3 className="sol-reading-title">{post.title}</h3>
+                    {post.excerpt && <p className="sol-reading-excerpt">{post.excerpt}</p>}
+                    <div className="sol-reading-meta">
+                      {post.category?.title && <span>{post.category.title}</span>}
+                      {post.publishedAt && <span>{formatDate(post.publishedAt)}</span>}
+                    </div>
+                    <span className="sol-reading-arrow">
+                      Read article <IconArrowRight />
                     </span>
                   </div>
                 </Link>

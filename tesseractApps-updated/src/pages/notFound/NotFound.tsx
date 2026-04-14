@@ -39,6 +39,8 @@ const NotFound = () => {
       <SEO
         title="Page Not Found | TesseractApps"
         description="The page you're looking for doesn't exist or has been moved."
+        canonical="https://tesseractapps.com.au/404"
+        noIndex={true}
       />
 
       <main className="nf-main">

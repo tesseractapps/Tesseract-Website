@@ -60,8 +60,8 @@ const CapabilitiesListing = () => {
       <SEO
         title="Platform Capabilities | TesseractApps"
         description="Explore every capability TesseractApps offers, from rostering and payroll to participant management and operational intelligence. Built for NDIS providers."
-        url="https://www.tesseractapps.com.au/capabilities"
-        canonical="https://www.tesseractapps.com.au/capabilities"
+        url="https://tesseractapps.com.au/capabilities"
+        canonical="https://tesseractapps.com.au/capabilities"
         type="website"
       />
 

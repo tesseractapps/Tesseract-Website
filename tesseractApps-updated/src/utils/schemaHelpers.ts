@@ -79,6 +79,40 @@ export const buildSoftwareSchema = ({
   },
 })
 
+export interface HowToStep {
+  name: string
+  text: string
+}
+
+/**
+ * Speakable JSON-LD — marks CSS selectors containing voice-search-friendly content.
+ * Used on homepage hero and FAQ sections.
+ */
+export const buildSpeakableSchema = (cssSelectors: string[]) => ({
+  '@type': 'WebPage',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: cssSelectors,
+  },
+  url: SITE_URL,
+})
+
+/**
+ * HowTo JSON-LD — structured step-by-step process.
+ * Used on homepage Getting Started section.
+ */
+export const buildHowToSchema = (name: string, description: string, steps: HowToStep[]) => ({
+  '@type': 'HowTo',
+  name,
+  description,
+  step: steps.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: s.name,
+    text: s.text,
+  })),
+})
+
 /**
  * Wraps multiple schema objects into a single @graph container.
  * This lets you pass multiple schemas to the SEO component's

@@ -1,9 +1,10 @@
 import "./SignupStyles.css";
+import SEO from "../../../components/common/SEO";
 import { useState } from "react";
 import React from "react";
 import Alert from "../../../components/ui/alert/Alert";
 import { sendEmail, sendTextEmail } from "../../../services/appService";
-import logo_white from "../../../../public/svg-logos/white_logo.svg";
+const logo_white = "/svg-logos/white_logo.svg";
 import { Box, Step, StepLabel, Stepper } from "@mui/material";
 import {
   signupConfirmationEmailTemplate,
@@ -192,6 +193,12 @@ const Signup = () => {
 
   return (
     <div id="signup-page">
+      <SEO
+        title="Get Started | TesseractApps NDIS Software"
+        description="Create your TesseractApps account and start managing your NDIS workforce with ease. Streamline rostering, compliance, and participant management."
+        canonical="https://tesseractapps.com.au/signup"
+        noIndex={true}
+      />
       <Alert setAlertData={setAlertData} alertData={alertData} />
 
       <button type="button" id="signup-close-btn" onClick={handleClose}>

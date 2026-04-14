@@ -168,28 +168,6 @@ export const RELEASE_NOTES_QUERY = `
   }
 `
 
-// Pricing Plans — all stages ordered by display order
-export const PRICING_PLANS_QUERY = `
-  *[_type == "pricingPlan"]
-  | order(order asc) {
-    _id,
-    "id": id.current,
-    order,
-    label,
-    tagline,
-    staffRange,
-    badge,
-    accentColor,
-    bestFor,
-    whatYouNeed,
-    automationHeading,
-    automationBody,
-    commercial,
-    supports,
-    cta
-  }
-`
-
 // Job Listings — open only, ordered by display order
 export const JOB_LISTINGS_QUERY = `
   *[_type == "jobListing" && isOpen == true]
@@ -341,18 +319,6 @@ export const COMPETITOR_PAGE_BY_SLUG_QUERY = `
       noIndex,
       schemaMarkup
     }
-  }
-`
-
-// Competitor Pages — nav index (lightweight, for sitemap / index page)
-export const COMPETITOR_NAV_QUERY = `
-  *[_type == "competitorPage"]
-  | order(order asc) {
-    _id,
-    title,
-    slug,
-    competitorName,
-    order
   }
 `
 

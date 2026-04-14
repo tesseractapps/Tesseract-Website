@@ -1,27 +1,3 @@
-export const footerProductsData = {
-    0: [
-        "Rostering & Scheduling",
-        "Timesheets & Payroll Alignment",
-        "Workforce Management",
-        "NDIS Claiming & Invoicing",
-        "Accounting & Financial Reporting",
-    ],
-    1: [
-        "Participant Management",
-        "Incidents",
-        "Compliance & Audit Readiness",
-        "Dashboards & Reporting",
-        "T-Sign",
-    ],
-    2: [
-        "Clock In/Out",
-        "ChaT",
-        "T Learning Hub",
-        "Xero Integration",
-        "Salesforce Native Architecture",
-    ],
-};
-
 // NavLink type, href takes precedence over title-based route lookup
 export type NavLink = {
     title: string;
@@ -192,7 +168,7 @@ export const navBarDummyData: {
     Resources: [
         { title: "Blog", subTitle: "Insights & Updates", href: "/blogs" },
         { title: "Whitepapers", subTitle: "Research", href: "/whitepapers" },
-        // { title: "Help Centre", subTitle: "Support", href: "/help-centre" },
+        { title: "Help Centre", subTitle: "FAQs", href: "/help-centre" },
     ],
 
     // ── About ──────────────────────────────────────────────────────────────

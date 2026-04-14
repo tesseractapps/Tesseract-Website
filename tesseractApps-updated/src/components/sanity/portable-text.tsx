@@ -1,11 +1,12 @@
+import { lazy, Suspense } from 'react'
 import { PortableText } from '@portabletext/react'
 import type { PortableTextComponents } from '@portabletext/react'
 import { Link } from 'react-router-dom'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import SanityImage from './sanity-image'
 import type { BlockContentType } from '../../../sanity.types'
 import './portable-text.css'
+
+const LazyCodeBlock = lazy(() => import('./CodeBlock'))
 
 const components: PortableTextComponents = {
   block: {
@@ -72,14 +73,31 @@ const components: PortableTextComponents = {
               )}
             </div>
           )}
-          <SyntaxHighlighter
-            language={language}
-            style={atomDark}
-            customStyle={{ margin: 0, borderRadius: filename ?? language ? '0 0 6px 6px' : '6px' }}
-            showLineNumbers
+          <Suspense
+            fallback={
+              <pre
+                style={{
+                  background: '#1d1f21',
+                  color: '#ccc',
+                  padding: '1em',
+                  borderRadius: filename ?? language ? '0 0 6px 6px' : '6px',
+                  overflowX: 'auto',
+                  fontSize: '0.875em',
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}
+              >
+                <code>{code}</code>
+              </pre>
+            }
           >
-            {code}
-          </SyntaxHighlighter>
+            <LazyCodeBlock
+              language={language}
+              code={code}
+              customStyle={{ margin: 0, borderRadius: filename ?? language ? '0 0 6px 6px' : '6px' }}
+              showLineNumbers
+            />
+          </Suspense>
         </div>
       )
     },

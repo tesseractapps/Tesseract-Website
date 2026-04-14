@@ -4,6 +4,7 @@ import NavBarComponent from "./components/layout/navBarComponent/NavBarComponent
 import { BrowserRouter, useLocation } from "react-router-dom";
 import FooterComponent from "./components/layout/footerComponent/FooterComponent";
 import AppRoutes from "./routes/AppRoutes";
+import GTMLoader from "./components/analytics/GTMLoader";
 
 const FULLSCREEN_ROUTES: string[] = [];
 
@@ -28,6 +29,7 @@ function App() {
   return (
     <BrowserRouter>
       <AppInner />
+      <GTMLoader />
     </BrowserRouter>
   );
 }

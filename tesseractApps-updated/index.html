@@ -12,7 +12,6 @@
     <!-- DNS Prefetch and Preconnect for third-party domains -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <!-- Both preconnects with correct crossorigin for CORS font files -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -235,50 +234,11 @@
     }
     </script>
 
-    <!-- Google Tag Manager — deferred until after first user interaction or page idle -->
-    <script>
-      (function () {
-        function loadGTM() {
-          if (window._gtmLoaded) return;
-          window._gtmLoaded = true;
-          (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-            var f = d.getElementsByTagName(s)[0],
-              j = d.createElement(s),
-              dl = l != "dataLayer" ? "&l=" + l : "";
-            j.async = true;
-            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-            f.parentNode.insertBefore(j, f);
-          })(window, document, "script", "dataLayer", "GTM-TXGJDB6N");
-        }
-        // Load after first interaction or after page is idle (whichever is first)
-        ["click", "scroll", "keydown", "touchstart", "mousemove"].forEach(function (e) {
-          window.addEventListener(e, loadGTM, { once: true, passive: true });
-        });
-        if ("requestIdleCallback" in window) {
-          requestIdleCallback(loadGTM, { timeout: 4000 });
-        } else {
-          setTimeout(loadGTM, 4000);
-        }
-      })();
-    </script>
-    <!-- End Google Tag Manager -->
     <title>TesseractApps | Workforce Management Software for NDIS &amp; Care Providers</title>
   </head>
   <body>
     <div id="portal-root"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx" defer></script>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-TXGJDB6N"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>

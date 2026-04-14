@@ -124,54 +124,6 @@ export const bookDemoConfirmationEmailTemplate = {
   `,
 };
 
-export const expertTalkEmailTemplate = {
-  email: "sales@tesseractapps.com",
-  subject: "Request for talk to an expert",
-  body: ({
-    fullName,
-    email,
-    phone,
-    organisation,
-    role,
-    areas,
-    preferredTime,
-  }: requestTypes) => `${fullName} has made a request to talk to an expert.\n
-        Full Name: ${fullName}\n
-        Email: ${email}\n
-        Phone: ${phone}\n
-        Organisation: ${organisation}\n
-        Role: ${role}\n
-        Areas of Interest: ${areas}\n
-        Preferred Time: ${preferredTime}\n
-        \n
-        Team TesseractApps\n
-        `,
-};
-
-export const expertTalkConfirmationEmailTemplate = {
-  subject: "TesseractApps request to talk to an expert",
-  text: (fullName: string) => `Dear ${fullName},\n
-      \n
-      Thank you for your request.\n
-        We have received your request. Our Expert will be in touch within one business day.
-      \n
-      Best regards,\n
-      Team TesseractApps\n
-      [Our Website: www.tesseractapps.com.au]\n
-      [+61261332819,02 6133 2800] | [sales@tesseractapps.com]`,
-  html: (fullName: string) => `
-    <div>Dear ${fullName},</div>
-    <p>Thank you for your request.</p>
-    <p>We have received your request. Our Expert will be in touch within one business day.</p>
-    <div>
-    <p>Warm regards,</p>
-        <p>Team TesseractApps</p>
-        <div>[Our Website: <a href="https://www.tesseractapps.com.au">TesseractApps</a>]</div>
-        <div>✆;[<a href="tel:+61261332819">+61261332819</a>,<a href="tel:+61261332800">02 6133 2800</a>] 📧 [<a href="mailto:sales@tesseractapps.com?subject=Inquiry">sales@tesseractapps.com</a>]</div>
-    </div>
-  `,
-};
-
 type signupTypes = {
   firstName: string;
   lastName: string;

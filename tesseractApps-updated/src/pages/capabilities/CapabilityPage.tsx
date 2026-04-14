@@ -1,8 +1,12 @@
 import "./CapabilityPageStyles.css";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, Navigate } from "react-router-dom";
 import { useSanityCapabilityPage } from "../../hooks/useSanityCapabilityPage";
+import { useSanityBlogList } from "../../hooks/useSanityBlogList";
 import SEO from "../../components/common/SEO";
+import { formatDate } from "../../utils/formatDate";
+import { urlFor } from "../../sanity/lib/image";
 import { buildBreadcrumbSchema, buildSoftwareSchema, buildGraphSchema } from "../../utils/schemaHelpers";
+import Breadcrumb from "../../components/common/Breadcrumb";
 
 // ── Skeleton ────────────────────────────────────────────────────────────────
 
@@ -71,6 +75,7 @@ const IconBadge = () => (
 const CapabilityPage = () => {
   const { slug = "" } = useParams<{ slug: string }>();
   const { page, loading, error } = useSanityCapabilityPage(slug);
+  const { data: blogPosts } = useSanityBlogList({ from: 0, to: 100 });
   const navigate = useNavigate();
 
   if (loading) return <CapabilityPageSkeleton />;
@@ -88,15 +93,7 @@ const CapabilityPage = () => {
   }
 
   if (!page) {
-    return (
-      <div id="cap-page">
-        <div id="cap-not-found">
-          <h2>Capability not found</h2>
-          <p>This capability page doesn't exist or hasn't been published yet.</p>
-          <Link to="/">Return to homepage</Link>
-        </div>
-      </div>
-    );
+    return <Navigate to="/not-found" replace />;
   }
 
   const metaTitle = page.seo?.metaTitle ?? `${page.heroHeading} | TesseractApps`;
@@ -122,6 +119,45 @@ const CapabilityPage = () => {
     .filter((s) => s.trim().length > 20)
     .slice(0, 3);
 
+  const capabilityTerms = Array.from(new Set(
+    [
+      page.title,
+      page.heroHeading,
+      page.heroSubtitle ?? "",
+      page.navGroup,
+      ...page.whatYouGet,
+      ...page.whatMattersMost,
+      slug.replace(/-/g, " "),
+    ]
+      .join(" ")
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter((term) => term.length >= 4)
+  ));
+
+  const relevantBlogs = blogPosts
+    .map((post) => {
+      const title = (post.title ?? "").toLowerCase();
+      const excerpt = (post.excerpt ?? "").toLowerCase();
+      const tags = (post.tags ?? []).map((tag) => tag.toLowerCase());
+
+      let score = 0;
+      for (const term of capabilityTerms) {
+        if (tags.some((tag) => tag.includes(term) || term.includes(tag))) score += 5;
+        if (title.includes(term)) score += 3;
+        if (excerpt.includes(term)) score += 1;
+      }
+
+      return { post, score };
+    })
+    .filter(({ post, score }) => Boolean(post.slug?.current) && score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return (b.post.publishedAt ?? "").localeCompare(a.post.publishedAt ?? "");
+    })
+    .slice(0, 3)
+    .map(({ post }) => post);
+
   return (
     <div id="cap-page">
       <SEO
@@ -137,6 +173,14 @@ const CapabilityPage = () => {
       {/* ── Hero ── */}
       <section id="cap-hero">
         <div id="cap-hero-inner">
+          <Breadcrumb
+            variant="light"
+            steps={[
+              { name: "Home", href: "/" },
+              { name: "Capabilities", href: "/capabilities" },
+              { name: page.title },
+            ]}
+          />
           <div className="cap-hero-tag">{page.navGroup}</div>
           <h1 className="cap-hero-heading">{page.heroHeading}</h1>
           {page.heroSubtitle && (
@@ -267,6 +311,47 @@ const CapabilityPage = () => {
                     )}
                     <span className="cap-related-arrow">
                       Explore <IconArrowRight />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Further Reading ── */}
+      {relevantBlogs.length > 0 && (
+        <section id="cap-reading">
+          <div className="cap-outer">
+            <div className="cap-section-label">Further Reading</div>
+            <h2 className="cap-section-heading">Related guides from our blog.</h2>
+            <div className="cap-reading-grid">
+              {relevantBlogs.map((post) => (
+                <Link
+                  key={post._id}
+                  to={`/blog/${post.slug?.current}`}
+                  className="cap-reading-card"
+                >
+                  {post.mainImage?.asset && (
+                    <img
+                      className="cap-reading-image"
+                      src={urlFor(post.mainImage).width(720).height(420).fit("crop").auto("format").url()}
+                      alt={post.mainImage.alt ?? post.title ?? "Blog post image"}
+                      loading="lazy"
+                      width={360}
+                      height={210}
+                    />
+                  )}
+                  <div className="cap-reading-body">
+                    <h3 className="cap-reading-title">{post.title}</h3>
+                    {post.excerpt && <p className="cap-reading-excerpt">{post.excerpt}</p>}
+                    <div className="cap-reading-meta">
+                      {post.category?.title && <span>{post.category.title}</span>}
+                      {post.publishedAt && <span>{formatDate(post.publishedAt)}</span>}
+                    </div>
+                    <span className="cap-reading-arrow">
+                      Read article <IconArrowRight />
                     </span>
                   </div>
                 </Link>

@@ -9,8 +9,10 @@ Disallow: /requestDemo
 Disallow: /salesPage
 Disallow: /details
 Disallow: /coming-soon
+Disallow: /book-a-demo
+Disallow: /signup
+Disallow: /requestdemo
 Disallow: /*.json
-Disallow: /*?*
 Allow: /
 Allow: /assets/
 Allow: /vite.svg

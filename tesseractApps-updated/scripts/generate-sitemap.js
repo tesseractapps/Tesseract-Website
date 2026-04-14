@@ -31,13 +31,13 @@ const STATIC_PAGES = [
   { loc: '/changelog' },
   { loc: '/about' },
   { loc: '/our-story' },
-  { loc: '/our-mission-and-vision' },
   { loc: '/team' },
   { loc: '/careers' },
   { loc: '/contact-us' },
-  { loc: '/book-a-demo' },
   { loc: '/privacy-policy' },
   { loc: '/terms-and-conditions' },
+  { loc: '/ndis-glossary', priority: '0.8' },
+  { loc: '/sitemap', priority: '0.5' },
 ];
 
 // --- Helpers ---

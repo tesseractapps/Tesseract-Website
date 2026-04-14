@@ -84,8 +84,9 @@ The embedded Sanity Studio is available at **<http://localhost:5173/studio>**.
 | `npm run seed:solutions` | Seed solution pages into Sanity |
 | `npm run seed:entities` | Seed authors, categories, and other entities |
 | `npm run seed:competitors` | Seed competitor comparison pages |
+| `npm run prebuild` | Prerender static HTML pages for SEO (runs automatically in `build`) |
 
-> **Note:** `npm run build` runs prebuild scripts automatically (`gen-home-thumbs.mjs`, `gen-llms-docs.mjs`, `generate-sitemap.js`) before compiling.
+> **Note:** `npm run build` runs prebuild scripts automatically (`gen-home-thumbs.mjs`, `gen-llms-docs.mjs`, `generate-sitemap.js`, `prerender-pages.mjs`) before compiling.
 
 ---
 
@@ -108,7 +109,7 @@ src/
 │   ├── useSanityBlogList.ts    # Blog list hook with module-level cache
 │   └── useSanityBlogPost.ts    # Single post hook
 ├── pages/
-│   ├── home/                   # HomeV4 — main homepage
+│   ├── home/                   # Home — main homepage
 │   ├── platform/               # Platform page
 │   ├── marketing/pricing/      # Pricing page
 │   ├── capabilities/           # Capabilities listing + dynamic CMS pages
@@ -179,13 +180,6 @@ The site is deployed as a SPA. All routes must rewrite to `/index.html`.
 }
 ```
 
-### Required environment variables in Vercel
-
-| Variable | Description |
-| --- | --- |
-| `VITE_SANITY_PROJECT_ID` | Your Sanity project ID |
-| `VITE_SANITY_DATASET` | Usually `production` |
-
 ### Build command
 
 ```bash
@@ -212,7 +206,7 @@ dist
 
 - **No Tailwind** — plain CSS per component with namespaced class prefixes (`hv4-`, `pl-`, `pr-`, `cap-`, `sol-`, `cmp-`)
 - **CSS variables** — `--color-primary`, `--color-secondary`, `--color-background-light-gray`, `--color-text-gray` etc.
-- **Site container standard** — `1140px` max-width (Platform, Pricing) / `1200px` (HomeV4)
+- **Site container standard** — `1140px` max-width (Platform, Pricing) / `1200px` (Home)
 - **SPA limitations** — no SSR, no ISR, no draft preview. Sanity client uses `perspective: 'published'` to prevent draft leaks.
 - **Blog cache** — module-level `Map` cache in `useSanityBlogList` prevents re-fetching on re-mount
 - **Close buttons** on `/book-a-demo` and `/signup` use `navigate(-1)` — returns to the page the user came from

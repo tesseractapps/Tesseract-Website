@@ -1,8 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import viteCompression from 'vite-plugin-compression';
-// @ts-ignore
-import { visualizer } from 'rollup-plugin-visualizer';
 
 // Plugin: converts the bundled stylesheet <link> to async loading
 // so it doesn't block the initial render (eliminates render-blocking CSS)
@@ -24,10 +22,8 @@ const asyncCssPlugin = {
 export default defineConfig({
   resolve: {
     alias: {
-      // Force the ESM build of keen-slider/react so it imports React as a
-      // proper ESM peer rather than using the CJS require() wrapper which
-      // causes a duplicate React instance at runtime.
-      'keen-slider/react': 'keen-slider/react.es.js',
+      'react-dom$': 'react-dom/profiling',
+      'scheduler/tracing': 'scheduler/tracing-profiling',
     },
   },
   plugins: [
@@ -41,13 +37,22 @@ export default defineConfig({
       ext: '.br',
     }),
     asyncCssPlugin,
-    visualizer({ open: false }), // Generate bundle analysis
   ],
   build: {
     cssCodeSplit: true,
     sourcemap: false,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
+        manualChunks(id) {
+          // Sanity CMS client — stable, no React context, safe to isolate
+          if (
+            id.includes('node_modules/@sanity/client') ||
+            id.includes('node_modules/@sanity/image-url')
+          ) {
+            return 'vendor-sanity-client';
+          }
+        },
         assetFileNames: (assetInfo) => {
           const extType = assetInfo.names?.[0]?.split('.').pop() || ''
           if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp/i.test(extType)) {
