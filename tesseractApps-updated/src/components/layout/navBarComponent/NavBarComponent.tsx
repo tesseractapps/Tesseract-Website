@@ -846,7 +846,7 @@ const NavBarComponent = ({
         isOpen={showSearch}
         onClose={handleSearchIcon}
         containerRef={portalContainerRef}
-        position={{ top: 68, left: window.innerWidth / 2 }}
+        position={{ top: 68, left: (typeof window !== "undefined" ? window.innerWidth : 1280) / 2 }}
         showTriangle={false}
       >
         <div id="search-popup-container">

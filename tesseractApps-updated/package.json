@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "node scripts/gen-llms-docs.mjs && node scripts/generate-sitemap.js",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite-react-ssg build",
+    "build:ssg": "tsc -b && vite-react-ssg build",
     "lint": "eslint .",
     "preview": "vite preview",
     "sanity": "sanity",
@@ -44,6 +45,7 @@
     "globals": "^16.0.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.14.0",
-    "vite": "^6.3.0"
+    "vite": "^6.3.0",
+    "vite-react-ssg": "^0.9.0"
   }
 }

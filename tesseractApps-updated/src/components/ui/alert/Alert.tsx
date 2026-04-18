@@ -30,6 +30,7 @@ const Alert = ({ alertData, setAlertData }: alertType) => {
     }, 10000);
     return () => clearTimeout(timeoutID);
   }, [alertData, alertData.isOpen, setAlertData]);
+  if (typeof document === "undefined") return null;
   return ReactDOM.createPortal(
     <div
       className={alertData.type != "fail" ? "ff-message-success" : ""}

@@ -2,45 +2,30 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import viteCompression from 'vite-plugin-compression';
 
-// Plugin: converts the bundled stylesheet <link> to async loading
-// so it doesn't block the initial render (eliminates render-blocking CSS)
-const asyncCssPlugin = {
-  name: 'async-css',
-  transformIndexHtml(html: string) {
-    // Replace: <link rel="stylesheet" crossorigin href="/assets/style-*.css">
-    // With async load pattern (same as how Google Fonts are loaded)
-    return html.replace(
-      /<link rel="stylesheet" crossorigin href="(\/assets\/[^"]+\.css)">/g,
-      (_, href) =>
-        `<link rel="preload" href="${href}" as="style" onload="this.onload=null;this.rel='stylesheet'" />` +
-        `<noscript><link rel="stylesheet" href="${href}"></noscript>`
-    );
-  },
-};
+// During SSG, vite-react-ssg runs a second server build in a temp dir.
+// vite-plugin-compression must not run during that phase — it tries to
+// compress files that don't exist yet and crashes with ENOENT.
+const isSSGServerBuild = process.env.VITE_SSG === 'true';
 
 // https://vite.dev/config/
 export default defineConfig({
-  resolve: {
-    alias: {
-      'react-dom$': 'react-dom/profiling',
-      'scheduler/tracing': 'scheduler/tracing-profiling',
-    },
-  },
   plugins: [
     react(),
-    viteCompression({
-      algorithm: 'gzip',
-      ext: '.gz',
-    }),
-    viteCompression({
-      algorithm: 'brotliCompress',
-      ext: '.br',
-    }),
-    asyncCssPlugin,
+    ...(!isSSGServerBuild ? [
+      viteCompression({
+        algorithm: 'gzip',
+        ext: '.gz',
+      }),
+      viteCompression({
+        algorithm: 'brotliCompress',
+        ext: '.br',
+      }),
+    ] : []),
   ],
   build: {
     cssCodeSplit: true,
     sourcemap: false,
+    ssrManifest: true,
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {

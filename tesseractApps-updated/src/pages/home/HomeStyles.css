@@ -1252,6 +1252,21 @@
   transition: gap 0.15s;
 }
 .hv4-cap-card:hover .hv4-cap-link { gap: 8px; }
+.hv4-cap-card--skeleton {
+  height: 140px;
+  background: #e8edf3;
+  cursor: default;
+  pointer-events: none;
+}
+.hv4-cap-card--skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: hv4-shimmer 1.4s infinite;
+  will-change: transform;
+}
 
 .hv4-cap-footer {
   display: flex;

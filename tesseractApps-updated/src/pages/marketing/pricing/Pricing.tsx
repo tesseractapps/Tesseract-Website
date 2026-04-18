@@ -85,7 +85,7 @@ const FLIP_STAGES: Stage[] = [
     bestFor:
       "Multi-site providers, SIL providers, and organisations managing increasing governance pressure.",
     whatYouNeed: "Oversight, accountability, approvals, audit trails, and compliance control.",
-    automationHeading: "T-Flow automation becomes a governance tool.",
+    automationHeading: "T-Flow automation",
     automationBody:
       "At Scale, T-Flow automation expands into configurable boards, SLA rules, escalation logic, and workflow analytics. This is where process automation becomes a governance tool, not just an efficiency tool.",
     commercial: ["$39.99 per seat / month", "3-year agreement", "Up to 15% flex user buffer"],
@@ -111,7 +111,7 @@ const FLIP_STAGES: Stage[] = [
     automationHeading: "T-Flow automation",
     automationBody:
       "Enterprise activates TFlow for cross-module automation and gives T-Flow automation full orchestration capability across the platform. This supports deeper operational automation, financial control, and governance execution at scale.",
-    commercial: ["$39.99 per seat / month", "5-year agreement", "Strategic flex user pools"],
+    commercial: ["$39.99 per seat / month", "5-year agreement", "Up to 20% flex user buffer"],
     supports: [
       "Native payroll",
       "Native accounting",
@@ -459,6 +459,7 @@ const Pricing = () => {
                       </li>
                     ))}
                   </ul>
+                  <p className="pr-start-integration-note">No integrations are supported at the Start stage.</p>
                 </div>
               </div>
 

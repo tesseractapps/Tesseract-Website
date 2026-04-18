@@ -67,27 +67,30 @@ const AppRoutes = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
+  const pageSpinner = <div className="app-page-loader"><div className="app-page-spinner" /></div>;
+
   return (
-    <Suspense fallback={<div className="app-page-loader"><div className="app-page-spinner" /></div>}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/book-a-demo" element={<BookADemo />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="/platform" element={<Platform />} />
-        <Route path="/capabilities" element={<CapabilitiesListing />} />
-        <Route path="/solutions" element={<SolutionsListing />} />
-        <Route path="/whitepapers" element={<Whitepapers />} />
-        <Route path="/help-centre" element={<FAQ />} />
-        <Route path="/help-center" element={<FAQ />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/contact-us" element={<ContactInformation />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-        <Route path="/changelog" element={<ReleaseNotes />} />
-        <Route path="/ndis-glossary" element={<NDISGlossary />} />
-        <Route path="/sitemap" element={<SitemapPage />} />
+    <Routes>
+      {/* No outer Suspense — each lazy route has its own boundary so the
+          SSR pre-rendered HTML is never hidden behind a deferred marker. */}
+      <Route path="/" element={<Home />} />
+        <Route path="/book-a-demo" element={<Suspense fallback={pageSpinner}><BookADemo /></Suspense>} />
+        <Route path="/signup" element={<Suspense fallback={pageSpinner}><Signup /></Suspense>} />
+        <Route path="/pricing" element={<Suspense fallback={pageSpinner}><Pricing /></Suspense>} />
+        <Route path="/platform" element={<Suspense fallback={pageSpinner}><Platform /></Suspense>} />
+        <Route path="/capabilities" element={<Suspense fallback={pageSpinner}><CapabilitiesListing /></Suspense>} />
+        <Route path="/solutions" element={<Suspense fallback={pageSpinner}><SolutionsListing /></Suspense>} />
+        <Route path="/whitepapers" element={<Suspense fallback={pageSpinner}><Whitepapers /></Suspense>} />
+        <Route path="/help-centre" element={<Suspense fallback={pageSpinner}><FAQ /></Suspense>} />
+        <Route path="/help-center" element={<Suspense fallback={pageSpinner}><FAQ /></Suspense>} />
+        <Route path="/about" element={<Suspense fallback={pageSpinner}><About /></Suspense>} />
+        <Route path="/careers" element={<Suspense fallback={pageSpinner}><Careers /></Suspense>} />
+        <Route path="/contact-us" element={<Suspense fallback={pageSpinner}><ContactInformation /></Suspense>} />
+        <Route path="/privacy-policy" element={<Suspense fallback={pageSpinner}><PrivacyPolicy /></Suspense>} />
+        <Route path="/terms-and-conditions" element={<Suspense fallback={pageSpinner}><TermsAndConditions /></Suspense>} />
+        <Route path="/changelog" element={<Suspense fallback={pageSpinner}><ReleaseNotes /></Suspense>} />
+        <Route path="/ndis-glossary" element={<Suspense fallback={pageSpinner}><NDISGlossary /></Suspense>} />
+        <Route path="/sitemap" element={<Suspense fallback={pageSpinner}><SitemapPage /></Suspense>} />
 
         <Route
           path="/blogs"
@@ -229,12 +232,11 @@ const AppRoutes = () => {
         />
 
         {/* Sanity Studio — embedded at /studio */}
-        <Route path="/studio/*" element={<StudioPage />} />
+        <Route path="/studio/*" element={<Suspense fallback={pageSpinner}><StudioPage /></Suspense>} />
 
         {/* Catch-all 404 */}
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Suspense fallback={pageSpinner}><NotFound /></Suspense>} />
       </Routes>
-    </Suspense>
   );
 };
 

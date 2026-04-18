@@ -404,7 +404,10 @@ export default function Home() {
 
               {/* Trust line */}
               <p className="hv4-hero-trust">
-                <IconCheck /> No credit card required
+                <IconCheck /> No credit card required.
+              </p>
+              <p className="hv4-hero-trust">
+                <IconCheck /> Built natively.
               </p>
             </div>
 

@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import {
   Users, Heart, Home, Building, Building2,
   User, Stethoscope,
-  ChevronRight, CheckCircle, Mail, Phone, Monitor,
+  ChevronRight, CheckCircle, Mail, Phone, Monitor, X,
 } from "lucide-react";
 import CalendarPicker from "../../../components/forms/bookADemo/CalendarPicker";
 
@@ -71,8 +71,6 @@ const PATHWAY_STEPS = [
 
 const isLastStep = (step: number) => step === bookADemoFormData.length - 1;
 const isFirstStep = (step: number) => step === 0;
-
-const PROGRESS_PCT = [0, 33, 66];
 
 const BookADemo = () => {
   const navigate = useNavigate();
@@ -213,8 +211,8 @@ const BookADemo = () => {
       />
       <Alert setAlertData={setAlertData} alertData={alertData} />
 
-      <button type="button" id="dialog-close-btn" onClick={handleClose}>
-        ✕ Close
+      <button type="button" id="dialog-close-btn" onClick={handleClose} aria-label="Close">
+        <X size={18} strokeWidth={2.5} />
       </button>
 
       {showSuccess ? (
@@ -278,15 +276,21 @@ const BookADemo = () => {
             />
             <div id="bookADemo-sidebar-body">
               <div id="bookADemo-sidebar-heading">Book Your Demo</div>
-              <div id="bookADemo-sidebar-step-tag">Step {currentStep + 1} of 3</div>
+              <div id="bookADemo-sidebar-congrats">
+                <div id="bookADemo-sidebar-congrats-title">Congratulations! You're making a great choice.</div>
+                <p id="bookADemo-sidebar-congrats-sub">
+                  See how simpler NDIS operations can transform your business, book your free demo below.
+                </p>
+              </div>
+              {/* <div id="bookADemo-sidebar-step-tag">Step {currentStep + 1} of 3</div> */}
 
-              <div id="bookADemo-progress-track-label">
+              {/* <div id="bookADemo-progress-track-label">
                 <span>Completion Status</span>
                 <span>{PROGRESS_PCT[currentStep]}%</span>
-              </div>
-              <div id="bookADemo-progress-bar-track">
+              </div> */}
+              {/* <div id="bookADemo-progress-bar-track">
                 <div id="bookADemo-progress-bar-fill" className={`progress-step-${currentStep}`} />
-              </div>
+              </div> */}
 
               <ul id="bookADemo-sidebar-bullets">
                 <li>No credit card required</li>

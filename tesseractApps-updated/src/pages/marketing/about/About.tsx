@@ -14,6 +14,10 @@ import {
   Send,
 } from "lucide-react";
 import useAppNavigate from "../../../hooks/useAppNavigate";
+import facebook from "../../../assets/facebook.webp";
+import instagram from "../../../assets/instagram.webp";
+import linkedin from "../../../assets/linkedin.webp";
+import youtube from "../../../assets/youtube.webp";
 
 // const ICON_MAP: Record<string, React.ReactNode> = {
 //   dollar: <DollarSign size={13} strokeWidth={2.5} />,
@@ -330,7 +334,14 @@ const About = () => {
               <div className="about-contact-card-rows">
                 <div className="about-contact-row">
                   <MapPin size={14} className="about-contact-row-icon" />
-                  <span>TesseractApps, Canberra, ACT, Australia</span>
+                  <a
+                    href="https://www.google.com/maps/place/TesseractApps/@-35.3523175,149.0868962,572m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6b165308ac032d25:0xe18d2268ea055f5c!8m2!3d-35.3523175!4d149.0894711!16s%2Fg%2F11wj5bv41c"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="about-contact-link"
+                  >
+                    Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+                  </a>
                 </div>
                 <div className="about-contact-row">
                   <Phone size={14} className="about-contact-row-icon" />
@@ -374,6 +385,32 @@ const About = () => {
 
           <div id="about-contact-social">
             <p>Follow us on social media for updates, insights, and news.</p>
+            <div id="about-social-icons">
+              {[
+                { src: facebook,  alt: "Facebook",  key: "facebook"  },
+                { src: instagram, alt: "Instagram",  key: "instagram" },
+                { src: linkedin,  alt: "LinkedIn",   key: "linkedin"  },
+                { src: youtube,   alt: "YouTube",    key: "youtube"   },
+              ].map(({ src, alt, key }) => (
+                <button
+                  key={key}
+                  type="button"
+                  className="about-social-icon-btn"
+                  aria-label={`Visit TesseractApps on ${alt}`}
+                  onClick={() => appNavigate(key)}
+                >
+                  <img
+                    src={src}
+                    alt={alt}
+                    className="about-social-icon"
+                    width="22"
+                    height="22"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </button>
+              ))}
+            </div>
           </div>
         </section>
 

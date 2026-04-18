@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import {
   Users, Heart, Home, Stethoscope,
   ChevronRight, CheckCircle, Phone,
-  ShieldCheck, Clock, Star,
+  ShieldCheck, Clock, Star, X,
 } from "lucide-react";
 
 /* ── Icon map for industry cards ── */
@@ -201,8 +201,8 @@ const Signup = () => {
       />
       <Alert setAlertData={setAlertData} alertData={alertData} />
 
-      <button type="button" id="signup-close-btn" onClick={handleClose}>
-        ✕ Close
+      <button type="button" id="signup-close-btn" onClick={handleClose} aria-label="Close">
+        <X size={18} strokeWidth={2.5} />
       </button>
 
       {showSuccess ? (
@@ -322,10 +322,9 @@ const Signup = () => {
               {/* ── Step 0: Company Verification ── */}
               {activeStep === 0 && (
                 <div id="signup-step0">
-                  <div className="signup-form-question">Congratulations!</div>
+                  <div className="signup-form-question">You're in the right place!</div>
                   <div className="signup-form-hint">
-                    Your journey to simpler NDIS operations starts here. Let's verify your company to get you started.
-                    We need a few details about your business entity.
+                    Let's get you set up. We just need a few details about your business to verify your company. 
                   </div>
 
                   <div id="signup-abn-row">

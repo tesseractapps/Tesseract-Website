@@ -69,7 +69,7 @@
 #about-outer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 48px 100px;
+  padding: 0 48px 0;
 }
 
 /* ─────────────────────────────────────────
@@ -503,7 +503,7 @@
    CONTACT SECTION
 ───────────────────────────────────────── */
 #about-contact-section {
-  padding: 72px 0 0;
+  padding: 74px 0 0 0;
 }
 
 #about-contact-heading {
@@ -626,7 +626,7 @@
 ───────────────────────────────────────── */
 @media (max-width: 1024px) {
   #about-outer {
-    padding: 0 32px 80px;
+    padding: 0 32px 0;
   }
 
   #about-contact-grid {
@@ -666,7 +666,11 @@
   }
 
   #about-outer {
-    padding: 0 20px 60px;
+    padding: 0 20px 0;
+  }
+
+  #about-contact-social {
+    padding: 32px 0 60px;
   }
 
   #about-story-heading,
@@ -719,7 +723,7 @@
   }
 
   #about-outer {
-    padding: 0 16px 48px;
+    padding: 0 16px 0;
   }
 
   #about-team-grid {
@@ -849,12 +853,56 @@
   opacity: 0.9;
   background: #fff;
 }
+/* ── Social row ── */
 #about-contact-social {
-  margin-top: 24px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid #eef2f7;
   text-align: center;
-  font-size: 0.9rem;
+  padding-bottom: 80px;
+}
+
+#about-contact-social p {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-text-gray);
-  padding-bottom: 72px;
+  margin: 0 0 20px;
+}
+
+#about-social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.about-social-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #f0f5fa;
+  border: 1.5px solid #dde4ed;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.15s, border-color 0.18s, box-shadow 0.18s;
+}
+
+.about-social-icon-btn:hover {
+  background: #e4edf7;
+  border-color: #b8cfe8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 42, 82, 0.1);
+}
+
+.about-social-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
 }
 
 /* ─────────────────────────────────────────

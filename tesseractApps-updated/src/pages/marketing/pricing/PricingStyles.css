@@ -478,6 +478,12 @@
   flex-shrink: 0;
   background: var(--color-primary);
 }
+.pr-start-integration-note {
+  margin: 12px 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-gray);
+  font-style: italic;
+}
 
 /* ══════════════════════════════════════════
    STAGES  —  flip card grid

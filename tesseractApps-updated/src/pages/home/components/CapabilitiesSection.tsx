@@ -40,7 +40,7 @@ CapabilityCard.displayName = "CapabilityCard";
  * unrelated parent state (e.g. FAQ open/close, hero word rotation).
  */
 const CapabilitiesSection = memo(({ inView, inViewRef }: CapabilitiesSectionProps) => {
-  const { links } = useSanityCapabilityNav();
+  const { links, loading } = useSanityCapabilityNav();
   const routerNavigate = useNavigate();
 
   const handleNavigate = (slug: string) => routerNavigate(`/capabilities/${slug}`);
@@ -59,9 +59,14 @@ const CapabilitiesSection = memo(({ inView, inViewRef }: CapabilitiesSectionProp
         </p>
 
         <div className="hv4-cap-grid">
-          {links.slice(0, 8).map((cap) => (
-            <CapabilityCard key={cap._id} cap={cap} onNavigate={handleNavigate} />
-          ))}
+          {loading
+            ? Array.from({ length: 8 }, (_, i) => (
+                <div key={i} className="hv4-cap-card hv4-cap-card--skeleton" aria-hidden="true" />
+              ))
+            : links.slice(0, 8).map((cap) => (
+                <CapabilityCard key={cap._id} cap={cap} onNavigate={handleNavigate} />
+              ))
+          }
         </div>
 
         <div className="hv4-cap-footer">
