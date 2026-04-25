@@ -90,11 +90,11 @@ const FooterComponent = () => {
 
   const confirmationMail = () => {
     sendEmail(
-      newsletterEmail.split("@")[0],
+      "Subscriber",
       newsletterEmail,
       newsletterConfirmationEmailTemplate.subject,
-      newsletterConfirmationEmailTemplate.text(newsletterEmail.split("@")[0]),
-      newsletterConfirmationEmailTemplate.html(newsletterEmail.split("@")[0]),
+      newsletterConfirmationEmailTemplate.text(),
+      newsletterConfirmationEmailTemplate.html(),
     ).catch((error) => {
       console.error("Error sending confirmation email:", error);
     });
@@ -313,7 +313,7 @@ const FooterComponent = () => {
           {/* Contact + Social */}
           <div id="footer-contact-block">
             <address className="footer-address" itemScope itemType="https://schema.org/PostalAddress">
-              <span itemProp="streetAddress">Suite 1, 1 Trevillian Quay</span>,{" "}
+              <span itemProp="streetAddress">Level 1/45 Colbee Ct</span>,{" "}
               <span itemProp="addressLocality">Phillip</span>{" "}
               <span itemProp="addressRegion">ACT</span>{" "}
               <span itemProp="postalCode">2606</span>,{" "}

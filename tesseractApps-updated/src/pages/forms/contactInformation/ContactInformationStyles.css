@@ -144,25 +144,225 @@
   text-decoration: underline;
 }
 
-/* ── Feedback button ── */
-.contact-feedback-btn {
+/* ── Feedback section ── */
+#contact-feedback-section {
+  background: #f4f7fb;
+  padding: 80px 0;
+  border-top: 1px solid #dde4ed;
+}
+
+#contact-feedback-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+#contact-feedback-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#contact-feedback-label {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 12px;
-  background-color: var(--color-primary);
-  color: #fff;
+  background: rgba(12, 120, 186, 0.1);
+  color: var(--color-primary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(12, 120, 186, 0.2);
+}
+
+#contact-feedback-heading {
+  font-size: clamp(1.5rem, 3vw, 2.125rem);
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.025em;
+  margin: 0 0 0.75rem;
+}
+
+#contact-feedback-sub {
+  font-size: 1rem;
+  color: var(--color-text-gray);
+  line-height: 1.7;
+  margin: 0;
+}
+
+#contact-feedback-form {
+  background: #fff;
+  border: 1.5px solid #dde4ed;
+  border-radius: 16px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#contact-feedback-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.cf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cf-label {
   font-size: 0.875rem;
   font-weight: 600;
-  padding: 9px 18px;
-  border-radius: 25px;
-  text-decoration: none;
-  width: fit-content;
-  transition: opacity 0.15s;
-  font-family: "Inter", sans-serif;
+  color: var(--color-secondary);
 }
-.contact-feedback-btn:hover {
+
+.cf-required {
+  color: #e53935;
+  margin-left: 2px;
+}
+
+.cf-input {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-secondary);
+  background: #f9fafc;
+  border: 1.5px solid #dde4ed;
+  border-radius: 10px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cf-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(12, 120, 186, 0.1);
+  background: #fff;
+}
+
+.cf-input-error {
+  border-color: #e53935;
+}
+
+.cf-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23667085' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.cf-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.cf-error {
+  font-size: 0.8125rem;
+  color: #e53935;
+  font-weight: 500;
+}
+
+.contact-feedback-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.contact-feedback-submit-btn:hover:not(:disabled) {
   opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.contact-feedback-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#contact-feedback-success {
+  background: #fff;
+  border: 1.5px solid #dde4ed;
+  border-radius: 16px;
+  padding: 64px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  min-height: 340px;
+  justify-content: center;
+}
+
+#contact-feedback-success svg {
+  margin-bottom: 8px;
+}
+
+#contact-feedback-success-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+#contact-feedback-success-msg {
+  font-size: 1rem;
+  color: var(--color-text-gray);
+  line-height: 1.65;
+  max-width: 380px;
+  margin: 0 0 8px;
+}
+
+#contact-feedback-success .contact-feedback-submit-btn {
+  align-self: center;
+  margin-top: 4px;
+}
+
+.cf-char-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-gray);
+  text-align: right;
+}
+
+.cf-char-hint--warn {
+  color: #d97706;
+}
+
+.cf-char-hint--ok {
+  color: #16a34a;
+}
+
+@media (max-width: 600px) {
+  #contact-feedback-row {
+    grid-template-columns: 1fr;
+  }
+
+  #contact-feedback-form {
+    padding: 24px 20px;
+  }
+
+  #contact-feedback-section {
+    padding: 56px 0;
+  }
 }
 
 /* ── Map embed ── */

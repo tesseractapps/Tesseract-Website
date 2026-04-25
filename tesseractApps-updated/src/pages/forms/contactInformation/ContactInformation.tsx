@@ -1,13 +1,86 @@
 import "./ContactInformationStyles.css";
 import SEO from "../../../components/common/SEO";
-import { Phone, MapPin, Clock, Mail, MessageSquare } from "lucide-react";
+import { Phone, MapPin, Clock, Mail, MessageSquare, CheckCircle, Send } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { sendEmail, sendTextEmail } from "../../../services/appService";
+import { feedbackEmailTemplate, feedbackConfirmationEmailTemplate } from "../../../utils/emailTemplates";
+import Alert from "../../../components/ui/alert/Alert";
+
+type FeedbackForm = { name: string; email: string; type: string; message: string };
+type FeedbackErrors = Partial<Record<keyof FeedbackForm, string>>;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emptyFeedback: FeedbackForm = { name: "", email: "", type: "", message: "" };
+
+const FEEDBACK_TYPES = ["General Feedback", "Bug Report", "Feature Request", "Billing", "Other"];
 
 const ContactInformation = () => {
   const navigate = useNavigate();
+  const alertInitialData = { heading: "", text: "", type: "success", isOpen: false };
+  const [alertData, setAlertData] = useState(alertInitialData);
+  const [feedback, setFeedback] = useState<FeedbackForm>(emptyFeedback);
+  const [feedbackErrors, setFeedbackErrors] = useState<FeedbackErrors>({});
+  const [feedbackSubmitting, setFeedbackSubmitting] = useState(false);
+  const [feedbackSuccess, setFeedbackSuccess] = useState(false);
+
+  const handleFeedbackChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFeedback((prev) => ({ ...prev, [id]: value }));
+    if (feedbackErrors[id as keyof FeedbackForm]) {
+      setFeedbackErrors((prev) => ({ ...prev, [id]: undefined }));
+    }
+  };
+
+  const validateFeedback = (): boolean => {
+    const errors: FeedbackErrors = {};
+    if (!feedback.name.trim()) errors.name = "Name is required";
+    if (!feedback.email.trim()) errors.email = "Email is required";
+    else if (!EMAIL_RE.test(feedback.email.trim())) errors.email = "Enter a valid email address";
+    if (!feedback.type) errors.type = "Please select a feedback type";
+    if (!feedback.message.trim()) errors.message = "Message is required";
+    else if (feedback.message.trim().length < 10) errors.message = "Please provide a bit more detail";
+    setFeedbackErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleFeedbackSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validateFeedback()) return;
+    setFeedbackSubmitting(true);
+    sendTextEmail(
+      feedbackEmailTemplate.email,
+      feedbackEmailTemplate.subject,
+      feedbackEmailTemplate.body({
+        name: feedback.name,
+        email: feedback.email,
+        type: feedback.type,
+        message: feedback.message,
+      })
+    )
+      .then(() => {
+        setFeedbackSuccess(true);
+        sendEmail(
+          feedback.name,
+          feedback.email,
+          feedbackConfirmationEmailTemplate.subject,
+          feedbackConfirmationEmailTemplate.text(feedback.name),
+          feedbackConfirmationEmailTemplate.html(feedback.name),
+        ).catch((err) => console.error("Feedback confirmation email error:", err));
+      })
+      .catch(() =>
+        setAlertData({
+          heading: "Submission Failed",
+          text: "There was an error sending your feedback. Please try again later.",
+          type: "fail",
+          isOpen: true,
+        })
+      )
+      .finally(() => setFeedbackSubmitting(false));
+  };
 
   return (
     <div id="contact-page">
+      <Alert setAlertData={setAlertData} alertData={alertData} />
       <SEO
         title="Contact TesseractApps | NDIS Software Support & Sales | Australia"
         description="Get in touch with TesseractApps for NDIS software enquiries, demos, or support. Call 1300 252 808 or email sales@tesseractapps.com. Located in Phillip ACT 2606."
@@ -100,13 +173,6 @@ const ContactInformation = () => {
               <strong>Support</strong>
               <a href="mailto:support@tesseractapps.com">support@tesseractapps.com</a>
             </div>
-            <a
-              href="mailto:sales@tesseractapps.com?subject=Feedback%20%E2%80%93%20TesseractApps"
-              className="contact-feedback-btn"
-            >
-              <MessageSquare size={15} strokeWidth={2} />
-              Send Feedback
-            </a>
           </div>
 
         </div>
@@ -131,6 +197,100 @@ const ContactInformation = () => {
           </a>
         </div>
       </div>
+
+      {/* ── Feedback Form ── */}
+      <section id="contact-feedback-section">
+        <div id="contact-feedback-inner">
+          <div id="contact-feedback-header">
+            <div id="contact-feedback-label">
+              <MessageSquare size={14} strokeWidth={2.5} />
+              Share Your Thoughts
+            </div>
+            <h2 id="contact-feedback-heading">Send us feedback</h2>
+            <p id="contact-feedback-sub">
+              Found a bug, have a feature idea, or just want to share how things are going? We read every message.
+            </p>
+          </div>
+
+          {feedbackSuccess ? (
+            <div id="contact-feedback-success">
+              <CheckCircle size={48} color="var(--color-primary)" strokeWidth={1.5} />
+              <div id="contact-feedback-success-title">Thanks for your feedback!</div>
+              <div id="contact-feedback-success-msg">
+                We've received your message and will review it shortly.
+              </div>
+              <button
+                type="button"
+                className="contact-feedback-submit-btn"
+                onClick={() => { setFeedbackSuccess(false); setFeedback(emptyFeedback); }}
+              >
+                Send another
+              </button>
+            </div>
+          ) : (
+            <form id="contact-feedback-form" onSubmit={handleFeedbackSubmit} noValidate>
+              <div id="contact-feedback-row">
+                <div className="cf-field">
+                  <label className="cf-label" htmlFor="name">Name <span className="cf-required">*</span></label>
+                  <input
+                    className={"cf-input" + (feedbackErrors.name ? " cf-input-error" : "")}
+                    id="name" type="text" placeholder="Jane Doe"
+                    value={feedback.name} onChange={handleFeedbackChange}
+                  />
+                  {feedbackErrors.name && <span className="cf-error">{feedbackErrors.name}</span>}
+                </div>
+                <div className="cf-field">
+                  <label className="cf-label" htmlFor="email">Email <span className="cf-required">*</span></label>
+                  <input
+                    className={"cf-input" + (feedbackErrors.email ? " cf-input-error" : "")}
+                    id="email" type="email" placeholder="jane@organisation.com"
+                    value={feedback.email} onChange={handleFeedbackChange}
+                  />
+                  {feedbackErrors.email && <span className="cf-error">{feedbackErrors.email}</span>}
+                </div>
+              </div>
+              <div className="cf-field">
+                <label className="cf-label" htmlFor="type">Feedback Type <span className="cf-required">*</span></label>
+                <select
+                  className={"cf-input cf-select" + (feedbackErrors.type ? " cf-input-error" : "")}
+                  id="type" value={feedback.type} onChange={handleFeedbackChange}
+                >
+                  <option value="">Select a type…</option>
+                  {FEEDBACK_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
+                </select>
+                {feedbackErrors.type && <span className="cf-error">{feedbackErrors.type}</span>}
+              </div>
+              <div className="cf-field">
+                <label className="cf-label" htmlFor="message">Message <span className="cf-required">*</span></label>
+                <textarea
+                  className={"cf-input cf-textarea" + (feedbackErrors.message ? " cf-input-error" : "")}
+                  id="message" placeholder="Tell us what you think…" rows={5}
+                  value={feedback.message} onChange={handleFeedbackChange}
+                />
+                <span className={
+                  "cf-char-hint" +
+                  (feedback.message.trim().length === 0 ? "" :
+                   feedback.message.trim().length < 10 ? " cf-char-hint--warn" : " cf-char-hint--ok")
+                }>
+                  {feedback.message.trim().length < 10
+                    ? `Minimum 10 characters (${feedback.message.trim().length}/10)`
+                    : `${feedback.message.trim().length} characters`}
+                </span>
+                {feedbackErrors.message && <span className="cf-error">{feedbackErrors.message}</span>}
+              </div>
+              <button
+                type="submit"
+                className="contact-feedback-submit-btn"
+                disabled={feedbackSubmitting}
+              >
+                {feedbackSubmitting ? "Sending…" : (
+                  <><Send size={14} strokeWidth={2.5} style={{ marginRight: 7 }} />Send Feedback</>
+                )}
+              </button>
+            </form>
+          )}
+        </div>
+      </section>
 
       {/* ── CTA ── */}
       <section id="contact-cta-strip">

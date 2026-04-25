@@ -1,14 +1,10 @@
 /* ─────────────────────────────────────────
-   FONT — Inter site-wide, override MUI Roboto
+   FONT — Inter site-wide
 ───────────────────────────────────────── */
 #signup-container,
 #signup-success-screen,
 #signup-close-btn {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-#signup-stepper-wrapper .MuiStepLabel-label {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
 }
 
 /* ─────────────────────────────────────────
@@ -837,32 +833,8 @@
     display: none;
   }
 
-  /* Stepper — tighter, smaller text & icons */
   #signup-stepper-wrapper {
     padding: 14px 28px 0;
-  }
-
-  #signup-stepper-wrapper .MuiStepper-root {
-    gap: 0;
-  }
-
-  #signup-stepper-wrapper .MuiStepLabel-label {
-    font-size: 0.6875rem !important;
-    margin-top: 4px !important;
-  }
-
-  #signup-stepper-wrapper .MuiStepIcon-root {
-    width: 20px !important;
-    height: 20px !important;
-    font-size: 0.625rem !important;
-  }
-
-  #signup-stepper-wrapper .MuiStepIcon-text {
-    font-size: 0.5625rem !important;
-  }
-
-  #signup-stepper-wrapper .MuiStepConnector-line {
-    border-top-width: 1.5px;
   }
 
   #signup-form-scroll-area {
@@ -905,10 +877,6 @@
 
   #signup-stepper-wrapper {
     padding: 10px 16px 0;
-  }
-
-  #signup-stepper-wrapper .MuiStepLabel-label {
-    font-size: 0.625rem !important;
   }
 
   #signup-form-scroll-area {
@@ -985,7 +953,4 @@
     display: none;
   }
 
-  #signup-stepper-wrapper .MuiStepLabel-label {
-    font-size: 0.5625rem !important;
-  }
 }

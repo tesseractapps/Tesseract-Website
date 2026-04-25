@@ -3,17 +3,9 @@ import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { codeInput } from '@sanity/code-input'
 import { schemaTypes } from './src/sanity/schemaTypes'
-import { apiVersion, dataset, projectId } from './src/sanity/env'
-
-const studioProjectId = projectId
-if (!studioProjectId) {
-  throw new Error('Missing VITE_SANITY_PROJECT_ID for Sanity Studio config')
-}
-
-const studioDataset = dataset
-if (!studioDataset) {
-  throw new Error('Missing VITE_SANITY_DATASET for Sanity Studio config')
-}
+const studioProjectId = 'gtnor2fs'
+const studioDataset = 'production'
+const apiVersion = '2024-01-01'
 
 export default defineConfig({
   name: 'tesseract-studio',

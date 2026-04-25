@@ -5,7 +5,7 @@ import React from "react";
 import Alert from "../../../components/ui/alert/Alert";
 import { sendEmail, sendTextEmail } from "../../../services/appService";
 const logo_white = "/svg-logos/white_logo.svg";
-import { Box, Step, StepLabel, Stepper } from "@mui/material";
+import FormStepper from "../../../components/ui/formStepper/FormStepper";
 import {
   signupConfirmationEmailTemplate,
   signupEmaiTemplate,
@@ -227,7 +227,7 @@ const Signup = () => {
             </div>
             <div id="signup-success-actions">
               <button type="button" className="signup-btn-primary" onClick={handleClose}>
-                Back to Home
+                Close
               </button>
             </div>
           </div>
@@ -292,10 +292,10 @@ const Signup = () => {
                 <div id="signup-sidebar-help-text">
                   Our NDIS specialists are ready to assist you with your setup.
                 </div>
-                <a href="tel:1300252808" id="signup-sidebar-help-btn">
+                <span id="signup-sidebar-help-btn">
                   <Phone size={13} />
-                  <span>Book a Call</span>
-                </a>
+                  <span>1300 252 808</span>
+                </span>
               </div>
             </div>
           </div>
@@ -305,15 +305,10 @@ const Signup = () => {
 
             {/* Stepper */}
             <div id="signup-stepper-wrapper">
-              <Box sx={{ width: "100%" }}>
-                <Stepper activeStep={activeStep} alternativeLabel>
-                  {["Company Verification", "Personal Details", "Review & Confirm"].map((label) => (
-                    <Step key={label}>
-                      <StepLabel>{label}</StepLabel>
-                    </Step>
-                  ))}
-                </Stepper>
-              </Box>
+              <FormStepper
+                steps={["Company Verification", "Personal Details", "Review & Confirm"]}
+                activeStep={activeStep}
+              />
             </div>
 
             {/* Scrollable area */}
@@ -523,7 +518,7 @@ const Signup = () => {
                       I agree to the{" "}
                       <a href="/terms-and-Conditions" target="_blank" className="signup-terms-link">Terms of Service</a>
                       {" "}and{" "}
-                      <a href="/privacy-policy" target="_blank" className="signup-terms-link">Privacy Policy</a>
+                      <a href="/privacy-policy" target="_blank" className="signup-terms-link">Privacy Policy</a>*
                     </span>
                   </label>
                   {formErrors.termsAccepted && (

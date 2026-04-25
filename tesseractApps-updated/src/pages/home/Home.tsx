@@ -100,21 +100,53 @@ const CLIENT_LOGOS = [
   company19, company20, company21, company22, company23, company24,
 ];
 
-// ─── Intersection hook (for fade-in sections only — not driving rAF) ──────────
-function useInView(threshold = 0.1) {
-  const ref = useRef<HTMLElement>(null);
-  const [inView, setInView] = useState(false);
+// ─── Single shared IntersectionObserver for all fade-in sections ─────────────
+// One observer instance watches all 6 section refs simultaneously,
+// removing the need for 6 separate observers.
+type SectionKey = 'mat' | 'flow' | 'prob' | 'why' | 'faq' | 'cta';
+const SECTION_KEYS: SectionKey[] = ['mat', 'flow', 'prob', 'why', 'faq', 'cta'];
+
+function useSectionInView(threshold = 0.1) {
+  const refs = useRef<Partial<Record<SectionKey, HTMLElement | null>>>({});
+  const [visible, setVisible] = useState<Partial<Record<SectionKey, boolean>>>({});
+
+  // Stable ref callbacks — one per key, never recreated
+  const refCallbacks = useMemo(
+    () => Object.fromEntries(
+      SECTION_KEYS.map((key) => [
+        key,
+        (el: HTMLElement | null) => { refs.current[key] = el; },
+      ])
+    ) as Record<SectionKey, (el: HTMLElement | null) => void>,
+    []
+  );
+
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect(); } },
-      { threshold }
-    );
-    obs.observe(el);
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const key = (entry.target as HTMLElement).dataset.sectionKey as SectionKey;
+          if (key) {
+            setVisible((prev) => ({ ...prev, [key]: true }));
+            obs.unobserve(entry.target);
+          }
+        }
+      });
+    }, { threshold });
+
+    SECTION_KEYS.forEach((key) => {
+      const el = refs.current[key];
+      if (el) {
+        el.dataset.sectionKey = key;
+        obs.observe(el);
+      }
+    });
+
     return () => obs.disconnect();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [threshold]);
-  return { ref, inView };
+
+  return { refCallbacks, visible };
 }
 
 // ─── Memoized leaf components for static sections (Step 3) ───────────────────
@@ -245,13 +277,14 @@ export default function Home() {
   const navigate = useAppNavigate();
   const routerNavigate = useNavigate();
 
-  // ── Fade-in section refs ──── (these do NOT drive rAF — safe in parent) ────
-  const { ref: matRef, inView: matInView } = useInView(0.1);
-  const { ref: flowRef, inView: flowInView } = useInView(0.1);
-  const { ref: probRef, inView: probInView } = useInView(0.1);
-  const { ref: whyRef, inView: whyInView } = useInView(0.1);
-  const { ref: faqRef, inView: faqInView } = useInView(0.1);
-  const { ref: ctaRef, inView: ctaInView } = useInView(0.1);
+  // ── Fade-in section refs — single shared observer for all 6 sections ────────
+  const { refCallbacks, visible } = useSectionInView(0.1);
+  const matInView  = visible.mat;
+  const flowInView = visible.flow;
+  const probInView = visible.prob;
+  const whyInView  = visible.why;
+  const faqInView  = visible.faq;
+  const ctaInView  = visible.cta;
 
   // ── FAQ open state ──── (localised — only the FAQ section re-renders) ────
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -388,7 +421,7 @@ export default function Home() {
 
               <p className="hv4-hero-sub">
                 Stop stitching together disconnected tools. TesseractApps gives NDIS providers a single
-                operational platform, purpose-built, running natively on Salesforce Hyperforce.
+                operational platform, purpose-built.
                 Everything stays connected. Everything stays compliant.
               </p>
 
@@ -440,7 +473,7 @@ export default function Home() {
         </section>
 
         {/* ── Section 3: Operational Flow ──────────────────────────────── */}
-        <section id="hv4-flow" ref={flowRef} className={flowInView ? "hv4-fade-in" : "hv4-fade-pre"}>
+        <section id="hv4-flow" ref={refCallbacks.flow} className={flowInView ? "hv4-fade-in" : "hv4-fade-pre"}>
           <div className="hv4-section-inner">
             <div className="hv4-section-label hv4-section-label--light">How It Works</div>
             <h2 className="hv4-section-h2 hv4-section-h2--light">From intake to audit evidence, one connected flow.</h2>
@@ -450,7 +483,7 @@ export default function Home() {
             </p>
 
             {/* ── Step 1: ProcessFlow isolated ── */}
-            <ProcessFlow steps={FLOW_STEPS} inView={flowInView} />
+            <ProcessFlow steps={FLOW_STEPS} inView={!!flowInView} />
 
             <p className="hv4-flow-footer">
               Every step generates data that feeds the next. When an auditor, plan manager, or board member asks a question,
@@ -464,7 +497,7 @@ export default function Home() {
         <StatCounter />
 
         {/* ── Section 2: Provider Maturity Model ─────────────────────── */}
-        <section id="hv4-maturity" ref={matRef} className={matInView ? "hv4-fade-in" : "hv4-fade-pre"}>
+        <section id="hv4-maturity" ref={refCallbacks.mat} className={matInView ? "hv4-fade-in" : "hv4-fade-pre"}>
           <div className="hv4-section-inner">
             <div className="hv4-section-label">Provider Maturity Model</div>
             <h2 className="hv4-section-h2">Where are you on your provider journey?</h2>
@@ -522,7 +555,7 @@ export default function Home() {
         </section>
 
         {/* ── Section 5: Why Now ──────────────────────────────────────── */}
-        <section id="hv4-why-now" ref={whyRef} className={whyInView ? "hv4-fade-in" : "hv4-fade-pre"}>
+        <section id="hv4-why-now" ref={refCallbacks.why} className={whyInView ? "hv4-fade-in" : "hv4-fade-pre"}>
           <div className="hv4-section-inner">
             <div className="hv4-why-now-grid">
               <div className="hv4-why-now-content">
@@ -577,7 +610,7 @@ export default function Home() {
         </section>
 
         {/* ── Section 6: Problems We Solve ─────────────────────────────── */}
-        <section id="hv4-problems" ref={probRef} className={probInView ? "hv4-fade-in" : "hv4-fade-pre"}>
+        <section id="hv4-problems" ref={refCallbacks.prob} className={probInView ? "hv4-fade-in" : "hv4-fade-pre"}>
           <div className="hv4-section-inner">
             <div className="hv4-section-label">Problems We Solve</div>
             <h2 className="hv4-section-h2">Sound familiar?</h2>
@@ -613,7 +646,7 @@ export default function Home() {
         <BlogSection />
 
         {/* ── Section 8: FAQ ───────────────────────────────────────────── */}
-        <section id="hv4-faq" ref={faqRef} className={faqInView ? "hv4-fade-in" : "hv4-fade-pre"}>
+        <section id="hv4-faq" ref={refCallbacks.faq} className={faqInView ? "hv4-fade-in" : "hv4-fade-pre"}>
           <div className="hv4-faq-inner">
             <div className="hv4-section-label">FAQ</div>
             <h2 className="hv4-section-h2">Common questions about TesseractApps</h2>
@@ -633,7 +666,7 @@ export default function Home() {
         </section>
 
         {/* ── Section 9: Final CTA ──────────────────────────────────────── */}
-        <section id="hv4-cta" ref={ctaRef} className={ctaInView ? "hv4-fade-in" : "hv4-fade-pre"}>
+        <section id="hv4-cta" ref={refCallbacks.cta} className={ctaInView ? "hv4-fade-in" : "hv4-fade-pre"}>
           <div className="hv4-cta-bg" aria-hidden="true">
             <div className="hv4-cta-orb hv4-cta-orb--1" />
             <div className="hv4-cta-orb hv4-cta-orb--2" />

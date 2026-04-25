@@ -1,6 +1,6 @@
 import "./BookADemoStyles.css";
 import SEO from "../../../components/common/SEO";
-import { Stepper, Step, StepLabel } from "@mui/material";
+import FormStepper from "../../../components/ui/formStepper/FormStepper";
 import { useState } from "react";
 import { bookADemoFormData } from "../../../data/formData";
 const logo_white = "/svg-logos/white_logo.svg";
@@ -71,6 +71,8 @@ const PATHWAY_STEPS = [
 
 const isLastStep = (step: number) => step === bookADemoFormData.length - 1;
 const isFirstStep = (step: number) => step === 0;
+
+const pad = (n: number) => String(n).padStart(2, "0");
 
 const BookADemo = () => {
   const navigate = useNavigate();
@@ -227,18 +229,26 @@ const BookADemo = () => {
             </div>
             <div id="bookADemo-success-actions">
               <button type="button" className="bookADemo-Button" onClick={handleClose}>
-                Back to Home
+                Close
               </button>
-              {formData.schedule && (
-                <a
-                  href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=TesseractApps+Demo&dates=${formData.schedule.replace(/[-:]/g, "").slice(0, 13)}00Z/${formData.schedule.replace(/[-:]/g, "").slice(0, 13)}00Z`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bookADemo-Button bookADemo-Button--outline"
-                >
-                  Add to Calendar
-                </a>
-              )}
+              {formData.schedule && (() => {
+                // formData.schedule is local ISO "YYYY-MM-DDTHH:MM" — keep as floating time (no Z)
+                const startStr = formData.schedule.replace(/[-:]/g, "").slice(0, 13) + "00";
+                const endDate = new Date(formData.schedule);
+                endDate.setHours(endDate.getHours() + 1);
+                const endStr = `${endDate.getFullYear()}${pad(endDate.getMonth() + 1)}${pad(endDate.getDate())}T${pad(endDate.getHours())}${pad(endDate.getMinutes())}00`;
+                const calUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=TesseractApps+Demo&dates=${startStr}/${endStr}`;
+                return (
+                  <a
+                    href={calUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bookADemo-Button bookADemo-Button--outline"
+                  >
+                    Add to Calendar
+                  </a>
+                );
+              })()}
             </div>
             <div id="bookADemo-what-next-heading">What happens next?</div>
             <div id="bookADemo-success-steps">
@@ -313,13 +323,10 @@ const BookADemo = () => {
 
             {/* Stepper */}
             <div id="bookADemo-stepper-wrapper">
-              <Stepper activeStep={currentStep} alternativeLabel>
-                {["Organisation", "Staff Size", "Service Type"].map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper>
+              <FormStepper
+                steps={["Organisation", "Staff Size", "Service Type"]}
+                activeStep={currentStep}
+              />
             </div>
 
             {/* Scrollable content */}

@@ -2,11 +2,6 @@
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
 import { useAppContext } from "../contexts/AppContext";
-import "../pages/blog/BlogStyles.css";
-import "../pages/blogPost/BlogPostPageStyles.css";
-import "../pages/capabilities/CapabilityPageStyles.css";
-import "../pages/solutions/solutionPage/SolutionPageStyles.css";
-import "../pages/competitors/CompetitorPageStyles.css";
 
 import Home from "../pages/home/Home";
 
@@ -26,12 +21,13 @@ const SolutionPage = lazy(() => import("../pages/solutions/solutionPage/Solution
 const ContactInformation = lazy(() => import("../pages/forms/contactInformation/ContactInformation"));
 const About = lazy(() => import("../pages/marketing/about/About"));
 const Whitepapers = lazy(() => import("../pages/resources/whitepapers/Whitepapers"));
-const StudioPage = lazy(() => import("../pages/studio/StudioPage"));
 const BookADemo = lazy(() => import("../pages/forms/bookADemo/BookADemo"));
 const Signup = lazy(() => import("../pages/forms/signup/Signup"));
 const CompetitorPage = lazy(() => import("../pages/competitors/CompetitorPage"));
 const NDISGlossary = lazy(() => import("../pages/resources/glossary/NDISGlossary"));
 const SitemapPage = lazy(() => import("../pages/resources/sitemapPage/SitemapPage"));
+const LMS = lazy(() => import("../pages/lms/LMS"));
+const WorkflowEngine = lazy(() => import("../pages/workflowEngine/WorkflowEngine"));
 const NotFound = lazy(() => import("../pages/notFound/NotFound"));
 
 const AppRoutes = () => {
@@ -78,6 +74,8 @@ const AppRoutes = () => {
         <Route path="/signup" element={<Suspense fallback={pageSpinner}><Signup /></Suspense>} />
         <Route path="/pricing" element={<Suspense fallback={pageSpinner}><Pricing /></Suspense>} />
         <Route path="/platform" element={<Suspense fallback={pageSpinner}><Platform /></Suspense>} />
+        <Route path="/learning-management" element={<Suspense fallback={pageSpinner}><LMS /></Suspense>} />
+        <Route path="/workflow-engine" element={<Suspense fallback={pageSpinner}><WorkflowEngine /></Suspense>} />
         <Route path="/capabilities" element={<Suspense fallback={pageSpinner}><CapabilitiesListing /></Suspense>} />
         <Route path="/solutions" element={<Suspense fallback={pageSpinner}><SolutionsListing /></Suspense>} />
         <Route path="/whitepapers" element={<Suspense fallback={pageSpinner}><Whitepapers /></Suspense>} />
@@ -230,9 +228,6 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-
-        {/* Sanity Studio — embedded at /studio */}
-        <Route path="/studio/*" element={<Suspense fallback={pageSpinner}><StudioPage /></Suspense>} />
 
         {/* Catch-all 404 */}
         <Route path="*" element={<Suspense fallback={pageSpinner}><NotFound /></Suspense>} />

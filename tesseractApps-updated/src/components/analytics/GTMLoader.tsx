@@ -21,9 +21,9 @@ export default function GTMLoader() {
     };
 
     if ('requestIdleCallback' in window) {
-      (window as any).requestIdleCallback(load, { timeout: 3000 });
+      (window as any).requestIdleCallback(load, { timeout: 1000 });
     } else {
-      setTimeout(load, 3000);
+      setTimeout(load, 1000);
     }
   }, []);
 

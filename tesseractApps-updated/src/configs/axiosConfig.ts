@@ -1,10 +1,20 @@
-import axios from "axios";
+const BASE_URL = "https://tesseractapps.com";
+// const BASE_URL = "http://localhost:5001";
 
-const AxiosConfig = axios.create({
-  baseURL: "https://tesseractapps.com",
-  // baseURL: "http://localhost:5001",
-  withCredentials: true,
-  timeout: 10000,
-});
-const API = AxiosConfig;
-export default API;
+export const apiFetch = async (path: string, options: RequestInit = {}): Promise<Response> => {
+  const response = await fetch(`${BASE_URL}${path}`, {
+    credentials: "include",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...(options.headers ?? {}),
+    },
+  });
+  if (!response.ok) {
+    const error = new Error(`API error ${response.status}: ${response.statusText}`);
+    throw error;
+  }
+  return response;
+};
+
+export default apiFetch;

@@ -1,41 +1,69 @@
-export const newsletterConfirmationEmailTemplate = {
-  subject: "Thank You for Subscribing!",
-  text: (name: string) => `Hi ${name},\n
-        \n
-         Thank you for subscribing to the TesseractApps newsletter! We’re excited to\n   
-keep you updated with the latest news, insights, and updates about NDIS\n   
-software solutions and best practices.\n
-        \n
-        You can expect to receive regular updates directly in your inbox, including tips \n 
-to optimise your services, new feature announcements, and exclusive offers.\n
-\n
-If you have any questions or suggestions, feel free to reach out to us at  \n
-marketing@tesseractapps.com  \n
-\n 
-Welcome to the TesseractApps community! \n
-\n
-        Team TesseractApps\n
-        [Our Website: www.tesseractapps.com.au]\n
-        [+61261332819,02 6133 2800] | [marketing@tesseractapps.com]\n
-        \n
-        `,
+type feedbackTypes = {
+  name: string;
+  email: string;
+  type: string;
+  message: string;
+};
+
+export const feedbackEmailTemplate = {
+  email: "marketing@tesseractapps.com",
+  subject: "Website Feedback – TesseractApps",
+  body: ({ name, email, type, message }: feedbackTypes) =>
+    `New feedback received from the website.\n\nName: ${name}\nEmail: ${email}\nType: ${type}\n\nMessage:\n${message}\n\nTeam TesseractApps\n`,
+};
+
+export const feedbackConfirmationEmailTemplate = {
+  subject: "We've Received Your Feedback — TesseractApps",
+  text: (name: string) => `Hi ${name},
+
+Thank you for reaching out! We've received your feedback and our team will review it shortly.
+
+If you have any urgent questions, feel free to contact us at:
+  Phone: 1300 252 808
+  Email: marketing@tesseractapps.com
+
+Warm regards,
+Team TesseractApps
+Website: www.tesseractapps.com.au
+Phone: 1300 252 808 | Email: marketing@tesseractapps.com`,
   html: (name: string) => `
-    <div>
-    <div>Hi ${name},</div>
-    <p>Thank you for subscribing to the TesseractApps newsletter! We’re excited to   
-keep you updated with the latest news, insights, and updates about NDIS   
-software solutions and best practices.</p>
-    <p>You can expect to receive regular updates directly in your inbox, including tips   
-to optimise your services, new feature announcements, and exclusive offers.  </p>
-<p>If you have any questions or suggestions, feel free to reach out to us at   
-marketing@tesseractapps.com  </p>
-<p>Welcome to the TesseractApps community!  </p>
-    <div>
-    <p>Best regards,</p>
-        <p>Team TesseractApps</p>
-        <div>[Our Website: <a href="https://www.tesseractapps.com.au">TesseractApps</a>]</div>
-        <div>✆;[<a href="tel:+61261332819">+61261332819</a>,<a href="tel:+61261332800">02 6133 2800</a>] 📧 [<a href="mailto:marketing@tesseractapps.com?subject=Inquiry">marketing@tesseractapps.com</a>]</div>
-    </div>
+    <div style="font-family:Arial,sans-serif;color:#222;max-width:600px">
+      <p>Hi ${name},</p>
+      <p>Thank you for reaching out! We've received your feedback and our team will review it shortly.</p>
+      <p>If you have any urgent questions, feel free to contact us at <a href="mailto:marketing@tesseractapps.com">marketing@tesseractapps.com</a> or call <a href="tel:1300252808">1300 252 808</a>.</p>
+      <p>Warm regards,<br/><strong>Team TesseractApps</strong></p>
+      <p>Website: <a href="https://www.tesseractapps.com.au">www.tesseractapps.com.au</a><br/>
+      Phone: <a href="tel:1300252808">1300 252 808</a> | Email: <a href="mailto:marketing@tesseractapps.com">marketing@tesseractapps.com</a></p>
+    </div>`,
+};
+
+export const newsletterConfirmationEmailTemplate = {
+  subject: "Thank You for Subscribing to TesseractApps!",
+  text: () => `Hi there,
+
+Thank you for subscribing to the TesseractApps newsletter! We’re excited to keep you updated with the latest news, insights, and updates about NDIS software solutions and best practices.
+
+You can expect to receive regular updates directly in your inbox, including tips to optimise your services, new feature announcements, and exclusive offers.
+
+If you have any questions or suggestions, feel free to reach out to us at marketing@tesseractapps.com.
+
+Welcome to the TesseractApps community!
+
+Best regards,
+Team TesseractApps
+Website: tesseractapps.com.au
+Phone: 1300 252 808 | Email: marketing@tesseractapps.com
+`,
+  html: () => `
+    <div style="font-family:Arial,sans-serif;color:#222;max-width:600px">
+      <p>Hi there,</p>
+      <p>Thank you for subscribing to the TesseractApps newsletter! We’re excited to keep you updated with the latest news, insights, and updates about NDIS software solutions and best practices.</p>
+      <p>You can expect to receive regular updates directly in your inbox, including tips to optimise your services, new feature announcements, and exclusive offers.</p>
+      <p>If you have any questions or suggestions, feel free to reach out to us at <a href="mailto:marketing@tesseractapps.com">marketing@tesseractapps.com</a>.</p>
+      <p>Welcome to the TesseractApps community!</p>
+      <p>Best regards,<br/><strong>Team TesseractApps</strong></p>
+      <p>Website: <a href="https://tesseractapps.com.au">tesseractapps.com.au</a><br/>
+      Phone: <a href="tel:1300252808">1300 252 808</a> | Email: <a href="mailto:marketing@tesseractapps.com">marketing@tesseractapps.com</a></p>
     </div>`,
 };
 
@@ -86,40 +114,42 @@ export const bookDemoEmailTemplate = {
 
 export const bookDemoConfirmationEmailTemplate = {
   subject: "Your TesseractApps Demo Is Confirmed",
-  text: (fullName: string,date: string,time: string) => `Dear ${fullName},\n
-      \n
-      Thank you for booking a demo with TesseractApps! We’re excited to show you how our platform can help you save time, reduce audit risks, and simplify your processes
-      \n
-      Demo Details:\n
-      •	Date: ${date}\n
-      •	Time: ${time}\n
-      If you have any questions or need to reschedule, simply reply to this email or contact us at:\n
-      •	Phone: 1300 252 808 \n
-      •	Email: sales@tesseractapps.com\n
-      We look forward to demonstrating how TesseractApps can support your organisation.\n
-      Best regards,\n
-      Team TesseractApps\n
-      [Our Website: www.tesseractapps.com.au]\n
-      [+61261332819,02 6133 2800] | [sales@tesseractapps.com]`,
-  html: (fullName: string,date: string,time: string) => `
-    <div>Dear ${fullName},</div>
-    <p>Thank you for booking a demo with TesseractApps! We’re excited to show you how our platform can help you save time, reduce audit risks, and simplify your processes.</p>
-    <p><strong>Demo Details:</strong></p>
-    <ul>
-      <li><strong>Date: ${date}</strong></li>
-      <li><strong>Time: ${time}</strong></li>
-    </ul>
-    <p>If you have any questions or need to reschedule, simply reply to this email or contact us at:</p>
-    <ul>
-      <li><strong>Phone: 1300 252 808</strong></li>
-      <li><strong>Email: sales@tesseractapps.com</strong></li>
-    </ul>
-    <p>We look forward to demonstrating how TesseractApps can support your organisation.</p>
-    <div>
-    <p>Warm regards,</p>
-        <p>Team TesseractApps</p>
-        <div>[Our Website: <a href="https://www.tesseractapps.com.au">TesseractApps</a>]</div>
-        <div>✆;[<a href="tel:+61261332819">+61261332819</a>,<a href="tel:+61261332800">02 6133 2800</a>] 📧 [<a href="mailto:sales@tesseractapps.com?subject=Inquiry">sales@tesseractapps.com</a>]</div>
+  text: (fullName: string, date: string, time: string) => `Dear ${fullName},
+
+Thank you for booking a demo with TesseractApps! We’re excited to show you how our platform can help you save time, reduce audit risks, and simplify your processes.
+
+Demo Details:
+  Date: ${date}
+  Time: ${time} (AEST)
+
+If you have any questions or need to reschedule, simply reply to this email or contact us at:
+  Phone: 1300 252 808
+  Email: sales@tesseractapps.com
+
+We look forward to demonstrating how TesseractApps can support your organisation.
+
+Warm regards,
+Team TesseractApps
+Website: tesseractapps.com.au
+Phone: 1300 252 808 | Email: sales@tesseractapps.com`,
+  html: (fullName: string, date: string, time: string) => `
+    <div style="font-family:Arial,sans-serif;color:#222;max-width:600px">
+      <p>Dear ${fullName},</p>
+      <p>Thank you for booking a demo with TesseractApps! We’re excited to show you how our platform can help you save time, reduce audit risks, and simplify your processes.</p>
+      <p><strong>Demo Details:</strong></p>
+      <ul>
+        <li><strong>Date:</strong> ${date}</li>
+        <li><strong>Time:</strong> ${time} (AEST)</li>
+      </ul>
+      <p>If you have any questions or need to reschedule, simply reply to this email or contact us at:</p>
+      <ul>
+        <li><strong>Phone:</strong> <a href="tel:1300252808">1300 252 808</a></li>
+        <li><strong>Email:</strong> <a href="mailto:sales@tesseractapps.com">sales@tesseractapps.com</a></li>
+      </ul>
+      <p>We look forward to demonstrating how TesseractApps can support your organisation.</p>
+      <p>Warm regards,<br/><strong>Team TesseractApps</strong></p>
+      <p>Website: <a href="https://tesseractapps.com.au">tesseractapps.com.au</a><br/>
+      Phone: <a href="tel:1300252808">1300 252 808</a> | Email: <a href="mailto:sales@tesseractapps.com">sales@tesseractapps.com</a></p>
     </div>
   `,
 };
@@ -168,32 +198,33 @@ export const signupEmaiTemplate = {
                 `,
 };
 export const signupConfirmationEmailTemplate = {
-  subject: "Thank You for Signing Up! We've Received Your Details",
-  text: (firstName: string) => `Hi ${firstName},\n
-    \n
-      Thank you for signing up with TesseractApps!\n
-      We've received your details and our team is currently reviewing them. One of our representatives will get in touch with you soon to guide you through the next steps.\n
-      If you have any immediate questions, feel free to reach out to us at [sales@tesseractapps.com] or call us at [+61261332819, 1300 252 808].\n
-      We're excited to connect with you soon!\n
-      \n
-      Warm regards,\n
-      Team TesseractApps\n
-      [Our Website: www.tesseractapps.com.au]\n
-      [+61261332819,02 6133 2800] | [sales@tesseractapps.com]\n
-      `,
+  subject: "We've Received Your Details — TesseractApps",
+  text: (firstName: string) => `Hi ${firstName},
+
+Thank you for signing up with TesseractApps!
+
+We've received your details and our team is currently reviewing them. One of our representatives will get in touch with you soon to guide you through the next steps.
+
+If you have any immediate questions, feel free to reach out to us at sales@tesseractapps.com or call us at 1300 252 808.
+
+We're excited to connect with you soon!
+
+Warm regards,
+Team TesseractApps
+Website: tesseractapps.com.au
+Phone: 1300 252 808 | Email: sales@tesseractapps.com
+`,
 
   html: (firstName: string) => `
-    <div>Hi ${firstName},</div>
-    <p>Thank you for signing up with TesseractApps!</p>
-    <p>We've received your details and our team is currently reviewing them. One of our representatives will get in touch with you soon to guide you through the next steps.
-      If you have any immediate questions, feel free to reach out to us at [sales@tesseractapps.com] or call us at [+61261332819, 1300 252 808].
-      We're excited to connect with you soon!
-      Warm regards</p>
-    <div>
-    <p>Warm regards,</p>
-        <p>Team TesseractApps</p>
-        <div>[Our Website: <a href="https://www.tesseractapps.com.au">TesseractApps</a>]</div>
-        <div>✆;[<a href="tel:+61261332819">+61261332819</a>,<a href="tel:+61261332800">02 6133 2800</a>] 📧 [<a href="mailto:sales@tesseractapps.com?subject=Inquiry">sales@tesseractapps.com</a>]</div>
+    <div style="font-family:Arial,sans-serif;color:#222;max-width:600px">
+      <p>Hi ${firstName},</p>
+      <p>Thank you for signing up with TesseractApps!</p>
+      <p>We've received your details and our team is currently reviewing them. One of our representatives will get in touch with you soon to guide you through the next steps.</p>
+      <p>If you have any immediate questions, feel free to reach out to us at <a href="mailto:sales@tesseractapps.com">sales@tesseractapps.com</a> or call us at <a href="tel:1300252808">1300 252 808</a>.</p>
+      <p>We're excited to connect with you soon!</p>
+      <p>Warm regards,<br/><strong>Team TesseractApps</strong></p>
+      <p>Website: <a href="https://tesseractapps.com.au">tesseractapps.com.au</a><br/>
+      Phone: <a href="tel:1300252808">1300 252 808</a> | Email: <a href="mailto:sales@tesseractapps.com">sales@tesseractapps.com</a></p>
     </div>
     `,
 };

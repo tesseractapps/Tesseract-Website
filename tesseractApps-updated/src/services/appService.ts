@@ -1,17 +1,16 @@
-import API from "../configs/axiosConfig";
+import apiFetch from "../configs/axiosConfig";
 
 export const sendTextEmail = async (
   email: string,
   subject: string,
   body: string
-) => {
+): Promise<unknown> => {
   try {
-    const response = await API.post("/send-text-email", {
-      email,
-      subject,
-      body,
+    const response = await apiFetch("/send-text-email", {
+      method: "POST",
+      body: JSON.stringify({ email, subject, body }),
     });
-    return response.data;
+    return response.json();
   } catch (error) {
     console.error("Error sending email:", error);
     throw error;
@@ -24,16 +23,13 @@ export const sendEmail = async (
   subject: string,
   textBody: string,
   htmlBody: string
-) => {
+): Promise<unknown> => {
   try {
-    const response = await API.post("/send-email", {
-      toName,
-      toEmail,
-      subject,
-      textBody,
-      htmlBody,
+    const response = await apiFetch("/send-email", {
+      method: "POST",
+      body: JSON.stringify({ toName, toEmail, subject, textBody, htmlBody }),
     });
-    return response.data;
+    return response.json();
   } catch (error) {
     console.error("Error sending email:", error);
     throw error;

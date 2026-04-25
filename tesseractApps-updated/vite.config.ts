@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import viteCompression from 'vite-plugin-compression';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 // During SSG, vite-react-ssg runs a second server build in a temp dir.
 // vite-plugin-compression must not run during that phase — it tries to
@@ -19,6 +20,12 @@ export default defineConfig({
       viteCompression({
         algorithm: 'brotliCompress',
         ext: '.br',
+      }),
+      visualizer({
+        filename: 'dist/stats.html',
+        open: false,
+        gzipSize: true,
+        brotliSize: true,
       }),
     ] : []),
   ],

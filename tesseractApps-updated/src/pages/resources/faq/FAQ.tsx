@@ -56,30 +56,26 @@ const FAQ = () => {
               return (
                 <section key={sectionKey} className="faq-section">
                   <h2 className="faq-section-heading">{section.section}</h2>
-                  <div className="faq-list" itemScope itemType="https://schema.org/FAQPage">
+                  <div className="faq-list">
                     {section.faq.map((item, index) => {
                       const isOpen = openKeys[sectionKey] === index;
                       return (
                         <div
                           key={index}
                           className={`faq-item${isOpen ? " faq-item--open" : ""}`}
-                          itemScope itemProp="mainEntity" itemType="https://schema.org/Question"
                         >
                           <button
                             type="button"
                             className={`faq-question${isOpen ? " faq-question--open" : ""}`}
                             onClick={() => toggle(sectionKey, index)}
-                            aria-expanded={isOpen ? "true" : "false"}
+                            aria-expanded={isOpen === true}
                           >
-                            <span itemProp="name">{item.question}</span>
+                            <span>{item.question}</span>
                             <span className="faq-chevron" aria-hidden="true">+</span>
                           </button>
                           {isOpen && (
-                            <div
-                              className="faq-answer"
-                              itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer"
-                            >
-                              <p itemProp="text">{item.answer}</p>
+                            <div className="faq-answer">
+                              <p>{item.answer}</p>
                               {"points" in item && Array.isArray(item.points) && (
                                 <ul className="faq-points">
                                   {(item.points as string[]).map((pt, i) => <li key={i}>{pt}</li>)}
@@ -105,30 +101,26 @@ const FAQ = () => {
                     return (
                       <div key={cat.title} className="faq-category">
                         <h3 className="faq-category-heading">{cat.title}</h3>
-                        <div className="faq-list" itemScope itemType="https://schema.org/FAQPage">
+                        <div className="faq-list">
                           {cat.faq.map((item, index) => {
                             const isOpen = openKeys[sectionKey] === index;
                             return (
                               <div
                                 key={index}
                                 className={`faq-item${isOpen ? " faq-item--open" : ""}`}
-                                itemScope itemProp="mainEntity" itemType="https://schema.org/Question"
                               >
                                 <button
                                   type="button"
                                   className={`faq-question${isOpen ? " faq-question--open" : ""}`}
                                   onClick={() => toggle(sectionKey, index)}
-                                  aria-expanded={isOpen ? "true" : "false"}
+                                  aria-expanded={isOpen === true}
                                 >
-                                  <span itemProp="name">{item.question}</span>
+                                  <span>{item.question}</span>
                                   <span className="faq-chevron" aria-hidden="true">+</span>
                                 </button>
                                 {isOpen && (
-                                  <div
-                                    className="faq-answer"
-                                    itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer"
-                                  >
-                                    <p itemProp="text">{item.answer}</p>
+                                  <div className="faq-answer">
+                                    <p>{item.answer}</p>
                                     {"points" in item && Array.isArray(item.points) && (
                                       <ul className="faq-points">
                                         {(item.points as string[]).map((pt, i) => <li key={i}>{pt}</li>)}
