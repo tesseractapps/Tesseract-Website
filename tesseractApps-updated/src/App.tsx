@@ -3,6 +3,9 @@ import "./App.css";
 import NavBarComponent from "./components/layout/navBarComponent/NavBarComponent";
 import { BrowserRouter, StaticRouter, useLocation } from "react-router-dom";
 import FooterComponent from "./components/layout/footerComponent/FooterComponent";
+import NavBarComponent from "./components/layout/navBarComponent/NavBarComponent";
+import { BrowserRouter, StaticRouter, useLocation } from "react-router-dom";
+import FooterComponent from "./components/layout/footerComponent/FooterComponent";
 import AppRoutes from "./routes/AppRoutes";
 import GTMLoader from "./components/analytics/GTMLoader";
 import CountdownBar from "./components/layout/countdownBar/CountdownBar";
@@ -10,6 +13,9 @@ import CountdownBar from "./components/layout/countdownBar/CountdownBar";
 const FULLSCREEN_ROUTES: string[] = ["/book-a-demo", "/signup", "/register-support-coordination"];
 const CD_BAR_HEIGHT = 36;
 
+function AppInner() {
+  const location = useLocation();
+  const isFullscreen = FULLSCREEN_ROUTES.includes(location.pathname);
 function AppInner() {
   const location = useLocation();
   const isFullscreen = FULLSCREEN_ROUTES.includes(location.pathname);
@@ -53,6 +59,8 @@ function App() {
 
   return (
     <BrowserRouter>
+      <AppInner />
+      <GTMLoader />
       <AppInner />
       <GTMLoader />
     </BrowserRouter>

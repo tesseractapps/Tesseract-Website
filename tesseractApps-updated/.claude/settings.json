@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/seed-sanity.mjs)",
+      "Bash(npm show sanity@latest version)",
+      "Bash(npm show sanity versions --json)",
+      "Bash(npm ls @sanity/image-url)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Aakarsh Goyal\\.claude\\projects\\d--whatnextstudio-tesseractApps\\memory"
+    ]
+  }
+}
