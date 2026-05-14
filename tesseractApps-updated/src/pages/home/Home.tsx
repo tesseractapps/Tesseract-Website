@@ -32,6 +32,7 @@ import company21 from "../../assets/thumbs/Company-YDCS-thumb.webp";
 import company22 from "../../assets/thumbs/KS PNG Logo.webp";
 import company23 from "../../assets/thumbs/embrace logo.webp";
 import company24 from "../../assets/thumbs/AveryCareLogo.webp";
+import company25 from "../../assets/thumbs/Onia3.webp";
 
 // ─── Isolated sub-components (Steps 1, 3, 4) ─────────────────────────────────
 import StatCounter from "./components/StatCounter";
@@ -113,6 +114,7 @@ const CLIENT_LOGOS = [
   { src: company22, alt: "KS" },
   { src: company23, alt: "Embrace" },
   { src: company24, alt: "Avery Care" },
+  { src: company25, alt: "Onia Together" },
 ];
 
 // ─── Single shared IntersectionObserver for all fade-in sections ─────────────
