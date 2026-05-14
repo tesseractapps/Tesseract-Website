@@ -98,12 +98,12 @@ body {
 }
 
 main[role="main"] {
-  padding-top: 68px;
+  padding-top: calc(68px + var(--cd-bar-height, 0px));
 }
 
 @media (max-width: 500px) {
   main[role="main"] {
-    padding-top: 60px;
+    padding-top: calc(60px + var(--cd-bar-height, 0px));
   }
 }
 
