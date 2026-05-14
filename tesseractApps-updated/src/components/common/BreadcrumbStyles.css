@@ -1,0 +1,86 @@
+/* ── Breadcrumb  |  prefix: bc- ─────────────────────────────────────────── */
+
+.bc-nav {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.bc-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8125rem;
+}
+
+.bc-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Dark variant (on light backgrounds) ─────────────────────────────────── */
+
+.bc-nav--dark .bc-link {
+  color: var(--color-text-gray);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.bc-nav--dark .bc-link:hover {
+  color: var(--color-primary);
+}
+
+.bc-nav--dark .bc-chevron {
+  color: #bbb;
+}
+
+.bc-nav--dark .bc-current {
+  color: var(--color-text-dark-gray);
+  font-weight: 500;
+}
+
+/* ── Light variant (on dark/hero backgrounds) ────────────────────────────── */
+
+.bc-nav--light .bc-link {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.bc-nav--light .bc-link:hover {
+  color: #fff;
+}
+
+.bc-nav--light .bc-chevron {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.bc-nav--light .bc-current {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* Truncate long current-page names so they don't wrap badly on mobile */
+.bc-current {
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .bc-list {
+    font-size: 0.75rem;
+  }
+
+  .bc-current {
+    max-width: 160px;
+  }
+}

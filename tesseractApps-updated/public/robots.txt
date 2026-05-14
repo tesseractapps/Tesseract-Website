@@ -1,3 +1,5 @@
+Sitemap: https://tesseractapps.com.au/sitemap.xml
+
 # Default rules for all crawlers
 User-agent: *
 Disallow: /api/
@@ -7,8 +9,10 @@ Disallow: /requestDemo
 Disallow: /salesPage
 Disallow: /details
 Disallow: /coming-soon
+Disallow: /book-a-demo
+Disallow: /signup
+Disallow: /requestdemo
 Disallow: /*.json
-Disallow: /*?*
 Allow: /
 Allow: /assets/
 Allow: /vite.svg
@@ -16,7 +20,7 @@ Allow: /tesseract_logo.webp
 
 # Allow all public content pages
 Allow: /blogs
-Allow: /blogPost*
+Allow: /blog/
 Allow: /product
 Allow: /pricing
 Allow: /about
@@ -26,44 +30,60 @@ Allow: /careers
 Allow: /contact-us
 Allow: /help-center
 Allow: /privacy-policy
-Allow: /terms-and-Conditions
+Allow: /terms-and-conditions
 Allow: /case-studies
 Allow: /whitepapers
-Allow: /release-notes
+Allow: /changelog
 
-# Block AI scrapers that don't respect content licensing
+# Explicitly allow AI bots to crawl public content for GEO
+# We want them to index our blogs, product pages, and documentation
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: ChatGPT-User
-Disallow: /
+Allow: /
 
 User-agent: CCBot
-Disallow: /
+Allow: /
 
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
 
 User-agent: ClaudeBot
-Disallow: /
+Allow: /
 
 User-agent: Claude-Web
-Disallow: /
-
-User-agent: Omgilibot
-Disallow: /
-
-User-agent: FacebookBot
-Disallow: /
-
-User-agent: Diffbot
-Disallow: /
+Allow: /
 
 User-agent: PerplexityBot
-Disallow: /
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
 
 User-agent: Bytespider
-Disallow: /
+Allow: /
 
 User-agent: ImagesiftBot
-Disallow: /
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /

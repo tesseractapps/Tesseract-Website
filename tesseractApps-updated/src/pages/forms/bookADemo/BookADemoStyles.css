@@ -1,0 +1,987 @@
+/* ─────────────────────────────────────────
+   FONT — Inter site-wide
+───────────────────────────────────────── */
+#bookADemo-container,
+#bookADemo-success-screen,
+#dialog-close-btn {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ─────────────────────────────────────────
+   CLOSE BUTTON
+───────────────────────────────────────── */
+#dialog-close-btn {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 42, 82, 0.7);
+  color: #ffffff;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background 0.15s, transform 0.15s;
+}
+#dialog-close-btn:hover {
+  background: rgba(0, 42, 82, 0.9);
+  transform: scale(1.08);
+}
+
+/* ─────────────────────────────────────────
+   PAGE WRAPPER
+───────────────────────────────────────── */
+#bookADemo-page {
+  background: #fff;
+  overflow: hidden;
+  margin-top: -68px;
+}
+
+@media (max-width: 500px) {
+  #bookADemo-page { margin-top: -60px; }
+}
+
+/* ─────────────────────────────────────────
+   ROOT LAYOUT — sidebar + content
+───────────────────────────────────────── */
+#bookADemo-container {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  grid-template-rows: 100vh;
+  grid-template-rows: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────
+   LEFT SIDEBAR
+───────────────────────────────────────── */
+#bookADemo-sidebar {
+  background: linear-gradient(170deg, #002a52 0%, #003566 60%, #00274d 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 26px 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#bookADemo-navbar-logo {
+  cursor: pointer;
+  max-width: 130px;
+  margin-bottom: 24px;
+  display: block;
+  flex-shrink: 0;
+}
+
+#bookADemo-sidebar-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-bottom: 28px;
+}
+
+/* ─── "Book Your Demo" heading ─── */
+#bookADemo-sidebar-heading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 6px;
+}
+
+/* ─── Congrats blurb ─── */
+#bookADemo-sidebar-congrats {
+  margin: 14px 0 18px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+}
+
+#bookADemo-sidebar-congrats-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.35;
+  margin-bottom: 6px;
+  font-family: "Inter", sans-serif;
+}
+
+#bookADemo-sidebar-congrats-sub {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+/* ─── Step counter ─── */
+#bookADemo-sidebar-step-tag {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-family: "Inter", sans-serif;
+  margin-bottom: 14px;
+}
+
+/* ─── Progress ─── */
+#bookADemo-progress-track-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: "Inter", sans-serif;
+  margin-bottom: 5px;
+}
+
+#bookADemo-progress-bar-track {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 22px;
+  flex-shrink: 0;
+}
+
+#bookADemo-progress-bar-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+/* Progress width per step (avoids inline style) */
+.progress-step-0 { width: 0%; }
+.progress-step-1 { width: 33%; }
+.progress-step-2 { width: 66%; }
+
+/* ─── Trust bullets ─── */
+#bookADemo-sidebar-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+#bookADemo-sidebar-bullets li {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  padding-left: 20px;
+  position: relative;
+  font-family: "Inter", sans-serif;
+  line-height: 1.45;
+}
+
+#bookADemo-sidebar-bullets li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+/* ─── Testimonial Card ─── */
+#bookADemo-testimonial-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 22px;
+  flex-shrink: 0;
+}
+
+#bookADemo-testimonial-stars {
+  color: #f5a623;
+  font-size: 0.8125rem;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+#bookADemo-testimonial-quote {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-family: "Inter", sans-serif;
+}
+
+#bookADemo-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#bookADemo-testimonial-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  font-size: 0.625rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: "Inter", sans-serif;
+}
+
+#bookADemo-testimonial-name {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Inter", sans-serif;
+}
+
+#bookADemo-testimonial-location {
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: "Inter", sans-serif;
+  margin-top: 2px;
+}
+
+/* ─── Why link ─── */
+#bookADemo-why-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  transition: color 0.18s;
+  margin-bottom: 0;
+}
+
+#bookADemo-why-link:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ─── Service Pathway ─── */
+#bookADemo-pathway-heading {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+
+#bookADemo-pathway-subheading {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 10px;
+}
+
+#bookADemo-pathway-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+#bookADemo-pathway-list li {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.4;
+}
+
+#bookADemo-pathway-list li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+
+/* ─── Illustration ─── */
+#bookADemo-sidebar-illustration {
+  margin-top: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+  /* slight fade-in from bottom */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 28%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 28%);
+}
+
+#bookADemo-sidebar-illustration-img {
+  width: 100%;
+  max-width: 230px;
+  display: block;
+  /* pop against the dark sidebar */
+  filter: drop-shadow(0 -8px 24px rgba(0, 0, 0, 0.35));
+}
+
+/* ─────────────────────────────────────────
+   RIGHT CONTENT PANEL
+───────────────────────────────────────── */
+#bookADemo-form-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+#bookADemo-stepper-wrapper {
+  flex-shrink: 0;
+  padding: 20px 64px 0;
+}
+
+#bookADemo-form-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 64px 16px;
+}
+
+#bookADemo-form-question {
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  color: var(--color-secondary);
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
+
+#bookADemo-form-hint {
+  font-size: 1rem;
+  color: var(--color-text-gray);
+  margin-bottom: 22px;
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ─────────────────────────────────────────
+   OPTION CARDS GRID (steps 0 & 1)
+───────────────────────────────────────── */
+#bookADemo-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.bookADemo-option-card {
+  position: relative;
+  background: #ffffff;
+  border: 1.5px solid #dde4ed;
+  border-radius: 12px;
+  padding: 20px 20px 18px;
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+  -webkit-user-select: none;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 120px;
+  box-sizing: border-box;
+}
+
+.bookADemo-option-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 16px rgba(12, 120, 186, 0.1);
+  transform: translateY(-2px);
+}
+
+.bookADemo-option-card.selected {
+  border-color: var(--color-primary);
+  background: rgba(12, 120, 186, 0.04);
+  box-shadow: 0 4px 16px rgba(12, 120, 186, 0.12);
+}
+
+/* Radio indicator — top-right corner */
+.bookADemo-card-radio {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #c8d3e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.18s;
+  flex-shrink: 0;
+}
+
+.bookADemo-option-card.selected .bookADemo-card-radio {
+  border-color: var(--color-primary);
+}
+
+.bookADemo-radio-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.18s;
+}
+
+.bookADemo-radio-dot.selected {
+  background: var(--color-primary);
+}
+
+/* Icon square */
+.bookADemo-card-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(12, 120, 186, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+
+.bookADemo-option-card.selected .bookADemo-card-icon-wrap {
+  background: rgba(12, 120, 186, 0.14);
+}
+
+.bookADemo-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  font-family: "Inter", sans-serif;
+  line-height: 1.3;
+}
+
+.bookADemo-option-card.selected .bookADemo-card-title {
+  color: var(--color-primary);
+}
+
+.bookADemo-card-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-gray);
+  font-family: "Inter", sans-serif;
+  line-height: 1.45;
+}
+
+/* ─────────────────────────────────────────
+   STEP 2 — DETAILS LAYOUT (left + right)
+───────────────────────────────────────── */
+#bookADemo-details-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.bookADemo-details-section-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  font-family: "Inter", sans-serif;
+}
+
+#bookADemo-details-left,
+#bookADemo-details-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#bookADemo-name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ─── Native input fields (Step 3) ─── */
+.bk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bk-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-gray2);
+  font-family: "Inter", sans-serif;
+}
+
+.bk-required {
+  color: var(--color-primary);
+  margin-left: 2px;
+}
+
+.bk-optional {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-text-gray);
+  font-size: 0.6875rem;
+}
+
+.bk-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  font-size: 1rem;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--color-text-dark-gray);
+  background: #ffffff;
+  border: 1.5px solid #dde4ed;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.bk-input::placeholder {
+  color: #aab4bf;
+  font-family: "Inter", sans-serif;
+}
+
+.bk-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(12, 120, 186, 0.1);
+}
+
+.bk-input-error {
+  border-color: #e0302a !important;
+  box-shadow: 0 0 0 3px rgba(224, 48, 42, 0.08) !important;
+}
+
+.bk-error {
+  font-size: 0.6875rem;
+  color: #e0302a;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.bk-error-cards {
+  display: block;
+  margin-top: 12px;
+}
+
+.bk-textarea {
+  resize: vertical;
+  min-height: 70px;
+  line-height: 1.55;
+}
+
+.bk-datetime {
+  color: var(--color-text-dark-gray);
+  cursor: pointer;
+}
+
+#bookADemo-social-proof {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: #f4f8fc;
+  border-radius: 10px;
+  border: 1px solid #dde4ed;
+}
+
+#bookADemo-social-proof-text {
+  font-size: 0.8125rem;
+  color: var(--color-text-gray2);
+  line-height: 1.5;
+  font-family: "Inter", sans-serif;
+}
+
+#bookADemo-social-proof-text strong {
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER BUTTONS
+───────────────────────────────────────── */
+#bookADemo-Buttons-Container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 64px 24px;
+  border-top: 1px solid #eef3f8;
+  background: white;
+}
+
+.bookADemo-Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 11px 28px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.bookADemo-Button:hover:not(:disabled) {
+  background-color: rgba(var(--color-primary-rgb), 0.88);
+}
+
+.bookADemo-Button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.bookADemo-Button--outline {
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.bookADemo-Button--outline:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.bookADemo-btn-icon {
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.bookADemo-Button-alt {
+  display: inline-flex;
+  align-items: center;
+  background-color: transparent;
+  color: var(--color-primary);
+  padding: 11px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  border: 1.5px solid #dde4ed;
+  transition: all 0.18s;
+  font-family: "Inter", sans-serif;
+}
+
+.bookADemo-Button-alt:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background: #eef6fc;
+}
+
+.bookADemo-Button-alt:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.bookADemo-cancel-link {
+  background: none;
+  border: none;
+  color: var(--color-text-gray);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+  margin-left: auto;
+  font-family: "Inter", sans-serif;
+}
+
+.bookADemo-cancel-link:hover {
+  color: var(--color-text-dark-gray);
+}
+
+/* ─────────────────────────────────────────
+   SUCCESS SCREEN
+───────────────────────────────────────── */
+#bookADemo-success-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #0a3d6b 100%);
+  padding: 40px 24px;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+#bookADemo-success-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 580px;
+  width: 100%;
+}
+
+#bookADemo-success-icon {
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+
+#bookADemo-success-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  font-family: "Inter", sans-serif;
+}
+
+#bookADemo-success-message {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 460px;
+  margin-bottom: 28px;
+  font-family: "Inter", sans-serif;
+}
+
+#bookADemo-success-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 44px;
+}
+
+#bookADemo-what-next-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+#bookADemo-success-steps {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.bookADemo-next-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 130px;
+}
+
+.bookADemo-next-step-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.bookADemo-next-step-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+.bookADemo-next-step-desc {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ─────────────────────────────────────────
+   TABLET  (≤ 1024px)
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+  #bookADemo-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  /* Slim sidebar row hidden — real navbar handles navigation on tablet/mobile */
+  #bookADemo-sidebar {
+    display: none;
+  }
+
+  #bookADemo-sidebar-body {
+    display: none;
+  }
+
+  #bookADemo-navbar-logo {
+    display: none;
+  }
+
+  #bookADemo-stepper-wrapper {
+    padding: 14px 28px 0;
+  }
+
+  #bookADemo-form-scroll-area {
+    padding: 16px 28px 16px;
+  }
+
+  /* Footer — centred layout with Back | Primary | Cancel */
+  #bookADemo-Buttons-Container {
+    padding: 14px 28px 20px;
+    justify-content: center;
+  }
+
+  .bookADemo-Button-alt {
+    flex: none;
+    width: auto;
+  }
+
+  .bookADemo-cancel-link {
+    margin-left: 20px;
+  }
+
+  #bookADemo-details-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   MOBILE  (≤ 768px)
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  #bookADemo-container {
+    height: calc(100vh - 60px);
+    height: calc(100dvh - 60px);
+  }
+
+  #bookADemo-sidebar {
+    display: none;
+  }
+
+  #bookADemo-stepper-wrapper {
+    padding: 10px 16px 0;
+  }
+
+  #bookADemo-form-scroll-area {
+    padding: 12px 16px 12px;
+  }
+
+  #bookADemo-form-question {
+    font-size: 1.125rem;
+  }
+
+  #bookADemo-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .bookADemo-option-card {
+    min-height: unset;
+    padding: 16px 16px 14px;
+  }
+
+  #bookADemo-name-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer — stack: [Back] [Primary] on one row, Cancel below centred */
+  #bookADemo-Buttons-Container {
+    padding: 12px 16px 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bookADemo-Button {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 12px;
+    font-size: 0.875rem;
+  }
+
+  .bookADemo-Button-alt {
+    flex: none;
+    width: auto;
+    padding: 11px 20px;
+    font-size: 0.875rem;
+  }
+
+  .bookADemo-cancel-link {
+    margin-left: 0;
+    order: 3;
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  #bookADemo-success-title {
+    font-size: 1.75rem;
+  }
+
+  #bookADemo-success-steps {
+    gap: 16px;
+  }
+
+  .bookADemo-next-step {
+    width: 100px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   SMALL MOBILE  (≤ 480px)
+───────────────────────────────────────── */
+@media (max-width: 480px) {
+  #bookADemo-sidebar {
+    display: none;
+  }
+
+}

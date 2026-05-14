@@ -1,0 +1,143 @@
+/* ── Countdown Bar ─────────────────────────────────────────────────────────
+   Sits above the fixed navbar. Height: 36px.
+   App.tsx sets --cd-bar-height on <html> when bar is visible.
+   ──────────────────────────────────────────────────────────────────────── */
+
+#cd-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 210; /* above navbar (200) */
+  height: 36px;
+  background: #002a52;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ── Inner layout ── */
+
+#cd-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* ── Label ── */
+
+#cd-bar-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Units ── */
+
+#cd-bar-units {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.cd-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  min-width: 28px;
+}
+
+.cd-num {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* seconds tick animation */
+.cd-secs {
+  display: inline-block;
+  animation: cd-tick 1s step-start infinite;
+}
+
+@keyframes cd-tick {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+.cd-unit-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 1px;
+}
+
+.cd-sep {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 7px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ── CTA link ── */
+
+#cd-bar-cta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  padding: 3px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+#cd-bar-cta:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 640px) {
+  #cd-bar-inner {
+    gap: 8px;
+  }
+
+  #cd-bar-label {
+    font-size: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  #cd-bar-cta {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  #cd-bar-label {
+    font-size: 9px;
+  }
+}

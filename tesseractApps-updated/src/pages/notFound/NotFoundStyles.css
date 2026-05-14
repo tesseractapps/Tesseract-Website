@@ -1,0 +1,235 @@
+/* ── Not Found (404) Page ── */
+
+.nf-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ── Main content area ── */
+.nf-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 32px;
+  background: linear-gradient(170deg, #f8fafc 0%, #f0f7fe 50%, #f5fdfe 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background circles */
+.nf-main::before,
+.nf-main::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.nf-main::before {
+  width: 600px;
+  height: 600px;
+  background: #0c78ba;
+  top: -200px;
+  right: -100px;
+}
+
+.nf-main::after {
+  width: 400px;
+  height: 400px;
+  background: #002a52;
+  bottom: -120px;
+  left: -80px;
+}
+
+/* ── Card container ── */
+.nf-card {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  border-radius: 24px;
+  padding: 56px 48px 48px;
+  box-shadow:
+    0 4px 24px rgba(0, 42, 82, 0.07),
+    0 1px 4px rgba(0, 42, 82, 0.04);
+  border: 1px solid rgba(0, 42, 82, 0.06);
+}
+
+/* ── 404 number ── */
+.nf-code {
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  background: linear-gradient(135deg, #0c78ba 0%, #3aa8e4 40%, #002a52 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 8px;
+  user-select: none;
+}
+
+/* ── Heading ── */
+.nf-heading {
+  font-size: 1.625rem;
+  font-weight: 800;
+  color: #002a52;
+  margin: 0 0 12px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* ── Description ── */
+.nf-description {
+  font-size: 1rem;
+  color: #676767;
+  line-height: 1.7;
+  margin: 0 0 32px;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+/* ── Actions ── */
+.nf-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nf-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: #0c78ba;
+  color: #fff;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.nf-btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.nf-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: rgba(0, 42, 82, 0.06);
+  color: #002a52;
+  border: 1.5px solid rgba(0, 42, 82, 0.14);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.nf-btn-secondary:hover {
+  background: rgba(0, 42, 82, 0.10);
+  border-color: rgba(0, 42, 82, 0.25);
+}
+
+/* ── Helpful links section ── */
+.nf-links {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid #eef3f8;
+}
+
+.nf-links-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 14px;
+}
+
+.nf-links-grid {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nf-link-chip {
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.35rem 1rem;
+  border-radius: 100px;
+  border: 1.5px solid #dde4ed;
+  background: #fff;
+  color: #676767;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+
+.nf-link-chip:hover {
+  border-color: #0c78ba;
+  color: #0c78ba;
+  background: rgba(12, 120, 186, 0.04);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .nf-main {
+    padding: 48px 20px;
+  }
+
+  .nf-card {
+    padding: 40px 28px 36px;
+    border-radius: 20px;
+  }
+
+  .nf-code {
+    font-size: 5.5rem;
+  }
+
+  .nf-heading {
+    font-size: 1.375rem;
+  }
+
+  .nf-description {
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nf-code {
+    font-size: 4.5rem;
+  }
+
+  .nf-heading {
+    font-size: 1.25rem;
+  }
+
+  .nf-card {
+    padding: 32px 20px 28px;
+  }
+
+  .nf-actions {
+    flex-direction: column;
+  }
+}

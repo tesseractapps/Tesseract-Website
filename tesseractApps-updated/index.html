@@ -12,28 +12,17 @@
     <!-- DNS Prefetch and Preconnect for third-party domains -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <!-- Both preconnects with correct crossorigin for CORS font files -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" as="style" />
     <link rel="preload" href="/tesseract_logo.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/tesseract_logo_small.webp" as="image" type="image/webp" fetchpriority="high" />
 
     <!-- Load fonts asynchronously -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
-    <link
+
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
       media="print"
@@ -57,9 +46,9 @@
         --color-secondary: #002a52;
         --color-alt-secondary: #243b8c;
         --color-background-gradient: linear-gradient(to right, #f5fdfe, #f0f7fe);
-        --color-text-gray: #676767;
+        --color-text-gray: #555555;
         --color-text-gray2: #4d525f;
-        --color-text-gray-light: #616161b4;
+        --color-text-gray-light: #4d4d4d;
         --color-text-dark-gray: #343434;
         --color-background-light-gray: #eaeaea;
         --color-background-light-gray2: rgb(236, 236, 236);
@@ -77,9 +66,9 @@
         align-items: center;
         background-image: var(--color-background-gradient);
         padding: 20px 50px;
-        min-width: max-content;
         width: 100%;
         max-width: 1920px;
+        box-sizing: border-box;
       }
       .navbar-container {
         position: fixed;
@@ -137,35 +126,136 @@
       }
     </style>
 
-    <!-- Google Tag Manager - Already async -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-TXGJDB6N");
+    <!-- Static canonical fallback (React SEO component overrides per-route after JS loads) -->
+    <link rel="canonical" href="https://tesseractapps.com.au/" />
+
+    <!-- Hreflang — Australian English targeting -->
+    <link rel="alternate" hreflang="en-au" href="https://tesseractapps.com.au/" />
+    <link rel="alternate" hreflang="en" href="https://tesseractapps.com.au/" />
+    <link rel="alternate" hreflang="x-default" href="https://tesseractapps.com.au/" />
+
+    <!-- Organization + SoftwareApplication structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["Organization", "SoftwareApplication"],
+      "name": "TesseractApps",
+      "url": "https://tesseractapps.com.au",
+      "logo": "https://tesseractapps.com.au/tesseract_logo.webp",
+      "description": "Purpose-built NDIS workforce management software for Australian disability support providers. Automates rostering, compliance, payroll, and participant management.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "39.99",
+        "priceCurrency": "AUD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "39.99",
+          "priceCurrency": "AUD",
+          "unitText": "seat/month"
+        }
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Australia"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Canberra",
+        "addressRegion": "ACT",
+        "postalCode": "2606",
+        "addressCountry": "AU"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/tesseractapps",
+        "https://www.facebook.com/tesseractapps",
+        "https://www.instagram.com/tesseractapps"
+      ],
+      "award": "2025 Canberra Local Business Award Winner",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://tesseractapps.com.au/contact-us",
+        "areaServed": "AU",
+        "availableLanguage": "English"
+      }
+    }
     </script>
-    <!-- End Google Tag Manager -->
-    <title>Tesseract</title>
+
+    <!-- WebSite schema with SearchAction (enables Google sitelinks search box) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TesseractApps",
+      "url": "https://tesseractapps.com.au",
+      "description": "NDIS workforce management software — rostering, compliance, payroll, and participant management for Australian care providers.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://tesseractapps.com.au/blogs?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- LocalBusiness schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "TesseractApps",
+      "image": "https://tesseractapps.com.au/tesseract_logo.webp",
+      "url": "https://tesseractapps.com.au",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Canberra",
+        "addressRegion": "ACT",
+        "postalCode": "2606",
+        "addressCountry": "AU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -35.3388,
+        "longitude": 149.0855
+      },
+      "areaServed": "Australia",
+      "priceRange": "$$",
+      "award": "2025 Canberra Local Business Award Winner",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    }
+    </script>
+
+    <title>TesseractApps | Workforce Management Software for NDIS &amp; Care Providers</title>
+
+    <!-- Static OG/Twitter fallback — JS SEO component overrides per-route after load -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tesseractapps.com.au/" />
+    <meta property="og:title" content="TesseractApps | Workforce Management Software for NDIS &amp; Care Providers" />
+    <meta property="og:description" content="Purpose-built NDIS workforce management software for Australian disability support providers. Automates rostering, compliance, payroll, and participant management." />
+    <meta property="og:image" content="https://tesseractapps.com.au/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="TesseractApps — NDIS Workforce Management Software" />
+    <meta property="og:site_name" content="TesseractApps" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@TesseractApps" />
+    <meta name="twitter:title" content="TesseractApps | Workforce Management Software for NDIS &amp; Care Providers" />
+    <meta name="twitter:description" content="Purpose-built NDIS workforce management software for Australian disability support providers. Automates rostering, compliance, payroll, and participant management." />
+    <meta name="twitter:image" content="https://tesseractapps.com.au/og-image.jpg" />
+    <meta name="twitter:image:alt" content="TesseractApps — NDIS Workforce Management Software" />
   </head>
   <body>
     <div id="portal-root"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx" defer></script>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-TXGJDB6N"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>

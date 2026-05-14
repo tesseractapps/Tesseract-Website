@@ -7,7 +7,7 @@ import { useAppContext } from "../contexts/AppContext";
  * Hook that returns a function to navigate by path or friendly name.
  * Usage: const appNavigate = useAppNavigate(); appNavigate("Pricing", { replace: false, defaultRoute: true });
  */
-export const useAppNavigate = () => {
+const useAppNavigate = () => {
   const navigate = useNavigate();
   const { getRoute, getRouteByName } = useAppContext();
 
@@ -21,21 +21,34 @@ export const useAppNavigate = () => {
         defaultRoute = true,
         targetId = "",
       } = opts || {};
-      console.log("useAppNavigate targetId", targetId);
-
       // try path first, then friendly name
       let config = getRoute(key);
       if (!config) config = getRouteByName(key);
 
       if (!config) {
+        if (key === "Signup") {
+          navigate("/signup", { replace });
+          return true;
+        }
         if (
           defaultRoute &&
           key !== "Solutions" &&
-          key !== "Signup" &&
-          key !== "Resources"
+          key !== "Resources" &&
+          key !== "Capabilities" &&
+          !key.startsWith("/solutions/") &&
+          !key.startsWith("/capabilities/") &&
+          !key.startsWith("/blog/")
         ) {
           navigate("/coming-soon", { replace });
+          return false;
         }
+        
+        // If it's a dynamic slug route that wasn't in AppContext, just navigate directly
+        if (key.startsWith("/")) {
+          navigate(key, { replace });
+          return true;
+        }
+        
         return false;
       }
 

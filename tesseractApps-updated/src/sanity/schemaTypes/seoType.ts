@@ -1,0 +1,88 @@
+import { defineField, defineType } from 'sanity'
+
+export const seoType = defineType({
+  name: 'seo',
+  title: 'SEO',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'metaTitle',
+      title: 'Meta Title',
+      type: 'string',
+      description: 'Recommended: 50–60 characters',
+      validation: (Rule) => Rule.max(60).warning('Meta title should be under 60 characters'),
+    }),
+    defineField({
+      name: 'metaDescription',
+      title: 'Meta Description',
+      type: 'text',
+      rows: 3,
+      description: 'Recommended: 150–160 characters',
+      validation: (Rule) => Rule.max(160).warning('Meta description should be under 160 characters'),
+    }),
+    defineField({
+      name: 'openGraphTitle',
+      title: 'Open Graph Title',
+      type: 'string',
+      description: 'Displayed when shared on social media (max 70 chars)',
+      validation: (Rule) => Rule.max(70),
+    }),
+    defineField({
+      name: 'openGraphDescription',
+      title: 'Open Graph Description',
+      type: 'text',
+      rows: 3,
+      description: 'Displayed when shared on social media (max 200 chars)',
+      validation: (Rule) => Rule.max(200),
+    }),
+    defineField({
+      name: 'openGraphImage',
+      title: 'Open Graph Image',
+      type: 'image',
+      description: 'Recommended: 1200×630px',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'canonicalUrl',
+      title: 'Canonical URL',
+      type: 'url',
+      description: 'Override canonical URL (optional, for syndicated content)',
+    }),
+    defineField({
+      name: 'noIndex',
+      title: 'No Index',
+      type: 'boolean',
+      description: 'Prevent search engines from indexing this page',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'primaryKeyword',
+      title: 'Primary Keyword',
+      type: 'string',
+      description: 'The single main keyword this page targets (used in title, H1, meta description)',
+    }),
+    defineField({
+      name: 'secondaryKeywords',
+      title: 'Secondary Keywords',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: { layout: 'tags' },
+      description: 'Supporting keywords that reinforce the primary topic',
+    }),
+    defineField({
+      name: 'lsiKeywords',
+      title: 'LSI Keywords',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: { layout: 'tags' },
+      description: 'Latent Semantic Indexing keywords — semantically related terms that add topical depth',
+    }),
+    defineField({
+      name: 'schemaMarkup',
+      title: 'Schema Markup (JSON-LD)',
+      type: 'text',
+      rows: 10,
+      description: 'Paste valid JSON-LD structured data here',
+    }),
+  ],
+})

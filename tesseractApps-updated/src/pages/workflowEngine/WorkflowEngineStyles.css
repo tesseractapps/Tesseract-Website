@@ -1,0 +1,960 @@
+/* ── Workflow Engine Page Styles ──────────────────────────────────────────────
+   Prefix: we-
+   Brand colors: primary #0c78ba | secondary #002a52 | light-accent #5bb8f5
+   TFlow accent: #7c3aed (purple)
+   Max content width: 1140px
+   Section rhythm: dark-hero → white → dark-navy → dark-deepest → white → dark-navy → white → dark-cta
+   Breakpoints: 900px tablet | 768px mobile | 600px large phone | 480px small phone
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── Shared layout ── */
+
+#we-page {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.we-outer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.we-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0c78ba;
+  background: rgba(12, 120, 186, 0.08);
+  border: 1px solid rgba(12, 120, 186, 0.2);
+  border-radius: 4px;
+  padding: 4px 10px;
+  margin-bottom: 16px;
+}
+
+.we-label--light {
+  color: #5bb8f5;
+  background: rgba(91, 184, 245, 0.12);
+  border-color: rgba(91, 184, 245, 0.3);
+}
+
+.we-section-heading {
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 700;
+  color: #002a52;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+
+.we-section-heading--light {
+  color: #fff;
+}
+
+.we-body-text {
+  font-size: 16px;
+  color: #4a5568;
+  line-height: 1.75;
+  max-width: 680px;
+  margin: 0 0 16px;
+}
+
+.we-body-text--light {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.we-body-text:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Buttons ── */
+
+.we-btn-primary {
+  background: #0c78ba;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.we-btn-primary:hover {
+  background: #0a6aa8;
+  transform: translateY(-1px);
+}
+
+.we-btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.we-btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Hero (dark) ── */
+
+#we-hero {
+  position: relative;
+  background: linear-gradient(135deg, #001830 0%, #002a52 60%, #003366 100%);
+  padding: 80px 0 0;
+  overflow: hidden;
+}
+
+#we-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 35%, rgba(12, 120, 186, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+#we-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.we-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.we-eyebrow-seg {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5bb8f5;
+}
+
+.we-eyebrow-dot {
+  font-size: 11px;
+  color: rgba(91, 184, 245, 0.45);
+  font-weight: 700;
+}
+
+#we-hero-heading {
+  font-size: clamp(30px, 4.5vw, 54px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 24px;
+  max-width: 740px;
+}
+
+#we-hero-accent {
+  color: #5bb8f5;
+}
+
+#we-hero-sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  max-width: 600px;
+  margin: 0 0 40px;
+}
+
+#we-hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.we-cta-sub-note {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.38);
+  margin: 0 0 44px;
+}
+
+/* ── Hero stat row ── */
+
+#we-hero-stats {
+  display: flex;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 8px;
+}
+
+.we-hero-stat {
+  flex: 1;
+  padding: 24px 32px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.we-hero-stat:last-child {
+  border-right: none;
+}
+
+.we-hero-stat-value {
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.we-hero-stat-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+}
+
+/* ── Two Layers (white) ── */
+
+#we-layers {
+  padding: 80px 0;
+  background: #fff;
+}
+
+#we-layers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.we-layer-card {
+  border-radius: 14px;
+  padding: 32px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.we-layer-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 42, 82, 0.1);
+  transform: translateY(-2px);
+}
+
+.we-layer-card--engine::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: #0c78ba;
+}
+
+.we-layer-card--tflow::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: #7c3aed;
+}
+
+.we-layer-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.we-layer-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.we-layer-card-icon--engine {
+  background: rgba(12, 120, 186, 0.1);
+  color: #0c78ba;
+}
+
+.we-layer-card-icon--tflow {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+}
+
+.we-layer-card-tag {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0c78ba;
+  line-height: 1.2;
+}
+
+.we-layer-card-tag--tflow {
+  color: #7c3aed;
+}
+
+.we-layer-card-sub {
+  font-size: 12px;
+  font-weight: 600;
+  color: #718096;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.we-layer-card-body {
+  font-size: 15px;
+  color: #4a5568;
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+
+.we-layer-card-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(12, 120, 186, 0.08);
+  color: #0c78ba;
+  border: 1px solid rgba(12, 120, 186, 0.2);
+  border-radius: 20px;
+  padding: 4px 12px;
+}
+
+.we-layer-card-badge--tflow {
+  background: rgba(124, 58, 237, 0.08);
+  color: #7c3aed;
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+/* ── Workflow Engine features (dark navy) ── */
+
+#we-engine {
+  padding: 80px 0;
+  background: #002a52;
+}
+
+#we-engine-intro {
+  margin-bottom: 40px;
+}
+
+#we-engine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.we-engine-card {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 26px 24px 28px;
+  transition: background 0.18s ease;
+}
+
+.we-engine-card:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.we-engine-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(91, 184, 245, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5bb8f5;
+  margin-bottom: 14px;
+}
+
+.we-engine-card-heading {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.we-engine-card-body {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.68;
+}
+
+/* ── How It Runs (deepest dark — two-col) ── */
+
+#we-how {
+  padding: 80px 0;
+  background: #001830;
+}
+
+#we-how-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+#we-how-left {
+  position: sticky;
+  top: 88px;
+}
+
+#we-stepper {
+  display: flex;
+  flex-direction: column;
+}
+
+.we-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.we-step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.we-step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #0c78ba;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(12, 120, 186, 0.18);
+}
+
+.we-step-line {
+  width: 2px;
+  flex: 1;
+  min-height: 28px;
+  background: linear-gradient(to bottom, rgba(12, 120, 186, 0.55), rgba(12, 120, 186, 0.08));
+  margin: 5px 0;
+}
+
+.we-step-content {
+  padding-bottom: 36px;
+  flex: 1;
+}
+
+.we-step:last-child .we-step-content {
+  padding-bottom: 0;
+}
+
+.we-step-heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+  margin-top: 7px;
+  line-height: 1.3;
+}
+
+.we-step-body {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+}
+
+/* ── TFlow (white) ── */
+
+#we-tflow {
+  padding: 80px 0;
+  background: #fff;
+}
+
+
+#we-tflow-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.we-tflow-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 26px 26px 28px;
+  transition: border-color 0.2s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.we-tflow-card:hover {
+  border-color: #7c3aed;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.1);
+  transform: translateY(-2px);
+}
+
+.we-tflow-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(124, 58, 237, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c3aed;
+  margin-bottom: 14px;
+}
+
+.we-tflow-card-heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: #002a52;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.we-tflow-card-body {
+  font-size: 14px;
+  color: #4a5568;
+  line-height: 1.68;
+}
+
+/* ── Maturity (dark navy) ── */
+
+#we-maturity {
+  padding: 80px 0;
+  background: #002a52;
+}
+
+#we-maturity-cards {
+  display: none;
+}
+
+#we-maturity-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 32px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#we-maturity-table thead {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#we-maturity-table th {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#we-maturity-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  transition: background 0.15s ease;
+}
+
+#we-maturity-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+#we-maturity-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#we-maturity-table td {
+  padding: 20px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.we-maturity-stage {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.we-maturity-range {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 2px;
+}
+
+.we-maturity-focus-word {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.we-maturity-layer {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: rgba(91, 184, 245, 0.12);
+  color: #5bb8f5;
+  border: 1px solid rgba(91, 184, 245, 0.25);
+  border-radius: 20px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+.we-maturity-layer--tflow {
+  background: rgba(167, 139, 250, 0.12);
+  color: #a78bfa;
+  border-color: rgba(167, 139, 250, 0.25);
+}
+
+/* Per-stage accent colours (light variants for dark bg) */
+.we-maturity-row--start .we-maturity-stage,
+.we-maturity-row--start .we-maturity-focus-word { color: #5bb8f5; }
+
+.we-maturity-row--growth .we-maturity-stage,
+.we-maturity-row--growth .we-maturity-focus-word { color: #93c5fd; }
+
+.we-maturity-row--scale .we-maturity-stage,
+.we-maturity-row--scale .we-maturity-focus-word { color: #a5b4fc; }
+
+.we-maturity-row--enterprise .we-maturity-stage,
+.we-maturity-row--enterprise .we-maturity-focus-word { color: #cbd5e1; }
+
+/* Mobile cards */
+.we-maturity-card--start { border-top-color: #5bb8f5; }
+.we-maturity-card--start .we-maturity-card-stage,
+.we-maturity-card--start .we-maturity-card-word { color: #5bb8f5; }
+
+.we-maturity-card--growth { border-top-color: #93c5fd; }
+.we-maturity-card--growth .we-maturity-card-stage,
+.we-maturity-card--growth .we-maturity-card-word { color: #93c5fd; }
+
+.we-maturity-card--scale { border-top-color: #a5b4fc; }
+.we-maturity-card--scale .we-maturity-card-stage,
+.we-maturity-card--scale .we-maturity-card-word { color: #a5b4fc; }
+
+.we-maturity-card--enterprise { border-top-color: #cbd5e1; }
+.we-maturity-card--enterprise .we-maturity-card-stage,
+.we-maturity-card--enterprise .we-maturity-card-word { color: #cbd5e1; }
+
+/* ── Use Cases (white) ── */
+
+#we-usecases {
+  padding: 80px 0;
+  background: #fff;
+}
+
+#we-usecases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.we-usecase-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  transition: border-color 0.2s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.we-usecase-card:hover {
+  border-color: #0c78ba;
+  box-shadow: 0 4px 16px rgba(12, 120, 186, 0.1);
+  transform: translateY(-2px);
+}
+
+.we-usecase-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(12, 120, 186, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0c78ba;
+  margin-bottom: 14px;
+}
+
+.we-usecase-card-heading {
+  font-size: 14px;
+  font-weight: 700;
+  color: #002a52;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.we-usecase-card-body {
+  font-size: 13px;
+  color: #4a5568;
+  line-height: 1.65;
+}
+
+/* ── CTA (dark gradient) ── */
+
+#we-cta {
+  background: linear-gradient(135deg, #001830 0%, #002a52 100%);
+  padding: 80px 0;
+}
+
+#we-cta-inner {
+  text-align: center;
+}
+
+#we-cta-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(12, 120, 186, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5bb8f5;
+  margin: 0 auto 24px;
+}
+
+#we-cta-heading {
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+#we-cta-sub {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.65;
+}
+
+#we-cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.we-cta-footnote {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 900px) {
+  #we-layers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #we-engine-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #we-how-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  #we-how-left {
+    position: static;
+  }
+
+}
+
+@media (max-width: 768px) {
+  #we-hero {
+    padding: 56px 0 0;
+  }
+
+  #we-hero-ctas {
+    margin-bottom: 40px;
+  }
+
+  #we-hero-stats {
+    flex-wrap: wrap;
+  }
+
+  .we-hero-stat {
+    flex: 1 1 33%;
+    padding: 18px 20px;
+    min-width: 100px;
+  }
+
+  #we-layers,
+  #we-engine,
+  #we-how,
+  #we-tflow,
+  #we-maturity,
+  #we-usecases,
+  #we-cta {
+    padding: 52px 0;
+  }
+
+  #we-tflow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #we-maturity-table {
+    display: none;
+  }
+
+  #we-maturity-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .we-maturity-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid #5bb8f5;
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .we-maturity-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .we-maturity-card-stage {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .we-maturity-card-word {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    opacity: 0.8;
+  }
+
+  .we-maturity-card-range {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 10px;
+  }
+
+  .we-maturity-card-body {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .we-maturity-card-layer {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: rgba(91, 184, 245, 0.12);
+    color: #5bb8f5;
+    border: 1px solid rgba(91, 184, 245, 0.25);
+    border-radius: 20px;
+    padding: 3px 10px;
+  }
+
+  .we-maturity-card-layer--tflow {
+    background: rgba(167, 139, 250, 0.12);
+    color: #a78bfa;
+    border-color: rgba(167, 139, 250, 0.25);
+  }
+
+  #we-usecases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #we-cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .we-btn-primary,
+  .we-btn-secondary {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .we-outer,
+  #we-hero-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #we-hero-ctas {
+    flex-direction: column;
+  }
+
+  .we-btn-primary,
+  .we-btn-secondary {
+    width: 100%;
+    max-width: none;
+    text-align: center;
+  }
+
+  #we-engine-grid,
+  #we-usecases-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  #we-hero-stats {
+    flex-direction: column;
+  }
+
+  .we-hero-stat {
+    flex: none;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .we-hero-stat:last-child {
+    border-bottom: none;
+  }
+
+  .we-step-circle {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+}

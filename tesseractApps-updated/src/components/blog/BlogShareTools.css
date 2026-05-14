@@ -1,0 +1,166 @@
+/* ── BlogShareTools ── */
+
+.bst-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0, 42, 82, 0.07);
+  padding: 24px 24px 20px;
+}
+
+.bst-title {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #eef3f8;
+}
+
+/* ── Copy as Markdown button ── */
+.bst-copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #dde4ed;
+  background: #f8fafc;
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s, color 0.18s;
+  text-align: left;
+}
+
+.bst-copy-btn:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background: #f0f7ff;
+  color: var(--color-primary);
+}
+
+.bst-copy-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.bst-copy-btn:disabled {
+  cursor: default;
+}
+
+.bst-copy-btn[aria-label*="Copied"] {
+  border-color: #16a34a;
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.bst-copy-btn[aria-label*="failed"] {
+  border-color: #dc2626;
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.bst-copy-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.bst-copy-label {
+  flex: 1;
+}
+
+/* ── Divider label ── */
+.bst-divider-label {
+  font-size: 0.72rem;
+  color: var(--color-text-gray);
+  text-align: center;
+  margin: 0.875rem 0 0.625rem;
+  position: relative;
+}
+
+.bst-divider-label::before,
+.bst-divider-label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 28%;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.bst-divider-label::before { left: 0; }
+.bst-divider-label::after  { right: 0; }
+
+/* ── AI tool buttons ── */
+.bst-ai-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bst-ai-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.18s, transform 0.14s;
+  border: 1.5px solid transparent;
+}
+
+.bst-ai-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.bst-ai-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.bst-ai-btn span {
+  flex: 1;
+}
+
+.bst-ai-btn--chatgpt {
+  background: #10a37f;
+  color: #fff;
+}
+
+.bst-ai-btn--claude {
+  background: #d97757;
+  color: #fff;
+}
+
+.bst-ai-logo {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.bst-ai-logo--white {
+  filter: brightness(0) invert(1);
+}
+
+.bst-external-icon {
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+/* ── Hint text ── */
+.bst-hint {
+  font-size: 0.74rem;
+  color: var(--color-text-gray);
+  line-height: 1.5;
+  margin: 0.875rem 0 0;
+  text-align: center;
+}
