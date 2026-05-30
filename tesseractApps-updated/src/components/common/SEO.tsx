@@ -7,18 +7,14 @@ interface SEOProps {
     imageAlt?: string;
     url?: string;
     type?: string;
-    // Optional OG overrides (social preview can differ from meta title/description)
     ogTitle?: string;
     ogDescription?: string;
-    // Article-specific
     publishedAt?: string;
     author?: string;
     section?: string;
     tags?: string[];
-    // Twitter
     twitterCard?: "summary" | "summary_large_image";
     twitterCreator?: string;
-    // Misc
     structuredData?: Record<string, unknown>;
     canonical?: string;
     noIndex?: boolean;
@@ -42,21 +38,23 @@ const upsertMeta = (selector: string, attrs: Record<string, string>) => {
     el.setAttribute(SEO_MANAGED_ATTR, "true");
 };
 
-const upsertCanonical = (href: string) => {
+const upsertLink = (rel: string, attrs: Record<string, string>) => {
     const head = document.head;
-    let el = head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    let el = head.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
     if (!el) {
         el = document.createElement("link");
-        el.setAttribute("rel", "canonical");
+        el.setAttribute("rel", rel);
         head.appendChild(el);
     }
-    el.setAttribute("href", href);
+    Object.entries(attrs).forEach(([key, value]) => {
+        el!.setAttribute(key, value);
+    });
     el.setAttribute(SEO_MANAGED_ATTR, "true");
 };
 
 const clearManagedScripts = () => {
     document
-        .querySelectorAll(`script[type=\"application/ld+json\"][${SEO_MANAGED_ATTR}=\"true\"]`)
+        .querySelectorAll(`script[type="application/ld+json"][${SEO_MANAGED_ATTR}="true"]`)
         .forEach((node) => node.parentNode?.removeChild(node));
 };
 
@@ -71,8 +69,6 @@ const appendManagedJsonLd = (jsonText: string) => {
 const SEO = ({
     title,
     description,
-    image = "/og-image.jpg",
-    imageAlt,
     url,
     type = "website",
     ogTitle,
@@ -89,13 +85,8 @@ const SEO = ({
     schemaMarkup,
 }: SEOProps) => {
     const currentUrl = url || (typeof window !== "undefined" ? window.location.href : SITE_URL);
-
-    const imageUrl = image.startsWith("http")
-        ? image
-        : `${SITE_URL}${image.startsWith("/") ? "" : "/"}${image}`;
-
+    const imageUrl = `${SITE_URL}/og-image.jpg`;
     const canonicalUrl = canonical ?? currentUrl.split("?")[0];
-
     const resolvedOgTitle = ogTitle ?? title;
     const resolvedOgDescription = ogDescription ?? description;
 
@@ -109,6 +100,10 @@ const SEO = ({
         }
     })();
 
+    // All updates run in the browser only. The static HTML already has the
+    // correct title/canonical/description injected by vite.config.ts at build
+    // time (onBeforePageRender). This effect keeps them accurate on client-side
+    // navigation between routes without a full page load.
     useEffect(() => {
         document.title = title;
 
@@ -117,31 +112,19 @@ const SEO = ({
             name: "robots",
             content: noIndex ? "noindex, nofollow" : "index, follow",
         });
-        upsertCanonical(canonicalUrl);
+        upsertLink("canonical", { href: canonicalUrl });
 
         upsertMeta('meta[property="og:type"]', { property: "og:type", content: type });
         upsertMeta('meta[property="og:url"]', { property: "og:url", content: currentUrl });
         upsertMeta('meta[property="og:title"]', { property: "og:title", content: resolvedOgTitle });
-        upsertMeta('meta[property="og:description"]', {
-            property: "og:description",
-            content: resolvedOgDescription,
-        });
+        upsertMeta('meta[property="og:description"]', { property: "og:description", content: resolvedOgDescription });
         upsertMeta('meta[property="og:image"]', { property: "og:image", content: imageUrl });
         upsertMeta('meta[property="og:image:width"]', { property: "og:image:width", content: "1200" });
         upsertMeta('meta[property="og:image:height"]', { property: "og:image:height", content: "630" });
         upsertMeta('meta[property="og:site_name"]', { property: "og:site_name", content: "TesseractApps" });
-        if (imageAlt) {
-            upsertMeta('meta[property="og:image:alt"]', {
-                property: "og:image:alt",
-                content: imageAlt,
-            });
-        }
 
         if (type === "article" && publishedAt) {
-            upsertMeta('meta[property="article:published_time"]', {
-                property: "article:published_time",
-                content: publishedAt,
-            });
+            upsertMeta('meta[property="article:published_time"]', { property: "article:published_time", content: publishedAt });
         }
         if (type === "article" && author) {
             upsertMeta('meta[property="article:author"]', { property: "article:author", content: author });
@@ -151,7 +134,7 @@ const SEO = ({
         }
 
         document
-            .querySelectorAll(`meta[property=\"article:tag\"][${SEO_MANAGED_ATTR}=\"true\"]`)
+            .querySelectorAll(`meta[property="article:tag"][${SEO_MANAGED_ATTR}="true"]`)
             .forEach((node) => node.parentNode?.removeChild(node));
         if (type === "article" && tags?.length) {
             tags.forEach((tag) => {
@@ -169,17 +152,8 @@ const SEO = ({
             upsertMeta('meta[name="twitter:creator"]', { name: "twitter:creator", content: twitterCreator });
         }
         upsertMeta('meta[name="twitter:title"]', { name: "twitter:title", content: resolvedOgTitle });
-        upsertMeta('meta[name="twitter:description"]', {
-            name: "twitter:description",
-            content: resolvedOgDescription,
-        });
+        upsertMeta('meta[name="twitter:description"]', { name: "twitter:description", content: resolvedOgDescription });
         upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: imageUrl });
-        if (imageAlt) {
-            upsertMeta('meta[name="twitter:image:alt"]', {
-                name: "twitter:image:alt",
-                content: imageAlt,
-            });
-        }
 
         clearManagedScripts();
         if (safeSchemaMarkup) {
@@ -193,7 +167,6 @@ const SEO = ({
         canonicalUrl,
         currentUrl,
         description,
-        imageAlt,
         imageUrl,
         noIndex,
         publishedAt,

@@ -167,6 +167,63 @@
   margin: 0;
 }
 
+/* ── Platform links ─────────────────────────────────────────────────────── */
+
+#gloss-related {
+  margin: 0 0 64px;
+  padding: 40px;
+  background: #f8fafc;
+  border: 1px solid #e5eaf0;
+  border-radius: 16px;
+}
+
+#gloss-related-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 20px;
+  display: block;
+}
+
+#gloss-related-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 40px;
+}
+
+.gloss-link-group-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 1.5px solid #dde4ed;
+}
+
+.gloss-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gloss-link-list a {
+  font-size: 0.875rem;
+  color: var(--color-text-gray);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.gloss-link-list a:hover {
+  color: var(--color-primary);
+}
+
 /* ── CTA block ──────────────────────────────────────────────────────────── */
 
 #gloss-cta {
@@ -235,6 +292,22 @@
 @media (max-width: 900px) {
   #gloss-list {
     grid-template-columns: 1fr;
+  }
+
+  #gloss-related-cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  #gloss-related {
+    padding: 24px 20px;
+  }
+
+  #gloss-related-cols {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 

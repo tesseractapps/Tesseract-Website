@@ -85,7 +85,7 @@ const ReleaseNotes = () => {
   return (
     <div id="cl-page">
       <SEO
-        title="Release Notes | Product Updates & New Features | TesseractApps"
+        title="Changelog & Release Notes | TesseractApps"
         description="Stay updated with TesseractApps latest features and improvements. Browse the full changelog for all platform updates, bug fixes, and new functionality."
       />
 

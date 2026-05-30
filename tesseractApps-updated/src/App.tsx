@@ -15,7 +15,7 @@ function AppInner() {
   const isFullscreen = FULLSCREEN_ROUTES.includes(location.pathname);
   const portalContainerRef = useRef<HTMLDivElement>(null);
 
-  const barVisible = !isFullscreen && new Date() < new Date("2026-05-25T00:00:00+10:00");
+  const barVisible = !isFullscreen;
 
   // Push navbar down by bar height via CSS variable on <html>
   useEffect(() => {

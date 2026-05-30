@@ -13,6 +13,17 @@ Disallow: /book-a-demo
 Disallow: /signup
 Disallow: /requestdemo
 Disallow: /*.json
+Disallow: /webinars
+Disallow: /our-story
+Disallow: /team
+Disallow: /our-mission-and-vision
+Disallow: /case-studies
+Disallow: /account/
+Disallow: /tag/
+Disallow: /about-us/
+Disallow: /ndis/
+Disallow: /payroll-services/
+Disallow: /tesseracts-payroll-services-software/
 Allow: /
 Allow: /assets/
 Allow: /vite.svg

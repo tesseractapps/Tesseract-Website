@@ -3,159 +3,7 @@ import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import SEO from "../../../components/common/SEO";
 import { buildFAQSchema } from "../../../utils/schemaHelpers";
-
-const GLOSSARY_TERMS = [
-  {
-    term: "NDIS",
-    definition:
-      "National Disability Insurance Scheme. Australia's national program that funds reasonable and necessary supports for people with permanent and significant disability, administered by the NDIA.",
-  },
-  {
-    term: "NDIA",
-    definition:
-      "National Disability Insurance Agency. The independent statutory agency responsible for implementing and managing the NDIS across Australia.",
-  },
-  {
-    term: "NDIS Plan",
-    definition:
-      "A personalised funding document outlining a participant's goals, supports, and NDIS funding amounts across support categories. Plans are reviewed annually or when circumstances change.",
-  },
-  {
-    term: "Participant",
-    definition:
-      "A person with disability who has been approved to access NDIS funding and has an active NDIS plan.",
-  },
-  {
-    term: "Support Coordinator",
-    definition:
-      "An NDIS-funded professional who helps participants understand and implement their NDIS plan, connect with providers, and build their capacity to self-manage supports.",
-  },
-  {
-    term: "Specialist Support Coordinator",
-    definition:
-      "A higher-level support coordinator who assists participants with complex situations, working with multiple providers, mainstream services, and crisis management.",
-  },
-  {
-    term: "NDIS Provider",
-    definition:
-      "An organisation or individual registered with the NDIS Quality and Safeguards Commission to deliver supports and services to NDIS participants.",
-  },
-  {
-    term: "Registered Provider",
-    definition:
-      "An NDIS provider who has met the NDIS Practice Standards and Quality and Safeguards requirements, allowing them to deliver higher-risk supports and work with plan-managed or agency-managed participants.",
-  },
-  {
-    term: "Unregistered Provider",
-    definition:
-      "A provider who has not registered with the NDIS Commission. They can only work with self-managed participants and are not subject to NDIS Practice Standard audits.",
-  },
-  {
-    term: "NDIS Practice Standards",
-    definition:
-      "The quality standards that registered NDIS providers must meet, covering areas such as rights, governance, service access, support provision, and high-intensity supports.",
-  },
-  {
-    term: "SIL",
-    definition:
-      "Supported Independent Living. NDIS funding for the supports a person needs to live in shared or independent accommodation, including overnight and weekend staffing.",
-  },
-  {
-    term: "SDA",
-    definition:
-      "Specialist Disability Accommodation. Funding for purpose-built housing designed for NDIS participants with extreme functional impairment or very high support needs.",
-  },
-  {
-    term: "Core Supports",
-    definition:
-      "One of the main NDIS support budget categories covering daily activities, consumables, social and community participation, and transport.",
-  },
-  {
-    term: "Capacity Building Supports",
-    definition:
-      "NDIS funding to help participants build skills and independence over time, covering areas like support coordination, employment, improved daily living, and improved relationships.",
-  },
-  {
-    term: "Capital Supports",
-    definition:
-      "NDIS funding for assistive technology, home modifications, and Specialist Disability Accommodation.",
-  },
-  {
-    term: "Plan Management",
-    definition:
-      "A funding option where an NDIS-registered plan manager handles financial transactions, provider payments, and budget tracking on behalf of the participant.",
-  },
-  {
-    term: "Self-Management",
-    definition:
-      "Where a participant (or their nominee) directly manages their NDIS funding, pays providers, and keeps records — giving maximum flexibility in provider choice.",
-  },
-  {
-    term: "Agency-Managed",
-    definition:
-      "Where the NDIA manages a participant's funding directly, paying registered providers on the participant's behalf through the NDIS portal.",
-  },
-  {
-    term: "Rostering",
-    definition:
-      "The scheduling of support workers to participant shifts. Effective NDIS rostering matches worker skills, availability, and qualifications to participant support needs.",
-  },
-  {
-    term: "SCHADS Award",
-    definition:
-      "Social, Community, Home Care and Disability Services Industry Award. The industrial award that sets minimum pay rates, penalty rates, and conditions for most NDIS support workers in Australia.",
-  },
-  {
-    term: "Worker Screening",
-    definition:
-      "A background check required for NDIS workers in risk-assessed roles. Each state and territory runs its own NDIS Worker Screening Check program.",
-  },
-  {
-    term: "NDIS Audit",
-    definition:
-      "A formal review of a registered provider's compliance with the NDIS Practice Standards, conducted by an approved quality auditor. Mid-term and registration renewal audits are required.",
-  },
-  {
-    term: "Incident Management",
-    definition:
-      "The system for recording, reporting, and responding to incidents affecting NDIS participants. Serious incidents must be reported to the NDIS Quality and Safeguards Commission.",
-  },
-  {
-    term: "Restrictive Practice",
-    definition:
-      "Any practice that restricts the rights or freedom of movement of a person with disability. Use must be reported to the NDIS Commission and state/territory bodies.",
-  },
-  {
-    term: "NDIS Quality and Safeguards Commission",
-    definition:
-      "The independent Commonwealth agency that regulates NDIS providers, handles complaints, and enforces the NDIS Practice Standards and Code of Conduct.",
-  },
-  {
-    term: "Service Agreement",
-    definition:
-      "A written agreement between an NDIS participant and a provider outlining the supports to be delivered, costs, and terms of the arrangement.",
-  },
-  {
-    term: "Claiming",
-    definition:
-      "The process by which NDIS providers submit payment requests to the NDIA (or plan manager) for services delivered to participants, aligned to NDIS support categories and price limits.",
-  },
-  {
-    term: "Price Guide",
-    definition:
-      "The NDIS Pricing Arrangements and Price Limits document that sets maximum prices providers can charge for NDIS supports. Updated annually by the NDIA.",
-  },
-  {
-    term: "Reasonable and Necessary",
-    definition:
-      "The NDIS test for whether a support will be funded. Supports must relate to a participant's disability, represent value for money, and not be the responsibility of another system.",
-  },
-  {
-    term: "Progress Notes",
-    definition:
-      "Records documenting the supports delivered to a participant during each shift or session, including the participant's progress toward goals. Required for compliance and claiming.",
-  },
-];
+import GLOSSARY_TERMS from "../../../data/ndisGlossaryTerms.json";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -181,7 +29,7 @@ const NDISGlossary = () => {
   return (
     <div id="gloss-page">
       <SEO
-        title="NDIS Glossary — Key Terms & Definitions for Providers | TesseractApps"
+        title="NDIS Glossary – Key Terms Explained | TesseractApps"
         description="Plain-English definitions of 30+ NDIS terms: NDIS plan, SIL, SCHADS Award, support coordination, rostering, claiming, worker screening, and more."
         structuredData={faqSchema}
         canonical="https://tesseractapps.com.au/ndis-glossary"
@@ -247,6 +95,79 @@ const NDISGlossary = () => {
             </dl>
           )}
 
+          {/* ── Platform links ── */}
+          <div id="gloss-related">
+            <p id="gloss-related-label">Explore the Platform</p>
+            <div id="gloss-related-cols">
+
+              <div className="gloss-link-group">
+                <p className="gloss-link-group-heading">Workforce</p>
+                <ul className="gloss-link-list">
+                  <li><Link to="/capabilities/rostering-scheduling">Rostering &amp; Scheduling</Link></li>
+                  <li><Link to="/capabilities/timesheets-payroll-alignment">Timesheets &amp; Payroll Alignment</Link></li>
+                  <li><Link to="/capabilities/workforce-management">Workforce Management</Link></li>
+                  <li><Link to="/capabilities/clock-in-out">Clock In / Out</Link></li>
+                  <li><Link to="/capabilities/staff-self-service-portal">Staff Self-Service Portal</Link></li>
+                </ul>
+              </div>
+
+              <div className="gloss-link-group">
+                <p className="gloss-link-group-heading">Participant &amp; Care</p>
+                <ul className="gloss-link-list">
+                  <li><Link to="/capabilities/participant-management">Participant Management</Link></li>
+                  <li><Link to="/capabilities/incidents-management-reporting">Incident Management &amp; Reporting</Link></li>
+                  <li><Link to="/capabilities/compliance-audit-readiness">Compliance &amp; Audit Readiness</Link></li>
+                  <li><Link to="/capabilities/voice-notes">Voice Notes</Link></li>
+                  <li><Link to="/capabilities/chat">Secure Messaging (ChaT)</Link></li>
+                  <li><Link to="/capabilities/t-sign-digital-signatures">Digital Signatures (T-Sign)</Link></li>
+                </ul>
+              </div>
+
+              <div className="gloss-link-group">
+                <p className="gloss-link-group-heading">Finance</p>
+                <ul className="gloss-link-list">
+                  <li><Link to="/capabilities/ndis-claiming-invoicing">NDIS Claiming &amp; Invoicing</Link></li>
+                  <li><Link to="/capabilities/accounting-financial-reporting">Accounting &amp; Financial Reporting</Link></li>
+                  <li><Link to="/capabilities/xero-integration">Xero Integration</Link></li>
+                  <li><Link to="/capabilities/quote-generator">Quote Generator</Link></li>
+                </ul>
+              </div>
+
+              <div className="gloss-link-group">
+                <p className="gloss-link-group-heading">Solutions by Care Type</p>
+                <ul className="gloss-link-list">
+                  <li><Link to="/solutions/ndis">Disability Support (NDIS)</Link></li>
+                  <li><Link to="/solutions/support-coordination">Support Coordination</Link></li>
+                  <li><Link to="/solutions/sil">Supported Independent Living (SIL)</Link></li>
+                  <li><Link to="/solutions/allied-health-services">Allied Health Services</Link></li>
+                </ul>
+              </div>
+
+              <div className="gloss-link-group">
+                <p className="gloss-link-group-heading">Solutions by Role</p>
+                <ul className="gloss-link-list">
+                  <li><Link to="/solutions/operations-manager">Operations Manager</Link></li>
+                  <li><Link to="/solutions/compliance-lead">Compliance Lead</Link></li>
+                  <li><Link to="/solutions/finance-manager">Finance Manager</Link></li>
+                  <li><Link to="/solutions/support-worker">Support Worker</Link></li>
+                </ul>
+              </div>
+
+              <div className="gloss-link-group">
+                <p className="gloss-link-group-heading">Resources &amp; Pricing</p>
+                <ul className="gloss-link-list">
+                  <li><Link to="/pricing">NDIS Software Pricing</Link></li>
+                  <li><Link to="/sc-pricing">Support Coordination Pricing</Link></li>
+                  <li><Link to="/blogs">Blog</Link></li>
+                  <li><Link to="/whitepapers">Whitepapers</Link></li>
+                  <li><Link to="/brochures">Brochures</Link></li>
+                  <li><Link to="/help-centre">Help Centre</Link></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
           {/* ── CTA ── */}
           <div id="gloss-cta">
             <p id="gloss-cta-heading">Need software built for every term in this glossary?</p>
@@ -256,7 +177,7 @@ const NDISGlossary = () => {
             </p>
             <div id="gloss-cta-actions">
               <Link to="/book-a-demo" className="gloss-btn-primary">Book a Demo</Link>
-              <Link to="/ndis-industry" className="gloss-btn-outline">NDIS Provider Software</Link>
+              <Link to="/solutions/ndis" className="gloss-btn-outline">NDIS Provider Software</Link>
             </div>
           </div>
         </div>

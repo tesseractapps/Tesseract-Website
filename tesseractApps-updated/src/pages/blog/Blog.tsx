@@ -27,7 +27,7 @@ const Blog = () => {
   return (
     <div className="bl-page">
       <SEO
-        title="TesseractApps Blog | NDIS Industry Insights & Tips | Australia"
+        title="NDIS Blog & Resources | TesseractApps"
         description="Expert articles on NDIS compliance, workforce management, digital transformation, and care sector innovation. Stay informed with industry updates and practical tips."
         url="https://tesseractapps.com.au/blogs"
         canonical="https://tesseractapps.com.au/blogs"
@@ -121,19 +121,16 @@ const Blog = () => {
                   {blog.mainImage?.asset ? (
                     <img
                       loading="lazy"
-                      src={urlFor(blog.mainImage).width(480).height(240).fit('crop').auto('format').url()}
+                      src={urlFor(blog.mainImage).width(480).height(270).fit('crop').auto('format').url()}
                       alt={blog.mainImage.alt ?? blog.title ?? "Blog"}
                       className="bl-card-image"
                       width={480}
-                      height={240}
+                      height={270}
                     />
                   ) : (
                     <div className="bl-card-image bl-card-image--placeholder">
                       <img src="/svg-logos/Full Logo Blue.svg" alt="TesseractApps" className="bl-card-image-logo" />
                     </div>
-                  )}
-                  {blog.category?.title && (
-                    <span className="bl-card-category">{blog.category.title}</span>
                   )}
                 </div>
 

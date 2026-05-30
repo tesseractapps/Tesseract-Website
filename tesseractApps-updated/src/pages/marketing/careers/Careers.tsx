@@ -19,7 +19,7 @@ const Careers = () => {
   return (
     <div id="careers-page">
       <SEO
-        title="Careers at TesseractApps | Join Our Team | Australian Tech Jobs"
+        title="Careers at TesseractApps | Join the Team"
         description="Join TesseractApps and help shape the future of care and workforce technology. We're looking for passionate individuals who want to make a real impact through innovation."
       />
 

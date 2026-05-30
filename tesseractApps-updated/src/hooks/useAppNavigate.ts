@@ -30,23 +30,20 @@ const useAppNavigate = () => {
           navigate("/signup", { replace });
           return true;
         }
+        // If it starts with "/" it's an explicit path — navigate directly, never redirect to coming-soon
+        if (key.startsWith("/")) {
+          navigate(key, { replace });
+          return true;
+        }
+
         if (
           defaultRoute &&
           key !== "Solutions" &&
           key !== "Resources" &&
-          key !== "Capabilities" &&
-          !key.startsWith("/solutions/") &&
-          !key.startsWith("/capabilities/") &&
-          !key.startsWith("/blog/")
+          key !== "Capabilities"
         ) {
           navigate("/coming-soon", { replace });
           return false;
-        }
-        
-        // If it's a dynamic slug route that wasn't in AppContext, just navigate directly
-        if (key.startsWith("/")) {
-          navigate(key, { replace });
-          return true;
         }
         
         return false;

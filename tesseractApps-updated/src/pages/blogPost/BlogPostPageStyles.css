@@ -7,32 +7,23 @@
 }
 
 /* ─────────────────────────────────────────
-   HERO
+   FEATURED IMAGE  (below header card)
 ───────────────────────────────────────── */
-.bpp-hero {
-  position: relative;
-  width: 100%;
-  height: 520px;
+.bpp-featured-image-wrap {
   overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  max-width: 780px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   background: var(--color-secondary);
 }
 
-.bpp-hero-image {
+.bpp-featured-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 0.6;
-}
-
-.bpp-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    160deg,
-    rgba(0, 42, 82, 0.15) 0%,
-    rgba(0, 42, 82, 0.72) 100%
-  );
 }
 
 /* ─────────────────────────────────────────
@@ -59,26 +50,23 @@
 .bpp-grid {
   display: grid;
   grid-template-columns: 1fr 320px;
-  gap: 32px;
+  gap: 40px;
   align-items: start;
+  padding-top: 40px;
+}
+
+/* Left column wrapper */
+.bpp-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 /* ─────────────────────────────────────────
-   HEADER CARD  (spans full width above grid)
+   HEADER  (left column, above image)
 ───────────────────────────────────────── */
 .bpp-header {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 4px 32px rgba(0, 42, 82, 0.1);
-  padding: 44px 52px 40px;
-  margin-top: -88px;
-  position: relative;
-  z-index: 2;
-  margin-bottom: 32px;
-}
-
-.bpp-header--no-hero {
-  margin-top: 40px;
+  margin-bottom: 24px;
 }
 
 .bpp-category {
@@ -177,11 +165,6 @@
    ARTICLE BODY  (left column)
 ───────────────────────────────────────── */
 .bpp-article {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 2px 16px rgba(0, 42, 82, 0.06);
-  padding: 52px 56px;
-  grid-column: 1;
   min-width: 0;
 }
 
@@ -207,12 +190,12 @@
    SIDEBAR  (right column, sticky on desktop)
 ───────────────────────────────────────── */
 .bpp-sidebar {
-  grid-column: 2;
   display: flex;
   flex-direction: column;
   gap: 20px;
   position: sticky;
   top: 100px;
+  align-self: start;
 }
 
 .bpp-sidebar-card {
@@ -412,69 +395,107 @@
    RELATED POSTS  (full width, below grid)
 ───────────────────────────────────────── */
 .bpp-related {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 2px 16px rgba(0, 42, 82, 0.06);
-  padding: 40px 52px;
-  margin-top: 32px;
+  margin-top: 48px;
+  padding: 0;
 }
 
 .bpp-related-heading {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-secondary);
-  margin: 0 0 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid #eef3f8;
+  margin: 0 0 1.75rem;
 }
 
 .bpp-related-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
 .bpp-related-card {
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
+  border: 1px solid #e8edf3;
+  border-radius: 16px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
   transition: box-shadow 0.22s, transform 0.22s;
 }
 
 .bpp-related-card:hover {
-  box-shadow: 0 8px 28px rgba(0, 42, 82, 0.13);
+  box-shadow: 0 10px 32px rgba(0, 42, 82, 0.13);
   transform: translateY(-4px);
 }
 
+.bpp-related-image-wrap {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 */
+  background: #eef2f7;
+  flex-shrink: 0;
+}
+
 .bpp-related-image {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 140px;
+  height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s;
+}
+
+.bpp-related-card:hover .bpp-related-image {
+  transform: scale(1.03);
+}
+
+.bpp-related-image-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: auto;
+  opacity: 0.35;
+  object-fit: contain;
 }
 
 .bpp-related-body {
-  padding: 0.875rem 1rem 1rem;
+  padding: 1.25rem 1.25rem 1.375rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .bpp-related-title {
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 700;
+  font-size: 1rem;
   color: var(--color-secondary);
-  margin: 0 0 0.375rem;
+  margin: 0 0 0.625rem;
   line-height: 1.45;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex: 1;
 }
 
 .bpp-related-date {
   font-size: 0.8125rem;
   color: var(--color-text-gray);
+  margin-top: 0.75rem;
+}
+
+.bpp-related-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 1rem;
 }
 
 /* ─────────────────────────────────────────
@@ -524,25 +545,8 @@
 /* ─────────────────────────────────────────
    SKELETON / SHIMMER
 ───────────────────────────────────────── */
-.bpp-skeleton-hero {
-  width: 100%;
-  height: 520px;
-  background: #dde4ed;
-  overflow: hidden;
-  position: relative;
-}
-
 @keyframes bpp-shimmer {
   to { transform: translateX(100%); }
-}
-
-.bpp-skeleton-hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
-  transform: translateX(-100%);
-  animation: bpp-shimmer 1.5s infinite;
 }
 
 .bpp-skeleton-outer {
@@ -556,10 +560,9 @@
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 4px 32px rgba(0, 42, 82, 0.1);
-  margin-top: -88px;
+  margin-top: 40px;
   margin-bottom: 32px;
   position: relative;
-  z-index: 2;
   overflow: hidden;
 }
 
@@ -572,10 +575,37 @@
   animation: bpp-shimmer 1.5s infinite;
 }
 
+.bpp-skeleton-featured {
+  border-radius: 16px;
+  max-width: 780px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  background: #dde4ed;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.bpp-skeleton-featured::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: bpp-shimmer 1.5s infinite;
+}
+
 .bpp-skeleton-grid {
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: 32px;
+  padding-top: 40px;
+}
+
+.bpp-skeleton-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .bpp-skeleton-block {
@@ -622,24 +652,51 @@
 }
 
 /* ─────────────────────────────────────────
-   TABLET  (≤ 1024px) — collapse to 1 column
+   TABLET  (≤ 1024px) — narrow two-column
 ───────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .bpp-hero { height: 380px; }
+  .bpp-grid {
+    grid-template-columns: 1fr 260px;
+    gap: 28px;
+    padding-top: 32px;
+  }
+
+  .bpp-title { font-size: 2rem; }
+
+  .bpp-skeleton-grid {
+    grid-template-columns: 1fr 260px;
+    gap: 28px;
+    padding-top: 32px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   TABLET PORTRAIT + ALL PHONES  (≤ 768px)
+   Single column — sidebar moves below article
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .bpp-breadcrumb-wrap { padding: 12px 16px 8px; }
+
+  .bpp-outer { padding: 0 16px 64px; }
 
   .bpp-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 20px;
   }
 
+  /* Main column first, sidebar below */
+  .bpp-main { order: 1; }
   .bpp-sidebar {
-    grid-column: 1;
+    order: 2;
     position: static;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 14px;
   }
 
   .bpp-sidebar-card {
-    flex: 1 1 260px;
+    flex: 1 1 240px;
     min-width: 0;
   }
 
@@ -647,70 +704,72 @@
     flex: 1 1 100%;
   }
 
-  .bpp-article { grid-column: 1; padding: 40px 44px; }
+  .bpp-header { margin-bottom: 16px; }
 
-  .bpp-title { font-size: 2rem; }
-
-  .bpp-skeleton-grid { grid-template-columns: 1fr; }
-
-  .bpp-skeleton-hero { height: 380px; }
-}
-
-/* ─────────────────────────────────────────
-   MOBILE  (≤ 768px)
-───────────────────────────────────────── */
-@media (max-width: 768px) {
-  .bpp-hero { height: 260px; }
-
-  .bpp-outer { padding: 0 16px 72px; }
-
-  .bpp-header {
-    padding: 28px 22px 24px;
-    margin-top: -48px;
-    border-radius: 16px;
-    margin-bottom: 20px;
+  .bpp-featured-image-wrap {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 16px;
   }
 
   .bpp-title { font-size: 1.625rem; letter-spacing: -0.02em; }
 
-  .bpp-excerpt { font-size: 1rem; }
-
-  .bpp-article { padding: 28px 20px; border-radius: 16px; }
-
-  .bpp-sidebar { flex-direction: column; }
-
-  .bpp-sidebar-card { flex: 1 1 auto; }
-
-  .bpp-related { padding: 28px 20px; border-radius: 16px; }
+  .bpp-excerpt { font-size: 0.9375rem; }
 
   .bpp-dot { display: none; }
 
-  .bpp-skeleton-hero { height: 260px; }
+  .bpp-related-grid { grid-template-columns: repeat(2, 1fr); }
 
-  .bpp-skeleton-outer { padding: 0 16px 72px; }
+  .bpp-skeleton-grid {
+    grid-template-columns: 1fr;
+    padding-top: 20px;
+  }
 
-  .bpp-skeleton-header { margin-top: -48px; height: 200px; }
+  .bpp-skeleton-main { order: 1; }
+
+  .bpp-skeleton-sidebar {
+    order: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .bpp-skeleton-sidebar-card {
+    flex: 1 1 240px;
+  }
+
+  .bpp-skeleton-header { height: 180px; }
+
+  .bpp-skeleton-outer { padding: 0 16px 64px; }
 }
 
 /* ─────────────────────────────────────────
-   SMALL MOBILE  (≤ 480px)
+   MOBILE  (≤ 480px) — stack sidebar cards
 ───────────────────────────────────────── */
 @media (max-width: 480px) {
-  .bpp-hero { height: 200px; }
+  .bpp-sidebar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .bpp-sidebar-card { flex: 1 1 auto; }
+
+  .bpp-skeleton-sidebar {
+    flex-direction: column;
+  }
+
+  .bpp-skeleton-sidebar-card { flex: 1 1 auto; }
 
   .bpp-title { font-size: 1.375rem; }
 
-  .bpp-body { font-size: 1rem; }
-
-  .bpp-header { margin-top: -36px; padding: 20px 16px 18px; }
-
-  .bpp-article { padding: 20px 14px; }
-
-  .bpp-related { padding: 20px 14px; }
-
   .bpp-related-grid { grid-template-columns: 1fr; }
+}
 
-  .bpp-skeleton-hero { height: 200px; }
+/* ─────────────────────────────────────────
+   SMALL MOBILE  (≤ 360px)
+───────────────────────────────────────── */
+@media (max-width: 360px) {
+  .bpp-title { font-size: 1.25rem; }
 
-  .bpp-skeleton-header { margin-top: -36px; height: 180px; }
+  .bpp-body { font-size: 0.9375rem; }
 }

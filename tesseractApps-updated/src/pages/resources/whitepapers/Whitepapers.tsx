@@ -23,7 +23,7 @@ const Whitepapers = () => {
   return (
     <div>
       <SEO
-        title="Whitepapers & Research | NDIS Digital Transformation | TesseractApps"
+        title="NDIS Whitepapers & Research | TesseractApps"
         description="Download free whitepapers on NDIS digital transformation, workforce management best practices, and care sector innovation for 2025-2030."
       />
 

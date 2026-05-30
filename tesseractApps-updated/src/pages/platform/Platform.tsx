@@ -164,7 +164,7 @@ const Platform = () => {
   return (
     <div id="pl-page">
       <SEO
-        title="The Platform | One Architecture for Every NDIS Provider, TesseractApps"
+        title="Platform Overview – NDIS Workforce Tools | TesseractApps"
         description="TesseractApps is built on a single, unified architecture, one data model, one codebase, no migration. The platform deepens as your provider organisation grows."
       />
 

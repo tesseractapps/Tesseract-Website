@@ -20,8 +20,8 @@ const STATIC_SECTIONS = [
     heading: "Solutions",
     links: [
       { label: "All Solutions", href: "/solutions" },
-      { label: "NDIS Industry", href: "/ndis-industry" },
-      { label: "Disability Support & NDIS", href: "/disability-support-ndis" },
+      { label: "NDIS Disability Support", href: "/solutions/ndis" },
+      { label: "Support Coordination", href: "/solutions/support-coordination" },
     ],
   },
   {
@@ -29,20 +29,16 @@ const STATIC_SECTIONS = [
     links: [
       { label: "Blog", href: "/blogs" },
       { label: "Whitepapers", href: "/whitepapers" },
-      { label: "Case Studies", href: "/case-studies" },
-      { label: "Webinars", href: "/webinars" },
       { label: "NDIS Glossary", href: "/ndis-glossary" },
       { label: "Help Centre / FAQ", href: "/help-center" },
       { label: "Release Notes", href: "/changelog" },
+      { label: "Brochures", href: "/brochures" },
     ],
   },
   {
     heading: "Company",
     links: [
       { label: "About Us", href: "/about" },
-      { label: "Our Story", href: "/our-story" },
-      { label: "Our Mission & Vision", href: "/our-mission-and-vision" },
-      { label: "Team", href: "/team" },
       { label: "Careers", href: "/careers" },
       { label: "Contact Us", href: "/contact-us" },
     ],

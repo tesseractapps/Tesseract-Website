@@ -1,6 +1,6 @@
 import "./SignupStyles.css";
 import SEO from "../../../components/common/SEO";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import Alert from "../../../components/ui/alert/Alert";
 import { sendEmail, sendTextEmail } from "../../../services/appService";
@@ -86,10 +86,8 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const alertInitialData = { heading: "", text: "", type: "success", isOpen: false };
-  const [activeStep, setActiveStep]       = useState(() => {
-    trackFormStart("signup");
-    return 0;
-  });
+  const [activeStep, setActiveStep] = useState(0);
+  useEffect(() => { trackFormStart("signup"); }, []);
   const [formData, setFormData]           = useState<FormData>(emptyForm);
   const [formErrors, setFormErrors]       = useState<FormErrors>({});
   const [showSuccess, setShowSuccess]     = useState(false);

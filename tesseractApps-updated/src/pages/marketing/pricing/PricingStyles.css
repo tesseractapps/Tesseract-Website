@@ -971,13 +971,6 @@
   background: #fafcff;
 }
 
-/* Row hover highlight */
-.pr-cmp-table tbody tr:hover .pr-cmp-td {
-  background: #f0f6fc;
-}
-.pr-cmp-table tbody tr:hover .pr-cmp-td--label {
-  background: #eaf2f9;
-}
 
 /* Tighten at 1024px */
 @media (max-width: 1024px) {
@@ -1066,6 +1059,243 @@
   }
 
   .pr-cmp-mobile-row-value { margin: 0; }
+}
+
+/* ══════════════════════════════════════════
+   SUPPORT COORDINATION  —  sc pricing
+══════════════════════════════════════════ */
+#pr-sc {
+  padding: 80px 0 88px;
+  background: #fff;
+}
+
+.pr-sc-sub {
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+}
+
+.pr-sc-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 2rem;
+}
+
+.pr-sc-card {
+  border: 1px solid #dde3ec;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 32px 28px;
+  gap: 20px;
+}
+
+.pr-sc-card--featured {
+  border-top: 4px solid var(--color-primary);
+}
+
+.pr-sc-card--addon {
+  border-top: 4px solid #1c9f9f;
+  background: #f8fbff;
+}
+
+.pr-sc-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pr-sc-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.pr-sc-price {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.pr-sc-price-unit {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-gray);
+}
+
+.pr-sc-price-alt {
+  font-size: 0.8125rem;
+  color: var(--color-text-gray);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.pr-sc-price-alt strong {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.pr-sc-feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;
+}
+
+.pr-sc-feature-list li {
+  font-size: 0.875rem;
+  color: var(--color-secondary);
+  line-height: 1.55;
+  padding-left: 18px;
+  position: relative;
+}
+
+.pr-sc-feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+/* ── SC Feature item with info tooltip ── */
+
+.pr-sc-feature-item {
+  position: relative;
+}
+
+.pr-sc-feature-text {
+  display: inline;
+}
+
+.pr-sc-info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  margin-left: 4px;
+  vertical-align: middle;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-primary);
+  opacity: 0.5;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: opacity 0.15s;
+  position: relative;
+  top: -1px;
+}
+
+.pr-sc-info-btn:hover,
+.pr-sc-info-btn:focus-visible {
+  opacity: 1;
+  outline: none;
+}
+
+.pr-sc-tooltip {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #fff;
+  border: 1px solid #d0dce8;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 42, 82, 0.12);
+  padding: 12px 14px;
+}
+
+.pr-sc-tooltip p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-dark-gray, #2d3a4a);
+  line-height: 1.6;
+}
+
+.pr-sc-card--addon .pr-sc-feature-list li::before {
+  background: #1c9f9f;
+}
+
+.pr-sc-addon-note {
+  font-size: 0.8rem;
+  color: var(--color-text-gray);
+  font-style: italic;
+  margin: 0;
+  padding-top: 4px;
+  border-top: 1px solid #edf3fa;
+}
+
+.pr-sc-billing-notes {
+  background: var(--color-background-light-gray, #f5f7fa);
+  border: 1px solid #dde3ec;
+  border-radius: 12px;
+  padding: 20px 28px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.pr-sc-billing-notes-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-gray);
+  margin-bottom: 10px;
+}
+
+.pr-sc-billing-notes ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pr-sc-billing-notes ul li {
+  font-size: 0.875rem;
+  color: var(--color-text-gray);
+  line-height: 1.55;
+  padding-left: 16px;
+  position: relative;
+}
+
+.pr-sc-billing-notes ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(12, 120, 186, 0.4);
+}
+
+@media (max-width: 720px) {
+  #pr-sc { padding: 56px 0 64px; }
+  .pr-sc-cards { grid-template-columns: 1fr; gap: 16px; }
+  .pr-sc-card { padding: 24px 20px 20px; }
+  .pr-sc-billing-notes { padding: 16px 18px; }
+}
+
+@media (max-width: 480px) {
+  #pr-sc { padding: 40px 0 48px; }
+  .pr-sc-price { font-size: 1.875rem; }
+  .pr-sc-card { padding: 20px 16px 18px; }
 }
 
 /* ══════════════════════════════════════════

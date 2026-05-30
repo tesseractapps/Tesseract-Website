@@ -58,13 +58,13 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
       // ------------------- Capability pages -------------------
       "/capabilities/rostering-scheduling": { name: "Rostering & Scheduling", path: "/capabilities/rostering-scheduling" },
-      "/capabilities/timesheets-payroll": { name: "Timesheets & Payroll Alignment", path: "/capabilities/timesheets-payroll" },
+      "/capabilities/timesheets-payroll-alignment": { name: "Timesheets & Payroll Alignment", path: "/capabilities/timesheets-payroll-alignment" },
       "/capabilities/workforce-management": { name: "Workforce Management", path: "/capabilities/workforce-management" },
       "/capabilities/participant-management": { name: "Participant Management", path: "/capabilities/participant-management" },
-      "/capabilities/incidents": { name: "Incidents", path: "/capabilities/incidents" },
-      "/capabilities/compliance-audit": { name: "Compliance & Audit Readiness", path: "/capabilities/compliance-audit" },
-      "/capabilities/ndis-claiming": { name: "NDIS Claiming & Invoicing", path: "/capabilities/ndis-claiming" },
-      "/capabilities/accounting-reporting": { name: "Accounting & Financial Reporting", path: "/capabilities/accounting-reporting" },
+      "/capabilities/incidents-management-reporting": { name: "Incidents", path: "/capabilities/incidents-management-reporting" },
+      "/capabilities/compliance-audit-readiness": { name: "Compliance & Audit Readiness", path: "/capabilities/compliance-audit-readiness" },
+      "/capabilities/ndis-claiming-invoicing": { name: "NDIS Claiming & Invoicing", path: "/capabilities/ndis-claiming-invoicing" },
+      "/capabilities/accounting-financial-reporting": { name: "Accounting & Financial Reporting", path: "/capabilities/accounting-financial-reporting" },
       "/capabilities/dashboards-reporting": { name: "Dashboards & Reporting", path: "/capabilities/dashboards-reporting" },
       "/blogs": { name: "Blog", path: "/blogs" },
       "/whitepapers": { name: "Whitepapers", path: "/whitepapers" },
@@ -89,9 +89,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       "/solutions/enterprise": { name: "Enterprise", path: "/solutions/enterprise" },
 
       // ------------------- By Care (active, Sanity CMS, no hardcoded data) -------------------
-      "/solutions/disability-support-ndis": {
+      "/solutions/ndis": {
         name: "Disability Support (NDIS Providers)",
-        path: "/solutions/disability-support-ndis",
+        path: "/solutions/ndis",
       },
       "/solutions/support-coordination": {
         name: "Support Coordination",

@@ -1,7 +1,7 @@
 import "./BookADemoStyles.css";
 import SEO from "../../../components/common/SEO";
 import FormStepper from "../../../components/ui/formStepper/FormStepper";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { bookADemoFormData } from "../../../data/formData";
 const logo_white = "/svg-logos/white_logo.svg";
 import React from "react";
@@ -79,10 +79,8 @@ const BookADemo = () => {
   const navigate = useNavigate();
 
   const alertInitialData = { heading: "", text: "", type: "success", isOpen: false };
-  const [currentStep, setCurrentStep] = useState(() => {
-    trackFormStart("book_demo");
-    return 0;
-  });
+  const [currentStep, setCurrentStep] = useState(0);
+  useEffect(() => { trackFormStart("book_demo"); }, []);
   const [formData, setFormData] = useState(formEmptyData);
   const [alertData, setAlertData] = useState(alertInitialData);
   const [showSuccess, setShowSuccess] = useState(false);

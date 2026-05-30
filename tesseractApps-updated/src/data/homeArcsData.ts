@@ -2,7 +2,6 @@ import accountingIcon from "../assets/accounting.webp";
 import chatIcon from "../assets/chat.webp";
 import dashboardIcon from "../assets/dashboard.webp";
 import invoiceIcon from "../assets/invoice.webp";
-import tflowIcon from "../assets/iteration.webp";
 import schedulingIcon from "../assets/schedule.webp";
 import incidentIcon from "../assets/incident.webp";
 import participantIcon from "../assets/participant.webp";
@@ -100,28 +99,6 @@ export const homeLeftArcsData = [
 
 
 export const homeRightArcsData = [
-  {
-    id: "p5",
-    cx: -220,
-    cy: 200,
-    r: 280,
-    startAngle: 120,
-    endAngle: 60,
-    icon: tflowIcon,
-    duration: 45,
-    bufferStart: 5,
-    bufferEnd: 5,
-    color: "#0C78BA",
-    iconSize: 15,
-    bg: "#0C78BA38",
-    minScale: 1,
-    maxScale: 1.5,
-    mirror: true,
-    startPos: 0.5,
-    initialDirection: 1,
-    label: "T-Flow Automation",
-    slug:"/capabilities/t-flow-automation"
-  },
   {
     id: "p6",
     cx: -205,

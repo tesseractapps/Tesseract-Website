@@ -12,8 +12,12 @@ const FEATURES = [
   "Compliance dashboards - organisational status at a glance",
 ];
 
+const LAUNCH_DATE = new Date("2026-05-31T00:00:00+10:00");
+const hasLaunched = () => Date.now() >= LAUNCH_DATE.getTime();
+
 const SCAnnouncementModal = () => {
   const navigate = useNavigate();
+  const launched = hasLaunched();
   // "modal" | "chip" | "hidden"
   const [state, setState] = useState<"modal" | "chip" | "hidden">("hidden");
 
@@ -32,9 +36,9 @@ const SCAnnouncementModal = () => {
   const closeToChip = () => setState("chip");
   const reopen = () => setState("modal");
 
-  const handleRegister = () => {
+  const handlePrimary = () => {
     setState("hidden");
-    navigate("/register-support-coordination");
+    navigate(launched ? "/book-a-demo" : "/register-support-coordination");
   };
 
   const handleLearnMore = () => {
@@ -53,7 +57,7 @@ const SCAnnouncementModal = () => {
           aria-label="Reopen Support Coordination announcement"
         >
           {/* <span id="sc-chip-dot" aria-hidden="true" /> */}
-          <span id="sc-chip-text">Support Coordination · 3 months free</span>
+          <span id="sc-chip-text">{launched ? "Support Coordination · Now Live 🎉" : "Support Coordination · 3 months free"}</span>
           <svg id="sc-chip-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <polyline points="9 18 15 12 9 6" />
           </svg>
@@ -81,13 +85,16 @@ const SCAnnouncementModal = () => {
 
             {/* Left — navy panel */}
             <div id="sc-modal-left">
-              <div id="sc-modal-badge">Coming Soon</div>
+              <div id="sc-modal-badge">{launched ? "Now Live 🎉" : "Coming Soon"}</div>
               <h2 id="sc-modal-heading">
-                Support Coordination<br />is launching 31 May
+                {launched
+                  ? <>Support Coordination<br />is now live</>
+                  : <>Support Coordination<br />is launching 31 May</>}
               </h2>
               <p id="sc-modal-sub">
-                One connected system for caseloads, goals, service agreements,
-                invoicing, claims, and compliance. Register now and get 3 months free.
+                {launched
+                  ? "One connected system for caseloads, goals, service agreements, invoicing, claims, and compliance. Book a demo to see it live."
+                  : "One connected system for caseloads, goals, service agreements, invoicing, claims, and compliance. Register now and get 3 months free."}
               </p>
 
               <div id="sc-modal-features">
@@ -140,15 +147,17 @@ const SCAnnouncementModal = () => {
               </div>
 
               <div id="sc-modal-actions">
-                <button type="button" id="sc-modal-cta-primary" onClick={handleRegister}>
-                  Register for Early Access
+                <button type="button" id="sc-modal-cta-primary" onClick={handlePrimary}>
+                  {launched ? "Book a Demo" : "Register for Early Access"}
                 </button>
                 <button type="button" id="sc-modal-cta-secondary" onClick={handleLearnMore}>
                   Learn more
                 </button>
               </div>
 
-              <p id="sc-modal-note">No upfront payment required. Launching 31 May 2026.</p>
+              <p id="sc-modal-note">
+                {launched ? "Live now. No upfront payment required." : "No upfront payment required. Launching 31 May 2026."}
+              </p>
             </div>
 
           </div>

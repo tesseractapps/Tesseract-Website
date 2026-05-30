@@ -85,7 +85,7 @@ const PopupComponent = ({
   };
 
   return ReactDOM.createPortal(
-    <div ref={popupRef} style={popupStyle} onMouseLeave={onMouseLeave}>
+    <div ref={popupRef} style={popupStyle} onMouseLeave={onMouseLeave} onMouseDown={(e) => e.stopPropagation()}>
       {showTriangle &&
         currentLink !== "Product" &&
         window.innerWidth > 1720 && (

@@ -21,19 +21,19 @@ type SearchItem = { label: string; path: string; category: string };
 // Fallback capability items used when Sanity hasn't loaded yet
 const STATIC_CAPABILITY_ITEMS: SearchItem[] = [
   { label: "Rostering & Scheduling",           path: "/capabilities/rostering-scheduling",  category: "Capability" },
-  { label: "Timesheets & Payroll",             path: "/capabilities/timesheets-payroll",     category: "Capability" },
+  { label: "Timesheets & Payroll",             path: "/capabilities/timesheets-payroll-alignment", category: "Capability" },
   { label: "Workforce Management",             path: "/capabilities/workforce-management",   category: "Capability" },
   { label: "Participant Management",           path: "/capabilities/participant-management", category: "Capability" },
-  { label: "Incidents",                        path: "/capabilities/incidents",              category: "Capability" },
-  { label: "Compliance & Audit Readiness",     path: "/capabilities/compliance-audit",       category: "Capability" },
-  { label: "NDIS Claiming & Invoicing",        path: "/capabilities/ndis-claiming",          category: "Capability" },
-  { label: "Accounting & Financial Reporting", path: "/capabilities/accounting-reporting",   category: "Capability" },
+  { label: "Incidents",                        path: "/capabilities/incidents-management-reporting", category: "Capability" },
+  { label: "Compliance & Audit Readiness",     path: "/capabilities/compliance-audit-readiness",    category: "Capability" },
+  { label: "NDIS Claiming & Invoicing",        path: "/capabilities/ndis-claiming-invoicing",        category: "Capability" },
+  { label: "Accounting & Financial Reporting", path: "/capabilities/accounting-financial-reporting", category: "Capability" },
   { label: "Dashboards & Reporting",           path: "/capabilities/dashboards-reporting",   category: "Capability" },
 ];
 
 // Fallback solution items used when Sanity hasn't loaded yet
 const STATIC_SOLUTION_ITEMS: SearchItem[] = [
-  { label: "Disability Support (NDIS)",  path: "/solutions/disability-support-ndis",  category: "Solution" },
+  { label: "Disability Support (NDIS)",  path: "/solutions/ndis",  category: "Solution" },
   { label: "Support Coordination",       path: "/solutions/support-coordination",      category: "Solution" },
   { label: "Allied Health",              path: "/solutions/allied-health-services",    category: "Solution" },
   { label: "SIL",                        path: "/solutions/sil",                       category: "Solution" },
@@ -84,8 +84,9 @@ const NavBarComponent = ({
   const [activeLink, setActiveLink] = useState<
     "About" | "Platform" | "Capabilities" | "Solutions" | "Pricing" | "Resources" | "Contact Us" | ""
   >("");
-  const DROPDOWN_LINKS = ["Capabilities", "Solutions", "Resources", "About"];
+  const DROPDOWN_LINKS = ["Capabilities", "Solutions", "Pricing", "Resources", "About"];
   const NAV_LINKS = ["Platform", "Capabilities", "Pricing", "Solutions", "Resources", "About"];
+  const PRI_IDX = NAV_LINKS.indexOf("Pricing");
   const CAP_IDX = NAV_LINKS.indexOf("Capabilities");
   const SOL_IDX = NAV_LINKS.indexOf("Solutions");
   const RES_IDX = NAV_LINKS.indexOf("Resources");
@@ -94,6 +95,8 @@ const NavBarComponent = ({
   // Live Sanity nav data — falls back to navData.ts while loading (no flash)
   const { links: capLinks, loading: capLoading } = useSanityCapabilityNav();
   const { links: solLinks, loading: solLoading } = useSanitySolutionNav();
+
+  const CAP_GROUP_ORDER = ["Workforce", "Participant & Care", "Finance", "Operational Intelligence"];
 
   // Capabilities: group live Sanity links by navGroup; fall back to hardcoded while loading
   const capNavGroups: NavGroup[] = (!capLoading && capLinks.length > 0)
@@ -107,7 +110,14 @@ const NavBarComponent = ({
             href: `/capabilities/${link.slug.current}`,
           });
         });
-        return Array.from(groupMap.entries()).map(([heading, links]) => ({ heading, links }));
+        const groups = Array.from(groupMap.entries()).map(([heading, links]) => ({ heading, links }));
+        return groups.sort((a, b) => {
+          const ai = CAP_GROUP_ORDER.indexOf(a.heading);
+          const bi = CAP_GROUP_ORDER.indexOf(b.heading);
+          const aIdx = ai === -1 ? 999 : ai;
+          const bIdx = bi === -1 ? 999 : bi;
+          return aIdx - bIdx;
+        });
       })()
     : navBarDummyData["Capabilities"];
 
@@ -227,7 +237,7 @@ const NavBarComponent = ({
       currentPath == "multi-site-businesses" ||
       currentPath == "construction" ||
       currentPath == "manufacturing" ||
-      currentPath == "disability-support-ndis" ||
+      currentPath == "ndis" ||
       currentPath == "support-coordination" ||
       currentPath == "aged-care-services" ||
       currentPath == "child-care-services" ||
@@ -244,7 +254,7 @@ const NavBarComponent = ({
     ) {
       setActiveLink("Solutions");
     }
-    if (currentPath == "pricing") {
+    if (currentPath == "pricing" || currentPath == "sc-pricing") {
       setActiveLink("Pricing");
     }
     if (
@@ -500,7 +510,7 @@ const NavBarComponent = ({
             </div>
         <div id="nav-menu-links">
             {NAV_LINKS.map((label, index) => {
-              if (label != "Pricing" && label != "Platform") {
+              if (label != "Platform") {
                 return (
                   <div key={label} className="nav-accordion">
                     <div
@@ -607,6 +617,24 @@ const NavBarComponent = ({
                             ))}
                           </div>
                         )}
+                        {expanded == PRI_IDX &&
+                          navBarDummyData["Pricing"].map((value, index) => (
+                            <div
+                              key={value.title + index}
+                              className="nav-inner-container"
+                              onClick={() => {
+                                if (value.href) {
+                                  appNavigate(value.href);
+                                  setToggleDrawer(false);
+                                } else {
+                                  popupLinkClickHandler(value.title);
+                                }
+                              }}
+                            >
+                              <div className="nav-title">{value.title}</div>
+                              {value.subTitle?.trim() && <div className="nav-sub-title">{value.subTitle}</div>}
+                            </div>
+                          ))}
                         {expanded == ABT_IDX &&
                           navBarDummyData["About"].map((value, index) => (
                             <div
@@ -626,19 +654,6 @@ const NavBarComponent = ({
                           ))}
                       </div>
                     </div>
-                  </div>
-                );
-              } else if (label == "Platform") {
-                return (
-                  <div
-                    className="nav-menu-link no-dropdown"
-                    key={label}
-                    onClick={() => {
-                      appNavigate(NAV_ROUTES[label] ?? `/${label.toLowerCase().replace(/ /g, "-")}`);
-                      setToggleDrawer(false);
-                    }}
-                  >
-                    {label}
                   </div>
                 );
               } else {
@@ -680,15 +695,10 @@ const NavBarComponent = ({
                     ? " nav-link-active"
                     : "")
                 }
-                onClick={handleNavClick}
+                onClick={shouldHavePopup ? handleNavPopupClick : handleNavClick}
                 onMouseEnter={(event) => {
-                  if (label == "Pricing") closePopup();
                   if (shouldHavePopup) handleNavPopupClick(event);
                 }}
-                onMouseLeave={() => {
-                  if (label == "Pricing") closePopup();
-                }}
-              // onMouseLeave={shouldHavePopup ? closePopup : undefined}
               >
                 {label}
               </div>

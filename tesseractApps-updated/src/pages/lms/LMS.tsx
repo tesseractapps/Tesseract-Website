@@ -238,7 +238,7 @@ const LMS = () => {
   return (
     <div id="lms-page">
       <SEO
-        title="WYZED Integration | Training Inside TesseractApps, Powered by WYZED"
+        title="Learning Management | TesseractApps"
         description="WYZED integrated directly into TesseractApps. Role-based learning pathways, compliance tracking, and 86+ NDIS-mapped modules connected to the roster, the role, and the worker profile."
       />
 
@@ -255,6 +255,8 @@ const LMS = () => {
               src={wyzedLogo}
               alt="WYZED"
               className="lms-eyebrow-logo"
+              width={45}
+              height={45}
             />
           </div>
           <h1 id="lms-hero-heading">

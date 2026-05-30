@@ -105,8 +105,28 @@ export const capabilityPageType = defineType({
     defineField({
       name: 'problemStatement',
       title: 'The Problem',
-      type: 'text',
-      rows: 5,
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [{ title: 'Normal', value: 'normal' }],
+          lists: [],
+          marks: {
+            decorators: [{ title: 'Strong', value: 'strong' }],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  { name: 'href', type: 'url', title: 'URL' },
+                  { name: 'blank', type: 'boolean', title: 'Open in new tab', initialValue: false },
+                ],
+              },
+            ],
+          },
+        },
+      ],
       description: 'A specific, vivid scenario that describes the operational problem this capability solves',
       validation: (Rule) => Rule.required(),
     }),
@@ -121,8 +141,28 @@ export const capabilityPageType = defineType({
     defineField({
       name: 'howWeSolveThis',
       title: 'How We Solve This',
-      type: 'text',
-      rows: 5,
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [{ title: 'Normal', value: 'normal' }],
+          lists: [],
+          marks: {
+            decorators: [{ title: 'Strong', value: 'strong' }],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  { name: 'href', type: 'url', title: 'URL' },
+                  { name: 'blank', type: 'boolean', title: 'Open in new tab', initialValue: false },
+                ],
+              },
+            ],
+          },
+        },
+      ],
       description: 'Paragraph explaining specifically how TesseractApps addresses the problem',
       validation: (Rule) => Rule.required(),
     }),

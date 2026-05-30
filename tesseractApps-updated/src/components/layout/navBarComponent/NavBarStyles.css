@@ -350,7 +350,7 @@
   gap: 0;
   padding: 6px;
   width: min(820px, calc(100vw - 48px));
-  align-items: flex-start;
+  align-items: stretch;
 }
 #popup-nav-services-container > div {
   padding: 0 6px;
@@ -366,7 +366,7 @@
   gap: 0;
   padding: 6px;
   width: min(1100px, calc(100vw - 48px));
-  align-items: flex-start;
+  align-items: stretch;
 }
 .nav-product-group {
   padding: 0 6px;

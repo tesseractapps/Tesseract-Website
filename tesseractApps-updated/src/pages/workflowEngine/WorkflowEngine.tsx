@@ -317,7 +317,7 @@ const WorkflowEngine = () => {
   return (
     <div id="we-page">
       <SEO
-        title="Workflow Engine | Operational Automation for NDIS Providers, TesseractApps"
+        title="Workflow Engine | NDIS Automation | TesseractApps"
         description="TesseractApps structures your operational and governance workflows inside the platform. At deeper maturity stages, TFlow extends that automation across systems."
       />
 

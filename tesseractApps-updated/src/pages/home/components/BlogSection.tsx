@@ -35,7 +35,9 @@ const BlogCard = memo(({ post, onNavigate }: { post: BlogListItem; onNavigate: (
           height="320"
         />
       ) : (
-        <div className="hv4-blog-img hv4-blog-img--placeholder" />
+        <div className="hv4-blog-img hv4-blog-img--placeholder">
+          <img src="/svg-logos/Full Logo Blue.svg" alt="TesseractApps" className="hv4-blog-img-logo" />
+        </div>
       )}
       {post.category?.title && (
         <span className="hv4-blog-cat">{post.category.title}</span>

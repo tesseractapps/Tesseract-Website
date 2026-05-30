@@ -65,7 +65,7 @@ export function trackNewsletterSubscribe() {
 
 // ── Tier 2: CTA click events ──────────────────────────────────────────────────
 
-export type CTAType = "book_demo" | "begin_journey";
+export type CTAType = "book_demo" | "begin_journey" | "register_interest";
 export type CTALocation =
   | "hero"
   | "why_now"
@@ -73,6 +73,10 @@ export type CTALocation =
   | "footer_cta"
   | "nav"
   | "pricing"
+  | "sc_pricing"
+  | "sc_pricing_hero_demo"
+  | "sc_pricing_cta"
+  | "sc_pricing_esign"
   | "platform_hero"
   | "platform_bottom"
   | "competitor_hero"

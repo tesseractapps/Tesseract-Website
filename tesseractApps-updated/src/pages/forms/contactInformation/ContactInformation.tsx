@@ -84,7 +84,7 @@ const ContactInformation = () => {
     <div id="contact-page">
       <Alert setAlertData={setAlertData} alertData={alertData} />
       <SEO
-        title="Contact TesseractApps | NDIS Software Support & Sales | Australia"
+        title="Contact TesseractApps | Get in Touch"
         description="Get in touch with TesseractApps for NDIS software enquiries, demos, or support. Call 1300 252 808 or email sales@tesseractapps.com. Located in Phillip ACT 2606."
       />
 

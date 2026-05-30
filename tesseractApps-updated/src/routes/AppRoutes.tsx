@@ -21,6 +21,7 @@ const SolutionPage = lazy(() => import("../pages/solutions/solutionPage/Solution
 const ContactInformation = lazy(() => import("../pages/forms/contactInformation/ContactInformation"));
 const About = lazy(() => import("../pages/marketing/about/About"));
 const Whitepapers = lazy(() => import("../pages/resources/whitepapers/Whitepapers"));
+const Brochures = lazy(() => import("../pages/resources/brochures/Brochures"));
 const BookADemo = lazy(() => import("../pages/forms/bookADemo/BookADemo"));
 const Signup = lazy(() => import("../pages/forms/signup/Signup"));
 const CompetitorPage = lazy(() => import("../pages/competitors/CompetitorPage"));
@@ -29,6 +30,7 @@ const SitemapPage = lazy(() => import("../pages/resources/sitemapPage/SitemapPag
 const LMS = lazy(() => import("../pages/lms/LMS"));
 const WorkflowEngine = lazy(() => import("../pages/workflowEngine/WorkflowEngine"));
 const SupportCoordination = lazy(() => import("../pages/supportCoordination/SupportCoordination"));
+const SCPricing = lazy(() => import("../pages/marketing/scPricing/SCPricing"));
 const Register = lazy(() => import("../pages/forms/register/Register"));
 const NotFound = lazy(() => import("../pages/notFound/NotFound"));
 
@@ -83,6 +85,7 @@ const AppRoutes = () => {
         <Route path="/capabilities" element={<Suspense fallback={pageSpinner}><CapabilitiesListing /></Suspense>} />
         <Route path="/solutions" element={<Suspense fallback={pageSpinner}><SolutionsListing /></Suspense>} />
         <Route path="/whitepapers" element={<Suspense fallback={pageSpinner}><Whitepapers /></Suspense>} />
+        <Route path="/brochures" element={<Suspense fallback={pageSpinner}><Brochures /></Suspense>} />
         <Route path="/help-centre" element={<Suspense fallback={pageSpinner}><FAQ /></Suspense>} />
         <Route path="/help-center" element={<Suspense fallback={pageSpinner}><FAQ /></Suspense>} />
         <Route path="/about" element={<Suspense fallback={pageSpinner}><About /></Suspense>} />
@@ -96,6 +99,7 @@ const AppRoutes = () => {
         <Route path="/support-coordination" element={<Suspense fallback={pageSpinner}><SupportCoordination /></Suspense>} />
         <Route path="/solutions/support-coordination" element={<Suspense fallback={pageSpinner}><SupportCoordination /></Suspense>} />
         <Route path="/register-support-coordination" element={<Suspense fallback={pageSpinner}><Register /></Suspense>} />
+        <Route path="/sc-pricing" element={<Suspense fallback={pageSpinner}><SCPricing /></Suspense>} />
 
         <Route
           path="/blogs"

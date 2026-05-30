@@ -56,7 +56,7 @@ const About = () => {
   return (
     <div id="about-container">
       <SEO
-        title="About TesseractApps | Our Story, Mission & Team | Australian NDIS Software"
+        title="About TesseractApps | NDIS Software Provider"
         description="Learn about TesseractApps - founded in 2022 to simplify NDIS compliance and care management. Meet our team of technologists and industry experts building the future of workforce technology in Australia."
       />
 

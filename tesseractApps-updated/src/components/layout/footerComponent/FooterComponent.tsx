@@ -5,12 +5,9 @@ import linkedin from "../../../assets/linkedin.webp";
 import youtube from "../../../assets/youtube.webp";
 import flagsImag1 from "../../../assets/flagImage1.webp";
 import flagsImag2 from "../../../assets/flagImage2.webp";
-// import localAward from "../../../assets/2025_CANB_WINNER_LBA.webp";
-// import iso27001 from "../../../assets/JAS-ANZ ISMS.webp";
-// import iso9001 from "../../../assets/JAS-ANZ QMS.webp";
-import localAwardsvg from "../../../assets/2025_CANB_WINNER_LBA.svg";
-import iso27001svg from "../../../assets/JAS-ANZ ISMS.svg";
-import iso9001svg from "../../../assets/JAS-ANZ QMS.svg";
+import localAward from "../../../assets/2025_CANB_WINNER_LBA.webp";
+import iso27001 from "../../../assets/JAS-ANZ ISMS.webp";
+import iso9001 from "../../../assets/JAS-ANZ QMS.webp";
 import { useState } from "react";
 import { sendEmail, sendTextEmail } from "../../../services/appService";
 import Alert from "../../ui/alert/Alert";
@@ -212,11 +209,11 @@ const FooterComponent = () => {
           <div className="footer-heading">Resources</div>
           <Link className="footer-text" to="/blogs">Blog</Link>
           <Link className="footer-text" to="/whitepapers">Whitepapers</Link>
+          <Link className="footer-text" to="/brochures">Brochures</Link>
           <Link className="footer-text" to="/help-center">FAQ</Link>
           <Link className="footer-text" to="/ndis-glossary">NDIS Glossary</Link>
           <Link className="footer-text" to="/capabilities/learning-management">WYZED Integration</Link>
-          <Link className="footer-text" to="/capabilities/workflow-engine">Workflow Engine</Link>
-          <Link className="footer-text" to="/sitemap">Site Map</Link>
+<Link className="footer-text" to="/sitemap">Site Map</Link>
           <a
             className="footer-text"
             href="/rss.xml"
@@ -280,7 +277,7 @@ const FooterComponent = () => {
           <div id="footer-awards-container">
             <img
               loading="lazy"
-              src={iso27001svg}
+              src={iso27001}
               alt="ISO 27001 certification badge"
               className="footer-award-image footer-award-image2"
               width="638"
@@ -289,7 +286,7 @@ const FooterComponent = () => {
             />
             <img
               loading="lazy"
-              src={iso9001svg}
+              src={iso9001}
               alt="ISO 9001 certification badge"
               className="footer-award-image footer-award-image2"
               width="638"
@@ -298,7 +295,7 @@ const FooterComponent = () => {
             />
             <img
               loading="lazy"
-              src={localAwardsvg}
+              src={localAward}
               alt="Local Business Award trophy"
               className="footer-award-image"
               width="528"

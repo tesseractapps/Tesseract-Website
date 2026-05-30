@@ -9,6 +9,7 @@ import { formatDate } from "../../../utils/formatDate";
 import { urlFor } from "../../../sanity/lib/image";
 import { buildBreadcrumbSchema, buildGraphSchema } from "../../../utils/schemaHelpers";
 import Breadcrumb from "../../../components/common/Breadcrumb";
+import PortableTextRenderer from "../../../components/sanity/portable-text";
 
 // ── Skeleton ─────────────────────────────────────────────────────────────────
 
@@ -59,11 +60,6 @@ const IconArrowRight = () => (
   </svg>
 );
 
-const IconQuote = () => (
-  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-  </svg>
-);
 
 const IconBadge = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -117,8 +113,15 @@ const SolutionPage = () => {
     ])
   );
 
+  // Extract plain text from a Portable Text block array (blocks only, skip images etc.)
+  const blocksToPlainText = (blocks: typeof page.howWeSupport) =>
+    blocks
+      .filter((b): b is Extract<typeof b, { _type: 'block' }> => b._type === 'block')
+      .map((b) => (b.children ?? []).map((c) => c.text ?? '').join(''))
+      .join(' ');
+
   // First 3 sentences from howWeSupport for the proof panel
-  const proofPoints = page.howWeSupport
+  const proofPoints = blocksToPlainText(page.howWeSupport)
     .split(/(?<=[.!?])\s+/)
     .filter((s) => s.trim().length > 20)
     .slice(0, 3);
@@ -192,7 +195,7 @@ const SolutionPage = () => {
           )}
           <div className="sol-hero-badges">
             <span className="sol-hero-badge">✓ NDIS Compliant</span>
-            <span className="sol-hero-badge">✓ Salesforce Native</span>
+            {/* <span className="sol-hero-badge">✓ Salesforce Native</span> */}
             <span className="sol-hero-badge">✓ Australian Hosted</span>
           </div>
         </div>
@@ -203,13 +206,8 @@ const SolutionPage = () => {
         <div className="sol-outer">
           <div className="sol-section-label">Who Is This For?</div>
           <div className="sol-problem-block">
-            <div className="sol-problem-quote-icon">
-              <IconQuote />
-            </div>
             <div className="sol-problem-text">
-              {page.whoIsThisFor.split("\n\n").map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
+              <PortableTextRenderer value={page.whoIsThisFor} />
             </div>
           </div>
         </div>
@@ -238,9 +236,7 @@ const SolutionPage = () => {
           <h2 className="sol-section-heading">One connected solution, built for NDIS providers.</h2>
           <div className="sol-solve-layout">
             <div className="sol-solve-text">
-              {page.howWeSupport.split("\n\n").map((para, i) => (
-                <p key={i} className="sol-body-text">{para}</p>
-              ))}
+              <PortableTextRenderer value={page.howWeSupport} />
             </div>
             <div className="sol-solve-proof">
               <div className="sol-solve-proof-heading">Why it works</div>
@@ -337,16 +333,20 @@ const SolutionPage = () => {
                   to={`/blog/${post.slug?.current}`}
                   className="sol-reading-card"
                 >
-                  {post.mainImage?.asset && (
-                    <img
-                      className="sol-reading-image"
-                      src={urlFor(post.mainImage).width(720).height(420).fit("crop").auto("format").url()}
-                      alt={post.mainImage.alt ?? post.title ?? "Blog post image"}
-                      loading="lazy"
-                      width={360}
-                      height={210}
-                    />
-                  )}
+                  <div className="sol-reading-image-wrap">
+                    {post.mainImage?.asset ? (
+                      <img
+                        className="sol-reading-image"
+                        src={urlFor(post.mainImage).width(720).height(405).fit("crop").auto("format").url()}
+                        alt={post.mainImage.alt ?? post.title ?? "Blog post image"}
+                        loading="lazy"
+                        width={720}
+                        height={405}
+                      />
+                    ) : (
+                      <img src="/svg-logos/Full Logo Blue.svg" alt="TesseractApps" className="sol-reading-image-logo" />
+                    )}
+                  </div>
                   <div className="sol-reading-body">
                     <h3 className="sol-reading-title">{post.title}</h3>
                     {post.excerpt && <p className="sol-reading-excerpt">{post.excerpt}</p>}

@@ -285,9 +285,9 @@ export type CapabilityPageDocument = {
   order: number
   heroHeading: string
   heroSubtitle?: string
-  problemStatement: string
+  problemStatement: BlockContentType
   whatMattersMost: string[]
-  howWeSolveThis: string
+  howWeSolveThis: BlockContentType
   whatYouGet: string[]
   isThisRightForYou: string[]
   relatedCapabilities?: CapabilityNavLink[]
@@ -318,9 +318,9 @@ export type SolutionPageDocument = {
   order: number
   heroHeading: string
   heroSubtitle?: string
-  whoIsThisFor: string
+  whoIsThisFor: BlockContentType
   keyBenefits: string[]
-  howWeSupport: string
+  howWeSupport: BlockContentType
   whatYouGet: string[]
   isThisRightForYou: string[]
   relatedSolutions?: SolutionNavLink[]

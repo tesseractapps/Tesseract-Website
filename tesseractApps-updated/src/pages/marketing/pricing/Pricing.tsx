@@ -66,9 +66,9 @@ const FLIP_STAGES: Stage[] = [
     bestFor:
       "Providers experiencing workforce expansion, payroll pressure, and increasing reporting needs.",
     whatYouNeed: "Control, reporting clarity, payroll alignment, and manager accountability.",
-    automationHeading: "T-Flow automation",
+    automationHeading: "Automation",
     automationBody:
-      "Growth introduces structured automation through T-Flow automation using template-driven boards, limited stage edits, and basic triggers. This is where automation begins to save meaningful time in day-to-day workflows such as onboarding, intake routing, document handling, and follow-up actions.",
+      "Growth introduces structured automation through template-driven boards, limited stage edits, and basic triggers. This is where automation begins to save meaningful time in day-to-day workflows such as onboarding, intake routing, document handling, and follow-up actions.",
     commercial: ["$39.99 per seat / month", "Up to 10% flex user buffer"],
     supports: [
       "Operational dashboards",
@@ -88,9 +88,9 @@ const FLIP_STAGES: Stage[] = [
     bestFor:
       "Multi-site providers, SIL providers, and organisations managing increasing governance pressure.",
     whatYouNeed: "Oversight, accountability, approvals, audit trails, and compliance control.",
-    automationHeading: "T-Flow automation",
+    automationHeading: "Automation",
     automationBody:
-      "At Scale, T-Flow automation expands into configurable boards, SLA rules, escalation logic, and workflow analytics. This is where process automation becomes a governance tool, not just an efficiency tool.",
+      "At Scale, automation expands into configurable boards, SLA rules, escalation logic, and workflow analytics. This is where process automation becomes a governance tool, not just an efficiency tool.",
     commercial: ["$39.99 per seat / month", "Up to 15% flex user buffer"],
     supports: [
       "Approval workflows",
@@ -111,9 +111,9 @@ const FLIP_STAGES: Stage[] = [
       "Executive teams requiring financial consolidation, multi-entity oversight, and board-level reporting.",
     whatYouNeed:
       "One source of truth across operations, finance, workforce, and governance.",
-    automationHeading: "T-Flow automation",
+    automationHeading: "Automation",
     automationBody:
-      "Enterprise activates TFlow for cross-module automation and gives T-Flow automation full orchestration capability across the platform. This supports deeper operational automation, financial control, and governance execution at scale.",
+      "Enterprise activates full cross-module automation with complete orchestration capability across the platform. This supports deeper operational automation, financial control, and governance execution at scale.",
     commercial: ["Contact Us", "Custom pricing for large organisations"],
     supports: [
       "Native payroll",
@@ -152,12 +152,16 @@ const PAID_COMPARISON_ROWS = [
     values: PAID_STAGE_ORDER.map((id) => PAID_STAGE_LOOKUP[id].whatYouNeed),
   },
   {
-    label: "Automation focus",
-    values: PAID_STAGE_ORDER.map((id) => PAID_STAGE_LOOKUP[id].automationHeading),
-  },
-  {
     label: "What this stage supports",
     values: PAID_STAGE_ORDER.map((id) => PAID_STAGE_LOOKUP[id].supports),
+  },
+  {
+    label: "Upcoming Features",
+    values: [
+      ["ABA File (TBA)", "Bank Feeds (TBA)"],
+      ["ABA File (TBA)", "Bank Feeds (TBA)"],
+      ["ABA File (TBA)", "Bank Feeds (TBA)"],
+    ],
   },
 ];
 
@@ -612,7 +616,7 @@ const Pricing = () => {
             <table className="pr-cmp-table">
               <thead>
                 <tr className="pr-cmp-head-row">
-                  <th className="pr-cmp-th pr-cmp-th--label" scope="col" aria-label="Category" />
+                  <th className="pr-cmp-th pr-cmp-th--label" scope="col">Category</th>
                   {PAID_STAGE_ORDER.map((id) => {
                     const stage = PAID_STAGE_LOOKUP[id];
                     return (
@@ -658,9 +662,6 @@ const Pricing = () => {
                         ) : (
                           <p className="pr-cmp-cell-text">
                             {value}
-                            {row.label === "Automation focus" && value === "T-Flow automation" && (
-                              <span className="pr-beta-badge">BETA</span>
-                            )}
                           </p>
                         )}
                       </td>
@@ -679,7 +680,7 @@ const Pricing = () => {
                   key={id}
                   type="button"
                   role="tab"
-                  aria-selected={activeTab === id ? "true" : "false"}
+                  aria-selected={activeTab === id}
                   className={`pr-cmp-tab pr-cmp-tab--${id}${activeTab === id ? " pr-cmp-tab--active" : ""}`}
                   onClick={() => setActiveTab(id)}
                 >
@@ -725,9 +726,6 @@ const Pricing = () => {
                           ) : (
                             <p className="pr-cmp-cell-text">
                               {row.values[colIndex] as string}
-                              {row.label === "Automation focus" && row.values[colIndex] === "T-Flow automation" && (
-                                <span className="pr-beta-badge">BETA</span>
-                              )}
                             </p>
                           )}
                         </dd>

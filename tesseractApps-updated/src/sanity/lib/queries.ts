@@ -322,6 +322,42 @@ export const COMPETITOR_PAGE_BY_SLUG_QUERY = `
   }
 `
 
+// Client Logos — visible only, ordered by display order
+export const CLIENT_LOGOS_QUERY = `
+  *[_type == "clientLogo" && isVisible == true]
+  | order(order asc) {
+    _id,
+    name,
+    order,
+    logo {
+      asset->{ _id, url, metadata { lqip, dimensions } },
+      alt
+    }
+  }
+`
+
+// Brochures — published and coming_soon, featured first then newest
+export const BROCHURES_QUERY = `
+  *[_type == "brochure" && status in ["published", "coming_soon"]]
+  | order(featured desc, publishedAt desc) {
+    _id,
+    title,
+    slug,
+    status,
+    description,
+    publishedAt,
+    featured,
+    pdfFile {
+      asset->{ _id, url }
+    },
+    coverImage {
+      asset->{ _id, url, metadata { lqip, dimensions } },
+      alt
+    },
+    seo { metaTitle, metaDescription }
+  }
+`
+
 // Whitepapers — published and coming_soon, featured first then newest
 export const WHITEPAPERS_QUERY = `
   *[_type == "whitepaper" && status in ["published", "coming_soon"]]

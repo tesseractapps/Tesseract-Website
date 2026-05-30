@@ -103,8 +103,28 @@ export const solutionPageType = defineType({
     defineField({
       name: 'whoIsThisFor',
       title: 'Who Is This For?',
-      type: 'text',
-      rows: 4,
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [{ title: 'Normal', value: 'normal' }],
+          lists: [],
+          marks: {
+            decorators: [{ title: 'Strong', value: 'strong' }],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  { name: 'href', type: 'url', title: 'URL' },
+                  { name: 'blank', type: 'boolean', title: 'Open in new tab', initialValue: false },
+                ],
+              },
+            ],
+          },
+        },
+      ],
       description: 'Description of the provider type or role this solution targets',
       validation: (Rule) => Rule.required(),
     }),
@@ -119,8 +139,28 @@ export const solutionPageType = defineType({
     defineField({
       name: 'howWeSupport',
       title: 'How We Support You',
-      type: 'text',
-      rows: 4,
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [{ title: 'Normal', value: 'normal' }],
+          lists: [],
+          marks: {
+            decorators: [{ title: 'Strong', value: 'strong' }],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  { name: 'href', type: 'url', title: 'URL' },
+                  { name: 'blank', type: 'boolean', title: 'Open in new tab', initialValue: false },
+                ],
+              },
+            ],
+          },
+        },
+      ],
       description: 'Paragraph explaining specifically how TesseractApps supports this care type/role',
       validation: (Rule) => Rule.required(),
     }),

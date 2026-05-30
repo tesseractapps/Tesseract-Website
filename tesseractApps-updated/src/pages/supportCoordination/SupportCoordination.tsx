@@ -53,13 +53,6 @@ const IconBarChart = () => (
   </svg>
 );
 
-const IconAlertTriangle = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-    <line x1="12" y1="9" x2="12" y2="13" />
-    <line x1="12" y1="17" x2="12.01" y2="17" />
-  </svg>
-);
 
 const IconShield = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -101,110 +94,104 @@ type Feature = {
   bullets: string[];
 };
 
+const FEATURES_INTRO = "Everything below is live in the platform today. Book a demo and see it running, not as slides.";
+
 const FEATURES: Feature[] = [
   {
-    id: "tasks",
-    label: "Task & Caseload Management",
+    id: "caseload",
+    label: "Task and Caseload Management",
     heading: "Manage your entire caseload from one connected view.",
     icon: <IconClipboard />,
     bullets: [
-      "Centralised participant dashboard across your entire caseload",
-      "Tasks connected directly to billing - no manual data entry",
-      "Overdue items flagged automatically with escalation",
-      "Case notes captured directly from tasks without switching screens",
+      "Centralised participant dashboard across your whole caseload.",
+      "Pinned participants for fast access to priority cases.",
+      "Tasks connected directly to billing, with no manual data entry.",
+      "Overdue items flagged automatically with escalation.",
+    ],
+  },
+  {
+    id: "case-notes",
+    label: "Case Notes with Live Budget Visibility",
+    heading: "Write the note, see the budget move.",
+    icon: <IconFileText />,
+    bullets: [
+      "Billable time entry linked to NDIS service items and rates.",
+      "Budget overview recalculates in real time as you log time.",
+      "Note types for Support Coordination, Plan Review, Goal Setting, Incident Report, Progress Update, and Provider Contact.",
+      "Contact method and duration captured on every entry.",
     ],
   },
   {
     id: "goals",
-    label: "Participant Check-Ins & Goal Tracking",
-    heading: "Track engagement, monitor goals, and demonstrate outcomes auditors expect.",
+    label: "Participant and Goal Tracking",
+    heading: "Track engagement and demonstrate the outcomes auditors expect.",
     icon: <IconTarget />,
     bullets: [
-      "Scheduled check-ins with automated reminders",
-      "NDIS goals linked to plan outcomes and participant aspirations",
-      "Progress updates connected to service delivery records - not standalone",
-      "Outcome reporting ready for plan reviews, plan managers, and audits",
-      "Connected to activities - showing how supports contribute to goal outcomes",
+      "Participant records with plan period, risk rating, and remaining budget.",
+      "NDIS goals linked to plan outcomes and participant aspirations.",
+      "Goal progress tracked per participant with review frequency.",
+      "Structured goal setup covering category, priority, and SMART detail.",
     ],
   },
   {
     id: "agreements",
-    label: "Service Agreements & E-Sign",
-    heading: "Generate, send, sign, and link - all in one flow.",
-    icon: <IconFileText />,
+    label: "Service Agreements and T-Sign",
+    heading: "Generate, send, sign, and link, all in one flow.",
+    icon: <IconUsers />,
     bullets: [
-      "NDIS-compliant templates built in",
-      "Digital E-Sign - flat monthly rate, unlimited signatures",
-      "Version control with complete amendment history",
-      "Expiry alerts so renewals are never missed",
-      "Signed agreements auto-linked to funding lines and invoicing",
-      "Bulk sending capability for multiple participants",
-    ],
-  },
-  {
-    id: "invoicing",
-    label: "Automated Invoicing & NDIS Claims",
-    heading: "Invoices generated from delivered services. Claims assembled automatically.",
-    icon: <IconDollarSign />,
-    bullets: [
-      "Auto-generate invoices from service delivery records",
-      "NDIS Price Guide rates applied automatically - always current",
-      "Bulk NDIA claim file generation",
-      "Real-time reconciliation against funding - spot revenue leakage instantly",
-      "Payment reconciliation matching NDIA payments to claims",
-      "Invoicing included in base - not a separate module or add-on",
-    ],
-  },
-  {
-    id: "funding",
-    label: "Real-Time Funding Visibility",
-    heading: "Live funding data - not a report you run after the fact.",
-    icon: <IconBarChart />,
-    bullets: [
-      "Live funding utilisation per participant, per category, per line item",
-      "Alerts when budgets approach limits - prevent over-servicing",
-      "Under-utilisation flags so participants don't miss entitled supports",
-      "Plan review preparation data available instantly",
-      "Budget mismatches flagged before claims are submitted",
-    ],
-  },
-  {
-    id: "incidents",
-    label: "Incident & Risk Management",
-    heading: "Full lifecycle incident management that satisfies NDIS Commission expectations.",
-    icon: <IconAlertTriangle />,
-    bullets: [
-      "Timestamped incident lifecycle (reported → escalated → resolved)",
-      "Automated escalation based on incident severity and type",
-      "Connected to participant risk profiles for pattern identification",
-      "Full audit trail for NDIS Commission compliance",
-      "Compliance dashboard showing real-time incident status across organisation",
-    ],
-  },
-  {
-    id: "compliance",
-    label: "Compliance & Audit Readiness",
-    heading: "Every action generates audit evidence. It's architectural, not a feature.",
-    icon: <IconShield />,
-    bullets: [
-      "ISO 27001 (Information Security) + ISO 9001 (Quality Management)",
-      "Automatic audit trail on every interaction - no manual logging",
-      "Document storage with version control and access logs",
-      "Compliance dashboards showing real-time organisational status",
-      "Audit-ready evidence available in seconds, not days of document gathering",
-      "Expiring document notifications for staff compliance",
+      "NDIS-compliant agreement templates built in.",
+      "Digital signing with T-Sign, flat monthly rate, unlimited signatures.",
+      "Version control with complete amendment history.",
+      "Expiry alerts so renewals are never missed.",
+      "Signed agreements auto linked to funding lines and invoicing.",
     ],
   },
   {
     id: "providers",
-    label: "Provider Network Coordination",
-    heading: "Connect participants with the right providers. Track everything from one view.",
+    label: "Provider Directory",
+    heading: "Keep your provider network in one place.",
     icon: <IconUsers />,
     bullets: [
-      "Referral tracking with status updates",
-      "Provider performance visibility",
-      "Service delivery tracking across your network",
-      "Participant-provider matching based on needs and availability",
+      "Provider records with capacity, service type, and NDIS provider ID.",
+      "Searchable directory by provider name or contact.",
+      "Active and inactive status tracking.",
+      "Industry type classification for fast filtering.",
+    ],
+  },
+  {
+    id: "billing",
+    label: "SC Billing",
+    heading: "See and reconcile the services you have delivered.",
+    icon: <IconDollarSign />,
+    bullets: [
+      "Billable hours captured from notes and tasks automatically.",
+      "Pending, generated, and cancelled invoice tracking.",
+      "Editable billable hours before invoice generation.",
+      "Invoice generation across a defined service period.",
+    ],
+  },
+  {
+    id: "reporting",
+    label: "Funding and Utilisation Reporting",
+    heading: "Live funding data, not a report you run after the fact.",
+    icon: <IconBarChart />,
+    bullets: [
+      "Approved budget, planned spend, actual spend, and remaining budget per participant.",
+      "Utilisation view per participant.",
+      "Budget figures updated as case notes and tasks are logged.",
+      "Plan review preparation data available on demand.",
+    ],
+  },
+  {
+    id: "compliance",
+    label: "Compliance and Audit Readiness",
+    heading: "Every action generates audit evidence. It is architectural, not a feature.",
+    icon: <IconShield />,
+    bullets: [
+      "ISO 27001 and ISO 9001 certified platform.",
+      "Audit trail on every interaction.",
+      "Role-based access, with organisation and financial settings gated to org administrators.",
+      "Compliance built into how the platform records work, not bolted on.",
     ],
   },
 ];
@@ -289,8 +276,15 @@ const FAQItem = ({ q, a }: { q: string; a: string }) => {
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
+const LAUNCH_DATE = new Date("2026-05-31T00:00:00+10:00");
+
 const SupportCoordination = () => {
   const navigate = useNavigate();
+  const launched = Date.now() >= LAUNCH_DATE.getTime();
+
+  const primaryCtaLabel = launched ? "Book a Demo" : "Register Your Interest";
+  const primaryCtaRoute = launched ? "/book-a-demo" : "/register-support-coordination";
+  const primaryCtaEvent = launched ? "book_demo" : "register_interest";
 
   return (
     <div id="sc-page">
@@ -320,9 +314,9 @@ const SupportCoordination = () => {
             <button
               type="button"
               className="sc-btn-primary"
-              onClick={() => { trackCTAClick("book_demo", "sc_hero", "/support-coordination"); navigate("/register-support-coordination"); }}
+              onClick={() => { trackCTAClick(primaryCtaEvent, "sc_hero", "/support-coordination"); navigate(primaryCtaRoute); }}
             >
-              Register Your Interest
+              {primaryCtaLabel}
             </button>
           </div>
           <p className="sc-cta-note">No credit card required. ISO 27001 certified. Australian hosted. 99.9% uptime.</p>
@@ -376,6 +370,7 @@ const SupportCoordination = () => {
           <h2 className="sc-section-heading sc-section-heading--light">
             One connected platform. Plus what other tools can't do at all.
           </h2>
+          <p className="sc-body-text sc-body-text--light">{FEATURES_INTRO}</p>
         </div>
       </section>
 
@@ -454,9 +449,9 @@ const SupportCoordination = () => {
               <button
                 type="button"
                 className="sc-btn-primary"
-                onClick={() => { trackCTAClick("book_demo", "sc_bottom", "/support-coordination"); navigate("/register-support-coordination"); }}
+                onClick={() => { trackCTAClick(primaryCtaEvent, "sc_bottom", "/support-coordination"); navigate(primaryCtaRoute); }}
               >
-                Register Your Interest
+                {primaryCtaLabel}
               </button>
             </div>
             <div id="sc-trust-badges">

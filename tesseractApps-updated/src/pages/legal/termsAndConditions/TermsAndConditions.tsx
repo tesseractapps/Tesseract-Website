@@ -21,7 +21,7 @@ const TermsAndConditions = () => {
   return (
     <div id="tc-page">
       <SEO
-        title="Terms & Conditions | Service Agreement | TesseractApps Australia"
+        title="Terms & Conditions | TesseractApps"
         description="TesseractApps terms and conditions for NDIS software services. Understand your rights, subscription terms, data ownership, and service agreements."
       />
 

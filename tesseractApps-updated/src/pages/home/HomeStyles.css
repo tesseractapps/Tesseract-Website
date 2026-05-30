@@ -1376,6 +1376,16 @@
 .hv4-blog-card:hover .hv4-blog-img { transform: scale(1.04); }
 .hv4-blog-img--placeholder {
   background: #e8f0f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hv4-blog-img-logo {
+  width: 120px;
+  height: auto;
+  opacity: 0.4;
+  object-fit: contain;
 }
 
 /* Category badge over image */
@@ -1854,6 +1864,26 @@
   background: var(--color-primary);
   margin-top: 8px;
 }
+.hv4-faq-glossary-link {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-gray);
+}
+
+.hv4-faq-glossary-link a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(12, 120, 186, 0.3);
+  padding-bottom: 1px;
+  transition: border-color 0.15s;
+}
+
+.hv4-faq-glossary-link a:hover {
+  border-color: var(--color-primary);
+}
+
 @media (max-width: 600px) {
   #hv4-faq { padding: 64px 16px; }
   .hv4-faq-question { padding: 18px 20px; font-size: 0.9375rem; gap: 14px; }

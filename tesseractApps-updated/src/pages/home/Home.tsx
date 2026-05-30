@@ -16,23 +16,7 @@ import { testimonialDummyData } from "../../data/testimonialData";
 import { accordiaDummyData } from "../../data/faqData";
 import dashboardImg from "../../assets/Website-home-image.webp";
 import starIcon from "../../assets/star.webp";
-import company2 from "../../assets/thumbs/company-2-thumb.webp";
-import company4 from "../../assets/thumbs/company-4-thumb.webp";
-import company5 from "../../assets/thumbs/company-5-thumb.webp";
-import company8 from "../../assets/thumbs/ANA Logo-thumb.webp";
-import company9 from "../../assets/thumbs/FRAMILY VENTURES Final-thumb.webp";
-import company10 from "../../assets/thumbs/PINNACLE Final-thumb.webp";
-import company13 from "../../assets/thumbs/logo13-thumb.webp";
-import company14 from "../../assets/thumbs/NEXUS Final-thumb.webp";
-import company16 from "../../assets/thumbs/Blessing Care-thumb.webp";
-import company17 from "../../assets/thumbs/Clear Choice-thumb.webp";
-import company19 from "../../assets/thumbs/ImprovedAbility-thumb.webp";
-import company20 from "../../assets/thumbs/RCG-Logo-thumb.webp";
-import company21 from "../../assets/thumbs/Company-YDCS-thumb.webp";
-import company22 from "../../assets/thumbs/KS PNG Logo.webp";
-import company23 from "../../assets/thumbs/embrace logo.webp";
-import company24 from "../../assets/thumbs/AveryCareLogo.webp";
-import company25 from "../../assets/thumbs/Onia3.webp";
+import { useSanityClientLogos } from "../../hooks/useSanityClientLogos";
 
 // ─── Isolated sub-components (Steps 1, 3, 4) ─────────────────────────────────
 import StatCounter from "./components/StatCounter";
@@ -90,32 +74,13 @@ const MATURITY_STAGES = [
 
 const PROBLEMS = [
   { label: "Rostering–Payroll gap", desc: "Running rostering in one system and payroll in another, and they never agree.", href: "/capabilities/rostering-scheduling" },
-  { label: "Incident trail gaps", desc: "Can't confidently tell the NDIS Commission when an incident was reported, escalated, and resolved.", href: "/capabilities/incidents" },
-  { label: "SCHADS risk", desc: "Your SCHADS interpretation lives in someone's head, payroll errors surface weeks later.", href: "/capabilities/timesheets-payroll" },
-  { label: "Revenue leakage", desc: "Submitting NDIS claims manually and reconciling against spreadsheets.", href: "/capabilities/ndis-claiming" },
-  { label: "Audit anxiety", desc: "Compliance documentation scattered across email, shared drives, and filing cabinets.", href: "/capabilities/compliance-audit" },
+  { label: "Incident trail gaps", desc: "Can't confidently tell the NDIS Commission when an incident was reported, escalated, and resolved.", href: "/capabilities/incidents-management-reporting" },
+  { label: "SCHADS risk", desc: "Your SCHADS interpretation lives in someone's head, payroll errors surface weeks later.", href: "/capabilities/timesheets-payroll-alignment" },
+  { label: "Revenue leakage", desc: "Submitting NDIS claims manually and reconciling against spreadsheets.", href: "/capabilities/ndis-claiming-invoicing" },
+  { label: "Audit anxiety", desc: "Compliance documentation scattered across email, shared drives, and filing cabinets.", href: "/capabilities/compliance-audit-readiness" },
   { label: "No visibility", desc: "No single view of your operations, every report requires chasing three people.", href: "/capabilities/dashboards-reporting" },
 ];
 
-const CLIENT_LOGOS = [
-  { src: company2, alt: "TesseractApps client" },
-  { src: company10, alt: "Pinnacle" },
-  { src: company13, alt: "TesseractApps client" },
-  { src: company4, alt: "TesseractApps client" },
-  { src: company5, alt: "TesseractApps client" },
-  { src: company8, alt: "ANA" },
-  { src: company9, alt: "Framily Ventures" },
-  { src: company14, alt: "Nexus" },
-  { src: company16, alt: "Blessing Care" },
-  { src: company17, alt: "Clear Choice" },
-  { src: company19, alt: "Improved Ability" },
-  { src: company20, alt: "RCG" },
-  { src: company21, alt: "YDCS" },
-  { src: company22, alt: "KS" },
-  { src: company23, alt: "Embrace" },
-  { src: company24, alt: "Avery Care" },
-  { src: company25, alt: "Onia Together" },
-];
 
 // ─── Single shared IntersectionObserver for all fade-in sections ─────────────
 // One observer instance watches all 6 section refs simultaneously,
@@ -293,6 +258,7 @@ FaqItem.displayName = "FaqItem";
 export default function Home() {
   const navigate = useAppNavigate();
   const routerNavigate = useNavigate();
+  const { logos: clientLogos } = useSanityClientLogos();
 
   // ── Fade-in section refs — single shared observer for all 6 sections ────────
   const { refCallbacks, visible } = useSectionInView(0.1);
@@ -396,7 +362,7 @@ export default function Home() {
     <>
       <SCAnnouncementModal />
       <SEO
-        title="#1 NDIS Workforce Management Software | Rostering, Compliance & Payroll — TesseractApps"
+        title="NDIS Workforce Management Software | TesseractApps"
         description="Purpose-built NDIS operational infrastructure connecting rostering, payroll, compliance, and participant management on one platform. Starting at $39.99/seat/month."
         structuredData={homepageStructuredData}
       />
@@ -477,18 +443,20 @@ export default function Home() {
         </div>{/* /hv4-hero-wrap */}
 
         {/* ── Section: Trusted clients ────────────────────────────────── */}
-        <section id="hv4-trusted">
-          <p className="hv4-trusted-label">Trusted by NDIS providers across Australia</p>
-          <div className="hv4-marquee-outer" aria-hidden="true">
-            <div className="hv4-marquee-track">
-              {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((logo, i) => (
-                <div key={i} className="hv4-marquee-item">
-                  <img src={logo.src} alt={logo.alt} loading="lazy" width="120" height="60" />
-                </div>
-              ))}
+        {clientLogos.length > 0 && (
+          <section id="hv4-trusted">
+            <p className="hv4-trusted-label">Trusted by NDIS providers across Australia</p>
+            <div className="hv4-marquee-outer" aria-hidden="true">
+              <div className="hv4-marquee-track">
+                {[...clientLogos, ...clientLogos].map((logo, i) => (
+                  <div key={`${logo._id}-${i}`} className="hv4-marquee-item">
+                    <img src={logo.logo.asset.url} alt={logo.logo.alt ?? logo.name} loading="lazy" width="120" height="60" />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* ── Section 3: Operational Flow ──────────────────────────────── */}
         <section id="hv4-flow" ref={refCallbacks.flow} className={flowInView ? "hv4-fade-in" : "hv4-fade-pre"}>
@@ -680,6 +648,10 @@ export default function Home() {
                 />
               ))}
             </div>
+            <p className="hv4-faq-glossary-link">
+              Looking for NDIS terminology? Browse our{" "}
+              <a href="/ndis-glossary">NDIS Glossary — 60+ terms explained</a>.
+            </p>
           </div>
         </section>
 

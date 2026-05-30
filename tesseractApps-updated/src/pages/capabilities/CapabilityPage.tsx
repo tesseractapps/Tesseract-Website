@@ -9,6 +9,7 @@ import { formatDate } from "../../utils/formatDate";
 import { urlFor } from "../../sanity/lib/image";
 import { buildBreadcrumbSchema, buildSoftwareSchema, buildGraphSchema } from "../../utils/schemaHelpers";
 import Breadcrumb from "../../components/common/Breadcrumb";
+import PortableTextRenderer from "../../components/sanity/portable-text";
 
 // ── Skeleton ────────────────────────────────────────────────────────────────
 
@@ -59,11 +60,6 @@ const IconArrowRight = () => (
   </svg>
 );
 
-const IconQuote = () => (
-  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-  </svg>
-);
 
 const IconBadge = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -115,13 +111,20 @@ const CapabilityPage = () => {
     ]),
     buildSoftwareSchema({
       name: `${page.heroHeading}, TesseractApps`,
-      description: page.heroSubtitle ?? page.problemStatement ?? metaDescription,
+      description: page.heroSubtitle ?? metaDescription,
       features: page.whatYouGet,
     })
   );
 
+  // Extract plain text from a Portable Text block array (blocks only, skip images etc.)
+  const blocksToPlainText = (blocks: typeof page.howWeSolveThis) =>
+    blocks
+      .filter((b): b is Extract<typeof b, { _type: 'block' }> => b._type === 'block')
+      .map((b) => (b.children ?? []).map((c) => c.text ?? '').join(''))
+      .join(' ');
+
   // Split howWeSolveThis into sentences for the proof panel (first 3)
-  const proofPoints = page.howWeSolveThis
+  const proofPoints = blocksToPlainText(page.howWeSolveThis)
     .split(/(?<=[.!?])\s+/)
     .filter((s) => s.trim().length > 20)
     .slice(0, 3);
@@ -195,7 +198,7 @@ const CapabilityPage = () => {
           )}
           <div className="cap-hero-badges">
             <span className="cap-hero-badge">✓ NDIS Compliant</span>
-            <span className="cap-hero-badge">✓ Salesforce Native</span>
+            {/* <span className="cap-hero-badge">✓ Salesforce Native</span> */}
             <span className="cap-hero-badge">✓ Australian Hosted</span>
           </div>
         </div>
@@ -206,13 +209,8 @@ const CapabilityPage = () => {
         <div className="cap-outer">
           <div className="cap-section-label">The Problem</div>
           <div className="cap-problem-block">
-            <div className="cap-problem-quote-icon">
-              <IconQuote />
-            </div>
             <div className="cap-problem-text">
-              {page.problemStatement.split("\n\n").map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
+              <PortableTextRenderer value={page.problemStatement} />
             </div>
           </div>
         </div>
@@ -241,9 +239,7 @@ const CapabilityPage = () => {
           <h2 className="cap-section-heading">One connected solution, built for NDIS providers.</h2>
           <div className="cap-solve-layout">
             <div className="cap-solve-text">
-              {page.howWeSolveThis.split("\n\n").map((para, i) => (
-                <p key={i} className="cap-body-text">{para}</p>
-              ))}
+              <PortableTextRenderer value={page.howWeSolveThis} />
             </div>
             <div className="cap-solve-proof">
               <div className="cap-solve-proof-heading">Why it works</div>
@@ -340,16 +336,20 @@ const CapabilityPage = () => {
                   to={`/blog/${post.slug?.current}`}
                   className="cap-reading-card"
                 >
-                  {post.mainImage?.asset && (
-                    <img
-                      className="cap-reading-image"
-                      src={urlFor(post.mainImage).width(720).height(420).fit("crop").auto("format").url()}
-                      alt={post.mainImage.alt ?? post.title ?? "Blog post image"}
-                      loading="lazy"
-                      width={360}
-                      height={210}
-                    />
-                  )}
+                  <div className="cap-reading-image-wrap">
+                    {post.mainImage?.asset ? (
+                      <img
+                        className="cap-reading-image"
+                        src={urlFor(post.mainImage).width(720).height(405).fit("crop").auto("format").url()}
+                        alt={post.mainImage.alt ?? post.title ?? "Blog post image"}
+                        loading="lazy"
+                        width={720}
+                        height={405}
+                      />
+                    ) : (
+                      <img src="/svg-logos/Full Logo Blue.svg" alt="TesseractApps" className="cap-reading-image-logo" />
+                    )}
+                  </div>
                   <div className="cap-reading-body">
                     <h3 className="cap-reading-title">{post.title}</h3>
                     {post.excerpt && <p className="cap-reading-excerpt">{post.excerpt}</p>}

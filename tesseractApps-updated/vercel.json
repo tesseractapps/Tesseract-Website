@@ -169,12 +169,33 @@
       "has": [{ "type": "host", "value": "www.tesseractapps.com.au" }],
       "destination": "https://tesseractapps.com.au/:path*",
       "permanent": true
-    }
+    },
+    { "source": "/about-us", "destination": "/about", "permanent": true },
+    { "source": "/about-us/", "destination": "/about", "permanent": true },
+    { "source": "/ndis", "destination": "/solutions/ndis", "permanent": true },
+    { "source": "/ndis/", "destination": "/solutions/ndis", "permanent": true },
+    { "source": "/ndis-industry", "destination": "/solutions/ndis", "permanent": true },
+    { "source": "/disability-support-ndis", "destination": "/solutions/ndis", "permanent": true },
+    { "source": "/payroll-services", "destination": "/capabilities/timesheets-payroll-alignment", "permanent": true },
+    { "source": "/payroll-services/", "destination": "/capabilities/timesheets-payroll-alignment", "permanent": true },
+    { "source": "/tesseracts-payroll-services-software", "destination": "/pricing", "permanent": true },
+    { "source": "/tesseracts-payroll-services-software/", "destination": "/pricing", "permanent": true },
+    { "source": "/ndis-compliance-audit-failures-2026", "destination": "/blog/ndis-compliance-audit-failures-2026", "permanent": true },
+    { "source": "/account", "destination": "/", "permanent": true },
+    { "source": "/account/", "destination": "/", "permanent": true },
+    { "source": "/tag/:slug*", "destination": "/blogs", "permanent": true },
+    { "source": "/our-story", "destination": "/about", "permanent": true },
+    { "source": "/our-mission-and-vision", "destination": "/about", "permanent": true },
+    { "source": "/team", "destination": "/about", "permanent": true },
+    { "source": "/webinars", "destination": "/blogs", "permanent": true },
+    { "source": "/case-studies", "destination": "/blogs", "permanent": true },
+    { "source": "/book-a-demo/", "destination": "/book-a-demo", "permanent": true }
   ],
+  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/((?!assets|llm|studio).*)",
+      "destination": "/index.html"
     }
   ]
 }
