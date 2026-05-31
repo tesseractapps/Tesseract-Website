@@ -8,7 +8,7 @@
 
 /* ── Shared outer wrapper ── */
 .scp-outer {
-  max-width: 1140px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 0 40px;
 }
@@ -71,7 +71,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 13px 28px;
+  padding: 10px;
   border-radius: 10px;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -720,6 +720,9 @@
   .scp-billing-notes { padding: 16px 18px; }
   .scp-section-heading { font-size: 1.625rem; }
 
+  .scp-price-card-prices { padding: 16px; }
+  .scp-price-card-right { padding: 20px 20px 24px; }
+
   #scp-features { padding: 56px 0 64px; }
 
   #scp-esign { padding: 56px 0 64px; }
@@ -744,6 +747,8 @@
   #scp-pricing { padding: 40px 0 48px; }
   .scp-price { font-size: 1.875rem; }
   .scp-card { padding: 20px 16px 18px; }
+  .scp-price-number { font-size: 2.75rem; }
+  .scp-price-card-banner { font-size: 0.75rem; padding: 9px 16px; }
 
   #scp-features { padding: 40px 0 48px; }
   #scp-esign { padding: 40px 0 48px; }
@@ -755,148 +760,226 @@
 }
 
 /* ══════════════════════════════════════════
-   PRICING TABLE (replaces card grid)
-══════════════════════════════════════════ */
-/* ══════════════════════════════════════════
-   PRICING TABLE  (matches /pricing page style)
+   PRICING CARD (new design)
 ══════════════════════════════════════════ */
 
-.scp-pricing-table-wrap {
-  max-width: 520px;
+.scp-price-card {
+  max-width: 880px;
   margin: 0 auto 2.5rem;
+  border-radius: 20px;
+  overflow: hidden;
   border: 1px solid #dbe7f4;
-  border-radius: 16px;
-  overflow: visible;
+  box-shadow: 0 8px 32px rgba(8, 36, 66, 0.08);
   background: #fff;
-  box-shadow: 0 8px 24px rgba(8, 36, 66, 0.05);
 }
 
-.scp-pricing-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-/* ── Header row ── */
-.scp-pricing-head-row {
-  background: #fff;
-  box-shadow: 0 2px 0 #dbe7f4;
-}
-
-.scp-pricing-th {
-  padding: 20px 18px;
+.scp-price-card-banner {
+  background: var(--color-primary);
+  color: #fff;
   text-align: center;
-  vertical-align: top;
-  font-weight: normal;
-}
-
-.scp-pricing-th--label {
-  width: 55%;
-  background: #f4f8fd;
-  border-right: 1px solid #dbe7f4;
-  text-align: left;
-}
-
-/* Monthly — subtle top accent */
-.scp-pricing-th--monthly {
-  box-shadow: inset 0 4px 0 0 #a0b8cc;
-  border-right: 1px solid #f1f5fb;
-}
-
-/* Yearly — strong primary accent */
-.scp-pricing-th--yearly {
-  box-shadow: inset 0 4px 0 0 var(--color-primary);
-  border-left: 1px solid #f1f5fb;
-}
-
-.scp-pricing-plan-name {
   font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 10px 24px;
+}
+
+.scp-price-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Left side — prices */
+.scp-price-card-prices {
+  padding:20px;
+  background: var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.scp-price-row-item {
+  padding: 20px 0 0 0;
+}
+
+.scp-price-row-item:first-child {
+  padding-top: 0;
+  padding-bottom: 20px;
+}
+
+.scp-price-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.scp-price-big {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.scp-price-dollar {
+  font-size: 2rem;
+  font-weight: 700;
+  opacity: 0.8;
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+.scp-price-number {
+  font-size: 4.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.scp-price-cents {
+  font-size: 1.5rem;
+  font-weight: 700;
+  opacity: 0.75;
+  align-self: flex-end;
+  margin-bottom: 8px;
+}
+
+.scp-price-label {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+.scp-price-addon-label a {
+  color: rgba(103, 160, 220, 0.9);
+  text-decoration: none;
+}
+
+.scp-price-addon-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.scp-price-addon-label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.scp-price-addon-free {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #5dd67a;
+  background: rgba(93, 214, 122, 0.15);
+  border: 1px solid rgba(93, 214, 122, 0.3);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.scp-price-addon-amount {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.scp-price-addon-unit {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  margin-left: 2px;
+}
+
+.scp-price-addon-note {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+
+.scp-price-addon-note a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.scp-price-section-label {
+  font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-secondary);
-  display: block;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0 8px;
 }
 
-.scp-pricing-th--yearly .scp-pricing-plan-name {
-  color: var(--color-primary);
+/* Right side — assurances + CTA */
+.scp-price-card-right {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: #fff;
 }
 
-/* ── Body cells ── */
-.scp-pricing-td {
-  padding: 20px 18px;
-  vertical-align: middle;
-  border-bottom: 1px solid #edf3fa;
-  text-align: center;
+.scp-price-assurances {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 12px 32px;
+}
+
+@media (max-width: 560px) {
+  .scp-price-assurances { grid-template-columns: 1fr; }
+}
+
+.scp-price-assurances li {
   font-size: 0.9rem;
   color: var(--color-secondary);
+  line-height: 1.5;
+  padding-left: 24px;
+  position: relative;
 }
 
-.scp-pricing-row:last-child .scp-pricing-td {
-  border-bottom: none;
+.scp-price-assurances li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(12, 120, 186, 0.1);
+  border: 1.5px solid var(--color-primary);
+  box-sizing: border-box;
 }
 
-.scp-pricing-td--label {
-  text-align: left;
-  font-weight: 700;
-  font-size: 0.9375rem;
-  color: var(--color-secondary);
-  background: #f8fbff;
-  border-right: 1px solid #edf3fa;
+.scp-price-assurances li::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  transform: rotate(45deg);
+  width: 3px;
+  height: 6px;
+  border-right: 2px solid var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
 }
 
-.scp-pricing-td--monthly {
-  border-right: 1px solid #edf3fa;
+.scp-price-card-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-/* Alternating stripe */
-.scp-pricing-row--alt .scp-pricing-td:not(.scp-pricing-td--label) {
-  background: #fafcff;
-}
-
-/* Footer row */
-.scp-pricing-row--footer .scp-pricing-td {
-  background: #f4f8fd;
-  border-top: 1px solid #dbe7f4;
-  border-bottom: none;
-  font-size: 0.8125rem;
-  vertical-align: top;
-}
-
-.scp-pricing-td-sub {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: var(--color-text-gray);
-  margin-top: 2px;
-}
-
-/* Price amounts */
-.scp-pricing-amount {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--color-secondary);
-  letter-spacing: -0.03em;
-  display: block;
-}
-
-.scp-pricing-amount--featured {
-  color: var(--color-primary);
-  font-size: 1.625rem;
-}
-
-.scp-pricing-per {
-  display: block;
-  font-size: 0.6875rem;
-  font-weight: 400;
-  color: var(--color-text-gray);
-  margin-top: 2px;
-}
-
-.scp-pricing-amount--free {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1a7a1a;
+.scp-price-card-actions .scp-btn-primary,
+.scp-price-card-actions .scp-btn-secondary {
+  flex: 1;
+  min-width: 140px;
+  justify-content: center;
 }
 
 /* Plan note tooltip */
@@ -907,7 +990,7 @@
 }
 
 .scp-plan-note {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--color-text-gray);
   display: inline-flex;
   align-items: center;
@@ -926,8 +1009,93 @@
   position: absolute;
   top: calc(100% + 6px);
   left: 0;
-  width: 240px;
+  width: 260px;
   z-index: 200;
+}
+
+/* ══════════════════════════════════════════
+   FEATURE CHIPS GRID
+══════════════════════════════════════════ */
+.scp-features-chips {
+  max-width: 880px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.scp-feature-chip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 14px;
+  border: 1px solid #dde3ec;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.scp-feature-chip:hover,
+.scp-feature-chip--open {
+  border-color: var(--color-primary);
+  background: #f0f7ff;
+  box-shadow: 0 2px 12px rgba(12, 120, 186, 0.1);
+}
+
+.scp-chip-check {
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+.scp-chip-label {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  line-height: 1.35;
+}
+
+.scp-chip-info {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  opacity: 0.4;
+  transition: opacity 0.15s ease;
+}
+
+.scp-feature-chip:hover .scp-chip-info,
+.scp-feature-chip--open .scp-chip-info {
+  opacity: 0.9;
+}
+
+.scp-chip-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: #fff;
+  border: 1px solid #d0dce8;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 42, 82, 0.12);
+  padding: 12px 14px;
+  font-size: 0.8125rem;
+  color: var(--color-text-dark-gray, #2d3a4a);
+  line-height: 1.6;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .scp-features-chips { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .scp-features-chips { grid-template-columns: 1fr; }
 }
 
 /* ══════════════════════════════════════════
@@ -945,9 +1113,12 @@
   border: 0;
 }
 
-#scp-whats-included {
-  padding: 80px 0 88px;
-  background: linear-gradient(180deg, #f8fbff 0%, #fff 100%);
+#scp-whats-included-inner {
+  margin-top: 56px;
+  max-width: 880px;
+  margin: 0 auto;
+  padding-top: 56px;
+  border-top: 1px solid #edf1f7;
 }
 
 .scp-included-table-scroll {
@@ -1024,7 +1195,7 @@
 
 .scp-addons-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(1, 1fr);
   gap: 24px;
 }
 
@@ -1165,7 +1336,7 @@
 
 .scp-why-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
@@ -1204,7 +1375,7 @@
 }
 
 .scp-faq-list {
-  max-width: 760px;
+  max-width: 880px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -1275,7 +1446,6 @@
 }
 
 @media (max-width: 720px) {
-  #scp-whats-included,
   #scp-addons,
   #scp-billing,
   #scp-why,
@@ -1296,11 +1466,12 @@
 }
 
 @media (max-width: 480px) {
-  #scp-whats-included,
   #scp-addons,
   #scp-billing,
   #scp-why,
   #scp-faq { padding: 40px 0 48px; }
+
+  #scp-whats-included-inner { margin-top: 40px; padding-top: 40px; }
 
   .scp-faq-question { padding: 15px 18px; font-size: 0.875rem; }
   .scp-faq-answer { padding: 0 18px 15px; }

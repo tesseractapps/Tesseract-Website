@@ -75,6 +75,7 @@ export type CTALocation =
   | "pricing"
   | "sc_pricing"
   | "sc_pricing_hero_demo"
+  | "sc_pricing_card"
   | "sc_pricing_cta"
   | "sc_pricing_esign"
   | "platform_hero"
