@@ -476,6 +476,7 @@ function injectMetaIntoHtml(
 export default defineConfig({
   ssgOptions: {
     dirStyle: 'nested',
+    concurrency: 1,
     includedRoutes: async () => {
       const { routes } = await getRouteData();
       return routes;
@@ -493,6 +494,30 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    // Move stylesheet <link> tags before JS <script> tags to eliminate FOUC.
+    // vite-react-ssg injects CSS after the entry script; this reorders them.
+    {
+      name: 'css-first',
+      enforce: 'post' as const,
+      transformIndexHtml(html: string) {
+        // Extract all stylesheet link tags injected by Vite
+        const stylesheetRe = /<link[^>]+rel="stylesheet"[^>]*>/gi;
+        const stylesheets = html.match(stylesheetRe) ?? [];
+        if (stylesheets.length === 0) return html;
+        // Remove them from wherever Vite placed them
+        let result = html;
+        for (const tag of stylesheets) {
+          result = result.replace(tag, '');
+        }
+        // Re-insert them immediately after <meta charset> — before anything else
+        const injection = stylesheets.join('\n    ');
+        result = result.replace(
+          /(<meta charset=[^>]+>)/i,
+          `$1\n    ${injection}`
+        );
+        return result;
+      },
+    },
     ...(!isSSGServerBuild ? [
       viteCompression({ algorithm: 'gzip', ext: '.gz' }),
       viteCompression({ algorithm: 'brotliCompress', ext: '.br' }),
@@ -505,7 +530,7 @@ export default defineConfig({
     ] : []),
   ],
   build: {
-    cssCodeSplit: true,
+    cssCodeSplit: false,
     sourcemap: false,
     ssrManifest: true,
     chunkSizeWarningLimit: 1000,

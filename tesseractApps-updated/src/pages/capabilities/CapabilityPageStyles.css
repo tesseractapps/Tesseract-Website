@@ -784,10 +784,6 @@
     grid-template-columns: 1fr;
   }
 
-  .cap-problem-block {
-    padding: 28px 24px;
-  }
-
   .cap-skeleton-insight-grid {
     grid-template-columns: 1fr 1fr;
   }

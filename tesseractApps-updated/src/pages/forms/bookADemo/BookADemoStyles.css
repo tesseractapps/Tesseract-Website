@@ -39,11 +39,6 @@
 #bookADemo-page {
   background: #fff;
   overflow: hidden;
-  margin-top: -68px;
-}
-
-@media (max-width: 500px) {
-  #bookADemo-page { margin-top: -60px; }
 }
 
 /* ─────────────────────────────────────────
@@ -848,8 +843,7 @@
   #bookADemo-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    height: 100vh;
-    height: 100dvh;
+    height: 100svh;
     overflow: hidden;
   }
 
@@ -898,10 +892,26 @@
 /* ─────────────────────────────────────────
    MOBILE  (≤ 768px)
 ───────────────────────────────────────── */
+/* Page heading — visible on mobile when sidebar is hidden */
+#bookADemo-page-heading {
+  display: none;
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 1024px) {
+  #bookADemo-page-heading {
+    display: block;
+  }
+}
+
 @media (max-width: 768px) {
   #bookADemo-container {
-    height: calc(100vh - 60px);
-    height: calc(100dvh - 60px);
+    height: 100dvh;
+    height: 100svh;
   }
 
   #bookADemo-sidebar {
@@ -921,13 +931,28 @@
   }
 
   #bookADemo-cards-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
   .bookADemo-option-card {
     min-height: unset;
-    padding: 16px 16px 14px;
+    padding: 14px 12px 12px;
+    gap: 6px;
+  }
+
+  .bookADemo-card-icon-wrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+
+  .bookADemo-card-title {
+    font-size: 0.875rem;
+  }
+
+  .bookADemo-card-desc {
+    font-size: 0.8125rem;
   }
 
   #bookADemo-name-row {

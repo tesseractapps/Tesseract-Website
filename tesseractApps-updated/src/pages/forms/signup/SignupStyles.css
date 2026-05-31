@@ -39,11 +39,6 @@
 #signup-page {
   background: #fff;
   overflow: hidden;
-  margin-top: -68px;
-}
-
-@media (max-width: 500px) {
-  #signup-page { margin-top: -60px; }
 }
 
 /* ─────────────────────────────────────────
@@ -246,6 +241,22 @@
 #signup-stepper-wrapper {
   flex-shrink: 0;
   padding: 20px 64px 0;
+}
+
+/* Page heading — shown on mobile when sidebar is hidden */
+#signup-page-heading {
+  display: none;
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 1024px) {
+  #signup-page-heading {
+    display: block;
+  }
 }
 
 #signup-form-scroll-area {
@@ -815,8 +826,7 @@
   #signup-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    height: 100vh;
-    height: 100dvh;
+    height: 100svh;
     overflow: hidden;
   }
 
@@ -867,8 +877,8 @@
 ───────────────────────────────────────── */
 @media (max-width: 768px) {
   #signup-container {
-    height: calc(100vh - 60px);
-    height: calc(100dvh - 60px);
+    height: 100dvh;
+    height: 100svh;
   }
 
   #signup-sidebar {

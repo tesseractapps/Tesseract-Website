@@ -319,8 +319,9 @@ const BookADemo = () => {
           {/* ── Right Content ── */}
           <div id="bookADemo-form-section">
 
-            {/* Stepper */}
+            {/* Page heading + Stepper */}
             <div id="bookADemo-stepper-wrapper">
+              <div id="bookADemo-page-heading">Book a Demo</div>
               <FormStepper
                 steps={["Organisation", "Staff Size", "Service Type"]}
                 activeStep={currentStep}

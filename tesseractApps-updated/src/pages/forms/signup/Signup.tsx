@@ -300,8 +300,9 @@ const Signup = () => {
           {/* ── Right Content ── */}
           <div id="signup-form-section">
 
-            {/* Stepper */}
+            {/* Page heading + Stepper */}
             <div id="signup-stepper-wrapper">
+              <div id="signup-page-heading">Begin Your Journey</div>
               <FormStepper
                 steps={["Company Verification", "Personal Details", "Review & Confirm"]}
                 activeStep={activeStep}

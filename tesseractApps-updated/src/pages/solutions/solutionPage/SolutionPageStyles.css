@@ -792,10 +792,6 @@
     grid-template-columns: 1fr;
   }
 
-  .sol-problem-block {
-    padding: 28px 24px;
-  }
-
   .sol-skeleton-insight-grid {
     grid-template-columns: 1fr 1fr;
   }

@@ -11,9 +11,11 @@ export const createRoot = ViteReactSSG(
   <AppProvider>
     <App />
   </AppProvider>,
-  ({ routePath }: ViteReactSSGContext<false>) => {
+  ({ routePath, isClient }: ViteReactSSGContext<false>) => {
     if (routePath !== undefined) {
       (globalThis as any).__SSG_ROUTE__ = routePath;
     }
+    // Expose SSG context so AppRoutes can skip lazy loading during pre-render
+    (globalThis as any).__IS_SSG__ = !isClient;
   }
 );

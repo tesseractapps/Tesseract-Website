@@ -1,38 +1,39 @@
 // src/routes/AppRoutes.tsx
+// Static imports — no lazy() — so vite-react-ssg SSG renders actual page
+// content synchronously, eliminating the Suspense fallback flash.
 import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { lazy, Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useAppContext } from "../contexts/AppContext";
 
 import Home from "../pages/home/Home";
-
-const Platform = lazy(() => import("../pages/platform/Platform"));
-const Pricing = lazy(() => import("../pages/marketing/pricing/Pricing"));
-const FAQ = lazy(() => import("../pages/resources/faq/FAQ"));
-const PrivacyPolicy = lazy(() => import("../pages/legal/privacyPolicy/PrivacyPolicy"));
-const TermsAndConditions = lazy(() => import("../pages/legal/termsAndConditions/TermsAndConditions"));
-const ReleaseNotes = lazy(() => import("../pages/legal/releaseNotes/ReleaseNotes"));
-const Careers = lazy(() => import("../pages/marketing/careers/Careers"));
-const Blog = lazy(() => import("../pages/blog/Blog"));
-const BlogPostPage = lazy(() => import("../pages/blogPost/BlogPostPage"));
-const CapabilitiesListing = lazy(() => import("../pages/capabilities/CapabilitiesListing"));
-const CapabilityPage = lazy(() => import("../pages/capabilities/CapabilityPage"));
-const SolutionsListing = lazy(() => import("../pages/solutions/SolutionsListing"));
-const SolutionPage = lazy(() => import("../pages/solutions/solutionPage/SolutionPage"));
-const ContactInformation = lazy(() => import("../pages/forms/contactInformation/ContactInformation"));
-const About = lazy(() => import("../pages/marketing/about/About"));
-const Whitepapers = lazy(() => import("../pages/resources/whitepapers/Whitepapers"));
-const Brochures = lazy(() => import("../pages/resources/brochures/Brochures"));
-const BookADemo = lazy(() => import("../pages/forms/bookADemo/BookADemo"));
-const Signup = lazy(() => import("../pages/forms/signup/Signup"));
-const CompetitorPage = lazy(() => import("../pages/competitors/CompetitorPage"));
-const NDISGlossary = lazy(() => import("../pages/resources/glossary/NDISGlossary"));
-const SitemapPage = lazy(() => import("../pages/resources/sitemapPage/SitemapPage"));
-const LMS = lazy(() => import("../pages/lms/LMS"));
-const WorkflowEngine = lazy(() => import("../pages/workflowEngine/WorkflowEngine"));
-const SupportCoordination = lazy(() => import("../pages/supportCoordination/SupportCoordination"));
-const SCPricing = lazy(() => import("../pages/marketing/scPricing/SCPricing"));
-const Register = lazy(() => import("../pages/forms/register/Register"));
-const NotFound = lazy(() => import("../pages/notFound/NotFound"));
+import Platform from "../pages/platform/Platform";
+import Pricing from "../pages/marketing/pricing/Pricing";
+import FAQ from "../pages/resources/faq/FAQ";
+import PrivacyPolicy from "../pages/legal/privacyPolicy/PrivacyPolicy";
+import TermsAndConditions from "../pages/legal/termsAndConditions/TermsAndConditions";
+import ReleaseNotes from "../pages/legal/releaseNotes/ReleaseNotes";
+import Careers from "../pages/marketing/careers/Careers";
+import Blog from "../pages/blog/Blog";
+import BlogPostPage from "../pages/blogPost/BlogPostPage";
+import CapabilitiesListing from "../pages/capabilities/CapabilitiesListing";
+import CapabilityPage from "../pages/capabilities/CapabilityPage";
+import SolutionsListing from "../pages/solutions/SolutionsListing";
+import SolutionPage from "../pages/solutions/solutionPage/SolutionPage";
+import ContactInformation from "../pages/forms/contactInformation/ContactInformation";
+import About from "../pages/marketing/about/About";
+import Whitepapers from "../pages/resources/whitepapers/Whitepapers";
+import Brochures from "../pages/resources/brochures/Brochures";
+import BookADemo from "../pages/forms/bookADemo/BookADemo";
+import Signup from "../pages/forms/signup/Signup";
+import CompetitorPage from "../pages/competitors/CompetitorPage";
+import NDISGlossary from "../pages/resources/glossary/NDISGlossary";
+import SitemapPage from "../pages/resources/sitemapPage/SitemapPage";
+import LMS from "../pages/lms/LMS";
+import WorkflowEngine from "../pages/workflowEngine/WorkflowEngine";
+import SupportCoordination from "../pages/supportCoordination/SupportCoordination";
+import SCPricing from "../pages/marketing/scPricing/SCPricing";
+import Register from "../pages/forms/register/Register";
+import NotFound from "../pages/notFound/NotFound";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -56,7 +57,7 @@ const AppRoutes = () => {
     }
     setCloseRoute(cleanPath || "/");
     if ((location.state as any)?.data) return;
-    sessionStorage.setItem("prevPath", location.pathname);
+    if (typeof sessionStorage !== "undefined") sessionStorage.setItem("prevPath", location.pathname);
 
     const routeConfig = getRoute(cleanPath);
     if (routeConfig?.data) {
@@ -67,182 +68,42 @@ const AppRoutes = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
-  const pageSpinner = <div className="app-page-loader"><div className="app-page-spinner" /></div>;
-
   return (
     <Routes>
-      {/* No outer Suspense — each lazy route has its own boundary so the
-          SSR pre-rendered HTML is never hidden behind a deferred marker. */}
       <Route path="/" element={<Home />} />
-        <Route path="/book-a-demo" element={<Suspense fallback={pageSpinner}><BookADemo /></Suspense>} />
-        <Route path="/signup" element={<Suspense fallback={pageSpinner}><Signup /></Suspense>} />
-        <Route path="/pricing" element={<Suspense fallback={pageSpinner}><Pricing /></Suspense>} />
-        <Route path="/platform" element={<Suspense fallback={pageSpinner}><Platform /></Suspense>} />
-        <Route path="/learning-management" element={<Navigate to="/capabilities/learning-management" replace />} />
-        <Route path="/workflow-engine" element={<Navigate to="/capabilities/workflow-engine" replace />} />
-        <Route path="/capabilities/learning-management" element={<Suspense fallback={pageSpinner}><LMS /></Suspense>} />
-        <Route path="/capabilities/workflow-engine" element={<Suspense fallback={pageSpinner}><WorkflowEngine /></Suspense>} />
-        <Route path="/capabilities" element={<Suspense fallback={pageSpinner}><CapabilitiesListing /></Suspense>} />
-        <Route path="/solutions" element={<Suspense fallback={pageSpinner}><SolutionsListing /></Suspense>} />
-        <Route path="/whitepapers" element={<Suspense fallback={pageSpinner}><Whitepapers /></Suspense>} />
-        <Route path="/brochures" element={<Suspense fallback={pageSpinner}><Brochures /></Suspense>} />
-        <Route path="/help-centre" element={<Suspense fallback={pageSpinner}><FAQ /></Suspense>} />
-        <Route path="/help-center" element={<Suspense fallback={pageSpinner}><FAQ /></Suspense>} />
-        <Route path="/about" element={<Suspense fallback={pageSpinner}><About /></Suspense>} />
-        <Route path="/careers" element={<Suspense fallback={pageSpinner}><Careers /></Suspense>} />
-        <Route path="/contact-us" element={<Suspense fallback={pageSpinner}><ContactInformation /></Suspense>} />
-        <Route path="/privacy-policy" element={<Suspense fallback={pageSpinner}><PrivacyPolicy /></Suspense>} />
-        <Route path="/terms-and-conditions" element={<Suspense fallback={pageSpinner}><TermsAndConditions /></Suspense>} />
-        <Route path="/changelog" element={<Suspense fallback={pageSpinner}><ReleaseNotes /></Suspense>} />
-        <Route path="/ndis-glossary" element={<Suspense fallback={pageSpinner}><NDISGlossary /></Suspense>} />
-        <Route path="/sitemap" element={<Suspense fallback={pageSpinner}><SitemapPage /></Suspense>} />
-        <Route path="/support-coordination" element={<Suspense fallback={pageSpinner}><SupportCoordination /></Suspense>} />
-        <Route path="/solutions/support-coordination" element={<Suspense fallback={pageSpinner}><SupportCoordination /></Suspense>} />
-        <Route path="/register-support-coordination" element={<Suspense fallback={pageSpinner}><Register /></Suspense>} />
-        <Route path="/sc-pricing" element={<Suspense fallback={pageSpinner}><SCPricing /></Suspense>} />
-
-        <Route
-          path="/blogs"
-          element={
-            <Suspense fallback={
-              <div className="bl-page">
-                <div className="bl-hero">
-                  <div className="bl-hero-overlay" />
-                  <div className="bl-hero-content">
-                    <div className="bl-hero-label">OUR BLOG</div>
-                    <h1 className="bl-hero-title">Insights &amp; Industry Updates</h1>
-                  </div>
-                </div>
-                <div className="bl-outer">
-                  <div className="bl-grid">
-                    {[0, 1, 2, 3, 4, 5].map((i) => (
-                      <div key={i} className="bl-skeleton-card">
-                        <div className="bl-skeleton-image" />
-                        <div className="bl-skeleton-body">
-                          <div className="bl-skeleton-line bl-skeleton-line--meta" />
-                          <div className="bl-skeleton-line bl-skeleton-line--title1" />
-                          <div className="bl-skeleton-line bl-skeleton-line--title2" />
-                          <div className="bl-skeleton-line bl-skeleton-line--ex1" />
-                          <div className="bl-skeleton-line bl-skeleton-line--ex2" />
-                          <div className="bl-skeleton-line bl-skeleton-line--ex3" />
-                          <div className="bl-skeleton-footer">
-                            <div className="bl-skeleton-line bl-skeleton-line--avatar" />
-                            <div className="bl-skeleton-line bl-skeleton-line--author" />
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            }>
-              <Blog />
-            </Suspense>
-          }
-        />
-
-        <Route
-          path="/capabilities/:slug"
-          element={
-            <Suspense fallback={
-              <div id="cap-page">
-                <div className="cap-skeleton-hero" />
-                <div className="cap-outer">
-                  <div className="cap-skeleton-section">
-                    <div className="cap-skeleton cap-skeleton-label" />
-                    <div className="cap-skeleton cap-skeleton-heading" />
-                    <div className="cap-skeleton cap-skeleton-line cap-skeleton-line--full" />
-                    <div className="cap-skeleton cap-skeleton-line cap-skeleton-line--lg" />
-                    <div className="cap-skeleton cap-skeleton-line cap-skeleton-line--md" />
-                  </div>
-                </div>
-              </div>
-            }>
-              <CapabilityPage />
-            </Suspense>
-          }
-        />
-
-        <Route
-          path="/solutions/:slug"
-          element={
-            <Suspense fallback={
-              <div id="sol-page">
-                <div className="sol-skeleton-hero" />
-                <div className="sol-outer">
-                  <div className="sol-skeleton-section">
-                    <div className="sol-skeleton sol-skeleton-label" />
-                    <div className="sol-skeleton sol-skeleton-heading" />
-                    <div className="sol-skeleton sol-skeleton-line sol-skeleton-line--full" />
-                    <div className="sol-skeleton sol-skeleton-line sol-skeleton-line--lg" />
-                    <div className="sol-skeleton sol-skeleton-line sol-skeleton-line--md" />
-                  </div>
-                </div>
-              </div>
-            }>
-              <SolutionPage />
-            </Suspense>
-          }
-        />
-
-        <Route
-          path="/tesseract-vs/:slug"
-          element={
-            <Suspense fallback={
-              <div id="cmp-page">
-                <div className="cmp-skeleton-hero" />
-                <div className="cmp-outer">
-                  <div className="cmp-skeleton-section">
-                    <div className="cmp-skeleton cmp-skeleton-label" />
-                    <div className="cmp-skeleton cmp-skeleton-heading" />
-                    <div className="cmp-skeleton cmp-skeleton-line cmp-skeleton-line--full" />
-                    <div className="cmp-skeleton cmp-skeleton-line cmp-skeleton-line--lg" />
-                    <div className="cmp-skeleton cmp-skeleton-line cmp-skeleton-line--md" />
-                  </div>
-                  <div className="cmp-skeleton-section">
-                    <div className="cmp-skeleton cmp-skeleton-label" />
-                    <div className="cmp-skeleton cmp-skeleton-heading" />
-                    <div className="cmp-skeleton-choice-grid">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <div key={i} className="cmp-skeleton cmp-skeleton-card" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div className="cmp-skeleton-cta" />
-              </div>
-            }>
-              <CompetitorPage />
-            </Suspense>
-          }
-        />
-
-        <Route
-          path="/blog/:slug"
-          element={
-            <Suspense fallback={
-              <div className="bpp-page">
-                <div className="bpp-skeleton-hero" />
-                <div className="bpp-skeleton-outer">
-                  <div className="bpp-skeleton-header" />
-                  <div className="bpp-skeleton-grid">
-                    <div className="bpp-skeleton-block bpp-skeleton-article" />
-                    <div className="bpp-skeleton-sidebar">
-                      <div className="bpp-skeleton-sidebar-card" />
-                      <div className="bpp-skeleton-sidebar-card" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            }>
-              <BlogPostPage />
-            </Suspense>
-          }
-        />
-
-        {/* Catch-all 404 */}
-        <Route path="*" element={<Suspense fallback={pageSpinner}><NotFound /></Suspense>} />
-      </Routes>
+      <Route path="/book-a-demo" element={<BookADemo />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/pricing" element={<Pricing />} />
+      <Route path="/platform" element={<Platform />} />
+      <Route path="/learning-management" element={<Navigate to="/capabilities/learning-management" replace />} />
+      <Route path="/workflow-engine" element={<Navigate to="/capabilities/workflow-engine" replace />} />
+      <Route path="/capabilities/learning-management" element={<LMS />} />
+      <Route path="/capabilities/workflow-engine" element={<WorkflowEngine />} />
+      <Route path="/capabilities" element={<CapabilitiesListing />} />
+      <Route path="/capabilities/:slug" element={<CapabilityPage />} />
+      <Route path="/solutions" element={<SolutionsListing />} />
+      <Route path="/solutions/:slug" element={<SolutionPage />} />
+      <Route path="/whitepapers" element={<Whitepapers />} />
+      <Route path="/brochures" element={<Brochures />} />
+      <Route path="/help-centre" element={<FAQ />} />
+      <Route path="/help-center" element={<FAQ />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/careers" element={<Careers />} />
+      <Route path="/contact-us" element={<ContactInformation />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+      <Route path="/changelog" element={<ReleaseNotes />} />
+      <Route path="/ndis-glossary" element={<NDISGlossary />} />
+      <Route path="/sitemap" element={<SitemapPage />} />
+      <Route path="/support-coordination" element={<SupportCoordination />} />
+      <Route path="/solutions/support-coordination" element={<SupportCoordination />} />
+      <Route path="/register-support-coordination" element={<Register />} />
+      <Route path="/sc-pricing" element={<SCPricing />} />
+      <Route path="/blogs" element={<Blog />} />
+      <Route path="/blog/:slug" element={<BlogPostPage />} />
+      <Route path="/tesseract-vs/:slug" element={<CompetitorPage />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
 

@@ -107,6 +107,12 @@ main[role="main"] {
   }
 }
 
+/* Fullscreen pages manage their own height — remove main padding */
+main[role="main"]:has(#bookADemo-page),
+main[role="main"]:has(#signup-page) {
+  padding-top: 0;
+}
+
 /* ── MUI font override — force Inter across all MUI components ── */
 .MuiTypography-root,
 .MuiAccordion-root,
