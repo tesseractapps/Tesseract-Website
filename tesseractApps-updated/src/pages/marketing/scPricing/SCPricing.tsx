@@ -3,9 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import SEO from "../../../components/common/SEO";
 import { trackCTAClick } from "../../../utils/analytics";
-import HeroArcsLeftComponent from "../../../components/sections/heroArcsComponent/HeroArcsComponent";
-import HeroArcsRightComponent from "../../../components/sections/heroArcsComponent/HeroArcsComponent";
-import { homeLeftArcsData, homeRightArcsData } from "../../../data/homeArcsData";
 
 // SC App feature data
 
@@ -113,6 +110,41 @@ const SC_FEATURES: { label: string; description: string }[] = [
 ];
 
 
+const SC_COMING_SOON: { label: string; description: string }[] = [
+  {
+    label: "Provider Match Score",
+    description: "Automatically score and rank service providers against a participant's needs, location, and preferences — so you spend less time searching and more time coordinating.",
+  },
+  {
+    label: "Referral Tracking",
+    description: "Track every referral from first contact to onboarding. A full pipeline view so no participant slips through the cracks.",
+  },
+  {
+    label: "Plan Review & Reassessment Alerts",
+    description: "Automated alerts before plan reviews and reassessments are due. Never miss a deadline that affects a participant's funding.",
+  },
+  {
+    label: "Proactive Action Queue",
+    description: "A prioritised daily queue of actions requiring your attention — follow-ups, expiring documents, budget thresholds, and check-in reminders surfaced automatically.",
+  },
+  {
+    label: "Document Storage",
+    description: "Centralised storage for all participant and provider documents. Linked directly to service agreements, plans, and compliance records.",
+  },
+  {
+    label: "Voice to Text",
+    description: "Dictate case notes hands-free and have them transcribed instantly. Capture support coordination activity on the go without typing.",
+  },
+  {
+    label: "Forms Module",
+    description: "Build, send, and collect structured forms for referrals, assessments, and consent. Responses linked automatically to participant profiles.",
+  },
+  {
+    label: "SC Reporting to NDIA & Plan Managers",
+    description: "Generate and submit NDIS Commission-ready SC reports and plan manager statements directly from your case notes and coordination activity — no copy-paste required.",
+  },
+];
+
 const FAQ_ITEMS: { question: string; answer: string }[] = [
   {
     question: "How does the 3 months free offer work?",
@@ -135,11 +167,6 @@ const FAQ_ITEMS: { question: string; answer: string }[] = [
       "Yes. Contact sales@tesseractapps.com to arrange the switch. Your new 12-month commitment begins from the Billing Anchor Month of your upgrade date.",
   },
   {
-    question: "Is e-signature included?",
-    answer:
-      "Yes. E-signature (T-Sign) is included as a standard integration on both plans at no extra cost. There are no per-document or per-signature fees.",
-  },
-  {
     question: "Are there any other fees?",
     answer:
       "The subscription covers all core features and standard integrations. Optional paid add-ons (such as Assisted Onboarding) are available separately. All prices are in AUD and exclude GST, which is added at checkout. Pricing is subject to change with 30 days' written notice; your rate is locked for the duration of your current billing term.",
@@ -155,7 +182,7 @@ const WHY_ITEMS = [
   {
     label: "No per-signature fees",
     description:
-      "Others charge $1 per finalised signature in addition to the subscription fee. We only charge $10/month flat per seat.",
+      "We include unlimited e-signatures for a flat $10/seat/month add-on, no per-document fees, ever.",
   },
   {
     label: "One user type, one price",
@@ -266,29 +293,51 @@ const SCPricing = () => {
 
       {/* Hero */}
       <section id="scp-hero">
-        <HeroArcsLeftComponent pendulums={homeLeftArcsData} />
         <div id="scp-hero-inner">
-          <div id="scp-hero-logo" role="img" aria-label="TesseractApps Logo" />
-          <p id="scp-hero-eyebrow">SC App – Pricing &amp; Features</p>
+          <div className="scp-label scp-label--light">Support Coordination Pricing &amp; Features</div>
           <h1 id="scp-hero-heading">
-            Built for Support Coordinators.<br />
-            Not adapted, built from scratch.
+            Built for Support Coordinators.{" "}
+            <span id="scp-hero-heading-accent">Not adapted,<br />built from scratch.</span>
           </h1>
           <p id="scp-hero-sub">
-            Everything you need to manage participants, stay compliant, and get paid without the admin overhead.
+            Everything you need to manage participants, stay compliant, and get paid, without the admin overhead.
           </p>
           <div id="scp-hero-ctas">
             <button
               type="button"
-              className="scp-btn-primary"
+              className="primary-cta"
               onClick={() => { trackCTAClick("book_demo", "sc_pricing_hero_demo", "/sc-pricing"); navigate("/book-a-demo"); }}
             >
               Book a Demo
             </button>
+            <button
+              type="button"
+              className="scp-btn-hero-outline"
+              onClick={() => navigate("/support-coordination")}
+            >
+              Learn More
+            </button>
           </div>
-          <p className="scp-cta-sub-note">No credit card required. 12-month commitment required for the yearly plan.</p>
+          <p className="scp-cta-sub-note">12-month commitment required for the yearly plan.</p>
         </div>
-        <HeroArcsRightComponent pendulums={homeRightArcsData} />
+        <div id="scp-hero-stats">
+          <div className="scp-hero-stat">
+            <div className="scp-hero-stat-value">14+</div>
+            <div className="scp-hero-stat-label">Features included</div>
+          </div>
+          <div className="scp-hero-stat">
+            <div className="scp-hero-stat-value">$0</div>
+            <div className="scp-hero-stat-label">Setup cost</div>
+          </div>
+          <div className="scp-hero-stat">
+            <div className="scp-hero-stat-value">99.9%</div>
+            <div className="scp-hero-stat-label">Uptime SLA</div>
+          </div>
+          <div className="scp-hero-stat">
+            <div className="scp-hero-stat-value">ISO</div>
+            <div className="scp-hero-stat-label">27001 &amp; 9001 certified</div>
+          </div>
+        </div>
       </section>
 
       {/* Pricing */}
@@ -300,9 +349,6 @@ const SCPricing = () => {
           <h2 className="scp-section-heading scp-section-heading--center">
             What does it cost?
           </h2>
-          <p className="scp-body-text scp-body-text--center scp-pricing-sub">
-            One price. Every feature included. No confusing tiers, no per-user add-ons for core tools.
-          </p>
 
           {/* Billing toggle */}
           <div className="scp-toggle-wrap">
@@ -372,7 +418,7 @@ const SCPricing = () => {
                 <div className="scp-price-card-actions">
                   <button
                     type="button"
-                    className="scp-btn-primary"
+                    className="primary-cta"
                     onClick={() => { trackCTAClick("book_demo", "sc_pricing_card", "/sc-pricing"); navigate("/book-a-demo"); }}
                   >
                     Book a Demo
@@ -395,6 +441,16 @@ const SCPricing = () => {
             </p>
             <ul className="scp-features-chips">
               {SC_FEATURES.map((f) => (
+                <FeatureChip key={f.label} label={f.label} description={f.description} />
+              ))}
+            </ul>
+
+            <div id="scp-coming-soon-heading">
+              <span id="scp-coming-soon-badge">Coming Soon</span>
+              <span id="scp-coming-soon-label">On the roadmap, included when live</span>
+            </div>
+            <ul className="scp-features-chips scp-features-chips--soon">
+              {SC_COMING_SOON.map((f) => (
                 <FeatureChip key={f.label} label={f.label} description={f.description} />
               ))}
             </ul>

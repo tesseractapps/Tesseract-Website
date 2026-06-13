@@ -45,6 +45,10 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
     title: 'About TesseractApps | NDIS Software Provider',
     description: 'Learn about TesseractApps and our mission to simplify workforce management for NDIS and care providers across Australia.',
   },
+  '/humans': {
+    title: 'Humans — The people behind TesseractApps',
+    description: 'Meet the team building TesseractApps — NDIS workforce management software for Australian care providers. Real people, real mission.',
+  },
   '/careers': {
     title: 'Careers at TesseractApps | Join the Team',
     description: 'Join the TesseractApps team. Explore career opportunities in building software that transforms NDIS workforce management across Australia.',
@@ -113,13 +117,29 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
     title: 'Changelog & Release Notes | TesseractApps',
     description: 'View the latest product updates, feature releases, and improvements to the TesseractApps platform. Stay up to date with everything we ship.',
   },
+  '/events': {
+    title: 'Events | TesseractApps',
+    description: 'Meet the TesseractApps team at NDIS industry events across Australia. See live demos, enter prize draws, and connect with our team.',
+  },
+  '/events/adelaide-expo-2026': {
+    title: 'Adelaide Disability & WorkAbility Expo 2026 | Register & Win – TesseractApps',
+    description: 'Register for the Adelaide Disability & WorkAbility Expo 2026 with TesseractApps (Booth 8). Book your free demo, enter our giveaway for 12 months free, and see our NDIS platform in action.',
+  },
   '/book-a-demo': {
     title: 'Book a Demo | TesseractApps',
     description: 'See TesseractApps in action. Book a personalised demo with our team and discover how NDIS workforce management software can transform your operations.',
   },
+  '/book-a-demo/success': {
+    title: 'Demo Booked | TesseractApps',
+    description: 'Your TesseractApps demo has been successfully booked. Check your inbox for a confirmation email.',
+  },
   '/signup': {
     title: 'Sign Up | TesseractApps',
     description: 'Create your TesseractApps account and start managing your NDIS workforce operations from day one.',
+  },
+  '/signup/success': {
+    title: "You're All Set | TesseractApps",
+    description: 'Your TesseractApps account is being set up. Check your inbox for login details and next steps.',
   },
 };
 
@@ -175,7 +195,7 @@ async function getSsgRoutes(): Promise<RouteData> {
 
   const sanity = createClient({ projectId, dataset, apiVersion, useCdn: false, perspective: 'published' });
 
-  const [blogDocs, capabilitySlugs, solutionSlugs, competitorSlugs] = await Promise.all([
+  const [blogDocs, capabilitySlugs, solutionSlugs, competitorSlugs, humanSlugs] = await Promise.all([
     // Extended blog fetch — includes fields needed for BlogPosting schema
     sanity.fetch<SanityBlogMeta[]>(
       `*[_type == "blogPost" && status == "published"]{
@@ -187,6 +207,7 @@ async function getSsgRoutes(): Promise<RouteData> {
     sanity.fetch<SanityRouteMeta[]>(`*[_type == "capabilityPage"]{ slug, seo }`),
     sanity.fetch<SanityRouteMeta[]>(`*[_type == "solutionPage"]{ slug, seo }`),
     sanity.fetch<SanityRouteMeta[]>(`*[_type == "competitorPage"]{ slug, seo }`),
+    sanity.fetch<SanityRouteMeta[]>(`*[_type == "human" && defined(slug.current)]{ slug }`),
   ]);
 
   const dynamic: string[] = [];
@@ -245,6 +266,10 @@ async function getSsgRoutes(): Promise<RouteData> {
         description: doc.seo.metaDescription ?? '',
       };
     }
+  }
+  for (const doc of humanSlugs) {
+    if (!doc.slug?.current) continue;
+    dynamic.push(`/humans/${doc.slug.current}`);
   }
 
   console.log(`[SSG] ${STATIC_ROUTES.length} static + ${dynamic.length} dynamic routes`);
@@ -319,7 +344,7 @@ function buildBreadcrumbSchema(path: string, pageTitle: string): object | null {
       '@type': 'ListItem',
       position: i + 2,
       name,
-      item: `${SITE}${accumulated}`,
+      item: `${SITE}${accumulated}/`,
     });
   }
 
@@ -344,6 +369,7 @@ function buildBlogPostingSchema(
     headline: pageTitle,
     description: blogEntry.excerpt ?? '',
     url: postUrl,
+    inLanguage: 'en-AU',
     mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
     publisher: {
       '@type': 'Organization',
@@ -372,7 +398,9 @@ function injectMetaIntoHtml(
     blogEntry?: RouteData['blogData'][string];
   } = {}
 ): string {
-  const canonical = `${SITE}${path === '/' ? '' : path}`;
+  // Apache serves all pages with trailing slashes — canonical must match exactly.
+  // Homepage stays as bare domain. All other paths get a trailing slash.
+  const canonical = path === '/' ? SITE : `${SITE}${path}/`;
   const pageType = path.startsWith('/blog/') ? 'article' : 'website';
 
   const safeTitle = escapeHtml(meta.title);
@@ -432,7 +460,7 @@ function injectMetaIntoHtml(
         email: 'hello@tesseractapps.com.au',
         address: {
           '@type': 'PostalAddress',
-          addressLocality: 'Canberra',
+          addressLocality: 'Level 1/45 Colbee Ct, Phillip',
           addressRegion: 'ACT',
           postalCode: '2606',
           addressCountry: 'AU',

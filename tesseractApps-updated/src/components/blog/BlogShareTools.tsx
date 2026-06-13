@@ -108,9 +108,9 @@ export default function BlogShareTools({ title, url, body, author, publishedAt }
         ))}
       </div>
 
-      <p className="bst-hint">
+      {/* <p className="bst-hint">
         Copy Markdown to paste the full article text into any AI chat.
-      </p>
+      </p> */}
     </div>
   )
 }

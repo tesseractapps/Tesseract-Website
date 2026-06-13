@@ -195,12 +195,6 @@
   transition: box-shadow 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
 }
 
-.cap-insight-card:hover {
-  box-shadow: 0 6px 24px rgba(0, 42, 82, 0.1);
-  transform: translateY(-2px);
-  border-color: #c7dff0;
-}
-
 .cap-insight-num {
   width: 40px;
   height: 40px;
@@ -226,7 +220,6 @@
 
 .cap-solve-layout {
   display: grid;
-  grid-template-columns: 1fr 380px;
   gap: 48px;
   align-items: start;
 }
@@ -234,7 +227,7 @@
 .cap-solve-proof {
   background: rgba(12, 120, 186, 0.05);
   border-left: 3px solid #0c78ba;
-  border-radius: 0 10px 10px 0;
+  border-right: 3px solid #0c78ba;
   padding: 28px 24px;
   position: sticky;
   top: 80px;

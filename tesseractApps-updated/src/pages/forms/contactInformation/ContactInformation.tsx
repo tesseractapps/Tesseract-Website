@@ -1,5 +1,6 @@
 import "./ContactInformationStyles.css";
 import SEO from "../../../components/common/SEO";
+import PageHero from "../../../components/common/PageHero";
 import { Phone, MapPin, Clock, Mail, MessageSquare, CheckCircle, Send } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
@@ -88,17 +89,11 @@ const ContactInformation = () => {
         description="Get in touch with TesseractApps for NDIS software enquiries, demos, or support. Call 1300 252 808 or email sales@tesseractapps.com. Located in Phillip ACT 2606."
       />
 
-      {/* ── Hero ── */}
-      <section id="contact-hero">
-        <div id="contact-hero-inner">
-          <div id="contact-hero-label">Contact Us</div>
-          <h1 id="contact-hero-heading">We're ready to connect.</h1>
-          <p id="contact-hero-sub">
-            Whether you're exploring our platform or looking for tailored
-            support, our team is here to assist.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        label="Contact Us"
+        heading="We're ready to connect."
+        sub="Whether you're exploring our platform or looking for tailored support, our team is here to assist."
+      />
 
       {/* ── Body ── */}
       <div id="contact-outer">
@@ -305,14 +300,14 @@ const ContactInformation = () => {
           <div className="sll-cta-actions">
             <button
               type="button"
-              className="sll-btn-primary"
+              className="primary-cta-white"
               onClick={() => { trackCTAClick("book_demo", "contact", "/contact-us"); navigate("/book-a-demo"); }}
             >
               Book a Demo
             </button>
             <button
               type="button"
-              className="sll-btn-outline"
+              className="outline-cta"
               onClick={() => { trackCTAClick("begin_journey", "contact", "/contact-us"); navigate("/signup"); }}
             >
               Begin Your Journey

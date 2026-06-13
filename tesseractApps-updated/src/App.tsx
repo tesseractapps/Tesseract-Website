@@ -5,9 +5,15 @@ import { BrowserRouter, StaticRouter, useLocation } from "react-router-dom";
 import FooterComponent from "./components/layout/footerComponent/FooterComponent";
 import AppRoutes from "./routes/AppRoutes";
 import GTMLoader from "./components/analytics/GTMLoader";
-import CountdownBar from "./components/layout/countdownBar/CountdownBar";
+import AnnouncementBar from "./components/layout/announcementBar/AnnouncementBar";
 
-const FULLSCREEN_ROUTES: string[] = ["/book-a-demo", "/signup", "/register-support-coordination"];
+const FULLSCREEN_ROUTES: string[] = [
+  "/book-a-demo",
+  "/book-a-demo/success",
+  "/signup",
+  "/signup/success",
+  "/register-support-coordination",
+];
 const CD_BAR_HEIGHT = 36;
 
 function AppInner() {
@@ -20,13 +26,18 @@ function AppInner() {
   // Push navbar down by bar height via CSS variable on <html>
   useEffect(() => {
     const root = document.documentElement;
-    root.style.setProperty("--cd-bar-height", barVisible ? `${CD_BAR_HEIGHT}px` : "0px");
+    root.style.setProperty(
+      "--cd-bar-height",
+      barVisible ? `${CD_BAR_HEIGHT}px` : "0px",
+    );
   }, [barVisible]);
 
   return (
     <>
-      {barVisible && <CountdownBar />}
-      {!isFullscreen && <NavBarComponent portalContainerRef={portalContainerRef} />}
+      {barVisible && <AnnouncementBar />}
+      {!isFullscreen && (
+        <NavBarComponent portalContainerRef={portalContainerRef} />
+      )}
       <div ref={portalContainerRef} />
       <main role="main">
         <AppRoutes />

@@ -244,7 +244,8 @@ export const registerEmailTemplate = {
 };
 
 export const registerConfirmationEmailTemplate = {
-  subject: "Congratulations! You're registered - 3 months free when SC launches",
+  subject:
+    "Congratulations! You're registered - 3 months free when SC launches",
   text: (firstName: string) => `Hi ${firstName},
 
 Thank you so much for registering for your exclusive access to TesseractApps Support Coordination app.
@@ -286,6 +287,245 @@ tesseractapps.com.au | 1300 252 808
       <a href="https://tesseractapps.com.au">tesseractapps.com.au</a> | <a href="tel:1300252808">1300 252 808</a></p>
     </div>
   `,
+};
+
+type guideAccessTypes = {
+  fullName: string;
+  email: string;
+  organisation: string;
+  role: string;
+  phone: string;
+  providerType: string;
+  subscribe: boolean;
+  privacyConsent: boolean;
+  guideTitle: string;
+};
+
+export const guideAccessEmailTemplate = {
+  email: "marketing@tesseractapps.com",
+  subject: (guideTitle: string) => `Guide Download — ${guideTitle}`,
+  body: ({
+    fullName,
+    email,
+    organisation,
+    role,
+    phone,
+    providerType,
+    subscribe,
+    guideTitle,
+  }: guideAccessTypes) =>
+    `New guide download request from the website.\n\n` +
+    `Guide: ${guideTitle}\n\n` +
+    `Full Name: ${fullName}\n` +
+    `Email: ${email}\n` +
+    `Organisation: ${organisation}\n` +
+    `Role / Job Title: ${role || "Not provided"}\n` +
+    `Phone: ${phone || "Not provided"}\n` +
+    `Provider Type: ${providerType}\n` +
+    `Subscribe to updates: ${subscribe ? "Yes" : "No"}\n\n` +
+    `Team TesseractApps\n`,
+};
+
+export const guideAccessConfirmationEmailTemplate = {
+  subject: (guideTitle: string) => `Your TesseractApps Guide — ${guideTitle}`,
+  text: (
+    firstName: string,
+    guideTitle: string,
+    pdfUrl: string,
+  ) => `Hi ${firstName},
+
+Thank you for downloading "${guideTitle}" from TesseractApps.
+
+Your download should have started automatically. If it didn't, use the link below:
+${pdfUrl}
+
+If you have any questions, reach us at marketing@tesseractapps.com or call 1300 252 808.
+
+Warm regards,
+Team TesseractApps
+Website: tesseractapps.com.au`,
+  html: (firstName: string, guideTitle: string, pdfUrl: string) => `
+    <div style="font-family:Arial,sans-serif;color:#222;max-width:600px">
+      <p>Hi ${firstName},</p>
+      <p>Thank you for downloading <strong>"${guideTitle}"</strong> from TesseractApps.</p>
+      <p>Your download should have started automatically. If it didn't, <a href="${pdfUrl}" style="color:#0c78ba;font-weight:600;">click here to download</a>.</p>
+      <p>If you have any questions, feel free to reach us at <a href="mailto:marketing@tesseractapps.com">marketing@tesseractapps.com</a> or call <a href="tel:1300252808">1300 252 808</a>.</p>
+      <p>Warm regards,<br/><strong>Team TesseractApps</strong></p>
+      <p><a href="https://tesseractapps.com.au">tesseractapps.com.au</a></p>
+    </div>`,
+};
+
+// ── Adelaide Expo 2026 ────────────────────────────────────────────────────────
+
+type adelaideExpoTypes = {
+  fullName: string;
+  email: string;
+  phone: string;
+  organisation: string;
+  role: string;
+  teamSize: string;
+  providerType: string;
+  attendDays: string[];
+  currentSystems: string;
+  hearAbout: string;
+  commsConsent: boolean;
+};
+
+export const adelaideExpoEmailTemplate = {
+  email: "marketing@tesseractapps.com",
+  subject:
+    "New Expo Registration — Adelaide Disability & WorkAbility Expo 2026",
+  body: ({
+    fullName,
+    email,
+    phone,
+    organisation,
+    role,
+    teamSize,
+    providerType,
+    attendDays,
+    currentSystems,
+    hearAbout,
+    commsConsent,
+  }: adelaideExpoTypes) =>
+    `New registration for the Adelaide Disability & WorkAbility Expo 2026.\n\n` +
+    `Full Name: ${fullName}\n` +
+    `Email: ${email}\n` +
+    `Phone: ${phone || "Not provided"}\n` +
+    `Organisation: ${organisation}\n` +
+    `Role: ${role}\n` +
+    `Team Size: ${teamSize}\n` +
+    `Provider Type: ${providerType || "Not provided"}\n` +
+    `Days Attending: ${attendDays.join(", ") || "Not specified"}\n` +
+    `Current Systems: ${currentSystems || "Not provided"}\n` +
+    `How they heard about us: ${hearAbout || "Not provided"}\n` +
+    `Comms Consent: ${commsConsent ? "Yes" : "No"}\n\n` +
+    `Team TesseractApps\n`,
+};
+
+export const adelaideExpoConfirmationEmailTemplate = {
+  subject: (_firstName: string) =>
+    `You're registered — TesseractApps, Adelaide Expo 2026`,
+  text: (firstName: string) => `Hi ${firstName},
+
+Thank you for registering. Your place is confirmed — all the details you need are below.
+
+Event details
+
+Date: Friday 26 June & Saturday 27 June 2026
+Time: 9am – 3pm
+Location: Adelaide Showground, Leader Street, Wayville SA 5034
+Booth: 8
+
+You're entered into the prize draw
+
+Your registration automatically includes one entry.
+
+Add this event to your calendar:
+Download .ics file: https://tesseractapps.com.au/events/adelaide-expo-2026
+Add to Google Calendar: https://calendar.google.com/calendar/render?action=TEMPLATE&text=Adelaide+Disability+%26+WorkAbility+Expo+2026&dates=20260626T090000/20260627T150000&details=TesseractApps+Booth+8&location=Adelaide+Showground%2C+Leader+Street%2C+Wayville+SA+5034
+
+If you have any questions prior to the event, please contact us at marketing@tesseractapps.com
+
+We look forward to seeing you there.
+
+Kind regards,
+The Marketing Team
+TesseractApps
+
+This email was sent to you because you registered for the Adelaide Disability & WorkAbility Expo 2026. If you believe this is an error, please contact us at marketing@tesseractapps.com`,
+
+  html: (firstName: string) => {
+    const gcalUrl =
+      "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+      "&text=Adelaide+Disability+%26+WorkAbility+Expo+2026" +
+      "&dates=20260626T090000/20260627T150000" +
+      "&details=TesseractApps+Booth+8+-+Adelaide+Expo+2026" +
+      "&location=Adelaide+Showground%2C+Leader+Street%2C+Wayville+SA+5034";
+
+    const icsContent = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//TesseractApps//AdelaideExpo2026//EN",
+      "BEGIN:VEVENT",
+      "UID:adelaide-expo-2026@tesseractapps.com.au",
+      "SUMMARY:Adelaide Disability & WorkAbility Expo 2026 — TesseractApps Booth 8",
+      "DTSTART:20260626T090000",
+      "DTEND:20260627T150000",
+      "LOCATION:Adelaide Showground, Leader Street, Wayville SA 5034",
+      "DESCRIPTION:TesseractApps Booth 8. Register & Win 12 Months Free. See our NDIS platform in action.",
+      "END:VEVENT",
+      "END:VCALENDAR",
+    ].join("\r\n");
+
+    const icsDataUri = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsContent)}`;
+
+    return `
+    <div style="font-family:Arial,sans-serif;color:#222;max-width:600px">
+      <p>Hi ${firstName},</p>
+      <p>Thank you for registering. Your place is confirmed — all the details you need are below.</p>
+
+      <table style="width:100%;border-collapse:collapse;margin:24px 0;background:#f8fafc;border-radius:8px;overflow:hidden">
+        <tr>
+          <td style="padding:16px 20px;border-bottom:1px solid #e8edf4">
+            <strong style="font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:#a0aec0">Date</strong><br/>
+            <span style="color:#002a52;font-weight:600">Friday 26 June &amp; Saturday 27 June 2026</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px 20px;border-bottom:1px solid #e8edf4">
+            <strong style="font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:#a0aec0">Time</strong><br/>
+            <span style="color:#002a52;font-weight:600">9am – 3pm</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px 20px;border-bottom:1px solid #e8edf4">
+            <strong style="font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:#a0aec0">Location</strong><br/>
+            <span style="color:#002a52;font-weight:600">Adelaide Showground</span><br/>
+            <span style="color:#718096;font-size:14px">Leader Street, Wayville SA 5034</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px 20px">
+            <strong style="font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:#a0aec0">Our Booth</strong><br/>
+            <span style="color:#002a52;font-weight:600">Booth 8</span>
+          </td>
+        </tr>
+      </table>
+
+      <p style="background:#f0f7ff;border:1px solid #bce0f5;border-radius:8px;padding:14px 18px;color:#002a52;font-size:14px">
+        🏆 <strong>You're entered into the prize draw.</strong> Your registration automatically includes one entry.
+      </p>
+
+      <p><strong>Add this event to your calendar:</strong></p>
+      <p>
+        <a href="${icsDataUri}" style="display:inline-block;background:#0c78ba;color:#fff;text-decoration:none;padding:10px 20px;border-radius:6px;font-weight:600;font-size:14px;margin-right:8px">
+          Download .ics file
+        </a>
+        <a href="${gcalUrl}" target="_blank" style="display:inline-block;background:#fff;color:#0c78ba;text-decoration:none;padding:10px 20px;border-radius:6px;font-weight:600;font-size:14px;border:1.5px solid #0c78ba">
+          Add to Google Calendar
+        </a>
+      </p>
+
+      <p style="font-size:14px;color:#718096;margin-top:32px">
+        If you have any questions prior to the event, please contact us at
+        <a href="mailto:marketing@tesseractapps.com" style="color:#0c78ba">marketing@tesseractapps.com</a>
+      </p>
+      <p>We look forward to seeing you there.</p>
+      <p>
+        Kind regards,<br/>
+        <strong>The Marketing Team</strong><br/>
+        TesseractApps<br/>
+        <a href="https://tesseractapps.com.au" style="color:#0c78ba">tesseractapps.com.au</a>
+      </p>
+      <hr style="border:none;border-top:1px solid #e8edf4;margin:32px 0"/>
+      <p style="font-size:11px;color:#a0aec0;line-height:1.6">
+        This email was sent to you because you registered for the Adelaide Disability &amp; WorkAbility Expo 2026.
+        If you believe this is an error, please contact us at
+        <a href="mailto:marketing@tesseractapps.com" style="color:#a0aec0">marketing@tesseractapps.com</a>
+      </p>
+    </div>`;
+  },
 };
 
 export const signupConfirmationEmailTemplate = {

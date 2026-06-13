@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import {
   Users, Heart, Home, Building, Building2,
   User, Stethoscope,
-  ChevronRight, CheckCircle, Mail, Phone, Monitor, X,
+  ChevronRight, X,
 } from "lucide-react";
 import { trackBookDemoSubmit, trackFormStepComplete, trackFormStart } from "../../../utils/analytics";
 import CalendarPicker from "../../../components/forms/bookADemo/CalendarPicker";
@@ -73,8 +73,6 @@ const PATHWAY_STEPS = [
 const isLastStep = (step: number) => step === bookADemoFormData.length - 1;
 const isFirstStep = (step: number) => step === 0;
 
-const pad = (n: number) => String(n).padStart(2, "0");
-
 const BookADemo = () => {
   const navigate = useNavigate();
 
@@ -83,7 +81,6 @@ const BookADemo = () => {
   useEffect(() => { trackFormStart("book_demo"); }, []);
   const [formData, setFormData] = useState(formEmptyData);
   const [alertData, setAlertData] = useState(alertInitialData);
-  const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   type FormErrors = Partial<Record<keyof formDataType, string>>;
@@ -171,7 +168,7 @@ const BookADemo = () => {
     )
       .then(() => {
         confirmationMail();
-        setShowSuccess(true);
+        navigate("/book-a-demo/success", { state: { schedule: formData.schedule } });
       })
       .catch((error) => {
         console.error("Error sending email:", error);
@@ -215,61 +212,7 @@ const BookADemo = () => {
         <X size={18} strokeWidth={2.5} />
       </button>
 
-      {showSuccess ? (
-        <div id="bookADemo-success-screen">
-          <div id="bookADemo-success-inner">
-            <div id="bookADemo-success-icon">
-              <CheckCircle size={64} color="var(--color-primary)" strokeWidth={1.5} />
-            </div>
-            <div id="bookADemo-success-title">Thank you!</div>
-            <div id="bookADemo-success-message">
-              Your demo has been successfully booked. Our team will contact you shortly to confirm the details.
-            </div>
-            <div id="bookADemo-success-actions">
-              <button type="button" className="bookADemo-Button" onClick={handleClose}>
-                Close
-              </button>
-              {formData.schedule && (() => {
-                // formData.schedule is local ISO "YYYY-MM-DDTHH:MM" — keep as floating time (no Z)
-                const startStr = formData.schedule.replace(/[-:]/g, "").slice(0, 13) + "00";
-                const endDate = new Date(formData.schedule);
-                endDate.setHours(endDate.getHours() + 1);
-                const endStr = `${endDate.getFullYear()}${pad(endDate.getMonth() + 1)}${pad(endDate.getDate())}T${pad(endDate.getHours())}${pad(endDate.getMinutes())}00`;
-                const calUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=TesseractApps+Demo&dates=${startStr}/${endStr}`;
-                return (
-                  <a
-                    href={calUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bookADemo-Button bookADemo-Button--outline"
-                  >
-                    Add to Calendar
-                  </a>
-                );
-              })()}
-            </div>
-            <div id="bookADemo-what-next-heading">What happens next?</div>
-            <div id="bookADemo-success-steps">
-              <div className="bookADemo-next-step">
-                <div className="bookADemo-next-step-icon"><Mail size={22} /></div>
-                <div className="bookADemo-next-step-label">Check Email</div>
-                <div className="bookADemo-next-step-desc">Invite and intro guide sent.</div>
-              </div>
-              <div className="bookADemo-next-step">
-                <div className="bookADemo-next-step-icon"><Phone size={22} /></div>
-                <div className="bookADemo-next-step-label">Join Call</div>
-                <div className="bookADemo-next-step-desc">Use the link at your time.</div>
-              </div>
-              <div className="bookADemo-next-step">
-                <div className="bookADemo-next-step-icon"><Monitor size={22} /></div>
-                <div className="bookADemo-next-step-label">Live Demo</div>
-                <div className="bookADemo-next-step-desc">Expert walkthrough of platform.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div id="bookADemo-container">
+      <div id="bookADemo-container">
 
           {/* ── Left Sidebar ── */}
           <div id="bookADemo-sidebar">
@@ -456,7 +399,6 @@ const BookADemo = () => {
 
           </div>
         </div>
-      )}
     </div>
   );
 };

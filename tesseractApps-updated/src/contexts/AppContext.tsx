@@ -69,7 +69,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       "/blogs": { name: "Blog", path: "/blogs" },
       "/whitepapers": { name: "Whitepapers", path: "/whitepapers" },
       "/case-studies": { name: "Case Studies", path: "/case-studies" },
-      "/webinars": { name: "Webinars", path: "/webinars" },
       "/contact-us": { name: "Contact Us", path: "/contact-us" },
       "/privacy-policy": { name: "Privacy Policy", path: "/privacy-policy" },
       "/terms-and-conditions": {

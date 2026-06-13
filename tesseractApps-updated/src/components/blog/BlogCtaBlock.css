@@ -1,0 +1,164 @@
+/* ── Blog inline CTA block  |  prefix: bcta- ─────────────────────────────── */
+
+.bcta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 40px 0 8px;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, #eaf4fd 0%, #f0f7ff 100%);
+  border: 1px solid rgba(12, 120, 186, 0.18);
+  border-left: 4px solid var(--color-primary, #0c78ba);
+  border-right: 4px solid var(--color-primary, #0c78ba);
+}
+
+.bcta-icon {
+  color: var(--color-primary, #0c78ba);
+  line-height: 0;
+}
+
+.bcta-heading {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-secondary, #0d2d52);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.bcta-body {
+  font-size: 0.9375rem;
+  color: #4a6080;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.bcta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.bcta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.18s, box-shadow 0.18s;
+  white-space: nowrap;
+}
+
+.bcta-btn--primary {
+  background: var(--color-primary, #0c78ba);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(12, 120, 186, 0.25);
+}
+.bcta-btn--primary:hover {
+  opacity: 0.88;
+  box-shadow: 0 4px 16px rgba(12, 120, 186, 0.32);
+}
+
+.bcta-btn--secondary {
+  background: #fff;
+  color: var(--color-secondary, #0d2d52);
+  border: 1.5px solid #c9d9eb;
+}
+.bcta-btn--secondary:hover {
+  border-color: var(--color-primary, #0c78ba);
+  color: var(--color-primary, #0c78ba);
+}
+
+/* ── Subscribe form ── */
+.bcta-sub-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.bcta-sub-row {
+  display: flex;
+  gap: 8px;
+}
+
+.bcta-sub-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1.5px solid #c9d9eb;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: #0d1f35;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+  min-width: 0;
+}
+.bcta-sub-input:focus { border-color: var(--color-primary, #0c78ba); box-shadow: 0 0 0 3px rgba(12, 120, 186, 0.1); }
+.bcta-sub-input--error { border-color: #dc2626; }
+.bcta-sub-input:disabled { background: #f4f7fb; color: #aab4bf; }
+
+.bcta-sub-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: var(--color-primary, #0c78ba);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.18s;
+}
+.bcta-sub-btn:hover:not(:disabled) { opacity: 0.88; }
+.bcta-sub-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+.bcta-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: bcta-spin 0.7s linear infinite;
+}
+@keyframes bcta-spin { to { transform: rotate(360deg); } }
+
+.bcta-sub-error {
+  font-size: 0.8rem;
+  color: #dc2626;
+  margin: 0;
+}
+.bcta-sub-error a { color: #dc2626; }
+
+.bcta-sub-privacy {
+  font-size: 0.75rem;
+  color: #8fa3b8;
+  margin: 0;
+}
+
+.bcta-sub-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #16a34a;
+}
+
+@media (max-width: 600px) {
+  .bcta-block { padding: 22px 20px; }
+  .bcta-btn { width: 100%; }
+  .bcta-sub-row { flex-direction: column; }
+  .bcta-sub-btn { width: 100%; justify-content: center; }
+}

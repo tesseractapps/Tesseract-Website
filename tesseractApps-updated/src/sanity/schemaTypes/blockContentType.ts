@@ -35,8 +35,14 @@ export const blockContentType = defineType({
             fields: [
               {
                 name: 'href',
-                type: 'url',
+                type: 'string',
                 title: 'URL',
+                description: 'Absolute URL (https://...) or internal path (/capabilities/rostering-scheduling)',
+                validation: (Rule) => Rule.required().custom((value: string) => {
+                  if (!value) return 'URL is required';
+                  if (value.startsWith('/') || value.startsWith('http://') || value.startsWith('https://') || value.startsWith('mailto:') || value.startsWith('tel:')) return true;
+                  return 'Must be a relative path starting with / or an absolute URL (https://...)';
+                }),
               },
               {
                 name: 'blank',

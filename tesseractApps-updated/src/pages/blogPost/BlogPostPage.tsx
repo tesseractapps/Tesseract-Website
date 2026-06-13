@@ -1,22 +1,138 @@
 import './BlogPostPageStyles.css'
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useSanityBlogPost } from '../../hooks/useSanityBlogPost'
 import { useSanityBlogList } from '../../hooks/useSanityBlogList'
 import SEO from '../../components/common/SEO'
-import SanityImage from '../../components/sanity/sanity-image'
 import PortableTextRenderer from '../../components/sanity/portable-text'
 import { urlFor } from '../../sanity/lib/image'
 import { formatDate } from '../../utils/formatDate'
+import { extractHeadings } from '../../utils/extractHeadings'
 import { buildBreadcrumbSchema, buildGraphSchema } from '../../utils/schemaHelpers'
 import Breadcrumb from '../../components/common/Breadcrumb'
 import BlogShareTools from '../../components/blog/BlogShareTools'
+import BlogCard from '../../components/blog/BlogCard'
+import SanityImage from '../../components/sanity/sanity-image'
+import GuideCard from '../../components/guide/GuideCard'
+import { useSanityGuides } from '../../hooks/useSanityGuides'
+import '../resources/guides/GuidesStyles.css'
+import BlogCtaBlock from '../../components/blog/BlogCtaBlock'
 import { trackBlogPostView } from '../../utils/analytics'
+import type { PostAuthor } from '../../../sanity.types'
+
+// ── Author row component ───────────────────────────────────────────────────────
+
+function AuthorRow({ authors }: { authors: PostAuthor[] }) {
+  if (!authors || authors.length === 0) return null
+
+  return (
+    <div className="bpp-authors">
+      {/* Stacked avatars */}
+      <div className="bpp-authors-avatars">
+        {authors.slice(0, 4).map((a, i) => (
+          <span key={a._id} className={`bpp-authors-avatar-wrap bpp-authors-avatar-wrap--${i}`}>
+            {a.photo?.asset ? (
+              <img
+                src={urlFor(a.photo).width(40).height(40).fit('crop').auto('format').url()}
+                alt={a.photo.alt ?? a.name ?? ''}
+                className="bpp-authors-avatar"
+                width={40}
+                height={40}
+                loading="eager"
+              />
+            ) : (
+              <span className="bpp-authors-avatar bpp-authors-avatar--initials">
+                {(a.name ?? '?').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
+              </span>
+            )}
+          </span>
+        ))}
+      </div>
+
+      {/* Names */}
+      <span className="bpp-authors-names">
+        {authors.map((a, i) => (
+          <span key={a._id}>
+            {i > 0 && (i === authors.length - 1 ? ' & ' : ', ')}
+            {a.slug?.current ? (
+              <Link to={`/humans/${a.slug.current}`} className="bpp-authors-name-link">
+                {a.name?.split(' ')[0]}
+              </Link>
+            ) : (
+              <span className="bpp-authors-name">{a.name?.split(' ')[0]}</span>
+            )}
+          </span>
+        ))}
+      </span>
+    </div>
+  )
+}
+
+// ── TOC component ─────────────────────────────────────────────────────────────
+
+function TableOfContents({ items }: { items: ReturnType<typeof extractHeadings> }) {
+  const [activeId, setActiveId] = useState<string>('')
+  const observerRef = useRef<IntersectionObserver | null>(null)
+
+  useEffect(() => {
+    if (items.length === 0) return
+
+    // Watch all heading elements; highlight whichever is closest to top
+    const headingEls = items
+      .map(h => document.getElementById(h.id))
+      .filter(Boolean) as HTMLElement[]
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        // Find the topmost intersecting heading
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+        if (visible.length > 0) setActiveId(visible[0].target.id)
+      },
+      { rootMargin: '-10% 0px -80% 0px', threshold: 0 }
+    )
+
+    headingEls.forEach(el => observerRef.current!.observe(el))
+    return () => observerRef.current?.disconnect()
+  }, [items])
+
+  if (items.length === 0) return null
+
+  return (
+    <nav className="bpp-toc" aria-label="Table of contents">
+      <p className="bpp-toc-title">On this page</p>
+      <ol className="bpp-toc-list">
+        {items.map(item => (
+          <li key={item.id} className={`bpp-toc-item bpp-toc-item--h${item.level}`}>
+            <a
+              href={`#${item.id}`}
+              className={`bpp-toc-link${activeId === item.id ? ' bpp-toc-link--active' : ''}`}
+              onClick={(e) => {
+                e.preventDefault()
+                const el = document.getElementById(item.id)
+                if (el) {
+                  const y = el.getBoundingClientRect().top + window.scrollY - 88
+                  window.scrollTo({ top: y, behavior: 'smooth' })
+                }
+              }}
+            >
+              {item.text}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
+
+// ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>()
   const { post, loading, error } = useSanityBlogPost(slug ?? '')
   const { data: allPosts } = useSanityBlogList({ from: 0, to: 6 })
+  const { data: guides } = useSanityGuides()
 
   useEffect(() => {
     if (!post) return
@@ -32,9 +148,9 @@ export default function BlogPostPage() {
       <div className="bpp-page">
         <div className="bpp-skeleton-outer">
           <div className="bpp-skeleton-grid">
+            <div className="bpp-skeleton-toc" />
             <div className="bpp-skeleton-main">
               <div className="bpp-skeleton-header" />
-              <div className="bpp-skeleton-featured" />
               <div className="bpp-skeleton-block bpp-skeleton-article" />
             </div>
             <div className="bpp-skeleton-sidebar">
@@ -52,31 +168,30 @@ export default function BlogPostPage() {
       <div className="bpp-page">
         <div className="bpp-not-found">
           <h1>Can&apos;t load blog</h1>
-          <p>
-            Error loading blogs.{' '}
-            <Link to="/blogs" className="bpp-back-link">Back to blog</Link>
-          </p>
+          <p>Error loading blog. <Link to="/blogs" className="bpp-back-link">Back to blog</Link></p>
         </div>
       </div>
     )
   }
 
-  if (!post) {
-    return <Navigate to="/not-found" replace />
-  }
+  if (!post) return <Navigate to="/not-found" replace />
 
-  const seo = post.seo
+  const seo     = post.seo
   const siteUrl = 'https://tesseractapps.com.au'
   const postUrl = `${siteUrl}/blog/${post.slug?.current ?? ''}`
 
-  const metaTitle = seo?.metaTitle ?? post.title ?? ''
+  const metaTitle       = seo?.metaTitle       ?? post.title   ?? ''
   const metaDescription = seo?.metaDescription ?? post.excerpt ?? ''
-  const ogTitle = seo?.openGraphTitle ?? metaTitle
-  const ogDescription = seo?.openGraphDescription ?? metaDescription
+  const ogTitle         = seo?.openGraphTitle       ?? metaTitle
+  const ogDescription   = seo?.openGraphDescription ?? metaDescription
   const ogImage =
     seo?.openGraphImage?.asset?.url ??
-    (post.mainImage ? urlFor(post.mainImage).width(1200).height(630).auto('format').url() : undefined)
+    (post.mainImage?.asset ? urlFor(post.mainImage).width(1200).height(630).auto('format').url() : undefined)
   const ogImageAlt = post.mainImage?.alt ?? post.title ?? ''
+
+  // Authors array from the new schema field
+  const authors: PostAuthor[] = (post as any).authors ?? []
+  const primaryAuthor = authors[0] ?? null
 
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: 'Home', url: siteUrl },
@@ -86,26 +201,27 @@ export default function BlogPostPage() {
 
   const blogPostingSchema = !seo?.schemaMarkup ? {
     '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.excerpt,
-    url: postUrl,
+    headline:      post.title,
+    description:   post.excerpt,
+    url:           postUrl,
+    inLanguage:    'en-AU',
     datePublished: post.publishedAt,
     ...(post._updatedAt && { dateModified: post._updatedAt }),
-    ...(post.mainImage && { image: ogImage }),
-    ...(post.author?.name && {
-      author: {
+    ...(post.mainImage  && { image: ogImage }),
+    ...(authors.length > 0 && {
+      author: authors.map(a => ({
         '@type': 'Person',
-        name: post.author.name,
-        ...(post.author.linkedInUrl && { url: post.author.linkedInUrl }),
-      },
+        name:    a.name,
+        ...(a.linkedInUrl && { url: a.linkedInUrl }),
+      })),
     }),
     publisher: {
       '@type': 'Organization',
       name: 'TesseractApps',
       logo: { '@type': 'ImageObject', url: `${siteUrl}/tesseract_logo.webp` },
     },
-    ...(post.category?.title && { articleSection: post.category.title }),
-    ...(post.tags && post.tags.length > 0 && { keywords: post.tags.join(', ') }),
+    ...(post.category?.title                           && { articleSection: post.category.title }),
+    ...(post.tags && post.tags.length > 0              && { keywords: post.tags.join(', ') }),
   } : null
 
   const structuredData = blogPostingSchema
@@ -113,14 +229,14 @@ export default function BlogPostPage() {
     : buildGraphSchema(breadcrumbSchema)
 
   const validRelatedPosts = post.relatedPosts?.filter(
-    (r) => r != null && r.slug?.current && r.slug.current.length > 0
+    r => r != null && r.slug?.current && r.slug.current.length > 0
   ) ?? []
 
   const suggestedPosts = allPosts
-    .filter((p) => p.slug?.current && p.slug.current !== slug)
+    .filter(p => p.slug?.current && p.slug.current !== slug)
     .slice(0, 4)
 
-  const hasHero = Boolean(post.mainImage)
+  const tocItems = post.body ? extractHeadings(post.body as any[]) : []
 
   return (
     <div className="bpp-page">
@@ -134,7 +250,7 @@ export default function BlogPostPage() {
         image={ogImage}
         imageAlt={ogImageAlt}
         publishedAt={post.publishedAt ?? undefined}
-        author={post.author?.name ?? undefined}
+        author={primaryAuthor?.name ?? undefined}
         section={post.category?.title ?? undefined}
         tags={post.tags ?? undefined}
         canonical={seo?.canonicalUrl ?? postUrl}
@@ -143,7 +259,7 @@ export default function BlogPostPage() {
         structuredData={structuredData}
       />
 
-      {/* Breadcrumb bar */}
+      {/* Breadcrumb */}
       <div className="bpp-breadcrumb-wrap">
         <Breadcrumb
           variant="dark"
@@ -156,20 +272,55 @@ export default function BlogPostPage() {
       </div>
 
       <div className="bpp-outer">
-        {/* Two-column grid — main (left) + sidebar (right) */}
+        {/* ── Three-panel grid ── */}
         <div className="bpp-grid">
 
-          {/* Left column: header + image + article */}
-          <div className="bpp-main">
-            {/* Header card */}
-            <div className="bpp-header">
+          {/* Panel 1: TOC (left, sticky) */}
+          <div className="bpp-toc-panel">
+            <TableOfContents items={tocItems} />
+          </div>
 
-                     {/* Featured image */}
-            {hasHero && (
+          {/* Panel 2: Article (centre) */}
+          <div className="bpp-main">
+            {/* Hero image */}
+
+            {/* Title */}
+            <h1 className="bpp-title">{post.title}</h1>
+
+            {/* Excerpt */}
+            {post.excerpt && (
+              <p className="bpp-excerpt">{post.excerpt}</p>
+            )}
+
+            {/* Author row + meta */}
+            <div className="bpp-byline">
+              <AuthorRow authors={authors} />
+              <div className="bpp-byline-meta">
+                {post.publishedAt && (
+                  <time dateTime={post.publishedAt} className="bpp-byline-date">
+                    {formatDate(post.publishedAt)}
+                  </time>
+                )}
+                {post.readingTime != null && (
+                  <>
+                    <span className="bpp-byline-dot" aria-hidden="true" />
+                    <span className="bpp-byline-reading">{post.readingTime} min read</span>
+                  </>
+                )}
+                {/* {post.category?.title != null && (
+                  <>
+                    <span className="bpp-byline-dot" aria-hidden="true" />
+                    <span className="bpp-byline-reading">{post.category.title}</span>
+                  </>
+                )} */}
+              </div>
+            </div>
+
+            {post.mainImage && (
               <div className="bpp-featured-image-wrap">
                 <SanityImage
-                  src={post.mainImage!}
-                  alt={post.mainImage!.alt ?? post.title ?? ''}
+                  src={post.mainImage}
+                  alt={post.mainImage.alt ?? post.title ?? ''}
                   className="bpp-featured-image"
                   width={780}
                   height={439}
@@ -177,60 +328,8 @@ export default function BlogPostPage() {
                 />
               </div>
             )}
-              {/* {post.category?.title && (
-                <div className="bpp-category">{post.category.title}</div>
-              )} */}
-
-              <h1 className="bpp-title">{post.title}</h1>
-
-              {post.excerpt && (
-                <p className="bpp-excerpt">{post.excerpt}</p>
-              )}
-
-              {/* <div className="bpp-meta">
-                {post.author && (
-                  <div className="bpp-author">
-                    {post.author.avatar?.asset && (
-                      <img
-                        src={urlFor(post.author.avatar).width(40).height(40).fit('crop').auto('format').url()}
-                        alt={post.author.avatar.alt ?? post.author.name ?? ''}
-                        className="bpp-author-avatar"
-                        width={40}
-                        height={40}
-                        loading="eager"
-                      />
-                    )}
-                    <span className="bpp-author-name">{post.author.name}</span>
-                  </div>
-                )}
-
-                {post.publishedAt && (
-                  <>
-                    <span className="bpp-dot" aria-hidden="true" />
-                    <time dateTime={post.publishedAt} className="bpp-date">
-                      {formatDate(post.publishedAt)}
-                    </time>
-                  </>
-                )}
-
-                {post.readingTime != null && (
-                  <>
-                    <span className="bpp-dot" aria-hidden="true" />
-                    <span className="bpp-reading-time">{post.readingTime} min read</span>
-                  </>
-                )}
-              </div> */}
-
-              {/* {post.tags && post.tags.length > 0 && (
-                <div className="bpp-tags">
-                  {post.tags.map((tag) => (
-                    <span key={tag} className="bpp-tag">{tag}</span>
-                  ))}
-                </div>
-              )} */}
-            </div>
-
-     
+            {/* Divider */}
+            <hr className="bpp-divider" />
 
             {/* Article body */}
             <article className="bpp-article">
@@ -238,42 +337,63 @@ export default function BlogPostPage() {
                 {post.body && <PortableTextRenderer value={post.body} />}
               </div>
             </article>
-          </div>
 
-          {/* Right column: sidebar — always on right */}
-          <aside className="bpp-sidebar">
-            {/* Author card */}
-            {post.author && (
-              <div className="bpp-sidebar-card">
-                <p className="bpp-sidebar-card-title">Written by</p>
-                <div className="bpp-sidebar-author">
-                  {post.author.avatar?.asset && (
-                    <img
-                      src={urlFor(post.author.avatar).width(68).height(68).fit('crop').auto('format').url()}
-                      alt={post.author.avatar.alt ?? post.author.name ?? ''}
-                      className="bpp-sidebar-author-avatar"
-                      width={68}
-                      height={68}
-                      loading="lazy"
-                    />
-                  )}
-                  <p className="bpp-sidebar-author-name">{post.author.name}</p>
-                  {post.author.linkedInUrl && (
-                    <a
-                      href={post.author.linkedInUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bpp-sidebar-author-link"
-                    >
-                      View LinkedIn →
-                    </a>
-                  )}
-                </div>
-              </div>
+            {/* Inline CTA block */}
+            {(post as any).cta && ((post as any).cta.heading || (post as any).cta.primaryLabel) && (
+              <BlogCtaBlock cta={(post as any).cta} />
             )}
 
+            {/* Back link */}
+            <div className="bpp-back">
+              <Link to="/blogs" className="bpp-back-link">← Back to all posts</Link>
+            </div>
+          </div>
+
+          {/* Panel 3: Sidebar (right, sticky) */}
+          <aside className="bpp-sidebar">
+
+            {/* Author card(s) */}
+            {/* {authors.length > 0 && (
+              <div className="bpp-sidebar-card">
+                <p className="bpp-sidebar-card-title">Written by</p>
+                <div className="bpp-sidebar-authors">
+                  {authors.map(a => (
+                    <div key={a._id} className="bpp-sidebar-author">
+                      {a.photo?.asset ? (
+                        <img
+                          src={urlFor(a.photo).width(48).height(48).fit('crop').auto('format').url()}
+                          alt={a.photo.alt ?? a.name ?? ''}
+                          className="bpp-sidebar-author-avatar"
+                          width={48}
+                          height={48}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span className="bpp-sidebar-author-avatar bpp-sidebar-author-avatar--initials">
+                          {(a.name ?? '?').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
+                        </span>
+                      )}
+                      <div className="bpp-sidebar-author-info">
+                        {a.slug?.current ? (
+                          <Link
+                            to={`/humans/${a.slug.current}`}
+                            className="bpp-sidebar-author-name bpp-sidebar-author-name--link"
+                          >
+                            {a.name}
+                          </Link>
+                        ) : (
+                          <span className="bpp-sidebar-author-name">{a.name}</span>
+                        )}
+                        {a.role && <span className="bpp-sidebar-author-role">{a.role}</span>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )} */}
+
             {/* Article info */}
-            <div className="bpp-sidebar-card">
+            {/* <div className="bpp-sidebar-card">
               <p className="bpp-sidebar-card-title">Article info</p>
               <ul className="bpp-sidebar-info-list">
                 {post.publishedAt && (
@@ -295,7 +415,7 @@ export default function BlogPostPage() {
                   </li>
                 )}
               </ul>
-            </div>
+            </div> */}
 
             {/* Share tools */}
             {post.body && (
@@ -303,7 +423,7 @@ export default function BlogPostPage() {
                 title={post.title ?? ''}
                 url={postUrl}
                 body={post.body}
-                author={post.author?.name}
+                author={primaryAuthor?.name}
                 publishedAt={post.publishedAt ?? undefined}
               />
             )}
@@ -313,16 +433,16 @@ export default function BlogPostPage() {
               <div className="bpp-sidebar-card">
                 <p className="bpp-sidebar-card-title">More Articles</p>
                 <ul className="bpp-sidebar-more-list">
-                  {suggestedPosts.map((p) => (
+                  {suggestedPosts.map(p => (
                     <li key={p._id} className="bpp-sidebar-more-item">
                       <Link to={`/blog/${p.slug!.current}`} className="bpp-sidebar-more-link">
                         {p.mainImage?.asset && (
                           <img
-                            src={urlFor(p.mainImage).width(64).height(64).fit('crop').auto('format').url()}
+                            src={urlFor(p.mainImage).width(56).height(56).fit('crop').auto('format').url()}
                             alt={p.mainImage.alt ?? p.title ?? ''}
                             className="bpp-sidebar-more-thumb"
-                            width={64}
-                            height={64}
+                            width={56}
+                            height={56}
                             loading="lazy"
                           />
                         )}
@@ -345,58 +465,34 @@ export default function BlogPostPage() {
               <p className="bpp-sidebar-cta-text">
                 See how TesseractApps streamlines NDIS compliance and workforce management.
               </p>
-              <Link to="/book-a-demo" className="bpp-sidebar-cta-btn">
-                Book a Demo
-              </Link>
+              <Link to="/book-a-demo" className="bpp-sidebar-cta-btn">Book a Demo</Link>
             </div>
           </aside>
-
         </div>
 
-        {/* Related posts — full width below grid */}
+        {/* Related posts */}
         {validRelatedPosts.length > 0 && (
           <section className="bpp-related">
             <h2 className="bpp-related-heading">Related Posts</h2>
             <div className="bpp-related-grid">
-              {validRelatedPosts.map((related) => (
-                <Link
-                  key={related._id}
-                  to={`/blog/${related.slug!.current}`}
-                  className="bpp-related-card"
-                >
-                  <div className="bpp-related-image-wrap">
-                    {related.mainImage?.asset ? (
-                      <img
-                        src={urlFor(related.mainImage).width(480).height(270).fit('crop').auto('format').url()}
-                        alt={related.mainImage.alt ?? related.title ?? ''}
-                        className="bpp-related-image"
-                        width={480}
-                        height={270}
-                        loading="lazy"
-                      />
-                    ) : (
-                      <img src="/svg-logos/Full Logo Blue.svg" alt="TesseractApps" className="bpp-related-image-logo" />
-                    )}
-                  </div>
-                  <div className="bpp-related-body">
-                    <p className="bpp-related-title">{related.title}</p>
-                    {related.publishedAt && (
-                      <time dateTime={related.publishedAt} className="bpp-related-date">
-                        {formatDate(related.publishedAt)}
-                      </time>
-                    )}
-                    <span className="bpp-related-arrow">Read article →</span>
-                  </div>
-                </Link>
+              {validRelatedPosts.map(related => (
+                <BlogCard key={related._id} post={related} />
               ))}
             </div>
           </section>
         )}
 
-        {/* Back */}
-        <div className="bpp-back">
-          <Link to="/blogs" className="bpp-back-link">← Back to all posts</Link>
-        </div>
+        {/* Free Guides */}
+        {guides.filter(g => g.status === 'published').length > 0 && (
+          <section className="bpp-related">
+            <h2 className="bpp-related-heading">Free Guides</h2>
+            <div className="gd-grid">
+              {guides.filter(g => g.status === 'published').slice(0, 3).map(g => (
+                <GuideCard key={g._id} guide={g} loading="lazy" />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   )

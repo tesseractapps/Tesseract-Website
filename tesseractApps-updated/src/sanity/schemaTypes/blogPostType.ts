@@ -27,20 +27,20 @@ export const blogPostType = defineType({
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      author0: 'authors.0.name',
       media: 'mainImage',
       status: 'status',
     },
     prepare(selection) {
-      const { author, status } = selection as {
-        author?: string
+      const { author0, status } = selection as {
+        author0?: string
         status?: string
         title: string
         media: unknown
       }
       return {
         ...selection,
-        subtitle: `${author ?? 'Unknown author'} · ${status ?? 'draft'}`,
+        subtitle: `${author0 ?? 'Unknown author'} · ${status ?? 'draft'}`,
       }
     },
   },
@@ -78,10 +78,12 @@ export const blogPostType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: [{ type: 'author' }],
+      name: 'authors',
+      title: 'Authors',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'human' }] }],
+      description: 'One or more authors. Each must have "Blog author" enabled on their Human record.',
+      validation: (Rule) => Rule.unique(),
     }),
     defineField({
       name: 'category',
@@ -160,6 +162,65 @@ export const blogPostType = defineType({
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'blogPost' }] }],
       validation: (Rule) => Rule.max(3),
+    }),
+    defineField({
+      name: 'cta',
+      title: 'Call to Action',
+      type: 'object',
+      description: 'Optional CTA block rendered at the bottom of the article.',
+      fields: [
+        defineField({
+          name: 'variant',
+          title: 'Variant',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Buttons (default)', value: 'buttons' },
+              { title: 'Subscribe form', value: 'subscribe' },
+            ],
+            layout: 'radio',
+          },
+          initialValue: 'buttons',
+          description: '"Subscribe form" shows an inline email sign-up instead of buttons.',
+        }),
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+          description: 'e.g. "Download our free SIL Compliance Readiness Checklist"',
+        }),
+        defineField({
+          name: 'body',
+          title: 'Body Text',
+          type: 'text',
+          rows: 2,
+          description: 'Short description beneath the heading.',
+        }),
+        defineField({
+          name: 'primaryLabel',
+          title: 'Primary Button Label',
+          type: 'string',
+          description: 'e.g. "Download the Checklist" — not used for subscribe variant.',
+        }),
+        defineField({
+          name: 'primaryUrl',
+          title: 'Primary Button URL',
+          type: 'string',
+          description: 'Use a relative path for internal links (e.g. /guides/sil-compliance-checklist).',
+        }),
+        defineField({
+          name: 'secondaryLabel',
+          title: 'Secondary Button Label',
+          type: 'string',
+          description: 'e.g. "Book a Free Demo"',
+        }),
+        defineField({
+          name: 'secondaryUrl',
+          title: 'Secondary Button URL',
+          type: 'string',
+          description: 'e.g. /book-a-demo',
+        }),
+      ],
     }),
   ],
 })

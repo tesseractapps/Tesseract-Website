@@ -145,6 +145,15 @@
       ]
     },
     {
+      "source": "/sitemap-(.*)\\.xml$",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
       "source": "/llms.txt",
       "headers": [
         {
@@ -155,6 +164,15 @@
     },
     {
       "source": "/llm/(.*)\\.md$",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/llms-full.txt",
       "headers": [
         {
           "key": "Cache-Control",
@@ -189,7 +207,9 @@
     { "source": "/team", "destination": "/about", "permanent": true },
     { "source": "/webinars", "destination": "/blogs", "permanent": true },
     { "source": "/case-studies", "destination": "/blogs", "permanent": true },
-    { "source": "/book-a-demo/", "destination": "/book-a-demo", "permanent": true }
+    { "source": "/book-a-demo/", "destination": "/book-a-demo", "permanent": true },
+    { "source": "/accounting", "destination": "/capabilities/accounting-financial-reporting", "permanent": true },
+    { "source": "/accounting/", "destination": "/capabilities/accounting-financial-reporting", "permanent": true }
   ],
   "cleanUrls": true,
   "rewrites": [

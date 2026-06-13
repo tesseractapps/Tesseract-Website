@@ -185,14 +185,14 @@ const Platform = () => {
           <div id="pl-hero-ctas">
             <button
               type="button"
-              className="pl-btn-primary"
+              className="primary-cta"
               onClick={() => { trackCTAClick("book_demo", "platform_hero", "/platform"); navigate("/book-a-demo"); }}
             >
               Book a Demo
             </button>
             <button
               type="button"
-              className="pl-btn-secondary"
+              className="outline-cta"
               onClick={() => { trackCTAClick("begin_journey", "platform_hero", "/platform"); navigate("/signup"); }}
             >
               Begin Your Journey
@@ -444,14 +444,14 @@ const Platform = () => {
         <div className="sll-cta-actions">
             <button
               type="button"
-              className="sll-btn-primary"
+              className="primary-cta-white"
               onClick={() => { trackCTAClick("book_demo", "platform_bottom", "/platform"); navigate("/book-a-demo"); }}
             >
               Book a Demo
             </button>
             <button
               type="button"
-              className="sll-btn-outline"
+              className="outline-cta"
               onClick={() => { trackCTAClick("begin_journey", "platform_bottom", "/platform"); navigate("/signup"); }}
             >
               Begin Your Journey

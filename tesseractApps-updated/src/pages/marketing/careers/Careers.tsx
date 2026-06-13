@@ -1,5 +1,6 @@
 import "./CareersStyles.css";
 import SEO from "../../../components/common/SEO";
+import PageHero from "../../../components/common/PageHero";
 import { Zap, Users, TrendingUp, Home, DollarSign, Heart, MapPin } from "lucide-react";
 import React from "react";
 import { useSanityJobListings } from "../../../hooks/useSanityJobListings";
@@ -23,16 +24,11 @@ const Careers = () => {
         description="Join TesseractApps and help shape the future of care and workforce technology. We're looking for passionate individuals who want to make a real impact through innovation."
       />
 
-      {/* ── Hero ── */}
-      <section id="careers-hero">
-        <div id="careers-hero-inner">
-          <div id="careers-hero-label">Careers</div>
-          <h1 id="careers-hero-heading">Join us in shaping the future of care technology</h1>
-          <p id="careers-hero-sub">
-            We're building a team of people who are passionate about creating practical solutions that make a real difference for providers and participants.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        label="Careers"
+        heading="Join us in shaping the future of care technology"
+        sub="We're building a team of people who are passionate about creating practical solutions that make a real difference for providers and participants."
+      />
 
       <div id="careers-outer">
 

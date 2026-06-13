@@ -22,9 +22,16 @@ import SolutionPage from "../pages/solutions/solutionPage/SolutionPage";
 import ContactInformation from "../pages/forms/contactInformation/ContactInformation";
 import About from "../pages/marketing/about/About";
 import Whitepapers from "../pages/resources/whitepapers/Whitepapers";
+import WhitepaperPage from "../pages/resources/whitepapers/WhitepaperPage";
 import Brochures from "../pages/resources/brochures/Brochures";
+import Guides from "../pages/resources/guides/Guides";
+import GuidePage from "../pages/resources/guides/GuidePage";
+import EventsListing from "../pages/events/eventsListing/EventsListing";
+import AdelaideExpo2026 from "../pages/events/adelaideExpo2026/AdelaideExpo2026";
 import BookADemo from "../pages/forms/bookADemo/BookADemo";
+import BookADemoSuccess from "../pages/forms/bookADemo/BookADemoSuccess";
 import Signup from "../pages/forms/signup/Signup";
+import SignupSuccess from "../pages/forms/signup/SignupSuccess";
 import CompetitorPage from "../pages/competitors/CompetitorPage";
 import NDISGlossary from "../pages/resources/glossary/NDISGlossary";
 import SitemapPage from "../pages/resources/sitemapPage/SitemapPage";
@@ -33,6 +40,8 @@ import WorkflowEngine from "../pages/workflowEngine/WorkflowEngine";
 import SupportCoordination from "../pages/supportCoordination/SupportCoordination";
 import SCPricing from "../pages/marketing/scPricing/SCPricing";
 import Register from "../pages/forms/register/Register";
+import HumansPage from "../pages/humans/HumansPage";
+import HumanPage from "../pages/humans/HumanPage";
 import NotFound from "../pages/notFound/NotFound";
 
 const AppRoutes = () => {
@@ -71,8 +80,12 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/events" element={<EventsListing />} />
+      <Route path="/events/adelaide-expo-2026" element={<AdelaideExpo2026 />} />
       <Route path="/book-a-demo" element={<BookADemo />} />
+      <Route path="/book-a-demo/success" element={<BookADemoSuccess />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/signup/success" element={<SignupSuccess />} />
       <Route path="/pricing" element={<Pricing />} />
       <Route path="/platform" element={<Platform />} />
       <Route path="/learning-management" element={<Navigate to="/capabilities/learning-management" replace />} />
@@ -83,7 +96,10 @@ const AppRoutes = () => {
       <Route path="/capabilities/:slug" element={<CapabilityPage />} />
       <Route path="/solutions" element={<SolutionsListing />} />
       <Route path="/solutions/:slug" element={<SolutionPage />} />
+      <Route path="/guides" element={<Guides />} />
+      <Route path="/guides/:slug" element={<GuidePage />} />
       <Route path="/whitepapers" element={<Whitepapers />} />
+      <Route path="/whitepapers/:slug" element={<WhitepaperPage />} />
       <Route path="/brochures" element={<Brochures />} />
       <Route path="/help-centre" element={<FAQ />} />
       <Route path="/help-center" element={<FAQ />} />
@@ -101,6 +117,8 @@ const AppRoutes = () => {
       <Route path="/sc-pricing" element={<SCPricing />} />
       <Route path="/blogs" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPostPage />} />
+      <Route path="/humans" element={<HumansPage />} />
+      <Route path="/humans/:slug" element={<HumanPage />} />
       <Route path="/tesseract-vs/:slug" element={<CompetitorPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

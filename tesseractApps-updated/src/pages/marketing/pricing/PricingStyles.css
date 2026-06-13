@@ -60,48 +60,8 @@
 .pr-body-text--center { text-align: center; }
 
 /* ── Shared buttons ── */
-.pr-btn-primary,
-.pr-btn-secondary,
-.pr-btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 13px 28px;
-  border-radius: 10px;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  transition: opacity 0.15s ease, transform 0.1s ease;
-  text-decoration: none;
-  font-family: inherit;
-}
-.pr-btn-primary:hover,
-.pr-btn-secondary:hover,
-.pr-btn-outline:hover { opacity: 0.88; transform: translateY(-1px); }
-
-.pr-btn-primary  { background: var(--color-primary); color: #fff; }
-.pr-btn-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
-.pr-btn-secondary--dark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 13px 28px;
-  border-radius: 10px;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  cursor: pointer;
-  background: transparent;
-  color: var(--color-secondary);
-  border: 1.5px solid #dde3ec;
-  transition: opacity 0.15s ease, background 0.15s ease;
-  font-family: inherit;
-}
 .pr-btn-secondary--dark:hover { background: var(--color-background-light-gray, #f5f7fa); }
 .pr-btn-outline  { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.5); }
-.pr-btn-large    { padding: 15px 36px; font-size: 1rem; }
 .pr-btn-download {
   display: inline-flex;
   align-items: center;
@@ -238,17 +198,7 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-/* Hero secondary button override — light background context */
-#pr-hero-ctas .pr-btn-secondary {
-  background: transparent;
-  color: var(--color-secondary);
-  border: 1.5px solid rgba(0, 42, 82, 0.3);
-}
-#pr-hero-ctas .pr-btn-secondary:hover {
-  background: rgba(0, 42, 82, 0.06);
-  opacity: 1;
-  transform: translateY(-1px);
-}
+
 .pr-cta-sub-note {
   font-size: 0.75rem;
   color: #64748b;
@@ -1652,10 +1602,6 @@
   }
   #pr-hero-price { font-size: 2.5rem; }
   #pr-hero-price-meta { align-items: center; }
-  #pr-hero-ctas { flex-direction: column; align-items: stretch; gap: 10px; width: 100%; }
-  #pr-hero-ctas .pr-btn-primary,
-  #pr-hero-ctas .pr-btn-secondary,
-  #pr-hero-ctas .pr-btn-download { width: 100%; max-width: 100%; box-sizing: border-box; justify-content: center; }
 
   #pr-start { padding: 56px 0 0; }
   .pr-section-heading { font-size: 1.625rem; }
@@ -1663,8 +1609,6 @@
   #pr-featured-name { font-size: 1.5rem; }
   #pr-featured-tagline { font-size: 1.25rem; }
   #pr-featured-actions { flex-direction: column; }
-  #pr-featured-actions .pr-btn-primary,
-  #pr-featured-actions .pr-btn-secondary--dark { width: 100%; }
   #pr-featured-addons-label { font-size: 0.65rem; }
   #pr-featured-addons-offer { font-size: 0.55rem; }
   .pr-featured-addons-item { font-size: 0.75rem; }
@@ -1682,9 +1626,6 @@
   #pr-cta-banner { padding: 64px 0; }
   #pr-cta-heading { font-size: 1.875rem; }
   #pr-cta-sub { font-size: 1rem; }
-  #pr-cta-actions { flex-direction: column; align-items: center; gap: 10px; }
-  #pr-cta-actions .pr-btn-primary,
-  #pr-cta-actions .pr-btn-outline { width: 100%; max-width: 360px; }
 }
 
 /* ── Mobile 480px ── */

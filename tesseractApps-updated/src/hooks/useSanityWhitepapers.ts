@@ -3,17 +3,28 @@ import { client } from '../sanity/lib/client'
 import { WHITEPAPERS_QUERY } from '../sanity/lib/queries'
 import { sanityConfigError } from '../sanity/env'
 
+export interface WhitepaperAuthor {
+  _id: string
+  name?: string
+  slug?: { current: string }
+  role?: string
+  linkedInUrl?: string
+  photo?: { asset?: { _id: string; url: string; metadata?: { lqip?: string } }; alt?: string }
+}
+
 export interface WhitepaperItem {
   _id: string
   title: string
   slug?: { current: string }
   status: 'published' | 'coming_soon'
   excerpt?: string
+  abstract?: string
   audience?: string
   publishedAt?: string
   gated: boolean
   tags?: string[]
   featured?: boolean
+  authors?: WhitepaperAuthor[]  // now included in list query too
   pdfFile?: { asset?: { _id: string; url: string } }
   coverImage?: {
     asset?: { _id: string; url: string; metadata?: { lqip?: string; dimensions?: { width: number; height: number } } }

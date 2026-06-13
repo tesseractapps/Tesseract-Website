@@ -117,7 +117,7 @@ export const solutionPageType = defineType({
                 type: 'object',
                 title: 'Link',
                 fields: [
-                  { name: 'href', type: 'url', title: 'URL' },
+                  { name: 'href', type: 'string', title: 'URL', description: 'Absolute URL (https://...) or internal path (/solutions/...)' },
                   { name: 'blank', type: 'boolean', title: 'Open in new tab', initialValue: false },
                 ],
               },
@@ -153,7 +153,7 @@ export const solutionPageType = defineType({
                 type: 'object',
                 title: 'Link',
                 fields: [
-                  { name: 'href', type: 'url', title: 'URL' },
+                  { name: 'href', type: 'string', title: 'URL', description: 'Absolute URL (https://...) or internal path (/solutions/...)' },
                   { name: 'blank', type: 'boolean', title: 'Open in new tab', initialValue: false },
                 ],
               },

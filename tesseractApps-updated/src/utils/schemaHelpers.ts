@@ -125,3 +125,70 @@ export const buildGraphSchema = (...schemas: object[]) => ({
   '@context': 'https://schema.org',
   '@graph': schemas,
 })
+
+export interface PersonSchemaOptions {
+  name: string
+  jobTitle?: string
+  imageUrl?: string
+  linkedInUrl?: string
+}
+
+/** Person JSON-LD for team members on the About page. */
+export const buildPersonSchema = ({ name, jobTitle, imageUrl, linkedInUrl }: PersonSchemaOptions) => ({
+  '@type': 'Person',
+  name,
+  ...(jobTitle && { jobTitle }),
+  ...(imageUrl && { image: imageUrl }),
+  ...(linkedInUrl && { sameAs: [linkedInUrl] }),
+  worksFor: {
+    '@type': 'Organization',
+    name: 'TesseractApps',
+    url: SITE_URL,
+  },
+})
+
+export interface AboutPageSchemaOptions {
+  people: PersonSchemaOptions[]
+}
+
+/** AboutPage + Organization JSON-LD for the About page. */
+export const buildAboutPageSchema = ({ people }: AboutPageSchemaOptions) => ({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'AboutPage',
+      name: 'About TesseractApps',
+      url: `${SITE_URL}/about`,
+      description: 'TesseractApps is an Australian SaaS company building workforce management and compliance software for NDIS providers and care organisations.',
+      mainEntity: {
+        '@type': 'Organization',
+        name: 'TesseractApps',
+        url: SITE_URL,
+        foundingDate: '2022',
+        areaServed: 'Australia',
+        description: 'All-in-one workforce management and NDIS compliance platform for care providers.',
+      },
+    },
+    ...people.map(buildPersonSchema),
+  ],
+})
+
+/** Service JSON-LD for solution pages. */
+export const buildServiceSchema = ({
+  name,
+  description,
+}: {
+  name: string
+  description: string
+}) => ({
+  '@type': 'Service',
+  name,
+  description,
+  provider: {
+    '@type': 'Organization',
+    name: 'TesseractApps',
+    url: SITE_URL,
+  },
+  areaServed: 'Australia',
+  serviceType: 'Care Sector Workforce Management Software',
+})

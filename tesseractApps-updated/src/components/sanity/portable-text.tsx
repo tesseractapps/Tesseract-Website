@@ -8,11 +8,24 @@ import './portable-text.css'
 
 const LazyCodeBlock = lazy(() => import('./CodeBlock'))
 
+/** Convert heading text to a URL-safe anchor id. */
+function toAnchorId(text: unknown): string {
+  const str = Array.isArray(text)
+    ? text.map(t => (typeof t === 'string' ? t : (t as any)?.props?.children ?? '')).join('')
+    : String(text ?? '')
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .slice(0, 80)
+}
+
 const components: PortableTextComponents = {
   block: {
-    h2: ({ children }) => <h2 className="pt-h2">{children}</h2>,
-    h3: ({ children }) => <h3 className="pt-h3">{children}</h3>,
-    h4: ({ children }) => <h4 className="pt-h4">{children}</h4>,
+    h2: ({ children }) => <h2 id={toAnchorId(children)} className="pt-h2">{children}</h2>,
+    h3: ({ children }) => <h3 id={toAnchorId(children)} className="pt-h3">{children}</h3>,
+    h4: ({ children }) => <h4 id={toAnchorId(children)} className="pt-h4">{children}</h4>,
     blockquote: ({ children }) => <blockquote className="pt-blockquote">{children}</blockquote>,
     normal: ({ children }) => <p className="pt-paragraph">{children}</p>,
   },

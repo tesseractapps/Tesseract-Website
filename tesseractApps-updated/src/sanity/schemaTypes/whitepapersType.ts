@@ -73,11 +73,25 @@ export const whitepapersType = defineType({
     }),
     defineField({
       name: 'excerpt',
-      title: 'Description',
+      title: 'Short Description',
       type: 'text',
       rows: 3,
-      description: 'Short description shown on the listing card. Max 200 characters.',
+      description: 'Shown on listing cards and search results. Max 200 characters.',
       validation: (Rule) => Rule.required().max(200),
+    }),
+    defineField({
+      name: 'abstract',
+      title: 'Abstract',
+      type: 'text',
+      rows: 6,
+      description: 'Full abstract shown on the individual whitepaper page. No character limit.',
+    }),
+    defineField({
+      name: 'authors',
+      title: 'Authors',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'human' }] }],
+      description: 'Team members who authored this whitepaper.',
     }),
     defineField({
       name: 'audience',

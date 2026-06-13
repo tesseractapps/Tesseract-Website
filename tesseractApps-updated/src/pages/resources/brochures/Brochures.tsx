@@ -1,6 +1,10 @@
 import "./BrochuresStyles.css";
+import { useState } from "react";
 import SEO from "../../../components/common/SEO";
+import PageHero from "../../../components/common/PageHero";
 import { useSanityBrochures } from "../../../hooks/useSanityBrochures";
+import ResourceSearchModal from "../../../components/resourceSearch/ResourceSearchModal";
+import type { ResourceSearchEntry } from "../../../components/resourceSearch/ResourceSearchModal";
 
 const SkeletonCard = () => (
   <article className="br-card br-card--skeleton" aria-hidden="true">
@@ -17,6 +21,17 @@ const SkeletonCard = () => (
 
 const Brochures = () => {
   const { data: brochures, loading, error } = useSanityBrochures();
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  const searchEntries: ResourceSearchEntry[] = brochures.map((br) => ({
+    id: br._id,
+    title: br.title,
+    subtitle: br.description ?? undefined,
+    date: br.publishedAt ?? undefined,
+    type: 'Brochure',
+    href: `/brochures`,
+    externalUrl: br.pdfFile?.asset?.url,
+  }));
 
   return (
     <div>
@@ -25,23 +40,32 @@ const Brochures = () => {
         description="Download TesseractApps brochures covering our NDIS software platform, key features, and care management solutions."
       />
 
-      {/* ── Hero ── */}
-      <section id="br-hero">
-        <div id="br-hero-inner">
-          <div id="br-hero-label">Brochures</div>
-          <h1 id="br-hero-heading">Product Brochures & Guides</h1>
-          <p id="br-hero-sub">
-            Download our brochures to explore TesseractApps features, platform capabilities,
-            and care management solutions at a glance.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        label="Brochures"
+        heading="Product Brochures & Guides"
+        sub="Download our brochures to explore TesseractApps features, platform capabilities, and care management solutions at a glance."
+      >
+        <button type="button" className="rsh-trigger" onClick={() => setSearchOpen(true)} aria-label="Search brochures">
+          <svg className="rsh-trigger-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <span className="rsh-trigger-text">Search brochures…</span>
+        </button>
+      </PageHero>
+
+      <ResourceSearchModal
+        isOpen={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        entries={searchEntries}
+        placeholder="Search brochures…"
+        latestLabel="Latest brochures"
+      />
 
       {/* ── Content ── */}
       <section id="br-content">
         <div id="br-outer">
-          <div id="br-section-label">Available Downloads</div>
-          <h2 id="br-section-heading">Brochure library</h2>
+          {/* <div id="br-section-label">Available Downloads</div>
+          <h2 id="br-section-heading">Brochure library</h2> */}
 
           {/* Loading */}
           {loading && (

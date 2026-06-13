@@ -13,7 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import {
   Users, Heart, Home, Stethoscope,
-  ChevronRight, CheckCircle, Phone,
+  ChevronRight, Phone,
   ShieldCheck, Clock, Star, X,
 } from "lucide-react";
 import { trackBeginJourneySubmit, trackFormStepComplete, trackFormStart } from "../../../utils/analytics";
@@ -90,7 +90,6 @@ const Signup = () => {
   useEffect(() => { trackFormStart("signup"); }, []);
   const [formData, setFormData]           = useState<FormData>(emptyForm);
   const [formErrors, setFormErrors]       = useState<FormErrors>({});
-  const [showSuccess, setShowSuccess]     = useState(false);
   const [isSubmitting, setIsSubmitting]   = useState(false);
   const [alertData, setAlertData]         = useState(alertInitialData);
 
@@ -173,7 +172,7 @@ const Signup = () => {
           signupConfirmationEmailTemplate.text(formData.firstName),
           signupConfirmationEmailTemplate.html(formData.firstName)
         ).catch((err) => console.error("Confirmation email error:", err));
-        setShowSuccess(true);
+        navigate("/signup/success");
       })
       .catch((err) => {
         console.error("Submit error:", err);
@@ -202,36 +201,7 @@ const Signup = () => {
         <X size={18} strokeWidth={2.5} />
       </button>
 
-      {showSuccess ? (
-        /* ── Success Screen ── */
-        <div id="signup-success-screen">
-          <div id="signup-success-inner">
-            <div id="signup-success-icon">
-              <CheckCircle size={64} color="var(--color-primary)" strokeWidth={1.5} />
-            </div>
-            <div id="signup-success-title">You're all set!</div>
-            <div id="signup-success-message">
-              Thank you for choosing TesseractApps. We've received your details and are setting up your account.
-              Keep an eye on your inbox, we'll send you an email with your login details and next steps shortly.
-            </div>
-            <div id="signup-success-help-heading">Need help?</div>
-            <div id="signup-success-help-text">
-              If you have any questions or considerations while we set things up, please don't hesitate to reach out to our team.
-            </div>
-            <div id="signup-success-phone">
-              <Phone size={16} />
-              <strong>1300 252 808</strong>
-            </div>
-            <div id="signup-success-actions">
-              <button type="button" className="signup-btn-primary" onClick={handleClose}>
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-
-      ) : (
-        <div id="signup-container">
+      <div id="signup-container">
 
           {/* ── Left Sidebar ── */}
           <div id="signup-sidebar">
@@ -569,7 +539,6 @@ const Signup = () => {
 
           </div>
         </div>
-      )}
     </div>
   );
 };

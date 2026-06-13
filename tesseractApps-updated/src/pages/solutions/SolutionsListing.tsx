@@ -154,14 +154,14 @@ const SolutionsListing = () => {
           <div className="sll-cta-actions">
             <button
               type="button"
-              className="sll-btn-primary"
+              className="primary-cta-white"
               onClick={() => navigate("/book-a-demo")}
             >
               Book a Demo
             </button>
             <button
               type="button"
-              className="sll-btn-outline"
+              className="outline-cta"
               onClick={() => navigate("/signup")}
             >
               Begin Your Journey

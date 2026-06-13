@@ -145,6 +145,20 @@ const FooterComponent = () => {
     <div id="footer-container">
       <Alert setAlertData={setAlertData} alertData={alertData} />
 
+      {/* ── About blurb ── */}
+      <div id="footer-about-block">
+        <Link id="footer-logo" to="/" aria-label="TesseractApps — home">
+          <div id="footer-logo-icon" role="img" aria-label="Tesseract Apps Logo" />
+          TesseractApps
+        </Link>
+        <div className="footer-about-label">About the company</div>
+        <div className="footer-text footer-about-text">
+          At TesseractApps, we provide tailored solutions that simplify care
+          management, accounting, compliance, and HR, helping care providers run
+          their operations efficiently and stay compliant.
+        </div>
+      </div>
+      
       {/* ── Zone 1: Nav grid ── */}
       <nav id="footer-nav" aria-label="Footer navigation">
 
@@ -230,19 +244,7 @@ const FooterComponent = () => {
         </div>
       </nav>
 
-      {/* ── About blurb ── */}
-      <div id="footer-about-block">
-        <Link id="footer-logo" to="/" aria-label="TesseractApps — home">
-          <div id="footer-logo-icon" role="img" aria-label="Tesseract Apps Logo" />
-          TesseractApps
-        </Link>
-        <div className="footer-about-label">About the company</div>
-        <div className="footer-text footer-about-text">
-          At TesseractApps, we provide tailored solutions that simplify care
-          management, accounting, compliance, and HR, helping care providers run
-          their operations efficiently and stay compliant.
-        </div>
-      </div>
+
 
       {/* ── Zone 2: Newsletter + Awards + Contact ── */}
       <div id="footer-mid">

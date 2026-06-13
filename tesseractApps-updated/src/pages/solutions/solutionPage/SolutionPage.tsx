@@ -5,11 +5,10 @@ import { useSanitySolutionPage } from "../../../hooks/useSanitySolutionPage";
 import { useSanityBlogList } from "../../../hooks/useSanityBlogList";
 import SEO from "../../../components/common/SEO";
 import { trackSolutionView } from "../../../utils/analytics";
-import { formatDate } from "../../../utils/formatDate";
-import { urlFor } from "../../../sanity/lib/image";
-import { buildBreadcrumbSchema, buildGraphSchema } from "../../../utils/schemaHelpers";
+import { buildBreadcrumbSchema, buildGraphSchema, buildServiceSchema } from "../../../utils/schemaHelpers";
 import Breadcrumb from "../../../components/common/Breadcrumb";
 import PortableTextRenderer from "../../../components/sanity/portable-text";
+import BlogCard from "../../../components/blog/BlogCard";
 
 // ── Skeleton ─────────────────────────────────────────────────────────────────
 
@@ -110,7 +109,11 @@ const SolutionPage = () => {
       { name: "Home", url: "https://tesseractapps.com.au" },
       { name: "Solutions", url: "https://tesseractapps.com.au/product" },
       { name: page.title, url: pageUrl },
-    ])
+    ]),
+    buildServiceSchema({
+      name: page.title,
+      description: metaDescription,
+    })
   );
 
   // Extract plain text from a Portable Text block array (blocks only, skip images etc.)
@@ -328,37 +331,7 @@ const SolutionPage = () => {
             <h2 className="sol-section-heading">Related guides from our blog.</h2>
             <div className="sol-reading-grid">
               {relevantBlogs.map((post) => (
-                <Link
-                  key={post._id}
-                  to={`/blog/${post.slug?.current}`}
-                  className="sol-reading-card"
-                >
-                  <div className="sol-reading-image-wrap">
-                    {post.mainImage?.asset ? (
-                      <img
-                        className="sol-reading-image"
-                        src={urlFor(post.mainImage).width(720).height(405).fit("crop").auto("format").url()}
-                        alt={post.mainImage.alt ?? post.title ?? "Blog post image"}
-                        loading="lazy"
-                        width={720}
-                        height={405}
-                      />
-                    ) : (
-                      <img src="/svg-logos/Full Logo Blue.svg" alt="TesseractApps" className="sol-reading-image-logo" />
-                    )}
-                  </div>
-                  <div className="sol-reading-body">
-                    <h3 className="sol-reading-title">{post.title}</h3>
-                    {post.excerpt && <p className="sol-reading-excerpt">{post.excerpt}</p>}
-                    <div className="sol-reading-meta">
-                      {post.category?.title && <span>{post.category.title}</span>}
-                      {post.publishedAt && <span>{formatDate(post.publishedAt)}</span>}
-                    </div>
-                    <span className="sol-reading-arrow">
-                      Read article <IconArrowRight />
-                    </span>
-                  </div>
-                </Link>
+                <BlogCard key={post._id} post={post} />
               ))}
             </div>
           </div>
@@ -379,14 +352,14 @@ const SolutionPage = () => {
     <div className="sll-cta-actions">
             <button
               type="button"
-              className="sll-btn-primary"
+              className="primary-cta-white"
               onClick={() => navigate("/book-a-demo")}
             >
               Book a Demo
             </button>
             <button
               type="button"
-              className="sll-btn-outline"
+              className="outline-cta"
               onClick={() => navigate("/signup")}
             >
               Begin Your Journey

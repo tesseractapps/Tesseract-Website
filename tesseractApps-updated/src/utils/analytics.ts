@@ -50,6 +50,25 @@ export function trackRegisterSCSubmit(data: {
   });
 }
 
+export function trackAdelaideExpoSubmit(data: {
+  email: string;
+  fullName: string;
+  organisation: string;
+  role: string;
+}) {
+  window.dataLayer?.push({
+    event: "adelaide_expo_2026_register",
+    user_data: {
+      email: data.email,
+    },
+    form_data: {
+      full_name: data.fullName,
+      organisation: data.organisation,
+      role: data.role,
+    },
+  });
+}
+
 export function trackContactFeedbackSubmit(feedbackType: string) {
   window.dataLayer?.push({
     event: "contact_feedback_submit",
@@ -166,5 +185,12 @@ export function trackWhitepaperDownload(title: string) {
   window.dataLayer?.push({
     event: "whitepaper_download",
     content_title: title,
+  });
+}
+
+export function trackGuideAccess(title: string) {
+  window.dataLayer?.push({
+    event: 'guide_access',
+    guide_title: title,
   });
 }

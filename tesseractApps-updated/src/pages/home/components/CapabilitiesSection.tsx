@@ -70,9 +70,8 @@ const CapabilitiesSection = memo(({ inView, inViewRef }: CapabilitiesSectionProp
         </div>
 
         <div className="hv4-cap-footer">
-          <a href="/capabilities" className="hv4-cap-extra-link">
+          <a href="/capabilities" className="outline-cta-dark">
             View all capabilities
-            <IconArrowRight />
           </a>
           <div className="hv4-cap-footer-spacer" />
         </div>

@@ -2,8 +2,9 @@ import "./PricingStyles.css";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import SEO from "../../../components/common/SEO";
+import { buildGraphSchema } from "../../../utils/schemaHelpers";
 import { trackCTAClick } from "../../../utils/analytics";
-import { Download, Play, X } from "lucide-react";
+import { Play, X } from "lucide-react";
 import featuresPdf from "../../../assets/TesseractApps-Features-Redesigned 1.pdf";
 import starterVideo from "../../../assets/pricing_videos/Tesseractapps_Starter_Plan.mp4";
 import HeroArcsLeftComponent from "../../../components/sections/heroArcsComponent/HeroArcsComponent";
@@ -378,11 +379,56 @@ const Pricing = () => {
   const [activeTab, setActiveTab] = useState<"growth" | "scale" | "enterprise">("growth");
   const [videoOpen, setVideoOpen] = useState(false);
 
+  const pricingSchema = buildGraphSchema({
+    '@type': 'SoftwareApplication',
+    name: 'TesseractApps',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web, iOS, Android',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Start',
+        description: 'Early provider setup — setup fee only, no subscription for up to 18 months. For 1–15 staff.',
+        price: '0',
+        priceCurrency: 'AUD',
+        eligibleRegion: 'AU',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Growth',
+        description: 'Operational control for scaling providers. For 15–60 staff. Per seat per month.',
+        price: '39.99',
+        priceCurrency: 'AUD',
+        eligibleRegion: 'AU',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Scale',
+        description: 'Governance and oversight for multi-site providers. For 60–120 staff. Per seat per month.',
+        price: '39.99',
+        priceCurrency: 'AUD',
+        eligibleRegion: 'AU',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Enterprise',
+        description: 'Full platform for large organisations with 120+ staff. Contact us for custom pricing.',
+        eligibleRegion: 'AU',
+      },
+    ],
+    publisher: {
+      '@type': 'Organization',
+      name: 'TesseractApps',
+      url: 'https://tesseractapps.com.au',
+    },
+  });
+
   return (
     <div id="pr-page">
       <SEO
         title="NDIS Software Pricing | Start Free | TesseractApps"
         description="Transparent NDIS software pricing with one unified platform across Growth, Scale, and Enterprise. Start stage supports early-stage providers for up to 18 months with setup only. Governance depth grows with operational maturity."
+        structuredData={pricingSchema}
       />
 
       {/* ── Hero ── */}
@@ -411,14 +457,14 @@ const Pricing = () => {
           <div id="pr-hero-ctas">
             <button
               type="button"
-              className="pr-btn-primary"
+              className="primary-cta"
               onClick={() => { trackCTAClick("book_demo", "pricing", "/pricing"); navigate("/book-a-demo"); }}
             >
               Book a Demo
             </button>
             <button
               type="button"
-              className="pr-btn-secondary"
+              className="secondary-cta"
               onClick={() => { trackCTAClick("begin_journey", "pricing", "/pricing"); navigate("/signup"); }}
             >
               Begin Your Journey
@@ -426,9 +472,8 @@ const Pricing = () => {
             <a
               href={featuresPdf}
               download="TesseractApps-Features.pdf"
-              className="pr-btn-download"
+              className="secondary-cta"
             >
-              <Download size={15} />
               Download Features PDF
             </a>
           </div>
@@ -553,14 +598,14 @@ const Pricing = () => {
               <div id="pr-featured-actions">
                 <button
                   type="button"
-                  className="pr-btn-primary"
+                  className="primary-cta"
                   onClick={() => { trackCTAClick("book_demo", "pricing", "/pricing"); navigate("/book-a-demo"); }}
                 >
                   Book a Demo
                 </button>
                 <button
                   type="button"
-                  className="pr-btn-secondary--dark"
+                  className="outline-cta-dark"
                   onClick={() => { trackCTAClick("begin_journey", "pricing", "/pricing"); navigate("/signup"); }}
                 >
                   Begin Your Journey
@@ -783,14 +828,14 @@ const Pricing = () => {
             <div id="pr-cta-actions">
               <button
                 type="button"
-                className="pr-btn-primary pr-btn-large"
+                className="primary-cta"
                 onClick={() => { trackCTAClick("book_demo", "pricing", "/pricing"); navigate("/book-a-demo"); }}
               >
                 Book a Demo
               </button>
               <button
                 type="button"
-                className="pr-btn-outline pr-btn-large"
+                className="outline-cta"
                 onClick={() => { trackCTAClick("begin_journey", "pricing", "/pricing"); navigate("/signup"); }}
               >
                 Begin Your Journey

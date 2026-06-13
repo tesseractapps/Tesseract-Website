@@ -8,6 +8,7 @@ type ImageBuilderLike = {
   fit: (_value: string) => ImageBuilderLike
   crop: (_value: string) => ImageBuilderLike
   auto: (_value: string) => ImageBuilderLike
+  quality: (_value: number) => ImageBuilderLike
   url: () => string
 }
 
@@ -20,6 +21,7 @@ function createNoopBuilder(): ImageBuilderLike {
     fit: () => createNoopBuilder(),
     crop: () => createNoopBuilder(),
     auto: () => createNoopBuilder(),
+    quality: () => createNoopBuilder(),
     url: () => '',
   }
 }

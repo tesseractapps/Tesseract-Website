@@ -16,34 +16,46 @@ const projectId = process.env.VITE_SANITY_PROJECT_ID || env.VITE_SANITY_PROJECT_
 const dataset = process.env.VITE_SANITY_DATASET || env.VITE_SANITY_DATASET || 'production';
 const apiVersion = process.env.VITE_SANITY_API_VERSION || env.VITE_SANITY_API_VERSION || '2024-01-01';
 
-// --- Static site pages (not blog posts) for sitemap only ---
+// --- Static pages ---
 const STATIC_PAGES = [
-  { loc: '/', priority: '1.0' },
-  { loc: '/capabilities' },
-  { loc: '/solutions' },
-  { loc: '/platform' },
-  { loc: '/pricing' },
-  { loc: '/case-studies' },
-  { loc: '/webinars' },
-  { loc: '/whitepapers' },
-  { loc: '/blogs' },
-  { loc: '/help-center' },
-  { loc: '/changelog' },
-  { loc: '/about' },
-  { loc: '/our-story' },
-  { loc: '/team' },
-  { loc: '/careers' },
-  { loc: '/contact-us' },
-  { loc: '/privacy-policy' },
-  { loc: '/terms-and-conditions' },
-  { loc: '/ndis-glossary', priority: '0.8' },
-  { loc: '/sitemap', priority: '0.5' },
+  { loc: '/',                              priority: '1.0', changefreq: 'weekly'  },
+  { loc: '/platform',                      priority: '0.9', changefreq: 'monthly' },
+  { loc: '/pricing',                       priority: '0.9', changefreq: 'weekly'  },
+  { loc: '/capabilities',                  priority: '0.8', changefreq: 'monthly' },
+  { loc: '/solutions',                     priority: '0.8', changefreq: 'monthly' },
+  { loc: '/about',                         priority: '0.7', changefreq: 'monthly' },
+  { loc: '/humans',                        priority: '0.6', changefreq: 'monthly' },
+  { loc: '/careers',                       priority: '0.6', changefreq: 'weekly'  },
+  { loc: '/contact-us',                    priority: '0.7', changefreq: 'monthly' },
+  { loc: '/help-center',                   priority: '0.6', changefreq: 'monthly' },
+  { loc: '/ndis-glossary',                 priority: '0.8', changefreq: 'monthly' },
+  { loc: '/blogs',                         priority: '0.8', changefreq: 'daily'   },
+  { loc: '/guides',                        priority: '0.8', changefreq: 'weekly'  },
+  { loc: '/whitepapers',                   priority: '0.6', changefreq: 'monthly' },
+  { loc: '/brochures',                     priority: '0.6', changefreq: 'monthly' },
+  { loc: '/events',                        priority: '0.7', changefreq: 'monthly' },
+  { loc: '/events/adelaide-expo-2026',     priority: '0.8', changefreq: 'weekly'  },
+  { loc: '/sc-pricing',                    priority: '0.9', changefreq: 'weekly'  },
+  { loc: '/support-coordination',          priority: '0.9', changefreq: 'monthly' },
+  { loc: '/changelog',                     priority: '0.5', changefreq: 'weekly'  },
+  { loc: '/privacy-policy',               priority: '0.3', changefreq: 'yearly'  },
+  { loc: '/terms-and-conditions',          priority: '0.3', changefreq: 'yearly'  },
+  { loc: '/sitemap',                       priority: '0.3', changefreq: 'monthly' },
+];
+
+// --- LLM / AI context files ---
+const LLM_PAGES = [
+  { loc: '/llms.txt',      priority: '0.5', changefreq: 'weekly' },
+  { loc: '/llms-full.txt', priority: '0.4', changefreq: 'weekly' },
 ];
 
 // --- Helpers ---
+function lastmod(isoDate) {
+  return isoDate ? isoDate.slice(0, 10) : new Date().toISOString().slice(0, 10);
+}
+
 function toRfc822(isoDate) {
-  const d = new Date(isoDate);
-  return d.toUTCString().replace('GMT', '+0000');
+  return new Date(isoDate).toUTCString().replace('GMT', '+0000');
 }
 
 function escapeXml(str) {
@@ -55,14 +67,191 @@ function escapeXml(str) {
     .replace(/'/g, '&apos;');
 }
 
-function lastmod(isoDate) {
-  return isoDate ? isoDate.slice(0, 10) : new Date().toISOString().slice(0, 10);
+function writeFile(name, content) {
+  fs.writeFileSync(path.join(PUBLIC_DIR, name), content, 'utf8');
+  console.log(`[generate-sitemap] Written: public/${name}`);
 }
 
-// --- Fetch all published posts from Sanity ---
+// ── XML builders ──────────────────────────────────────────────────────────────
+
+function urlEntry({ loc, lastmodDate, changefreq = 'weekly', priority = '0.8' }) {
+  return [
+    '  <url>',
+    `    <loc>${loc}</loc>`,
+    `    <lastmod>${lastmodDate}</lastmod>`,
+    `    <changefreq>${changefreq}</changefreq>`,
+    `    <priority>${priority}</priority>`,
+    '  </url>',
+  ].join('\n');
+}
+
+function urlset(entries) {
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    '',
+    entries.join('\n\n'),
+    '',
+    '</urlset>',
+  ].join('\n');
+}
+
+function sitemapIndexEntry(loc, lastmodDate) {
+  return [
+    '  <sitemap>',
+    `    <loc>${loc}</loc>`,
+    `    <lastmod>${lastmodDate}</lastmod>`,
+    '  </sitemap>',
+  ].join('\n');
+}
+
+// ── Sub-sitemap builders ──────────────────────────────────────────────────────
+
+function buildPagesSitemap(now) {
+  return urlset(
+    STATIC_PAGES.map(p => urlEntry({
+      loc: `${SITE_URL}${p.loc}`,
+      lastmodDate: now,
+      changefreq: p.changefreq,
+      priority: p.priority,
+    }))
+  );
+}
+
+function buildBlogSitemap(posts) {
+  if (posts.length === 0) return null;
+  return urlset(
+    posts.map(p => urlEntry({
+      loc: `${SITE_URL}/blog/${p.slug}`,
+      lastmodDate: lastmod(p._updatedAt ?? p.publishedAt),
+      changefreq: 'weekly',
+      priority: '0.8',
+    }))
+  );
+}
+
+function buildCapabilitiesSitemap(pages) {
+  if (pages.length === 0) return null;
+  return urlset(
+    pages.map(p => urlEntry({
+      loc: `${SITE_URL}/capabilities/${p.slug}`,
+      lastmodDate: lastmod(p._updatedAt),
+      changefreq: 'monthly',
+      priority: '0.9',
+    }))
+  );
+}
+
+function buildSolutionsSitemap(pages) {
+  if (pages.length === 0) return null;
+  return urlset(
+    pages.map(p => urlEntry({
+      loc: `${SITE_URL}/solutions/${p.slug}`,
+      lastmodDate: lastmod(p._updatedAt),
+      changefreq: 'monthly',
+      priority: '0.9',
+    }))
+  );
+}
+
+function buildCompetitorsSitemap(pages) {
+  if (pages.length === 0) return null;
+  return urlset(
+    pages.map(p => urlEntry({
+      loc: `${SITE_URL}/tesseract-vs/${p.slug}`,
+      lastmodDate: lastmod(p._updatedAt),
+      changefreq: 'monthly',
+      priority: '0.8',
+    }))
+  );
+}
+
+function buildGuidesSitemap(guides) {
+  if (guides.length === 0) return null;
+  return urlset(
+    guides.map(g => urlEntry({
+      loc: `${SITE_URL}/guides/${g.slug}`,
+      lastmodDate: lastmod(g._updatedAt ?? g.publishedAt),
+      changefreq: 'monthly',
+      priority: '0.8',
+    }))
+  );
+}
+
+function buildWhitepapersSitemap(whitepapers) {
+  if (whitepapers.length === 0) return null;
+  return urlset(
+    whitepapers.map(wp => urlEntry({
+      loc: `${SITE_URL}/whitepapers/${wp.slug}`,
+      lastmodDate: lastmod(wp._updatedAt ?? wp.publishedAt),
+      changefreq: 'monthly',
+      priority: '0.7',
+    }))
+  );
+}
+
+function buildLlmSitemap(now) {
+  return urlset(
+    LLM_PAGES.map(p => urlEntry({
+      loc: `${SITE_URL}${p.loc}`,
+      lastmodDate: now,
+      changefreq: p.changefreq,
+      priority: p.priority,
+    }))
+  );
+}
+
+function buildSitemapIndex(entries, now) {
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    '',
+    entries.map(([loc]) => sitemapIndexEntry(loc, now)).join('\n\n'),
+    '',
+    '</sitemapindex>',
+  ].join('\n');
+}
+
+// ── RSS builder ───────────────────────────────────────────────────────────────
+
+function buildRss(posts) {
+  const buildDate = toRfc822(new Date().toISOString());
+  const items = posts.map(p => {
+    const link = `${SITE_URL}/blog/${p.slug}`;
+    return [
+      '  <item>',
+      `    <title>${escapeXml(p.title ?? '')}</title>`,
+      `    <link>${link}</link>`,
+      `    <description>${escapeXml(p.excerpt ?? '')}</description>`,
+      `    <pubDate>${toRfc822(p.publishedAt)}</pubDate>`,
+      `    <guid isPermaLink="true">${link}</guid>`,
+      '  </item>',
+    ].join('\n');
+  }).join('\n\n');
+
+  return [
+    '<?xml version="1.0" encoding="UTF-8" ?>',
+    '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
+    '<channel>',
+    '  <title>TesseractApps Blog</title>',
+    `  <link>${SITE_URL}</link>`,
+    '  <description>Latest insights, guides, and updates for NDIS providers and care organisations from TesseractApps.</description>',
+    '  <language>en-au</language>',
+    `  <lastBuildDate>${buildDate}</lastBuildDate>`,
+    `  <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />`,
+    '',
+    items,
+    '',
+    '</channel>',
+    '</rss>',
+  ].join('\n');
+}
+
+// ── Sanity fetchers ───────────────────────────────────────────────────────────
+
 async function fetchSanityPosts() {
   if (!projectId) {
-    console.warn('[generate-sitemap] VITE_SANITY_PROJECT_ID not set — sitemap/RSS will be empty. Set the env var and rebuild.');
+    console.warn('[generate-sitemap] VITE_SANITY_PROJECT_ID not set — blog sitemap will be empty.');
     return [];
   }
 
@@ -79,149 +268,108 @@ async function fetchSanityPosts() {
         _updatedAt
       }
     `);
-    console.log(`[generate-sitemap] Fetched ${posts.length} posts from Sanity.`);
+    console.log(`[generate-sitemap] Fetched ${posts.length} blog posts.`);
     return posts;
   } catch (err) {
-    console.warn('[generate-sitemap] Sanity fetch failed — sitemap/RSS blog entries may be incomplete.', err.message);
+    console.warn('[generate-sitemap] Blog post fetch failed:', err.message);
     return [];
   }
 }
 
-// --- Fetch CMS dynamic pages (capabilities, solutions, competitors) ---
 async function fetchSanityCmsPages() {
-  if (!projectId) return { capabilityPages: [], solutionPages: [], competitorPages: [] };
+  if (!projectId) {
+    return { capabilityPages: [], solutionPages: [], competitorPages: [], guides: [], whitepapers: [] };
+  }
 
   const client = createClient({ projectId, dataset, apiVersion, useCdn: false });
 
   try {
-    const [capabilityPages, solutionPages, competitorPages] = await Promise.all([
-      client.fetch(`
-        *[_type == "capabilityPage"] | order(order asc) {
-          "slug": slug.current,
-          _updatedAt
-        }
-      `),
-      client.fetch(`
-        *[_type == "solutionPage"] | order(order asc) {
-          "slug": slug.current,
-          _updatedAt
-        }
-      `),
-      client.fetch(`
-        *[_type == "competitorPage"] | order(order asc) {
-          "slug": slug.current,
-          _updatedAt
-        }
-      `),
+    const [capabilityPages, solutionPages, competitorPages, guides, whitepapers] = await Promise.all([
+      client.fetch(`*[_type == "capabilityPage"] | order(order asc) { "slug": slug.current, _updatedAt }`),
+      client.fetch(`*[_type == "solutionPage"]   | order(order asc) { "slug": slug.current, _updatedAt }`),
+      client.fetch(`*[_type == "competitorPage"] | order(order asc) { "slug": slug.current, _updatedAt }`),
+      client.fetch(`*[_type == "guide" && status == "published"] | order(publishedAt desc) { "slug": slug.current, publishedAt, _updatedAt }`),
+      client.fetch(`*[_type == "whitepaper" && status != "coming_soon"] | order(publishedAt desc) { "slug": slug.current, publishedAt, _updatedAt }`),
     ]);
-    console.log(`[generate-sitemap] Fetched ${capabilityPages.length} capability pages, ${solutionPages.length} solution pages, ${competitorPages.length} competitor pages.`);
-    return { capabilityPages, solutionPages, competitorPages };
+    console.log(
+      `[generate-sitemap] Fetched ${capabilityPages.length} capabilities,`,
+      `${solutionPages.length} solutions,`,
+      `${competitorPages.length} competitors,`,
+      `${guides.length} guides,`,
+      `${whitepapers.length} whitepapers.`
+    );
+    return { capabilityPages, solutionPages, competitorPages, guides, whitepapers };
   } catch (err) {
-    console.warn('[generate-sitemap] Sanity CMS page fetch failed — dynamic pages may be missing from sitemap.', err.message);
-    return { capabilityPages: [], solutionPages: [], competitorPages: [] };
+    console.warn('[generate-sitemap] CMS page fetch failed:', err.message);
+    return { capabilityPages: [], solutionPages: [], competitorPages: [], guides: [], whitepapers: [] };
   }
 }
 
-// --- Generate sitemap.xml ---
-function buildSitemap(posts, staticPages, capabilityPages, solutionPages, competitorPages) {
+// ── Main ──────────────────────────────────────────────────────────────────────
+
+async function main() {
   const now = new Date().toISOString().slice(0, 10);
 
-  const staticUrls = staticPages.map(p => `  <url>
-    <loc>${SITE_URL}${p.loc}</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${p.priority ?? '0.8'}</priority>
-  </url>`).join('\n');
-
-  const blogUrls = posts.map(p => `  <url>
-    <loc>${`${SITE_URL}/blog/${p.slug}`}</loc>
-    <lastmod>${lastmod(p._updatedAt ?? p.publishedAt)}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>`).join('\n');
-
-  const capabilityUrls = capabilityPages.map(p => `  <url>
-    <loc>${SITE_URL}/capabilities/${p.slug}</loc>
-    <lastmod>${lastmod(p._updatedAt)}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>`).join('\n');
-
-  const solutionUrls = solutionPages.map(p => `  <url>
-    <loc>${SITE_URL}/solutions/${p.slug}</loc>
-    <lastmod>${lastmod(p._updatedAt)}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>`).join('\n');
-
-  const competitorUrls = competitorPages.map(p => `  <url>
-    <loc>${SITE_URL}/tesseract-vs/${p.slug}</loc>
-    <lastmod>${lastmod(p._updatedAt)}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>`).join('\n');
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-${staticUrls}
-
-${blogUrls}
-
-${capabilityUrls}
-
-${solutionUrls}
-
-${competitorUrls}
-
-</urlset>`;
-}
-
-// --- Generate rss.xml ---
-function buildRss(posts) {
-  const items = posts.map(p => {
-    const link = `${SITE_URL}/blog/${p.slug}`;
-    return `  <item>
-    <title>${escapeXml(p.title ?? '')}</title>
-    <link>${link}</link>
-    <description>${escapeXml(p.excerpt ?? '')}</description>
-    <pubDate>${toRfc822(p.publishedAt)}</pubDate>
-    <guid isPermaLink="true">${link}</guid>
-  </item>`;
-  }).join('\n\n');
-
-  const buildDate = toRfc822(new Date().toISOString());
-
-  return `<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-  <title>TesseractApps Blog</title>
-  <link>${SITE_URL}</link>
-  <description>Latest insights, guides, and updates for NDIS providers and care organisations from TesseractApps.</description>
-  <language>en-au</language>
-  <lastBuildDate>${buildDate}</lastBuildDate>
-  <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />
-
-${items}
-
-</channel>
-</rss>`;
-}
-
-// --- Main ---
-async function main() {
-  const [posts, { capabilityPages, solutionPages, competitorPages }] = await Promise.all([
+  const [posts, { capabilityPages, solutionPages, competitorPages, guides, whitepapers }] = await Promise.all([
     fetchSanityPosts(),
     fetchSanityCmsPages(),
   ]);
 
-  const sitemap = buildSitemap(posts, STATIC_PAGES, capabilityPages, solutionPages, competitorPages);
-  fs.writeFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), sitemap, 'utf8');
-  console.log('[generate-sitemap] Written: public/sitemap.xml');
+  // ── Sub-sitemaps — write each only if it has content ─────────────────────────
+  // Each entry: [absolute URL for the index, filename, xml content]
+  const subSitemaps = [
+    [
+      `${SITE_URL}/sitemap-pages.xml`,
+      'sitemap-pages.xml',
+      buildPagesSitemap(now),
+    ],
+    posts.length > 0 && [
+      `${SITE_URL}/sitemap-blog.xml`,
+      'sitemap-blog.xml',
+      buildBlogSitemap(posts),
+    ],
+    capabilityPages.length > 0 && [
+      `${SITE_URL}/sitemap-capabilities.xml`,
+      'sitemap-capabilities.xml',
+      buildCapabilitiesSitemap(capabilityPages),
+    ],
+    solutionPages.length > 0 && [
+      `${SITE_URL}/sitemap-solutions.xml`,
+      'sitemap-solutions.xml',
+      buildSolutionsSitemap(solutionPages),
+    ],
+    competitorPages.length > 0 && [
+      `${SITE_URL}/sitemap-competitors.xml`,
+      'sitemap-competitors.xml',
+      buildCompetitorsSitemap(competitorPages),
+    ],
+    guides.length > 0 && [
+      `${SITE_URL}/sitemap-guides.xml`,
+      'sitemap-guides.xml',
+      buildGuidesSitemap(guides),
+    ],
+    whitepapers.length > 0 && [
+      `${SITE_URL}/sitemap-whitepapers.xml`,
+      'sitemap-whitepapers.xml',
+      buildWhitepapersSitemap(whitepapers),
+    ],
+    [
+      `${SITE_URL}/sitemap-llm.xml`,
+      'sitemap-llm.xml',
+      buildLlmSitemap(now),
+    ],
+  ].filter(Boolean);
 
-  const rss = buildRss(posts);
-  fs.writeFileSync(path.join(PUBLIC_DIR, 'rss.xml'), rss, 'utf8');
-  console.log('[generate-sitemap] Written: public/rss.xml');
+  for (const [, filename, xml] of subSitemaps) {
+    writeFile(filename, xml);
+  }
+
+  // ── Sitemap index ─────────────────────────────────────────────────────────────
+  const sitemapIndex = buildSitemapIndex(subSitemaps, now);
+  writeFile('sitemap.xml', sitemapIndex);
+
+  // ── RSS feed ──────────────────────────────────────────────────────────────────
+  writeFile('rss.xml', buildRss(posts));
 }
 
 main().catch(err => {

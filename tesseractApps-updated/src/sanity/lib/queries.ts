@@ -13,18 +13,46 @@ const mainImageFragment = `
   }
 `
 
-const authorFragment = `
-  author->{
+// Array of authors — each resolves through the `human` type.
+// Photo field uses coalesce(photo, avatar) to stay compatible with any legacy docs.
+const authorsFragment = `
+  authors[]->{
     _id,
+    _type,
     name,
     slug,
     bio,
-    avatar {
+    role,
+    linkedInUrl,
+    twitterHandle,
+    githubHandle,
+    websiteUrl,
+    "photo": coalesce(photo, avatar) {
       asset->{ _id, url, metadata { lqip } },
       alt
-    },
-    twitterHandle,
-    linkedInUrl
+    }
+  }
+`
+
+// Fetch up to 3 authors for card display (avatars + first names)
+const authorFragment = `
+  "author": authors[0]->{
+    _id,
+    name,
+    slug,
+    "photo": coalesce(photo, avatar) {
+      asset->{ _id, url, metadata { lqip } },
+      alt
+    }
+  },
+  "authors": authors[]->{
+    _id,
+    name,
+    slug,
+    "photo": coalesce(photo, avatar) {
+      asset->{ _id, url, metadata { lqip } },
+      alt
+    }
   }
 `
 
@@ -37,11 +65,11 @@ const categoryFragment = `
   }
 `
 
-// All published posts — ordered featured desc then publishedAt desc
+// All published posts — newest first
 // Accepts optional $from (default 0) and $to (default 100) for pagination
 export const BLOG_LIST_QUERY = `
   *[_type == "blogPost" && status == "published"]
-  | order(featured desc, publishedAt desc)
+  | order(publishedAt desc)
   [$from...$to] {
     _id,
     title,
@@ -64,7 +92,7 @@ export const BLOG_POST_BY_SLUG_QUERY = `
     title,
     slug,
     status,
-    ${authorFragment},
+    ${authorsFragment},
     ${categoryFragment},
     tags,
     excerpt,
@@ -86,6 +114,15 @@ export const BLOG_POST_BY_SLUG_QUERY = `
     },
     readingTime,
     featured,
+    cta {
+      variant,
+      heading,
+      body,
+      primaryLabel,
+      primaryUrl,
+      secondaryLabel,
+      secondaryUrl
+    },
     relatedPosts[]-> {
       _id,
       title,
@@ -102,7 +139,8 @@ export const BLOG_POST_BY_SLUG_QUERY = `
         caption,
         hotspot,
         crop
-      }
+      },
+      ${authorFragment}
     }
   }
 `
@@ -133,15 +171,45 @@ export const BLOG_CATEGORIES_QUERY = `
   } | order(title asc)
 `
 
-// Team Members — visible only, ordered by display order
+// All humans — for /humans index page
+export const ALL_HUMANS_QUERY = `
+  *[_type == "human"] | order(order asc) {
+    _id, name, slug, role, department,
+    photo {
+      asset->{ _id, url, metadata { lqip, dimensions } },
+      alt, hotspot, crop
+    }
+  }
+`
+
+// Single human by slug — for /humans/:slug profile page
+export const HUMAN_BY_SLUG_QUERY = `
+  *[_type == "human" && slug.current == $slug][0] {
+    _id, name, slug, role, department, bio, order,
+    showInTeam, isBlogAuthor,
+    linkedInUrl, twitterHandle, githubHandle, websiteUrl,
+    photo {
+      asset->{ _id, url, metadata { lqip, dimensions } },
+      alt, hotspot, crop
+    }
+  }
+`
+
+// Humans shown in the team grid on the About page
 export const TEAM_MEMBERS_QUERY = `
-  *[_type == "teamMember" && isVisible == true]
+  *[_type == "human" && showInTeam == true]
   | order(order asc) {
     _id,
     name,
+    slug,
     role,
     department,
+    bio,
     order,
+    linkedInUrl,
+    twitterHandle,
+    githubHandle,
+    websiteUrl,
     photo {
       asset->{ _id, url, metadata { lqip, dimensions } },
       alt,
@@ -358,6 +426,42 @@ export const BROCHURES_QUERY = `
   }
 `
 
+// Single whitepaper by slug — full fields for individual page
+export const WHITEPAPER_BY_SLUG_QUERY = `
+  *[_type == "whitepaper" && slug.current == $slug && status in ["published", "coming_soon"]][0] {
+    _id,
+    title,
+    slug,
+    status,
+    excerpt,
+    abstract,
+    audience,
+    publishedAt,
+    gated,
+    tags,
+    featured,
+    authors[]->{
+      _id,
+      name,
+      slug,
+      role,
+      linkedInUrl,
+      "photo": coalesce(photo, avatar) {
+        asset->{ _id, url, metadata { lqip } },
+        alt
+      }
+    },
+    pdfFile {
+      asset->{ _id, url }
+    },
+    coverImage {
+      asset->{ _id, url, metadata { lqip, dimensions } },
+      alt
+    },
+    seo { metaTitle, metaDescription, canonicalUrl, noIndex }
+  }
+`
+
 // Whitepapers — published and coming_soon, featured first then newest
 export const WHITEPAPERS_QUERY = `
   *[_type == "whitepaper" && status in ["published", "coming_soon"]]
@@ -379,6 +483,70 @@ export const WHITEPAPERS_QUERY = `
       asset->{ _id, url, metadata { lqip, dimensions } },
       alt
     },
+    authors[]->{
+      _id,
+      name,
+      slug,
+      "photo": coalesce(photo, avatar) {
+        asset->{ _id, url, metadata { lqip } },
+        alt
+      }
+    },
     seo { metaTitle, metaDescription }
+  }
+`
+
+// Guides — published and coming_soon, featured first then newest
+// Note: pdfFile intentionally excluded — only fetched on the individual page after form submission
+export const GUIDES_QUERY = `
+  *[_type == "guide" && status in ["published", "coming_soon"]]
+  | order(featured desc, publishedAt desc) {
+    _id,
+    title,
+    slug,
+    status,
+    topic,
+    excerpt,
+    audience,
+    publishedAt,
+    featured,
+    tags,
+    coverImage {
+      asset->{ _id, url, metadata { lqip, dimensions } },
+      alt
+    },
+    seo { metaTitle, metaDescription }
+  }
+`
+
+// Single guide by slug — includes pdfFile for gated download
+export const GUIDE_BY_SLUG_QUERY = `
+  *[_type == "guide" && slug.current == $slug && status in ["published", "coming_soon"]][0] {
+    _id,
+    title,
+    slug,
+    status,
+    topic,
+    heroHeadline,
+    heroSubheadline,
+    excerpt,
+    body,
+    audience,
+    publishedAt,
+    featured,
+    tags,
+    pdfFile {
+      asset->{ _id, url }
+    },
+    coverImage {
+      asset->{ _id, url, metadata { lqip, dimensions } },
+      alt
+    },
+    formConfig {
+      submitButtonText,
+      confirmationMessage,
+      trustIndicators
+    },
+    seo { metaTitle, metaDescription, canonicalUrl, noIndex }
   }
 `

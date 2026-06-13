@@ -1,8 +1,10 @@
 import "./AboutStyles.css";
-import { useLocation } from "react-router-dom";
+import PageHero from "../../../components/common/PageHero";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import SEO from "../../../components/common/SEO";
 import { useSanityTeamMembers } from "../../../hooks/useSanityTeamMembers";
+import { buildAboutPageSchema } from "../../../utils/schemaHelpers";
 import SanityImage from "../../../components/sanity/sanity-image";
 import {
   Target,
@@ -53,23 +55,28 @@ const About = () => {
     return () => clearInterval(interval);
   }, [location.state]);
 
+  const aboutSchema = buildAboutPageSchema({
+    people: teamMembers.map((m) => ({
+      name: m.name,
+      jobTitle: m.role,
+      imageUrl: m.photo?.asset?.url,
+      linkedInUrl: m.linkedInUrl,
+    })),
+  });
+
   return (
     <div id="about-container">
       <SEO
         title="About TesseractApps | NDIS Software Provider"
         description="Learn about TesseractApps - founded in 2022 to simplify NDIS compliance and care management. Meet our team of technologists and industry experts building the future of workforce technology in Australia."
+        structuredData={aboutSchema}
       />
 
-      {/* ── Hero ── */}
-      <section id="about-hero">
-        <div id="about-hero-inner">
-          <div id="about-hero-label">About TesseractApps</div>
-          <h1 id="about-hero-heading">We can't do what you do, but we can help you with software</h1>
-          <p id="about-hero-sub">
-            The Difference We Bring. TesseractApps started with a simple insight: care providers weren't struggling with care, they were struggling with systems. We built technology to remove that burden.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        label="About TesseractApps"
+        heading="We can't do what you do, but we can help you with software"
+        sub="TesseractApps started with a simple insight: care providers weren't struggling with care, they were struggling with systems. We built technology to remove that burden."
+      />
 
       <div id="about-outer">
 
@@ -160,29 +167,50 @@ const About = () => {
             {teamLoading
               ? [0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
                   <div key={i} className="about-team-card about-team-card--skeleton">
-                    <div className="about-team-card-image about-skeleton-image" />
+                    <div className="about-team-avatar about-skeleton-avatar" />
                     <div className="about-team-card-body">
                       <div className="about-skeleton-line about-skeleton-line--name" />
                       <div className="about-skeleton-line about-skeleton-line--role" />
                     </div>
                   </div>
                 ))
-              : teamMembers.map((member) => (
-                  <div className="about-team-card" key={member._id}>
-                    <SanityImage
-                      src={member.photo}
-                      alt={member.photo?.alt ?? member.name}
-                      className="about-team-card-image"
-                      width={300}
-                      height={400}
-                      loading="lazy"
-                    />
-                    <div className="about-team-card-body">
-                      <div className="about-team-card-name">{member.name}</div>
-                      <div className="about-team-card-role">{member.role}</div>
+              : teamMembers.map((member) => {
+                  const cardContent = (
+                    <>
+                      {member.photo?.asset ? (
+                        <SanityImage
+                          src={member.photo}
+                          alt={member.photo?.alt ?? member.name}
+                          className="about-team-avatar"
+                          width={96}
+                          height={96}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="about-team-avatar about-team-avatar--initials" aria-hidden="true">
+                          {member.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
+                        </div>
+                      )}
+                      <div className="about-team-card-body">
+                        <div className="about-team-card-name">{member.name}</div>
+                        <div className="about-team-card-role">{member.role}</div>
+                      </div>
+                    </>
+                  );
+                  return member.slug?.current ? (
+                    <Link
+                      to={`/humans/${member.slug.current}`}
+                      className="about-team-card"
+                      key={member._id}
+                    >
+                      {cardContent}
+                    </Link>
+                  ) : (
+                    <div className="about-team-card" key={member._id}>
+                      {cardContent}
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
           </div>
         </section>
 

@@ -73,87 +73,6 @@
 .hv4-section-sub--light { color: rgba(255,255,255,0.72); }
 
 /* ── Buttons ───────────────────────────────────────────────────────────────── */
-.hv4-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--color-primary, #0c78ba);
-  color: #ffffff;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  padding: 13px 28px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.hv4-btn-primary:hover {
-  background: #0a66a0;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 22px rgba(12, 120, 186, 0.3);
-}
-.hv4-btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: transparent;
-  color: var(--color-secondary, #002a52);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  padding: 12px 26px;
-  border: 1.5px solid rgba(0, 42, 82, 0.22);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: border-color 0.18s ease, background 0.18s ease, transform 0.12s ease;
-  white-space: nowrap;
-  text-decoration: none;
-}
-.hv4-btn-outline:hover {
-  border-color: var(--color-primary, #0c78ba);
-  color: var(--color-primary, #0c78ba);
-  background: rgba(12, 120, 186, 0.04);
-  transform: translateY(-1px);
-}
-.hv4-btn-white {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: #ffffff;
-  color: var(--color-primary, #0c78ba);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  padding: 13px 28px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
-}
-.hv4-btn-white:hover {
-  background: #f0f8ff;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-}
-.hv4-btn-outline-white {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: transparent;
-  color: #ffffff;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  padding: 12px 26px;
-  border: 1.5px solid rgba(255,255,255,0.4);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: border-color 0.18s, background 0.18s, transform 0.12s;
-}
-.hv4-btn-outline-white:hover {
-  border-color: rgba(255,255,255,0.8);
-  background: rgba(255,255,255,0.1);
-  transform: translateY(-1px);
-}
 .hv4-text-link {
   font-size: 0.9375rem;
   font-weight: 600;
@@ -237,7 +156,6 @@
   gap: 8px;
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
   color: var(--color-primary, #0c78ba);
   background: rgba(12, 120, 186, 0.08);
   border: 1px solid rgba(12, 120, 186, 0.18);
@@ -1284,33 +1202,20 @@
   gap: 16px;
   flex-wrap: wrap;
 }
-.hv4-cap-extra-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-secondary, #002a52);
-  background: rgba(0, 42, 82, 0.04);
-  border: 1.5px solid rgba(0, 42, 82, 0.1);
-  border-radius: 10px;
-  padding: 11px 18px;
-  text-decoration: none;
-  transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.12s;
-}
-.hv4-cap-extra-link svg { color: var(--color-primary, #0c78ba); }
-.hv4-cap-extra-link:hover {
-  background: rgba(12, 120, 186, 0.06);
-  border-color: rgba(12, 120, 186, 0.3);
-  color: var(--color-primary, #0c78ba);
-  transform: translateY(-1px);
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   GUIDES SECTION
+══════════════════════════════════════════════════════════════════════════════ */
+#hv4-guides {
+  padding: 80px 0;
+  background: #fff;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════
    BLOG SECTION
 ══════════════════════════════════════════════════════════════════════════════ */
 #hv4-blog {
-  padding: 40px 0;
+  padding: 80px 0;
   background: #f8fafc;
 }
 
@@ -1324,11 +1229,6 @@
   margin-bottom: 40px;
 }
 .hv4-blog-header .hv4-section-h2 { margin-bottom: 0; }
-.hv4-blog-all-link {
-  flex-shrink: 0;
-  font-size: 0.875rem;
-  padding: 10px 20px;
-}
 
 /* 3-column grid */
 .hv4-blog-grid {

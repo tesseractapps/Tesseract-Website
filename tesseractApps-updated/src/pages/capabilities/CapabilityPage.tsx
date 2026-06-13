@@ -5,11 +5,10 @@ import { useSanityCapabilityPage } from "../../hooks/useSanityCapabilityPage";
 import { useSanityBlogList } from "../../hooks/useSanityBlogList";
 import SEO from "../../components/common/SEO";
 import { trackCapabilityView } from "../../utils/analytics";
-import { formatDate } from "../../utils/formatDate";
-import { urlFor } from "../../sanity/lib/image";
 import { buildBreadcrumbSchema, buildSoftwareSchema, buildGraphSchema } from "../../utils/schemaHelpers";
 import Breadcrumb from "../../components/common/Breadcrumb";
 import PortableTextRenderer from "../../components/sanity/portable-text";
+import BlogCard from "../../components/blog/BlogCard";
 
 // ── Skeleton ────────────────────────────────────────────────────────────────
 
@@ -331,37 +330,7 @@ const CapabilityPage = () => {
             <h2 className="cap-section-heading">Related guides from our blog.</h2>
             <div className="cap-reading-grid">
               {relevantBlogs.map((post) => (
-                <Link
-                  key={post._id}
-                  to={`/blog/${post.slug?.current}`}
-                  className="cap-reading-card"
-                >
-                  <div className="cap-reading-image-wrap">
-                    {post.mainImage?.asset ? (
-                      <img
-                        className="cap-reading-image"
-                        src={urlFor(post.mainImage).width(720).height(405).fit("crop").auto("format").url()}
-                        alt={post.mainImage.alt ?? post.title ?? "Blog post image"}
-                        loading="lazy"
-                        width={720}
-                        height={405}
-                      />
-                    ) : (
-                      <img src="/svg-logos/Full Logo Blue.svg" alt="TesseractApps" className="cap-reading-image-logo" />
-                    )}
-                  </div>
-                  <div className="cap-reading-body">
-                    <h3 className="cap-reading-title">{post.title}</h3>
-                    {post.excerpt && <p className="cap-reading-excerpt">{post.excerpt}</p>}
-                    <div className="cap-reading-meta">
-                      {post.category?.title && <span>{post.category.title}</span>}
-                      {post.publishedAt && <span>{formatDate(post.publishedAt)}</span>}
-                    </div>
-                    <span className="cap-reading-arrow">
-                      Read article <IconArrowRight />
-                    </span>
-                  </div>
-                </Link>
+                <BlogCard key={post._id} post={post} />
               ))}
             </div>
           </div>
@@ -382,14 +351,14 @@ const CapabilityPage = () => {
     <div className="sll-cta-actions">
             <button
               type="button"
-              className="sll-btn-primary"
+              className="primary-cta-white"
               onClick={() => navigate("/book-a-demo")}
             >
               Book a Demo
             </button>
             <button
               type="button"
-              className="sll-btn-outline"
+              className="outline-cta"
               onClick={() => navigate("/signup")}
             >
               Begin Your Journey

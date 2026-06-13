@@ -16,7 +16,7 @@ export const navBarDummyData: {
     Capabilities: NavGroup[];
     Solutions: SolutionsCategory;
     Resources: NavLink[];
-    About: NavLink[];
+    Company: NavLink[];
     Pricing: NavLink[];
 } = {
     // ── Capabilities mega-menu ─────────────────────────────────────────────
@@ -168,16 +168,18 @@ export const navBarDummyData: {
     // ── Resources ─────────────────────────────────────────────────────────
     Resources: [
         { title: "Blog", subTitle: "Insights & Updates", href: "/blogs" },
+        { title: "Guides", subTitle: "Checklists & Toolkits", href: "/guides" },
         { title: "Whitepapers", subTitle: "Research", href: "/whitepapers" },
         { title: "Brochures", subTitle: "Product Guides", href: "/brochures" },
-        { title: "Help Centre", subTitle: "FAQs", href: "/help-centre" },
     ],
 
     // ── About ──────────────────────────────────────────────────────────────
-    About: [
-        { title: "About Us", subTitle: " ", href: "/about" },
-        { title: "Careers", subTitle: " ", href: "/careers" },
-        { title: "Contact Us", subTitle: " ", href: "/contact-us" },
+    Company: [
+        { title: "About", subTitle: "Who We Are", href: "/about" },
+        { title: "Events", subTitle: "Engage With Us", href: "/events" },
+        { title: "Careers", subTitle: "Join Our Team", href: "/careers" },
+        { title: "Contact Us", subTitle: "Get In Touch", href: "/contact-us" },
+        { title: "Help Centre", subTitle: "FAQs", href: "/help-centre" },
     ],
 
     // ── Pricing ────────────────────────────────────────────────────────────

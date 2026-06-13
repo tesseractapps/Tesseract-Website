@@ -1,6 +1,7 @@
 import "./FAQStyles.css";
 import { useState } from "react";
 import SEO from "../../../components/common/SEO";
+import PageHero from "../../../components/common/PageHero";
 import { buildFAQSchema } from "../../../utils/schemaHelpers";
 import { faqPageDummyData } from "../../../data/faqData";
 
@@ -35,16 +36,11 @@ const FAQ = () => {
         structuredData={faqSchema}
       />
 
-      {/* ── Hero ── */}
-      <section id="faq-hero">
-        <div id="faq-hero-inner">
-          <div id="faq-hero-label">Help Centre</div>
-          <h1 id="faq-hero-heading">Frequently Asked Questions</h1>
-          <p id="faq-hero-sub">
-            Everything you need to know about TesseractApps, organised by topic.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        label="Help Centre"
+        heading="Frequently Asked Questions"
+        sub="Everything you need to know about TesseractApps, organised by topic."
+      />
 
       {/* ── FAQ sections ── */}
       <main id="faq-main">

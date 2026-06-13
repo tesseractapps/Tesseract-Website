@@ -1,20 +1,46 @@
 --- Start of home.md ---
 
-# TesseractApps - Home
+# TesseractApps
 
-TesseractApps is an Australian SaaS company providing all-in-one workforce management and compliance software purpose-built for NDIS providers, aged care, allied health, and disability support organisations.
+> TesseractApps is an Australian SaaS company providing all-in-one workforce management and compliance software purpose-built for NDIS providers, aged care, allied health, and disability support organisations.
+
+## Quick Facts
+
+- **Company:** TesseractApps
+- **Type:** B2B SaaS — care sector workforce management
+- **Market:** Australia (NDIS, aged care, allied health)
+- **Infrastructure:** Salesforce Hyperforce (Australian data hosting)
+- **Certifications:** ISO 27001 (Information Security), ISO 9001 (Quality Management)
+- **Award:** 2025 Canberra Local Business Award Winner
+- **Headquarters:** Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+- **Website:** https://tesseractapps.com.au
 
 ## Value Proposition
-Automate rostering, timesheets, payroll, participant management, and NDIS compliance — replacing manual spreadsheets and disconnected tools with a single integrated platform.
+
+Replace manual spreadsheets and disconnected tools with a single integrated platform. TesseractApps automates rostering, timesheets, payroll, participant management, and NDIS compliance — reducing administrative burden so providers can focus on care delivery.
 
 ## Key Features
-- Smart Rostering & Scheduling
-- NDIS Compliance Automation
-- Time & Attendance (Clock In/Out)
-- Participant Management
-- Incident Management
-- HR Operations & Document Signing
 
+- Smart Rostering & Scheduling (SCHADS-compliant, SIL-aware)
+- NDIS Compliance Automation & Audit Readiness
+- Time & Attendance — GPS-verified Clock In/Out
+- Participant Management — care plans, goals, progress notes
+- Incident Management — mobile logging, escalation, CAPA
+- HR Operations — onboarding, credentials, expiry alerts
+- T-Sign — electronic signatures for service agreements
+- T Learning Hub — compliance training linked to credentials
+- Digital Forms & Case Notes
+- NDIS Claiming & Invoicing — PACE-aligned, 3-layer reconciliation
+- Accounting & Payroll Alignment — Xero integration, SCHADS Award
+
+## Target Audience
+
+- NDIS Providers (registered and unregistered)
+- Aged Care Services
+- Allied Health Professionals
+- Disability Support Services
+- Supported Independent Living (SIL) Providers
+- Home & Community Care Providers
 
 --- End of home.md ---
 
@@ -24,14 +50,34 @@ Automate rostering, timesheets, payroll, participant management, and NDIS compli
 
 # About TesseractApps
 
-TesseractApps is an Australian B2B SaaS company helping care providers modernise their operations. The platform is built on Salesforce infrastructure and holds ISO 27001 and ISO 9001 certifications.
+TesseractApps is an Australian B2B SaaS company helping care providers modernise their operations. Founded in 2022, the platform is built on Salesforce infrastructure and holds ISO 27001 and ISO 9001 certifications.
+
+## Mission
+
+To simplify NDIS compliance and care management so providers can focus on delivering quality care rather than managing administrative burden.
+
+## Certifications & Awards
+
+- ISO 27001 (Information Security Management)
+- ISO 9001 (Quality Management System)
+- 2025 Canberra Local Business Award Winner
 
 ## Target Audience
-NDIS Providers, Aged Care Services, Allied Health Professionals, Disability Support Services, Home & Community Care.
 
-## Certifications
-ISO 27001 (Information Security), ISO 9001 (Quality Management)
+- NDIS Providers
+- Aged Care Services
+- Allied Health Professionals
+- Disability Support Services
+- Home & Community Care Providers
 
+## Headquarters
+
+Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+
+## Contact
+
+Website: https://tesseractapps.com.au
+Email: hello@tesseractapps.com.au
 
 --- End of about.md ---
 
@@ -41,22 +87,26 @@ ISO 27001 (Information Security), ISO 9001 (Quality Management)
 
 # Tesseract Care Management Software
 
-Tesseract Care Management Software is an all-in-one platform built specifically for NDIS & Care Providers.
+Tesseract Care Management Software is an all-in-one platform built specifically for NDIS and care providers. Built on Salesforce infrastructure for enterprise-grade reliability.
 
 ## Product Features
-- **Roster Management**: Intelligent rostering and scheduling solutions
-- **Timesheet**: Time tracking and attendance management
-- **Admin Console**: Centralized administrative control panel
-- **Access Control Panel**: Role-based access and permissions management
-- **HR Operations**: Human resources management tools
-- **T-Sign**: Electronic signature and document signing
-- **Clock In & Clock Out**: Staff attendance and time tracking system
-- **Participant Management**: NDIS participant care and service coordination
-- **Incident Management**: Incident reporting and tracking system
-- **Forms**: Digital forms and data collection
-- **Accounting**: Financial management and payroll integration
-- **T Learning Hub**: Training and professional development platform
 
+- **Roster Management**: Intelligent rostering and scheduling solutions for shift planning and worker allocation
+- **Timesheets**: Time tracking and attendance management with payroll alignment
+- **Admin Console**: Centralised administrative control panel for operations management
+- **Access Control Panel**: Role-based access and permissions management
+- **HR Operations**: Human resources management, onboarding, and compliance tools
+- **T-Sign**: Electronic signature and document signing for contracts and agreements
+- **Clock In & Clock Out**: Staff attendance and time tracking system with geolocation
+- **Participant Management**: NDIS participant care, service agreements, and coordination
+- **Incident Management**: Incident reporting, tracking, and compliance documentation
+- **Forms**: Digital forms and data collection for care notes and assessments
+- **Accounting**: Financial management, NDIS billing, and payroll integration
+- **T Learning Hub**: Training and professional development platform (LMS)
+
+## Technical Architecture
+
+Built on Salesforce Hyperforce infrastructure. Available on Web, iOS, and Android. Australian data hosting.
 
 --- End of product.md ---
 
@@ -66,7 +116,236 @@ Tesseract Care Management Software is an all-in-one platform built specifically 
 
 # TesseractApps Pricing
 
-Please visit our official website at https://tesseractapps.com.au/pricing for the most up-to-date information regarding our subscription options, customized enterprise plans, and features included in each tier.
+TesseractApps offers tiered pricing based on provider maturity stage and team size. All plans are in AUD and designed for Australian care providers.
 
+## Pricing Tiers
+
+### Start (Founding Window)
+- **Staff Range**: 1–15 staff
+- **Best For**: Early-stage or founder-led providers establishing operations
+- **Commercial**: Setup fee only, no subscription during Start phase (up to 18 months)
+- **Includes**: Participant onboarding, rostering, case notes, incident logging, timesheets, payroll, invoicing, structured document storage, guided onboarding
+
+### Growth
+- **Staff Range**: 15–50 staff
+- **Best For**: Scaling providers with established operations needing automation
+- **Commercial**: Setup fee + per-seat subscription (AUD)
+- **Includes**: Everything in Start, plus advanced rostering automation, compliance dashboards, performance reporting
+
+### Scale
+- **Staff Range**: 50–200+ staff
+- **Best For**: Established mid-size providers with complex operational needs
+- **Commercial**: Setup fee + per-seat subscription (AUD)
+- **Includes**: Everything in Growth, plus multi-location management, advanced analytics, API integrations
+
+### Enterprise
+- **Staff Range**: 200+ staff / multi-site
+- **Best For**: Large organisations with enterprise compliance and customisation requirements
+- **Commercial**: Custom pricing, volume discounts
+- **Includes**: Everything in Scale, plus custom integrations, dedicated account management, SLA support
+
+For current pricing, visit: https://tesseractapps.com.au/pricing
 
 --- End of pricing.md ---
+
+
+
+--- Start of platform.md ---
+
+# TesseractApps Platform
+
+The TesseractApps platform is an enterprise-grade care management solution built on Salesforce Hyperforce infrastructure, specifically designed for NDIS and care sector compliance requirements.
+
+## Architecture
+
+- **Infrastructure**: Salesforce Hyperforce (Australian data residency)
+- **Availability**: Web browser, iOS app, Android app
+- **Security**: ISO 27001 certified, enterprise-grade access controls
+- **Quality**: ISO 9001 certified processes
+
+## Key Platform Capabilities
+
+- Role-based access control (RBAC) with granular permissions
+- Real-time data synchronisation across devices
+- Offline-capable mobile apps for field staff
+- NDIS Price Guide compliance built-in
+- Automated compliance reporting
+- API-first architecture for integrations
+- Audit trails and activity logging
+- Multi-location and multi-provider support
+
+## Integrations
+
+Connects with Australian payroll providers, NDIS portals, accounting systems, and HR platforms. Custom API integrations available on Scale and Enterprise tiers.
+
+## Security & Compliance
+
+- ISO 27001 Information Security Management
+- Data hosted in Australia (Salesforce Hyperforce)
+- NDIS Quality and Safeguards Commission aligned
+- Regular penetration testing and security audits
+
+--- End of platform.md ---
+
+
+
+--- Start of careers.md ---
+
+# Careers at TesseractApps
+
+TesseractApps is an Australian SaaS company based in Canberra, ACT, building workforce management software for the NDIS and care sector. We hire technologists, product specialists, and sector experts.
+
+## Culture
+
+Small, focused team building enterprise-grade technology for a sector that matters. We value domain expertise in NDIS/care alongside technical skill.
+
+## Roles We Hire For
+
+- Software Engineers (full-stack, backend, mobile)
+- Product Designers
+- Implementation Consultants
+- Customer Success Managers
+- Sales / Business Development
+
+## How to Apply
+
+Visit the Careers page for open roles: https://tesseractapps.com.au/careers
+Email: hello@tesseractapps.com.au
+
+## Location
+
+Level 1/45 Colbee Ct, Phillip ACT 2606, Australia. Hybrid and remote arrangements considered for experienced candidates.
+
+--- End of careers.md ---
+
+
+
+--- Start of contact.md ---
+
+# Contact TesseractApps
+
+## Contact Information
+
+- **Website**: https://tesseractapps.com.au
+- **Email**: hello@tesseractapps.com.au
+- **Location**: Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+
+## Contact Options
+
+- **Book a Demo**: https://tesseractapps.com.au/book-a-demo — 30-minute live platform demo, configured for your care type and team size
+- **Start Free**: https://tesseractapps.com.au/signup — begin provider setup process
+- **Contact Form**: https://tesseractapps.com.au/contact-us — general inquiries and support
+
+## Business Hours
+
+Monday to Friday, 9:00 AM – 5:00 PM AEST
+
+## Support
+
+Existing customers should use the in-platform support portal or contact their account manager directly.
+
+--- End of contact.md ---
+
+
+
+--- Start of help-centre.md ---
+
+# TesseractApps Help Centre
+
+Frequently asked questions and support documentation for TesseractApps users and prospective customers.
+
+## Common Questions
+
+**What is TesseractApps?**
+An all-in-one workforce management and NDIS compliance platform for care providers in Australia.
+
+**Who is it for?**
+NDIS providers, aged care services, allied health professionals, disability support services, and home & community care organisations.
+
+**Is TesseractApps NDIS compliant?**
+Yes. The platform is built to align with NDIS Quality and Safeguards Commission requirements, including incident reporting, participant management, and service agreement documentation.
+
+**What devices are supported?**
+Web browser, iOS, and Android. Field staff can use the mobile apps for clock-in/out, case notes, and incident reporting.
+
+**Is Australian data hosting available?**
+Yes. Data is hosted in Australia via Salesforce Hyperforce infrastructure.
+
+**How do I get started?**
+Book a demo at https://tesseractapps.com.au/book-a-demo or start the onboarding process at https://tesseractapps.com.au/signup
+
+## Support Contact
+
+Email: hello@tesseractapps.com.au
+Website: https://tesseractapps.com.au/help-center
+
+--- End of help-centre.md ---
+
+
+
+--- Start of glossary.md ---
+
+# NDIS Glossary — Key Terms
+
+Key terminology for the National Disability Insurance Scheme (NDIS) and care sector in Australia.
+
+## Core NDIS Terms
+
+- **NDIS**: National Disability Insurance Scheme — Australian government scheme providing funding for people with permanent and significant disabilities
+- **NDIA**: National Disability Insurance Agency — the government body that administers the NDIS
+- **Participant**: A person who is eligible for and receives NDIS funding
+- **Support Coordinator**: An NDIS-funded professional who helps participants implement their NDIS plan
+- **Plan Manager**: Manages the financial aspects of a participant's NDIS plan (paying invoices, tracking budget)
+- **Service Provider**: Organisation or individual registered with the NDIS to deliver supports and services
+- **Service Agreement**: A contract between a participant and a provider outlining supports to be delivered
+- **NDIS Price Guide**: Document published by NDIA setting maximum prices for NDIS-funded supports
+- **Incident Report**: Formal documentation of an unexpected event that affects a participant's safety or wellbeing
+- **Case Notes**: Records of support delivery, observations, and participant progress
+
+## Provider Operations Terms
+
+- **Rostering**: Scheduling of staff shifts and participant service appointments
+- **Timesheet**: Record of hours worked by staff for payroll and compliance purposes
+- **SIL**: Supported Independent Living — funded accommodation support for participants
+- **ILO**: Individualised Living Options — flexible living arrangements for NDIS participants
+- **SDA**: Specialist Disability Accommodation — housing designed for people with significant functional impairment
+
+For the full NDIS glossary, visit: https://tesseractapps.com.au/ndis-glossary
+
+--- End of glossary.md ---
+
+
+
+--- Start of privacy.md ---
+
+# TesseractApps Privacy Policy Summary
+
+TesseractApps collects and processes personal information in accordance with Australian privacy law (Privacy Act 1988) and the Australian Privacy Principles (APPs).
+
+## Data We Collect
+
+- Contact and account information (name, email, organisation)
+- Platform usage data (session activity, feature usage)
+- Support and communication records
+
+## How We Use Data
+
+- Providing and improving the TesseractApps platform
+- Customer support and account management
+- Compliance and security monitoring
+
+## Data Storage
+
+All data is stored in Australia via Salesforce Hyperforce infrastructure. TesseractApps holds ISO 27001 certification for information security management.
+
+## Your Rights
+
+Under Australian privacy law, you have the right to access, correct, or request deletion of your personal information.
+
+## Contact
+
+For privacy inquiries: hello@tesseractapps.com.au
+
+Full policy: https://tesseractapps.com.au/privacy-policy
+
+--- End of privacy.md ---

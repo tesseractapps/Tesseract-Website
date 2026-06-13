@@ -43,11 +43,33 @@ export type SanitySlug = {
 export type TeamMember = {
   _id: string
   name: string
+  slug?: SanitySlug
   role: string
   department?: string
+  bio?: string
   order: number
-  isVisible: boolean
+  showInTeam: boolean
+  isBlogAuthor?: boolean
   photo: SanityImageObject & { alt: string }
+  linkedInUrl?: string
+  twitterHandle?: string
+  githubHandle?: string
+  websiteUrl?: string
+}
+
+// Shape returned by authorsFragment — array of resolved human documents.
+export type PostAuthor = {
+  _id: string
+  _type: 'human' | 'author' | 'teamMember'
+  name: string
+  slug?: SanitySlug
+  bio?: string
+  role?: string
+  linkedInUrl?: string
+  twitterHandle?: string
+  githubHandle?: string
+  websiteUrl?: string
+  photo?: SanityImageObject & { alt?: string }
 }
 
 export type ReleaseNoteChange = {

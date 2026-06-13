@@ -1,0 +1,75 @@
+/* ── Shared Page Hero  |  prefix: ph- ───────────────────────────────────── */
+
+.ph-hero {
+  position: relative;
+  background: linear-gradient(150deg, #002a52 0%, #0b1f3a 55%, #0c2a46 100%);
+  padding: 72px 0 80px;
+  overflow: hidden;
+}
+
+.ph-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(12, 120, 186, 0.14) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.ph-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ph-label {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(12, 120, 186, 0.15);
+  color: #5bb8f5;
+  border: 1px solid rgba(12, 120, 186, 0.35);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  margin-bottom: 20px;
+}
+
+.ph-heading {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+  max-width: 680px;
+}
+
+.ph-sub {
+  font-size: clamp(15px, 2vw, 18px);
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  max-width: 560px;
+  margin: 0 0 0;
+}
+
+/* Search trigger sits below subtitle when present */
+.ph-hero .rsh-trigger {
+  margin-top: 28px;
+}
+
+@media (max-width: 640px) {
+  .ph-hero {
+    padding: 52px 0 60px;
+  }
+  .ph-inner {
+    padding: 0 20px;
+  }
+}

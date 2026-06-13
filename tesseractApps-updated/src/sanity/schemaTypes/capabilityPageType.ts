@@ -119,7 +119,7 @@ export const capabilityPageType = defineType({
                 type: 'object',
                 title: 'Link',
                 fields: [
-                  { name: 'href', type: 'url', title: 'URL' },
+                  { name: 'href', type: 'string', title: 'URL', description: 'Absolute URL (https://...) or internal path (/capabilities/...)' },
                   { name: 'blank', type: 'boolean', title: 'Open in new tab', initialValue: false },
                 ],
               },
@@ -155,7 +155,7 @@ export const capabilityPageType = defineType({
                 type: 'object',
                 title: 'Link',
                 fields: [
-                  { name: 'href', type: 'url', title: 'URL' },
+                  { name: 'href', type: 'string', title: 'URL', description: 'Absolute URL (https://...) or internal path (/capabilities/...)' },
                   { name: 'blank', type: 'boolean', title: 'Open in new tab', initialValue: false },
                 ],
               },

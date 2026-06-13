@@ -1,28 +1,49 @@
 import "./BlogStyles.css";
+import "../resources/guides/GuidesStyles.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import SEO from "../../components/common/SEO";
+import PageHero from "../../components/common/PageHero";
 import { useSanityBlogList } from "../../hooks/useSanityBlogList";
-import { urlFor } from "../../sanity/lib/image";
-import { formatDate } from "../../utils/formatDate";
+import { useSanityGuides } from "../../hooks/useSanityGuides";
+import { useSanityWhitepapers } from "../../hooks/useSanityWhitepapers";
 import { client } from "../../sanity/lib/client";
 import { BLOG_CATEGORIES_QUERY } from "../../sanity/lib/queries";
+import BlogCard from "../../components/blog/BlogCard";
+import GuideCard from "../../components/guide/GuideCard";
+import WhitepaperCard from "../../components/whitepapers/WhitepaperCard";
+import ResourceSearchModal from "../../components/resourceSearch/ResourceSearchModal";
+import type { ResourceSearchEntry } from "../../components/resourceSearch/ResourceSearchModal";
 
 type SanityCategory = { _id: string; title: string };
 
 const Blog = () => {
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [categories, setCategories] = useState<string[]>(["All"]);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     if (!client) return;
     client.fetch<SanityCategory[]>(BLOG_CATEGORIES_QUERY).then((cats) => {
       setCategories(["All", ...cats.map((c) => c.title)]);
-    }).catch(() => {/* silently keep "All" only */});
+    }).catch(() => {});
   }, []);
 
   const { data: blogsData, loading, error } = useSanityBlogList({
     category: categoryFilter === "All" ? undefined : categoryFilter,
   });
+
+  const { data: guides } = useSanityGuides();
+  const { data: whitepapers } = useSanityWhitepapers();
+
+  const searchEntries: ResourceSearchEntry[] = blogsData.map((b) => ({
+    id: b._id,
+    title: b.title ?? 'Untitled',
+    subtitle: b.excerpt ?? undefined,
+    date: b.publishedAt ?? undefined,
+    type: 'Post',
+    href: `/blog/${b.slug?.current ?? ''}`,
+  }));
 
   return (
     <div className="bl-page">
@@ -47,21 +68,28 @@ const Blog = () => {
         }}
       />
 
-      {/* ── Hero banner ── */}
-      <div className="bl-hero">
-        <div className="bl-hero-overlay" />
-        <div className="bl-hero-content">
-          <div className="bl-hero-label">OUR BLOG</div>
-          <h1 className="bl-hero-title">Insights &amp; Industry Updates</h1>
-          <p className="bl-hero-subtitle">
-            Expert articles on NDIS compliance, workforce management, digital
-            transformation, and care sector innovation.
-          </p>
-        </div>
-      </div>
+      <PageHero
+        label="Our Blog"
+        heading="Insights & Industry Updates"
+        sub="Expert articles on NDIS compliance, workforce management, digital transformation, and care sector innovation."
+      >
+        <button type="button" className="rsh-trigger" onClick={() => setSearchOpen(true)} aria-label="Search blog posts">
+          <svg className="rsh-trigger-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <span className="rsh-trigger-text">Search blog posts…</span>
+        </button>
+      </PageHero>
+
+      <ResourceSearchModal
+        isOpen={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        entries={searchEntries}
+        placeholder="Search blog posts…"
+        latestLabel="Latest posts"
+      />
 
       <div className="bl-outer">
-        {/* ── Category filters ── */}
         <div className="bl-filters">
           {categories.map((cat) => (
             <button
@@ -75,7 +103,6 @@ const Blog = () => {
           ))}
         </div>
 
-        {/* ── States ── */}
         {loading && (
           <div className="bl-grid">
             {[0, 1, 2, 3, 4, 5].map((i) => (
@@ -106,72 +133,42 @@ const Blog = () => {
           <div className="bl-empty">No posts found in this category.</div>
         )}
 
-        {/* ── Cards grid ── */}
         {!loading && !error && blogsData.length > 0 && (
           <div className="bl-grid">
             {blogsData.map((blog) => (
-              <a
-                key={blog._id}
-                className="bl-card"
-                href={blog.slug?.current ? `/blog/${blog.slug.current}` : undefined}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="bl-card-image-wrap">
-                  {blog.mainImage?.asset ? (
-                    <img
-                      loading="lazy"
-                      src={urlFor(blog.mainImage).width(480).height(270).fit('crop').auto('format').url()}
-                      alt={blog.mainImage.alt ?? blog.title ?? "Blog"}
-                      className="bl-card-image"
-                      width={480}
-                      height={270}
-                    />
-                  ) : (
-                    <div className="bl-card-image bl-card-image--placeholder">
-                      <img src="/svg-logos/Full Logo Blue.svg" alt="TesseractApps" className="bl-card-image-logo" />
-                    </div>
-                  )}
-                </div>
-
-                <div className="bl-card-body">
-                  <div className="bl-card-meta">
-                    {blog.publishedAt && (
-                      <span className="bl-card-date">{formatDate(blog.publishedAt)}</span>
-                    )}
-                    {blog.readingTime != null && (
-                      <>
-                        <span className="bl-card-dot" aria-hidden="true" />
-                        <span className="bl-card-read-time">{blog.readingTime} min read</span>
-                      </>
-                    )}
-                  </div>
-
-                  <h2 className="bl-card-title">{blog.title}</h2>
-                  <p className="bl-card-excerpt">{blog.excerpt}</p>
-
-                  <div className="bl-card-footer">
-                    {blog.author && (
-                      <div className="bl-card-author">
-                        {blog.author.avatar?.asset && (
-                          <img
-                            loading="lazy"
-                            src={urlFor(blog.author.avatar).width(36).height(36).fit('crop').auto('format').url()}
-                            alt={blog.author.avatar.alt ?? blog.author.name ?? "Author"}
-                            className="bl-card-author-avatar"
-                            width={36}
-                            height={36}
-                          />
-                        )}
-                        <span className="bl-card-author-name">{blog.author.name}</span>
-                      </div>
-                    )}
-                    <span className="bl-card-read-more">Read more →</span>
-                  </div>
-                </div>
-              </a>
+              <BlogCard key={blog._id} post={blog} />
             ))}
           </div>
+        )}
+
+        {/* Free Guides */}
+        {guides.filter(g => g.status === 'published').length > 0 && (
+          <section className="bl-cross-section">
+            <div className="bl-cross-header">
+              <h2 className="bl-cross-heading">Free Guides</h2>
+              <Link to="/guides" className="bl-cross-link">View all guides →</Link>
+            </div>
+            <div className="gd-grid">
+              {guides.filter(g => g.status === 'published').slice(0, 3).map(g => (
+                <GuideCard key={g._id} guide={g} loading="lazy" />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Whitepapers */}
+        {whitepapers.length > 0 && (
+          <section className="bl-cross-section">
+            <div className="bl-cross-header">
+              <h2 className="bl-cross-heading">Whitepapers &amp; Research</h2>
+              <Link to="/whitepapers" className="bl-cross-link">View all whitepapers →</Link>
+            </div>
+            <div className="gd-grid">
+              {whitepapers.slice(0, 3).map(wp => (
+                <WhitepaperCard key={wp._id} whitepaper={wp} loading="lazy" />
+              ))}
+            </div>
+          </section>
         )}
       </div>
     </div>

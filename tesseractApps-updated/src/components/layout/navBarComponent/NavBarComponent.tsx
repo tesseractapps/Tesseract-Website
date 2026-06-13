@@ -1,7 +1,9 @@
-import { Search } from 'lucide-react';
+import { Search } from "lucide-react";
 import Popup from "../../layout/popupComponent/PopupComponent";
 import "./NavBarStyles.css";
+import "../../resourceSearch/ResourceSearchModal.css";
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { RefObject } from "react";
 import { useLocation, useNavigate, useNavigationType } from "react-router-dom";
 import { navBarDummyData } from "../../../data/navData";
@@ -20,49 +22,128 @@ type SearchItem = { label: string; path: string; category: string };
 
 // Fallback capability items used when Sanity hasn't loaded yet
 const STATIC_CAPABILITY_ITEMS: SearchItem[] = [
-  { label: "Rostering & Scheduling",           path: "/capabilities/rostering-scheduling",  category: "Capability" },
-  { label: "Timesheets & Payroll",             path: "/capabilities/timesheets-payroll-alignment", category: "Capability" },
-  { label: "Workforce Management",             path: "/capabilities/workforce-management",   category: "Capability" },
-  { label: "Participant Management",           path: "/capabilities/participant-management", category: "Capability" },
-  { label: "Incidents",                        path: "/capabilities/incidents-management-reporting", category: "Capability" },
-  { label: "Compliance & Audit Readiness",     path: "/capabilities/compliance-audit-readiness",    category: "Capability" },
-  { label: "NDIS Claiming & Invoicing",        path: "/capabilities/ndis-claiming-invoicing",        category: "Capability" },
-  { label: "Accounting & Financial Reporting", path: "/capabilities/accounting-financial-reporting", category: "Capability" },
-  { label: "Dashboards & Reporting",           path: "/capabilities/dashboards-reporting",   category: "Capability" },
+  {
+    label: "Rostering & Scheduling",
+    path: "/capabilities/rostering-scheduling",
+    category: "Capability",
+  },
+  {
+    label: "Timesheets & Payroll",
+    path: "/capabilities/timesheets-payroll-alignment",
+    category: "Capability",
+  },
+  {
+    label: "Workforce Management",
+    path: "/capabilities/workforce-management",
+    category: "Capability",
+  },
+  {
+    label: "Participant Management",
+    path: "/capabilities/participant-management",
+    category: "Capability",
+  },
+  {
+    label: "Incidents",
+    path: "/capabilities/incidents-management-reporting",
+    category: "Capability",
+  },
+  {
+    label: "Compliance & Audit Readiness",
+    path: "/capabilities/compliance-audit-readiness",
+    category: "Capability",
+  },
+  {
+    label: "NDIS Claiming & Invoicing",
+    path: "/capabilities/ndis-claiming-invoicing",
+    category: "Capability",
+  },
+  {
+    label: "Accounting & Financial Reporting",
+    path: "/capabilities/accounting-financial-reporting",
+    category: "Capability",
+  },
+  {
+    label: "Dashboards & Reporting",
+    path: "/capabilities/dashboards-reporting",
+    category: "Capability",
+  },
 ];
 
 // Fallback solution items used when Sanity hasn't loaded yet
 const STATIC_SOLUTION_ITEMS: SearchItem[] = [
-  { label: "Disability Support (NDIS)",  path: "/solutions/ndis",  category: "Solution" },
-  { label: "Support Coordination",       path: "/solutions/support-coordination",      category: "Solution" },
-  { label: "Allied Health",              path: "/solutions/allied-health-services",    category: "Solution" },
-  { label: "SIL",                        path: "/solutions/sil",                       category: "Solution" },
-  { label: "Operations Manager",         path: "/solutions/operations-manager",        category: "Solution" },
-  { label: "Compliance Lead",            path: "/solutions/compliance-lead",           category: "Solution" },
-  { label: "Finance Manager",            path: "/solutions/finance-manager",           category: "Solution" },
-  { label: "Support Worker",             path: "/solutions/support-worker",            category: "Solution" },
-  { label: "Start (1–15 staff)",         path: "/solutions/start",                     category: "Solution" },
-  { label: "Growth (15–60 staff)",       path: "/solutions/growth",                    category: "Solution" },
-  { label: "Scale (60–120 staff)",       path: "/solutions/scale",                     category: "Solution" },
-  { label: "Enterprise (120+ staff)",    path: "/solutions/enterprise",                category: "Solution" },
+  {
+    label: "Disability Support (NDIS)",
+    path: "/solutions/ndis",
+    category: "Solution",
+  },
+  {
+    label: "Support Coordination",
+    path: "/solutions/support-coordination",
+    category: "Solution",
+  },
+  {
+    label: "Allied Health",
+    path: "/solutions/allied-health-services",
+    category: "Solution",
+  },
+  { label: "SIL", path: "/solutions/sil", category: "Solution" },
+  {
+    label: "Operations Manager",
+    path: "/solutions/operations-manager",
+    category: "Solution",
+  },
+  {
+    label: "Compliance Lead",
+    path: "/solutions/compliance-lead",
+    category: "Solution",
+  },
+  {
+    label: "Finance Manager",
+    path: "/solutions/finance-manager",
+    category: "Solution",
+  },
+  {
+    label: "Support Worker",
+    path: "/solutions/support-worker",
+    category: "Solution",
+  },
+  {
+    label: "Start (1–15 staff)",
+    path: "/solutions/start",
+    category: "Solution",
+  },
+  {
+    label: "Growth (15–60 staff)",
+    path: "/solutions/growth",
+    category: "Solution",
+  },
+  {
+    label: "Scale (60–120 staff)",
+    path: "/solutions/scale",
+    category: "Solution",
+  },
+  {
+    label: "Enterprise (120+ staff)",
+    path: "/solutions/enterprise",
+    category: "Solution",
+  },
 ];
 
 // Static pages — always present regardless of Sanity
 const STATIC_PAGE_ITEMS: SearchItem[] = [
-  { label: "Platform",      path: "/platform",     category: "Page" },
-  { label: "Pricing",       path: "/pricing",      category: "Page" },
-  { label: "About Us",      path: "/about",        category: "Page" },
-  { label: "Our Story",     path: "/our-story",    category: "Page" },
-  { label: "Careers",       path: "/careers",      category: "Page" },
-  { label: "Contact Us",    path: "/contact-us",   category: "Page" },
-  { label: "Book a Demo",   path: "/book-a-demo",  category: "Page" },
-  { label: "Sign Up",       path: "/signup",       category: "Page" },
-  { label: "Blog",          path: "/blogs",        category: "Resource" },
-  { label: "Whitepapers",   path: "/whitepapers",  category: "Resource" },
-  { label: "Case Studies",  path: "/case-studies", category: "Resource" },
-  { label: "Webinars",      path: "/webinars",     category: "Resource" },
-  { label: "Help Centre",   path: "/help-center",  category: "Resource" },
-  { label: "Release Notes", path: "/changelog",    category: "Resource" },
+  { label: "Platform", path: "/platform", category: "Page" },
+  { label: "Pricing", path: "/pricing", category: "Page" },
+  { label: "About Us", path: "/about", category: "Page" },
+  { label: "Careers", path: "/careers", category: "Page" },
+  { label: "Contact Us", path: "/contact-us", category: "Page" },
+  { label: "Book a Demo", path: "/book-a-demo", category: "Page" },
+  { label: "Sign Up", path: "/signup", category: "Page" },
+  { label: "Blog", path: "/blogs", category: "Resource" },
+  { label: "Guides", path: "/guides", category: "Resource" },
+  { label: "Whitepapers", path: "/whitepapers", category: "Resource" },
+  { label: "Case Studies", path: "/case-studies", category: "Resource" },
+  { label: "Help Centre", path: "/help-center", category: "Resource" },
+  { label: "Release Notes", path: "/changelog", category: "Resource" },
 ];
 
 const NavBarComponent = ({
@@ -77,73 +158,102 @@ const NavBarComponent = ({
   }, [pathname]);
   const appNavigate = useAppNavigate();
   const [showSearch, setShowSearch] = useState(false);
-  const [searchHistory, setSearchHistory] = useState<string[]>([]);
+  const [, setSearchHistory] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchHighlightIndex, setSearchHighlightIndex] = useState(-1);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [activeLink, setActiveLink] = useState<
-    "About" | "Platform" | "Capabilities" | "Solutions" | "Pricing" | "Resources" | "Contact Us" | ""
+    | "Company"
+    | "Platform"
+    | "Capabilities"
+    | "Solutions"
+    | "Pricing"
+    | "Resources"
+    | "Contact Us"
+    | ""
   >("");
-  const DROPDOWN_LINKS = ["Capabilities", "Solutions", "Pricing", "Resources", "About"];
-  const NAV_LINKS = ["Platform", "Capabilities", "Pricing", "Solutions", "Resources", "About"];
+  const DROPDOWN_LINKS = [
+    "Capabilities",
+    "Solutions",
+    "Pricing",
+    "Resources",
+    "Company",
+  ];
+  const NAV_LINKS = [
+    "Platform",
+    "Capabilities",
+    "Pricing",
+    "Solutions",
+    "Resources",
+    "Company",
+  ];
   const PRI_IDX = NAV_LINKS.indexOf("Pricing");
   const CAP_IDX = NAV_LINKS.indexOf("Capabilities");
   const SOL_IDX = NAV_LINKS.indexOf("Solutions");
   const RES_IDX = NAV_LINKS.indexOf("Resources");
-  const ABT_IDX = NAV_LINKS.indexOf("About");
+  const ABT_IDX = NAV_LINKS.indexOf("Company");
 
   // Live Sanity nav data — falls back to navData.ts while loading (no flash)
   const { links: capLinks, loading: capLoading } = useSanityCapabilityNav();
   const { links: solLinks, loading: solLoading } = useSanitySolutionNav();
 
-  const CAP_GROUP_ORDER = ["Workforce", "Participant & Care", "Finance", "Operational Intelligence"];
+  const CAP_GROUP_ORDER = [
+    "Workforce",
+    "Participant & Care",
+    "Finance",
+    "Operational Intelligence",
+  ];
 
   // Capabilities: group live Sanity links by navGroup; fall back to hardcoded while loading
-  const capNavGroups: NavGroup[] = (!capLoading && capLinks.length > 0)
-    ? (() => {
-        const groupMap = new Map<string, NavLink[]>();
-        capLinks.forEach((link) => {
-          if (!groupMap.has(link.navGroup)) groupMap.set(link.navGroup, []);
-          groupMap.get(link.navGroup)!.push({
-            title: link.title,
-            subTitle: link.navSubtitle ?? link.heroSubtitle,
-            href: `/capabilities/${link.slug.current}`,
-          });
-        });
-        const groups = Array.from(groupMap.entries()).map(([heading, links]) => ({ heading, links }));
-        return groups.sort((a, b) => {
-          const ai = CAP_GROUP_ORDER.indexOf(a.heading);
-          const bi = CAP_GROUP_ORDER.indexOf(b.heading);
-          const aIdx = ai === -1 ? 999 : ai;
-          const bIdx = bi === -1 ? 999 : bi;
-          return aIdx - bIdx;
-        });
-      })()
-    : navBarDummyData["Capabilities"];
-
-  // Solutions: group live Sanity links by navCategory; fall back to hardcoded while loading
-  const solNavCategories: Record<string, NavLink[]> = (!solLoading && solLinks.length > 0)
-    ? (() => {
-        const catMap: Record<string, NavLink[]> = {
-          "BY CARE TYPE": [],
-          "BY ROLE": [],
-          "BY STAGE": [],
-        };
-        solLinks.forEach((link) => {
-          if (catMap[link.navCategory]) {
-            catMap[link.navCategory].push({
+  const capNavGroups: NavGroup[] =
+    !capLoading && capLinks.length > 0
+      ? (() => {
+          const groupMap = new Map<string, NavLink[]>();
+          capLinks.forEach((link) => {
+            if (!groupMap.has(link.navGroup)) groupMap.set(link.navGroup, []);
+            groupMap.get(link.navGroup)!.push({
               title: link.title,
               subTitle: link.navSubtitle ?? link.heroSubtitle,
-              href: `/solutions/${link.slug.current}`,
+              href: `/capabilities/${link.slug.current}`,
             });
-          }
-        });
-        // Do not fallback to navBarDummyData for empty categories to avoid coming-soon links
-        // if (catMap["BY ROLE"].length === 0) catMap["BY ROLE"] = navBarDummyData["Solutions"]["BY ROLE"];
-        // if (catMap["BY STAGE"].length === 0) catMap["BY STAGE"] = navBarDummyData["Solutions"]["BY STAGE"];
-        return catMap;
-      })()
-    : navBarDummyData["Solutions"];
+          });
+          const groups = Array.from(groupMap.entries()).map(
+            ([heading, links]) => ({ heading, links }),
+          );
+          return groups.sort((a, b) => {
+            const ai = CAP_GROUP_ORDER.indexOf(a.heading);
+            const bi = CAP_GROUP_ORDER.indexOf(b.heading);
+            const aIdx = ai === -1 ? 999 : ai;
+            const bIdx = bi === -1 ? 999 : bi;
+            return aIdx - bIdx;
+          });
+        })()
+      : navBarDummyData["Capabilities"];
+
+  // Solutions: group live Sanity links by navCategory; fall back to hardcoded while loading
+  const solNavCategories: Record<string, NavLink[]> =
+    !solLoading && solLinks.length > 0
+      ? (() => {
+          const catMap: Record<string, NavLink[]> = {
+            "BY CARE TYPE": [],
+            "BY ROLE": [],
+            "BY STAGE": [],
+          };
+          solLinks.forEach((link) => {
+            if (catMap[link.navCategory]) {
+              catMap[link.navCategory].push({
+                title: link.title,
+                subTitle: link.navSubtitle ?? link.heroSubtitle,
+                href: `/solutions/${link.slug.current}`,
+              });
+            }
+          });
+          // Do not fallback to navBarDummyData for empty categories to avoid coming-soon links
+          // if (catMap["BY ROLE"].length === 0) catMap["BY ROLE"] = navBarDummyData["Solutions"]["BY ROLE"];
+          // if (catMap["BY STAGE"].length === 0) catMap["BY STAGE"] = navBarDummyData["Solutions"]["BY STAGE"];
+          return catMap;
+        })()
+      : navBarDummyData["Solutions"];
 
   // Dynamic search items built from live Sanity data — always accurate slugs
   const dynamicSearchItems = useMemo<SearchItem[]>(() => {
@@ -207,15 +317,11 @@ const NavBarComponent = ({
       setActiveLink("");
     }
     if (
-      currentPath == "our-story" ||
-      currentPath == "our-mission" ||
-      currentPath == "our-vision" ||
-      currentPath == "team" ||
       currentPath == "careers" ||
       currentPath == "contact-information" ||
       currentPath == "about"
     ) {
-      setActiveLink("About");
+      setActiveLink("Company");
     }
     if (currentPath == "platform") {
       setActiveLink("Platform");
@@ -263,13 +369,12 @@ const NavBarComponent = ({
       currentPath == "whitepapers" ||
       currentPath == "help-center" ||
       currentPath == "case-studies" ||
-      currentPath == "webinars" ||
       currentPath == "changelog"
     ) {
       setActiveLink("Resources");
     }
     if (currentPath == "contact-us") {
-      setActiveLink("About");
+      setActiveLink("Company");
     }
     if (currentPath == "requestDemo") {
       setActiveLink("");
@@ -279,7 +384,7 @@ const NavBarComponent = ({
     keyof typeof navBarDummyData | "" | "navbar-profile-icon"
   >("");
   const [popupPosition, setPopupPosition] = useState<PopupPosition | null>(
-    null
+    null,
   );
 
   const handleSearchIcon = (value?: boolean) => {
@@ -432,21 +537,21 @@ const NavBarComponent = ({
           aria-label="Open navigation menu"
           role="button"
         >
-        <svg
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4 6H20M4 12H20M4 18H20"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 6H20M4 12H20M4 18H20"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
       </div>
 
@@ -489,26 +594,28 @@ const NavBarComponent = ({
             </button>
           </div>
           <div id="nav-menu-ctas">
-              <div
-                className="navbar-tryItFree nav-drawer-btn"
-                onClick={() => {
-                  appNavigate("/signup");
-                  setToggleDrawer(false);
-                }}
-              >
-                <span className="navbar-requestDemo-text">Begin Your Journey</span>
-              </div>
-              <div
-                className="navbar-requestDemo nav-drawer-btn"
-                onClick={() => {
-                  appNavigate("/book-a-demo");
-                  setToggleDrawer(false);
-                }}
-              >
-                <span className="navbar-requestDemo-text">Book a Demo</span>
-              </div>
+            <div
+              className="navbar-tryItFree nav-drawer-btn"
+              onClick={() => {
+                appNavigate("/signup");
+                setToggleDrawer(false);
+              }}
+            >
+              <span className="navbar-requestDemo-text">
+                Begin Your Journey
+              </span>
             </div>
-        <div id="nav-menu-links">
+            <div
+              className="navbar-requestDemo nav-drawer-btn"
+              onClick={() => {
+                appNavigate("/book-a-demo");
+                setToggleDrawer(false);
+              }}
+            >
+              <span className="navbar-requestDemo-text">Book a Demo</span>
+            </div>
+          </div>
+          <div id="nav-menu-links">
             {NAV_LINKS.map((label, index) => {
               if (label != "Platform") {
                 return (
@@ -538,37 +645,37 @@ const NavBarComponent = ({
                     >
                       <div className="nav-accordion-content">
                         {expanded == CAP_IDX && (
-                            <>
-                              {capNavGroups.map(
-                                (value, index) => (
-                                  <div key={value.heading + index}>
-                                    <div className="nav-accordion-group-heading">{value.heading}</div>
-                                    {value.links.map((link, innerIndex) => (
-                                      <div
-                                        key={link.title + innerIndex}
-                                        className="nav-inner-container"
-                                        onClick={() => {
-                                          if (link.href) {
-                                            appNavigate(link.href);
-                                            setToggleDrawer(false);
-                                          } else {
-                                            popupLinkClickHandler(link.title);
-                                          }
-                                        }}
-                                      >
-                                        <div className="nav-title">
-                                          {link.title}
-                                        </div>
-                                        <div className="nav-sub-title">
-                                          {link.subTitle}
-                                        </div>
-                                      </div>
-                                    ))}
+                          <>
+                            {capNavGroups.map((value, index) => (
+                              <div key={value.heading + index}>
+                                <div className="nav-accordion-group-heading">
+                                  {value.heading}
+                                </div>
+                                {value.links.map((link, innerIndex) => (
+                                  <div
+                                    key={link.title + innerIndex}
+                                    className="nav-inner-container"
+                                    onClick={() => {
+                                      if (link.href) {
+                                        appNavigate(link.href);
+                                        setToggleDrawer(false);
+                                      } else {
+                                        popupLinkClickHandler(link.title);
+                                      }
+                                    }}
+                                  >
+                                    <div className="nav-title">
+                                      {link.title}
+                                    </div>
+                                    <div className="nav-sub-title">
+                                      {link.subTitle}
+                                    </div>
                                   </div>
-                                )
-                              )}
-                            </>
-                          )}
+                                ))}
+                              </div>
+                            ))}
+                          </>
+                        )}
                         {expanded == RES_IDX &&
                           Array.isArray(navBarDummyData["Resources"]) &&
                           navBarDummyData["Resources"].map((value, index) => (
@@ -592,7 +699,9 @@ const NavBarComponent = ({
                           ))}
                         {expanded == SOL_IDX && (
                           <div id="nav-menu-solutions">
-                            {(["BY CARE TYPE", "BY ROLE", "BY STAGE"] as const).map((cat) => (
+                            {(
+                              ["BY CARE TYPE", "BY ROLE", "BY STAGE"] as const
+                            ).map((cat) => (
                               <div key={cat}>
                                 <div className="services-heading">{cat}</div>
                                 {Array.isArray(solNavCategories[cat]) &&
@@ -609,8 +718,12 @@ const NavBarComponent = ({
                                         }
                                       }}
                                     >
-                                      <div className="nav-title">{value.title}</div>
-                                      <div className="nav-sub-title">{value.subTitle}</div>
+                                      <div className="nav-title">
+                                        {value.title}
+                                      </div>
+                                      <div className="nav-sub-title">
+                                        {value.subTitle}
+                                      </div>
                                     </div>
                                   ))}
                               </div>
@@ -632,11 +745,15 @@ const NavBarComponent = ({
                               }}
                             >
                               <div className="nav-title">{value.title}</div>
-                              {value.subTitle?.trim() && <div className="nav-sub-title">{value.subTitle}</div>}
+                              {value.subTitle?.trim() && (
+                                <div className="nav-sub-title">
+                                  {value.subTitle}
+                                </div>
+                              )}
                             </div>
                           ))}
                         {expanded == ABT_IDX &&
-                          navBarDummyData["About"].map((value, index) => (
+                          navBarDummyData["Company"].map((value, index) => (
                             <div
                               key={value.title + index}
                               className="nav-inner-container"
@@ -650,6 +767,11 @@ const NavBarComponent = ({
                               }}
                             >
                               <div className="nav-title">{value.title}</div>
+                              {value.subTitle?.trim() && (
+                                <div className="nav-sub-title">
+                                  {value.subTitle}
+                                </div>
+                              )}
                             </div>
                           ))}
                       </div>
@@ -662,7 +784,10 @@ const NavBarComponent = ({
                     className="nav-menu-link no-dropdown"
                     key={label}
                     onClick={() => {
-                      appNavigate(NAV_ROUTES[label] ?? `/${label.toLowerCase().replace(/ /g, "-")}`);
+                      appNavigate(
+                        NAV_ROUTES[label] ??
+                          `/${label.toLowerCase().replace(/ /g, "-")}`,
+                      );
                       setToggleDrawer(false);
                     }}
                   >
@@ -675,7 +800,13 @@ const NavBarComponent = ({
           <div id="nav-menu-footer">
             <div id="nav-menu-auth">
               {/* <button className="nav-auth-btn nav-auth-btn--primary" onClick={signupHandler}>Sign Up</button> */}
-              <button type="button" className="nav-auth-btn nav-auth-btn--secondary" onClick={loginHandler}>Sign In</button>
+              <button
+                type="button"
+                className="nav-auth-btn nav-auth-btn--secondary"
+                onClick={loginHandler}
+              >
+                Sign In
+              </button>
             </div>
           </div>
         </div>
@@ -704,7 +835,12 @@ const NavBarComponent = ({
               </div>
             );
           })}
-          <div id="navbar-search" onClick={() => handleSearchIcon()} role="button" aria-label="Search">
+          <div
+            id="navbar-search"
+            onClick={() => handleSearchIcon()}
+            role="button"
+            aria-label="Search"
+          >
             <Search className="navbar-search-icon" size={16} />
             <span id="navbar-search-label">Search</span>
           </div>
@@ -777,10 +913,10 @@ const NavBarComponent = ({
             selectedLink != "Capabilities" &&
             Object.prototype.hasOwnProperty.call(
               navBarDummyData,
-              selectedLink
+              selectedLink,
             ) &&
             Array.isArray(
-              navBarDummyData[selectedLink as keyof typeof navBarDummyData]
+              navBarDummyData[selectedLink as keyof typeof navBarDummyData],
             ) &&
             (
               navBarDummyData[selectedLink as keyof typeof navBarDummyData] as {
@@ -810,23 +946,27 @@ const NavBarComponent = ({
               {capNavGroups.map((value, index) => (
                 <div key={value.heading + index} className="nav-product-group">
                   <div className="nav-inner-heading">{value.heading}</div>
-                  {value.links.filter(link => link.title).map((link, innerIndex) => (
-                    <div
-                      key={link.title + innerIndex}
-                      className="nav-inner-container"
-                      onClick={() => {
-                        if (link.href) {
-                          appNavigate(link.href);
-                          closePopup();
-                        } else {
-                          popupLinkClickHandler(link.title);
-                        }
-                      }}
-                    >
-                      <div className="nav-title">{link.title}</div>
-                      {link.subTitle && <div className="nav-sub-title">{link.subTitle}</div>}
-                    </div>
-                  ))}
+                  {value.links
+                    .filter((link) => link.title)
+                    .map((link, innerIndex) => (
+                      <div
+                        key={link.title + innerIndex}
+                        className="nav-inner-container"
+                        onClick={() => {
+                          if (link.href) {
+                            appNavigate(link.href);
+                            closePopup();
+                          } else {
+                            popupLinkClickHandler(link.title);
+                          }
+                        }}
+                      >
+                        <div className="nav-title">{link.title}</div>
+                        {link.subTitle && (
+                          <div className="nav-sub-title">{link.subTitle}</div>
+                        )}
+                      </div>
+                    ))}
                 </div>
               ))}
             </div>
@@ -871,151 +1011,113 @@ const NavBarComponent = ({
           )}
         </div>
       </Popup>
-      <Popup
-        isOpen={showSearch}
-        onClose={handleSearchIcon}
-        containerRef={portalContainerRef}
-        position={{ top: 68 + (typeof document !== "undefined" ? parseInt(document.documentElement.style.getPropertyValue("--cd-bar-height") || "0", 10) : 0), left: (typeof window !== "undefined" ? window.innerWidth : 1280) / 2 }}
-        showTriangle={false}
-      >
-        <div id="search-popup-container">
-          {/* Header */}
-          <div id="search-popup-header">
-            <div id="search-popup-input-wrap">
-              <svg id="search-popup-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-              </svg>
-              <input
-                id="search-popup-input"
-                type="text"
-                placeholder="Search capabilities, solutions, features…"
-                value={searchTerm}
-                onChange={(e) => { setSearchTerm(e.target.value); setSearchHighlightIndex(-1); }}
-                autoFocus
-                onKeyDown={(e) => {
-                  if (searchTerm.length === 0) return;
-                  const q = searchTerm.toLowerCase();
-                  const results = dynamicSearchItems
-                    .filter((item) => item.label.toLowerCase().includes(q))
-                    .sort((a, b) => {
-                      const ai = a.label.toLowerCase().indexOf(q);
-                      const bi = b.label.toLowerCase().indexOf(q);
-                      return ai === bi ? a.label.localeCompare(b.label) : ai - bi;
-                    });
-                  if (results.length === 0) return;
-                  if (e.key === "ArrowDown") {
-                    e.preventDefault();
-                    setSearchHighlightIndex((prev) => Math.min(prev + 1, results.length - 1));
-                  } else if (e.key === "ArrowUp") {
-                    e.preventDefault();
-                    setSearchHighlightIndex((prev) => Math.max(prev - 1, 0));
-                  } else if (e.key === "Enter" && searchHighlightIndex >= 0) {
-                    const item = results[searchHighlightIndex];
-                    handleSearchIcon(false);
-                    setSearchTerm("");
-                    setSearchHighlightIndex(-1);
-                    addSearch(item.label);
-                    setToggleDrawer(false);
-                    navigate(item.path);
-                  }
-                }}
-              />
-              {searchTerm.length > 0 && (
-                <button type="button" id="search-popup-clear" onClick={() => setSearchTerm("")} aria-label="Clear search">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      {showSearch &&
+        createPortal(
+          <div
+            className="rsm-backdrop"
+            onClick={() => handleSearchIcon(false)}
+            aria-modal="true"
+            role="dialog"
+          >
+            <div className="rsm-panel" onClick={(e) => e.stopPropagation()}>
+              {/* Input row */}
+              <div className="rsm-input-row">
+                <button
+                  type="button"
+                  className="rsm-back-btn"
+                  onClick={() => handleSearchIcon(false)}
+                  aria-label="Close search"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M19 12H5M12 5l-7 7 7 7" />
+                  </svg>
                 </button>
-              )}
-            </div>
-            <button type="button" id="search-popup-close" onClick={() => handleSearchIcon(false)} aria-label="Close search">
-              Cancel
-            </button>
-          </div>
-
-          {/* Body */}
-          <div id="search-popup-body">
-            {searchTerm.length === 0 ? (
-              <>
-                {/* Popular */}
-                <div className="search-popup-section">
-                  <div className="search-popup-section-label">Popular searches</div>
-                  <div id="search-popup-popular-list">
-                    {["Rostering & Scheduling", "NDIS Claiming & Invoicing", "Participant Management", "Accounting & Financial Reporting", "Dashboards & Reporting"].map((term) => (
-                      <button
-                        type="button"
-                        key={term}
-                        className="search-popup-chip"
-                        onClick={() => {
-                          const item = dynamicSearchItems.find((s) => s.label === term);
-                          if (item) { handleSearchIcon(false); setSearchTerm(""); addSearch(term); navigate(item.path); }
-                        }}
-                      >
-                        {term}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Recent */}
-                {searchHistory.length > 0 && (
-                  <div className="search-popup-section">
-                    <div className="search-popup-section-label">Recent</div>
-                    <div id="search-popup-recent-list">
-                      {[...searchHistory].reverse().map((item, index) => (
-                        <button
-                          type="button"
-                          key={item + index}
-                          className="search-popup-recent-item"
-                          onClick={() => {
-                            const found = dynamicSearchItems.find((s) => s.label === item);
-                            if (found) {
-                              handleSearchIcon(false);
-                              setSearchTerm("");
-                              setToggleDrawer(false);
-                              navigate(found.path);
-                            } else {
-                              setSearchTerm(item);
-                            }
-                          }}
-                        >
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                          </svg>
-                          {item}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                <input
+                  className="rsm-input"
+                  type="text"
+                  placeholder="Search capabilities, solutions, features…"
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setSearchHighlightIndex(-1);
+                  }}
+                  autoFocus
+                  onKeyDown={(e) => {
+                    const q = searchTerm.toLowerCase();
+                    const results = dynamicSearchItems
+                      .filter((item) => item.label.toLowerCase().includes(q))
+                      .sort((a, b) => {
+                        const ai = a.label.toLowerCase().indexOf(q);
+                        const bi = b.label.toLowerCase().indexOf(q);
+                        return ai === bi
+                          ? a.label.localeCompare(b.label)
+                          : ai - bi;
+                      });
+                    if (e.key === "Escape") {
+                      handleSearchIcon(false);
+                      return;
+                    }
+                    if (results.length === 0) return;
+                    if (e.key === "ArrowDown") {
+                      e.preventDefault();
+                      setSearchHighlightIndex((prev) =>
+                        Math.min(prev + 1, results.length - 1),
+                      );
+                    } else if (e.key === "ArrowUp") {
+                      e.preventDefault();
+                      setSearchHighlightIndex((prev) => Math.max(prev - 1, 0));
+                    } else if (e.key === "Enter" && searchHighlightIndex >= 0) {
+                      const item = results[searchHighlightIndex];
+                      handleSearchIcon(false);
+                      setSearchTerm("");
+                      setSearchHighlightIndex(-1);
+                      addSearch(item.label);
+                      setToggleDrawer(false);
+                      navigate(item.path);
+                    }
+                  }}
+                />
+                {searchTerm.length > 0 && (
+                  <button
+                    type="button"
+                    className="rsm-clear-btn"
+                    onClick={() => setSearchTerm("")}
+                    aria-label="Clear"
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    >
+                      <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                  </button>
                 )}
-              </>
-            ) : (
-              <div id="search-popup-results-container">
-                {(() => {
-                  const q = searchTerm.toLowerCase();
-                  const results = dynamicSearchItems
-                    .filter((item) => item.label.toLowerCase().includes(q))
-                    .sort((a, b) => {
-                      const ai = a.label.toLowerCase().indexOf(q);
-                      const bi = b.label.toLowerCase().indexOf(q);
-                      return ai === bi ? a.label.localeCompare(b.label) : ai - bi;
-                    });
-                  if (results.length === 0) {
-                    return (
-                      <div id="search-popup-empty">
-                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c4cdd6" strokeWidth="1.5" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                        <div id="search-popup-empty-text">No results for "<strong>{searchTerm}</strong>"</div>
-                        <div id="search-popup-empty-sub">Try a different keyword</div>
-                      </div>
-                    );
-                  }
-                  return results.map((item, index) => {
-                    const escaped = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-                    const splitRe = new RegExp(`(${escaped})`, "ig");
-                    const parts = item.label.split(splitRe);
-                    return (
+                <span className="rsm-esc-hint">Esc</span>
+              </div>
+
+              {/* Results */}
+              <div className="rsm-results">
+                {searchTerm.length === 0
+                  ? dynamicSearchItems.slice(0, 8).map((item, index) => (
                       <button
                         type="button"
-                        className={"search-popup-result" + (searchHighlightIndex === index ? " search-popup-result--active" : "")}
                         key={item.path + index}
+                        className={`rsm-entry${searchHighlightIndex === index ? " rsm-entry--active" : ""}`}
+                        onMouseEnter={() => setSearchHighlightIndex(index)}
                         onClick={() => {
                           handleSearchIcon(false);
                           setSearchTerm("");
@@ -1025,29 +1127,98 @@ const NavBarComponent = ({
                           navigate(item.path);
                         }}
                       >
-                        <svg className="search-result-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-                        </svg>
-                        <span className="search-result-label">
-                          {parts.map((part, i) =>
-                            part.toLowerCase() === searchTerm.toLowerCase()
-                              ? <mark key={i} className="search-highlight">{part}</mark>
-                              : part
-                          )}
+                        <span className="rsm-entry-text">
+                          <span className="rsm-entry-title">{item.label}</span>
                         </span>
-                        <span className="search-result-category">{item.category}</span>
-                        <svg className="search-result-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
-                          <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
+                        <span className="rsm-entry-right">
+                          <span className="rsm-entry-type">
+                            {item.category}
+                          </span>
+                        </span>
                       </button>
-                    );
-                  });
-                })()}
+                    ))
+                  : (() => {
+                      const q = searchTerm.toLowerCase();
+                      const results = dynamicSearchItems
+                        .filter((item) => item.label.toLowerCase().includes(q))
+                        .sort((a, b) => {
+                          const ai = a.label.toLowerCase().indexOf(q);
+                          const bi = b.label.toLowerCase().indexOf(q);
+                          return ai === bi
+                            ? a.label.localeCompare(b.label)
+                            : ai - bi;
+                        });
+                      if (results.length === 0) {
+                        return (
+                          <div className="rsm-empty">
+                            <svg
+                              width="32"
+                              height="32"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="#c4cdd6"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                            >
+                              <circle cx="11" cy="11" r="8" />
+                              <path d="M21 21l-4.35-4.35" />
+                            </svg>
+                            <p>
+                              No results for "<strong>{searchTerm}</strong>"
+                            </p>
+                          </div>
+                        );
+                      }
+                      return results.map((item, index) => {
+                        const escaped = searchTerm.replace(
+                          /[.*+?^${}()|[\]\\]/g,
+                          "\\$&",
+                        );
+                        const splitRe = new RegExp(`(${escaped})`, "ig");
+                        const parts = item.label.split(splitRe);
+                        return (
+                          <button
+                            type="button"
+                            key={item.path + index}
+                            className={`rsm-entry${searchHighlightIndex === index ? " rsm-entry--active" : ""}`}
+                            onMouseEnter={() => setSearchHighlightIndex(index)}
+                            onClick={() => {
+                              handleSearchIcon(false);
+                              setSearchTerm("");
+                              setSearchHighlightIndex(-1);
+                              addSearch(item.label);
+                              setToggleDrawer(false);
+                              navigate(item.path);
+                            }}
+                          >
+                            <span className="rsm-entry-text">
+                              <span className="rsm-entry-title">
+                                {parts.map((part, i) =>
+                                  part.toLowerCase() ===
+                                  searchTerm.toLowerCase() ? (
+                                    <mark key={i} className="rsm-highlight">
+                                      {part}
+                                    </mark>
+                                  ) : (
+                                    part
+                                  ),
+                                )}
+                              </span>
+                            </span>
+                            <span className="rsm-entry-right">
+                              <span className="rsm-entry-type">
+                                {item.category}
+                              </span>
+                            </span>
+                          </button>
+                        );
+                      });
+                    })()}
               </div>
-            )}
-          </div>
-        </div>
-      </Popup>
+            </div>
+          </div>,
+          document.body,
+        )}
     </nav>
   );
 };
