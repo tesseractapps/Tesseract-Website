@@ -2,7 +2,11 @@
 
 // ── Tier 1: Conversion events ─────────────────────────────────────────────────
 
-export function trackBookDemoSubmit(data: { email: string; firstName: string; lastName: string }) {
+export function trackBookDemoSubmit(data: {
+  email: string;
+  firstName: string;
+  lastName: string;
+}) {
   window.dataLayer?.push({
     event: "book_demo_form_submit",
     user_data: {
@@ -106,9 +110,14 @@ export type CTALocation =
   | "sc_bottom"
   | "capability"
   | "solution"
-  | "blog_cta";
+  | "blog_cta"
+  | "end_of_year_discount";
 
-export function trackCTAClick(ctaType: CTAType, location: CTALocation, sourcePage: string) {
+export function trackCTAClick(
+  ctaType: CTAType,
+  location: CTALocation,
+  sourcePage: string,
+) {
   window.dataLayer?.push({
     event: "cta_click",
     cta_type: ctaType,
@@ -134,7 +143,8 @@ const SIGNUP_STEP_NAMES: Record<number, string> = {
 };
 
 export function trackFormStepComplete(formName: FormName, step: number) {
-  const stepNames = formName === "book_demo" ? BOOK_DEMO_STEP_NAMES : SIGNUP_STEP_NAMES;
+  const stepNames =
+    formName === "book_demo" ? BOOK_DEMO_STEP_NAMES : SIGNUP_STEP_NAMES;
   window.dataLayer?.push({
     event: "form_step_complete",
     form_name: formName,
@@ -190,7 +200,7 @@ export function trackWhitepaperDownload(title: string) {
 
 export function trackGuideAccess(title: string) {
   window.dataLayer?.push({
-    event: 'guide_access',
+    event: "guide_access",
     guide_title: title,
   });
 }

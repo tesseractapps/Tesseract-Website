@@ -1,7 +1,13 @@
 // src/routes/AppRoutes.tsx
 // Static imports — no lazy() — so vite-react-ssg SSG renders actual page
 // content synchronously, eliminating the Suspense fallback flash.
-import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { useEffect } from "react";
 import { useAppContext } from "../contexts/AppContext";
 
@@ -43,19 +49,20 @@ import Register from "../pages/forms/register/Register";
 import HumansPage from "../pages/humans/HumansPage";
 import HumanPage from "../pages/humans/HumanPage";
 import NotFound from "../pages/notFound/NotFound";
+import PromoPage from "../pages/marketing/promo/promopage";
 
 const AppRoutes = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const {
-    getRoute,
-    setCloseRoute,
-  } = useAppContext();
+  const { getRoute, setCloseRoute } = useAppContext();
 
   useEffect(() => {
     // Redirect uppercase URLs to lowercase (e.g. /TESSERACT-VS-SHIFTCARE → /tesseract-vs-shiftcare)
     if (location.pathname !== location.pathname.toLowerCase()) {
-      navigate(location.pathname.toLowerCase() + location.search + location.hash, { replace: true });
+      navigate(
+        location.pathname.toLowerCase() + location.search + location.hash,
+        { replace: true },
+      );
       return;
     }
     const cleanPath = location.pathname.replace(/\/$/, "");
@@ -66,7 +73,8 @@ const AppRoutes = () => {
     }
     setCloseRoute(cleanPath || "/");
     if ((location.state as any)?.data) return;
-    if (typeof sessionStorage !== "undefined") sessionStorage.setItem("prevPath", location.pathname);
+    if (typeof sessionStorage !== "undefined")
+      sessionStorage.setItem("prevPath", location.pathname);
 
     const routeConfig = getRoute(cleanPath);
     if (routeConfig?.data) {
@@ -82,16 +90,26 @@ const AppRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/events" element={<EventsListing />} />
       <Route path="/events/adelaide-expo-2026" element={<AdelaideExpo2026 />} />
+      <Route path="/events/eofy-discount" element={<PromoPage />} />
       <Route path="/book-a-demo" element={<BookADemo />} />
       <Route path="/book-a-demo/success" element={<BookADemoSuccess />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signup/success" element={<SignupSuccess />} />
       <Route path="/pricing" element={<Pricing />} />
       <Route path="/platform" element={<Platform />} />
-      <Route path="/learning-management" element={<Navigate to="/capabilities/learning-management" replace />} />
-      <Route path="/workflow-engine" element={<Navigate to="/capabilities/workflow-engine" replace />} />
+      <Route
+        path="/learning-management"
+        element={<Navigate to="/capabilities/learning-management" replace />}
+      />
+      <Route
+        path="/workflow-engine"
+        element={<Navigate to="/capabilities/workflow-engine" replace />}
+      />
       <Route path="/capabilities/learning-management" element={<LMS />} />
-      <Route path="/capabilities/workflow-engine" element={<WorkflowEngine />} />
+      <Route
+        path="/capabilities/workflow-engine"
+        element={<WorkflowEngine />}
+      />
       <Route path="/capabilities" element={<CapabilitiesListing />} />
       <Route path="/capabilities/:slug" element={<CapabilityPage />} />
       <Route path="/solutions" element={<SolutionsListing />} />
@@ -102,7 +120,6 @@ const AppRoutes = () => {
       <Route path="/whitepapers/:slug" element={<WhitepaperPage />} />
       <Route path="/brochures" element={<Brochures />} />
       <Route path="/help-centre" element={<FAQ />} />
-      <Route path="/help-center" element={<FAQ />} />
       <Route path="/about" element={<About />} />
       <Route path="/careers" element={<Careers />} />
       <Route path="/contact-us" element={<ContactInformation />} />
@@ -111,14 +128,17 @@ const AppRoutes = () => {
       <Route path="/changelog" element={<ReleaseNotes />} />
       <Route path="/ndis-glossary" element={<NDISGlossary />} />
       <Route path="/sitemap" element={<SitemapPage />} />
-      <Route path="/support-coordination" element={<SupportCoordination />} />
-      <Route path="/solutions/support-coordination" element={<SupportCoordination />} />
+      <Route
+        path="/solutions/support-coordination"
+        element={<SupportCoordination />}
+      />
       <Route path="/register-support-coordination" element={<Register />} />
       <Route path="/sc-pricing" element={<SCPricing />} />
       <Route path="/blogs" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPostPage />} />
       <Route path="/humans" element={<HumansPage />} />
       <Route path="/humans/:slug" element={<HumanPage />} />
+      {/* <Route path="/promo-eofy" element={<PromoPage />} /> */}
       <Route path="/tesseract-vs/:slug" element={<CompetitorPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

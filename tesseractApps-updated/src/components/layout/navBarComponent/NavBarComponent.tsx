@@ -142,7 +142,7 @@ const STATIC_PAGE_ITEMS: SearchItem[] = [
   { label: "Guides", path: "/guides", category: "Resource" },
   { label: "Whitepapers", path: "/whitepapers", category: "Resource" },
   { label: "Case Studies", path: "/case-studies", category: "Resource" },
-  { label: "Help Centre", path: "/help-center", category: "Resource" },
+  { label: "Help Centre", path: "/help-centre", category: "Resource" },
   { label: "Release Notes", path: "/changelog", category: "Resource" },
 ];
 
@@ -210,9 +210,10 @@ const NavBarComponent = ({
       ? (() => {
           const groupMap = new Map<string, NavLink[]>();
           capLinks.forEach((link) => {
+            if (!link.navGroup || !link.slug?.current) return;
             if (!groupMap.has(link.navGroup)) groupMap.set(link.navGroup, []);
             groupMap.get(link.navGroup)!.push({
-              title: link.title,
+              title: link.title ?? '',
               subTitle: link.navSubtitle ?? link.heroSubtitle,
               href: `/capabilities/${link.slug.current}`,
             });
@@ -240,9 +241,9 @@ const NavBarComponent = ({
             "BY STAGE": [],
           };
           solLinks.forEach((link) => {
-            if (catMap[link.navCategory]) {
+            if (link.navCategory && catMap[link.navCategory] && link.slug?.current) {
               catMap[link.navCategory].push({
-                title: link.title,
+                title: link.title ?? '',
                 subTitle: link.navSubtitle ?? link.heroSubtitle,
                 href: `/solutions/${link.slug.current}`,
               });
@@ -262,8 +263,9 @@ const NavBarComponent = ({
     // Capabilities from live Sanity (slug is ground truth)
     if (capLinks.length > 0) {
       capLinks.forEach((link) => {
+        if (!link.slug?.current) return;
         items.push({
-          label: link.title,
+          label: link.title ?? '',
           path: `/capabilities/${link.slug.current}`,
           category: "Capability",
         });
@@ -276,8 +278,9 @@ const NavBarComponent = ({
     // Solutions from live Sanity
     if (solLinks.length > 0) {
       solLinks.forEach((link) => {
+        if (!link.slug?.current) return;
         items.push({
-          label: link.title,
+          label: link.title ?? '',
           path: `/solutions/${link.slug.current}`,
           category: "Solution",
         });
@@ -367,7 +370,7 @@ const NavBarComponent = ({
       currentPath == "blogs" ||
       currentPath == "faq" ||
       currentPath == "whitepapers" ||
-      currentPath == "help-center" ||
+      currentPath == "help-centre" ||
       currentPath == "case-studies" ||
       currentPath == "changelog"
     ) {

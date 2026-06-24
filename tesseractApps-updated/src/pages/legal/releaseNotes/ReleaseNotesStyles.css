@@ -2,7 +2,12 @@
    CHANGELOG PAGE
 ───────────────────────────────────────── */
 #cl-page {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   color: var(--color-secondary);
   min-height: 100vh;
 }
@@ -20,7 +25,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(12, 120, 186, 0.25) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 110%,
+    rgba(12, 120, 186, 0.25) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -96,6 +105,12 @@
   gap: 8px;
 }
 
+.cl-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
 .cl-chip {
   display: inline-flex;
   align-items: center;
@@ -131,13 +146,41 @@
 }
 
 /* Active chip colours */
-.cl-chip--all.cl-chip--active        { background: var(--color-secondary); color: #fff; border-color: var(--color-secondary); }
-.cl-chip--feature.cl-chip--active    { background: #fffbeb; color: #b45309; border-color: #fcd34d; }
-.cl-chip--enhancement.cl-chip--active{ background: #eff6ff; color: #1d4ed8; border-color: #93c5fd; }
-.cl-chip--bugfix.cl-chip--active     { background: #fff1f2; color: #be123c; border-color: #fca5a5; }
-.cl-chip--mobile.cl-chip--active     { background: #f0fdf4; color: #15803d; border-color: #86efac; }
-.cl-chip--accounting.cl-chip--active { background: #fdf4ff; color: #7e22ce; border-color: #d8b4fe; }
-.cl-chip--integration.cl-chip--active{ background: #fff7ed; color: #c2410c; border-color: #fdba74; }
+.cl-chip--all.cl-chip--active {
+  background: var(--color-secondary);
+  color: #fff;
+  border-color: var(--color-secondary);
+}
+.cl-chip--feature.cl-chip--active {
+  background: #fffbeb;
+  color: #b45309;
+  border-color: #fcd34d;
+}
+.cl-chip--enhancement.cl-chip--active {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #93c5fd;
+}
+.cl-chip--bugfix.cl-chip--active {
+  background: #fff1f2;
+  color: #be123c;
+  border-color: #fca5a5;
+}
+.cl-chip--mobile.cl-chip--active {
+  background: #f0fdf4;
+  color: #15803d;
+  border-color: #86efac;
+}
+.cl-chip--accounting.cl-chip--active {
+  background: #fdf4ff;
+  color: #7e22ce;
+  border-color: #d8b4fe;
+}
+.cl-chip--integration.cl-chip--active {
+  background: #fff7ed;
+  color: #c2410c;
+  border-color: #fdba74;
+}
 
 /* ── Timeline layout ── */
 #cl-timeline {
@@ -212,9 +255,18 @@
   border-radius: 100px;
 }
 
-.cl-release-type--major { background: #ffe4e6; color: #be123c; }
-.cl-release-type--minor { background: #dbeafe; color: #1d4ed8; }
-.cl-release-type--patch { background: #f0fdf4; color: #15803d; }
+.cl-release-type--major {
+  background: #ffe4e6;
+  color: #be123c;
+}
+.cl-release-type--minor {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+.cl-release-type--patch {
+  background: #f0fdf4;
+  color: #15803d;
+}
 
 /* Timeline dot */
 .cl-dot {
@@ -252,7 +304,9 @@
 
 .cl-entry--latest .cl-card {
   border-color: rgba(12, 120, 186, 0.2);
-  box-shadow: 0 0 0 3px rgba(12, 120, 186, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 0 0 3px rgba(12, 120, 186, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 /* Changes list */
@@ -270,8 +324,13 @@
   border-bottom: 1px solid var(--color-background-light-gray);
 }
 
-.cl-change-item:first-child { padding-top: 0; }
-.cl-change-item:last-child  { border-bottom: none; padding-bottom: 0; }
+.cl-change-item:first-child {
+  padding-top: 0;
+}
+.cl-change-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
 
 .cl-change-header {
   display: flex;
@@ -295,12 +354,36 @@
   margin-top: 2px;
 }
 
-.cl-badge--feature     { background: #fffbeb; color: #b45309; border: 1px solid #fcd34d; }
-.cl-badge--enhancement { background: #eff6ff; color: #1d4ed8; border: 1px solid #93c5fd; }
-.cl-badge--bugfix      { background: #fff1f2; color: #be123c; border: 1px solid #fca5a5; }
-.cl-badge--mobile      { background: #f0fdf4; color: #15803d; border: 1px solid #86efac; }
-.cl-badge--accounting  { background: #fdf4ff; color: #7e22ce; border: 1px solid #d8b4fe; }
-.cl-badge--integration { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+.cl-badge--feature {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+}
+.cl-badge--enhancement {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #93c5fd;
+}
+.cl-badge--bugfix {
+  background: #fff1f2;
+  color: #be123c;
+  border: 1px solid #fca5a5;
+}
+.cl-badge--mobile {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+.cl-badge--accounting {
+  background: #fdf4ff;
+  color: #7e22ce;
+  border: 1px solid #d8b4fe;
+}
+.cl-badge--integration {
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #fdba74;
+}
 
 .cl-change-title {
   font-size: 0.9375rem;
@@ -316,8 +399,12 @@
   margin-top: 4px;
 }
 
-.cl-change-desc p        { margin: 0 0 5px; }
-.cl-change-desc p:last-child { margin-bottom: 0; }
+.cl-change-desc p {
+  margin: 0 0 5px;
+}
+.cl-change-desc p:last-child {
+  margin-bottom: 0;
+}
 
 .cl-change-desc ul,
 .cl-change-desc ol {
@@ -325,7 +412,9 @@
   padding: 0;
 }
 
-.cl-change-desc li { margin-bottom: 2px; }
+.cl-change-desc li {
+  margin-bottom: 2px;
+}
 
 /* ── Empty state ── */
 #cl-empty {
@@ -358,7 +447,12 @@
   margin-left: auto;
   border-radius: 6px;
   margin-bottom: 8px;
-  background-image: linear-gradient(90deg, #e8f0fe 25%, #d0e4f7 50%, #e8f0fe 75%);
+  background-image: linear-gradient(
+    90deg,
+    #e8f0fe 25%,
+    #d0e4f7 50%,
+    #e8f0fe 75%
+  );
   background-size: 200% 100%;
   animation: cl-shimmer 1.4s infinite;
 }
@@ -368,7 +462,12 @@
   width: 80px;
   margin-left: auto;
   border-radius: 4px;
-  background-image: linear-gradient(90deg, #e8f0fe 25%, #d0e4f7 50%, #e8f0fe 75%);
+  background-image: linear-gradient(
+    90deg,
+    #e8f0fe 25%,
+    #d0e4f7 50%,
+    #e8f0fe 75%
+  );
   background-size: 200% 100%;
   animation: cl-shimmer 1.4s infinite;
 }
@@ -377,31 +476,59 @@
   height: 14px;
   border-radius: 4px;
   margin-bottom: 12px;
-  background-image: linear-gradient(90deg, #e8f0fe 25%, #d0e4f7 50%, #e8f0fe 75%);
+  background-image: linear-gradient(
+    90deg,
+    #e8f0fe 25%,
+    #d0e4f7 50%,
+    #e8f0fe 75%
+  );
   background-size: 200% 100%;
   animation: cl-shimmer 1.4s infinite;
 }
 
-.cl-skeleton-item:nth-child(1) { width: 90%; }
-.cl-skeleton-item:nth-child(2) { width: 75%; }
-.cl-skeleton-item:nth-child(3) { width: 85%; }
-.cl-skeleton-item:nth-child(4) { width: 60%; margin-bottom: 0; }
+.cl-skeleton-item:nth-child(1) {
+  width: 90%;
+}
+.cl-skeleton-item:nth-child(2) {
+  width: 75%;
+}
+.cl-skeleton-item:nth-child(3) {
+  width: 85%;
+}
+.cl-skeleton-item:nth-child(4) {
+  width: 60%;
+  margin-bottom: 0;
+}
 
 @keyframes cl-shimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* ── Responsive ── */
 @media (max-width: 720px) {
-  #cl-hero-heading { font-size: 2rem; }
+  #cl-hero-heading {
+    font-size: 2rem;
+  }
 
-  #cl-outer { padding: 32px 20px 60px; }
+  #cl-outer {
+    padding: 32px 20px 60px;
+  }
 
-  #cl-filter-bar { flex-direction: column; align-items: flex-start; gap: 10px; }
+  #cl-filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 
   /* Collapse to single column on mobile */
-  #cl-timeline::before { display: none; }
+  #cl-timeline::before {
+    display: none;
+  }
 
   .cl-entry {
     grid-template-columns: 1fr;
@@ -410,9 +537,13 @@
     border-bottom: 1px solid var(--color-background-light-gray);
   }
 
-  .cl-entry:last-child { border-bottom: none; }
+  .cl-entry:last-child {
+    border-bottom: none;
+  }
 
-  .cl-dot { display: none; }
+  .cl-dot {
+    display: none;
+  }
 
   .cl-entry-aside {
     text-align: left;
@@ -423,13 +554,21 @@
     padding-right: 0;
   }
 
-  .cl-entry-body { padding-left: 0; }
+  .cl-entry-body {
+    padding-left: 0;
+  }
 
   .cl-skeleton-version,
-  .cl-skeleton-date { margin-left: 0; }
+  .cl-skeleton-date {
+    margin-left: 0;
+  }
 }
 
 @media (min-width: 721px) and (max-width: 900px) {
-  #cl-timeline::before { left: 130px; }
-  .cl-entry { grid-template-columns: 112px 36px 1fr; }
+  #cl-timeline::before {
+    left: 130px;
+  }
+  .cl-entry {
+    grid-template-columns: 112px 36px 1fr;
+  }
 }

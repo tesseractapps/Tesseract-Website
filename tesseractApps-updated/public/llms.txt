@@ -9,26 +9,26 @@
 - [Platform](https://tesseractapps.com.au/llm/platform.md): Technical architecture, Salesforce Hyperforce infrastructure, security
 - [Pricing](https://tesseractapps.com.au/llm/pricing.md): Start, Growth, Scale, and Enterprise tiers with commercial terms
 - [NDIS Glossary](https://tesseractapps.com.au/llm/glossary.md): Key NDIS and care sector terminology explained
-- [Team](https://tesseractapps.com.au/llm/humans.md): Everyone at TesseractApps — names, roles, departments, and social links
+
 
 ## Product
 
 - [Product Overview](https://tesseractapps.com.au/llm/product.md): All platform modules and features
-- [Capabilities Index](https://tesseractapps.com.au/llm/capabilities-index.md): All product capabilities grouped by area
-- [Solutions Index](https://tesseractapps.com.au/llm/solutions-index.md): Solutions by care type, role, and provider stage
+
+
 
 ## Blog
 
-- [Blog Index](https://tesseractapps.com.au/llm/blog-index.md): All published articles on NDIS compliance, workforce management, and operations
+- [Blog](https://tesseractapps.com.au/blogs): NDIS industry insights and guides
 
 ## Resources
 
-- [Guides Index](https://tesseractapps.com.au/llm/guides-index.md): Free downloadable guides and checklists for NDIS providers
-- [Whitepapers Index](https://tesseractapps.com.au/llm/whitepapers-index.md): Research and decision guides on NDIS digital transformation and workforce management
+
+
 
 ## Comparisons
 
-- [Competitor Comparisons Index](https://tesseractapps.com.au/llm/competitors-index.md): Feature comparisons between TesseractApps and other NDIS software providers
+- Comparison pages available at https://tesseractapps.com.au
 
 ## Full Context
 

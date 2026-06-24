@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SEO from "../../components/common/SEO";
 import { useSanityCapabilityNav } from "../../hooks/useSanityCapabilityNav";
-import type { CapabilityNavGroup } from "../../../sanity.types";
+import type { CapabilityNavGroup } from "../../types/sanityQueries";
 
 // ── SVG Icons ────────────────────────────────────────────────────────────────
 
@@ -113,7 +113,7 @@ const CapabilitiesListing = () => {
             {filtered.map((cap) => (
               <Link
                 key={cap._id}
-                to={`/capabilities/${cap.slug.current}`}
+                to={`/capabilities/${cap.slug?.current}`}
                 className="cpl-card"
               >
                 <div className="cpl-card-strip" />

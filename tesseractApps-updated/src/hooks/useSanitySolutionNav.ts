@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { SOLUTION_PAGE_NAV_QUERY } from '../sanity/lib/queries'
-import type { SolutionNavLink } from '../../sanity.types'
+import type { SolutionNavLink } from '../types/sanityQueries'
 
 // Module-level cache, fetched once per session, shared across all consumers.
 let cachedLinks: SolutionNavLink[] | null = null

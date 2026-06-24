@@ -1,4 +1,4 @@
-import type { BlockContentType } from '../../sanity.types'
+import type { BlockContent } from '../../sanity.types'
 
 type PTBlock = {
   _type: string
@@ -77,7 +77,7 @@ function blockToMarkdown(block: PTBlock): string {
 }
 
 export function portableTextToMarkdown(
-  blocks: BlockContentType,
+  blocks: BlockContent,
   meta?: { title?: string; author?: string; publishedAt?: string; url?: string },
 ): string {
   const lines: string[] = []

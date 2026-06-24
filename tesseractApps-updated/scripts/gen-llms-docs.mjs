@@ -299,7 +299,7 @@ Book a demo at https://tesseractapps.com.au/book-a-demo or start the onboarding 
 ## Support Contact
 
 Email: hello@tesseractapps.com.au
-Website: https://tesseractapps.com.au/help-center
+Website: https://tesseractapps.com.au/help-centre
 `,
 
   'glossary.md': `# NDIS Glossary — Key Terms

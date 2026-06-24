@@ -1,14 +1,10 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
-import viteCompression from 'vite-plugin-compression';
-import { visualizer } from 'rollup-plugin-visualizer';
 import { createClient } from '@sanity/client';
 import { createRequire } from 'module';
 
 const _require = createRequire(import.meta.url);
 const GLOSSARY_TERMS: { term: string; definition: string }[] = _require('./src/data/ndisGlossaryTerms.json');
-
-const isSSGServerBuild = process.env.VITE_SSG === 'true';
 
 const SITE = 'https://tesseractapps.com.au';
 const OG_IMAGE = `${SITE}/og-image.jpg`;
@@ -61,10 +57,6 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
     title: 'Help Centre | TesseractApps Support',
     description: 'Find answers to common questions about TesseractApps. Browse our help centre for setup guides, FAQs, and troubleshooting tips.',
   },
-  '/help-center': {
-    title: 'Help Centre | TesseractApps Support',
-    description: 'Find answers to common questions about TesseractApps. Browse our help centre for setup guides, FAQs, and troubleshooting tips.',
-  },
   '/whitepapers': {
     title: 'NDIS Whitepapers & Research | TesseractApps',
     description: 'Access in-depth whitepapers and research on NDIS workforce management, compliance best practices, and industry trends.',
@@ -80,10 +72,6 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
   '/sitemap': {
     title: 'Site Map | TesseractApps',
     description: 'Browse all pages on the TesseractApps website — capabilities, solutions, pricing, blog, and more.',
-  },
-  '/support-coordination': {
-    title: 'NDIS Support Coordination Software | TesseractApps',
-    description: 'Manage your entire NDIS support coordination caseload in one platform. Case notes, budgets, service agreements, and audit evidence connected automatically.',
   },
   '/solutions/support-coordination': {
     title: 'NDIS Support Coordination Software | TesseractApps',
@@ -546,16 +534,6 @@ export default defineConfig({
         return result;
       },
     },
-    ...(!isSSGServerBuild ? [
-      viteCompression({ algorithm: 'gzip', ext: '.gz' }),
-      viteCompression({ algorithm: 'brotliCompress', ext: '.br' }),
-      visualizer({
-        filename: 'dist/stats.html',
-        open: false,
-        gzipSize: true,
-        brotliSize: true,
-      }),
-    ] : []),
   ],
   build: {
     cssCodeSplit: false,

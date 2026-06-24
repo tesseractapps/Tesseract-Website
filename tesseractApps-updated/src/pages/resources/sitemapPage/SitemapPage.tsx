@@ -30,7 +30,7 @@ const STATIC_SECTIONS = [
       { label: "Blog", href: "/blogs" },
       { label: "Whitepapers", href: "/whitepapers" },
       { label: "NDIS Glossary", href: "/ndis-glossary" },
-      { label: "Help Centre / FAQ", href: "/help-center" },
+      { label: "Help Centre / FAQ", href: "/help-centre" },
       { label: "Release Notes", href: "/changelog" },
       { label: "Brochures", href: "/brochures" },
     ],
@@ -100,7 +100,7 @@ const SitemapPage = () => {
                 </li>
                 {capLinks.map((cap) => (
                   <li key={cap._id} className="smp-item">
-                    <Link to={`/capabilities/${cap.slug.current}`} className="smp-link">
+                    <Link to={`/capabilities/${cap.slug?.current}`} className="smp-link">
                       {cap.title}
                     </Link>
                   </li>
@@ -119,7 +119,7 @@ const SitemapPage = () => {
                 </li>
                 {solLinks.map((sol) => (
                   <li key={sol._id} className="smp-item">
-                    <Link to={`/solutions/${sol.slug.current}`} className="smp-link">
+                    <Link to={`/solutions/${sol.slug?.current}`} className="smp-link">
                       {sol.title}
                     </Link>
                   </li>

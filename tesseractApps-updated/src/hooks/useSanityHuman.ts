@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { sanityConfigError } from '../sanity/env'
-import type { TeamMember } from '../../sanity.types'
+import type { HumanDocument } from '../types/sanityQueries'
 
-const cache = new Map<string, TeamMember>()
+const cache = new Map<string, HumanDocument>()
 
-type Result = { human: TeamMember | null; loading: boolean; error: string | null }
+type Result = { human: HumanDocument | null; loading: boolean; error: string | null }
 
 export function useSanityHuman(slug: string): Result {
-  const [human, setHuman] = useState<TeamMember | null>(() => cache.get(slug) ?? null)
+  const [human, setHuman] = useState<HumanDocument | null>(() => cache.get(slug) ?? null)
   const [loading, setLoading] = useState(() => !cache.has(slug))
   const [error, setError] = useState<string | null>(null)
 
@@ -33,7 +33,7 @@ export function useSanityHuman(slug: string): Result {
     setError(null)
 
     client
-      .fetch<TeamMember | null>(
+      .fetch<HumanDocument | null>(
         `*[_type == "human" && slug.current == $slug][0] {
           _id, name, slug, role, department, bio, order,
           showInTeam, isBlogAuthor,

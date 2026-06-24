@@ -12,7 +12,7 @@ import GuideAccessForm from '../../../components/guides/GuideAccessForm'
 import BlogCard from '../../../components/blog/BlogCard'
 import WhitepaperCard from '../../../components/whitepapers/WhitepaperCard'
 import PortableTextRenderer from '../../../components/sanity/portable-text'
-import type { BlockContentType } from '../../../../sanity.types'
+import type { BlockContent } from '../../../../sanity.types'
 
 function SkeletonPage() {
   return (
@@ -146,7 +146,7 @@ export default function GuidePage() {
             {/* Rich body content from blockContent */}
             {guide.body && (guide.body as unknown[]).length > 0 ? (
               <div className="gdp-body">
-                <PortableTextRenderer value={guide.body as BlockContentType} />
+                <PortableTextRenderer value={guide.body as BlockContent} />
               </div>
             ) : guide.excerpt ? (
               <section>

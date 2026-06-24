@@ -1,7 +1,7 @@
 const BASE_URL = "https://tesseractapps.com";
 // const BASE_URL = "http://localhost:5001";
 
-export const apiFetch = async (path: string, options: RequestInit = {}): Promise<Response> => {
+const apiFetch = async (path: string, options: RequestInit = {}): Promise<Response> => {
   const response = await fetch(`${BASE_URL}${path}`, {
     credentials: "include",
     ...options,

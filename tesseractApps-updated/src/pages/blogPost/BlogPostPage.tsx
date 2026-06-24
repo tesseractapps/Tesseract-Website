@@ -18,7 +18,7 @@ import { useSanityGuides } from '../../hooks/useSanityGuides'
 import '../resources/guides/GuidesStyles.css'
 import BlogCtaBlock from '../../components/blog/BlogCtaBlock'
 import { trackBlogPostView } from '../../utils/analytics'
-import type { PostAuthor } from '../../../sanity.types'
+import type { PostAuthor } from '../../types/sanityQueries'
 
 // ── Author row component ───────────────────────────────────────────────────────
 

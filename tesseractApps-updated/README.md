@@ -14,7 +14,7 @@ The official website for [TesseractApps](https://tesseractapps.com.au) — NDIS 
 | Styling | Plain CSS per component (no Tailwind) |
 | UI components | MUI v7, keen-slider, framer-motion |
 | CMS | Sanity v3 (embedded studio at `/studio`) |
-| Deployment | Vercel (SPA — all routes rewrite to `/`) |
+| Deployment | Apache on AWS (static `dist/` upload; see [Deployment](#deployment)) |
 
 ---
 
@@ -55,7 +55,7 @@ In [sanity.io/manage](https://sanity.io/manage), go to your project → **API** 
 http://localhost:5173
 ```
 
-For production, also add your Vercel domain (e.g. `https://tesseractapps.com.au`).
+For production, also add the live domain (`https://tesseractapps.com.au`).
 
 ### 4. Start the dev server
 
@@ -168,17 +168,11 @@ This updates `sanity.types.ts` from your live Sanity project.
 
 ---
 
-## Deployment (Vercel)
+## Deployment (Apache on AWS)
 
-The site is deployed as a SPA. All routes must rewrite to `/index.html`.
+The site is built as a static, pre-rendered (SSG) bundle via `vite-react-ssg` — each registered route gets its own prerendered `index.html` under `dist/` (e.g. `dist/about/index.html`), so there is no SPA rewrite-to-`/` step needed for known routes.
 
-### `vercel.json` rewrite (already configured)
-
-```json
-{
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
-}
-```
+The built `dist/` directory is uploaded as-is to an Apache (Amazon Linux) host. Caching headers, the `www` → apex redirect, legacy URL redirects, and the SPA fallback for unregistered routes are managed via a `.htaccess` file that already lives on the server — it is not part of this repo, so deploys should not overwrite it.
 
 ### Build command
 
@@ -191,6 +185,8 @@ npm run build
 ```text
 dist
 ```
+
+Deploy by syncing the contents of `dist/` to the web root on the Apache server.
 
 ---
 

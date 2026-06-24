@@ -3,25 +3,58 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SEO from "../../components/common/SEO";
 import { trackCTAClick } from "../../utils/analytics";
-
+import VideoThumbnailPlayButton from "../../components/ui/videoModal/VideoThumbnailPlayButton";
+import scVideo from "../../assets/pricing_videos/SC APP VIDEO.mp4";
+import VideoModal from "../../components/ui/videoModal/VideoModal";
+import VideoThumbnailPlayButtonMobile from "../../components/ui/videoModal/VideoThumbnailPlayButtonMobile";
 // ── Icons ────────────────────────────────────────────────────────────────────
 
 const IconCheckCircle = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
     <polyline points="22 4 12 14.01 9 11.01" />
   </svg>
 );
 
 const IconClipboard = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
     <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
   </svg>
 );
 
 const IconTarget = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <circle cx="12" cy="12" r="10" />
     <circle cx="12" cy="12" r="6" />
     <circle cx="12" cy="12" r="2" />
@@ -29,7 +62,17 @@ const IconTarget = () => (
 );
 
 const IconFileText = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
     <polyline points="14 2 14 8 20 8" />
     <line x1="16" y1="13" x2="8" y2="13" />
@@ -39,29 +82,68 @@ const IconFileText = () => (
 );
 
 const IconDollarSign = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <line x1="12" y1="1" x2="12" y2="23" />
     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
   </svg>
 );
 
 const IconBarChart = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <line x1="18" y1="20" x2="18" y2="10" />
     <line x1="12" y1="20" x2="12" y2="4" />
     <line x1="6" y1="20" x2="6" y2="14" />
   </svg>
 );
 
-
 const IconShield = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
   </svg>
 );
 
 const IconUsers = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
     <circle cx="9" cy="7" r="4" />
     <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -70,7 +152,17 @@ const IconUsers = () => (
 );
 
 const IconChevronDown = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <polyline points="6 9 12 15 18 9" />
   </svg>
 );
@@ -94,7 +186,8 @@ type Feature = {
   bullets: string[];
 };
 
-const FEATURES_INTRO = "Everything below is live in the platform today. Book a demo and see it running, not as slides.";
+const FEATURES_INTRO =
+  "Everything below is live in the platform today. Book a demo and see it running, not as slides.";
 
 const FEATURES: Feature[] = [
   {
@@ -185,7 +278,8 @@ const FEATURES: Feature[] = [
   {
     id: "compliance",
     label: "Compliance and Audit Readiness",
-    heading: "Every action generates audit evidence. It is architectural, not a feature.",
+    heading:
+      "Every action generates audit evidence. It is architectural, not a feature.",
     icon: <IconShield />,
     bullets: [
       "ISO 27001 and ISO 9001 certified platform.",
@@ -250,7 +344,13 @@ const HERO_STATS = [
   { value: "AU Hosted", label: "Data Residency" },
 ];
 
-const TRUST_BADGES = ["ISO 27001", "ISO 9001", "99.9% Uptime", "Australian Hosted", "No Credit Card Required"];
+const TRUST_BADGES = [
+  "ISO 27001",
+  "ISO 9001",
+  "99.9% Uptime",
+  "Australian Hosted",
+  "No Credit Card Required",
+];
 
 // ── FAQ Item ─────────────────────────────────────────────────────────────────
 
@@ -281,9 +381,11 @@ const LAUNCH_DATE = new Date("2026-05-31T00:00:00+10:00");
 const SupportCoordination = () => {
   const navigate = useNavigate();
   const launched = Date.now() >= LAUNCH_DATE.getTime();
-
+  const [videoOpen, setVideoOpen] = useState(false);
   const primaryCtaLabel = launched ? "Book a Demo" : "Register Your Interest";
-  const primaryCtaRoute = launched ? "/book-a-demo" : "/register-support-coordination";
+  const primaryCtaRoute = launched
+    ? "/book-a-demo"
+    : "/register-support-coordination";
   const primaryCtaEvent = launched ? "book_demo" : "register_interest";
 
   return (
@@ -291,8 +393,8 @@ const SupportCoordination = () => {
       <SEO
         title="Support Coordination Software | TesseractApps"
         description="Support coordination software that connects your entire operation - from participant intake to service agreements, goal tracking, invoicing, claims, and audit evidence. No more disconnected tools."
-        url="https://tesseractapps.com.au/support-coordination"
-        canonical="https://tesseractapps.com.au/support-coordination"
+        url="https://tesseractapps.com.au/solutions/support-coordination"
+        canonical="https://tesseractapps.com.au/solutions/support-coordination"
         type="website"
       />
 
@@ -305,21 +407,40 @@ const SupportCoordination = () => {
             <span id="sc-hero-accent">Actually Connects Everything</span>
           </h1>
           <p id="sc-hero-sub">
-            Most support coordination tools manage tasks. TesseractApps connects your entire
-            operation - from participant intake to service agreements, goal tracking, invoicing,
-            claims, and audit evidence - in one platform. No more jumping between Xero,
-            spreadsheets, email, and disconnected apps.
+            Most support coordination tools manage tasks. TesseractApps connects
+            your entire operation - from participant intake to service
+            agreements, goal tracking, invoicing, claims, and audit evidence -
+            in one platform. No more jumping between Xero, spreadsheets, email,
+            and disconnected apps.
           </p>
+          <VideoThumbnailPlayButton
+            onClick={() => setVideoOpen(true)}
+            videoData={scVideo}
+          />
           <div id="sc-hero-ctas">
             <button
               type="button"
               className="sc-btn-primary"
-              onClick={() => { trackCTAClick(primaryCtaEvent, "sc_hero", "/support-coordination"); navigate(primaryCtaRoute); }}
+              onClick={() => {
+                trackCTAClick(
+                  primaryCtaEvent,
+                  "sc_hero",
+                  "/solutions/support-coordination",
+                );
+                navigate(primaryCtaRoute);
+              }}
             >
               {primaryCtaLabel}
             </button>
           </div>
-          <p className="sc-cta-note">No credit card required. ISO 27001 certified. Australian hosted. 99.9% uptime.</p>
+          <VideoThumbnailPlayButtonMobile
+            onClick={() => setVideoOpen(true)}
+            videoData={scVideo}
+          />
+          <p className="sc-cta-note">
+            No credit card required. ISO 27001 certified. Australian hosted.
+            99.9% uptime.
+          </p>
           <div id="sc-hero-stats">
             {HERO_STATS.map((s) => (
               <div key={s.label} className="sc-hero-stat">
@@ -330,7 +451,9 @@ const SupportCoordination = () => {
           </div>
         </div>
       </section>
-
+      {videoOpen && (
+        <VideoModal onClose={() => setVideoOpen(false)} videoData={scVideo} />
+      )}
       {/* ── Pain Points ── */}
       <section id="sc-pain">
         <div className="sc-outer">
@@ -339,13 +462,24 @@ const SupportCoordination = () => {
             "I spend more time on admin than actually coordinating supports."
           </h2>
           <p className="sc-body-text">
-            If you're running a support coordination business in 2026, you know the reality:
+            If you're running a support coordination business in 2026, you know
+            the reality:
           </p>
           <div id="sc-pain-list">
             {PAIN_POINTS.map((point) => (
               <div key={point} className="sc-pain-item">
                 <span className="sc-pain-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
                     <circle cx="12" cy="12" r="10" />
                     <line x1="12" y1="8" x2="12" y2="12" />
                     <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -357,7 +491,8 @@ const SupportCoordination = () => {
           </div>
           <div id="sc-pain-callout">
             <p>
-              This isn't about working harder. It's about your tools not being designed for how support coordination actually works.
+              This isn't about working harder. It's about your tools not being
+              designed for how support coordination actually works.
             </p>
           </div>
         </div>
@@ -366,7 +501,9 @@ const SupportCoordination = () => {
       {/* ── Features intro ── */}
       <section id="sc-features-intro">
         <div className="sc-outer">
-          <div className="sc-label sc-label--light">What TesseractApps Does</div>
+          <div className="sc-label sc-label--light">
+            What TesseractApps Does
+          </div>
           <h2 className="sc-section-heading sc-section-heading--light">
             One connected platform. Plus what other tools can't do at all.
           </h2>
@@ -379,10 +516,15 @@ const SupportCoordination = () => {
         <div className="sc-outer">
           <div id="sc-features-grid">
             {FEATURES.map((feat, idx) => (
-              <div key={feat.id} className={`sc-feature-card${idx % 2 !== 0 ? " sc-feature-card--alt" : ""}`}>
+              <div
+                key={feat.id}
+                className={`sc-feature-card${idx % 2 !== 0 ? " sc-feature-card--alt" : ""}`}
+              >
                 <div className="sc-feature-card-icon">{feat.icon}</div>
                 <div className="sc-feature-card-content">
-                  <div className="sc-feature-number">{String(idx + 1).padStart(2, "0")}</div>
+                  <div className="sc-feature-number">
+                    {String(idx + 1).padStart(2, "0")}
+                  </div>
                   <div className="sc-feature-label">{feat.label}</div>
                   <h3 className="sc-feature-heading">{feat.heading}</h3>
                   <ul className="sc-feature-bullets">
@@ -407,9 +549,12 @@ const SupportCoordination = () => {
         <div className="sc-outer">
           <div id="sc-how-header">
             <div className="sc-label">How It Works</div>
-            <h2 className="sc-section-heading">From setup to full operation in weeks.</h2>
+            <h2 className="sc-section-heading">
+              From setup to full operation in weeks.
+            </h2>
             <p className="sc-body-text">
-              Getting started with TesseractApps is a structured process with dedicated support at every step.
+              Getting started with TesseractApps is a structured process with
+              dedicated support at every step.
             </p>
           </div>
           <div id="sc-stepper">
@@ -441,22 +586,34 @@ const SupportCoordination = () => {
       <section id="sc-cta">
         <div className="sc-outer">
           <div id="sc-cta-inner">
-            <h2 id="sc-cta-heading">Get back to what you actually signed up for.</h2>
+            <h2 id="sc-cta-heading">
+              Get back to what you actually signed up for.
+            </h2>
             <p id="sc-cta-sub">
-              Stop fighting admin. Start coordinating supports. Everything connected in one platform.
+              Stop fighting admin. Start coordinating supports. Everything
+              connected in one platform.
             </p>
             <div id="sc-cta-actions">
               <button
                 type="button"
                 className="sc-btn-primary"
-                onClick={() => { trackCTAClick(primaryCtaEvent, "sc_bottom", "/support-coordination"); navigate(primaryCtaRoute); }}
+                onClick={() => {
+                  trackCTAClick(
+                    primaryCtaEvent,
+                    "sc_bottom",
+                    "/solutions/support-coordination",
+                  );
+                  navigate(primaryCtaRoute);
+                }}
               >
                 {primaryCtaLabel}
               </button>
             </div>
             <div id="sc-trust-badges">
               {TRUST_BADGES.map((badge) => (
-                <span key={badge} className="sc-trust-badge">{badge}</span>
+                <span key={badge} className="sc-trust-badge">
+                  {badge}
+                </span>
               ))}
             </div>
           </div>

@@ -125,6 +125,7 @@ Demo Details:
 If you have any questions or need to reschedule, simply reply to this email or contact us at:
   Phone: 1300 252 808
   Email: sales@tesseractapps.com
+Great timing -we're currently running a limited-time promotion: new customers who book a demo and sign their contract before 31 July 2026 receive 50% off their total contract - NDIS Platform or Support Coordination App. This discount cannot be combined with any other offer. 
 
 We look forward to demonstrating how TesseractApps can support your organisation.
 
@@ -146,6 +147,7 @@ Phone: 1300 252 808 | Email: sales@tesseractapps.com`,
         <li><strong>Phone:</strong> <a href="tel:1300252808">1300 252 808</a></li>
         <li><strong>Email:</strong> <a href="mailto:sales@tesseractapps.com">sales@tesseractapps.com</a></li>
       </ul>
+      <p>Great timing -we're currently running a limited-time promotion: new customers who book a demo and sign their contract before 31 July 2026 receive 50% off their total contract - NDIS Platform or Support Coordination App. This discount cannot be combined with any other offer. </p>
       <p>We look forward to demonstrating how TesseractApps can support your organisation.</p>
       <p>Warm regards,<br/><strong>Team TesseractApps</strong></p>
       <p>Website: <a href="https://tesseractapps.com.au">tesseractapps.com.au</a><br/>

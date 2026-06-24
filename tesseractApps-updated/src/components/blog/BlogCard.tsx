@@ -14,7 +14,7 @@ type CardAuthor = {
 // All fields are optional so the card degrades gracefully with partial data.
 export interface BlogCardPost {
   _id: string
-  slug?: { current: string } | null
+  slug?: { current?: string } | null
   title?: string | null
   excerpt?: string | null
   publishedAt?: string | null

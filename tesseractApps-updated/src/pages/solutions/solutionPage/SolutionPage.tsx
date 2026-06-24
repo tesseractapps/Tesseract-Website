@@ -1,14 +1,25 @@
 import "./SolutionPageStyles.css";
 import { useParams, Link, useNavigate, Navigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSanitySolutionPage } from "../../../hooks/useSanitySolutionPage";
 import { useSanityBlogList } from "../../../hooks/useSanityBlogList";
 import SEO from "../../../components/common/SEO";
 import { trackSolutionView } from "../../../utils/analytics";
-import { buildBreadcrumbSchema, buildGraphSchema, buildServiceSchema } from "../../../utils/schemaHelpers";
+import {
+  buildBreadcrumbSchema,
+  buildGraphSchema,
+  buildServiceSchema,
+} from "../../../utils/schemaHelpers";
 import Breadcrumb from "../../../components/common/Breadcrumb";
 import PortableTextRenderer from "../../../components/sanity/portable-text";
 import BlogCard from "../../../components/blog/BlogCard";
+import starterVideo from "../../../assets/pricing_videos/Start stage video.mp4";
+import growthVideo from "../../../assets/pricing_videos/Growth Stage Video.mp4";
+import scaleVideo from "../../../assets/pricing_videos/NDIS Software Scale Video.mp4";
+import enterpriseVideo from "../../../assets/pricing_videos/Enterprise Stage Video.mp4";
+import VideoModal from "../../../components/ui/videoModal/VideoModal";
+import VideoThumbnailPlayButton from "../../../components/ui/videoModal/VideoThumbnailPlayButton";
+import VideoThumbnailPlayButtonMobile from "../../../components/ui/videoModal/VideoThumbnailPlayButtonMobile";
 
 // ── Skeleton ─────────────────────────────────────────────────────────────────
 
@@ -47,21 +58,50 @@ function SolutionPageSkeleton() {
 // ── SVG Icons ─────────────────────────────────────────────────────────────────
 
 const IconCheck = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <polyline points="20 6 9 17 4 12" />
   </svg>
 );
 
 const IconArrowRight = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <line x1="5" y1="12" x2="19" y2="12" />
     <polyline points="12 5 19 12 12 19" />
   </svg>
 );
 
-
 const IconBadge = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     <polyline points="9 12 11 14 15 10" />
   </svg>
@@ -76,10 +116,26 @@ const SolutionPage = () => {
   const { page, loading, error } = useSanitySolutionPage(slug);
   const { data: blogPosts } = useSanityBlogList({ from: 0, to: 100 });
   const navigate = useNavigate();
-
+  const videos = {
+    "Start (1–15 Staff)": starterVideo,
+    "Growth (15–60 Staff)": growthVideo,
+    "Scale (60–120 Staff)": scaleVideo,
+    "Enterprise (120+ Staff)": enterpriseVideo,
+  };
+  const [videoOpen, setVideoOpen] = useState(false);
+  type VideoKey = keyof typeof videos;
+  const isVideoKey = (key: string): key is VideoKey => {
+    return key in videos;
+  };
+  const [clickedVideo, setClickedVideo] = useState<VideoKey>("Start (1–15 Staff)");
+  const watchOverviewHandler = (videoName: VideoKey) => {
+    setClickedVideo(videoName);
+    setVideoOpen(true);
+  };
+  // console.log("SolutionPage >> ", page);
   useEffect(() => {
     if (!page) return;
-    trackSolutionView({ name: page.title, slug });
+    trackSolutionView({ name: page.title ?? "", slug });
   }, [slug, page?.title]);
 
   if (loading) return <SolutionPageSkeleton />;
@@ -100,7 +156,8 @@ const SolutionPage = () => {
     return <Navigate to="/not-found" replace />;
   }
 
-  const metaTitle = page.seo?.metaTitle ?? `${page.heroHeading} | TesseractApps`;
+  const metaTitle =
+    page.seo?.metaTitle ?? `${page.heroHeading} | TesseractApps`;
   const metaDescription = page.seo?.metaDescription ?? page.heroSubtitle ?? "";
   const pageUrl = `https://tesseractapps.com.au/solutions/${slug}`;
 
@@ -108,52 +165,60 @@ const SolutionPage = () => {
     buildBreadcrumbSchema([
       { name: "Home", url: "https://tesseractapps.com.au" },
       { name: "Solutions", url: "https://tesseractapps.com.au/product" },
-      { name: page.title, url: pageUrl },
+      { name: page.title ?? "", url: pageUrl },
     ]),
     buildServiceSchema({
-      name: page.title,
+      name: page.title ?? "",
       description: metaDescription,
-    })
+    }),
   );
 
   // Extract plain text from a Portable Text block array (blocks only, skip images etc.)
   const blocksToPlainText = (blocks: typeof page.howWeSupport) =>
-    blocks
-      .filter((b): b is Extract<typeof b, { _type: 'block' }> => b._type === 'block')
-      .map((b) => (b.children ?? []).map((c) => c.text ?? '').join(''))
-      .join(' ');
+    (blocks ?? [])
+      .filter(
+        (b: any): b is Extract<typeof b, { _type: "block" }> =>
+          b._type === "block",
+      )
+      .map((b: any) =>
+        (b.children ?? []).map((c: any) => c.text ?? "").join(""),
+      )
+      .join(" ");
 
   // First 3 sentences from howWeSupport for the proof panel
   const proofPoints = blocksToPlainText(page.howWeSupport)
     .split(/(?<=[.!?])\s+/)
-    .filter((s) => s.trim().length > 20)
+    .filter((s: any) => s.trim().length > 20)
     .slice(0, 3);
 
-  const solutionTerms = Array.from(new Set(
-    [
-      page.title,
-      page.heroHeading,
-      page.heroSubtitle ?? "",
-      page.navCategory,
-      ...page.whatYouGet,
-      ...page.isThisRightForYou,
-      slug.replace(/-/g, " "),
-    ]
-      .join(" ")
-      .toLowerCase()
-      .split(/[^a-z0-9]+/)
-      .filter((term) => term.length >= 4)
-  ));
+  const solutionTerms = Array.from(
+    new Set(
+      [
+        page.title,
+        page.heroHeading,
+        page.heroSubtitle ?? "",
+        page.navCategory,
+        ...(page.whatYouGet ?? []),
+        ...(page.isThisRightForYou ?? []),
+        slug.replace(/-/g, " "),
+      ]
+        .join(" ")
+        .toLowerCase()
+        .split(/[^a-z0-9]+/)
+        .filter((term) => term.length >= 4),
+    ),
+  );
 
   const relevantBlogs = blogPosts
     .map((post) => {
       const title = (post.title ?? "").toLowerCase();
       const excerpt = (post.excerpt ?? "").toLowerCase();
-      const tags = (post.tags ?? []).map((tag) => tag.toLowerCase());
+      const tags = (post.tags ?? []).map((tag: any) => tag.toLowerCase());
 
       let score = 0;
       for (const term of solutionTerms) {
-        if (tags.some((tag) => tag.includes(term) || term.includes(tag))) score += 5;
+        if (tags.some((tag: any) => tag.includes(term) || term.includes(tag)))
+          score += 5;
         if (title.includes(term)) score += 3;
         if (excerpt.includes(term)) score += 1;
       }
@@ -188,13 +253,27 @@ const SolutionPage = () => {
             steps={[
               { name: "Home", href: "/" },
               { name: "Solutions", href: "/solutions" },
-              { name: page.title },
+              { name: page.title ?? "" },
             ]}
           />
-          <div className="sol-hero-tag">{page.navCategory.replace("BY ", "")}</div>
+          <div className="sol-hero-tag">
+            {(page.navCategory ?? "").replace("BY ", "")}
+          </div>
           <h1 className="sol-hero-heading">{page.heroHeading}</h1>
           {page.heroSubtitle && (
             <p className="sol-hero-sub">{page.heroSubtitle}</p>
+          )}
+          {page?.title && isVideoKey(page.title) && (
+            <>
+              <VideoThumbnailPlayButton
+                onClick={() => watchOverviewHandler(page.title as VideoKey)}
+                videoData={videos[clickedVideo]}
+              />
+              <VideoThumbnailPlayButtonMobile
+                onClick={() => watchOverviewHandler(page.title as VideoKey)}
+                videoData={videos[clickedVideo]}
+              />
+            </>
           )}
           <div className="sol-hero-badges">
             <span className="sol-hero-badge">✓ NDIS Compliant</span>
@@ -204,13 +283,20 @@ const SolutionPage = () => {
         </div>
       </section>
 
+      {page?.title && isVideoKey(page.title) && videoOpen && (
+        <VideoModal
+          onClose={() => setVideoOpen(false)}
+          videoData={videos[`${clickedVideo}`]}
+        />
+      )}
+
       {/* ── Who Is This For? ── */}
       <section className="sol-section" id="sol-who">
         <div className="sol-outer">
           <div className="sol-section-label">Who Is This For?</div>
           <div className="sol-problem-block">
             <div className="sol-problem-text">
-              <PortableTextRenderer value={page.whoIsThisFor} />
+              <PortableTextRenderer value={page.whoIsThisFor ?? []} />
             </div>
           </div>
         </div>
@@ -220,9 +306,11 @@ const SolutionPage = () => {
       <section className="sol-section">
         <div className="sol-outer">
           <div className="sol-section-label">Key Benefits</div>
-          <h2 className="sol-section-heading">What this solution delivers for your organisation.</h2>
+          <h2 className="sol-section-heading">
+            What this solution delivers for your organisation.
+          </h2>
           <div className="sol-insight-grid">
-            {page.keyBenefits.map((item, i) => (
+            {(page.keyBenefits ?? []).map((item: any, i: number) => (
               <div key={item} className="sol-insight-card">
                 <div className="sol-insight-num">{i + 1}</div>
                 <div className="sol-insight-text">{item}</div>
@@ -236,15 +324,17 @@ const SolutionPage = () => {
       <section className="sol-section sol-section--light">
         <div className="sol-outer">
           <div className="sol-section-label">How We Support You</div>
-          <h2 className="sol-section-heading">One connected solution, built for NDIS providers.</h2>
+          <h2 className="sol-section-heading">
+            One connected solution, built for NDIS providers.
+          </h2>
           <div className="sol-solve-layout">
             <div className="sol-solve-text">
-              <PortableTextRenderer value={page.howWeSupport} />
+              <PortableTextRenderer value={page.howWeSupport ?? []} />
             </div>
             <div className="sol-solve-proof">
               <div className="sol-solve-proof-heading">Why it works</div>
               <ul className="sol-solve-proof-list">
-                {proofPoints.map((point, i) => (
+                {proofPoints.map((point: any, i: number) => (
                   <li key={i} className="sol-solve-proof-item">
                     <span className="sol-solve-proof-dot" />
                     {point}
@@ -260,9 +350,11 @@ const SolutionPage = () => {
       <section className="sol-section">
         <div className="sol-outer">
           <div className="sol-section-label">What You Get</div>
-          <h2 className="sol-section-heading">Everything you need. Nothing you don't.</h2>
+          <h2 className="sol-section-heading">
+            Everything you need. Nothing you don't.
+          </h2>
           <div className="sol-feature-cards">
-            {page.whatYouGet.map((item) => (
+            {(page.whatYouGet ?? []).map((item: any) => (
               <div key={item} className="sol-feature-card">
                 <span className="sol-feature-icon">
                   <IconCheck />
@@ -278,9 +370,11 @@ const SolutionPage = () => {
       <section className="sol-section sol-section--light">
         <div className="sol-outer">
           <div className="sol-section-label">Is This Right for You?</div>
-          <h2 className="sol-section-heading">Answer yes to any of these, this is for you.</h2>
+          <h2 className="sol-section-heading">
+            Answer yes to any of these, this is for you.
+          </h2>
           <div className="sol-qualify-list">
-            {page.isThisRightForYou.map((item) => (
+            {(page.isThisRightForYou ?? []).map((item: any) => (
               <div key={item} className="sol-qualify-item">
                 <span className="sol-qualify-icon">
                   <IconBadge />
@@ -299,7 +393,7 @@ const SolutionPage = () => {
             <div className="sol-section-label">See Also</div>
             <h2 className="sol-section-heading">Related solutions.</h2>
             <div className="sol-related-grid">
-              {page.relatedSolutions.map((sol) => (
+              {page.relatedSolutions.map((sol: any) => (
                 <Link
                   key={sol._id}
                   to={`/solutions/${sol.slug.current}`}
@@ -328,7 +422,9 @@ const SolutionPage = () => {
         <section id="sol-reading">
           <div className="sol-outer">
             <div className="sol-section-label">Further Reading</div>
-            <h2 className="sol-section-heading">Related guides from our blog.</h2>
+            <h2 className="sol-section-heading">
+              Related guides from our blog.
+            </h2>
             <div className="sol-reading-grid">
               {relevantBlogs.map((post) => (
                 <BlogCard key={post._id} post={post} />
@@ -346,26 +442,29 @@ const SolutionPage = () => {
               See how TesseractApps works for your organisation.
             </h2>
             <p id="sol-cta-sub">
-              Your demo is configured for your care type, team size, and provider maturity stage.
-              30 minutes. Live platform, not a slide deck.
+              Your demo is configured for your care type, team size, and
+              provider maturity stage. 30 minutes. Live platform, not a slide
+              deck.
             </p>
-    <div className="sll-cta-actions">
-            <button
-              type="button"
-              className="primary-cta-white"
-              onClick={() => navigate("/book-a-demo")}
-            >
-              Book a Demo
-            </button>
-            <button
-              type="button"
-              className="outline-cta"
-              onClick={() => navigate("/signup")}
-            >
-              Begin Your Journey
-            </button>
-          </div>
-          <p className="sll-cta-sub-note">Book a Provider Maturity Review. Start your provider setup.</p>
+            <div className="sll-cta-actions">
+              <button
+                type="button"
+                className="primary-cta-white"
+                onClick={() => navigate("/book-a-demo")}
+              >
+                Book a Demo
+              </button>
+              <button
+                type="button"
+                className="outline-cta"
+                onClick={() => navigate("/signup")}
+              >
+                Begin Your Journey
+              </button>
+            </div>
+            <p className="sll-cta-sub-note">
+              Book a Provider Maturity Review. Start your provider setup.
+            </p>
           </div>
         </div>
       </section>

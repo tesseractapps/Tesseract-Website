@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { BLOG_POST_BY_SLUG_QUERY } from '../sanity/lib/queries'
 import { sanityConfigError } from '../sanity/env'
-import type { BlogPostDocument } from '../../sanity.types'
+import type { BlogPostDocument } from '../types/sanityQueries'
 
 type UseSanityBlogPostResult = {
   post: BlogPostDocument | null

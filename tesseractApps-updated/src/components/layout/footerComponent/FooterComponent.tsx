@@ -29,8 +29,10 @@ const FooterComponent = () => {
   // Group capabilities by navGroup (same logic as navbar)
   const capGroups: Record<string, { title: string; slug: string }[]> = {};
   capLinks.forEach((link) => {
-    if (!capGroups[link.navGroup]) capGroups[link.navGroup] = [];
-    capGroups[link.navGroup].push({ title: link.title, slug: link.slug.current });
+    const group = link.navGroup;
+    if (!group || !link.slug?.current) return;
+    if (!capGroups[group]) capGroups[group] = [];
+    capGroups[group].push({ title: link.title ?? '', slug: link.slug.current });
   });
 
   // Group solutions by navCategory (same logic as navbar)
@@ -40,8 +42,9 @@ const FooterComponent = () => {
     "BY STAGE": [],
   };
   solLinks.forEach((link) => {
-    if (solGroups[link.navCategory]) {
-      solGroups[link.navCategory].push({ title: link.title, slug: link.slug.current });
+    const category = link.navCategory;
+    if (category && solGroups[category] && link.slug?.current) {
+      solGroups[category].push({ title: link.title ?? '', slug: link.slug.current });
     }
   });
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -224,7 +227,7 @@ const FooterComponent = () => {
           <Link className="footer-text" to="/blogs">Blog</Link>
           <Link className="footer-text" to="/whitepapers">Whitepapers</Link>
           <Link className="footer-text" to="/brochures">Brochures</Link>
-          <Link className="footer-text" to="/help-center">FAQ</Link>
+          <Link className="footer-text" to="/help-centre">FAQ</Link>
           <Link className="footer-text" to="/ndis-glossary">NDIS Glossary</Link>
           <Link className="footer-text" to="/capabilities/learning-management">WYZED Integration</Link>
 <Link className="footer-text" to="/sitemap">Site Map</Link>

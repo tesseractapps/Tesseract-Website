@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { CAPABILITY_PAGE_BY_SLUG_QUERY } from '../sanity/lib/queries'
 import { sanityConfigError } from '../sanity/env'
-import type { CapabilityPageDocument } from '../../sanity.types'
+import type { CapabilityPageDocument } from '../types/sanityQueries'
 
 // Module-level cache, prevents redundant fetches when navigating back to a
 // previously visited capability page within the same session.

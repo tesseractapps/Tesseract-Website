@@ -143,8 +143,7 @@
 
 #scp-hero {
   position: relative;
-  /* background: linear-gradient(135deg, #001830 0%, #002a52 60%, #003366 100%); */
-  background-image: var(--color-background-gradient);
+  background: linear-gradient(135deg, #001830 0%, #002a52 60%, #003366 100%);
   padding: 80px 0 0;
   overflow: hidden;
 }
@@ -172,7 +171,7 @@
 #scp-hero-heading {
   font-size: clamp(30px, 4.5vw, 54px);
   font-weight: 700;
-  color: var(--color-secondary);
+  color: #fff;
   line-height: 1.15;
   letter-spacing: -0.025em;
   margin: 0 0 24px;
@@ -185,10 +184,11 @@
 
 #scp-hero-sub {
   font-size: clamp(15px, 1.8vw, 18px);
-  color: var(--color-secondary);
+  color: rgba(255, 255, 255, 0.72);
   line-height: 1.65;
   max-width: 600px;
   margin: 0 0 40px;
+  position: relative;
 }
 
 #scp-hero-ctas {
@@ -200,7 +200,7 @@
 
 .scp-btn-hero-outline {
   background: transparent;
-  color: var(--color-secondary);
+  color: #fff;
   border: 1.5px solid rgba(255, 255, 255, 0.4);
   border-radius: 40px;
   padding: 8px 20px;
@@ -225,7 +225,7 @@
   position: relative;
   z-index: 1;
   display: flex;
-  border-top: 1px solid rgba(56, 56, 56, 0.139);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   max-width: 1140px;
   margin: 0 auto;
 }
@@ -233,8 +233,8 @@
 .scp-hero-stat {
   flex: 1;
   padding: 24px 32px;
-  border-right: 1px solid rgba(56, 56, 56, 0.139);
-  background: #5bb7f51a;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
@@ -246,14 +246,14 @@
 .scp-hero-stat-value {
   font-size: clamp(18px, 2.5vw, 28px);
   font-weight: 700;
-  color: var(--color-secondary);
+  color: #fff;
   letter-spacing: -0.02em;
   margin-bottom: 4px;
 }
 
 .scp-hero-stat-label {
   font-size: 13px;
-  color: #5bb8f5;
+  color: rgba(255, 255, 255, 0.5);
   font-weight: 500;
 }
 
@@ -1020,6 +1020,7 @@
 
 .scp-price-row-item {
   padding: 20px 0 0 0;
+  position: relative;
 }
 
 .scp-price-row-item:first-child {

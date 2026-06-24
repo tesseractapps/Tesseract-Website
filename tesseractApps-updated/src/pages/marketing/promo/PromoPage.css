@@ -1,0 +1,10 @@
+.promo-description-text {
+  font-size: 15px;
+  color: #242424;
+  line-height: 1.75;
+  font-style: italic;
+}
+.scp-price-card-max-width {
+  max-width: 300px;
+  background-color: var(--color-secondary);
+}

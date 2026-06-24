@@ -65,7 +65,7 @@ const PromoModal = () => {
 
   const handleCTA = () => {
     setState("hidden");
-    navigate("/events/adelaide-expo-2026");
+    navigate("/events/eofy-discount");
   };
 
   return (
@@ -78,7 +78,7 @@ const PromoModal = () => {
           aria-label="Reopen Adelaide Expo offer"
         >
           <span id="pm-chip-dot" />
-          <span id="pm-chip-text">Adelaide Expo · Win 12 Months Free</span>
+          <span id="pm-chip-text">End Of Financial Year Discount</span>
           <svg
             width="11"
             height="11"
@@ -129,25 +129,23 @@ const PromoModal = () => {
 
             {/* ── Top: event tag + date strip ── */}
             <div id="pm-top-bar">
-              <span id="pm-event-tag">
-                Adelaide Disability &amp; WorkAbility Expo 2026
-              </span>
-              <span id="pm-event-meta">
-                26–27 June · Adelaide Showground · Booth 05
-              </span>
+              <span id="pm-event-tag">End Of Financial Year Discount</span>
+              <span id="pm-event-meta">Offer until 31 July 23:59 UTC</span>
             </div>
 
             {/* ── Body: two columns ── */}
             <div id="pm-body">
               {/* Left */}
               <div id="pm-left">
-                <p id="pm-headline">
-                  Stop juggling
-                  <br />5 systems.
+                <p id="pm-headline">Wait - Get 50% Off Your EOFY Contract!</p>
+                <p id="pm-sub">
+                  Book a demo with TesseractApps <br /> NDIS Platform or Support
+                  Coordination App and sign your contract before 31 July 2026 to
+                  save 50% on your total contract value. Lock in half price
+                  before the EOFY deadline.{" "}
                 </p>
-                <p id="pm-sub">One platform. Every NDIS operation.</p>
 
-                <ul id="pm-bullets">
+                {/* <ul id="pm-bullets">
                   <li>
                     <span className="pm-bullet-icon" aria-hidden="true">
                       ✓
@@ -166,15 +164,15 @@ const PromoModal = () => {
                     </span>
                     Continuous compliance — no more audit anxiety
                   </li>
-                </ul>
+                </ul> */}
               </div>
               <div id="cta-button-container">
                 <button type="button" id="pm-cta" onClick={handleCTA}>
-                  Register &amp; Enter Prize Draw
+                  Find out more
                 </button>
 
                 <button type="button" id="pm-dismiss" onClick={dismiss}>
-                  No thanks, I prefer juggling spreadsheets
+                  No thanks, I'll pay full price
                 </button>
               </div>
 

@@ -1,15 +1,23 @@
 import "./PricingStyles.css";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SEO from "../../../components/common/SEO";
 import { buildGraphSchema } from "../../../utils/schemaHelpers";
 import { trackCTAClick } from "../../../utils/analytics";
-import { Play, X } from "lucide-react";
 import featuresPdf from "../../../assets/TesseractApps-Features-Redesigned 1.pdf";
-import starterVideo from "../../../assets/pricing_videos/Tesseractapps_Starter_Plan.mp4";
+import starterVideo from "../../../assets/pricing_videos/Start stage video.mp4";
+import growthVideo from "../../../assets/pricing_videos/Growth Stage Video.mp4";
+import scaleVideo from "../../../assets/pricing_videos/NDIS Software Scale Video.mp4";
+import enterpriseVideo from "../../../assets/pricing_videos/Enterprise Stage Video.mp4";
 import HeroArcsLeftComponent from "../../../components/sections/heroArcsComponent/HeroArcsComponent";
 import HeroArcsRightComponent from "../../../components/sections/heroArcsComponent/HeroArcsComponent";
-import { homeLeftArcsData, homeRightArcsData } from "../../../data/homeArcsData";
+import {
+  homeLeftArcsData,
+  homeRightArcsData,
+} from "../../../data/homeArcsData";
+import VideoModal from "../../../components/ui/videoModal/VideoModal";
+import VideoThumbnailPlayButton from "../../../components/ui/videoModal/VideoThumbnailPlayButton";
+import VideoThumbnailPlayButtonMobile from "../../../components/ui/videoModal/VideoThumbnailPlayButtonMobile";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -35,13 +43,18 @@ const START_STAGE: Stage = {
   label: "Start",
   tagline: "Early Provider Setup",
   staffRange: "1-15 staff",
-  bestFor: "Founder-led or early-stage providers establishing their operations.",
+  bestFor:
+    "Founder-led or early-stage providers establishing their operations.",
   whatYouNeed:
     "Clear processes, documentation integrity, workforce visibility, and reduced cognitive load.",
   automationHeading: "Simplify operations and establish foundations.",
   automationBody:
     "Start is designed to simplify operations and establish foundations. During the current launch window, expanded onboarding support can include payroll and e-signature workflows for eligible early adopters.",
-  commercial: ["Setup fee only", "No subscription during Start", "Up to 18 months"],
+  commercial: [
+    "Setup fee only",
+    "No subscription during Start",
+    "Up to 18 months",
+  ],
   supports: [
     "Participant onboarding",
     "Rostering",
@@ -66,7 +79,8 @@ const FLIP_STAGES: Stage[] = [
     staffRange: "15–60 staff",
     bestFor:
       "Providers experiencing workforce expansion, payroll pressure, and increasing reporting needs.",
-    whatYouNeed: "Control, reporting clarity, payroll alignment, and manager accountability.",
+    whatYouNeed:
+      "Control, reporting clarity, payroll alignment, and manager accountability.",
     automationHeading: "Automation",
     automationBody:
       "Growth introduces structured automation through template-driven boards, limited stage edits, and basic triggers. This is where automation begins to save meaningful time in day-to-day workflows such as onboarding, intake routing, document handling, and follow-up actions.",
@@ -88,7 +102,8 @@ const FLIP_STAGES: Stage[] = [
     staffRange: "60–120 staff",
     bestFor:
       "Multi-site providers, SIL providers, and organisations managing increasing governance pressure.",
-    whatYouNeed: "Oversight, accountability, approvals, audit trails, and compliance control.",
+    whatYouNeed:
+      "Oversight, accountability, approvals, audit trails, and compliance control.",
     automationHeading: "Automation",
     automationBody:
       "At Scale, automation expands into configurable boards, SLA rules, escalation logic, and workflow analytics. This is where process automation becomes a governance tool, not just an efficiency tool.",
@@ -134,10 +149,13 @@ const PAID_STAGE_ORDER: Array<"growth" | "scale" | "enterprise"> = [
   "enterprise",
 ];
 
-const PAID_STAGE_LOOKUP = FLIP_STAGES.reduce<Record<string, Stage>>((acc, stage) => {
-  acc[stage.id] = stage;
-  return acc;
-}, {});
+const PAID_STAGE_LOOKUP = FLIP_STAGES.reduce<Record<string, Stage>>(
+  (acc, stage) => {
+    acc[stage.id] = stage;
+    return acc;
+  },
+  {},
+);
 
 const PAID_COMPARISON_ROWS = [
   {
@@ -337,89 +355,126 @@ const PAID_COMPARISON_ROWS = [
 //   );
 // }
 
-
 // ── Video Modal ────────────────────────────────────────────────────────────
 
-function VideoModal({ onClose }: { onClose: () => void }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
+// function VideoModal({
+//   onClose,
+//   videoData,
+// }: {
+//   onClose: () => void;
+//   videoData: string;
+// }) {
+//   const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", handleKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", handleKey);
-      document.body.style.overflow = "";
-    };
-  }, [onClose]);
+//   useEffect(() => {
+//     const handleKey = (e: KeyboardEvent) => {
+//       if (e.key === "Escape") onClose();
+//     };
+//     document.addEventListener("keydown", handleKey);
+//     document.body.style.overflow = "hidden";
+//     return () => {
+//       document.removeEventListener("keydown", handleKey);
+//       document.body.style.overflow = "";
+//     };
+//   }, [onClose]);
 
-  return (
-    <div className="pr-modal-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-label="Start Plan Overview">
-      <div className="pr-modal-container" onClick={(e) => e.stopPropagation()}>
-        <button type="button" className="pr-modal-close" onClick={onClose} aria-label="Close video">
-          <X size={20} />
-        </button>
-        <video
-          ref={videoRef}
-          className="pr-modal-video"
-          src={starterVideo}
-          controls
-          autoPlay
-          playsInline
-        />
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div
+//       className="pr-modal-backdrop"
+//       onClick={onClose}
+//       role="dialog"
+//       aria-modal="true"
+//       aria-label="Start Plan Overview"
+//     >
+//       <div className="pr-modal-container" onClick={(e) => e.stopPropagation()}>
+//         <button
+//           type="button"
+//           className="pr-modal-close"
+//           onClick={onClose}
+//           aria-label="Close video"
+//         >
+//           <X size={20} />
+//         </button>
+//         <video
+//           ref={videoRef}
+//           className="pr-modal-video"
+//           src={videoData}
+//           controls
+//           autoPlay
+//           playsInline
+//         />
+//       </div>
+//     </div>
+//   );
+// }
 
 // ── Component ──────────────────────────────────────────────────────────────
 
 const Pricing = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<"growth" | "scale" | "enterprise">("growth");
+  const [activeTab, setActiveTab] = useState<"growth" | "scale" | "enterprise">(
+    "growth",
+  );
+  const videos = {
+    starterVideo,
+    growthVideo,
+    scaleVideo,
+    enterpriseVideo,
+  };
   const [videoOpen, setVideoOpen] = useState(false);
+  type VideoKey = keyof typeof videos;
+
+  const [clickedVideo, setClickedVideo] = useState<VideoKey>("starterVideo");
+  const watchOverviewHandler = (videoName: VideoKey) => {
+    setClickedVideo(videoName);
+    setVideoOpen(true);
+  };
 
   const pricingSchema = buildGraphSchema({
-    '@type': 'SoftwareApplication',
-    name: 'TesseractApps',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Web, iOS, Android',
+    "@type": "SoftwareApplication",
+    name: "TesseractApps",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web, iOS, Android",
     offers: [
       {
-        '@type': 'Offer',
-        name: 'Start',
-        description: 'Early provider setup — setup fee only, no subscription for up to 18 months. For 1–15 staff.',
-        price: '0',
-        priceCurrency: 'AUD',
-        eligibleRegion: 'AU',
+        "@type": "Offer",
+        name: "Start",
+        description:
+          "Early provider setup — setup fee only, no subscription for up to 18 months. For 1–15 staff.",
+        price: "0",
+        priceCurrency: "AUD",
+        eligibleRegion: "AU",
       },
       {
-        '@type': 'Offer',
-        name: 'Growth',
-        description: 'Operational control for scaling providers. For 15–60 staff. Per seat per month.',
-        price: '39.99',
-        priceCurrency: 'AUD',
-        eligibleRegion: 'AU',
+        "@type": "Offer",
+        name: "Growth",
+        description:
+          "Operational control for scaling providers. For 15–60 staff. Per seat per month.",
+        price: "39.99",
+        priceCurrency: "AUD",
+        eligibleRegion: "AU",
       },
       {
-        '@type': 'Offer',
-        name: 'Scale',
-        description: 'Governance and oversight for multi-site providers. For 60–120 staff. Per seat per month.',
-        price: '39.99',
-        priceCurrency: 'AUD',
-        eligibleRegion: 'AU',
+        "@type": "Offer",
+        name: "Scale",
+        description:
+          "Governance and oversight for multi-site providers. For 60–120 staff. Per seat per month.",
+        price: "39.99",
+        priceCurrency: "AUD",
+        eligibleRegion: "AU",
       },
       {
-        '@type': 'Offer',
-        name: 'Enterprise',
-        description: 'Full platform for large organisations with 120+ staff. Contact us for custom pricing.',
-        eligibleRegion: 'AU',
+        "@type": "Offer",
+        name: "Enterprise",
+        description:
+          "Full platform for large organisations with 120+ staff. Contact us for custom pricing.",
+        eligibleRegion: "AU",
       },
     ],
     publisher: {
-      '@type': 'Organization',
-      name: 'TesseractApps',
-      url: 'https://tesseractapps.com.au',
+      "@type": "Organization",
+      name: "TesseractApps",
+      url: "https://tesseractapps.com.au",
     },
   });
 
@@ -437,35 +492,47 @@ const Pricing = () => {
         <div id="pr-hero-inner">
           <div id="pr-hero-logo" role="img" aria-label="Tesseract Apps Logo" />
           <h1 id="pr-hero-heading">
-            One Platform.<br />
-            Unified Architecture.<br />
+            One Platform.
+            <br />
+            Unified Architecture.
+            <br />
             Scalable Governance.
           </h1>
           <p id="pr-hero-sub">
-            Operations remain consistent.<br />
+            Operations remain consistent.
+            <br />
             Governance depth increases as your organisation grows.
           </p>
           <div id="pr-hero-price-block">
             <span id="pr-hero-price-prefix">start with</span>
             <div id="pr-hero-price">$0</div>
-            <span id="pr-hero-price-note">Setup fee only · No subscription during Start</span>
+            <span id="pr-hero-price-note">
+              Setup fee only · No subscription during Start
+            </span>
           </div>
           <p id="pr-hero-start-note">
-            Start is designed for early-stage providers during the first 18 months of operational
-            formation. Growth, Scale, and Enterprise are $39.99 per seat / month.
+            Start is designed for early-stage providers during the first 18
+            months of operational formation. Growth, Scale, and Enterprise are
+            $39.99 per seat / month.
           </p>
           <div id="pr-hero-ctas">
             <button
               type="button"
               className="primary-cta"
-              onClick={() => { trackCTAClick("book_demo", "pricing", "/pricing"); navigate("/book-a-demo"); }}
+              onClick={() => {
+                trackCTAClick("book_demo", "pricing", "/pricing");
+                navigate("/book-a-demo");
+              }}
             >
               Book a Demo
             </button>
             <button
               type="button"
               className="secondary-cta"
-              onClick={() => { trackCTAClick("begin_journey", "pricing", "/pricing"); navigate("/signup"); }}
+              onClick={() => {
+                trackCTAClick("begin_journey", "pricing", "/pricing");
+                navigate("/signup");
+              }}
             >
               Begin Your Journey
             </button>
@@ -477,7 +544,9 @@ const Pricing = () => {
               Download Features PDF
             </a>
           </div>
-          <p className="pr-cta-sub-note">Book a Provider Maturity Review. Start your provider setup.</p>
+          <p className="pr-cta-sub-note">
+            Book a Provider Maturity Review. Start your provider setup.
+          </p>
         </div>
         <HeroArcsRightComponent pendulums={homeRightArcsData} />
       </section>
@@ -488,13 +557,11 @@ const Pricing = () => {
           <div className="pr-label-wrapper">
             <div className="pr-label pr-label--dark">Primary Entry Point</div>
           </div>
-          <div
-            id="pr-featured-plan"
-          >
-            <button
+          <div id="pr-featured-plan">
+            {/* <button
               type="button"
               id="pr-featured-header-video"
-              onClick={() => setVideoOpen(true)}
+              onClick={() => watchOverviewHandler("starterVideo")}
               aria-label="Play Start Plan Overview video"
             >
               <video
@@ -511,7 +578,11 @@ const Pricing = () => {
                 </div>
                 <span className="pr-video-thumb-caption">Watch overview</span>
               </div>
-            </button>
+            </button> */}
+            <VideoThumbnailPlayButton
+              onClick={() => watchOverviewHandler("starterVideo")}
+              videoData={videos[clickedVideo]}
+            />
 
             <div id="pr-featured-left">
               <div id="pr-featured-header">
@@ -527,17 +598,20 @@ const Pricing = () => {
 
               <div id="pr-featured-commercial">
                 {START_STAGE.commercial.map((line) => (
-                  <div key={line} className="pr-commercial-item pr-commercial-item--featured">
+                  <div
+                    key={line}
+                    className="pr-commercial-item pr-commercial-item--featured"
+                  >
                     <span className="pr-commercial-dot" />
                     {line}
                   </div>
                 ))}
               </div>
 
-              <button
+              {/* <button
                 type="button"
                 id="pr-featured-watch-mobile"
-                onClick={() => setVideoOpen(true)}
+                onClick={() => watchOverviewHandler("starterVideo")}
                 aria-label="Play Start Plan Overview video"
               >
                 <video
@@ -554,19 +628,29 @@ const Pricing = () => {
                   </div>
                   <span className="pr-video-thumb-caption">Watch overview</span>
                 </div>
-              </button>
+              </button> */}
+              <VideoThumbnailPlayButtonMobile
+                onClick={() => watchOverviewHandler("starterVideo")}
+                videoData={videos[clickedVideo]}
+              />
 
               <div id="pr-featured-detail-grid">
                 <div>
                   <div className="pr-featured-detail-label">Best for</div>
-                  <p className="pr-featured-detail-text">{START_STAGE.bestFor}</p>
+                  <p className="pr-featured-detail-text">
+                    {START_STAGE.bestFor}
+                  </p>
                 </div>
                 <div>
                   <div className="pr-featured-detail-label">What you need</div>
-                  <p className="pr-featured-detail-text">{START_STAGE.whatYouNeed}</p>
+                  <p className="pr-featured-detail-text">
+                    {START_STAGE.whatYouNeed}
+                  </p>
                 </div>
                 <div>
-                  <div className="pr-featured-detail-label">Automation focus</div>
+                  <div className="pr-featured-detail-label">
+                    Automation focus
+                  </div>
                   <p className="pr-featured-detail-text pr-featured-detail-text--accent">
                     {START_STAGE.automationHeading}
                   </p>
@@ -575,7 +659,9 @@ const Pricing = () => {
                   </p>
                 </div>
                 <div>
-                  <div className="pr-featured-detail-label">What this stage supports</div>
+                  <div className="pr-featured-detail-label">
+                    What this stage supports
+                  </div>
                   <ul className="pr-supports-list">
                     {START_STAGE.supports.map((item) => (
                       <li key={item} className="pr-supports-item">
@@ -586,7 +672,9 @@ const Pricing = () => {
                   </ul>
                   <div id="pr-featured-addons">
                     <span id="pr-featured-addons-label">Add-ons</span>
-                    <span id="pr-featured-addons-offer">Limited Time Offer</span>
+                    <span id="pr-featured-addons-offer">
+                      Limited Time Offer
+                    </span>
                     <span className="pr-featured-addons-sep" />
                     <span className="pr-featured-addons-item">Accounting</span>
                     <span className="pr-featured-addons-sep" />
@@ -599,21 +687,28 @@ const Pricing = () => {
                 <button
                   type="button"
                   className="primary-cta"
-                  onClick={() => { trackCTAClick("book_demo", "pricing", "/pricing"); navigate("/book-a-demo"); }}
+                  onClick={() => {
+                    trackCTAClick("book_demo", "pricing", "/pricing");
+                    navigate("/book-a-demo");
+                  }}
                 >
                   Book a Demo
                 </button>
                 <button
                   type="button"
                   className="outline-cta-dark"
-                  onClick={() => { trackCTAClick("begin_journey", "pricing", "/pricing"); navigate("/signup"); }}
+                  onClick={() => {
+                    trackCTAClick("begin_journey", "pricing", "/pricing");
+                    navigate("/signup");
+                  }}
                 >
                   Begin Your Journey
                 </button>
               </div>
-              <p className="pr-cta-sub-note">No integrations are supported at the Start stage.</p>
+              <p className="pr-cta-sub-note">
+                No integrations are supported at the Start stage.
+              </p>
             </div>
-
           </div>
         </div>
       </section>
@@ -652,8 +747,8 @@ const Pricing = () => {
             Compare Growth, Scale, and Enterprise
           </h2>
           <p className="pr-body-text pr-body-text--center pr-paid-compare-sub">
-            One price per seat. Different governance depth, controls, and visibility as your
-            organisation matures.
+            One price per seat. Different governance depth, controls, and
+            visibility as your organisation matures.
           </p>
 
           {/* ── Desktop: unified sticky-header table ── */}
@@ -661,7 +756,9 @@ const Pricing = () => {
             <table className="pr-cmp-table">
               <thead>
                 <tr className="pr-cmp-head-row">
-                  <th className="pr-cmp-th pr-cmp-th--label" scope="col">Category</th>
+                  <th className="pr-cmp-th pr-cmp-th--label" scope="col">
+                    Category
+                  </th>
                   {PAID_STAGE_ORDER.map((id) => {
                     const stage = PAID_STAGE_LOOKUP[id];
                     return (
@@ -679,6 +776,28 @@ const Pricing = () => {
                             <li key={item}>{item}</li>
                           ))}
                         </ul>
+
+                        {/* <div
+                          onClick={() =>
+                            watchOverviewHandler(
+                              (stage.label.toLocaleLowerCase() +
+                                "Video") as VideoKey,
+                            )
+                          }
+                          className="pr-cmp-plan-overview "
+                        >
+                          Watch Overview
+                        </div> */}
+                        <VideoThumbnailPlayButton
+                          onClick={() =>
+                            watchOverviewHandler(
+                              (stage.label.toLocaleLowerCase() +
+                                "Video") as VideoKey,
+                            )
+                          }
+                          videoData={videos[clickedVideo]}
+                          center={true}
+                        />
                       </th>
                     );
                   })}
@@ -705,9 +824,7 @@ const Pricing = () => {
                             ))}
                           </ul>
                         ) : (
-                          <p className="pr-cmp-cell-text">
-                            {value}
-                          </p>
+                          <p className="pr-cmp-cell-text">{value}</p>
                         )}
                       </td>
                     ))}
@@ -753,6 +870,16 @@ const Pricing = () => {
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
+                    <VideoThumbnailPlayButtonMobile
+                      marginTop={"20px"}
+                      onClick={() =>
+                        watchOverviewHandler(
+                          (stage.label.toLocaleLowerCase() +
+                            "Video") as VideoKey,
+                        )
+                      }
+                      videoData={videos[clickedVideo]}
+                    />
                   </div>
                   <dl className="pr-cmp-mobile-rows">
                     {PAID_COMPARISON_ROWS.map((row, i) => (
@@ -764,9 +891,11 @@ const Pricing = () => {
                         <dd className="pr-cmp-mobile-row-value">
                           {Array.isArray(row.values[colIndex]) ? (
                             <ul className="pr-cmp-cell-list">
-                              {(row.values[colIndex] as string[]).map((item) => (
-                                <li key={item}>{item}</li>
-                              ))}
+                              {(row.values[colIndex] as string[]).map(
+                                (item) => (
+                                  <li key={item}>{item}</li>
+                                ),
+                              )}
                             </ul>
                           ) : (
                             <p className="pr-cmp-cell-text">
@@ -790,7 +919,9 @@ const Pricing = () => {
           <div id="pr-why-compare">
             <div className="pr-compare-grid">
               <div className="pr-compare-col pr-compare-col--other">
-                <div className="pr-compare-col-label">Most software platforms</div>
+                <div className="pr-compare-col-label">
+                  Most software platforms
+                </div>
                 <ul className="pr-compare-list">
                   <li>Different prices for different feature sets</li>
                   <li>Multiple disconnected systems</li>
@@ -807,41 +938,58 @@ const Pricing = () => {
               </div>
             </div>
             <div id="pr-why-footer">
-              TesseractApps grows with you, this is infrastructure, not a simple tool.
+              TesseractApps grows with you, this is infrastructure, not a simple
+              tool.
             </div>
           </div>
         </div>
       </section>
 
-      {videoOpen && <VideoModal onClose={() => setVideoOpen(false)} />}
+      {videoOpen && (
+        <VideoModal
+          onClose={() => setVideoOpen(false)}
+          videoData={videos[`${clickedVideo}`]}
+        />
+      )}
 
       {/* ── CTA Banner ── */}
       <section id="pr-cta-banner">
         <div className="pr-outer">
           <div id="pr-cta-banner-inner">
             <div className="pr-label pr-label--blue">Get Started</div>
-            <h2 id="pr-cta-heading">See how TesseractApps works for your organisation.</h2>
+            <h2 id="pr-cta-heading">
+              See how TesseractApps works for your organisation.
+            </h2>
             <p id="pr-cta-sub">
-              Your demo is configured for your care type, team size, and provider maturity stage.
-              30 minutes. Live platform, not a slide deck. Start your provider setup.
+              Your demo is configured for your care type, team size, and
+              provider maturity stage. 30 minutes. Live platform, not a slide
+              deck. Start your provider setup.
             </p>
             <div id="pr-cta-actions">
               <button
                 type="button"
                 className="primary-cta"
-                onClick={() => { trackCTAClick("book_demo", "pricing", "/pricing"); navigate("/book-a-demo"); }}
+                onClick={() => {
+                  trackCTAClick("book_demo", "pricing", "/pricing");
+                  navigate("/book-a-demo");
+                }}
               >
                 Book a Demo
               </button>
               <button
                 type="button"
                 className="outline-cta"
-                onClick={() => { trackCTAClick("begin_journey", "pricing", "/pricing"); navigate("/signup"); }}
+                onClick={() => {
+                  trackCTAClick("begin_journey", "pricing", "/pricing");
+                  navigate("/signup");
+                }}
               >
                 Begin Your Journey
               </button>
             </div>
-            <p className="pr-cta-sub-note">Book a Provider Maturity Review. Start your provider setup.</p>
+            <p className="pr-cta-sub-note">
+              Book a Provider Maturity Review. Start your provider setup.
+            </p>
           </div>
         </div>
       </section>

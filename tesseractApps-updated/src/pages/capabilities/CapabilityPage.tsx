@@ -77,7 +77,7 @@ const CapabilityPage = () => {
 
   useEffect(() => {
     if (!page) return;
-    trackCapabilityView({ name: page.title, slug });
+    trackCapabilityView({ name: page.title ?? "", slug });
   }, [slug, page?.title]);
 
   if (loading) return <CapabilityPageSkeleton />;
@@ -106,7 +106,7 @@ const CapabilityPage = () => {
     buildBreadcrumbSchema([
       { name: "Home", url: "https://tesseractapps.com.au" },
       { name: "Capabilities", url: "https://tesseractapps.com.au/product" },
-      { name: page.title, url: pageUrl },
+      { name: page.title ?? "", url: pageUrl },
     ]),
     buildSoftwareSchema({
       name: `${page.heroHeading}, TesseractApps`,
@@ -117,7 +117,7 @@ const CapabilityPage = () => {
 
   // Extract plain text from a Portable Text block array (blocks only, skip images etc.)
   const blocksToPlainText = (blocks: typeof page.howWeSolveThis) =>
-    blocks
+    (blocks ?? [])
       .filter((b): b is Extract<typeof b, { _type: 'block' }> => b._type === 'block')
       .map((b) => (b.children ?? []).map((c) => c.text ?? '').join(''))
       .join(' ');
@@ -134,8 +134,8 @@ const CapabilityPage = () => {
       page.heroHeading,
       page.heroSubtitle ?? "",
       page.navGroup,
-      ...page.whatYouGet,
-      ...page.whatMattersMost,
+      ...(page.whatYouGet ?? []),
+      ...(page.whatMattersMost ?? []),
       slug.replace(/-/g, " "),
     ]
       .join(" ")
@@ -187,7 +187,7 @@ const CapabilityPage = () => {
             steps={[
               { name: "Home", href: "/" },
               { name: "Capabilities", href: "/capabilities" },
-              { name: page.title },
+              { name: page.title ?? "" },
             ]}
           />
           <div className="cap-hero-tag">{page.navGroup}</div>
@@ -209,7 +209,7 @@ const CapabilityPage = () => {
           <div className="cap-section-label">The Problem</div>
           <div className="cap-problem-block">
             <div className="cap-problem-text">
-              <PortableTextRenderer value={page.problemStatement} />
+              <PortableTextRenderer value={page.problemStatement ?? []} />
             </div>
           </div>
         </div>
@@ -221,7 +221,7 @@ const CapabilityPage = () => {
           <div className="cap-section-label">What Matters Most</div>
           <h2 className="cap-section-heading">What providers at your stage need to get right.</h2>
           <div className="cap-insight-grid">
-            {page.whatMattersMost.map((item, i) => (
+            {(page.whatMattersMost ?? []).map((item, i) => (
               <div key={item} className="cap-insight-card">
                 <div className="cap-insight-num">{i + 1}</div>
                 <div className="cap-insight-text">{item}</div>
@@ -238,7 +238,7 @@ const CapabilityPage = () => {
           <h2 className="cap-section-heading">One connected solution, built for NDIS providers.</h2>
           <div className="cap-solve-layout">
             <div className="cap-solve-text">
-              <PortableTextRenderer value={page.howWeSolveThis} />
+              <PortableTextRenderer value={page.howWeSolveThis ?? []} />
             </div>
             <div className="cap-solve-proof">
               <div className="cap-solve-proof-heading">Why it works</div>
@@ -261,7 +261,7 @@ const CapabilityPage = () => {
           <div className="cap-section-label">What You Get</div>
           <h2 className="cap-section-heading">Everything you need. Nothing you don't.</h2>
           <div className="cap-feature-cards">
-            {page.whatYouGet.map((item) => (
+            {(page.whatYouGet ?? []).map((item) => (
               <div key={item} className="cap-feature-card">
                 <span className="cap-feature-icon">
                   <IconCheck />
@@ -279,7 +279,7 @@ const CapabilityPage = () => {
           <div className="cap-section-label">Is This Right for You?</div>
           <h2 className="cap-section-heading">Answer yes to any of these, this is for you.</h2>
           <div className="cap-qualify-list">
-            {page.isThisRightForYou.map((item) => (
+            {(page.isThisRightForYou ?? []).map((item) => (
               <div key={item} className="cap-qualify-item">
                 <span className="cap-qualify-icon">
                   <IconBadge />
@@ -301,7 +301,7 @@ const CapabilityPage = () => {
               {page.relatedCapabilities.map((cap) => (
                 <Link
                   key={cap._id}
-                  to={`/capabilities/${cap.slug.current}`}
+                  to={`/capabilities/${cap.slug?.current}`}
                   className="cap-related-card"
                 >
                   <div className="cap-related-strip" />

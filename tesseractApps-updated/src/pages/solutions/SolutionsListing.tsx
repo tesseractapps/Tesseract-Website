@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SEO from "../../components/common/SEO";
 import { useSanitySolutionNav } from "../../hooks/useSanitySolutionNav";
-import type { SolutionNavCategory } from "../../../sanity.types";
+import type { SolutionNavCategory } from "../../types/sanityQueries";
 
 // ── SVG Icons ────────────────────────────────────────────────────────────────
 
@@ -119,13 +119,13 @@ const SolutionsListing = () => {
             {filtered.map((sol) => (
               <Link
                 key={sol._id}
-                to={`/solutions/${sol.slug.current}`}
+                to={`/solutions/${sol.slug?.current}`}
                 className="sll-card"
               >
                 <div className="sll-card-strip" />
                 <div className="sll-card-body">
                   <span className="sll-card-category">
-                    {friendlyLabel(sol.navCategory)}
+                    {sol.navCategory && friendlyLabel(sol.navCategory)}
                   </span>
                   <h2 className="sll-card-title">{sol.title}</h2>
                   {sol.heroSubtitle && (

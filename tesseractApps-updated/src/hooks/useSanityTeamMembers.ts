@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { TEAM_MEMBERS_QUERY } from '../sanity/lib/queries'
 import { sanityConfigError } from '../sanity/env'
-import type { TeamMember } from '../../sanity.types'
+import type { HumanDocument } from '../types/sanityQueries'
 
-const cache = new Map<string, TeamMember[]>()
+const cache = new Map<string, HumanDocument[]>()
 const CACHE_KEY = 'team-members'
 
-type Result = { data: TeamMember[]; loading: boolean; error: string | null }
+type Result = { data: HumanDocument[]; loading: boolean; error: string | null }
 
 export function useSanityTeamMembers(): Result {
-  const [data, setData] = useState<TeamMember[]>(() => cache.get(CACHE_KEY) ?? [])
+  const [data, setData] = useState<HumanDocument[]>(() => cache.get(CACHE_KEY) ?? [])
   const [loading, setLoading] = useState(() => !cache.has(CACHE_KEY))
   const [error, setError] = useState<string | null>(null)
 
@@ -33,7 +33,7 @@ export function useSanityTeamMembers(): Result {
     setError(null)
 
     client
-      .fetch<TeamMember[]>(TEAM_MEMBERS_QUERY)
+      .fetch<HumanDocument[]>(TEAM_MEMBERS_QUERY)
       .then((result) => {
         if (!cancelled) {
           const items = result ?? []

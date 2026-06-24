@@ -78,7 +78,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       "/changelog": { name: "Release Notes", path: "/changelog" },
       "/careers": { name: "Careers", path: "/careers" },
       "/about": { name: "About", path: "/about" },
-      "/help-center": { name: "Help Centre", path: "/help-center" },
       "/help-centre": { name: "Help Centre", path: "/help-centre" },
 
       // ------------------- By Stage (active, Sanity CMS, no hardcoded data) -------------------
@@ -108,10 +107,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       "/disability-support-ndis": {
         name: "Disability Support (NDIS Providers)",
         path: "/disability-support-ndis",
-      },
-      "/support-coordination": {
-        name: "Support Coordination",
-        path: "/support-coordination",
       },
       "/allied-health-services": {
         name: "Allied Health Practices",

@@ -4,7 +4,7 @@ import { useSanityAllHumans } from '../../hooks/useSanityAllHumans'
 import SEO from '../../components/common/SEO'
 import { urlFor } from '../../sanity/lib/image'
 import { buildBreadcrumbSchema, buildGraphSchema } from '../../utils/schemaHelpers'
-import type { TeamMember } from '../../../sanity.types'
+import type { HumanDocument } from '../../types/sanityQueries'
 
 const SITE_URL = 'https://tesseractapps.com.au'
 
@@ -20,8 +20,8 @@ const DEPT_ORDER = [
   'Customer Success',
 ]
 
-function groupByDepartment(humans: TeamMember[]): [string, TeamMember[]][] {
-  const map = new Map<string, TeamMember[]>()
+function groupByDepartment(humans: HumanDocument[]): [string, HumanDocument[]][] {
+  const map = new Map<string, HumanDocument[]>()
 
   for (const h of humans) {
     const dept = h.department ?? 'Team'
@@ -40,8 +40,8 @@ function groupByDepartment(humans: TeamMember[]): [string, TeamMember[]][] {
   })
 }
 
-function HumanCard({ human }: { human: TeamMember }) {
-  const initials = human.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
+function HumanCard({ human }: { human: HumanDocument }) {
+  const initials = (human.name ?? '').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
 
   const card = (
     <>

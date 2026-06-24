@@ -3,7 +3,15 @@ import SEO from "../../../components/common/SEO";
 import { useSanityReleaseNotes } from "../../../hooks/useSanityReleaseNotes";
 import PortableText from "../../../components/sanity/portable-text";
 import { useState, useMemo } from "react";
-import { Zap, Bug, Wrench, Smartphone, Calculator, Plug, Grid2X2 } from "lucide-react";
+import {
+  Zap,
+  Bug,
+  Wrench,
+  Smartphone,
+  Calculator,
+  Plug,
+  Grid2X2,
+} from "lucide-react";
 import type { ReleaseNoteChange } from "../../../../sanity.types";
 
 type Category =
@@ -25,23 +33,74 @@ const CATEGORIES: Category[] = [
   "Integration",
 ];
 
-const CATEGORY_META: Record<Category, { icon: React.ReactNode; className: string }> = {
-  All: { icon: <Grid2X2 size={13} strokeWidth={2.5} />, className: "cl-chip--all" },
-  "New Feature": { icon: <Zap size={13} strokeWidth={2.5} />, className: "cl-chip--feature" },
-  Enhancement: { icon: <Wrench size={13} strokeWidth={2.5} />, className: "cl-chip--enhancement" },
-  "Bug Fix": { icon: <Bug size={13} strokeWidth={2.5} />, className: "cl-chip--bugfix" },
-  Mobile: { icon: <Smartphone size={13} strokeWidth={2.5} />, className: "cl-chip--mobile" },
-  Accounting: { icon: <Calculator size={13} strokeWidth={2.5} />, className: "cl-chip--accounting" },
-  Integration: { icon: <Plug size={13} strokeWidth={2.5} />, className: "cl-chip--integration" },
+const CATEGORY_META: Record<
+  Category,
+  { icon: React.ReactNode; className: string }
+> = {
+  All: {
+    icon: <Grid2X2 size={13} strokeWidth={2.5} />,
+    className: "cl-chip--all",
+  },
+  "New Feature": {
+    icon: <Zap size={13} strokeWidth={2.5} />,
+    className: "cl-chip--feature",
+  },
+  Enhancement: {
+    icon: <Wrench size={13} strokeWidth={2.5} />,
+    className: "cl-chip--enhancement",
+  },
+  "Bug Fix": {
+    icon: <Bug size={13} strokeWidth={2.5} />,
+    className: "cl-chip--bugfix",
+  },
+  Mobile: {
+    icon: <Smartphone size={13} strokeWidth={2.5} />,
+    className: "cl-chip--mobile",
+  },
+  Accounting: {
+    icon: <Calculator size={13} strokeWidth={2.5} />,
+    className: "cl-chip--accounting",
+  },
+  Integration: {
+    icon: <Plug size={13} strokeWidth={2.5} />,
+    className: "cl-chip--integration",
+  },
 };
 
-const BADGE_META: Record<string, { label: string; className: string; icon: React.ReactNode }> = {
-  "New Feature": { label: "New", className: "cl-badge--feature", icon: <Zap size={11} strokeWidth={2.5} /> },
-  Enhancement: { label: "Enhancement", className: "cl-badge--enhancement", icon: <Wrench size={11} strokeWidth={2.5} /> },
-  "Bug Fix": { label: "Bug Fix", className: "cl-badge--bugfix", icon: <Bug size={11} strokeWidth={2.5} /> },
-  Mobile: { label: "Mobile", className: "cl-badge--mobile", icon: <Smartphone size={11} strokeWidth={2.5} /> },
-  Accounting: { label: "Accounting", className: "cl-badge--accounting", icon: <Calculator size={11} strokeWidth={2.5} /> },
-  Integration: { label: "Integration", className: "cl-badge--integration", icon: <Plug size={11} strokeWidth={2.5} /> },
+const BADGE_META: Record<
+  string,
+  { label: string; className: string; icon: React.ReactNode }
+> = {
+  "New Feature": {
+    label: "New",
+    className: "cl-badge--feature",
+    icon: <Zap size={11} strokeWidth={2.5} />,
+  },
+  Enhancement: {
+    label: "Enhancement",
+    className: "cl-badge--enhancement",
+    icon: <Wrench size={11} strokeWidth={2.5} />,
+  },
+  "Bug Fix": {
+    label: "Bug Fix",
+    className: "cl-badge--bugfix",
+    icon: <Bug size={11} strokeWidth={2.5} />,
+  },
+  Mobile: {
+    label: "Mobile",
+    className: "cl-badge--mobile",
+    icon: <Smartphone size={11} strokeWidth={2.5} />,
+  },
+  Accounting: {
+    label: "Accounting",
+    className: "cl-badge--accounting",
+    icon: <Calculator size={11} strokeWidth={2.5} />,
+  },
+  Integration: {
+    label: "Integration",
+    className: "cl-badge--integration",
+    icon: <Plug size={11} strokeWidth={2.5} />,
+  },
 };
 
 const RELEASE_TYPE_LABELS: Record<string, string> = {
@@ -53,7 +112,11 @@ const RELEASE_TYPE_LABELS: Record<string, string> = {
 function formatReleaseDate(dateStr: string) {
   if (!dateStr) return "";
   const d = new Date(dateStr + "T00:00:00");
-  return d.toLocaleDateString("en-AU", { year: "numeric", month: "long", day: "numeric" });
+  return d.toLocaleDateString("en-AU", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
 
 const ReleaseNotes = () => {
@@ -65,9 +128,15 @@ const ReleaseNotes = () => {
     return notes
       .map((note) => ({
         ...note,
-        changes: note.changes.filter(
-          (c: ReleaseNoteChange) => c.category === activeCategory
-        ),
+        changes: (note.changes ?? []).filter((c) => {
+          const categories = Array.isArray(c.category)
+            ? c.category
+            : c.category
+              ? [c.category]
+              : [];
+
+          return categories.includes(activeCategory);
+        }),
       }))
       .filter((note) => note.changes.length > 0);
   }, [notes, activeCategory]);
@@ -75,9 +144,17 @@ const ReleaseNotes = () => {
   const totalChanges = useMemo(() => {
     const counts: Record<string, number> = {};
     notes.forEach((note) =>
-      note.changes.forEach((c: ReleaseNoteChange) => {
-        if (c.category) counts[c.category] = (counts[c.category] ?? 0) + 1;
-      })
+      (note.changes ?? []).forEach((c: ReleaseNoteChange) => {
+        const categories = Array.isArray(c.category)
+          ? c.category
+          : c.category
+            ? [c.category]
+            : [];
+
+        categories.forEach((category) => {
+          counts[category] = (counts[category] ?? 0) + 1;
+        });
+      }),
     );
     return counts;
   }, [notes]);
@@ -95,7 +172,8 @@ const ReleaseNotes = () => {
           <div id="cl-hero-label">Release Notes</div>
           <h1 id="cl-hero-heading">Latest Product Updates in TesseractApps</h1>
           <p id="cl-hero-sub">
-            Every update, improvement, and fix, documented in one place. Stay up to date with everything we ship.
+            Every update, improvement, and fix, documented in one place. Stay up
+            to date with everything we ship.
           </p>
         </div>
       </section>
@@ -109,7 +187,7 @@ const ReleaseNotes = () => {
               const meta = CATEGORY_META[cat];
               const count =
                 cat === "All"
-                  ? notes.reduce((s, n) => s + n.changes.length, 0)
+                  ? notes.reduce((s, n) => s + (n.changes ?? []).length, 0)
                   : (totalChanges[cat] ?? 0);
               return (
                 <button
@@ -171,35 +249,61 @@ const ReleaseNotes = () => {
                     )}
                   </div>
                   {note.releaseDate && (
-                    <div className="cl-entry-date">{formatReleaseDate(note.releaseDate)}</div>
+                    <div className="cl-entry-date">
+                      {formatReleaseDate(note.releaseDate)}
+                    </div>
                   )}
                   {note.releaseType && (
-                    <div className={`cl-release-type cl-release-type--${note.releaseType}`}>
-                      {RELEASE_TYPE_LABELS[note.releaseType] ?? note.releaseType}
+                    <div
+                      className={`cl-release-type cl-release-type--${note.releaseType}`}
+                    >
+                      {RELEASE_TYPE_LABELS[note.releaseType] ??
+                        note.releaseType}
                     </div>
                   )}
                 </div>
 
                 {/* Timeline dot */}
-                <div className={`cl-dot${noteIndex === 0 && activeCategory === "All" ? " cl-dot--latest" : ""}`} />
+                <div
+                  className={`cl-dot${noteIndex === 0 && activeCategory === "All" ? " cl-dot--latest" : ""}`}
+                />
 
                 {/* Right body — changes */}
                 <div className="cl-entry-body">
                   <div className="cl-card">
                     <ul className="cl-changes-list">
-                      {note.changes.map((change: ReleaseNoteChange) => {
-                        const badge = change.category ? BADGE_META[change.category] : null;
+                      {(note.changes ?? []).map((change: ReleaseNoteChange) => {
+                        const categories = Array.isArray(change.category)
+                          ? change.category
+                          : change.category
+                            ? [change.category]
+                            : [];
                         return (
                           <li key={change._key} className="cl-change-item">
                             <div className="cl-change-header">
-                              {badge && (
-                                <span className={`cl-badge ${badge.className}`}>
-                                  {badge.icon}
-                                  {badge.label}
-                                </span>
-                              )}
-                              <span className="cl-change-title">{change.title}</span>
+                              <div className="cl-badges">
+                                {categories.map((category) => {
+                                  const badge = BADGE_META[category];
+
+                                  if (!badge) return null;
+
+                                  return (
+                                    <span
+                                      key={`${change._key}-${category}`}
+                                      className={`cl-badge ${badge.className}`}
+                                    >
+                                      {badge.icon}
+                                      {badge.label}
+                                    </span>
+                                  );
+                                })}
+                              </div>
+
+                              <span className="cl-change-title">
+                                {change.title}
+                              </span>
                             </div>
+
                             {change.description && (
                               <div className="cl-change-desc">
                                 <PortableText value={change.description} />

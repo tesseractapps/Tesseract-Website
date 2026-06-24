@@ -2,20 +2,20 @@ import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { COMPETITOR_PAGE_BY_SLUG_QUERY } from '../sanity/lib/queries'
 import { sanityConfigError } from '../sanity/env'
-import type { CompetitorPageDocument } from '../../sanity.types'
+import type { CompetitorPage } from '../../sanity.types'
 
 // Module-level cache, prevents redundant fetches when navigating back to a
 // previously visited competitor page within the same session.
-const cache = new Map<string, CompetitorPageDocument>()
+const cache = new Map<string, CompetitorPage>()
 
 type UseSanityCompetitorPageResult = {
-  page: CompetitorPageDocument | null
+  page: CompetitorPage | null
   loading: boolean
   error: string | null
 }
 
 export function useSanityCompetitorPage(slug: string): UseSanityCompetitorPageResult {
-  const [page, setPage] = useState<CompetitorPageDocument | null>(
+  const [page, setPage] = useState<CompetitorPage | null>(
     () => cache.get(slug) ?? null
   )
   const [loading, setLoading] = useState(() => !cache.has(slug))
@@ -47,7 +47,7 @@ export function useSanityCompetitorPage(slug: string): UseSanityCompetitorPageRe
     setError(null)
 
     client
-      .fetch<CompetitorPageDocument | null>(COMPETITOR_PAGE_BY_SLUG_QUERY, { slug })
+      .fetch<CompetitorPage | null>(COMPETITOR_PAGE_BY_SLUG_QUERY, { slug })
       .then((result) => {
         if (!cancelled) {
           if (result) cache.set(slug, result)

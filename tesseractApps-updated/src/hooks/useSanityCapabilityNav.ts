@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { CAPABILITY_NAV_QUERY } from '../sanity/lib/queries'
-import type { CapabilityNavLink } from '../../sanity.types'
+import type { CapabilityNavLink } from '../types/sanityQueries'
 
 // Module-level cache, fetched once per session, shared across all consumers.
 let cachedLinks: CapabilityNavLink[] | null = null

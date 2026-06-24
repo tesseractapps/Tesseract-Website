@@ -461,7 +461,7 @@ const AdelaideExpo2026 = () => {
             Giveaway Entry + Registration
           </div>
           <h2 className="expo-section-heading">
-            Register &amp; Win 12 Months Free
+            Register &amp; Enter Prize Draw
           </h2>
           <p className="expo-section-sub">
             Complete this form to confirm your attendance and enter the prize

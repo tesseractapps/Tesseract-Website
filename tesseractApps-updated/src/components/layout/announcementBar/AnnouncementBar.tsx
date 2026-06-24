@@ -119,7 +119,8 @@ const AnnouncementBar = () => {
         <div id="cd-bar-inner">
           <span className="cd-launched-emoji">🎉</span>
           <span className="cd-bar-label">
-            Early Access Special: 3 Months Free on a 12-Month Plan
+            Support Coordination App Early Access Special: 3 Months Free on a
+            12-Month Plan
           </span>
           <a href="/book-a-demo" className="cd-bar-cta">
             Book a Demo

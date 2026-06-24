@@ -1,7 +1,7 @@
 // src/pages/home/components/CapabilitiesSection.tsx
 import { memo } from "react";
 import { useNavigate } from "react-router-dom";
-import type { CapabilityNavLink } from "../../../../sanity.types";
+import type { CapabilityNavLink } from "../../../types/sanityQueries";
 import { useSanityCapabilityNav } from "../../../hooks/useSanityCapabilityNav";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -20,10 +20,10 @@ const IconArrowRight = () => (
 const CapabilityCard = memo(({ cap, onNavigate }: { cap: CapabilityNavLink; onNavigate: (slug: string) => void }) => (
   <div
     className="hv4-cap-card"
-    onClick={() => onNavigate(cap.slug.current)}
+    onClick={() => onNavigate(cap.slug?.current ?? "")}
     role="button"
     tabIndex={0}
-    onKeyDown={(e) => e.key === "Enter" && onNavigate(cap.slug.current)}
+    onKeyDown={(e) => e.key === "Enter" && onNavigate(cap.slug?.current ?? "")}
   >
     <h3 className="hv4-cap-label">{cap.title}</h3>
     <p className="hv4-cap-desc">{cap.navSubtitle ?? cap.heroSubtitle ?? ""}</p>

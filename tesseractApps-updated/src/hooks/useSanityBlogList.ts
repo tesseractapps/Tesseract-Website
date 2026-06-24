@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { BLOG_CATEGORY_QUERY, BLOG_LIST_QUERY } from '../sanity/lib/queries'
 import { sanityConfigError } from '../sanity/env'
-import type { BlogListItem } from '../../sanity.types'
+import type { BlogListItem } from '../types/sanityQueries'
 
 // Module-level cache: prevents redundant fetches when multiple components
 // (e.g. OurBlogComponent on homepage + Blog page) mount in the same session.

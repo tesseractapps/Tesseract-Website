@@ -98,7 +98,7 @@ const Careers = () => {
                       <div className="careers-job-meta">
                         {job.tags.map((tag, i) => (
                           <span key={i} className="careers-job-tag">
-                            {ICON_MAP[tag.icon]} {tag.label}
+                            {tag.icon && ICON_MAP[tag.icon]} {tag.label}
                           </span>
                         ))}
                       </div>
@@ -106,7 +106,7 @@ const Careers = () => {
                   </div>
                   <a
                     className="careers-apply-btn"
-                    href={`mailto:${job.contactEmail}?subject=Application%3A%20${encodeURIComponent(job.title)}`}
+                    href={`mailto:${job.contactEmail}?subject=Application%3A%20${encodeURIComponent(job.title ?? '')}`}
                   >
                     Apply Now
                   </a>

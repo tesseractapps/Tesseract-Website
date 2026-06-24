@@ -70,10 +70,10 @@ export default function HumanPage() {
     buildBreadcrumbSchema([
       { name: 'Home', url: SITE_URL },
       { name: 'Humans', url: `${SITE_URL}/humans` },
-      { name: human.name, url: pageUrl },
+      { name: human.name ?? '', url: pageUrl },
     ]),
     buildPersonSchema({
-      name: human.name,
+      name: human.name ?? '',
       jobTitle: human.role,
       imageUrl: photoUrl,
       linkedInUrl: human.linkedInUrl,
@@ -112,7 +112,7 @@ export default function HumanPage() {
     ...(hasWhitepapers ? ['Whitepaper' as FilterType] : []),
   ]
 
-  const initials = human.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
+  const initials = (human.name ?? '').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
 
   return (
     <div className="hp-page">
@@ -129,7 +129,7 @@ export default function HumanPage() {
           steps={[
             { name: 'Home', href: '/' },
             { name: 'Humans', href: '/humans' },
-            { name: human.name },
+            { name: human.name ?? '' },
           ]}
         />
       </div>
@@ -141,7 +141,7 @@ export default function HumanPage() {
           {human.photo?.asset ? (
             <SanityImage
               src={human.photo}
-              alt={human.photo.alt ?? human.name}
+              alt={human.photo.alt ?? human.name ?? ''}
               className="hp-avatar"
               width={120}
               height={120}

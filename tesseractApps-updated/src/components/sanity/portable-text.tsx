@@ -1,80 +1,107 @@
-import { lazy, Suspense } from 'react'
-import { PortableText } from '@portabletext/react'
-import type { PortableTextComponents } from '@portabletext/react'
-import { Link } from 'react-router-dom'
-import SanityImage from './sanity-image'
-import type { BlockContentType } from '../../../sanity.types'
-import './portable-text.css'
+import { lazy, Suspense } from "react";
+import { PortableText } from "@portabletext/react";
+import type { PortableTextComponents } from "@portabletext/react";
+import { Link } from "react-router-dom";
+import SanityImage from "./sanity-image";
+import type { BlockContent } from "../../../sanity.types";
+import "./portable-text.css";
 
-const LazyCodeBlock = lazy(() => import('./CodeBlock'))
+const LazyCodeBlock = lazy(() => import("./CodeBlock"));
 
 /** Convert heading text to a URL-safe anchor id. */
 function toAnchorId(text: unknown): string {
   const str = Array.isArray(text)
-    ? text.map(t => (typeof t === 'string' ? t : (t as any)?.props?.children ?? '')).join('')
-    : String(text ?? '')
+    ? text
+        .map((t) =>
+          typeof t === "string" ? t : ((t as any)?.props?.children ?? ""),
+        )
+        .join("")
+    : String(text ?? "");
   return str
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/[^a-z0-9\s-]/g, "")
     .trim()
-    .replace(/\s+/g, '-')
-    .slice(0, 80)
+    .replace(/\s+/g, "-")
+    .slice(0, 80);
 }
 
 const components: PortableTextComponents = {
   block: {
-    h2: ({ children }) => <h2 id={toAnchorId(children)} className="pt-h2">{children}</h2>,
-    h3: ({ children }) => <h3 id={toAnchorId(children)} className="pt-h3">{children}</h3>,
-    h4: ({ children }) => <h4 id={toAnchorId(children)} className="pt-h4">{children}</h4>,
-    blockquote: ({ children }) => <blockquote className="pt-blockquote">{children}</blockquote>,
+    h2: ({ children }) => (
+      <h2 id={toAnchorId(children)} className="pt-h2">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 id={toAnchorId(children)} className="pt-h3">
+        {children}
+      </h3>
+    ),
+    h4: ({ children }) => (
+      <h4 id={toAnchorId(children)} className="pt-h4">
+        {children}
+      </h4>
+    ),
+    blockquote: ({ children }) => (
+      <blockquote className="pt-blockquote">{children}</blockquote>
+    ),
     normal: ({ children }) => <p className="pt-paragraph">{children}</p>,
   },
   marks: {
     strong: ({ children }) => <strong>{children}</strong>,
     em: ({ children }) => <em>{children}</em>,
-    underline: ({ children }) => <span className="pt-underline">{children}</span>,
-    'strike-through': ({ children }) => <s>{children}</s>,
+    underline: ({ children }) => (
+      <span className="pt-underline">{children}</span>
+    ),
+    "strike-through": ({ children }) => <s>{children}</s>,
     code: ({ children }) => <code className="pt-code-inline">{children}</code>,
     link: ({ value, children }) => {
-      const href: string = value?.href ?? ''
-      const blank: boolean = value?.blank ?? false
-      const isExternal = href.startsWith('http') || href.startsWith('//')
+      const href: string = value?.href ?? "";
+      const blank: boolean = value?.blank ?? false;
+      const isExternal = href.startsWith("http") || href.startsWith("//");
       if (isExternal || blank) {
         return (
-          <a href={href} target="_blank" rel="noopener noreferrer" className="pt-link">
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pt-link"
+          >
             {children}
           </a>
-        )
+        );
       }
       return (
         <Link to={href} className="pt-link">
           {children}
         </Link>
-      )
+      );
     },
   },
   types: {
     image: ({ value }) => {
-      if (!value?.asset) return null
+      if (!value?.asset) return null;
       return (
         <figure className="pt-image-figure">
           <SanityImage
             src={value}
-            alt={value.alt ?? ''}
+            alt={value.alt ?? ""}
             className="pt-image"
             width={800}
             height={450}
           />
           {value.caption && (
-            <figcaption className="pt-image-caption">{value.caption}</figcaption>
+            <figcaption className="pt-image-caption">
+              {value.caption}
+            </figcaption>
           )}
         </figure>
-      )
+      );
     },
     codeBlock: ({ value }) => {
-      const language: string = value?.language ?? 'text'
-      const filename: string | undefined = value?.filename
-      const code: string = value?.code ?? ''
+      const language: string = value?.language ?? "text";
+      const filename: string | undefined = value?.filename;
+      const code: string = value?.code ?? "";
       return (
         <div className="pt-code-block">
           {(filename ?? language) && (
@@ -90,12 +117,12 @@ const components: PortableTextComponents = {
             fallback={
               <pre
                 style={{
-                  background: '#1d1f21',
-                  color: '#ccc',
-                  padding: '1em',
-                  borderRadius: filename ?? language ? '0 0 6px 6px' : '6px',
-                  overflowX: 'auto',
-                  fontSize: '0.875em',
+                  background: "#1d1f21",
+                  color: "#ccc",
+                  padding: "1em",
+                  borderRadius: (filename ?? language) ? "0 0 6px 6px" : "6px",
+                  overflowX: "auto",
+                  fontSize: "0.875em",
                   lineHeight: 1.6,
                   margin: 0,
                 }}
@@ -107,33 +134,38 @@ const components: PortableTextComponents = {
             <LazyCodeBlock
               language={language}
               code={code}
-              customStyle={{ margin: 0, borderRadius: filename ?? language ? '0 0 6px 6px' : '6px' }}
+              customStyle={{
+                margin: 0,
+                borderRadius: (filename ?? language) ? "0 0 6px 6px" : "6px",
+              }}
               showLineNumbers
             />
           </Suspense>
         </div>
-      )
+      );
     },
     callout: ({ value }) => {
-      const type: 'info' | 'warning' | 'tip' = value?.type ?? 'info'
+      const type: "info" | "warning" | "tip" = value?.type ?? "info";
       return (
         <div className={`pt-callout pt-callout--${type}`}>
           {/* <span className="pt-callout-icon" aria-hidden="true">{icons[type]}</span> */}
           <p className="pt-callout-text">{value?.text}</p>
         </div>
-      )
+      );
     },
     table: ({ value }) => {
-      const rows: Array<{ cells?: string[] }> = value?.rows ?? []
-      if (rows.length === 0) return null
-      const [headerRow, ...bodyRows] = rows
+      const rows: Array<{ cells?: string[] }> = value?.rows ?? [];
+      if (rows.length === 0) return null;
+      const [headerRow, ...bodyRows] = rows;
       return (
         <div className="pt-table-wrapper">
           <table className="pt-table">
             <thead>
               <tr>
                 {headerRow?.cells?.map((cell: string, i: number) => (
-                  <th key={i} className="pt-table-th">{cell}</th>
+                  <th key={i} className="pt-table-th">
+                    {cell}
+                  </th>
                 ))}
               </tr>
             </thead>
@@ -141,27 +173,35 @@ const components: PortableTextComponents = {
               {bodyRows.map((row, i) => (
                 <tr key={i}>
                   {row.cells?.map((cell: string, j: number) => (
-                    <td key={j} className="pt-table-td">{cell}</td>
+                    <td key={j} className="pt-table-td">
+                      {cell}
+                    </td>
                   ))}
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      )
+      );
     },
   },
-}
+};
 
 type PortableTextRendererProps = {
-  value: BlockContentType
-  className?: string
-}
+  // Loose on purpose: different Sanity schemas (capabilityPage, solutionPage)
+  // define their own inline block-array field types that are structurally
+  // close to, but not identical to, the shared `BlockContent` type.
+  value: BlockContent | unknown[];
+  className?: string;
+};
 
-export default function PortableTextRenderer({ value, className }: PortableTextRendererProps) {
+export default function PortableTextRenderer({
+  value,
+  className,
+}: PortableTextRendererProps) {
   return (
-    <div className={`pt-root${className ? ` ${className}` : ''}`}>
+    <div className={`pt-root${className ? ` ${className}` : ""}`}>
       <PortableText value={value} components={components} />
     </div>
-  )
+  );
 }

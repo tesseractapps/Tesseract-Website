@@ -57,7 +57,7 @@ const About = () => {
 
   const aboutSchema = buildAboutPageSchema({
     people: teamMembers.map((m) => ({
-      name: m.name,
+      name: m.name ?? '',
       jobTitle: m.role,
       imageUrl: m.photo?.asset?.url,
       linkedInUrl: m.linkedInUrl,
@@ -180,7 +180,7 @@ const About = () => {
                       {member.photo?.asset ? (
                         <SanityImage
                           src={member.photo}
-                          alt={member.photo?.alt ?? member.name}
+                          alt={member.photo?.alt ?? member.name ?? ''}
                           className="about-team-avatar"
                           width={96}
                           height={96}
@@ -188,7 +188,7 @@ const About = () => {
                         />
                       ) : (
                         <div className="about-team-avatar about-team-avatar--initials" aria-hidden="true">
-                          {member.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
+                          {(member.name ?? '').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
                         </div>
                       )}
                       <div className="about-team-card-body">

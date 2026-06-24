@@ -1,7 +1,7 @@
 import type React from 'react'
 import { useState } from 'react'
 import { urlFor } from '../../sanity/lib/image'
-import type { SanityImageObject } from '../../../sanity.types'
+import type { SanityImageObject } from '../../types/sanityQueries'
 
 type SanityImageProps = {
   src: SanityImageObject

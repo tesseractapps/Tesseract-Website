@@ -206,7 +206,7 @@ const CompetitorPage = () => {
           )}
 
           <div className="cmp-why-body">
-            {page.aboutBody.split("\n\n").map((para, i) => (
+            {(page.aboutBody ?? "").split("\n\n").map((para, i) => (
               <p key={i} className="cmp-body-text">{para}</p>
             ))}
           </div>
@@ -241,7 +241,7 @@ const CompetitorPage = () => {
                       <span className="cmp-compare-col-tier cmp-compare-col-tier--them">STANDARD</span>
                     </div>
                   </div>
-                  {cat.rows.map((row, ri) => (
+                  {(cat.rows ?? []).map((row, ri) => (
                     <div key={ri} className={`cmp-compare-row${ri % 2 === 0 ? " cmp-compare-row--alt" : ""}`}>
                       <div className="cmp-compare-row-feature">{row.feature}</div>
                       <div className="cmp-compare-row-cell cmp-compare-row-cell--us">
@@ -275,7 +275,7 @@ const CompetitorPage = () => {
               </button>
             </div>
             <div className="cmp-right-choice-right">
-              {page.rightChoiceItems.map((item, i) => (
+              {(page.rightChoiceItems ?? []).map((item, i) => (
                 <div key={i} className="cmp-check-item">
                   <span className="cmp-check-item-icon"><IconCheckFill /></span>
                   <span className="cmp-check-item-text">{item}</span>
