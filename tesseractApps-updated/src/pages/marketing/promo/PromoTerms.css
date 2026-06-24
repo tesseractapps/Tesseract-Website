@@ -1,0 +1,107 @@
+.promo-page {
+  padding: 80px 20px;
+  background: #ffffff;
+}
+
+.promo-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.promo-container h1 {
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.last-updated {
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.promo-container section {
+  margin-bottom: 48px;
+}
+
+.promo-container h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.promo-container p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #374151;
+  margin-bottom: 16px;
+}
+
+.promo-container ul,
+.promo-container ol {
+  padding-left: 24px;
+}
+
+.promo-container li {
+  margin-bottom: 12px;
+  line-height: 1.7;
+  color: #374151;
+}
+
+.promo-disclosures {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  padding: 32px;
+  border-radius: 12px;
+}
+
+.promo-links {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 40px;
+}
+
+.link-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.link-grid a {
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  color: #111827;
+  transition: all 0.3s ease;
+}
+
+.link-grid a:hover {
+  transform: translateY(-2px);
+}
+
+.cta-button {
+  background: #2563eb;
+  color: #fff !important;
+  border-color: #2563eb !important;
+}
+
+@media (max-width: 768px) {
+  .promo-page {
+    padding: 60px 16px;
+  }
+
+  .promo-container h1 {
+    font-size: 32px;
+  }
+
+  .promo-container h2 {
+    font-size: 24px;
+  }
+
+  .link-grid {
+    flex-direction: column;
+  }
+
+  .link-grid a {
+    text-align: center;
+  }
+}

@@ -50,6 +50,7 @@ import HumansPage from "../pages/humans/HumansPage";
 import HumanPage from "../pages/humans/HumanPage";
 import NotFound from "../pages/notFound/NotFound";
 import PromoPage from "../pages/marketing/promo/promopage";
+import PromoTerms from "../pages/marketing/promo/PromoTerms";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -91,6 +92,7 @@ const AppRoutes = () => {
       <Route path="/events" element={<EventsListing />} />
       <Route path="/events/adelaide-expo-2026" element={<AdelaideExpo2026 />} />
       <Route path="/events/eofy-discount" element={<PromoPage />} />
+      <Route path="/promo-terms" element={<PromoTerms />} />
       <Route path="/book-a-demo" element={<BookADemo />} />
       <Route path="/book-a-demo/success" element={<BookADemoSuccess />} />
       <Route path="/signup" element={<Signup />} />

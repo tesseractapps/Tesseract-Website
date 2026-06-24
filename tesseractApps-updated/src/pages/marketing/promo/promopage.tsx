@@ -3,6 +3,65 @@ import SEO from "../../../components/common/SEO";
 import "./PromoPage.css";
 import { trackCTAClick } from "../../../utils/analytics";
 import { useNavigate } from "react-router-dom";
+const FAQ_ITEMS: { question: string; answer: string }[] = [
+  {
+    question: "How much discount do I get?",
+    answer:
+      "You get a flat 50% off your total contract value -available for the NDIS Platform and the Support Coordination App. ",
+  },
+  {
+    question: "Does the discount depend on how long my contract is?",
+    answer:
+      "No. The 50% discount applies to the full contract value regardless of term length. The requirements are booking a demo and having your signed contract in place before 31 July 2026. ",
+  },
+  {
+    question: "When does the offer end?",
+    answer:
+      "The promotion ends at 23:59 UTC on 31 July 2026. No extensions will be granted. ",
+  },
+  {
+    question: "Can this discount be combined with other offers?",
+    answer:
+      "No. This promotion cannot be combined with any other discount or promotional rate. Only one discount may apply per contract. ",
+  },
+  {
+    question: "Is this available to existing customers?",
+    answer:
+      "No. This promotion is exclusively for new TesseractApps customers. ",
+  },
+];
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`scp-faq-item${open ? " scp-faq-item--open" : ""}`}>
+      <button
+        type="button"
+        className="scp-faq-question"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+      >
+        <span>{question}</span>
+        <svg
+          className="scp-faq-chevron"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M3 6l5 5 5-5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+      {open && <p className="scp-faq-answer">{answer}</p>}
+    </div>
+  );
+}
 const promopage = () => {
   const [billing, setBilling] = useState<"monthly" | "annual">("annual");
   const navigate = useNavigate();
@@ -383,6 +442,31 @@ const promopage = () => {
           </div>
         </div>
       </section>
+      {/* FAQ */}
+      <section id="scp-faq">
+        <div className="scp-outer">
+          <div className="scp-label-wrapper">
+            <div className="scp-label scp-label--dark">
+              Frequently Asked Questions
+            </div>
+          </div>
+          <h2 className="scp-section-heading scp-section-heading--center">
+            Pricing, plans &amp; terms
+          </h2>
+          <div className="scp-faq-list">
+            {FAQ_ITEMS.map((item) => (
+              <FaqItem
+                key={item.question}
+                question={item.question}
+                answer={item.answer}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      <div className="eofy-terms-link" onClick={() => navigate("/promo-terms")}>
+        TesseractApps End of Financial Year Promotion Terms
+      </div>
     </div>
   );
 };
