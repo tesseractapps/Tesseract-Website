@@ -29,7 +29,7 @@ import ProcessFlow from "./components/ProcessFlow";
 import CapabilitiesSection from "./components/CapabilitiesSection";
 import BlogSection from "./components/BlogSection";
 import GuideSection from "./components/GuideSection";
-import PromoModal from "../../components/ui/promoModal/PromoModal";
+// import PromoModal from "../../components/ui/promoModal/PromoModal";
 import { trackCTAClick } from "../../utils/analytics";
 
 // ─── SVG Icons ────────────────────────────────────────────────────────────────
@@ -565,7 +565,7 @@ export default function Home() {
 
   return (
     <>
-      <PromoModal />
+      {/* <PromoModal /> */}
       <SEO
         title="NDIS Workforce Management Software | TesseractApps"
         description="Purpose-built NDIS operational infrastructure connecting rostering, payroll, compliance, and participant management on one platform. Starting at $39.99/seat/month."
