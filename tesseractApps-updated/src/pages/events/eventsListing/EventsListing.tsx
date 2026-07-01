@@ -18,34 +18,34 @@ type EventItem = {
 };
 
 const EVENTS: EventItem[] = [
-  {
-    slug: "/events/adelaide-expo-2026",
-    title: "Adelaide Disability & WorkAbility Expo 2026",
-    subtitle:
-      "Meet the TesseractApps team, see a live platform demo, and enter our prize draw to win 12 months free.",
-    date: "26–27 June 2026",
-    dateRange: "Friday 26 June & Saturday 27 June 2026",
-    venue: "Adelaide Showground",
-    location: "Leader Street, Wayville SA 5034",
-    booth: "Booth 8",
-    status: "upcoming",
-    tag: "Expo",
-  },
+  // {
+  //   slug: "/events/adelaide-expo-2026",
+  //   title: "Adelaide Disability & WorkAbility Expo 2026",
+  //   subtitle:
+  //     "Meet the TesseractApps team, see a live platform demo, and enter our prize draw to win 12 months free.",
+  //   date: "26–27 June 2026",
+  //   dateRange: "Friday 26 June & Saturday 27 June 2026",
+  //   venue: "Adelaide Showground",
+  //   location: "Leader Street, Wayville SA 5034",
+  //   booth: "Booth 8",
+  //   status: "upcoming",
+  //   tag: "Expo",
+  // },
 ];
 const OFFERS: EventItem[] = [
-  {
-    slug: "/events/eofy-discount",
-    title: "End Of Financial Year Discount",
-    subtitle:
-      "Sign your contract before 31 July 2026 to save 50% on your total contract value. Lock in half price before the EOFY deadline.",
-    date: "until 31 July 2026",
-    dateRange: "Sunday 21 June & Friday 31 July 2026",
-    venue: "",
-    location: "",
-    booth: "",
-    status: "ongoing",
-    tag: "Discount",
-  },
+  // {
+  //   slug: "/events/eofy-discount",
+  //   title: "End Of Financial Year Discount",
+  //   subtitle:
+  //     "Sign your contract before 31 July 2026 to save 50% on your total contract value. Lock in half price before the EOFY deadline.",
+  //   date: "until 31 July 2026",
+  //   dateRange: "Sunday 21 June & Friday 31 July 2026",
+  //   venue: "",
+  //   location: "",
+  //   booth: "",
+  //   status: "ongoing",
+  //   tag: "Discount",
+  // },
 ];
 
 const upcomingEvents = EVENTS.filter((e) => e.status === "upcoming");

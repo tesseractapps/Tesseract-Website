@@ -32,8 +32,8 @@ import WhitepaperPage from "../pages/resources/whitepapers/WhitepaperPage";
 import Brochures from "../pages/resources/brochures/Brochures";
 import Guides from "../pages/resources/guides/Guides";
 import GuidePage from "../pages/resources/guides/GuidePage";
-import EventsListing from "../pages/events/eventsListing/EventsListing";
-import AdelaideExpo2026 from "../pages/events/adelaideExpo2026/AdelaideExpo2026";
+// import EventsListing from "../pages/events/eventsListing/EventsListing";
+// import AdelaideExpo2026 from "../pages/events/adelaideExpo2026/AdelaideExpo2026";
 import BookADemo from "../pages/forms/bookADemo/BookADemo";
 import BookADemoSuccess from "../pages/forms/bookADemo/BookADemoSuccess";
 import Signup from "../pages/forms/signup/Signup";
@@ -49,8 +49,8 @@ import Register from "../pages/forms/register/Register";
 import HumansPage from "../pages/humans/HumansPage";
 import HumanPage from "../pages/humans/HumanPage";
 import NotFound from "../pages/notFound/NotFound";
-import PromoPage from "../pages/marketing/promo/promopage";
-import PromoTerms from "../pages/marketing/promo/PromoTerms";
+// import PromoPage from "../pages/marketing/promo/promopage";
+// import PromoTerms from "../pages/marketing/promo/PromoTerms";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -89,10 +89,10 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/events" element={<EventsListing />} />
+      {/* <Route path="/events" element={<EventsListing />} />
       <Route path="/events/adelaide-expo-2026" element={<AdelaideExpo2026 />} />
       <Route path="/events/eofy-discount" element={<PromoPage />} />
-      <Route path="/promo-terms" element={<PromoTerms />} />
+      <Route path="/promo-terms" element={<PromoTerms />} /> */}
       <Route path="/book-a-demo" element={<BookADemo />} />
       <Route path="/book-a-demo/success" element={<BookADemoSuccess />} />
       <Route path="/signup" element={<Signup />} />

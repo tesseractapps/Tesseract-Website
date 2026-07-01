@@ -718,9 +718,7 @@ const SCPricing = () => {
 
             <div id="scp-coming-soon-heading">
               <span id="scp-coming-soon-badge">Coming Soon</span>
-              <span id="scp-coming-soon-label">
-                On the roadmap, included when live
-              </span>
+              <span id="scp-coming-soon-label">On the roadmap</span>
             </div>
             <ul className="scp-features-chips scp-features-chips--soon">
               {SC_COMING_SOON.map((f) => (
