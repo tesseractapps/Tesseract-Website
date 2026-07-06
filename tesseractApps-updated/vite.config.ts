@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import { createClient } from '@sanity/client';
 import { createRequire } from 'module';
+import { readFileSync, existsSync } from 'fs';
 
 const _require = createRequire(import.meta.url);
 const GLOSSARY_TERMS: { term: string; definition: string }[] = _require('./src/data/ndisGlossaryTerms.json');
@@ -132,6 +133,19 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
 };
 
 const STATIC_ROUTES = Object.keys(STATIC_META);
+
+// Conversion/form pages — intentionally rendered without nav/footer and not
+// listed in the sitemap. Mark them noindex so search engines don't index thin,
+// link-less pages (resolves Screaming Frog "Pages Without Internal Outlinks").
+// Keep this in sync with the runtime <SEO noIndex> flag on each page so the raw
+// SSG HTML and the JS-rendered HTML agree.
+const NOINDEX_ROUTES = new Set<string>([
+  '/book-a-demo',
+  '/book-a-demo/success',
+  '/signup',
+  '/signup/success',
+  '/register-support-coordination',
+]);
 
 // ── Sanity types ─────────────────────────────────────────────────────────────
 
@@ -397,10 +411,11 @@ function injectMetaIntoHtml(
   const safeOgImage = escapeHtml(OG_IMAGE);
 
   // ── Core meta tags (title, description, robots, canonical) ──
+  const robots = NOINDEX_ROUTES.has(path) ? 'noindex, nofollow' : 'index, follow';
   const coreTags = [
     `<title>${safeTitle}</title>`,
     `<meta name="description" content="${safeDescription}">`,
-    `<meta name="robots" content="index, follow">`,
+    `<meta name="robots" content="${robots}">`,
     `<link rel="canonical" href="${safeCanonical}">`,
   ];
 
@@ -487,6 +502,77 @@ function injectMetaIntoHtml(
   return html.replace('</head>', `${injection}\n  </head>`);
 }
 
+// ── Per-route CSS injection ───────────────────────────────────────────────────
+// Maps static routes to their lazy-loaded page component's source path.
+// Used to look up page-specific CSS from the ssr-manifest and inject it as
+// a render-blocking stylesheet so each page only loads its own CSS.
+
+const ROUTE_ENTRY_MODULE: Record<string, string> = {
+  '/': 'src/pages/home/Home.tsx',
+  '/pricing': 'src/pages/marketing/pricing/Pricing.tsx',
+  '/sc-pricing': 'src/pages/marketing/scPricing/SCPricing.tsx',
+  '/platform': 'src/pages/platform/Platform.tsx',
+  '/capabilities': 'src/pages/capabilities/CapabilitiesListing.tsx',
+  '/capabilities/learning-management': 'src/pages/lms/LMS.tsx',
+  '/capabilities/workflow-engine': 'src/pages/workflowEngine/WorkflowEngine.tsx',
+  '/solutions': 'src/pages/solutions/SolutionsListing.tsx',
+  '/solutions/support-coordination': 'src/pages/supportCoordination/SupportCoordination.tsx',
+  '/about': 'src/pages/marketing/about/About.tsx',
+  '/humans': 'src/pages/humans/HumansPage.tsx',
+  '/careers': 'src/pages/marketing/careers/Careers.tsx',
+  '/contact-us': 'src/pages/forms/contactInformation/ContactInformation.tsx',
+  '/help-centre': 'src/pages/resources/faq/FAQ.tsx',
+  '/whitepapers': 'src/pages/resources/whitepapers/Whitepapers.tsx',
+  '/brochures': 'src/pages/resources/brochures/Brochures.tsx',
+  '/ndis-glossary': 'src/pages/resources/glossary/NDISGlossary.tsx',
+  '/sitemap': 'src/pages/resources/sitemapPage/SitemapPage.tsx',
+  '/register-support-coordination': 'src/pages/forms/register/Register.tsx',
+  '/blogs': 'src/pages/blog/Blog.tsx',
+  '/privacy-policy': 'src/pages/legal/privacyPolicy/PrivacyPolicy.tsx',
+  '/terms-and-conditions': 'src/pages/legal/termsAndConditions/TermsAndConditions.tsx',
+  '/changelog': 'src/pages/legal/releaseNotes/ReleaseNotes.tsx',
+  '/events': 'src/pages/events/eventsListing/EventsListing.tsx',
+  '/events/adelaide-expo-2026': 'src/pages/events/adelaideExpo2026/AdelaideExpo2026.tsx',
+  '/book-a-demo': 'src/pages/forms/bookADemo/BookADemo.tsx',
+  '/book-a-demo/success': 'src/pages/forms/bookADemo/BookADemoSuccess.tsx',
+  '/signup': 'src/pages/forms/signup/Signup.tsx',
+  '/signup/success': 'src/pages/forms/signup/SignupSuccess.tsx',
+};
+
+function getEntryModuleForPath(routePath: string): string | null {
+  if (ROUTE_ENTRY_MODULE[routePath]) return ROUTE_ENTRY_MODULE[routePath];
+  if (routePath.startsWith('/blog/')) return 'src/pages/blogPost/BlogPostPage.tsx';
+  if (routePath.startsWith('/capabilities/')) return 'src/pages/capabilities/CapabilityPage.tsx';
+  if (routePath.startsWith('/solutions/')) return 'src/pages/solutions/solutionPage/SolutionPage.tsx';
+  if (routePath.startsWith('/tesseract-vs/')) return 'src/pages/competitors/CompetitorPage.tsx';
+  if (routePath.startsWith('/humans/')) return 'src/pages/humans/HumanPage.tsx';
+  if (routePath.startsWith('/whitepapers/')) return 'src/pages/resources/whitepapers/WhitepaperPage.tsx';
+  if (routePath.startsWith('/guides/')) return 'src/pages/resources/guides/GuidePage.tsx';
+  return null;
+}
+
+let ssrManifestCache: Record<string, string[]> | null = null;
+function getSsrManifest(): Record<string, string[]> {
+  if (!ssrManifestCache) {
+    const manifestPath = './dist/.vite/ssr-manifest.json';
+    ssrManifestCache = existsSync(manifestPath)
+      ? JSON.parse(readFileSync(manifestPath, 'utf-8'))
+      : {};
+  }
+  return ssrManifestCache!;
+}
+
+function getPageCssLinks(routePath: string): string {
+  const entryModule = getEntryModuleForPath(routePath);
+  if (!entryModule) return '';
+  const manifest = getSsrManifest();
+  const assets: string[] = manifest[entryModule] ?? [];
+  return assets
+    .filter(a => a.endsWith('.css'))
+    .map(href => `<link rel="stylesheet" crossorigin href="${href}">`)
+    .join('\n    ');
+}
+
 // ── Vite config ──────────────────────────────────────────────────────────────
 
 export default defineConfig({
@@ -503,9 +589,19 @@ export default defineConfig({
       const meta = allMeta[path];
       if (!meta) return indexHTML;
 
-      return injectMetaIntoHtml(indexHTML, path, meta, {
+      let html = injectMetaIntoHtml(indexHTML, path, meta, {
         blogEntry: blogData[path],
       });
+
+      // Inject per-route page CSS as a render-blocking stylesheet.
+      // With lazy-loaded routes, Vite only links the shared app CSS in HTML;
+      // page-specific CSS chunks are discovered here via the ssr-manifest.
+      const pageCssLinks = getPageCssLinks(path);
+      if (pageCssLinks) {
+        html = html.replace('</head>', `    ${pageCssLinks}\n  </head>`);
+      }
+
+      return html;
     },
   },
   plugins: [
@@ -536,7 +632,7 @@ export default defineConfig({
     },
   ],
   build: {
-    cssCodeSplit: false,
+    cssCodeSplit: true,
     sourcemap: false,
     ssrManifest: true,
     chunkSizeWarningLimit: 1000,

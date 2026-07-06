@@ -200,7 +200,7 @@ const Register = () => {
         title="Register for Early Access | NDIS Support Coordination Software - TesseractApps"
         description="Register for early access to TesseractApps Support Coordination and get 3 months free when we launch. Purpose-built for NDIS support coordinators."
         canonical="https://tesseractapps.com.au/register-support-coordination"
-        noIndex={false}
+        noIndex={true}
       />
       <Alert setAlertData={setAlertData} alertData={alertData} />
 
