@@ -113,7 +113,7 @@ const CapabilitiesListing = () => {
             {filtered.map((cap) => (
               <Link
                 key={cap._id}
-                to={`/capabilities/${cap.slug?.current}`}
+                to={`/capabilities/${cap.slug?.current}/`}
                 className="cpl-card"
               >
                 <div className="cpl-card-strip" />
@@ -147,14 +147,14 @@ const CapabilitiesListing = () => {
             <button
               type="button"
               className="primary-cta-white"
-              onClick={() => navigate("/book-a-demo")}
+              onClick={() => navigate("/book-a-demo/")}
             >
               Book a Demo
             </button>
             <button
               type="button"
               className="outline-cta"
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/signup/")}
             >
               Begin Your Journey
             </button>

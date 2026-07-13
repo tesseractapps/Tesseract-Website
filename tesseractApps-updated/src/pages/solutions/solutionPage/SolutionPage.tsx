@@ -153,7 +153,7 @@ const SolutionPage = () => {
   }
 
   if (!page) {
-    return <Navigate to="/not-found" replace />;
+    return <Navigate to="/not-found/" replace />;
   }
 
   const metaTitle =
@@ -396,7 +396,7 @@ const SolutionPage = () => {
               {page.relatedSolutions.map((sol: any) => (
                 <Link
                   key={sol._id}
-                  to={`/solutions/${sol.slug.current}`}
+                  to={`/solutions/${sol.slug.current}/`}
                   className="sol-related-card"
                 >
                   <div className="sol-related-strip" />
@@ -450,14 +450,14 @@ const SolutionPage = () => {
               <button
                 type="button"
                 className="primary-cta-white"
-                onClick={() => navigate("/book-a-demo")}
+                onClick={() => navigate("/book-a-demo/")}
               >
                 Book a Demo
               </button>
               <button
                 type="button"
                 className="outline-cta"
-                onClick={() => navigate("/signup")}
+                onClick={() => navigate("/signup/")}
               >
                 Begin Your Journey
               </button>

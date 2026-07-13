@@ -339,10 +339,10 @@ const WorkflowEngine = () => {
             At deeper maturity stages, TFlow extends that automation across systems.
           </p>
           <div id="we-hero-ctas">
-            <button type="button" className="we-btn-primary" onClick={() => navigate("/book-a-demo")}>
+            <button type="button" className="we-btn-primary" onClick={() => navigate("/book-a-demo/")}>
               Book a Demo
             </button>
-            <button type="button" className="we-btn-secondary" onClick={() => navigate("/signup")}>
+            <button type="button" className="we-btn-secondary" onClick={() => navigate("/signup/")}>
               Begin Your Journey
             </button>
           </div>
@@ -595,10 +595,10 @@ const WorkflowEngine = () => {
               how the Workflow Engine and TFlow, if relevant, maps to your existing processes.
             </p>
             <div id="we-cta-actions">
-              <button type="button" className="we-btn-primary" onClick={() => navigate("/book-a-demo")}>
+              <button type="button" className="we-btn-primary" onClick={() => navigate("/book-a-demo/")}>
                 Book a Demo
               </button>
-              <button type="button" className="we-btn-secondary" onClick={() => navigate("/signup")}>
+              <button type="button" className="we-btn-secondary" onClick={() => navigate("/signup/")}>
                 Begin Your Journey
               </button>
             </div>

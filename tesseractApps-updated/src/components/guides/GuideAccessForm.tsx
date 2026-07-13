@@ -312,7 +312,7 @@ export default function GuideAccessForm({ guideTitle, pdfUrl, isComingSoon, form
 
       <p className="gaf-privacy">
         Your details are safe with us. See our{' '}
-        <a href="/privacy-policy" className="gaf-privacy-link">Privacy Policy</a>.
+        <a href="/privacy-policy/" className="gaf-privacy-link">Privacy Policy</a>.
       </p>
 
       {trustIndicators.length > 0 && (

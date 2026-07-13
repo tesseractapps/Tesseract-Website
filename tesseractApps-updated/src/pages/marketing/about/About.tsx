@@ -199,7 +199,7 @@ const About = () => {
                   );
                   return member.slug?.current ? (
                     <Link
-                      to={`/humans/${member.slug.current}`}
+                      to={`/humans/${member.slug.current}/`}
                       className="about-team-card"
                       key={member._id}
                     >

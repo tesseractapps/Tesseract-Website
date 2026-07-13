@@ -179,6 +179,8 @@ const ReleaseNotes = () => {
       </section>
 
       <div id="cl-outer">
+        <h2 id="cl-section-heading">Product update timeline</h2>
+
         {/* ── Filter Bar ── */}
         <div id="cl-filter-bar">
           <span id="cl-filter-label">Filter by</span>

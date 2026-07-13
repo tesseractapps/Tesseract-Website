@@ -15,7 +15,7 @@ const BlogSection = memo(() => {
             <div className="hv4-section-label">From the Blog</div>
             <h2 className="hv4-section-h2">Insights for NDIS providers.</h2>
           </div>
-          <Link to="/blogs" className="outline-cta-dark">
+          <Link to="/blogs/" className="outline-cta-dark">
             View all articles
           </Link>
         </div>

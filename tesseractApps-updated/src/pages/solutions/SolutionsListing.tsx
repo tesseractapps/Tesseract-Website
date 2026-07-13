@@ -119,7 +119,7 @@ const SolutionsListing = () => {
             {filtered.map((sol) => (
               <Link
                 key={sol._id}
-                to={`/solutions/${sol.slug?.current}`}
+                to={`/solutions/${sol.slug?.current}/`}
                 className="sll-card"
               >
                 <div className="sll-card-strip" />
@@ -155,14 +155,14 @@ const SolutionsListing = () => {
             <button
               type="button"
               className="primary-cta-white"
-              onClick={() => navigate("/book-a-demo")}
+              onClick={() => navigate("/book-a-demo/")}
             >
               Book a Demo
             </button>
             <button
               type="button"
               className="outline-cta"
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/signup/")}
             >
               Begin Your Journey
             </button>

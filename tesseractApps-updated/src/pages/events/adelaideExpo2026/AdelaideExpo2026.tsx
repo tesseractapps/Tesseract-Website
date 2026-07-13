@@ -382,7 +382,7 @@ const AdelaideExpo2026 = () => {
             >
               Register &amp; Enter Prize Draw
             </button>
-            <a href="/book-a-demo" className="outline-cta">
+            <a href="/book-a-demo/" className="outline-cta">
               Book a Demo
             </a>
           </div>

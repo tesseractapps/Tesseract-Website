@@ -94,7 +94,7 @@ const CompetitorPage = () => {
   }
 
   if (!page) {
-    return <Navigate to="/not-found" replace />;
+    return <Navigate to="/not-found/" replace />;
   }
 
   const metaTitle = page.seo?.metaTitle ?? `TesseractApps vs ${page.competitorName} | NDIS Software Comparison`;
@@ -158,11 +158,11 @@ const CompetitorPage = () => {
               </ul>
             )}
             <div className="cmp-hero-actions">
-              <button type="button" className="cmp-btn-primary" onClick={() => { trackCTAClick("book_demo", "competitor_hero", window.location.pathname); navigate("/book-a-demo"); }}>
+              <button type="button" className="cmp-btn-primary" onClick={() => { trackCTAClick("book_demo", "competitor_hero", window.location.pathname); navigate("/book-a-demo/"); }}>
                 Book a Demo
                 <span className="cmp-btn-arrow"><IconArrow /></span>
               </button>
-              <button type="button" className="cmp-btn-ghost" onClick={() => { trackCTAClick("begin_journey", "competitor_hero", window.location.pathname); navigate("/signup"); }}>
+              <button type="button" className="cmp-btn-ghost" onClick={() => { trackCTAClick("begin_journey", "competitor_hero", window.location.pathname); navigate("/signup/"); }}>
                 Begin Your Journey
               </button>
             </div>
@@ -269,7 +269,7 @@ const CompetitorPage = () => {
                   {page.rightChoiceHeading}
                 </div>
               )}
-              <button type="button" className="cmp-btn-primary cmp-btn-primary--green" onClick={() => { trackCTAClick("book_demo", "competitor_bottom", window.location.pathname); navigate("/book-a-demo"); }}>
+              <button type="button" className="cmp-btn-primary cmp-btn-primary--green" onClick={() => { trackCTAClick("book_demo", "competitor_bottom", window.location.pathname); navigate("/book-a-demo/"); }}>
                 See it in action
                 <span className="cmp-btn-arrow"><IconArrow /></span>
               </button>
@@ -318,18 +318,18 @@ const CompetitorPage = () => {
               <p id="cmp-cta-sub">{page.ctaDescription}</p>
             )}
             <div id="cmp-cta-actions">
-              <button type="button" className="cmp-btn-primary" onClick={() => { trackCTAClick("book_demo", "competitor_bottom", window.location.pathname); navigate("/book-a-demo"); }}>
+              <button type="button" className="cmp-btn-primary" onClick={() => { trackCTAClick("book_demo", "competitor_bottom", window.location.pathname); navigate("/book-a-demo/"); }}>
                 Book a Demo
                 <span className="cmp-btn-arrow"><IconArrow /></span>
               </button>
-              <button type="button" className="cmp-btn-outline" onClick={() => { trackCTAClick("begin_journey", "competitor_bottom", window.location.pathname); navigate("/signup"); }}>
+              <button type="button" className="cmp-btn-outline" onClick={() => { trackCTAClick("begin_journey", "competitor_bottom", window.location.pathname); navigate("/signup/"); }}>
                 Begin Your Journey
               </button>
             </div>
             <div id="cmp-cta-links">
-              <Link to="/book-a-demo" className="cmp-cta-link">Book a Provider Maturity Review</Link>
+              <Link to="/book-a-demo/" className="cmp-cta-link">Book a Provider Maturity Review</Link>
               <span className="cmp-cta-divider">·</span>
-              <Link to="/signup" className="cmp-cta-link">Begin Your Journey</Link>
+              <Link to="/signup/" className="cmp-cta-link">Begin Your Journey</Link>
             </div>
           </div>
         </div>

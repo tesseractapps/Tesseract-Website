@@ -172,7 +172,7 @@ const Signup = () => {
           signupConfirmationEmailTemplate.text(formData.firstName),
           signupConfirmationEmailTemplate.html(formData.firstName)
         ).catch((err) => console.error("Confirmation email error:", err));
-        navigate("/signup/success");
+        navigate("/signup/success/");
       })
       .catch((err) => {
         console.error("Submit error:", err);
@@ -190,7 +190,7 @@ const Signup = () => {
   return (
     <div id="signup-page">
       <SEO
-        title="Get Started | TesseractApps NDIS Software"
+        title="Sign Up for NDIS Workforce Software | TesseractApps"
         description="Create your TesseractApps account and start managing your NDIS workforce with ease. Streamline rostering, compliance, and participant management."
         canonical="https://tesseractapps.com.au/signup"
         noIndex={true}
@@ -245,7 +245,7 @@ const Signup = () => {
               </div>
 
               {/* Service Pathway */}
-              <div id="signup-pathway-heading">Your Service Pathway</div>
+              <h2 id="signup-pathway-heading">Your Service Pathway</h2>
               <div id="signup-pathway-subheading">End-to-End Operations Covered</div>
               <ul id="signup-pathway-list">
                 {PATHWAY_STEPS.map((step) => (
@@ -272,7 +272,7 @@ const Signup = () => {
 
             {/* Page heading + Stepper */}
             <div id="signup-stepper-wrapper">
-              <div id="signup-page-heading">Begin Your Journey</div>
+              <h1 id="signup-page-heading">Begin Your Journey</h1>
               <FormStepper
                 steps={["Company Verification", "Personal Details", "Review & Confirm"]}
                 activeStep={activeStep}
@@ -484,9 +484,9 @@ const Signup = () => {
                     />
                     <span>
                       I agree to the{" "}
-                      <a href="/terms-and-Conditions" target="_blank" className="signup-terms-link">Terms of Service</a>
+                      <a href="/terms-and-conditions/" target="_blank" className="signup-terms-link">Terms of Service</a>
                       {" "}and{" "}
-                      <a href="/privacy-policy" target="_blank" className="signup-terms-link">Privacy Policy</a>*
+                      <a href="/privacy-policy/" target="_blank" className="signup-terms-link">Privacy Policy</a>*
                     </span>
                   </label>
                   {formErrors.termsAccepted && (

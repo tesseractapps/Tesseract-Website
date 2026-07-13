@@ -70,7 +70,7 @@ function HumanCard({ human }: { human: HumanDocument }) {
 
   if (human.slug?.current) {
     return (
-      <Link to={`/humans/${human.slug.current}`} className="hmp-card">
+      <Link to={`/humans/${human.slug.current}/`} className="hmp-card">
         {card}
       </Link>
     )
@@ -123,7 +123,7 @@ export default function HumansPage() {
           <p className="hmp-hero-sub">
             We're a team building software for the people who care for people.
           </p>
-          <Link to="/careers" className="hmp-hero-cta">
+          <Link to="/careers/" className="hmp-hero-cta">
             Join the team →
           </Link>
         </div>
@@ -156,7 +156,7 @@ export default function HumansPage() {
       <div className="hmp-join">
         <div className="hmp-join-inner">
           <p className="hmp-join-text">Want to work with this team?</p>
-          <Link to="/careers" className="hmp-join-link">View open roles →</Link>
+          <Link to="/careers/" className="hmp-join-link">View open roles →</Link>
         </div>
       </div>
     </div>

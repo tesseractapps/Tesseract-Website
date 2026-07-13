@@ -64,8 +64,8 @@ const Brochures = () => {
       {/* ── Content ── */}
       <section id="br-content">
         <div id="br-outer">
-          {/* <div id="br-section-label">Available Downloads</div>
-          <h2 id="br-section-heading">Brochure library</h2> */}
+          <div id="br-section-label">Available Downloads</div>
+          <h2 id="br-section-heading">Brochure library</h2>
 
           {/* Loading */}
           {loading && (

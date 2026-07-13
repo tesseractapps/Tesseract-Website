@@ -2,7 +2,7 @@
    GLOBAL FONT
 ───────────────────────────────────────── */
 #about-container {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--color-secondary);
 }
 
@@ -407,7 +407,7 @@ a.about-team-card {
   white-space: nowrap;
   flex-shrink: 0;
   transition: opacity 0.15s, box-shadow 0.15s;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Inter Fallback", sans-serif;
 }
 .about-apply-btn:hover {
   opacity: 0.88;
@@ -600,7 +600,7 @@ a.about-team-card {
   border: none;
   cursor: pointer;
   transition: opacity 0.15s;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Inter Fallback", sans-serif;
   width: fit-content;
   margin-top: auto;
 }

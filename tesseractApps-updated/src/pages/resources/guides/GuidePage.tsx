@@ -51,13 +51,13 @@ export default function GuidePage() {
       <div className="gdp-page">
         <div className="gdp-not-found">
           <h1>Unable to load guide</h1>
-          <p><Link to="/guides" className="gdp-back-link">← Back to guides</Link></p>
+          <p><Link to="/guides/" className="gdp-back-link">← Back to guides</Link></p>
         </div>
       </div>
     )
   }
 
-  if (!guide) return <Navigate to="/not-found" replace />
+  if (!guide) return <Navigate to="/not-found/" replace />
 
   const siteUrl      = 'https://tesseractapps.com.au'
   const pageUrl      = `${siteUrl}/guides/${guide.slug?.current ?? ''}`

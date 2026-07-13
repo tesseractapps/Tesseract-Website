@@ -122,7 +122,7 @@ const AnnouncementBar = () => {
             Support Coordination App Early Access Special: 3 Months Free on a
             12-Month Plan
           </span>
-          <a href="/book-a-demo" className="cd-bar-cta">
+          <a href="/book-a-demo/" className="cd-bar-cta">
             Book a Demo
           </a>
         </div>
@@ -159,7 +159,7 @@ const AnnouncementBar = () => {
             <span className="cd-unit-label">sec</span>
           </div>
         </div>
-        <a href="/register-support-coordination" id="cd-bar-cta">
+        <a href="/register-support-coordination/" id="cd-bar-cta">
           Register now
         </a>
       </div>

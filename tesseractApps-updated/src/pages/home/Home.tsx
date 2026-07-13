@@ -637,7 +637,7 @@ export default function Home() {
                   className="primary-cta"
                   onClick={() => {
                     trackCTAClick("book_demo", "hero", "/");
-                    navigate("/book-a-demo");
+                    navigate("/book-a-demo/");
                   }}
                 >
                   Book a Demo
@@ -647,7 +647,7 @@ export default function Home() {
                   className="outline-cta-dark"
                   onClick={() => {
                     trackCTAClick("begin_journey", "hero", "/");
-                    navigate("/signup");
+                    navigate("/signup/");
                   }}
                 >
                   Begin Your Journey
@@ -669,6 +669,8 @@ export default function Home() {
                 src={dashboardImg}
                 alt="TesseractApps Dashboard"
                 className="hv4-hero-img"
+                width={1819}
+                height={1536}
                 fetchPriority="high"
                 loading="eager"
                 decoding="async"
@@ -760,7 +762,7 @@ export default function Home() {
             </div>
 
             <div className="hv4-maturity-note">
-              <a href="/pricing" className="hv4-text-link">
+              <a href="/pricing/" className="hv4-text-link">
                 See pricing for every stage →
               </a>
             </div>
@@ -814,7 +816,7 @@ export default function Home() {
                 className="primary-cta"
                 onClick={() => {
                   trackCTAClick("book_demo", "start", "/");
-                  navigate("/book-a-demo");
+                  navigate("/book-a-demo/");
                 }}
               >
                 Book a Demo
@@ -824,7 +826,7 @@ export default function Home() {
                 className="outline-cta-dark"
                 onClick={() => {
                   trackCTAClick("begin_journey", "start", "/");
-                  navigate("/signup");
+                  navigate("/signup/");
                 }}
               >
                 Begin Your Journey
@@ -872,7 +874,7 @@ export default function Home() {
                     className="primary-cta"
                     onClick={() => {
                       trackCTAClick("book_demo", "why_now", "/");
-                      navigate("/book-a-demo");
+                      navigate("/book-a-demo/");
                     }}
                   >
                     Book a Demo
@@ -882,7 +884,7 @@ export default function Home() {
                     className="outline-cta-dark"
                     onClick={() => {
                       trackCTAClick("begin_journey", "why_now", "/");
-                      navigate("/signup");
+                      navigate("/signup/");
                     }}
                   >
                     Begin Your Journey
@@ -1000,7 +1002,7 @@ export default function Home() {
             </div>
             <p className="hv4-faq-glossary-link">
               Looking for NDIS terminology? Browse our{" "}
-              <a href="/ndis-glossary">NDIS Glossary — 60+ terms explained</a>.
+              <a href="/ndis-glossary/">NDIS Glossary — 60+ terms explained</a>.
             </p>
           </div>
         </section>
@@ -1033,7 +1035,7 @@ export default function Home() {
                 className="primary-cta-white"
                 onClick={() => {
                   trackCTAClick("book_demo", "footer_cta", "/");
-                  navigate("/book-a-demo");
+                  navigate("/book-a-demo/");
                 }}
               >
                 Book a Demo
@@ -1043,7 +1045,7 @@ export default function Home() {
                 className="outline-cta"
                 onClick={() => {
                   trackCTAClick("begin_journey", "footer_cta", "/");
-                  navigate("/signup");
+                  navigate("/signup/");
                 }}
               >
                 Begin Your Journey

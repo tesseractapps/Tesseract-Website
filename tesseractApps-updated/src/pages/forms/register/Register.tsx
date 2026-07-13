@@ -308,7 +308,7 @@ const Register = () => {
                 </div>
               </div>
 
-              <Link to="/solutions/support-coordination" className="reg-learn-more">
+              <Link to="/solutions/support-coordination/" className="reg-learn-more">
                 Learn more about the platform →
               </Link>
 

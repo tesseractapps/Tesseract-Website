@@ -301,14 +301,14 @@ const ContactInformation = () => {
             <button
               type="button"
               className="primary-cta-white"
-              onClick={() => { trackCTAClick("book_demo", "contact", "/contact-us"); navigate("/book-a-demo"); }}
+              onClick={() => { trackCTAClick("book_demo", "contact", "/contact-us"); navigate("/book-a-demo/"); }}
             >
               Book a Demo
             </button>
             <button
               type="button"
               className="outline-cta"
-              onClick={() => { trackCTAClick("begin_journey", "contact", "/contact-us"); navigate("/signup"); }}
+              onClick={() => { trackCTAClick("begin_journey", "contact", "/contact-us"); navigate("/signup/"); }}
             >
               Begin Your Journey
             </button>

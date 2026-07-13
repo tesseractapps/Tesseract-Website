@@ -171,7 +171,7 @@ const FooterComponent = () => {
             <div key={group} className="footer-link-group">
               <div className="footer-heading">{group}</div>
               {items.map((item) => (
-                <Link key={item.slug} className="footer-text" to={`/capabilities/${item.slug}`}>
+                <Link key={item.slug} className="footer-text" to={`/capabilities/${item.slug}/`}>
                   {item.title}
                 </Link>
               ))}
@@ -185,7 +185,7 @@ const FooterComponent = () => {
             <div key={group} className="footer-link-group">
               <div className="footer-heading">{group}</div>
               {items.map((item) => (
-                <Link key={item.slug} className="footer-text" to={`/capabilities/${item.slug}`}>
+                <Link key={item.slug} className="footer-text" to={`/capabilities/${item.slug}/`}>
                   {item.title}
                 </Link>
               ))}
@@ -200,7 +200,7 @@ const FooterComponent = () => {
               <div key={category} className="footer-link-group">
                 <div className="footer-heading">{category}</div>
                 {items.map((item) => (
-                  <Link key={item.slug} className="footer-text" to={`/solutions/${item.slug}`}>
+                  <Link key={item.slug} className="footer-text" to={`/solutions/${item.slug}/`}>
                     {item.title}
                   </Link>
                 ))}
@@ -212,25 +212,25 @@ const FooterComponent = () => {
         {/* Company */}
         <div className="footer-column">
           <div className="footer-heading">Company</div>
-          <Link className="footer-text" to="/about">About Us</Link>
-          <Link className="footer-text" to="/contact-us">Contact Us</Link>
-          <Link className="footer-text" to="/careers">Careers</Link>
-          <Link className="footer-text" to="/platform">Platform</Link>
-          <Link className="footer-text" to="/terms-and-conditions">Terms &amp; Conditions</Link>
-          <Link className="footer-text" to="/privacy-policy">Privacy Policy</Link>
-          <Link className="footer-text" to="/changelog">Release Notes</Link>
+          <Link className="footer-text" to="/about/">About Us</Link>
+          <Link className="footer-text" to="/contact-us/">Contact Us</Link>
+          <Link className="footer-text" to="/careers/">Careers</Link>
+          <Link className="footer-text" to="/platform/">Platform</Link>
+          <Link className="footer-text" to="/terms-and-conditions/">Terms &amp; Conditions</Link>
+          <Link className="footer-text" to="/privacy-policy/">Privacy Policy</Link>
+          <Link className="footer-text" to="/changelog/">Release Notes</Link>
         </div>
 
         {/* Resources + Support + Get Started */}
         <div className="footer-column">
           <div className="footer-heading">Resources</div>
-          <Link className="footer-text" to="/blogs">Blog</Link>
-          <Link className="footer-text" to="/whitepapers">Whitepapers</Link>
-          <Link className="footer-text" to="/brochures">Brochures</Link>
-          <Link className="footer-text" to="/help-centre">FAQ</Link>
-          <Link className="footer-text" to="/ndis-glossary">NDIS Glossary</Link>
-          <Link className="footer-text" to="/capabilities/learning-management">WYZED Integration</Link>
-<Link className="footer-text" to="/sitemap">Site Map</Link>
+          <Link className="footer-text" to="/blogs/">Blog</Link>
+          <Link className="footer-text" to="/whitepapers/">Whitepapers</Link>
+          <Link className="footer-text" to="/brochures/">Brochures</Link>
+          <Link className="footer-text" to="/help-centre/">FAQ</Link>
+          <Link className="footer-text" to="/ndis-glossary/">NDIS Glossary</Link>
+          <Link className="footer-text" to="/capabilities/learning-management/">WYZED Integration</Link>
+<Link className="footer-text" to="/sitemap/">Site Map</Link>
           <a
             className="footer-text"
             href="/rss.xml"
@@ -241,9 +241,9 @@ const FooterComponent = () => {
           </a>
 
           <div className="footer-heading footer-support-heading">Get Started</div>
-          <Link className="footer-text" to="/signup">Sign Up</Link>
-          <Link className="footer-text" to="/pricing">Pricing</Link>
-          <Link className="footer-text" to="/book-a-demo">Book a Demo</Link>
+          <Link className="footer-text" to="/signup/">Sign Up</Link>
+          <Link className="footer-text" to="/pricing/">Pricing</Link>
+          <Link className="footer-text" to="/book-a-demo/">Book a Demo</Link>
         </div>
       </nav>
 

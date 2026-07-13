@@ -168,7 +168,7 @@ const BookADemo = () => {
     )
       .then(() => {
         confirmationMail();
-        navigate("/book-a-demo/success", { state: { schedule: formData.schedule } });
+        navigate("/book-a-demo/success/", { state: { schedule: formData.schedule } });
       })
       .catch((error) => {
         console.error("Error sending email:", error);
@@ -201,7 +201,7 @@ const BookADemo = () => {
   return (
     <div id="bookADemo-page">
       <SEO
-        title="Book a Demo | TesseractApps NDIS Software"
+        title="Book a Free NDIS Software Demo | TesseractApps"
         description="Book a personalised demo of TesseractApps. See how our platform streamlines rostering, compliance, and participant management for NDIS care providers."
         canonical="https://tesseractapps.com.au/book-a-demo"
         noIndex={true}
@@ -226,7 +226,7 @@ const BookADemo = () => {
               role="button"
             />
             <div id="bookADemo-sidebar-body">
-              <div id="bookADemo-sidebar-heading">Book Your Demo</div>
+              <h1 id="bookADemo-sidebar-heading">Book Your Demo</h1>
               <div id="bookADemo-sidebar-congrats">
                 <div id="bookADemo-sidebar-congrats-title">Congratulations! You're making a great choice.</div>
                 <p id="bookADemo-sidebar-congrats-sub">
@@ -264,7 +264,7 @@ const BookADemo = () => {
 
             {/* Page heading + Stepper */}
             <div id="bookADemo-stepper-wrapper">
-              <div id="bookADemo-page-heading">Book a Demo</div>
+              <h2 id="bookADemo-page-heading">Book a Demo</h2>
               <FormStepper
                 steps={["Organisation", "Staff Size", "Service Type"]}
                 activeStep={currentStep}

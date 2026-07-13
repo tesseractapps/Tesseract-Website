@@ -21,7 +21,7 @@ const GuideSection = memo(() => {
             <div className="hv4-section-label">Free Guides</div>
             <h2 className="hv4-section-h2">Practical tools for NDIS providers.</h2>
           </div>
-          <Link to="/guides" className="outline-cta-dark">
+          <Link to="/guides/" className="outline-cta-dark">
             View all guides
           </Link>
         </div>

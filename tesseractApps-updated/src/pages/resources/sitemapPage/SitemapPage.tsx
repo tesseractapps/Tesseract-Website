@@ -10,44 +10,44 @@ const STATIC_SECTIONS = [
     heading: "Platform",
     links: [
       { label: "Home", href: "/" },
-      { label: "Platform Overview", href: "/platform" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "Book a Demo", href: "/book-a-demo" },
-      { label: "Sign Up", href: "/signup" },
+      { label: "Platform Overview", href: "/platform/" },
+      { label: "Pricing", href: "/pricing/" },
+      { label: "Book a Demo", href: "/book-a-demo/" },
+      { label: "Sign Up", href: "/signup/" },
     ],
   },
   {
     heading: "Solutions",
     links: [
-      { label: "All Solutions", href: "/solutions" },
-      { label: "NDIS Disability Support", href: "/solutions/ndis" },
-      { label: "Support Coordination", href: "/solutions/support-coordination" },
+      { label: "All Solutions", href: "/solutions/" },
+      { label: "NDIS Disability Support", href: "/solutions/ndis/" },
+      { label: "Support Coordination", href: "/solutions/support-coordination/" },
     ],
   },
   {
     heading: "Resources",
     links: [
-      { label: "Blog", href: "/blogs" },
-      { label: "Whitepapers", href: "/whitepapers" },
-      { label: "NDIS Glossary", href: "/ndis-glossary" },
-      { label: "Help Centre / FAQ", href: "/help-centre" },
-      { label: "Release Notes", href: "/changelog" },
-      { label: "Brochures", href: "/brochures" },
+      { label: "Blog", href: "/blogs/" },
+      { label: "Whitepapers", href: "/whitepapers/" },
+      { label: "NDIS Glossary", href: "/ndis-glossary/" },
+      { label: "Help Centre / FAQ", href: "/help-centre/" },
+      { label: "Release Notes", href: "/changelog/" },
+      { label: "Brochures", href: "/brochures/" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "About Us", href: "/about" },
-      { label: "Careers", href: "/careers" },
-      { label: "Contact Us", href: "/contact-us" },
+      { label: "About Us", href: "/about/" },
+      { label: "Careers", href: "/careers/" },
+      { label: "Contact Us", href: "/contact-us/" },
     ],
   },
   {
     heading: "Legal",
     links: [
-      { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "Terms & Conditions", href: "/terms-and-conditions" },
+      { label: "Privacy Policy", href: "/privacy-policy/" },
+      { label: "Terms & Conditions", href: "/terms-and-conditions/" },
     ],
   },
 ];
@@ -60,7 +60,7 @@ const SitemapPage = () => {
   return (
     <div id="smp-page">
       <SEO
-        title="Site Map | TesseractApps"
+        title="Site Map of NDIS Software Pages & Resources | TesseractApps"
         description="A full index of all pages on TesseractApps — capabilities, solutions, blog posts, resources, and company pages."
         canonical="https://tesseractapps.com.au/sitemap"
         noIndex={false}
@@ -96,11 +96,11 @@ const SitemapPage = () => {
               <h2 className="smp-section-heading">Capabilities</h2>
               <ul className="smp-list">
                 <li className="smp-item">
-                  <Link to="/capabilities" className="smp-link">All Capabilities</Link>
+                  <Link to="/capabilities/" className="smp-link">All Capabilities</Link>
                 </li>
                 {capLinks.map((cap) => (
                   <li key={cap._id} className="smp-item">
-                    <Link to={`/capabilities/${cap.slug?.current}`} className="smp-link">
+                    <Link to={`/capabilities/${cap.slug?.current}/`} className="smp-link">
                       {cap.title}
                     </Link>
                   </li>
@@ -115,11 +115,11 @@ const SitemapPage = () => {
               <h2 className="smp-section-heading">Solutions</h2>
               <ul className="smp-list">
                 <li className="smp-item">
-                  <Link to="/solutions" className="smp-link">All Solutions</Link>
+                  <Link to="/solutions/" className="smp-link">All Solutions</Link>
                 </li>
                 {solLinks.map((sol) => (
                   <li key={sol._id} className="smp-item">
-                    <Link to={`/solutions/${sol.slug?.current}`} className="smp-link">
+                    <Link to={`/solutions/${sol.slug?.current}/`} className="smp-link">
                       {sol.title}
                     </Link>
                   </li>
@@ -137,7 +137,7 @@ const SitemapPage = () => {
                   .filter((p) => p.slug?.current)
                   .map((post) => (
                     <li key={post._id} className="smp-item">
-                      <Link to={`/blog/${post.slug!.current}`} className="smp-link">
+                      <Link to={`/blog/${post.slug!.current}/`} className="smp-link">
                         {post.title}
                       </Link>
                     </li>

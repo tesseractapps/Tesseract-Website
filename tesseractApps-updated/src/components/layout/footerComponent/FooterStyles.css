@@ -216,7 +216,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.6); /* raised from 0.45 to meet 4.5:1 on navy */
   margin-bottom: 16px;
 }
 
@@ -261,7 +261,7 @@ a.footer-text {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.6); /* raised from 0.35 to meet 4.5:1 on navy */
   margin-bottom: 10px;
 }
 
@@ -300,6 +300,7 @@ a.footer-text {
 #footer-acknowledgment {
   flex: 1;
   min-width: 280px;
+  color: rgba(255, 255, 255, 0.6); /* meet 4.5:1 on navy */
 }
 
 #footer-bottom-images {

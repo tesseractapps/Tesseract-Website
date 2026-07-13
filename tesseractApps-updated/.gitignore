@@ -35,5 +35,7 @@ stats.html
 # src/assets/thumbs/
 temp
 /discarded
+docs/
 .env
 .env.local
+/.vite-react-ssg-temp

@@ -95,7 +95,7 @@ const CapabilityPage = () => {
   }
 
   if (!page) {
-    return <Navigate to="/not-found" replace />;
+    return <Navigate to="/not-found/" replace />;
   }
 
   const metaTitle = page.seo?.metaTitle ?? `${page.heroHeading} | TesseractApps`;
@@ -301,7 +301,7 @@ const CapabilityPage = () => {
               {page.relatedCapabilities.map((cap) => (
                 <Link
                   key={cap._id}
-                  to={`/capabilities/${cap.slug?.current}`}
+                  to={`/capabilities/${cap.slug?.current}/`}
                   className="cap-related-card"
                 >
                   <div className="cap-related-strip" />
@@ -352,14 +352,14 @@ const CapabilityPage = () => {
             <button
               type="button"
               className="primary-cta-white"
-              onClick={() => navigate("/book-a-demo")}
+              onClick={() => navigate("/book-a-demo/")}
             >
               Book a Demo
             </button>
             <button
               type="button"
               className="outline-cta"
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/signup/")}
             >
               Begin Your Journey
             </button>

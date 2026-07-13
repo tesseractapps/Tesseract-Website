@@ -521,7 +521,7 @@ const Pricing = () => {
               className="primary-cta"
               onClick={() => {
                 trackCTAClick("book_demo", "pricing", "/pricing");
-                navigate("/book-a-demo");
+                navigate("/book-a-demo/");
               }}
             >
               Book a Demo
@@ -531,7 +531,7 @@ const Pricing = () => {
               className="secondary-cta"
               onClick={() => {
                 trackCTAClick("begin_journey", "pricing", "/pricing");
-                navigate("/signup");
+                navigate("/signup/");
               }}
             >
               Begin Your Journey
@@ -689,7 +689,7 @@ const Pricing = () => {
                   className="primary-cta"
                   onClick={() => {
                     trackCTAClick("book_demo", "pricing", "/pricing");
-                    navigate("/book-a-demo");
+                    navigate("/book-a-demo/");
                   }}
                 >
                   Book a Demo
@@ -699,7 +699,7 @@ const Pricing = () => {
                   className="outline-cta-dark"
                   onClick={() => {
                     trackCTAClick("begin_journey", "pricing", "/pricing");
-                    navigate("/signup");
+                    navigate("/signup/");
                   }}
                 >
                   Begin Your Journey
@@ -729,7 +729,7 @@ const Pricing = () => {
               <FlipCard
                 key={stage.id}
                 stage={stage}
-                onCtaClick={() => navigate("/book-a-demo")}
+                onCtaClick={() => navigate("/book-a-demo/")}
               />
             ))}
           </div>
@@ -971,7 +971,7 @@ const Pricing = () => {
                 className="primary-cta"
                 onClick={() => {
                   trackCTAClick("book_demo", "pricing", "/pricing");
-                  navigate("/book-a-demo");
+                  navigate("/book-a-demo/");
                 }}
               >
                 Book a Demo
@@ -981,7 +981,7 @@ const Pricing = () => {
                 className="outline-cta"
                 onClick={() => {
                   trackCTAClick("begin_journey", "pricing", "/pricing");
-                  navigate("/signup");
+                  navigate("/signup/");
                 }}
               >
                 Begin Your Journey

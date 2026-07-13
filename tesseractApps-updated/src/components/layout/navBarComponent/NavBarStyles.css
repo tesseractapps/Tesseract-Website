@@ -24,7 +24,7 @@
   width: 100%;
   max-width: 1920px;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Inter Fallback", sans-serif;
   transition: box-shadow 0.2s ease;
 }
 #navbar-container * { font-family: inherit; }
@@ -445,7 +445,7 @@
   border: none;
   background: transparent;
   font-size: 15px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Inter Fallback", sans-serif;
   color: var(--color-secondary);
   outline: none;
   min-width: 0;
@@ -479,7 +479,7 @@
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Inter Fallback", sans-serif;
   color: var(--color-text-gray);
   white-space: nowrap;
   padding: 6px 4px;
@@ -524,7 +524,7 @@
 }
 
 .search-popup-chip {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Inter Fallback", sans-serif;
   font-size: 13px;
   font-weight: 500;
   padding: 6px 14px;
@@ -552,7 +552,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Inter Fallback", sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: var(--color-text-gray2);
@@ -582,7 +582,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Inter Fallback", sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: var(--color-secondary);
@@ -810,7 +810,7 @@
     cursor: pointer;
     border: none;
     transition: opacity 0.15s;
-    font-family: "Inter", sans-serif;
+    font-family: "Inter", "Inter Fallback", sans-serif;
   }
   .nav-auth-btn:hover { opacity: 0.85; }
   .nav-auth-btn--primary {

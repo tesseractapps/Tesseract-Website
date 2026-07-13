@@ -11,7 +11,7 @@ import { useAppContext } from "../contexts/AppContext";
 // Lazy-loaded page components — each becomes its own JS/CSS chunk.
 // vite-react-ssg's SSR bundle includes all modules synchronously, so lazy()
 // resolves immediately during pre-rendering and SSG output is unaffected.
-const Home = lazy(() => import("../pages/home/Home"));
+import Home from "../pages/home/Home";
 const Platform = lazy(() => import("../pages/platform/Platform"));
 const Pricing = lazy(() => import("../pages/marketing/pricing/Pricing"));
 const FAQ = lazy(() => import("../pages/resources/faq/FAQ"));

@@ -55,7 +55,7 @@ function AuthorRow({ authors }: { authors: PostAuthor[] }) {
           <span key={a._id}>
             {i > 0 && (i === authors.length - 1 ? ' & ' : ', ')}
             {a.slug?.current ? (
-              <Link to={`/humans/${a.slug.current}`} className="bpp-authors-name-link">
+              <Link to={`/humans/${a.slug.current}/`} className="bpp-authors-name-link">
                 {a.name?.split(' ')[0]}
               </Link>
             ) : (
@@ -168,13 +168,13 @@ export default function BlogPostPage() {
       <div className="bpp-page">
         <div className="bpp-not-found">
           <h1>Can&apos;t load blog</h1>
-          <p>Error loading blog. <Link to="/blogs" className="bpp-back-link">Back to blog</Link></p>
+          <p>Error loading blog. <Link to="/blogs/" className="bpp-back-link">Back to blog</Link></p>
         </div>
       </div>
     )
   }
 
-  if (!post) return <Navigate to="/not-found" replace />
+  if (!post) return <Navigate to="/not-found/" replace />
 
   const seo     = post.seo
   const siteUrl = 'https://tesseractapps.com.au'
@@ -345,7 +345,7 @@ export default function BlogPostPage() {
 
             {/* Back link */}
             <div className="bpp-back">
-              <Link to="/blogs" className="bpp-back-link">← Back to all posts</Link>
+              <Link to="/blogs/" className="bpp-back-link">← Back to all posts</Link>
             </div>
           </div>
 
@@ -376,7 +376,7 @@ export default function BlogPostPage() {
                       <div className="bpp-sidebar-author-info">
                         {a.slug?.current ? (
                           <Link
-                            to={`/humans/${a.slug.current}`}
+                            to={`/humans/${a.slug.current}/`}
                             className="bpp-sidebar-author-name bpp-sidebar-author-name--link"
                           >
                             {a.name}
@@ -435,7 +435,7 @@ export default function BlogPostPage() {
                 <ul className="bpp-sidebar-more-list">
                   {suggestedPosts.map(p => (
                     <li key={p._id} className="bpp-sidebar-more-item">
-                      <Link to={`/blog/${p.slug!.current}`} className="bpp-sidebar-more-link">
+                      <Link to={`/blog/${p.slug!.current}/`} className="bpp-sidebar-more-link">
                         {p.mainImage?.asset && (
                           <img
                             src={urlFor(p.mainImage).width(56).height(56).fit('crop').auto('format').url()}
@@ -465,7 +465,7 @@ export default function BlogPostPage() {
               <p className="bpp-sidebar-cta-text">
                 See how TesseractApps streamlines NDIS compliance and workforce management.
               </p>
-              <Link to="/book-a-demo" className="bpp-sidebar-cta-btn">Book a Demo</Link>
+              <Link to="/book-a-demo/" className="bpp-sidebar-cta-btn">Book a Demo</Link>
             </div>
           </aside>
         </div>

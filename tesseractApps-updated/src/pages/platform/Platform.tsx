@@ -186,14 +186,14 @@ const Platform = () => {
             <button
               type="button"
               className="primary-cta"
-              onClick={() => { trackCTAClick("book_demo", "platform_hero", "/platform"); navigate("/book-a-demo"); }}
+              onClick={() => { trackCTAClick("book_demo", "platform_hero", "/platform"); navigate("/book-a-demo/"); }}
             >
               Book a Demo
             </button>
             <button
               type="button"
               className="outline-cta"
-              onClick={() => { trackCTAClick("begin_journey", "platform_hero", "/platform"); navigate("/signup"); }}
+              onClick={() => { trackCTAClick("begin_journey", "platform_hero", "/platform"); navigate("/signup/"); }}
             >
               Begin Your Journey
             </button>
@@ -445,14 +445,14 @@ const Platform = () => {
             <button
               type="button"
               className="primary-cta-white"
-              onClick={() => { trackCTAClick("book_demo", "platform_bottom", "/platform"); navigate("/book-a-demo"); }}
+              onClick={() => { trackCTAClick("book_demo", "platform_bottom", "/platform"); navigate("/book-a-demo/"); }}
             >
               Book a Demo
             </button>
             <button
               type="button"
               className="outline-cta"
-              onClick={() => { trackCTAClick("begin_journey", "platform_bottom", "/platform"); navigate("/signup"); }}
+              onClick={() => { trackCTAClick("begin_journey", "platform_bottom", "/platform"); navigate("/signup/"); }}
             >
               Begin Your Journey
             </button>

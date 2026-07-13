@@ -52,6 +52,20 @@ const upsertLink = (rel: string, attrs: Record<string, string>) => {
     el.setAttribute(SEO_MANAGED_ATTR, "true");
 };
 
+const upsertAlternate = (hreflang: string, href: string) => {
+    const head = document.head;
+    const selector = `link[rel="alternate"][hreflang="${hreflang}"]`;
+    let el = head.querySelector(selector) as HTMLLinkElement | null;
+    if (!el) {
+        el = document.createElement("link");
+        el.setAttribute("rel", "alternate");
+        el.setAttribute("hreflang", hreflang);
+        head.appendChild(el);
+    }
+    el.setAttribute("href", href);
+    el.setAttribute(SEO_MANAGED_ATTR, "true");
+};
+
 const clearManagedScripts = () => {
     document
         .querySelectorAll(`script[type="application/ld+json"][${SEO_MANAGED_ATTR}="true"]`)
@@ -113,6 +127,10 @@ const SEO = ({
             content: noIndex ? "noindex, nofollow" : "index, follow",
         });
         upsertLink("canonical", { href: canonicalUrl });
+
+        // Self-referencing hreflang annotation (single-language en-AU site).
+        upsertAlternate("en-au", canonicalUrl);
+        upsertAlternate("x-default", canonicalUrl);
 
         upsertMeta('meta[property="og:type"]', { property: "og:type", content: type });
         upsertMeta('meta[property="og:url"]', { property: "og:url", content: currentUrl });

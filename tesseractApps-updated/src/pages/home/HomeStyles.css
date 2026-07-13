@@ -3,7 +3,7 @@
 
 /* ── Reset & base ──────────────────────────────────────────────────────────── */
 #hv4-page {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--color-text-body, #374151);
   background: #ffffff;
   scroll-behavior: smooth;
@@ -37,7 +37,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-primary, #0c78ba);
+  color: #0a68a0; /* darkened from brand #0c78ba to meet 4.5:1 on tinted section bg */
   background: rgba(12, 120, 186, 0.08);
   padding: 5px 12px;
   border-radius: 100px;
@@ -122,7 +122,9 @@
 .hv4-mesh-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  /* The radial gradients already fade to transparent, so the expensive
+     filter: blur(80px) added negligible visual softening but was costly to
+     rasterize (delaying the hero paint / LCP under CPU throttling). */
   opacity: 0.5;
 }
 .hv4-mesh-orb--1 {
@@ -264,6 +266,8 @@
 .hv4-hero-img {
   width: 100%;
   max-width: 560px;
+  height: auto;
+  aspect-ratio: 1819 / 1536;
   border-radius: 12px;
   /* box-shadow: 0 8px 40px rgba(8, 36, 66, 0.14); */
   display: block;
@@ -783,15 +787,26 @@
   flex-wrap: wrap;
 }
 .hv4-flow-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
+  /* 24x24 hit area (WCAG 2.5.8 target-size) with a small visual dot inside */
+  min-width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: background 0.18s, width 0.18s;
 }
-.hv4-flow-dot--active {
+.hv4-flow-dot::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transition: background 0.18s, width 0.18s, border-radius 0.18s;
+}
+.hv4-flow-dot--active::before {
   background: var(--color-primary, #0c78ba);
   width: 20px;
   border-radius: 3px;
@@ -1107,6 +1122,10 @@
   border: 1.5px solid rgba(0, 42, 82, 0.09);
   border-radius: 16px;
   padding: 24px 22px 20px;
+  /* Reserve the loaded-card height so the skeleton→content swap (Sanity loads
+     client-side) does not resize the grid and shift the footer (CLS). Skeleton
+     below uses the same value. */
+  min-height: 210px;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   position: relative;
@@ -1171,7 +1190,7 @@
 }
 .hv4-cap-card:hover .hv4-cap-link { gap: 8px; }
 .hv4-cap-card--skeleton {
-  height: 140px;
+  height: 210px; /* match .hv4-cap-card min-height so skeleton→content causes no shift */
   background: #e8edf3;
   cursor: default;
   pointer-events: none;

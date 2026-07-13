@@ -90,6 +90,7 @@ const Blog = () => {
       />
 
       <div className="bl-outer">
+        <h2 className="bl-section-heading">Latest articles</h2>
         <div className="bl-filters">
           {categories.map((cat) => (
             <button
@@ -146,7 +147,7 @@ const Blog = () => {
           <section className="bl-cross-section">
             <div className="bl-cross-header">
               <h2 className="bl-cross-heading">Free Guides</h2>
-              <Link to="/guides" className="bl-cross-link">View all guides →</Link>
+              <Link to="/guides/" className="bl-cross-link">View all guides →</Link>
             </div>
             <div className="gd-grid">
               {guides.filter(g => g.status === 'published').slice(0, 3).map(g => (
@@ -161,7 +162,7 @@ const Blog = () => {
           <section className="bl-cross-section">
             <div className="bl-cross-header">
               <h2 className="bl-cross-heading">Whitepapers &amp; Research</h2>
-              <Link to="/whitepapers" className="bl-cross-link">View all whitepapers →</Link>
+              <Link to="/whitepapers/" className="bl-cross-link">View all whitepapers →</Link>
             </div>
             <div className="gd-grid">
               {whitepapers.slice(0, 3).map(wp => (

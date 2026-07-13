@@ -478,7 +478,7 @@
     background 0.2s ease,
     transform 0.15s ease;
   margin-top: 4px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Inter Fallback", sans-serif;
 }
 
 #expo-submit-btn:hover:not(:disabled) {

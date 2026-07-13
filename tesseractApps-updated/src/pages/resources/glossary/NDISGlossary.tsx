@@ -82,6 +82,7 @@ const NDISGlossary = () => {
       {/* ── Term list ── */}
       <main id="gloss-main">
         <div id="gloss-inner">
+          <h2 id="gloss-list-heading">A–Z of NDIS terms</h2>
           {filtered.length === 0 ? (
             <p id="gloss-empty">No terms match your search. Try a different keyword.</p>
           ) : (
@@ -103,65 +104,65 @@ const NDISGlossary = () => {
               <div className="gloss-link-group">
                 <p className="gloss-link-group-heading">Workforce</p>
                 <ul className="gloss-link-list">
-                  <li><Link to="/capabilities/rostering-scheduling">Rostering &amp; Scheduling</Link></li>
-                  <li><Link to="/capabilities/timesheets-payroll-alignment">Timesheets &amp; Payroll Alignment</Link></li>
-                  <li><Link to="/capabilities/workforce-management">Workforce Management</Link></li>
-                  <li><Link to="/capabilities/clock-in-out">Clock In / Out</Link></li>
-                  <li><Link to="/capabilities/staff-self-service-portal">Staff Self-Service Portal</Link></li>
+                  <li><Link to="/capabilities/rostering-scheduling/">Rostering &amp; Scheduling</Link></li>
+                  <li><Link to="/capabilities/timesheets-payroll-alignment/">Timesheets &amp; Payroll Alignment</Link></li>
+                  <li><Link to="/capabilities/workforce-management/">Workforce Management</Link></li>
+                  <li><Link to="/capabilities/clock-in-out/">Clock In / Out</Link></li>
+                  <li><Link to="/capabilities/staff-self-service-portal/">Staff Self-Service Portal</Link></li>
                 </ul>
               </div>
 
               <div className="gloss-link-group">
                 <p className="gloss-link-group-heading">Participant &amp; Care</p>
                 <ul className="gloss-link-list">
-                  <li><Link to="/capabilities/participant-management">Participant Management</Link></li>
-                  <li><Link to="/capabilities/incidents-management-reporting">Incident Management &amp; Reporting</Link></li>
-                  <li><Link to="/capabilities/compliance-audit-readiness">Compliance &amp; Audit Readiness</Link></li>
-                  <li><Link to="/capabilities/voice-notes">Voice Notes</Link></li>
-                  <li><Link to="/capabilities/chat">Secure Messaging (ChaT)</Link></li>
-                  <li><Link to="/capabilities/t-sign-digital-signatures">Digital Signatures (T-Sign)</Link></li>
+                  <li><Link to="/capabilities/participant-management/">Participant Management</Link></li>
+                  <li><Link to="/capabilities/incidents-management-reporting/">Incident Management &amp; Reporting</Link></li>
+                  <li><Link to="/capabilities/compliance-audit-readiness/">Compliance &amp; Audit Readiness</Link></li>
+                  <li><Link to="/capabilities/voice-notes/">Voice Notes</Link></li>
+                  <li><Link to="/capabilities/chat/">Secure Messaging (ChaT)</Link></li>
+                  <li><Link to="/capabilities/t-sign-digital-signatures/">Digital Signatures (T-Sign)</Link></li>
                 </ul>
               </div>
 
               <div className="gloss-link-group">
                 <p className="gloss-link-group-heading">Finance</p>
                 <ul className="gloss-link-list">
-                  <li><Link to="/capabilities/ndis-claiming-invoicing">NDIS Claiming &amp; Invoicing</Link></li>
-                  <li><Link to="/capabilities/accounting-financial-reporting">Accounting &amp; Financial Reporting</Link></li>
-                  <li><Link to="/capabilities/xero-integration">Xero Integration</Link></li>
-                  <li><Link to="/capabilities/quote-generator">Quote Generator</Link></li>
+                  <li><Link to="/capabilities/ndis-claiming-invoicing/">NDIS Claiming &amp; Invoicing</Link></li>
+                  <li><Link to="/capabilities/accounting-financial-reporting/">Accounting &amp; Financial Reporting</Link></li>
+                  <li><Link to="/capabilities/xero-integration/">Xero Integration</Link></li>
+                  <li><Link to="/capabilities/quote-generator/">Quote Generator</Link></li>
                 </ul>
               </div>
 
               <div className="gloss-link-group">
                 <p className="gloss-link-group-heading">Solutions by Care Type</p>
                 <ul className="gloss-link-list">
-                  <li><Link to="/solutions/ndis">Disability Support (NDIS)</Link></li>
-                  <li><Link to="/solutions/support-coordination">Support Coordination</Link></li>
-                  <li><Link to="/solutions/sil">Supported Independent Living (SIL)</Link></li>
-                  <li><Link to="/solutions/allied-health-services">Allied Health Services</Link></li>
+                  <li><Link to="/solutions/ndis/">Disability Support (NDIS)</Link></li>
+                  <li><Link to="/solutions/support-coordination/">Support Coordination</Link></li>
+                  <li><Link to="/solutions/sil/">Supported Independent Living (SIL)</Link></li>
+                  <li><Link to="/solutions/allied-health-services/">Allied Health Services</Link></li>
                 </ul>
               </div>
 
               <div className="gloss-link-group">
                 <p className="gloss-link-group-heading">Solutions by Role</p>
                 <ul className="gloss-link-list">
-                  <li><Link to="/solutions/operations-manager">Operations Manager</Link></li>
-                  <li><Link to="/solutions/compliance-lead">Compliance Lead</Link></li>
-                  <li><Link to="/solutions/finance-manager">Finance Manager</Link></li>
-                  <li><Link to="/solutions/support-worker">Support Worker</Link></li>
+                  <li><Link to="/solutions/operations-manager/">Operations Manager</Link></li>
+                  <li><Link to="/solutions/compliance-lead/">Compliance Lead</Link></li>
+                  <li><Link to="/solutions/finance-manager/">Finance Manager</Link></li>
+                  <li><Link to="/solutions/support-worker/">Support Worker</Link></li>
                 </ul>
               </div>
 
               <div className="gloss-link-group">
                 <p className="gloss-link-group-heading">Resources &amp; Pricing</p>
                 <ul className="gloss-link-list">
-                  <li><Link to="/pricing">NDIS Software Pricing</Link></li>
-                  <li><Link to="/sc-pricing">Support Coordination Pricing</Link></li>
-                  <li><Link to="/blogs">Blog</Link></li>
-                  <li><Link to="/whitepapers">Whitepapers</Link></li>
-                  <li><Link to="/brochures">Brochures</Link></li>
-                  <li><Link to="/help-centre">Help Centre</Link></li>
+                  <li><Link to="/pricing/">NDIS Software Pricing</Link></li>
+                  <li><Link to="/sc-pricing/">Support Coordination Pricing</Link></li>
+                  <li><Link to="/blogs/">Blog</Link></li>
+                  <li><Link to="/whitepapers/">Whitepapers</Link></li>
+                  <li><Link to="/brochures/">Brochures</Link></li>
+                  <li><Link to="/help-centre/">Help Centre</Link></li>
                 </ul>
               </div>
 
@@ -176,8 +177,8 @@ const NDISGlossary = () => {
               participant management, claiming, and workforce management on one platform.
             </p>
             <div id="gloss-cta-actions">
-              <Link to="/book-a-demo" className="gloss-btn-primary">Book a Demo</Link>
-              <Link to="/solutions/ndis" className="gloss-btn-outline">NDIS Provider Software</Link>
+              <Link to="/book-a-demo/" className="gloss-btn-primary">Book a Demo</Link>
+              <Link to="/solutions/ndis/" className="gloss-btn-outline">NDIS Provider Software</Link>
             </div>
           </div>
         </div>

@@ -239,7 +239,7 @@ const LMS = () => {
     <div id="lms-page">
       <SEO
         title="Learning Management | TesseractApps"
-        description="WYZED integrated directly into TesseractApps. Role-based learning pathways, compliance tracking, and 86+ NDIS-mapped modules connected to the roster, the role, and the worker profile."
+        description="Role-based learning pathways with 86+ NDIS-mapped modules. Track compliance training, certifications, and worker development connected to the roster."
       />
 
       {/* ── Hero ── */}
@@ -273,14 +273,14 @@ const LMS = () => {
             <button
               type="button"
               className="lms-btn-primary"
-              onClick={() => navigate("/book-a-demo")}
+              onClick={() => navigate("/book-a-demo/")}
             >
               Book a Demo
             </button>
             <button
               type="button"
               className="lms-btn-secondary"
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/signup/")}
             >
               Begin Your Journey
             </button>
@@ -516,14 +516,14 @@ const LMS = () => {
               <button
                 type="button"
                 className="lms-btn-primary"
-                onClick={() => navigate("/book-a-demo")}
+                onClick={() => navigate("/book-a-demo/")}
               >
                 Book a Demo
               </button>
               <button
                 type="button"
                 className="lms-btn-secondary"
-                onClick={() => navigate("/signup")}
+                onClick={() => navigate("/signup/")}
               >
                 Begin Your Journey
               </button>

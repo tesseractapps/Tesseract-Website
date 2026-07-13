@@ -2,7 +2,7 @@
    SC PRICING PAGE  —  scp-* namespace
 ───────────────────────────────────────── */
 #scp-page {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Inter Fallback", sans-serif;
   color: var(--color-secondary);
 }
 

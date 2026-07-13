@@ -59,7 +59,7 @@ export default function HumanPage() {
   const [filter, setFilter] = useState<FilterType>('All')
 
   if (loading) return <HumanPageSkeleton />
-  if (error || !human) return <Navigate to="/about" replace />
+  if (error || !human) return <Navigate to="/about/" replace />
 
   const pageUrl = `${SITE_URL}/humans/${slug}`
   const photoUrl = human.photo?.asset

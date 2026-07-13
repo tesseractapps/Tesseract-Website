@@ -65,7 +65,7 @@ const PromoModal = () => {
 
   const handleCTA = () => {
     setState("hidden");
-    navigate("/events/eofy-discount");
+    navigate("/events/eofy-discount/");
   };
 
   return (

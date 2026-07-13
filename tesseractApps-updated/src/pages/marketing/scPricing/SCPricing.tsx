@@ -533,7 +533,7 @@ const SCPricing = () => {
                   "sc_pricing_hero_demo",
                   "/sc-pricing",
                 );
-                navigate("/book-a-demo");
+                navigate("/book-a-demo/");
               }}
             >
               Book a Demo
@@ -541,7 +541,7 @@ const SCPricing = () => {
             <button
               type="button"
               className="scp-btn-hero-outline"
-              onClick={() => navigate("/solutions/support-coordination")}
+              onClick={() => navigate("/solutions/support-coordination/")}
             >
               Learn More
             </button>
@@ -639,7 +639,7 @@ const SCPricing = () => {
                   <div className="scp-price-addon-row">
                     <span className="scp-price-addon-label">
                       E-signature{" "}
-                      <a href="/capabilities/t-sign-digital-signatures">
+                      <a href="/capabilities/t-sign-digital-signatures/">
                         (T-Sign)
                       </a>{" "}
                       $10 per seat/month
@@ -684,7 +684,7 @@ const SCPricing = () => {
                         "sc_pricing_card",
                         "/sc-pricing",
                       );
-                      navigate("/book-a-demo");
+                      navigate("/book-a-demo/");
                     }}
                   >
                     Book a Demo

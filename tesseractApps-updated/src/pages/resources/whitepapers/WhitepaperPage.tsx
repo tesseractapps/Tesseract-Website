@@ -43,7 +43,7 @@ function AuthorRow({ authors }: { authors: WhitepaperAuthor[] }) {
           <span key={a._id}>
             {i > 0 && (i === authors.length - 1 ? ' & ' : ', ')}
             {a.slug?.current ? (
-              <Link to={`/humans/${a.slug.current}`} className="wpp-author-name-link">
+              <Link to={`/humans/${a.slug.current}/`} className="wpp-author-name-link">
                 {a.name?.split(' ')[0]}
               </Link>
             ) : (
@@ -131,13 +131,13 @@ export default function WhitepaperPage() {
       <div className="wpp-page">
         <div className="wpp-not-found">
           <h1>Unable to load whitepaper</h1>
-          <p><Link to="/whitepapers" className="wpp-back-link">← Back to whitepapers</Link></p>
+          <p><Link to="/whitepapers/" className="wpp-back-link">← Back to whitepapers</Link></p>
         </div>
       </div>
     )
   }
 
-  if (!whitepaper) return <Navigate to="/not-found" replace />
+  if (!whitepaper) return <Navigate to="/not-found/" replace />
 
   const siteUrl      = 'https://tesseractapps.com.au'
   const pageUrl      = `${siteUrl}/whitepapers/${whitepaper.slug?.current ?? ''}`

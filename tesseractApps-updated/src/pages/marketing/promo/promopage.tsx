@@ -100,7 +100,7 @@ const promopage = () => {
                   "end_of_year_discount",
                   "/events/eofy-discount",
                 );
-                navigate("/book-a-demo");
+                navigate("/book-a-demo/");
               }}
             >
               Book a Demo - Claim 50% Off
@@ -193,7 +193,7 @@ const promopage = () => {
                         "sc_pricing_card",
                         "/sc-pricing",
                       );
-                      navigate("/book-a-demo");
+                      navigate("/book-a-demo/");
                     }}
                   >
                     Book a Demo - Claim 50% Off
@@ -226,7 +226,7 @@ const promopage = () => {
           </div>
         </div>
       </section>
-      <div className="eofy-terms-link" onClick={() => navigate("/promo-terms")}>
+      <div className="eofy-terms-link" onClick={() => navigate("/promo-terms/")}>
         TesseractApps End of Financial Year Promotion Terms
       </div>
     </div>

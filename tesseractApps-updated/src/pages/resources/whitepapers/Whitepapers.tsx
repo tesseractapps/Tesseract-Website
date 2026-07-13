@@ -49,6 +49,7 @@ const Whitepapers = () => {
       />
 
       <div className="wl-outer">
+        <h2 className="wl-section-heading">Whitepaper library</h2>
         {loading && (
           <div className="wl-grid">
             {[0, 1, 2, 3, 4, 5].map((i) => (

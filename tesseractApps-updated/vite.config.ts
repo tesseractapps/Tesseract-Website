@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import { createClient } from '@sanity/client';
 import { createRequire } from 'module';
 import { readFileSync, existsSync } from 'fs';
+import Beasties from 'beasties';
 
 const _require = createRequire(import.meta.url);
 const GLOSSARY_TERMS: { term: string; definition: string }[] = _require('./src/data/ndisGlossaryTerms.json');
@@ -66,12 +67,16 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
     title: 'TesseractApps Brochures & Downloads',
     description: 'Download TesseractApps product brochures, feature guides, and resources for NDIS providers evaluating workforce management software.',
   },
+  '/guides': {
+    title: 'SIL & NDIS Guides | Free Checklists | TesseractApps',
+    description: 'Download free SIL and NDIS guides, checklists, and toolkits. Practical resources for care providers, support coordinators, and compliance leads.',
+  },
   '/ndis-glossary': {
     title: 'NDIS Glossary – Key Terms Explained | TesseractApps',
     description: 'Confused by NDIS terminology? Our comprehensive glossary explains key terms and concepts for providers, participants, and support coordinators.',
   },
   '/sitemap': {
-    title: 'Site Map | TesseractApps',
+    title: 'Site Map of NDIS Software Pages & Resources | TesseractApps',
     description: 'Browse all pages on the TesseractApps website — capabilities, solutions, pricing, blog, and more.',
   },
   '/solutions/support-coordination': {
@@ -115,7 +120,7 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
     description: 'Register for the Adelaide Disability & WorkAbility Expo 2026 with TesseractApps (Booth 8). Book your free demo, enter our giveaway for 12 months free, and see our NDIS platform in action.',
   },
   '/book-a-demo': {
-    title: 'Book a Demo | TesseractApps',
+    title: 'Book a Free NDIS Software Demo | TesseractApps',
     description: 'See TesseractApps in action. Book a personalised demo with our team and discover how NDIS workforce management software can transform your operations.',
   },
   '/book-a-demo/success': {
@@ -123,7 +128,7 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
     description: 'Your TesseractApps demo has been successfully booked. Check your inbox for a confirmation email.',
   },
   '/signup': {
-    title: 'Sign Up | TesseractApps',
+    title: 'Sign Up for NDIS Workforce Software | TesseractApps',
     description: 'Create your TesseractApps account and start managing your NDIS workforce operations from day one.',
   },
   '/signup/success': {
@@ -417,6 +422,11 @@ function injectMetaIntoHtml(
     `<meta name="description" content="${safeDescription}">`,
     `<meta name="robots" content="${robots}">`,
     `<link rel="canonical" href="${safeCanonical}">`,
+    // Self-referencing hreflang annotation (single-language en-AU site).
+    // Google treats this as optional but best practice; x-default covers
+    // users in other regions.
+    `<link rel="alternate" hreflang="en-au" href="${safeCanonical}">`,
+    `<link rel="alternate" hreflang="x-default" href="${safeCanonical}">`,
   ];
 
   // ── OG tags — per-page values baked into static HTML ──
@@ -524,6 +534,7 @@ const ROUTE_ENTRY_MODULE: Record<string, string> = {
   '/help-centre': 'src/pages/resources/faq/FAQ.tsx',
   '/whitepapers': 'src/pages/resources/whitepapers/Whitepapers.tsx',
   '/brochures': 'src/pages/resources/brochures/Brochures.tsx',
+  '/guides': 'src/pages/resources/guides/Guides.tsx',
   '/ndis-glossary': 'src/pages/resources/glossary/NDISGlossary.tsx',
   '/sitemap': 'src/pages/resources/sitemapPage/SitemapPage.tsx',
   '/register-support-coordination': 'src/pages/forms/register/Register.tsx',
@@ -562,6 +573,10 @@ function getSsrManifest(): Record<string, string[]> {
   return ssrManifestCache!;
 }
 
+// Inline the page's own CSS as a <style> block instead of a render-blocking
+// <link>. This keeps styles present at first paint (no FOUC) while removing the
+// blocking network request from the critical path. Falls back to a <link> if the
+// file can't be read at build time.
 function getPageCssLinks(routePath: string): string {
   const entryModule = getEntryModuleForPath(routePath);
   if (!entryModule) return '';
@@ -570,6 +585,25 @@ function getPageCssLinks(routePath: string): string {
   return assets
     .filter(a => a.endsWith('.css'))
     .map(href => `<link rel="stylesheet" crossorigin href="${href}">`)
+    .join('\n    ');
+}
+
+// Emit <link rel="modulepreload"> for the route's lazily-imported page chunk.
+// Page components are React.lazy(); during SSG the module is synchronous so the
+// server HTML is complete, but on the client the chunk is fetched only after the
+// entry runs — so React's Suspense (fallback={null}) blanks the pre-rendered page
+// until the chunk arrives, then re-renders it. That blank→content swap is a large
+// layout shift (CLS) and a hydration mismatch (#418). Preloading the chunk in
+// parallel with the entry means it's cached when hydration runs, so the fallback
+// never shows.
+function getPageJsPreloads(routePath: string): string {
+  const entryModule = getEntryModuleForPath(routePath);
+  if (!entryModule) return '';
+  const manifest = getSsrManifest();
+  const assets: string[] = manifest[entryModule] ?? [];
+  return assets
+    .filter(a => a.endsWith('.js'))
+    .map(href => `<link rel="modulepreload" crossorigin href="${href}">`)
     .join('\n    ');
 }
 
@@ -593,14 +627,64 @@ export default defineConfig({
         blogEntry: blogData[path],
       });
 
-      // Inject per-route page CSS as a render-blocking stylesheet.
-      // With lazy-loaded routes, Vite only links the shared app CSS in HTML;
-      // page-specific CSS chunks are discovered here via the ssr-manifest.
+      // Inject per-route page CSS as a <link> (discovered via the ssr-manifest
+      // since lazy routes only link the shared app CSS). beasties (in
+      // onPageRendered) then extracts the above-fold critical CSS inline and
+      // defers the full stylesheets — fast first paint AND no render-blocking.
       const pageCssLinks = getPageCssLinks(path);
       if (pageCssLinks) {
         html = html.replace('</head>', `    ${pageCssLinks}\n  </head>`);
       }
 
+      // Preload the route's lazy JS chunk so it's ready at hydration (prevents
+      // the Suspense fallback from blanking the pre-rendered page → CLS/#418).
+      const pageJsPreloads = getPageJsPreloads(path);
+      if (pageJsPreloads) {
+        html = html.replace('</head>', `    ${pageJsPreloads}\n  </head>`);
+      }
+
+      return html;
+    },
+    onPageRendered: async (_route: string, renderedHTML: string) => {
+      // React 19 auto-generates resource <link rel="preload"> tags (e.g. for the
+      // eager hero image). With renderToString-based SSG, React leaks them into
+      // <body>, right after the #root open. The client keeps such resources in
+      // <head>, so leaving them in <body> makes the server markup differ from the
+      // client tree → hydration mismatch (React #418) → a full client re-render
+      // that shifts layout (large CLS). Relocate them into <head>, where React's
+      // client resource system dedupes against them and hydration of #root
+      // matches. The preload (and its LCP benefit) is preserved.
+      const leaked: string[] = [];
+      let html = renderedHTML.replace(
+        /(<div id="root"[^>]*>)((?:\s*<link\b[^>]*>)+)/,
+        (_m: string, open: string, links: string) => {
+          leaked.push(...(links.match(/<link\b[^>]*>/g) ?? []));
+          return open;
+        }
+      );
+      if (leaked.length) {
+        html = html.replace('</head>', `    ${leaked.join('\n    ')}\n  </head>`);
+      }
+
+      // Extract critical (above-the-fold) CSS inline and defer the full
+      // stylesheets. This keeps first paint fast (small critical CSS parse) while
+      // taking the 60KB+ of full CSS off the render-blocking critical path — the
+      // remaining sheets load async (preload→stylesheet) and cache across pages.
+      try {
+        const beasties = new Beasties({
+          path: './dist',
+          publicPath: '/',
+          pruneSource: false,
+          preload: 'swap',
+          inlineFonts: false,
+          fonts: false,
+          logLevel: 'silent',
+        });
+        html = await beasties.process(html);
+      } catch {
+        // If critical-CSS extraction fails for a page, ship it with the plain
+        // <link> stylesheets rather than breaking the build.
+      }
       return html;
     },
   },

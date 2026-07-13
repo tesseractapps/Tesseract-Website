@@ -66,7 +66,7 @@
   font-size: 0.75rem;
   color: #98a2b3;
   text-align: center;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   transition: color 0.2s ease;
   line-height: 1.3;
 }

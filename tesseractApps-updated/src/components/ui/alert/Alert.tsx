@@ -4,7 +4,7 @@ import "./AlertStyles.css";
 import ReactDOM from "react-dom";
 import Success from "../../ui/svgs/Success";
 import Fail from "../../ui/svgs/Fail";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 type alertType = {
   setAlertData: React.Dispatch<
     React.SetStateAction<{
@@ -22,6 +22,13 @@ type alertType = {
   };
 };
 const Alert = ({ alertData, setAlertData }: alertType) => {
+  // Render nothing until mounted so the server markup and the client's first
+  // render match (both empty). Rendering the portal on the client's first pass
+  // — while the server rendered null (`typeof document`) — is a server/client
+  // branch that breaks hydration (React #418). The portal mounts after hydration.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   useEffect(() => {
     const timeoutID = setTimeout(() => {
       if (alertData.isOpen) {
@@ -30,7 +37,7 @@ const Alert = ({ alertData, setAlertData }: alertType) => {
     }, 10000);
     return () => clearTimeout(timeoutID);
   }, [alertData, alertData.isOpen, setAlertData]);
-  if (typeof document === "undefined") return null;
+  if (!mounted || typeof document === "undefined") return null;
   return ReactDOM.createPortal(
     <div
       className={alertData.type != "fail" ? "ff-message-success" : ""}

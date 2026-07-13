@@ -572,3 +572,12 @@
     grid-template-columns: 112px 36px 1fr;
   }
 }
+
+/* Section heading for the changelog timeline (SEO + a11y: gives the page an <h2>) */
+#cl-section-heading {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  color: #002a52;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+}
