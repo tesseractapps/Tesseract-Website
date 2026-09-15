@@ -238,8 +238,8 @@ const LMS = () => {
   return (
     <div id="lms-page">
       <SEO
-        title="Learning Management | TesseractApps"
-        description="Role-based learning pathways with 86+ NDIS-mapped modules. Track compliance training, certifications, and worker development connected to the roster."
+        title="NDIS Learning Management System | TesseractApps"
+        description="Track NDIS training, certifications, role-based learning pathways and completion evidence with learning records connected to workforce data."
       />
 
       {/* ── Hero ── */}

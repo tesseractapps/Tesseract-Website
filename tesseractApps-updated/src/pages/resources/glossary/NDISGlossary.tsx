@@ -29,8 +29,8 @@ const NDISGlossary = () => {
   return (
     <div id="gloss-page">
       <SEO
-        title="NDIS Glossary – Key Terms Explained | TesseractApps"
-        description="Plain-English definitions of 30+ NDIS terms: NDIS plan, SIL, SCHADS Award, support coordination, rostering, claiming, worker screening, and more."
+        title="NDIS Glossary: Key Terms Explained | TesseractApps"
+        description="Plain-English definitions of NDIS terms for providers, support coordinators and workers, including SIL, SCHADS, claiming and reportable incidents."
         structuredData={faqSchema}
         canonical="https://tesseractapps.com.au/ndis-glossary"
       />

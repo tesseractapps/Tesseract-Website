@@ -11,7 +11,7 @@ const mainImageFragment = `
     hotspot,
     crop
   }
-`
+`;
 
 // Array of authors — each resolves through the `human` type.
 // Photo field uses coalesce(photo, avatar) to stay compatible with any legacy docs.
@@ -32,7 +32,7 @@ const authorsFragment = `
       alt
     }
   }
-`
+`;
 
 // Fetch up to 3 authors for card display (avatars + first names)
 const authorFragment = `
@@ -54,7 +54,7 @@ const authorFragment = `
       alt
     }
   }
-`
+`;
 
 const categoryFragment = `
   category->{
@@ -63,7 +63,7 @@ const categoryFragment = `
     slug,
     description
   }
-`
+`;
 
 // All published posts — newest first
 // Accepts optional $from (default 0) and $to (default 100) for pagination
@@ -83,7 +83,7 @@ export const BLOG_LIST_QUERY = `
     ${mainImageFragment},
     ${authorFragment}
   }
-`
+`;
 
 // Single post by slug — all fields including body and SEO
 export const BLOG_POST_BY_SLUG_QUERY = `
@@ -143,8 +143,113 @@ export const BLOG_POST_BY_SLUG_QUERY = `
       ${authorFragment}
     }
   }
-`
+`;
+export const USER_GUIDE_BY_SLUG_QUERY = `
+  *[
+    _type == "userGuidePage" &&
+    slug.current == $pageSlug &&
+    stage->slug.current == $stageSlug &&
+    status == "published"
+  ][0] {
+    _id,
+    title,
+    slug,
+    status,
 
+    stage->{
+      _id,
+      title,
+      slug,
+      order
+    },
+
+    order,
+    excerpt,
+    publishedAt,
+    _updatedAt,
+
+    body,
+
+    seo {
+      metaTitle,
+      metaDescription,
+      openGraphTitle,
+      openGraphDescription,
+      openGraphImage {
+        asset->{ url }
+      },
+      canonicalUrl,
+      noIndex,
+      schemaMarkup
+    },
+
+    cta {
+      variant,
+      heading,
+      body,
+      primaryLabel,
+      primaryUrl,
+      secondaryLabel,
+      secondaryUrl
+    },
+
+    relatedGuides[]-> {
+      _id,
+      title,
+      slug,
+
+      stage->{
+        _id,
+        title,
+        slug
+      },
+
+      order,
+      excerpt,
+      publishedAt
+    }
+  }
+`;
+export const USER_GUIDE_STAGE_NAVIGATION_QUERY = `
+  *[
+    _type == "userGuidePage" &&
+    status == "published" &&
+    stage->slug.current == $stageSlug
+  ] | order(order asc) {
+    _id,
+    title,
+    "slug": slug.current,
+    order
+  }
+`;
+export const USER_GUIDE_STAGES_QUERY = `
+*[
+  _type == "userGuideStage"
+]
+| order(order asc)
+{
+  _id,
+  title,
+  "slug": slug.current,
+  order,
+  focus,
+  tagline,
+  staffRange,
+  description,
+  status,
+
+  "guides": *[
+    _type == "userGuidePage" &&
+    references(^._id) &&
+    status == "published"
+  ]
+  | order(order asc) {
+    title,
+    "slug": slug.current,
+    order
+  }
+}
+`;
 // Posts filtered by category title (case-insensitive, matches UI display values like "NDIS")
 export const BLOG_CATEGORY_QUERY = `
   *[_type == "blogPost" && status == "published" && lower(category->title) == lower($category)]
@@ -161,7 +266,7 @@ export const BLOG_CATEGORY_QUERY = `
     ${mainImageFragment},
     ${authorFragment}
   }
-`
+`;
 
 // Distinct categories that have at least one published post
 export const BLOG_CATEGORIES_QUERY = `
@@ -169,31 +274,7 @@ export const BLOG_CATEGORIES_QUERY = `
     _id,
     title
   } | order(title asc)
-`
-
-// All humans — for /humans index page
-export const ALL_HUMANS_QUERY = `
-  *[_type == "human"] | order(order asc) {
-    _id, name, slug, role, department,
-    photo {
-      asset->{ _id, url, metadata { lqip, dimensions } },
-      alt, hotspot, crop
-    }
-  }
-`
-
-// Single human by slug — for /humans/:slug profile page
-export const HUMAN_BY_SLUG_QUERY = `
-  *[_type == "human" && slug.current == $slug][0] {
-    _id, name, slug, role, department, bio, order,
-    showInTeam, isBlogAuthor,
-    linkedInUrl, twitterHandle, githubHandle, websiteUrl,
-    photo {
-      asset->{ _id, url, metadata { lqip, dimensions } },
-      alt, hotspot, crop
-    }
-  }
-`
+`;
 
 // Humans shown in the team grid on the About page
 export const TEAM_MEMBERS_QUERY = `
@@ -217,7 +298,7 @@ export const TEAM_MEMBERS_QUERY = `
       crop
     }
   }
-`
+`;
 
 // Release Notes — all, newest first
 export const RELEASE_NOTES_QUERY = `
@@ -234,7 +315,7 @@ export const RELEASE_NOTES_QUERY = `
       description
     }
   }
-`
+`;
 
 // Job Listings — open only, ordered by display order
 export const JOB_LISTINGS_QUERY = `
@@ -250,7 +331,7 @@ export const JOB_LISTINGS_QUERY = `
     contactEmail,
     contactName
   }
-`
+`;
 
 // Capability Pages — single page by slug (full content for page render)
 export const CAPABILITY_PAGE_BY_SLUG_QUERY = `
@@ -287,7 +368,7 @@ export const CAPABILITY_PAGE_BY_SLUG_QUERY = `
       schemaMarkup
     }
   }
-`
+`;
 
 // Capability Pages — nav index (lightweight, for mega-menu population)
 export const CAPABILITY_NAV_QUERY = `
@@ -301,7 +382,7 @@ export const CAPABILITY_NAV_QUERY = `
     navSubtitle,
     heroSubtitle
   }
-`
+`;
 
 // Solution Pages — full document by slug
 export const SOLUTION_PAGE_BY_SLUG_QUERY = `
@@ -336,7 +417,7 @@ export const SOLUTION_PAGE_BY_SLUG_QUERY = `
       schemaMarkup
     }
   }
-`
+`;
 
 // Solution Pages — nav index (lightweight, for mega-menu population)
 export const SOLUTION_PAGE_NAV_QUERY = `
@@ -350,7 +431,7 @@ export const SOLUTION_PAGE_NAV_QUERY = `
     navSubtitle,
     heroSubtitle
   }
-`
+`;
 
 // Competitor Pages — full document by slug (for /compare/:slug page render)
 export const COMPETITOR_PAGE_BY_SLUG_QUERY = `
@@ -388,7 +469,7 @@ export const COMPETITOR_PAGE_BY_SLUG_QUERY = `
       schemaMarkup
     }
   }
-`
+`;
 
 // Client Logos — visible only, ordered by display order
 export const CLIENT_LOGOS_QUERY = `
@@ -402,7 +483,7 @@ export const CLIENT_LOGOS_QUERY = `
       alt
     }
   }
-`
+`;
 
 // Brochures — published and coming_soon, featured first then newest
 export const BROCHURES_QUERY = `
@@ -424,7 +505,7 @@ export const BROCHURES_QUERY = `
     },
     seo { metaTitle, metaDescription }
   }
-`
+`;
 
 // Single whitepaper by slug — full fields for individual page
 export const WHITEPAPER_BY_SLUG_QUERY = `
@@ -460,7 +541,7 @@ export const WHITEPAPER_BY_SLUG_QUERY = `
     },
     seo { metaTitle, metaDescription, canonicalUrl, noIndex }
   }
-`
+`;
 
 // Whitepapers — published and coming_soon, featured first then newest
 export const WHITEPAPERS_QUERY = `
@@ -494,7 +575,7 @@ export const WHITEPAPERS_QUERY = `
     },
     seo { metaTitle, metaDescription }
   }
-`
+`;
 
 // Guides — published and coming_soon, featured first then newest
 // Note: pdfFile intentionally excluded — only fetched on the individual page after form submission
@@ -517,7 +598,7 @@ export const GUIDES_QUERY = `
     },
     seo { metaTitle, metaDescription }
   }
-`
+`;
 
 // Single guide by slug — includes pdfFile for gated download
 export const GUIDE_BY_SLUG_QUERY = `
@@ -549,4 +630,4 @@ export const GUIDE_BY_SLUG_QUERY = `
     },
     seo { metaTitle, metaDescription, canonicalUrl, noIndex }
   }
-`
+`;

@@ -163,7 +163,7 @@ const ReleaseNotes = () => {
     <div id="cl-page">
       <SEO
         title="Changelog & Release Notes | TesseractApps"
-        description="Stay updated with TesseractApps latest features and improvements. Browse the full changelog for all platform updates, bug fixes, and new functionality."
+        description="See the latest TesseractApps product updates, new features, fixes and improvements across NDIS workforce management workflows."
       />
 
       {/* ── Hero ── */}

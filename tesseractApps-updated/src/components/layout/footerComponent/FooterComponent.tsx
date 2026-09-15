@@ -32,7 +32,7 @@ const FooterComponent = () => {
     const group = link.navGroup;
     if (!group || !link.slug?.current) return;
     if (!capGroups[group]) capGroups[group] = [];
-    capGroups[group].push({ title: link.title ?? '', slug: link.slug.current });
+    capGroups[group].push({ title: link.title ?? "", slug: link.slug.current });
   });
 
   // Group solutions by navCategory (same logic as navbar)
@@ -44,7 +44,10 @@ const FooterComponent = () => {
   solLinks.forEach((link) => {
     const category = link.navCategory;
     if (category && solGroups[category] && link.slug?.current) {
-      solGroups[category].push({ title: link.title ?? '', slug: link.slug.current });
+      solGroups[category].push({
+        title: link.title ?? "",
+        slug: link.slug.current,
+      });
     }
   });
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -151,7 +154,11 @@ const FooterComponent = () => {
       {/* ── About blurb ── */}
       <div id="footer-about-block">
         <Link id="footer-logo" to="/" aria-label="TesseractApps — home">
-          <div id="footer-logo-icon" role="img" aria-label="Tesseract Apps Logo" />
+          <div
+            id="footer-logo-icon"
+            role="img"
+            aria-label="Tesseract Apps Logo"
+          />
           TesseractApps
         </Link>
         <div className="footer-about-label">About the company</div>
@@ -161,93 +168,141 @@ const FooterComponent = () => {
           their operations efficiently and stay compliant.
         </div>
       </div>
-      
+
       {/* ── Zone 1: Nav grid ── */}
       <nav id="footer-nav" aria-label="Footer navigation">
-
         {/* Capabilities col A — first two navGroups from Sanity */}
         <div className="footer-column">
-          {Object.entries(capGroups).slice(0, 2).map(([group, items]) => (
-            <div key={group} className="footer-link-group">
-              <div className="footer-heading">{group}</div>
-              {items.map((item) => (
-                <Link key={item.slug} className="footer-text" to={`/capabilities/${item.slug}/`}>
-                  {item.title}
-                </Link>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* Capabilities col B — remaining navGroups from Sanity */}
-        <div className="footer-column">
-          {Object.entries(capGroups).slice(2).map(([group, items]) => (
-            <div key={group} className="footer-link-group">
-              <div className="footer-heading">{group}</div>
-              {items.map((item) => (
-                <Link key={item.slug} className="footer-text" to={`/capabilities/${item.slug}/`}>
-                  {item.title}
-                </Link>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* Solutions — grouped by navCategory from Sanity */}
-        <div className="footer-column">
-          {Object.entries(solGroups).map(([category, items]) => (
-            items.length > 0 && (
-              <div key={category} className="footer-link-group">
-                <div className="footer-heading">{category}</div>
+          {Object.entries(capGroups)
+            .slice(0, 2)
+            .map(([group, items]) => (
+              <div key={group} className="footer-link-group">
+                <div className="footer-heading">{group}</div>
                 {items.map((item) => (
-                  <Link key={item.slug} className="footer-text" to={`/solutions/${item.slug}/`}>
+                  <Link
+                    key={item.slug}
+                    className="footer-text"
+                    to={`/capabilities/${item.slug}/`}
+                  >
                     {item.title}
                   </Link>
                 ))}
               </div>
-            )
-          ))}
+            ))}
+        </div>
+
+        {/* Capabilities col B — remaining navGroups from Sanity */}
+        <div className="footer-column">
+          {Object.entries(capGroups)
+            .slice(2)
+            .map(([group, items]) => (
+              <div key={group} className="footer-link-group">
+                <div className="footer-heading">{group}</div>
+                {items.map((item) => (
+                  <Link
+                    key={item.slug}
+                    className="footer-text"
+                    to={`/capabilities/${item.slug}/`}
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            ))}
+        </div>
+
+        {/* Solutions — grouped by navCategory from Sanity */}
+        <div className="footer-column">
+          {Object.entries(solGroups).map(
+            ([category, items]) =>
+              items.length > 0 && (
+                <div key={category} className="footer-link-group">
+                  <div className="footer-heading">{category}</div>
+                  {items.map((item) => (
+                    <Link
+                      key={item.slug}
+                      className="footer-text"
+                      to={`/solutions/${item.slug}/`}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              ),
+          )}
         </div>
 
         {/* Company */}
         <div className="footer-column">
           <div className="footer-heading">Company</div>
-          <Link className="footer-text" to="/about/">About Us</Link>
-          <Link className="footer-text" to="/contact-us/">Contact Us</Link>
-          <Link className="footer-text" to="/careers/">Careers</Link>
-          <Link className="footer-text" to="/platform/">Platform</Link>
-          <Link className="footer-text" to="/terms-and-conditions/">Terms &amp; Conditions</Link>
-          <Link className="footer-text" to="/privacy-policy/">Privacy Policy</Link>
-          <Link className="footer-text" to="/changelog/">Release Notes</Link>
+          <Link className="footer-text" to="/about/">
+            About Us
+          </Link>
+          <Link className="footer-text" to="/contact-us/">
+            Contact Us
+          </Link>
+          {/* <Link className="footer-text" to="/careers/">
+            Careers
+          </Link> */}
+          <Link className="footer-text" to="/platform/">
+            Platform
+          </Link>
+          <Link className="footer-text" to="/terms-and-conditions/">
+            Terms &amp; Conditions
+          </Link>
+          <Link className="footer-text" to="/privacy-policy/">
+            Privacy Policy
+          </Link>
+          {/* <Link className="footer-text" to="/changelog/">Release Notes</Link> */}
         </div>
 
         {/* Resources + Support + Get Started */}
         <div className="footer-column">
           <div className="footer-heading">Resources</div>
-          <Link className="footer-text" to="/blogs/">Blog</Link>
-          <Link className="footer-text" to="/whitepapers/">Whitepapers</Link>
-          <Link className="footer-text" to="/brochures/">Brochures</Link>
-          <Link className="footer-text" to="/help-centre/">FAQ</Link>
-          <Link className="footer-text" to="/ndis-glossary/">NDIS Glossary</Link>
-          <Link className="footer-text" to="/capabilities/learning-management/">WYZED Integration</Link>
-<Link className="footer-text" to="/sitemap/">Site Map</Link>
-          <a
+          <Link className="footer-text" to="/blogs/">
+            Blog
+          </Link>
+          <Link className="footer-text" to="/whitepapers/">
+            Whitepapers
+          </Link>
+          <Link className="footer-text" to="/brochures/">
+            Brochures
+          </Link>
+          <Link className="footer-text" to="/help-centre/">
+            FAQ
+          </Link>
+          <Link className="footer-text" to="/ndis-glossary/">
+            NDIS Glossary
+          </Link>
+          <Link className="footer-text" to="/capabilities/learning-management/">
+            WYZED Integration
+          </Link>
+          {/* <Link className="footer-text" to="/sitemap/">
+            Site Map
+          </Link> */}
+          {/* <a
             className="footer-text"
             href="/rss.xml"
             target="_blank"
             rel="noopener noreferrer"
           >
             RSS Feed
-          </a>
+          </a> */}
 
-          <div className="footer-heading footer-support-heading">Get Started</div>
-          <Link className="footer-text" to="/signup/">Sign Up</Link>
-          <Link className="footer-text" to="/pricing/">Pricing</Link>
-          <Link className="footer-text" to="/book-a-demo/">Book a Demo</Link>
+          <div className="footer-heading footer-support-heading">
+            Get Started
+          </div>
+          <Link className="footer-text" to="/signup/">
+            Sign Up
+          </Link>
+          <Link className="footer-text" to="/pricing/">
+            Pricing
+          </Link>
+          <Link className="footer-text" to="/book-a-demo/">
+            Book a Demo
+          </Link>
         </div>
       </nav>
-
-
 
       {/* ── Zone 2: Newsletter + Awards + Contact ── */}
       <div id="footer-mid">
@@ -257,7 +312,8 @@ const FooterComponent = () => {
             <div id="footer-newsletter-text-container">
               <div className="footer-heading">Newsletter</div>
               <div className="footer-text footer-newsletter-text">
-                Get the latest insights, updates, and tips straight to your inbox.
+                Get the latest insights, updates, and tips straight to your
+                inbox.
               </div>
             </div>
             <div id="footer-newsletter-input-container">
@@ -311,7 +367,11 @@ const FooterComponent = () => {
 
           {/* Contact + Social */}
           <div id="footer-contact-block">
-            <address className="footer-address" itemScope itemType="https://schema.org/PostalAddress">
+            <address
+              className="footer-address"
+              itemScope
+              itemType="https://schema.org/PostalAddress"
+            >
               <span itemProp="streetAddress">Level 1/45 Colbee Ct</span>,{" "}
               <span itemProp="addressLocality">Phillip</span>{" "}
               <span itemProp="addressRegion">ACT</span>{" "}

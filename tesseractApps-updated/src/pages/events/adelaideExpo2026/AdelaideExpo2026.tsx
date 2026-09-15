@@ -346,8 +346,8 @@ const AdelaideExpo2026 = () => {
   return (
     <div id="expo-page">
       <SEO
-        title="Adelaide Disability & WorkAbility Expo 2026 | Register & Win – TesseractApps"
-        description="Register for the Adelaide Disability & WorkAbility Expo 2026 with TesseractApps (Booth 8). Book your free demo, enter our giveaway for 12 months free, and see our NDIS platform in action."
+        title="Adelaide Disability Expo 2026 | TesseractApps"
+        description="Visit TesseractApps at the Adelaide Disability & WorkAbility Expo 2026 to see NDIS software demos and meet the team."
         canonical="https://tesseractapps.com.au/events/adelaide-expo-2026"
         noIndex={false}
       />

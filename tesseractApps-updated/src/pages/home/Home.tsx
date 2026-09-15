@@ -567,8 +567,8 @@ export default function Home() {
     <>
       {/* <PromoModal /> */}
       <SEO
-        title="NDIS Workforce Management Software | TesseractApps"
-        description="Purpose-built NDIS operational infrastructure connecting rostering, payroll, compliance, and participant management on one platform. Starting at $39.99/seat/month."
+        title="NDIS Software for Provider Operations | TesseractApps"
+        description="Run NDIS rostering, payroll, claiming, compliance and participant records in one connected workforce platform built for Australian providers."
         structuredData={homepageStructuredData}
         schemaMarkup={faqPageSchema}
       />

@@ -64,8 +64,8 @@ const SolutionsListing = () => {
   return (
     <div className="sll-page">
       <SEO
-        title="Solutions | TesseractApps"
-        description="Find the right TesseractApps solution for your care type, role, or growth stage. Purpose-built software for NDIS providers across Australia."
+        title="NDIS Software Solutions by Role & Size | TesseractApps"
+        description="Find the right TesseractApps solution for your NDIS organisation by role, provider size or service type, from startup to enterprise."
         url="https://tesseractapps.com.au/solutions"
         canonical="https://tesseractapps.com.au/solutions"
         type="website"

@@ -48,8 +48,8 @@ const Blog = () => {
   return (
     <div className="bl-page">
       <SEO
-        title="NDIS Blog & Resources | TesseractApps"
-        description="Expert articles on NDIS compliance, workforce management, digital transformation, and care sector innovation. Stay informed with industry updates and practical tips."
+        title="NDIS Provider Blog & Guides | TesseractApps"
+        description="Read NDIS provider guides on compliance, SCHADS payroll, rostering, participant data, audits and workforce management best practices."
         url="https://tesseractapps.com.au/blogs"
         canonical="https://tesseractapps.com.au/blogs"
         type="website"

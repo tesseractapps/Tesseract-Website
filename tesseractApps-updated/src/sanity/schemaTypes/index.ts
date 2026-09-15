@@ -1,18 +1,20 @@
-import { blockContentType } from './blockContentType'
-import { blogPostType } from './blogPostType'
-import { capabilityPageType } from './capabilityPageType'
-import { categoryType } from './categoryType'
-import { clientLogoType } from './clientLogoType'
-import { competitorPageType } from './competitorPageType'
-import { humanType } from './humanType'
-import { jobListingType } from './jobListingType'
-import { solutionPageType } from './solutionPageType'
-import { pricingPlanType } from './pricingPlanType'
-import { releaseNoteType } from './releaseNoteType'
-import { seoType } from './seoType'
-import { whitepapersType } from './whitepapersType'
-import { brochureType } from './brochureType'
-import { guideType } from './guideType'
+import { blockContentType } from "./blockContentType";
+import { blogPostType } from "./blogPostType";
+import { capabilityPageType } from "./capabilityPageType";
+import { categoryType } from "./categoryType";
+import { clientLogoType } from "./clientLogoType";
+import { competitorPageType } from "./competitorPageType";
+import { humanType } from "./humanType";
+import { jobListingType } from "./jobListingType";
+import { solutionPageType } from "./solutionPageType";
+import { pricingPlanType } from "./pricingPlanType";
+import { releaseNoteType } from "./releaseNoteType";
+import { seoType } from "./seoType";
+import { whitepapersType } from "./whitepapersType";
+import { brochureType } from "./brochureType";
+import { guideType } from "./guideType";
+import { userGuidePageType } from "./userGuidePageType";
+import { userGuideStageType } from "./userGuideStageType";
 
 export const schemaTypes = [
   seoType,
@@ -30,4 +32,6 @@ export const schemaTypes = [
   whitepapersType,
   brochureType,
   guideType,
-]
+  userGuidePageType,
+  userGuideStageType,
+];

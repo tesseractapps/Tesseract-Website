@@ -101,6 +101,11 @@ export const navBarDummyData: {
           subTitle: "Dashboards",
           href: "/capabilities/dashboards-reporting",
         },
+      ],
+    },
+    {
+      heading: "Integrations",
+      links: [
         {
           title: "WYZED Integration",
           subTitle: "LMS",
@@ -205,6 +210,7 @@ export const navBarDummyData: {
   Resources: [
     { title: "Blog", subTitle: "Insights & Updates", href: "/blogs" },
     { title: "Guides", subTitle: "Checklists & Toolkits", href: "/guides" },
+    // { title: "User Guides", subTitle: "user guides", href: "/user-guide" },
     { title: "Whitepapers", subTitle: "Research", href: "/whitepapers" },
     { title: "Brochures", subTitle: "Product Guides", href: "/brochures" },
   ],
@@ -225,10 +231,10 @@ export const navBarDummyData: {
       subTitle: "Start, Growth, Scale & Enterprise",
       href: "/pricing",
     },
-    {
-      title: "Support Coordination App",
-      subTitle: "SC App & Add-ons",
-      href: "/sc-pricing",
-    },
+    // {
+    //   title: "Support Coordination App",
+    //   subTitle: "SC App & Add-ons",
+    //   href: "/sc-pricing",
+    // },
   ],
 };

@@ -391,8 +391,8 @@ const SupportCoordination = () => {
   return (
     <div id="sc-page">
       <SEO
-        title="Support Coordination Software | TesseractApps"
-        description="Support coordination software that connects your entire operation - from participant intake to service agreements, goal tracking, invoicing, claims, and audit evidence. No more disconnected tools."
+        title="NDIS Support Coordination Software | TesseractApps"
+        description="Manage NDIS support coordination caseloads with case notes, budgets, service agreements, tasks, invoices and audit evidence in one system."
         url="https://tesseractapps.com.au/solutions/support-coordination"
         canonical="https://tesseractapps.com.au/solutions/support-coordination"
         type="website"

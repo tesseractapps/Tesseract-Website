@@ -2,7 +2,13 @@
    GLOBAL FONT
 ───────────────────────────────────────── */
 #about-container {
-  font-family: "Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    "Inter",
+    "Inter Fallback",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   color: var(--color-secondary);
 }
 
@@ -21,7 +27,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(12, 120, 186, 0.25) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 110%,
+    rgba(12, 120, 186, 0.25) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -263,13 +273,15 @@ a.about-team-card {
   background: #f5f9fe;
   border: 1px solid #e4edf7;
   text-align: center;
-  transition: box-shadow 0.18s, transform 0.18s;
+  transition:
+    box-shadow 0.18s,
+    transform 0.18s;
 }
 
-.about-team-card:hover {
+/* .about-team-card:hover {
   box-shadow: 0 6px 20px rgba(0, 42, 82, 0.09);
   transform: translateY(-2px);
-}
+} */
 
 /* ── Circle avatar — photo or initials ── */
 .about-team-avatar {
@@ -406,7 +418,9 @@ a.about-team-card {
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: opacity 0.15s, box-shadow 0.15s;
+  transition:
+    opacity 0.15s,
+    box-shadow 0.15s;
   font-family: "Inter", "Inter Fallback", sans-serif;
 }
 .about-apply-btn:hover {
@@ -624,7 +638,30 @@ a.about-team-card {
 .hyper-link:hover {
   text-decoration: underline;
 }
+.about-partner-logo {
+  border: 1.5px solid #dde4ed;
+  border-radius: 16px;
+  aspect-ratio: 4/3;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.about-partner-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.about-partner-logo:hover {
+  box-shadow: 0 6px 20px rgba(0, 42, 82, 0.09);
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+.about-partner-section {
+  padding-bottom: 70px !important;
+  border-bottom: 1px solid #eef2f7;
+}
 /* ─────────────────────────────────────────
    RESPONSIVE  ≤ 1024px
 ───────────────────────────────────────── */
@@ -742,12 +779,19 @@ a.about-team-card {
 }
 
 /* ── Team skeleton loading ── */
-.about-team-card--skeleton { pointer-events: none; }
+.about-team-card--skeleton {
+  pointer-events: none;
+}
 .about-skeleton-avatar {
   width: 88px;
   height: 88px;
   border-radius: 50%;
-  background-image: linear-gradient(90deg, #e8f0fe 25%, #d0e4f7 50%, #e8f0fe 75%);
+  background-image: linear-gradient(
+    90deg,
+    #e8f0fe 25%,
+    #d0e4f7 50%,
+    #e8f0fe 75%
+  );
   background-size: 200% 100%;
   animation: about-shimmer 1.4s infinite;
   margin-bottom: 14px;
@@ -755,15 +799,32 @@ a.about-team-card {
 }
 .about-skeleton-line {
   border-radius: 4px;
-  background-image: linear-gradient(90deg, #e8f0fe 25%, #d0e4f7 50%, #e8f0fe 75%);
+  background-image: linear-gradient(
+    90deg,
+    #e8f0fe 25%,
+    #d0e4f7 50%,
+    #e8f0fe 75%
+  );
   background-size: 200% 100%;
   animation: about-shimmer 1.4s infinite;
 }
-.about-skeleton-line--name { height: 14px; width: 70%; margin: 0 auto 6px; }
-.about-skeleton-line--role { height: 11px; width: 50%; margin: 0 auto; }
+.about-skeleton-line--name {
+  height: 14px;
+  width: 70%;
+  margin: 0 auto 6px;
+}
+.about-skeleton-line--role {
+  height: 11px;
+  width: 50%;
+  margin: 0 auto;
+}
 @keyframes about-shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* ─────────────────────────────────────────
@@ -793,7 +854,9 @@ a.about-team-card {
   border: 2px solid #fff;
   box-shadow: 0 0 0 2px rgba(12, 120, 186, 0.3);
 }
-.about-timeline-item:last-child { padding-bottom: 0; }
+.about-timeline-item:last-child {
+  padding-bottom: 0;
+}
 .about-timeline-year {
   font-size: 0.875rem;
   font-weight: 700;
@@ -901,7 +964,11 @@ a.about-team-card {
   background: #f0f5fa;
   border: 1.5px solid #dde4ed;
   cursor: pointer;
-  transition: background 0.18s, transform 0.15s, border-color 0.18s, box-shadow 0.18s;
+  transition:
+    background 0.18s,
+    transform 0.15s,
+    border-color 0.18s,
+    box-shadow 0.18s;
 }
 
 .about-social-icon-btn:hover {
@@ -921,7 +988,9 @@ a.about-team-card {
 /* ─────────────────────────────────────────
    STORY HEADER IDs (new unique IDs)
 ───────────────────────────────────────── */
-#about-story-header { margin-bottom: 24px; }
+#about-story-header {
+  margin-bottom: 24px;
+}
 #about-story-heading {
   font-size: 2rem;
   font-weight: 800;

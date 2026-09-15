@@ -12,6 +12,9 @@ import { useAppContext } from "../contexts/AppContext";
 // vite-react-ssg's SSR bundle includes all modules synchronously, so lazy()
 // resolves immediately during pre-rendering and SSG output is unaffected.
 import Home from "../pages/home/Home";
+import UserGuides from "../pages/userGuides/UserGuides";
+import UserGuidePage from "../pages/userGuidePage/UserGuidePage";
+import UserGuideStagePage from "../pages/userGuidePage/UserGuideStagePage";
 const Platform = lazy(() => import("../pages/platform/Platform"));
 const Pricing = lazy(() => import("../pages/marketing/pricing/Pricing"));
 const FAQ = lazy(() => import("../pages/resources/faq/FAQ"));
@@ -39,9 +42,9 @@ const SolutionsListing = lazy(
 const SolutionPage = lazy(
   () => import("../pages/solutions/solutionPage/SolutionPage"),
 );
-const ContactInformation = lazy(
-  () => import("../pages/forms/contactInformation/ContactInformation"),
-);
+// const ContactInformation = lazy(
+//   () => import("../pages/forms/contactInformation/ContactInformation"),
+// );
 const About = lazy(() => import("../pages/marketing/about/About"));
 const Whitepapers = lazy(
   () => import("../pages/resources/whitepapers/Whitepapers"),
@@ -78,8 +81,6 @@ const SupportCoordination = lazy(
 );
 const SCPricing = lazy(() => import("../pages/marketing/scPricing/SCPricing"));
 const Register = lazy(() => import("../pages/forms/register/Register"));
-const HumansPage = lazy(() => import("../pages/humans/HumansPage"));
-const HumanPage = lazy(() => import("../pages/humans/HumanPage"));
 const NotFound = lazy(() => import("../pages/notFound/NotFound"));
 
 const AppRoutes = () => {
@@ -148,13 +149,20 @@ const AppRoutes = () => {
         <Route path="/solutions/:slug" element={<SolutionPage />} />
         <Route path="/guides" element={<Guides />} />
         <Route path="/guides/:slug" element={<GuidePage />} />
+        <Route path="/user-guide" element={<UserGuides />} />
+        {/* <Route path="/user-guide/:slug" element={<UserGuidePage />} /> */}
+        <Route path="/user-guide/:stageSlug" element={<UserGuideStagePage />} />
+        <Route
+          path="/user-guide/:stageSlug/:pageSlug"
+          element={<UserGuidePage />}
+        />
         <Route path="/whitepapers" element={<Whitepapers />} />
         <Route path="/whitepapers/:slug" element={<WhitepaperPage />} />
         <Route path="/brochures" element={<Brochures />} />
         <Route path="/help-centre" element={<FAQ />} />
         <Route path="/about" element={<About />} />
         <Route path="/careers" element={<Careers />} />
-        <Route path="/contact-us" element={<ContactInformation />} />
+        {/* <Route path="/contact-us" element={<ContactInformation />} /> */}
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/changelog" element={<ReleaseNotes />} />
@@ -168,8 +176,6 @@ const AppRoutes = () => {
         <Route path="/sc-pricing" element={<SCPricing />} />
         <Route path="/blogs" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
-        <Route path="/humans" element={<HumansPage />} />
-        <Route path="/humans/:slug" element={<HumanPage />} />
         <Route path="/tesseract-vs/:slug" element={<CompetitorPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

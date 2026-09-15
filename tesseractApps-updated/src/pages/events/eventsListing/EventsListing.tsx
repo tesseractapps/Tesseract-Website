@@ -55,8 +55,8 @@ export default function EventsListing() {
   return (
     <div id="ev-page">
       <SEO
-        title="Events | TesseractApps"
-        description="Meet the TesseractApps team at NDIS industry events across Australia. See live demos, enter prize draws, and connect with our team."
+        title="NDIS Events & Expos | TesseractApps"
+        description="Meet TesseractApps at Australian NDIS and disability sector events. See demos, ask questions and connect with the team."
         canonical="https://tesseractapps.com.au/events"
         noIndex={false}
       />

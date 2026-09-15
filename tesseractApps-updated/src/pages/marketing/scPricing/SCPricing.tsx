@@ -491,8 +491,8 @@ const SCPricing = () => {
   return (
     <div id="scp-page">
       <SEO
-        title="SC App Pricing & Features | TesseractApps"
-        description="Purpose-built NDIS Support Coordination software. One price, every feature included. Manage participants, stay compliant, and get paid without the admin overhead."
+        title="Support Coordination Software Pricing | TesseractApps"
+        description="See transparent pricing for NDIS support coordination software, with one flat monthly rate covering cases, notes and compliance tracking."
       />
 
       {/* Hero */}

@@ -58,8 +58,8 @@ const CapabilitiesListing = () => {
   return (
     <div className="cpl-page">
       <SEO
-        title="Platform Capabilities | TesseractApps"
-        description="Explore every capability TesseractApps offers, from rostering and payroll to participant management and operational intelligence. Built for NDIS providers."
+        title="NDIS Software Features & Capabilities | TesseractApps"
+        description="Explore TesseractApps features for NDIS providers: rostering, claiming, payroll, participant records, compliance, reporting and e-signatures."
         url="https://tesseractapps.com.au/capabilities"
         canonical="https://tesseractapps.com.au/capabilities"
         type="website"

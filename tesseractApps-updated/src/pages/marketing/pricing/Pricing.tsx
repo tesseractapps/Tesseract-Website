@@ -481,8 +481,8 @@ const Pricing = () => {
   return (
     <div id="pr-page">
       <SEO
-        title="NDIS Software Pricing | Start Free | TesseractApps"
-        description="Transparent NDIS software pricing with one unified platform across Growth, Scale, and Enterprise. Start stage supports early-stage providers for up to 18 months with setup only. Governance depth grows with operational maturity."
+        title="NDIS Software Pricing for Providers | TesseractApps"
+        description="Compare NDIS software pricing for rostering, payroll, claiming, compliance and participant management. Start free or request a personalised quote."
         structuredData={pricingSchema}
       />
 

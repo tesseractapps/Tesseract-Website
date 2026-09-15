@@ -42,13 +42,7 @@ function AuthorRow({ authors }: { authors: WhitepaperAuthor[] }) {
         {authors.map((a, i) => (
           <span key={a._id}>
             {i > 0 && (i === authors.length - 1 ? ' & ' : ', ')}
-            {a.slug?.current ? (
-              <Link to={`/humans/${a.slug.current}/`} className="wpp-author-name-link">
-                {a.name?.split(' ')[0]}
-              </Link>
-            ) : (
-              <span className="wpp-author-name-plain">{a.name?.split(' ')[0]}</span>
-            )}
+            <span className="wpp-author-name-plain">{a.name?.split(' ')[0]}</span>
           </span>
         ))}
       </span>

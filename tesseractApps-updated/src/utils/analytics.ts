@@ -175,6 +175,18 @@ export function trackBlogPostView(data: {
   });
 }
 
+export function trackUserGuideView(data: {
+  title: string;
+  slug: string;
+  stage?: string;
+}) {
+  window.dataLayer?.push({
+    event: "user_guide_view",
+    content_title: data.title,
+    content_slug: data.slug,
+    content_stage: data.stage ?? "unknown stage",
+  });
+}
 export function trackCapabilityView(data: { name: string; slug: string }) {
   window.dataLayer?.push({
     event: "capability_page_view",

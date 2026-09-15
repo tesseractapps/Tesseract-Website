@@ -31,8 +31,8 @@ const FAQ = () => {
   return (
     <div id="faq-page">
       <SEO
-        title="NDIS Software FAQ | Help Centre — TesseractApps"
-        description="Find answers to common questions about TesseractApps — rostering, compliance, timesheets, participant management, HR, accounting, and more."
+        title="NDIS Software FAQ & Help Centre | TesseractApps"
+        description="Find answers about TesseractApps setup, support, pricing, modules and NDIS workforce management workflows in the help centre."
         structuredData={faqSchema}
       />
 

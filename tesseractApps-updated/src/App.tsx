@@ -5,7 +5,7 @@ import { BrowserRouter, StaticRouter, useLocation } from "react-router-dom";
 import FooterComponent from "./components/layout/footerComponent/FooterComponent";
 import AppRoutes from "./routes/AppRoutes";
 import GTMLoader from "./components/analytics/GTMLoader";
-import AnnouncementBar from "./components/layout/announcementBar/AnnouncementBar";
+// import AnnouncementBar from "./components/layout/announcementBar/AnnouncementBar";
 
 const FULLSCREEN_ROUTES: string[] = [
   "/book-a-demo",
@@ -14,7 +14,8 @@ const FULLSCREEN_ROUTES: string[] = [
   "/signup/success",
   "/register-support-coordination",
 ];
-const CD_BAR_HEIGHT = 36;
+const CD_BAR_HEIGHT = 0;
+// const CD_BAR_HEIGHT = 36;
 
 function AppInner() {
   const location = useLocation();
@@ -34,7 +35,7 @@ function AppInner() {
 
   return (
     <>
-      {barVisible && <AnnouncementBar />}
+      {/* {barVisible && <AnnouncementBar />} */}
       {!isFullscreen && (
         <NavBarComponent portalContainerRef={portalContainerRef} />
       )}

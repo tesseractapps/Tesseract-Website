@@ -54,13 +54,7 @@ function AuthorRow({ authors }: { authors: PostAuthor[] }) {
         {authors.map((a, i) => (
           <span key={a._id}>
             {i > 0 && (i === authors.length - 1 ? ' & ' : ', ')}
-            {a.slug?.current ? (
-              <Link to={`/humans/${a.slug.current}/`} className="bpp-authors-name-link">
-                {a.name?.split(' ')[0]}
-              </Link>
-            ) : (
-              <span className="bpp-authors-name">{a.name?.split(' ')[0]}</span>
-            )}
+            <span className="bpp-authors-name">{a.name?.split(' ')[0]}</span>
           </span>
         ))}
       </span>
@@ -351,46 +345,6 @@ export default function BlogPostPage() {
 
           {/* Panel 3: Sidebar (right, sticky) */}
           <aside className="bpp-sidebar">
-
-            {/* Author card(s) */}
-            {/* {authors.length > 0 && (
-              <div className="bpp-sidebar-card">
-                <p className="bpp-sidebar-card-title">Written by</p>
-                <div className="bpp-sidebar-authors">
-                  {authors.map(a => (
-                    <div key={a._id} className="bpp-sidebar-author">
-                      {a.photo?.asset ? (
-                        <img
-                          src={urlFor(a.photo).width(48).height(48).fit('crop').auto('format').url()}
-                          alt={a.photo.alt ?? a.name ?? ''}
-                          className="bpp-sidebar-author-avatar"
-                          width={48}
-                          height={48}
-                          loading="lazy"
-                        />
-                      ) : (
-                        <span className="bpp-sidebar-author-avatar bpp-sidebar-author-avatar--initials">
-                          {(a.name ?? '?').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
-                        </span>
-                      )}
-                      <div className="bpp-sidebar-author-info">
-                        {a.slug?.current ? (
-                          <Link
-                            to={`/humans/${a.slug.current}/`}
-                            className="bpp-sidebar-author-name bpp-sidebar-author-name--link"
-                          >
-                            {a.name}
-                          </Link>
-                        ) : (
-                          <span className="bpp-sidebar-author-name">{a.name}</span>
-                        )}
-                        {a.role && <span className="bpp-sidebar-author-role">{a.role}</span>}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )} */}
 
             {/* Article info */}
             {/* <div className="bpp-sidebar-card">

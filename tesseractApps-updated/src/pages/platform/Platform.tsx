@@ -164,8 +164,8 @@ const Platform = () => {
   return (
     <div id="pl-page">
       <SEO
-        title="Platform Overview – NDIS Workforce Tools | TesseractApps"
-        description="TesseractApps is built on a single, unified architecture, one data model, one codebase, no migration. The platform deepens as your provider organisation grows."
+        title="NDIS Provider Software Platform | TesseractApps"
+        description="See how TesseractApps connects intake, rostering, payroll, claiming, compliance and audit evidence in one NDIS provider software platform."
       />
 
       {/* ── Hero ── */}

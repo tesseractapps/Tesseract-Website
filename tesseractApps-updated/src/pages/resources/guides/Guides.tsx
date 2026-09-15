@@ -45,8 +45,8 @@ export default function Guides() {
   return (
     <div>
       <SEO
-        title="SIL & NDIS Guides | Free Checklists | TesseractApps"
-        description="Download free SIL and NDIS guides, checklists, and toolkits. Practical resources for care providers, support coordinators, and compliance leads."
+        title="NDIS Provider Guides & Checklists | TesseractApps"
+        description="Download practical NDIS provider guides and checklists for registration, SIL compliance, business continuity, audits and platform readiness."
         url="https://tesseractapps.com.au/guides"
         canonical="https://tesseractapps.com.au/guides"
         type="website"

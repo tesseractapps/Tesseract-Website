@@ -24,7 +24,7 @@ const Whitepapers = () => {
     <div className="wl-page">
       <SEO
         title="NDIS Whitepapers & Research | TesseractApps"
-        description="Download free whitepapers on NDIS digital transformation, workforce management best practices, and care sector innovation for 2025–2030."
+        description="Access NDIS whitepapers on audit readiness, claims, payroll, compliance and modern workforce operations for Australian care leaders."
       />
 
       <PageHero

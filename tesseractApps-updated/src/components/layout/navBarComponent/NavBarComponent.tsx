@@ -213,7 +213,7 @@ const NavBarComponent = ({
             if (!link.navGroup || !link.slug?.current) return;
             if (!groupMap.has(link.navGroup)) groupMap.set(link.navGroup, []);
             groupMap.get(link.navGroup)!.push({
-              title: link.title ?? '',
+              title: link.title ?? "",
               subTitle: link.navSubtitle ?? link.heroSubtitle,
               href: `/capabilities/${link.slug.current}`,
             });
@@ -241,9 +241,13 @@ const NavBarComponent = ({
             "BY STAGE": [],
           };
           solLinks.forEach((link) => {
-            if (link.navCategory && catMap[link.navCategory] && link.slug?.current) {
+            if (
+              link.navCategory &&
+              catMap[link.navCategory] &&
+              link.slug?.current
+            ) {
               catMap[link.navCategory].push({
-                title: link.title ?? '',
+                title: link.title ?? "",
                 subTitle: link.navSubtitle ?? link.heroSubtitle,
                 href: `/solutions/${link.slug.current}`,
               });
@@ -265,7 +269,7 @@ const NavBarComponent = ({
       capLinks.forEach((link) => {
         if (!link.slug?.current) return;
         items.push({
-          label: link.title ?? '',
+          label: link.title ?? "",
           path: `/capabilities/${link.slug.current}`,
           category: "Capability",
         });
@@ -280,7 +284,7 @@ const NavBarComponent = ({
       solLinks.forEach((link) => {
         if (!link.slug?.current) return;
         items.push({
-          label: link.title ?? '',
+          label: link.title ?? "",
           path: `/solutions/${link.slug.current}`,
           category: "Solution",
         });
@@ -322,7 +326,9 @@ const NavBarComponent = ({
     if (
       currentPath == "careers" ||
       currentPath == "contact-information" ||
-      currentPath == "about"
+      currentPath == "about" ||
+      currentPath == "contact-us" ||
+      currentPath == "help-centre"
     ) {
       setActiveLink("Company");
     }
@@ -370,14 +376,10 @@ const NavBarComponent = ({
       currentPath == "blogs" ||
       currentPath == "faq" ||
       currentPath == "whitepapers" ||
-      currentPath == "help-centre" ||
       currentPath == "case-studies" ||
       currentPath == "changelog"
     ) {
       setActiveLink("Resources");
-    }
-    if (currentPath == "contact-us") {
-      setActiveLink("Company");
     }
     if (currentPath == "requestDemo") {
       setActiveLink("");
@@ -497,6 +499,43 @@ const NavBarComponent = ({
     });
   };
   useNavigationType();
+  const renderCapabilitiesGroup = (value: any, index: any) => {
+    return (
+      <div
+        key={value.heading + index}
+        className={
+          "nav-product-group" +
+          (value?.heading == "Operational Intelligence" ||
+          value?.heading == "Integrations"
+            ? "nav-product-group-no-border"
+            : "")
+        }
+      >
+        <div className="nav-inner-heading">{value.heading}</div>
+        {value.links
+          .filter((link: any) => link.title)
+          .map((link: any, innerIndex: any) => (
+            <div
+              key={link.title + innerIndex}
+              className="nav-inner-container"
+              onClick={() => {
+                if (link.href) {
+                  appNavigate(link.href);
+                  closePopup();
+                } else {
+                  popupLinkClickHandler(link.title);
+                }
+              }}
+            >
+              <div className="nav-title">{link.title}</div>
+              {link.subTitle && (
+                <div className="nav-sub-title">{link.subTitle}</div>
+              )}
+            </div>
+          ))}
+      </div>
+    );
+  };
   return (
     <nav
       // className={`navbar-container ${showHeader ? "visible" : "hidden"}`}
@@ -946,32 +985,11 @@ const NavBarComponent = ({
             ))}
           {selectedLink && selectedLink == "Capabilities" && (
             <div id="popup-nav-products-container">
-              {capNavGroups.map((value, index) => (
-                <div key={value.heading + index} className="nav-product-group">
-                  <div className="nav-inner-heading">{value.heading}</div>
-                  {value.links
-                    .filter((link) => link.title)
-                    .map((link, innerIndex) => (
-                      <div
-                        key={link.title + innerIndex}
-                        className="nav-inner-container"
-                        onClick={() => {
-                          if (link.href) {
-                            appNavigate(link.href);
-                            closePopup();
-                          } else {
-                            popupLinkClickHandler(link.title);
-                          }
-                        }}
-                      >
-                        <div className="nav-title">{link.title}</div>
-                        {link.subTitle && (
-                          <div className="nav-sub-title">{link.subTitle}</div>
-                        )}
-                      </div>
-                    ))}
-                </div>
-              ))}
+              {capNavGroups.slice(0, 3).map(renderCapabilitiesGroup)}
+
+              <div className="nav-product-group-stack">
+                {capNavGroups.slice(3).map(renderCapabilitiesGroup)}
+              </div>
             </div>
           )}
 

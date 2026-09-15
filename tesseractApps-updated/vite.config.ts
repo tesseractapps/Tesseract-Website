@@ -16,64 +16,60 @@ const OG_IMAGE = `${SITE}/og-image.jpg`;
 
 const STATIC_META: Record<string, { title: string; description: string }> = {
   '/': {
-    title: 'NDIS Workforce Management Software | TesseractApps',
-    description: 'Streamline your NDIS provider operations with TesseractApps. From intake to compliance — one unified workforce management platform. Book a demo today.',
+    title: 'NDIS Software for Provider Operations | TesseractApps',
+    description: 'Run NDIS rostering, payroll, claiming, compliance and participant records in one connected workforce platform built for Australian providers.',
   },
   '/pricing': {
-    title: 'NDIS Software Pricing | Start Free | TesseractApps',
-    description: 'Explore flexible pricing plans for NDIS workforce management software. Find the right plan for your provider size and budget. Request a personalised quote.',
+    title: 'NDIS Software Pricing for Providers | TesseractApps',
+    description: 'Compare NDIS software pricing for rostering, payroll, claiming, compliance and participant management. Start free or request a personalised quote.',
   },
   '/sc-pricing': {
-    title: 'Support Coordination Pricing | TesseractApps',
-    description: 'Simple, transparent pricing for NDIS support coordination software. One flat monthly rate with unlimited cases, case notes, and compliance tracking.',
+    title: 'Support Coordination Software Pricing | TesseractApps',
+    description: 'See transparent pricing for NDIS support coordination software, with one flat monthly rate covering cases, notes and compliance tracking.',
   },
   '/platform': {
-    title: 'Platform Overview – NDIS Workforce Tools | TesseractApps',
-    description: 'Discover the TesseractApps platform — an integrated solution for NDIS providers covering workforce management, compliance, and service delivery.',
+    title: 'NDIS Provider Software Platform | TesseractApps',
+    description: 'See how TesseractApps connects intake, rostering, payroll, claiming, compliance and audit evidence in one NDIS provider software platform.',
   },
   '/capabilities': {
-    title: 'NDIS Software Capabilities & Features | TesseractApps',
-    description: 'Explore all capabilities: learning management, workflow engine, compliance tracking, and more. See how TesseractApps streamlines NDIS operations.',
+    title: 'NDIS Software Features & Capabilities | TesseractApps',
+    description: 'Explore TesseractApps features for NDIS providers: rostering, claiming, payroll, participant records, compliance, reporting and e-signatures.',
   },
   '/solutions': {
     title: 'NDIS Software Solutions by Role & Size | TesseractApps',
-    description: 'Purpose-built NDIS software solutions for support workers, operations managers, compliance leads, and enterprise providers. Find your fit.',
+    description: 'Find the right TesseractApps solution for your NDIS organisation by role, provider size or service type, from startup to enterprise.',
   },
   '/about': {
-    title: 'About TesseractApps | NDIS Software Provider',
-    description: 'Learn about TesseractApps and our mission to simplify workforce management for NDIS and care providers across Australia.',
-  },
-  '/humans': {
-    title: 'Humans — The people behind TesseractApps',
-    description: 'Meet the team building TesseractApps — NDIS workforce management software for Australian care providers. Real people, real mission.',
+    title: 'About TesseractApps | Australian NDIS Software',
+    description: 'Learn about TesseractApps, the Australian NDIS software company helping providers simplify workforce operations and compliance.',
   },
   '/careers': {
-    title: 'Careers at TesseractApps | Join the Team',
-    description: 'Join the TesseractApps team. Explore career opportunities in building software that transforms NDIS workforce management across Australia.',
+    title: 'Careers at TesseractApps | Build NDIS Software',
+    description: 'Explore careers at TesseractApps and help build workforce management and compliance software for Australian NDIS and care providers.',
   },
   '/contact-us': {
-    title: 'Contact TesseractApps | Get in Touch',
-    description: 'Get in touch with the TesseractApps team. Whether you need a demo, support, or partnership enquiries, we\'re here to help.',
+    title: 'Contact TesseractApps | Book a Demo or Get Support',
+    description: 'Contact TesseractApps to book a demo, ask about pricing, request support or discuss NDIS workforce management software for your organisation.',
   },
   '/help-centre': {
-    title: 'Help Centre | TesseractApps Support',
-    description: 'Find answers to common questions about TesseractApps. Browse our help centre for setup guides, FAQs, and troubleshooting tips.',
+    title: 'NDIS Software FAQ & Help Centre | TesseractApps',
+    description: 'Find answers about TesseractApps setup, support, pricing, modules and NDIS workforce management workflows in the help centre.',
   },
   '/whitepapers': {
     title: 'NDIS Whitepapers & Research | TesseractApps',
-    description: 'Access in-depth whitepapers and research on NDIS workforce management, compliance best practices, and industry trends.',
+    description: 'Access NDIS whitepapers on audit readiness, claims, payroll, compliance and modern workforce operations for Australian care leaders.',
   },
   '/brochures': {
-    title: 'TesseractApps Brochures & Downloads',
-    description: 'Download TesseractApps product brochures, feature guides, and resources for NDIS providers evaluating workforce management software.',
+    title: 'NDIS Software Brochures & Downloads | TesseractApps',
+    description: 'Download TesseractApps brochures, feature guides and product resources for NDIS providers comparing workforce management software.',
   },
   '/guides': {
-    title: 'SIL & NDIS Guides | Free Checklists | TesseractApps',
-    description: 'Download free SIL and NDIS guides, checklists, and toolkits. Practical resources for care providers, support coordinators, and compliance leads.',
+    title: 'NDIS Provider Guides & Checklists | TesseractApps',
+    description: 'Download practical NDIS provider guides and checklists for registration, SIL compliance, business continuity, audits and platform readiness.',
   },
   '/ndis-glossary': {
-    title: 'NDIS Glossary – Key Terms Explained | TesseractApps',
-    description: 'Confused by NDIS terminology? Our comprehensive glossary explains key terms and concepts for providers, participants, and support coordinators.',
+    title: 'NDIS Glossary: Key Terms Explained | TesseractApps',
+    description: 'Plain-English definitions of NDIS terms for providers, support coordinators and workers, including SIL, SCHADS, claiming and reportable incidents.',
   },
   '/sitemap': {
     title: 'Site Map of NDIS Software Pages & Resources | TesseractApps',
@@ -81,19 +77,19 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
   },
   '/solutions/support-coordination': {
     title: 'NDIS Support Coordination Software | TesseractApps',
-    description: 'Manage your entire NDIS support coordination caseload in one platform. Case notes, budgets, service agreements, and audit evidence connected automatically.',
+    description: 'Manage NDIS support coordination caseloads with case notes, budgets, service agreements, tasks, invoices and audit evidence in one system.',
   },
   '/register-support-coordination': {
     title: 'Register as Support Coordination Provider | TesseractApps',
     description: 'Register as a Support Coordination provider on TesseractApps. Streamline client management, plan tracking, and reporting.',
   },
   '/blogs': {
-    title: 'NDIS Blog & Resources | TesseractApps',
-    description: 'Stay informed with the latest NDIS news, compliance updates, and workforce management insights. Read expert articles and guides.',
+    title: 'NDIS Provider Blog & Guides | TesseractApps',
+    description: 'Read NDIS provider guides on compliance, SCHADS payroll, rostering, participant data, audits and workforce management best practices.',
   },
   '/capabilities/learning-management': {
     title: 'NDIS Learning Management System | TesseractApps',
-    description: 'Role-based learning pathways with 86+ NDIS-mapped modules. Track compliance training, certifications, and worker development connected to the roster.',
+    description: 'Track NDIS training, certifications, role-based learning pathways and completion evidence with learning records connected to workforce data.',
   },
   '/capabilities/workflow-engine': {
     title: 'Workflow Engine | NDIS Automation | TesseractApps',
@@ -109,15 +105,15 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
   },
   '/changelog': {
     title: 'Changelog & Release Notes | TesseractApps',
-    description: 'View the latest product updates, feature releases, and improvements to the TesseractApps platform. Stay up to date with everything we ship.',
+    description: 'See the latest TesseractApps product updates, new features, fixes and improvements across NDIS workforce management workflows.',
   },
   '/events': {
-    title: 'Events | TesseractApps',
-    description: 'Meet the TesseractApps team at NDIS industry events across Australia. See live demos, enter prize draws, and connect with our team.',
+    title: 'NDIS Events & Expos | TesseractApps',
+    description: 'Meet TesseractApps at Australian NDIS and disability sector events. See demos, ask questions and connect with the team.',
   },
   '/events/adelaide-expo-2026': {
-    title: 'Adelaide Disability & WorkAbility Expo 2026 | Register & Win – TesseractApps',
-    description: 'Register for the Adelaide Disability & WorkAbility Expo 2026 with TesseractApps (Booth 8). Book your free demo, enter our giveaway for 12 months free, and see our NDIS platform in action.',
+    title: 'Adelaide Disability Expo 2026 | TesseractApps',
+    description: 'Visit TesseractApps at the Adelaide Disability & WorkAbility Expo 2026 to see NDIS software demos and meet the team.',
   },
   '/book-a-demo': {
     title: 'Book a Free NDIS Software Demo | TesseractApps',
@@ -202,7 +198,7 @@ async function getSsgRoutes(): Promise<RouteData> {
 
   const sanity = createClient({ projectId, dataset, apiVersion, useCdn: false, perspective: 'published' });
 
-  const [blogDocs, capabilitySlugs, solutionSlugs, competitorSlugs, humanSlugs] = await Promise.all([
+  const [blogDocs, capabilitySlugs, solutionSlugs, competitorSlugs] = await Promise.all([
     // Extended blog fetch — includes fields needed for BlogPosting schema
     sanity.fetch<SanityBlogMeta[]>(
       `*[_type == "blogPost" && status == "published"]{
@@ -214,7 +210,6 @@ async function getSsgRoutes(): Promise<RouteData> {
     sanity.fetch<SanityRouteMeta[]>(`*[_type == "capabilityPage"]{ slug, seo }`),
     sanity.fetch<SanityRouteMeta[]>(`*[_type == "solutionPage"]{ slug, seo }`),
     sanity.fetch<SanityRouteMeta[]>(`*[_type == "competitorPage"]{ slug, seo }`),
-    sanity.fetch<SanityRouteMeta[]>(`*[_type == "human" && defined(slug.current)]{ slug }`),
   ]);
 
   const dynamic: string[] = [];
@@ -274,11 +269,6 @@ async function getSsgRoutes(): Promise<RouteData> {
       };
     }
   }
-  for (const doc of humanSlugs) {
-    if (!doc.slug?.current) continue;
-    dynamic.push(`/humans/${doc.slug.current}`);
-  }
-
   console.log(`[SSG] ${STATIC_ROUTES.length} static + ${dynamic.length} dynamic routes`);
   return { routes: [...STATIC_ROUTES, ...dynamic], dynamicMeta, blogData };
 }
@@ -528,7 +518,6 @@ const ROUTE_ENTRY_MODULE: Record<string, string> = {
   '/solutions': 'src/pages/solutions/SolutionsListing.tsx',
   '/solutions/support-coordination': 'src/pages/supportCoordination/SupportCoordination.tsx',
   '/about': 'src/pages/marketing/about/About.tsx',
-  '/humans': 'src/pages/humans/HumansPage.tsx',
   '/careers': 'src/pages/marketing/careers/Careers.tsx',
   '/contact-us': 'src/pages/forms/contactInformation/ContactInformation.tsx',
   '/help-centre': 'src/pages/resources/faq/FAQ.tsx',
@@ -556,7 +545,6 @@ function getEntryModuleForPath(routePath: string): string | null {
   if (routePath.startsWith('/capabilities/')) return 'src/pages/capabilities/CapabilityPage.tsx';
   if (routePath.startsWith('/solutions/')) return 'src/pages/solutions/solutionPage/SolutionPage.tsx';
   if (routePath.startsWith('/tesseract-vs/')) return 'src/pages/competitors/CompetitorPage.tsx';
-  if (routePath.startsWith('/humans/')) return 'src/pages/humans/HumanPage.tsx';
   if (routePath.startsWith('/whitepapers/')) return 'src/pages/resources/whitepapers/WhitepaperPage.tsx';
   if (routePath.startsWith('/guides/')) return 'src/pages/resources/guides/GuidePage.tsx';
   return null;

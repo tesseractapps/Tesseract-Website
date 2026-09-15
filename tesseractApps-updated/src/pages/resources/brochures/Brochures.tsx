@@ -36,8 +36,8 @@ const Brochures = () => {
   return (
     <div>
       <SEO
-        title="Brochures | TesseractApps"
-        description="Download TesseractApps brochures covering our NDIS software platform, key features, and care management solutions."
+        title="NDIS Software Brochures & Downloads | TesseractApps"
+        description="Download TesseractApps brochures, feature guides and product resources for NDIS providers comparing workforce management software."
       />
 
       <PageHero

@@ -1,6 +1,6 @@
 import "./AboutStyles.css";
 import PageHero from "../../../components/common/PageHero";
-import { useLocation, Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import SEO from "../../../components/common/SEO";
 import { useSanityTeamMembers } from "../../../hooks/useSanityTeamMembers";
@@ -20,6 +20,7 @@ import facebook from "../../../assets/facebook.webp";
 import instagram from "../../../assets/instagram.webp";
 import linkedin from "../../../assets/linkedin.webp";
 import youtube from "../../../assets/youtube.webp";
+import xpathLogo from "../../../assets/Expath_Blue&WhiteBKD.webp";
 
 // const ICON_MAP: Record<string, React.ReactNode> = {
 //   dollar: <DollarSign size={13} strokeWidth={2.5} />,
@@ -50,14 +51,15 @@ const About = () => {
         window.scrollTo({ top: absoluteY - offset, behavior: "smooth" });
       }
       tries++;
-      if (document.getElementById(targetId) || tries > 5) clearInterval(interval);
+      if (document.getElementById(targetId) || tries > 5)
+        clearInterval(interval);
     }, 200);
     return () => clearInterval(interval);
   }, [location.state]);
 
   const aboutSchema = buildAboutPageSchema({
     people: teamMembers.map((m) => ({
-      name: m.name ?? '',
+      name: m.name ?? "",
       jobTitle: m.role,
       imageUrl: m.photo?.asset?.url,
       linkedInUrl: m.linkedInUrl,
@@ -67,8 +69,8 @@ const About = () => {
   return (
     <div id="about-container">
       <SEO
-        title="About TesseractApps | NDIS Software Provider"
-        description="Learn about TesseractApps - founded in 2022 to simplify NDIS compliance and care management. Meet our team of technologists and industry experts building the future of workforce technology in Australia."
+        title="About TesseractApps | Australian NDIS Software"
+        description="Learn about TesseractApps, the Australian NDIS software company helping providers simplify workforce operations and compliance."
         structuredData={aboutSchema}
       />
 
@@ -79,7 +81,6 @@ const About = () => {
       />
 
       <div id="about-outer">
-
         {/* ── Our Story ── */}
         <section id="about-story">
           {/* <img
@@ -97,23 +98,42 @@ const About = () => {
               <div id="about-story-timeline">
                 <div className="about-timeline-item">
                   <div className="about-timeline-year">2023 – Founded</div>
-                  <p className="about-timeline-desc">We started by listening to the people who deliver care every day.</p>
+                  <p className="about-timeline-desc">
+                    We started by listening to the people who deliver care every
+                    day.
+                  </p>
                 </div>
                 <div className="about-timeline-item">
-                  <div className="about-timeline-year">2024 – Platform Development</div>
-                  <p className="about-timeline-desc">Built our platform with real providers in real workflows. Every feature tested, refined, and simplified.</p>
+                  <div className="about-timeline-year">
+                    2024 – Platform Development
+                  </div>
+                  <p className="about-timeline-desc">
+                    Built our platform with real providers in real workflows.
+                    Every feature tested, refined, and simplified.
+                  </p>
                 </div>
                 <div className="about-timeline-item">
-                  <div className="about-timeline-year">2025 – T NDIS Beta Launch</div>
-                  <p className="about-timeline-desc">Provider feedback shaped the platform into a practical, daily operational system.</p>
+                  <div className="about-timeline-year">
+                    2025 – T NDIS Beta Launch
+                  </div>
+                  <p className="about-timeline-desc">
+                    Provider feedback shaped the platform into a practical,
+                    daily operational system.
+                  </p>
                 </div>
                 <div className="about-timeline-item">
                   <div className="about-timeline-year">Market-Ready</div>
-                  <p className="about-timeline-desc">TesseractApps became fully operational and ready to serve providers.</p>
+                  <p className="about-timeline-desc">
+                    TesseractApps became fully operational and ready to serve
+                    providers.
+                  </p>
                 </div>
               </div>
               <p id="about-story-commitment">
-                We are committed to creating practical, meaningful solutions that support the people delivering care every day. Clarity, collaboration, and real-world impact guide every feature we design.
+                We are committed to creating practical, meaningful solutions
+                that support the people delivering care every day. Clarity,
+                collaboration, and real-world impact guide every feature we
+                design.
               </p>
             </div>
           </div>
@@ -132,7 +152,9 @@ const About = () => {
               </div>
               <h3 className="about-mv-card-heading">Our Mission</h3>
               <p className="about-mv-card-text">
-                To empower businesses worldwide with innovative, role-specific people management software that is accessible across industries, enabling streamlined operations and enhanced productivity.
+                To empower businesses worldwide with innovative, role-specific
+                people management software that is accessible across industries,
+                enabling streamlined operations and enhanced productivity.
               </p>
             </div>
             <div className="about-mv-card" id="about-mv-vision">
@@ -141,7 +163,10 @@ const About = () => {
               </div>
               <h3 className="about-mv-card-heading">Our Vision</h3>
               <p className="about-mv-card-text">
-                To revolutionise the future of business management, fostering collaboration, efficiency, and growth through technology that adapts to the ever-changing needs of industries and their people.
+                To revolutionise the future of business management, fostering
+                collaboration, efficiency, and growth through technology that
+                adapts to the ever-changing needs of industries and their
+                people.
               </p>
             </div>
           </div>
@@ -153,7 +178,9 @@ const About = () => {
             <div className="about-section-label">The team</div>
             <h2 id="about-team-heading">The people behind the platform</h2>
             <p id="about-team-sub">
-              We're an energetic and passionate team with diverse backgrounds and deep expertise, united by a shared commitment to making care simpler.
+              We're an energetic and passionate team with diverse backgrounds
+              and deep expertise, united by a shared commitment to making care
+              simpler.
             </p>
           </div>
           {/* <img
@@ -166,7 +193,10 @@ const About = () => {
           <div id="about-team-grid">
             {teamLoading
               ? [0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                  <div key={i} className="about-team-card about-team-card--skeleton">
+                  <div
+                    key={i}
+                    className="about-team-card about-team-card--skeleton"
+                  >
                     <div className="about-team-avatar about-skeleton-avatar" />
                     <div className="about-team-card-body">
                       <div className="about-skeleton-line about-skeleton-line--name" />
@@ -180,32 +210,36 @@ const About = () => {
                       {member.photo?.asset ? (
                         <SanityImage
                           src={member.photo}
-                          alt={member.photo?.alt ?? member.name ?? ''}
+                          alt={member.photo?.alt ?? member.name ?? ""}
                           className="about-team-avatar"
                           width={96}
                           height={96}
                           loading="lazy"
                         />
                       ) : (
-                        <div className="about-team-avatar about-team-avatar--initials" aria-hidden="true">
-                          {(member.name ?? '').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
+                        <div
+                          className="about-team-avatar about-team-avatar--initials"
+                          aria-hidden="true"
+                        >
+                          {(member.name ?? "")
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")
+                            .slice(0, 2)
+                            .toUpperCase()}
                         </div>
                       )}
                       <div className="about-team-card-body">
-                        <div className="about-team-card-name">{member.name}</div>
-                        <div className="about-team-card-role">{member.role}</div>
+                        <div className="about-team-card-name">
+                          {member.name}
+                        </div>
+                        <div className="about-team-card-role">
+                          {member.role}
+                        </div>
                       </div>
                     </>
                   );
-                  return member.slug?.current ? (
-                    <Link
-                      to={`/humans/${member.slug.current}/`}
-                      className="about-team-card"
-                      key={member._id}
-                    >
-                      {cardContent}
-                    </Link>
-                  ) : (
+                  return (
                     <div className="about-team-card" key={member._id}>
                       {cardContent}
                     </div>
@@ -318,11 +352,34 @@ const About = () => {
         </section> */}
 
         {/* ── Contact ── */}
+        <section id="about-contact-section" className="about-partner-section">
+          {/* <div className="about-section-label">Get in touch</div> */}
+          <h2 id="about-contact-heading">Strategic Partner</h2>
+          <p id="about-contact-sub">
+            Through strong partnerships and shared goals, we continue to create
+            meaningful impact for our clients and communities.
+          </p>
+
+          <div id="about-contact-grid">
+            <Link
+              to={
+                "https://expath.com.au/intro?utm_campaign=partner&utm_medium=website&utm_source=tesseract"
+              }
+              target="_blank"
+              className="about-partner-logo"
+            >
+              <img src={xpathLogo} alt="xpath-logo" />
+            </Link>
+          </div>
+        </section>
+
+        {/* ── Contact ── */}
         <section id="about-contact-section">
           <div className="about-section-label">Get in touch</div>
           <h2 id="about-contact-heading">Contact Us</h2>
           <p id="about-contact-sub">
-            Whether you want to learn more about our platform or need support, our team is here to help.
+            Whether you want to learn more about our platform or need support,
+            our team is here to help.
           </p>
 
           <div id="about-contact-grid">
@@ -343,12 +400,19 @@ const About = () => {
                 </div>
                 <div className="about-contact-row">
                   <Mail size={14} className="about-contact-row-icon" />
-                  <a href="mailto:sales@tesseractapps.com" className="about-contact-link">
+                  <a
+                    href="mailto:sales@tesseractapps.com"
+                    className="about-contact-link"
+                  >
                     sales@tesseractapps.com
                   </a>
                 </div>
               </div>
-              <button type="button" className="about-contact-cta" onClick={() => appNavigate("/book-a-demo")}>
+              <button
+                type="button"
+                className="about-contact-cta"
+                onClick={() => appNavigate("/book-a-demo")}
+              >
                 Book a Demo
               </button>
             </div>
@@ -376,7 +440,11 @@ const About = () => {
                   <span>1300 252 808 &nbsp;/&nbsp; 02 6133 2800</span>
                 </div>
               </div>
-              <button type="button" className="about-contact-cta" onClick={() => appNavigate("/signup")}>
+              <button
+                type="button"
+                className="about-contact-cta"
+                onClick={() => appNavigate("/signup")}
+              >
                 Begin Your Journey
               </button>
             </div>
@@ -386,17 +454,23 @@ const About = () => {
               <div className="about-contact-card-icon">
                 <Send size={20} strokeWidth={2} />
               </div>
-              <div className="about-contact-card-title">Marketing & Partnerships</div>
+              <div className="about-contact-card-title">
+                Marketing & Partnerships
+              </div>
               <div className="about-contact-card-rows">
                 <div className="about-contact-row">
                   <Mail size={14} className="about-contact-row-icon" />
-                  <a href="mailto:marketing@tesseractapps.com" className="about-contact-link">
+                  <a
+                    href="mailto:marketing@tesseractapps.com"
+                    className="about-contact-link"
+                  >
                     marketing@tesseractapps.com
                   </a>
                 </div>
               </div>
               <p className="about-contact-card-note">
-                For collaborations, media enquiries, or partnership opportunities, our marketing team is here to help.
+                For collaborations, media enquiries, or partnership
+                opportunities, our marketing team is here to help.
               </p>
             </div>
           </div>
@@ -404,9 +478,15 @@ const About = () => {
           <div id="about-contact-not-ready">
             <h3 id="about-not-ready-heading">Not Ready to Talk Yet?</h3>
             <p id="about-not-ready-sub">
-              See how governance‑first technology can simplify your operations, strengthen compliance, and give your team more time to focus on delivering quality care.
+              See how governance‑first technology can simplify your operations,
+              strengthen compliance, and give your team more time to focus on
+              delivering quality care.
             </p>
-            <button type="button" className="about-contact-cta" onClick={() => appNavigate("/signup")}>
+            <button
+              type="button"
+              className="about-contact-cta"
+              onClick={() => appNavigate("/signup")}
+            >
               Begin Your Journey
             </button>
           </div>
@@ -415,10 +495,10 @@ const About = () => {
             <p>Follow us on social media for updates, insights, and news.</p>
             <div id="about-social-icons">
               {[
-                { src: facebook,  alt: "Facebook",  key: "facebook"  },
-                { src: instagram, alt: "Instagram",  key: "instagram" },
-                { src: linkedin,  alt: "LinkedIn",   key: "linkedin"  },
-                { src: youtube,   alt: "YouTube",    key: "youtube"   },
+                { src: facebook, alt: "Facebook", key: "facebook" },
+                { src: instagram, alt: "Instagram", key: "instagram" },
+                { src: linkedin, alt: "LinkedIn", key: "linkedin" },
+                { src: youtube, alt: "YouTube", key: "youtube" },
               ].map(({ src, alt, key }) => (
                 <button
                   key={key}
@@ -441,7 +521,6 @@ const About = () => {
             </div>
           </div>
         </section>
-
       </div>
     </div>
   );

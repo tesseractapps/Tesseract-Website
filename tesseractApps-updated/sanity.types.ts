@@ -13,6 +13,7 @@
  */
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
+export type ReleaseNoteChange = NonNullable<ReleaseNote["changes"]>[number];
 
 // Source: schema.json
 export type HumanReference = {
@@ -420,7 +421,6 @@ export type ReleaseNote = {
     _key: string;
   }>;
 };
-export type ReleaseNoteChange = NonNullable<ReleaseNote["changes"]>[number];
 
 export type ClientLogo = {
   _id: string;

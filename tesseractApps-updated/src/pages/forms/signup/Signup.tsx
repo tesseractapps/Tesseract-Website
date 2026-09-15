@@ -12,17 +12,28 @@ import {
 } from "../../../utils/emailTemplates";
 import { useNavigate } from "react-router-dom";
 import {
-  Users, Heart, Home, Stethoscope,
-  ChevronRight, Phone,
-  ShieldCheck, Clock, Star, X,
+  Users,
+  Heart,
+  Home,
+  Stethoscope,
+  ChevronRight,
+  Phone,
+  ShieldCheck,
+  Clock,
+  Star,
+  X,
 } from "lucide-react";
-import { trackBeginJourneySubmit, trackFormStepComplete, trackFormStart } from "../../../utils/analytics";
+import {
+  trackBeginJourneySubmit,
+  trackFormStepComplete,
+  trackFormStart,
+} from "../../../utils/analytics";
 
 /* ── Icon map for industry cards ── */
 const iconMap: Record<string, React.ReactNode> = {
-  Users:       <Users size={24} />,
-  Heart:       <Heart size={24} />,
-  Home:        <Home size={24} />,
+  Users: <Users size={24} />,
+  Heart: <Heart size={24} />,
+  Home: <Home size={24} />,
   Stethoscope: <Stethoscope size={24} />,
 };
 
@@ -53,10 +64,22 @@ const emptyForm: FormData = {
 
 /* ── Industry options ── */
 const INDUSTRY_OPTIONS = [
-  { value: "NDIS Provider",         icon: "Users",       desc: "Registered NDIS service providers" },
-  { value: "Support Coordination",  icon: "Heart",       desc: "Support coordinators & LAC providers" },
-  { value: "Allied Health",         icon: "Stethoscope", desc: "OT, physio, speech & allied clinicians" },
-  { value: "SIL",                   icon: "Home",        desc: "Supported Independent Living providers" },
+  {
+    value: "NDIS Provider",
+    icon: "Users",
+    desc: "Registered NDIS service providers",
+  },
+  // { value: "Support Coordination",  icon: "Heart",       desc: "Support coordinators & LAC providers" },
+  {
+    value: "Allied Health",
+    icon: "Stethoscope",
+    desc: "OT, physio, speech & allied clinicians",
+  },
+  {
+    value: "SIL",
+    icon: "Home",
+    desc: "Supported Independent Living providers",
+  },
 ];
 
 /* ── Service pathway steps (sidebar) ── */
@@ -77,7 +100,6 @@ const PATHWAY_STEPS = [
   "Audit Evidence",
 ];
 
-
 const TOTAL_STEPS = 3;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const ABN_RE = /^\d{11}$/;
@@ -85,13 +107,20 @@ const ABN_RE = /^\d{11}$/;
 const Signup = () => {
   const navigate = useNavigate();
 
-  const alertInitialData = { heading: "", text: "", type: "success", isOpen: false };
+  const alertInitialData = {
+    heading: "",
+    text: "",
+    type: "success",
+    isOpen: false,
+  };
   const [activeStep, setActiveStep] = useState(0);
-  useEffect(() => { trackFormStart("signup"); }, []);
-  const [formData, setFormData]           = useState<FormData>(emptyForm);
-  const [formErrors, setFormErrors]       = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting]   = useState(false);
-  const [alertData, setAlertData]         = useState(alertInitialData);
+  useEffect(() => {
+    trackFormStart("signup");
+  }, []);
+  const [formData, setFormData] = useState<FormData>(emptyForm);
+  const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [alertData, setAlertData] = useState(alertInitialData);
 
   const handleClose = () => navigate(-1);
 
@@ -102,16 +131,20 @@ const Signup = () => {
       const abn = formData.abn.replace(/\s/g, "");
       if (!abn) errors.abn = "ABN is required";
       else if (!ABN_RE.test(abn)) errors.abn = "ABN must be 11 digits";
-      if (!formData.companyName.trim()) errors.companyName = "Company name is required";
+      if (!formData.companyName.trim())
+        errors.companyName = "Company name is required";
       if (!formData.industry) errors.industry = "Please select your industry";
     } else if (step === 1) {
-      if (!formData.firstName.trim()) errors.firstName = "First name is required";
+      if (!formData.firstName.trim())
+        errors.firstName = "First name is required";
       if (!formData.lastName.trim()) errors.lastName = "Last name is required";
       if (!formData.email.trim()) errors.email = "Work email is required";
-      else if (!EMAIL_RE.test(formData.email.trim())) errors.email = "Enter a valid email address";
+      else if (!EMAIL_RE.test(formData.email.trim()))
+        errors.email = "Enter a valid email address";
       // phone is optional
     } else if (step === 2) {
-      if (!formData.termsAccepted) errors.termsAccepted = "You must accept the terms to continue";
+      if (!formData.termsAccepted)
+        errors.termsAccepted = "You must accept the terms to continue";
     }
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -147,22 +180,27 @@ const Signup = () => {
     if (!validateStep(2)) return;
     setIsSubmitting(true);
     trackFormStepComplete("signup", activeStep);
-    trackBeginJourneySubmit({ email: formData.email, phone: formData.phone, firstName: formData.firstName, lastName: formData.lastName });
+    trackBeginJourneySubmit({
+      email: formData.email,
+      phone: formData.phone,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+    });
     sendTextEmail(
       signupEmaiTemplate.email,
       signupEmaiTemplate.subject,
       signupEmaiTemplate.body({
-        firstName:    formData.firstName,
-        lastName:     formData.lastName,
-        phone:        formData.phone,
-        email:        formData.email,
-        company:      formData.companyName,
-        abn:          formData.abn,
-        industry:     formData.industry,
-        features:     "",
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: formData.phone,
+        email: formData.email,
+        company: formData.companyName,
+        abn: formData.abn,
+        industry: formData.industry,
+        features: "",
         otherFeature: "",
-        preference:   "",
-      })
+        preference: "",
+      }),
     )
       .then(() => {
         sendEmail(
@@ -170,7 +208,7 @@ const Signup = () => {
           formData.email,
           signupConfirmationEmailTemplate.subject,
           signupConfirmationEmailTemplate.text(formData.firstName),
-          signupConfirmationEmailTemplate.html(formData.firstName)
+          signupConfirmationEmailTemplate.html(formData.firstName),
         ).catch((err) => console.error("Confirmation email error:", err));
         navigate("/signup/success/");
       })
@@ -197,30 +235,39 @@ const Signup = () => {
       />
       <Alert setAlertData={setAlertData} alertData={alertData} />
 
-      <button type="button" id="signup-close-btn" onClick={handleClose} aria-label="Close">
+      <button
+        type="button"
+        id="signup-close-btn"
+        onClick={handleClose}
+        aria-label="Close"
+      >
         <X size={18} strokeWidth={2.5} />
       </button>
 
       <div id="signup-container">
-
-          {/* ── Left Sidebar ── */}
-          <div id="signup-sidebar">
-            <button
-              type="button"
-              id="signup-navbar-logo-btn"
-              onClick={() => navigate("/")}
-              aria-label="Go to home page"
-              style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}
-            >
-              <img
-                src={logo_white}
-                alt="TesseractApps logo"
-                id="signup-navbar-logo"
-              />
-            </button>
-            <div id="signup-sidebar-body">
-              {/* Step context */}
-              {/* <div id="signup-sidebar-step-tag">{ctx.tag}</div>
+        {/* ── Left Sidebar ── */}
+        <div id="signup-sidebar">
+          <button
+            type="button"
+            id="signup-navbar-logo-btn"
+            onClick={() => navigate("/")}
+            aria-label="Go to home page"
+            style={{
+              background: "none",
+              border: "none",
+              padding: 0,
+              cursor: "pointer",
+            }}
+          >
+            <img
+              src={logo_white}
+              alt="TesseractApps logo"
+              id="signup-navbar-logo"
+            />
+          </button>
+          <div id="signup-sidebar-body">
+            {/* Step context */}
+            {/* <div id="signup-sidebar-step-tag">{ctx.tag}</div>
               <div id="signup-sidebar-headline">
                 {ctx.headline.split("\n").map((line, i) => (
                   <span key={i}>{line}{i === 0 && <br />}</span>
@@ -228,317 +275,399 @@ const Signup = () => {
               </div>
               <div id="signup-sidebar-sub">{ctx.sub}</div> */}
 
-              {/* Trust badges */}
-              <div id="signup-trust-badges">
-                <div className="signup-trust-badge">
-                  <ShieldCheck size={15} className="signup-trust-badge-icon" />
-                  <span>No credit card</span>
-                </div>
-                <div className="signup-trust-badge">
-                  <Clock size={15} className="signup-trust-badge-icon" />
-                  <span>7-Day Access</span>
-                </div>
-                <div className="signup-trust-badge">
-                  <Star size={15} className="signup-trust-badge-icon" />
-                  <span>Trusted Provider</span>
-                </div>
+            {/* Trust badges */}
+            <div id="signup-trust-badges">
+              <div className="signup-trust-badge">
+                <ShieldCheck size={15} className="signup-trust-badge-icon" />
+                <span>No credit card</span>
               </div>
-
-              {/* Service Pathway */}
-              <h2 id="signup-pathway-heading">Your Service Pathway</h2>
-              <div id="signup-pathway-subheading">End-to-End Operations Covered</div>
-              <ul id="signup-pathway-list">
-                {PATHWAY_STEPS.map((step) => (
-                  <li key={step}>{step}</li>
-                ))}
-              </ul>
-
-              {/* Help section */}
-              <div id="signup-sidebar-help">
-                <div id="signup-sidebar-help-title">Need help?</div>
-                <div id="signup-sidebar-help-text">
-                  Our NDIS specialists are ready to assist you with your setup.
-                </div>
-                <span id="signup-sidebar-help-btn">
-                  <Phone size={13} />
-                  <span>1300 252 808</span>
-                </span>
+              <div className="signup-trust-badge">
+                <Clock size={15} className="signup-trust-badge-icon" />
+                <span>7-Day Access</span>
               </div>
+              <div className="signup-trust-badge">
+                <Star size={15} className="signup-trust-badge-icon" />
+                <span>Trusted Provider</span>
+              </div>
+            </div>
+
+            {/* Service Pathway */}
+            <h2 id="signup-pathway-heading">Your Service Pathway</h2>
+            <div id="signup-pathway-subheading">
+              End-to-End Operations Covered
+            </div>
+            <ul id="signup-pathway-list">
+              {PATHWAY_STEPS.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ul>
+
+            {/* Help section */}
+            <div id="signup-sidebar-help">
+              <div id="signup-sidebar-help-title">Need help?</div>
+              <div id="signup-sidebar-help-text">
+                Our NDIS specialists are ready to assist you with your setup.
+              </div>
+              <span id="signup-sidebar-help-btn">
+                <Phone size={13} />
+                <span>1300 252 808</span>
+              </span>
             </div>
           </div>
+        </div>
 
-          {/* ── Right Content ── */}
-          <div id="signup-form-section">
+        {/* ── Right Content ── */}
+        <div id="signup-form-section">
+          {/* Page heading + Stepper */}
+          <div id="signup-stepper-wrapper">
+            <h1 id="signup-page-heading">Begin Your Journey</h1>
+            <FormStepper
+              steps={[
+                "Company Verification",
+                "Personal Details",
+                "Review & Confirm",
+              ]}
+              activeStep={activeStep}
+            />
+          </div>
 
-            {/* Page heading + Stepper */}
-            <div id="signup-stepper-wrapper">
-              <h1 id="signup-page-heading">Begin Your Journey</h1>
-              <FormStepper
-                steps={["Company Verification", "Personal Details", "Review & Confirm"]}
-                activeStep={activeStep}
-              />
-            </div>
+          {/* Scrollable area */}
+          <div id="signup-form-scroll-area">
+            {/* ── Step 0: Company Verification ── */}
+            {activeStep === 0 && (
+              <div id="signup-step0">
+                <div className="signup-form-question">
+                  You're in the right place!
+                </div>
+                <div className="signup-form-hint">
+                  Let's get you set up. We just need a few details about your
+                  business to verify your company.
+                </div>
 
-            {/* Scrollable area */}
-            <div id="signup-form-scroll-area">
-
-              {/* ── Step 0: Company Verification ── */}
-              {activeStep === 0 && (
-                <div id="signup-step0">
-                  <div className="signup-form-question">You're in the right place!</div>
-                  <div className="signup-form-hint">
-                    Let's get you set up. We just need a few details about your business to verify your company. 
-                  </div>
-
-                  <div id="signup-abn-row">
-                    <div className="su-field">
-                      <label className="su-label" htmlFor="abn">
-                        ABN Number <span className="su-required">*</span>
-                        <span className="su-label-note">, Verified via ABR</span>
-                      </label>
-                      <input
-                        className={"su-input" + (formErrors.abn ? " su-input-error" : "")}
-                        id="abn"
-                        type="text"
-                        placeholder="e.g. 12 345 678 901"
-                        value={formData.abn}
-                        onChange={handleInputChange}
-                      />
-                      {formErrors.abn && <span className="su-error">{formErrors.abn}</span>}
-                    </div>
-                    <div className="su-field">
-                      <label className="su-label" htmlFor="companyName">
-                        Company Name <span className="su-required">*</span>
-                      </label>
-                      <input
-                        className={"su-input" + (formErrors.companyName ? " su-input-error" : "")}
-                        id="companyName"
-                        type="text"
-                        placeholder="Your organisation name"
-                        value={formData.companyName}
-                        onChange={handleInputChange}
-                      />
-                      {formErrors.companyName && <span className="su-error">{formErrors.companyName}</span>}
-                    </div>
-                  </div>
-
-                  <div className="su-field su-field-industry">
-                    <label className="su-label">
-                      Industry Served <span className="su-required">*</span>
+                <div id="signup-abn-row">
+                  <div className="su-field">
+                    <label className="su-label" htmlFor="abn">
+                      ABN Number <span className="su-required">*</span>
+                      <span className="su-label-note">, Verified via ABR</span>
                     </label>
-                    <div id="signup-industry-grid">
-                      {INDUSTRY_OPTIONS.map((opt) => {
-                        const selected = formData.industry === opt.value;
-                        return (
-                          <div
-                            key={opt.value}
-                            className={"signup-option-card" + (selected ? " selected" : "")}
-                            onClick={() => handleIndustrySelect(opt.value)}
-                            role="button"
-                            tabIndex={0}
-                            onKeyDown={(e) => e.key === "Enter" && handleIndustrySelect(opt.value)}
-                          >
-                            <div className="signup-card-radio">
-                              <div className={"signup-radio-dot" + (selected ? " selected" : "")} />
-                            </div>
-                            <div className="signup-card-icon-wrap">
-                              {iconMap[opt.icon]}
-                            </div>
-                            <div className="signup-card-title">{opt.value}</div>
-                            <div className="signup-card-desc">{opt.desc}</div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    {formErrors.industry && (
-                      <span className="su-error su-error-cards">{formErrors.industry}</span>
+                    <input
+                      className={
+                        "su-input" + (formErrors.abn ? " su-input-error" : "")
+                      }
+                      id="abn"
+                      type="text"
+                      placeholder="e.g. 12 345 678 901"
+                      value={formData.abn}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.abn && (
+                      <span className="su-error">{formErrors.abn}</span>
+                    )}
+                  </div>
+                  <div className="su-field">
+                    <label className="su-label" htmlFor="companyName">
+                      Company Name <span className="su-required">*</span>
+                    </label>
+                    <input
+                      className={
+                        "su-input" +
+                        (formErrors.companyName ? " su-input-error" : "")
+                      }
+                      id="companyName"
+                      type="text"
+                      placeholder="Your organisation name"
+                      value={formData.companyName}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.companyName && (
+                      <span className="su-error">{formErrors.companyName}</span>
                     )}
                   </div>
                 </div>
-              )}
 
-              {/* ── Step 1: Personal Details ── */}
-              {activeStep === 1 && (
-                <div id="signup-step1">
-                  <div className="signup-form-question">Tell us a bit about yourself</div>
-                  <div className="signup-form-hint">
-                    We'll use these to set up your account and send login credentials.
-                  </div>
-
-                  <div id="signup-name-row">
-                    <div className="su-field">
-                      <label className="su-label" htmlFor="firstName">
-                        First Name <span className="su-required">*</span>
-                      </label>
-                      <input
-                        className={"su-input" + (formErrors.firstName ? " su-input-error" : "")}
-                        id="firstName"
-                        type="text"
-                        placeholder="Jane"
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                      />
-                      {formErrors.firstName && <span className="su-error">{formErrors.firstName}</span>}
-                    </div>
-                    <div className="su-field">
-                      <label className="su-label" htmlFor="lastName">
-                        Last Name <span className="su-required">*</span>
-                      </label>
-                      <input
-                        className={"su-input" + (formErrors.lastName ? " su-input-error" : "")}
-                        id="lastName"
-                        type="text"
-                        placeholder="Doe"
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                      />
-                      {formErrors.lastName && <span className="su-error">{formErrors.lastName}</span>}
-                    </div>
-                  </div>
-
-                  <div className="su-field">
-                    <label className="su-label" htmlFor="email">
-                      Work Email <span className="su-required">*</span>
-                    </label>
-                    <input
-                      className={"su-input" + (formErrors.email ? " su-input-error" : "")}
-                      id="email"
-                      type="email"
-                      placeholder="jane@organisation.com.au"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                    />
-                    {formErrors.email && <span className="su-error">{formErrors.email}</span>}
-                  </div>
-
-                  <div className="su-field">
-                    <label className="su-label" htmlFor="phone">
-                      Phone Number
-                    </label>
-                    <input
-                      className={"su-input" + (formErrors.phone ? " su-input-error" : "")}
-                      id="phone"
-                      type="tel"
-                      placeholder="04xx xxx xxx"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                    />
-                    {formErrors.phone && <span className="su-error">{formErrors.phone}</span>}
-                  </div>
-                </div>
-              )}
-
-              {/* ── Step 2: Review & Confirm ── */}
-              {activeStep === 2 && (
-                <div id="signup-step2">
-                  <div className="signup-form-question">Almost there!</div>
-                  <div className="signup-form-hint">
-                    Ready to start your journey? We've got everything we need. Just a quick review and you're ready to go!
-                  </div>
-                  <div id="signup-review-heading">Review your details</div>
-
-                  <div id="signup-review-grid">
-                    {/* Company block */}
-                    <div className="signup-review-block">
-                      <div className="signup-review-block-title">Organisation</div>
-                      <div className="signup-review-row">
-                        <span className="signup-review-key">Company</span>
-                        <span className="signup-review-val">{formData.companyName || "—"}</span>
-                      </div>
-                      <div className="signup-review-row">
-                        <span className="signup-review-key">ABN</span>
-                        <span className="signup-review-val">{formData.abn || "—"}</span>
-                      </div>
-                      <div className="signup-review-row">
-                        <span className="signup-review-key">Industry</span>
-                        <span className="signup-review-val">{formData.industry || "—"}</span>
-                      </div>
-                    </div>
-
-                    {/* Contact block */}
-                    <div className="signup-review-block">
-                      <div className="signup-review-block-title">Contact</div>
-                      <div className="signup-review-row">
-                        <span className="signup-review-key">Name</span>
-                        <span className="signup-review-val">{formData.firstName} {formData.lastName}</span>
-                      </div>
-                      <div className="signup-review-row">
-                        <span className="signup-review-key">Email</span>
-                        <span className="signup-review-val">{formData.email || "—"}</span>
-                      </div>
-                      <div className="signup-review-row">
-                        <span className="signup-review-key">Phone</span>
-                        <span className="signup-review-val">{formData.phone || "—"}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Terms */}
-                  <label id="signup-terms-label">
-                    <input
-                      type="checkbox"
-                      id="termsAccepted"
-                      checked={formData.termsAccepted}
-                      onChange={handleInputChange}
-                      className="signup-terms-checkbox"
-                    />
-                    <span>
-                      I agree to the{" "}
-                      <a href="/terms-and-conditions/" target="_blank" className="signup-terms-link">Terms of Service</a>
-                      {" "}and{" "}
-                      <a href="/privacy-policy/" target="_blank" className="signup-terms-link">Privacy Policy</a>*
-                    </span>
+                <div className="su-field su-field-industry">
+                  <label className="su-label">
+                    Industry Served <span className="su-required">*</span>
                   </label>
-                  {formErrors.termsAccepted && (
-                    <span className="su-error su-error-terms">
-                      {formErrors.termsAccepted}
+                  <div id="signup-industry-grid">
+                    {INDUSTRY_OPTIONS.map((opt) => {
+                      const selected = formData.industry === opt.value;
+                      return (
+                        <div
+                          key={opt.value}
+                          className={
+                            "signup-option-card" + (selected ? " selected" : "")
+                          }
+                          onClick={() => handleIndustrySelect(opt.value)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) =>
+                            e.key === "Enter" && handleIndustrySelect(opt.value)
+                          }
+                        >
+                          <div className="signup-card-radio">
+                            <div
+                              className={
+                                "signup-radio-dot" +
+                                (selected ? " selected" : "")
+                              }
+                            />
+                          </div>
+                          <div className="signup-card-icon-wrap">
+                            {iconMap[opt.icon]}
+                          </div>
+                          <div className="signup-card-title">{opt.value}</div>
+                          <div className="signup-card-desc">{opt.desc}</div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {formErrors.industry && (
+                    <span className="su-error su-error-cards">
+                      {formErrors.industry}
                     </span>
                   )}
                 </div>
-              )}
-
-            </div>
-
-            {/* Security note on step 1 */}
-            {activeStep === 1 && (
-              <div id="signup-security-note">
-                Your data is securely processed and encrypted.
               </div>
             )}
 
-            {/* Footer */}
-            <div id="signup-buttons-container">
+            {/* ── Step 1: Personal Details ── */}
+            {activeStep === 1 && (
+              <div id="signup-step1">
+                <div className="signup-form-question">
+                  Tell us a bit about yourself
+                </div>
+                <div className="signup-form-hint">
+                  We'll use these to set up your account and send login
+                  credentials.
+                </div>
+
+                <div id="signup-name-row">
+                  <div className="su-field">
+                    <label className="su-label" htmlFor="firstName">
+                      First Name <span className="su-required">*</span>
+                    </label>
+                    <input
+                      className={
+                        "su-input" +
+                        (formErrors.firstName ? " su-input-error" : "")
+                      }
+                      id="firstName"
+                      type="text"
+                      placeholder="Jane"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.firstName && (
+                      <span className="su-error">{formErrors.firstName}</span>
+                    )}
+                  </div>
+                  <div className="su-field">
+                    <label className="su-label" htmlFor="lastName">
+                      Last Name <span className="su-required">*</span>
+                    </label>
+                    <input
+                      className={
+                        "su-input" +
+                        (formErrors.lastName ? " su-input-error" : "")
+                      }
+                      id="lastName"
+                      type="text"
+                      placeholder="Doe"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                    />
+                    {formErrors.lastName && (
+                      <span className="su-error">{formErrors.lastName}</span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="su-field">
+                  <label className="su-label" htmlFor="email">
+                    Work Email <span className="su-required">*</span>
+                  </label>
+                  <input
+                    className={
+                      "su-input" + (formErrors.email ? " su-input-error" : "")
+                    }
+                    id="email"
+                    type="email"
+                    placeholder="jane@organisation.com.au"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                  />
+                  {formErrors.email && (
+                    <span className="su-error">{formErrors.email}</span>
+                  )}
+                </div>
+
+                <div className="su-field">
+                  <label className="su-label" htmlFor="phone">
+                    Phone Number
+                  </label>
+                  <input
+                    className={
+                      "su-input" + (formErrors.phone ? " su-input-error" : "")
+                    }
+                    id="phone"
+                    type="tel"
+                    placeholder="04xx xxx xxx"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                  />
+                  {formErrors.phone && (
+                    <span className="su-error">{formErrors.phone}</span>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* ── Step 2: Review & Confirm ── */}
+            {activeStep === 2 && (
+              <div id="signup-step2">
+                <div className="signup-form-question">Almost there!</div>
+                <div className="signup-form-hint">
+                  Ready to start your journey? We've got everything we need.
+                  Just a quick review and you're ready to go!
+                </div>
+                <div id="signup-review-heading">Review your details</div>
+
+                <div id="signup-review-grid">
+                  {/* Company block */}
+                  <div className="signup-review-block">
+                    <div className="signup-review-block-title">
+                      Organisation
+                    </div>
+                    <div className="signup-review-row">
+                      <span className="signup-review-key">Company</span>
+                      <span className="signup-review-val">
+                        {formData.companyName || "—"}
+                      </span>
+                    </div>
+                    <div className="signup-review-row">
+                      <span className="signup-review-key">ABN</span>
+                      <span className="signup-review-val">
+                        {formData.abn || "—"}
+                      </span>
+                    </div>
+                    <div className="signup-review-row">
+                      <span className="signup-review-key">Industry</span>
+                      <span className="signup-review-val">
+                        {formData.industry || "—"}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Contact block */}
+                  <div className="signup-review-block">
+                    <div className="signup-review-block-title">Contact</div>
+                    <div className="signup-review-row">
+                      <span className="signup-review-key">Name</span>
+                      <span className="signup-review-val">
+                        {formData.firstName} {formData.lastName}
+                      </span>
+                    </div>
+                    <div className="signup-review-row">
+                      <span className="signup-review-key">Email</span>
+                      <span className="signup-review-val">
+                        {formData.email || "—"}
+                      </span>
+                    </div>
+                    <div className="signup-review-row">
+                      <span className="signup-review-key">Phone</span>
+                      <span className="signup-review-val">
+                        {formData.phone || "—"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Terms */}
+                <label id="signup-terms-label">
+                  <input
+                    type="checkbox"
+                    id="termsAccepted"
+                    checked={formData.termsAccepted}
+                    onChange={handleInputChange}
+                    className="signup-terms-checkbox"
+                  />
+                  <span>
+                    I agree to the{" "}
+                    <a
+                      href="/terms-and-conditions/"
+                      target="_blank"
+                      className="signup-terms-link"
+                    >
+                      Terms of Service
+                    </a>{" "}
+                    and{" "}
+                    <a
+                      href="/privacy-policy/"
+                      target="_blank"
+                      className="signup-terms-link"
+                    >
+                      Privacy Policy
+                    </a>
+                    *
+                  </span>
+                </label>
+                {formErrors.termsAccepted && (
+                  <span className="su-error su-error-terms">
+                    {formErrors.termsAccepted}
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Security note on step 1 */}
+          {activeStep === 1 && (
+            <div id="signup-security-note">
+              Your data is securely processed and encrypted.
+            </div>
+          )}
+
+          {/* Footer */}
+          <div id="signup-buttons-container">
+            <button
+              type="button"
+              className="signup-btn-secondary"
+              onClick={handleBack}
+              disabled={activeStep === 0}
+            >
+              ← Back
+            </button>
+
+            {activeStep < TOTAL_STEPS - 1 ? (
               <button
                 type="button"
-                className="signup-btn-secondary"
-                onClick={handleBack}
-                disabled={activeStep === 0}
+                className="signup-btn-primary"
+                onClick={handleNext}
               >
-                ← Back
+                Continue{" "}
+                <ChevronRight
+                  size={15}
+                  style={{ verticalAlign: "middle", marginLeft: 2 }}
+                />
               </button>
+            ) : (
+              <button
+                type="button"
+                className="signup-btn-primary"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Activating…" : "Confirm & Submit ✓"}
+              </button>
+            )}
 
-              {activeStep < TOTAL_STEPS - 1 ? (
-                <button type="button" className="signup-btn-primary" onClick={handleNext}>
-                  Continue <ChevronRight size={15} style={{ verticalAlign: "middle", marginLeft: 2 }} />
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="signup-btn-primary"
-                  onClick={handleSubmit}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Activating…" : "Confirm & Submit ✓"}
-                </button>
-              )}
-
-              {/* <button type="button" className="signup-cancel-link" onClick={handleClose}>
+            {/* <button type="button" className="signup-cancel-link" onClick={handleClose}>
                 Cancel
               </button> */}
-            </div>
-
           </div>
         </div>
+      </div>
     </div>
   );
 };
