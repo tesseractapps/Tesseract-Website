@@ -169,21 +169,21 @@ TesseractApps offers tiered pricing based on provider maturity stage and team si
 - **Includes**: Participant onboarding, rostering, case notes, incident logging, timesheets, payroll, invoicing, structured document storage, guided onboarding
 
 ### Growth
-- **Staff Range**: 15–50 staff
+- **Staff Range**: 16–60 staff
 - **Best For**: Scaling providers with established operations needing automation
-- **Commercial**: Setup fee + per-seat subscription (AUD)
+- **Commercial**: $39.99 per seat / month (AUD)
 - **Includes**: Everything in Start, plus advanced rostering automation, compliance dashboards, performance reporting
 
 ### Scale
-- **Staff Range**: 50–200+ staff
+- **Staff Range**: 61–120 staff
 - **Best For**: Established mid-size providers with complex operational needs
-- **Commercial**: Setup fee + per-seat subscription (AUD)
+- **Commercial**: $39.99 per seat / month (AUD)
 - **Includes**: Everything in Growth, plus multi-location management, advanced analytics, API integrations
 
 ### Enterprise
-- **Staff Range**: 200+ staff / multi-site
+- **Staff Range**: 121+ staff / multi-site
 - **Best For**: Large organisations with enterprise compliance and customisation requirements
-- **Commercial**: Custom pricing, volume discounts
+- **Commercial**: Contact us — custom pricing for large organisations
 - **Includes**: Everything in Scale, plus custom integrations, dedicated account management, SLA support
 
 For current pricing, visit: https://tesseractapps.com.au/pricing
@@ -839,14 +839,16 @@ async function main() {
   }
 
   // ── 5. Generate humans.md ───────────────────────────────────────────────────
+  // Team listing is disabled while the About page team section is hidden.
+  const PUBLISH_TEAM = false;
   let humansMd = null;
-  if (teamMembers.length > 0) {
+  if (PUBLISH_TEAM && teamMembers.length > 0) {
     humansMd = buildHumansMd(teamMembers);
     writeFile(path.join(LLM_DIR, 'humans.md'), humansMd);
   }
 
   // ── 6. Build llms.txt — spec-compliant navigation index ────────────────────
-  const llmsTxt = buildLlmsTxt(blogPosts, capabilityPages, solutionPages, competitorPages, guides, whitepapers, teamMembers.length > 0);
+  const llmsTxt = buildLlmsTxt(blogPosts, capabilityPages, solutionPages, competitorPages, guides, whitepapers, PUBLISH_TEAM && teamMembers.length > 0);
   writeFile(path.join(PUBLIC_DIR, 'llms.txt'), llmsTxt);
 
   // ── 6. Build llms-full.txt (everything: static + CMS) ─────────────────────

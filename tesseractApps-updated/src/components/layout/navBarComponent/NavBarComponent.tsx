@@ -113,17 +113,17 @@ const STATIC_SOLUTION_ITEMS: SearchItem[] = [
     category: "Solution",
   },
   {
-    label: "Growth (15–60 staff)",
+    label: "Growth (16–60 staff)",
     path: "/solutions/growth",
     category: "Solution",
   },
   {
-    label: "Scale (60–120 staff)",
+    label: "Scale (61–120 staff)",
     path: "/solutions/scale",
     category: "Solution",
   },
   {
-    label: "Enterprise (120+ staff)",
+    label: "Enterprise (121+ staff)",
     path: "/solutions/enterprise",
     category: "Solution",
   },
@@ -140,7 +140,8 @@ const STATIC_PAGE_ITEMS: SearchItem[] = [
   { label: "Sign Up", path: "/signup", category: "Page" },
   { label: "Blog", path: "/blogs", category: "Resource" },
   { label: "Guides", path: "/guides", category: "Resource" },
-  { label: "Whitepapers", path: "/whitepapers", category: "Resource" },
+  // Whitepapers hidden until content is published (Nov 2026 dev brief)
+  // { label: "Whitepapers", path: "/whitepapers", category: "Resource" },
   { label: "Case Studies", path: "/case-studies", category: "Resource" },
   { label: "Help Centre", path: "/help-centre", category: "Resource" },
   { label: "Release Notes", path: "/changelog", category: "Resource" },

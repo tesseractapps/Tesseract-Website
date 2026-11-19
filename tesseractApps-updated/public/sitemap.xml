@@ -86,13 +86,6 @@
   </url>
 
   <url>
-    <loc>https://tesseractapps.com.au/whitepapers</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
     <loc>https://tesseractapps.com.au/brochures</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
@@ -470,26 +463,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://tesseractapps.com.au/whitepapers/scaling-claims-and-payroll-together</loc>
-    <lastmod>2026-06-23</lastmod>
+    <loc>https://tesseractapps.com.au/guides/ndis-registration-readiness-checklist</loc>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://tesseractapps.com.au/whitepapers/audit-readiness-without-spreadsheet-overload</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://tesseractapps.com.au/whitepapers/modern-ndis-operations-playbook</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>

@@ -28,7 +28,7 @@ const STATIC_SECTIONS = [
     heading: "Resources",
     links: [
       { label: "Blog", href: "/blogs/" },
-      { label: "Whitepapers", href: "/whitepapers/" },
+      { label: "Guides", href: "/guides" },
       { label: "NDIS Glossary", href: "/ndis-glossary/" },
       { label: "Help Centre / FAQ", href: "/help-centre/" },
       { label: "Release Notes", href: "/changelog/" },
@@ -40,7 +40,7 @@ const STATIC_SECTIONS = [
     links: [
       { label: "About Us", href: "/about/" },
       { label: "Careers", href: "/careers/" },
-      { label: "Contact Us", href: "/contact-us/" },
+      { label: "Contact Us", href: "/contact-us" },
     ],
   },
   {

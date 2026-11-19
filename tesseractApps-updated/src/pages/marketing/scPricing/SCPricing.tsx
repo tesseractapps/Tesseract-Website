@@ -517,10 +517,12 @@ const SCPricing = () => {
             marginTop="40px"
             onClick={() => setVideoOpen(true)}
             videoData={scVideo}
+            label="Support Coordination Overview"
           />
           <VideoThumbnailPlayButtonMobile
             onClick={() => setVideoOpen(true)}
             videoData={scVideo}
+            label="Support Coordination Overview"
             marginBottom="20px"
           />
           <div id="scp-hero-ctas">
@@ -627,6 +629,7 @@ const SCPricing = () => {
                   {/* <VideoThumbnailPlayButton
                     onClick={() => setVideoOpen(true)}
                     videoData={scVideo}
+                    label="Support Coordination Overview"
                   /> */}
                 </div>
                 <div className="scp-price-divider" />
@@ -634,6 +637,7 @@ const SCPricing = () => {
                   {/* <VideoThumbnailPlayButtonMobile
                     onClick={() => setVideoOpen(true)}
                     videoData={scVideo}
+                    label="Support Coordination Overview"
                   /> */}
                   <p className="scp-price-section-label">Add-ons:</p>
                   <div className="scp-price-addon-row">
@@ -733,7 +737,11 @@ const SCPricing = () => {
         </div>
       </section>
       {videoOpen && (
-        <VideoModal onClose={() => setVideoOpen(false)} videoData={scVideo} />
+        <VideoModal
+          onClose={() => setVideoOpen(false)}
+          videoData={scVideo}
+          label="Support Coordination Overview"
+        />
       )}
       {/* Why TesseractApps */}
       <section id="scp-why">

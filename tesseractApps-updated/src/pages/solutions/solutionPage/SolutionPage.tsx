@@ -116,22 +116,20 @@ const SolutionPage = () => {
   const { page, loading, error } = useSanitySolutionPage(slug);
   const { data: blogPosts } = useSanityBlogList({ from: 0, to: 100 });
   const navigate = useNavigate();
+  // Keyed by plan name (first word of the Sanity title, e.g. "Growth (16–60 Staff)")
+  // so the video survives edits to the staff range in the title.
   const videos = {
-    "Start (1–15 Staff)": starterVideo,
-    "Growth (15–60 Staff)": growthVideo,
-    "Scale (60–120 Staff)": scaleVideo,
-    "Enterprise (120+ Staff)": enterpriseVideo,
+    start: starterVideo,
+    growth: growthVideo,
+    scale: scaleVideo,
+    enterprise: enterpriseVideo,
   };
   const [videoOpen, setVideoOpen] = useState(false);
   type VideoKey = keyof typeof videos;
-  const isVideoKey = (key: string): key is VideoKey => {
-    return key in videos;
-  };
-  const [clickedVideo, setClickedVideo] = useState<VideoKey>("Start (1–15 Staff)");
-  const watchOverviewHandler = (videoName: VideoKey) => {
-    setClickedVideo(videoName);
-    setVideoOpen(true);
-  };
+  const planKey = (page?.title?.split(/\s+/)[0] ?? "").toLowerCase();
+  const videoKey: VideoKey | null = planKey in videos ? (planKey as VideoKey) : null;
+  const planName = videoKey ? videoKey[0].toUpperCase() + videoKey.slice(1) : "";
+  const watchOverviewHandler = () => setVideoOpen(true);
   // console.log("SolutionPage >> ", page);
   useEffect(() => {
     if (!page) return;
@@ -263,15 +261,17 @@ const SolutionPage = () => {
           {page.heroSubtitle && (
             <p className="sol-hero-sub">{page.heroSubtitle}</p>
           )}
-          {page?.title && isVideoKey(page.title) && (
+          {videoKey && (
             <>
               <VideoThumbnailPlayButton
-                onClick={() => watchOverviewHandler(page.title as VideoKey)}
-                videoData={videos[clickedVideo]}
+                onClick={watchOverviewHandler}
+                videoData={videos[videoKey]}
+                label={`${planName} Plan Overview`}
               />
               <VideoThumbnailPlayButtonMobile
-                onClick={() => watchOverviewHandler(page.title as VideoKey)}
-                videoData={videos[clickedVideo]}
+                onClick={watchOverviewHandler}
+                videoData={videos[videoKey]}
+                label={`${planName} Plan Overview`}
               />
             </>
           )}
@@ -283,10 +283,11 @@ const SolutionPage = () => {
         </div>
       </section>
 
-      {page?.title && isVideoKey(page.title) && videoOpen && (
+      {videoKey && videoOpen && (
         <VideoModal
           onClose={() => setVideoOpen(false)}
-          videoData={videos[`${clickedVideo}`]}
+          videoData={videos[videoKey]}
+          label={`${planName} Plan Overview`}
         />
       )}
 

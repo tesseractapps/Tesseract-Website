@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { COMPETITOR_PAGE_BY_SLUG_QUERY } from '../sanity/lib/queries'
 import { sanityConfigError } from '../sanity/env'
+import { getSsgData, hasSsgData, ssgKeys } from '../sanity/lib/ssgData'
 import type { CompetitorPage } from '../../sanity.types'
 
 // Module-level cache, prevents redundant fetches when navigating back to a
@@ -15,10 +16,11 @@ type UseSanityCompetitorPageResult = {
 }
 
 export function useSanityCompetitorPage(slug: string): UseSanityCompetitorPageResult {
-  const [page, setPage] = useState<CompetitorPage | null>(
-    () => cache.get(slug) ?? null
-  )
-  const [loading, setLoading] = useState(() => !cache.has(slug))
+  const ssgKey = ssgKeys.competitor(slug)
+  // Pre-rendered data (build time / hydration) takes the place of a cache hit.
+  const initial = cache.get(slug) ?? getSsgData<CompetitorPage>(ssgKey) ?? null
+  const [page, setPage] = useState<CompetitorPage | null>(() => initial)
+  const [loading, setLoading] = useState(() => initial === null)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -34,8 +36,12 @@ export function useSanityCompetitorPage(slug: string): UseSanityCompetitorPageRe
       return
     }
 
+    // Pre-rendered content is already on screen: refresh it once, silently,
+    // so CMS edits made after the build still show up.
+    const revalidate = !cache.has(slug) && hasSsgData(ssgKey)
+
     // Serve from cache immediately, no loading state shown on repeated visits
-    if (cache.has(slug)) {
+    if (cache.has(slug) && !revalidate) {
       setPage(cache.get(slug)!)
       setLoading(false)
       return
@@ -43,8 +49,10 @@ export function useSanityCompetitorPage(slug: string): UseSanityCompetitorPageRe
 
     let cancelled = false
 
-    setLoading(true)
-    setError(null)
+    if (!revalidate) {
+      setLoading(true)
+      setError(null)
+    }
 
     client
       .fetch<CompetitorPage | null>(COMPETITOR_PAGE_BY_SLUG_QUERY, { slug })
@@ -56,7 +64,8 @@ export function useSanityCompetitorPage(slug: string): UseSanityCompetitorPageRe
         }
       })
       .catch((err: unknown) => {
-        if (!cancelled) {
+        // A failed background refresh keeps the pre-rendered content.
+        if (!cancelled && !revalidate) {
           setError(err instanceof Error ? err.message : 'Failed to load competitor page')
           setLoading(false)
         }
@@ -65,7 +74,7 @@ export function useSanityCompetitorPage(slug: string): UseSanityCompetitorPageRe
     return () => {
       cancelled = true
     }
-  }, [slug])
+  }, [slug, ssgKey])
 
   return { page, loading, error }
 }

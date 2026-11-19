@@ -604,6 +604,7 @@ export const GUIDES_QUERY = `
 export const GUIDE_BY_SLUG_QUERY = `
   *[_type == "guide" && slug.current == $slug && status in ["published", "coming_soon"]][0] {
     _id,
+    _updatedAt,
     title,
     slug,
     status,

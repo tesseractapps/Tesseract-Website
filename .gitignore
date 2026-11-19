@@ -1,0 +1,12 @@
+# OS / editor junk
+.DS_Store
+*.stackdump
+
+# Dependencies & build output (the app lives in tesseractApps-updated/)
+node_modules/
+dist/
+
+# Secrets — never commit real env files; use .env.example as the template
+.env
+.env.*
+!.env.example

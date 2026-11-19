@@ -2,10 +2,13 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 
 // ─── Animated counter hook (local) ────────────────────────────────────────────
+// Starts at the final value so the pre-rendered HTML (crawlers, no-JS, first
+// paint) shows real numbers; the count-up is a visual enhancement only.
 function useCountUp(target: number, duration = 1800, active = false): number {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
   useEffect(() => {
     if (!active) return;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
     let startTime: number | null = null;
     const step = (ts: number) => {
       if (!startTime) startTime = ts;
@@ -55,14 +58,14 @@ const StatCounter = forwardRef<HTMLDivElement>((_, forwardedRef) => {
 
   const c1 = useCountUp(1000, 1600, inView);
   const c2 = useCountUp(40, 1600, inView);
-  const c3 = useCountUp(99, 1600, inView);
+  const c3 = useCountUp(99, 1600, inView); // rendered as 99 + ".9%"
   const c4 = useCountUp(16, 1600, inView);
 
-  const STATS: { n: number; suffix: string; label: string }[] = [
-    { n: c1, suffix: "+", label: "NDIS Professionals" },
-    { n: c2, suffix: "%", label: "Faster Incident Resolution" },
-    { n: c3, suffix: ".9%", label: "Platform Uptime" },
-    { n: c4, suffix: "+", label: "Integrated Modules" },
+  const STATS: { n: number; suffix: string; final: string; label: string }[] = [
+    { n: c1, suffix: "+", final: "1000+", label: "NDIS Professionals" },
+    { n: c2, suffix: "%", final: "40%", label: "Faster Incident Resolution" },
+    { n: c3, suffix: ".9%", final: "99.9%", label: "Platform Uptime" },
+    { n: c4, suffix: "+", final: "16+", label: "Integrated Modules" },
   ];
 
   // Merge internal ref with the forwarded ref so both can point to the element.
@@ -77,7 +80,9 @@ const StatCounter = forwardRef<HTMLDivElement>((_, forwardedRef) => {
       <div className="hv4-stats-inner">
         {STATS.map((s, i) => (
           <div key={i} className="hv4-stat-item">
-            <div className="hv4-stat-n">
+            {/* Screen readers get the stable final value, not the animation */}
+            <span className="hv4-sr-only">{s.final}</span>
+            <div className="hv4-stat-n" aria-hidden="true">
               {s.n}
               <span className="hv4-stat-suffix">{s.suffix}</span>
             </div>

@@ -198,7 +198,7 @@ async function getSsgRoutes(): Promise<RouteData> {
 
   const sanity = createClient({ projectId, dataset, apiVersion, useCdn: false, perspective: 'published' });
 
-  const [blogDocs, capabilitySlugs, solutionSlugs, competitorSlugs] = await Promise.all([
+  const [blogDocs, capabilitySlugs, solutionSlugs, competitorSlugs, guideDocs] = await Promise.all([
     // Extended blog fetch — includes fields needed for BlogPosting schema
     sanity.fetch<SanityBlogMeta[]>(
       `*[_type == "blogPost" && status == "published"]{
@@ -210,6 +210,10 @@ async function getSsgRoutes(): Promise<RouteData> {
     sanity.fetch<SanityRouteMeta[]>(`*[_type == "capabilityPage"]{ slug, seo }`),
     sanity.fetch<SanityRouteMeta[]>(`*[_type == "solutionPage"]{ slug, seo }`),
     sanity.fetch<SanityRouteMeta[]>(`*[_type == "competitorPage"]{ slug, seo }`),
+    // Same filter as GUIDE_BY_SLUG_QUERY, so every pre-rendered guide has content.
+    sanity.fetch<(SanityRouteMeta & { title?: string; excerpt?: string })[]>(
+      `*[_type == "guide" && status in ["published", "coming_soon"]]{ slug, seo, title, excerpt }`
+    ),
   ]);
 
   const dynamic: string[] = [];
@@ -268,6 +272,15 @@ async function getSsgRoutes(): Promise<RouteData> {
         description: doc.seo.metaDescription ?? '',
       };
     }
+  }
+  for (const doc of guideDocs) {
+    if (!doc.slug?.current) continue;
+    const path = `/guides/${doc.slug.current}`;
+    dynamic.push(path);
+    dynamicMeta[path] = {
+      title: doc.seo?.metaTitle ?? (doc.title ? `${doc.title} | TesseractApps` : 'NDIS Guide | TesseractApps'),
+      description: doc.seo?.metaDescription ?? doc.excerpt ?? '',
+    };
   }
   console.log(`[SSG] ${STATIC_ROUTES.length} static + ${dynamic.length} dynamic routes`);
   return { routes: [...STATIC_ROUTES, ...dynamic], dynamicMeta, blogData };
@@ -633,7 +646,23 @@ export default defineConfig({
 
       return html;
     },
-    onPageRendered: async (_route: string, renderedHTML: string) => {
+    onPageRendered: async (_route: string, renderedHTML: string, appCtx?: { initialState?: Record<string, unknown> }) => {
+      // Serialise the Sanity data this route was pre-rendered with (see
+      // src/sanity/lib/ssgData.ts). The client seeds it before hydrating so its
+      // first render matches the static HTML. Inline classic scripts run before
+      // the deferred module entry, so it's in place in time.
+      const sanityData = appCtx?.initialState?.sanity as Record<string, unknown> | undefined;
+      if (sanityData && Object.keys(sanityData).length > 0) {
+        const json = JSON.stringify(sanityData)
+          .replace(/</g, '\\u003c')
+          .replace(/\u2028/g, '\\u2028')
+          .replace(/\u2029/g, '\\u2029');
+        renderedHTML = renderedHTML.replace(
+          '</body>',
+          `<script>window.__SANITY_SSG__=${json}</script></body>`
+        );
+      }
+
       // React 19 auto-generates resource <link rel="preload"> tags (e.g. for the
       // eager hero image). With renderToString-based SSG, React leaks them into
       // <body>, right after the #root open. The client keeps such resources in

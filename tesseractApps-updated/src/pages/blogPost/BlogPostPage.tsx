@@ -6,7 +6,7 @@ import { useSanityBlogList } from '../../hooks/useSanityBlogList'
 import SEO from '../../components/common/SEO'
 import PortableTextRenderer from '../../components/sanity/portable-text'
 import { urlFor } from '../../sanity/lib/image'
-import { formatDate } from '../../utils/formatDate'
+import { formatDate, formatUpdatedDate } from '../../utils/formatDate'
 import { extractHeadings } from '../../utils/extractHeadings'
 import { buildBreadcrumbSchema, buildGraphSchema } from '../../utils/schemaHelpers'
 import Breadcrumb from '../../components/common/Breadcrumb'
@@ -294,6 +294,17 @@ export default function BlogPostPage() {
                   <time dateTime={post.publishedAt} className="bpp-byline-date">
                     {formatDate(post.publishedAt)}
                   </time>
+                )}
+                {post._updatedAt && formatUpdatedDate(post.publishedAt, post._updatedAt) && (
+                  <>
+                    <span className="bpp-byline-dot" aria-hidden="true" />
+                    <span className="bpp-byline-date">
+                      Updated{" "}
+                      <time dateTime={post._updatedAt}>
+                        {formatUpdatedDate(post.publishedAt, post._updatedAt)}
+                      </time>
+                    </span>
+                  </>
                 )}
                 {post.readingTime != null && (
                   <>

@@ -150,7 +150,7 @@ export const jobListingType = defineType({
       name: 'contactName',
       title: 'Contact Person Name & Role',
       type: 'string',
-      description: 'e.g. "Bec McFarland (HR Manager)"',
+      description: 'e.g. "Jane Smith (HR Manager)"',
       validation: (Rule) => Rule.required(),
     }),
   ],

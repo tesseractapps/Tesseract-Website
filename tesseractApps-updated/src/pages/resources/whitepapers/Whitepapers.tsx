@@ -1,5 +1,6 @@
 import "./WhitepapersStyles.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import SEO from "../../../components/common/SEO";
 import PageHero from "../../../components/common/PageHero";
 import { useSanityWhitepapers } from "../../../hooks/useSanityWhitepapers";
@@ -75,7 +76,10 @@ const Whitepapers = () => {
         )}
 
         {!loading && !error && whitepapers.length === 0 && (
-          <div className="wl-empty">No whitepapers published yet. Check back soon.</div>
+          <div className="wl-empty">
+            Whitepapers are coming soon. In the meantime, explore our{" "}
+            <Link to="/guides">NDIS guides and checklists</Link>.
+          </div>
         )}
 
         {!loading && !error && whitepapers.length > 0 && (

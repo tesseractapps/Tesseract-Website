@@ -3,9 +3,7 @@ import PageHero from "../../../components/common/PageHero";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import SEO from "../../../components/common/SEO";
-import { useSanityTeamMembers } from "../../../hooks/useSanityTeamMembers";
 import { buildAboutPageSchema } from "../../../utils/schemaHelpers";
-import SanityImage from "../../../components/sanity/sanity-image";
 import {
   Target,
   Telescope,
@@ -35,7 +33,6 @@ import xpathLogo from "../../../assets/Expath_Blue&WhiteBKD.webp";
 const About = () => {
   const location = useLocation();
   const appNavigate = useAppNavigate();
-  const { data: teamMembers, loading: teamLoading } = useSanityTeamMembers();
   // const { data: jobs, loading: jobsLoading } = useSanityJobListings();
 
   useEffect(() => {
@@ -57,14 +54,8 @@ const About = () => {
     return () => clearInterval(interval);
   }, [location.state]);
 
-  const aboutSchema = buildAboutPageSchema({
-    people: teamMembers.map((m) => ({
-      name: m.name ?? "",
-      jobTitle: m.role,
-      imageUrl: m.photo?.asset?.url,
-      linkedInUrl: m.linkedInUrl,
-    })),
-  });
+  // No individual people in structured data while the team section is hidden.
+  const aboutSchema = buildAboutPageSchema({ people: [] });
 
   return (
     <div id="about-container">
@@ -172,81 +163,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* ── Team ── */}
-        <section id="about-team-section">
-          <div id="about-team-header">
-            <div className="about-section-label">The team</div>
-            <h2 id="about-team-heading">The people behind the platform</h2>
-            <p id="about-team-sub">
-              We're an energetic and passionate team with diverse backgrounds
-              and deep expertise, united by a shared commitment to making care
-              simpler.
-            </p>
-          </div>
-          {/* <img
-            loading="lazy"
-            src={aboutOurTeamImage}
-            alt="TesseractApps team"
-            id="about-team-banner"
-          /> */}
-          {/* <div id="about-team-grid-label">Management</div> */}
-          <div id="about-team-grid">
-            {teamLoading
-              ? [0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                  <div
-                    key={i}
-                    className="about-team-card about-team-card--skeleton"
-                  >
-                    <div className="about-team-avatar about-skeleton-avatar" />
-                    <div className="about-team-card-body">
-                      <div className="about-skeleton-line about-skeleton-line--name" />
-                      <div className="about-skeleton-line about-skeleton-line--role" />
-                    </div>
-                  </div>
-                ))
-              : teamMembers.map((member) => {
-                  const cardContent = (
-                    <>
-                      {member.photo?.asset ? (
-                        <SanityImage
-                          src={member.photo}
-                          alt={member.photo?.alt ?? member.name ?? ""}
-                          className="about-team-avatar"
-                          width={96}
-                          height={96}
-                          loading="lazy"
-                        />
-                      ) : (
-                        <div
-                          className="about-team-avatar about-team-avatar--initials"
-                          aria-hidden="true"
-                        >
-                          {(member.name ?? "")
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")
-                            .slice(0, 2)
-                            .toUpperCase()}
-                        </div>
-                      )}
-                      <div className="about-team-card-body">
-                        <div className="about-team-card-name">
-                          {member.name}
-                        </div>
-                        <div className="about-team-card-role">
-                          {member.role}
-                        </div>
-                      </div>
-                    </>
-                  );
-                  return (
-                    <div className="about-team-card" key={member._id}>
-                      {cardContent}
-                    </div>
-                  );
-                })}
-          </div>
-        </section>
+        {/* ── Team section hidden (Nov 2026); restore from git history if needed ── */}
 
         {/* ── Careers ── */}
         {/* <section id="about-careers-section">

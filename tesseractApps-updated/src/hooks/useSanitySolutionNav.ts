@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
+import { getSsgData, ssgKeys } from '../sanity/lib/ssgData'
 import { SOLUTION_PAGE_NAV_QUERY } from '../sanity/lib/queries'
 import type { SolutionNavLink } from '../types/sanityQueries'
 
@@ -13,10 +14,12 @@ type UseSanitySolutionNavResult = {
 }
 
 export function useSanitySolutionNav(): UseSanitySolutionNavResult {
-  const [links, setLinks] = useState<SolutionNavLink[]>(() => cachedLinks ?? [])
-  const [loading, setLoading] = useState(() => cachedLinks === null)
+  const initial = cachedLinks ?? getSsgData<SolutionNavLink[]>(ssgKeys.solutionNav) ?? null
+  const [links, setLinks] = useState<SolutionNavLink[]>(() => initial ?? [])
+  const [loading, setLoading] = useState(() => initial === null)
 
   useEffect(() => {
+    // Pre-rendered links (if any) stay on screen while this fetch refreshes them.
     if (cachedLinks !== null) {
       setLinks(cachedLinks)
       setLoading(false)

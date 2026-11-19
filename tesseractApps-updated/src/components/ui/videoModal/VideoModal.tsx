@@ -4,9 +4,11 @@ import "./VideoModal.css";
 export default function VideoModal({
   onClose,
   videoData,
+  label = "Video overview",
 }: {
   onClose: () => void;
   videoData: string;
+  label?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -28,7 +30,7 @@ export default function VideoModal({
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label="Start Plan Overview"
+      aria-label={label}
     >
       <div className="pr-modal-container" onClick={(e) => e.stopPropagation()}>
         <button

@@ -2,8 +2,7 @@ import "./BookADemoStyles.css";
 import SEO from "../../../components/common/SEO";
 import { useNavigate, useLocation } from "react-router-dom";
 import { CheckCircle, Mail, Phone, Monitor, X } from "lucide-react";
-
-const pad = (n: number) => String(n).padStart(2, "0");
+import { formatSydney, toUtcBasic, SYDNEY_TZ } from "../../../utils/sydneyTime";
 
 const BookADemoSuccess = () => {
   const navigate = useNavigate();
@@ -13,12 +12,13 @@ const BookADemoSuccess = () => {
   const handleClose = () => navigate("/");
 
   let calUrl = "";
-  if (schedule) {
-    const startStr = schedule.replace(/[-:]/g, "").slice(0, 13) + "00";
-    const endDate = new Date(schedule);
-    endDate.setHours(endDate.getHours() + 1);
-    const endStr = `${endDate.getFullYear()}${pad(endDate.getMonth() + 1)}${pad(endDate.getDate())}T${pad(endDate.getHours())}${pad(endDate.getMinutes())}00`;
-    calUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=TesseractApps+Demo&dates=${startStr}/${endStr}`;
+  let scheduleLabel = "";
+  if (schedule && !Number.isNaN(Date.parse(schedule))) {
+    // schedule carries an explicit Sydney offset, so convert to UTC for the link.
+    const start = new Date(schedule);
+    const end = new Date(start.getTime() + 60 * 60 * 1000);
+    calUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=TesseractApps+Demo&dates=${toUtcBasic(start)}/${toUtcBasic(end)}&ctz=${encodeURIComponent(SYDNEY_TZ)}`;
+    scheduleLabel = formatSydney(schedule).label;
   }
 
   return (
@@ -43,6 +43,11 @@ const BookADemoSuccess = () => {
           <div id="bookADemo-success-message">
             Your demo has been successfully booked. Our team will contact you shortly to confirm the details.
           </div>
+          {scheduleLabel && (
+            <div id="bookADemo-success-time">
+              <strong>Requested time:</strong> {scheduleLabel}
+            </div>
+          )}
           <div id="bookADemo-success-actions">
             <button type="button" className="bookADemo-Button" onClick={handleClose}>
               Close

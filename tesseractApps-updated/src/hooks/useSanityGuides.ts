@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { GUIDES_QUERY } from '../sanity/lib/queries'
 import { sanityConfigError } from '../sanity/env'
+import { getSsgData, hasSsgData, ssgKeys } from '../sanity/lib/ssgData'
 
 export interface GuideItem {
   _id: string
@@ -29,6 +30,7 @@ export interface GuideFormConfig {
 
 // pdfFile, formConfig, heroHeadline, heroSubheadline, body are only fetched on the individual page
 export interface GuidePageItem extends GuideItem {
+  _updatedAt?: string
   heroHeadline?: string
   heroSubheadline?: string
   body?: unknown[]
@@ -46,8 +48,9 @@ type UseSanityGuidesResult = {
 }
 
 export function useSanityGuides(): UseSanityGuidesResult {
-  const [data, setData] = useState<GuideItem[]>(() => cache.get(CACHE_KEY) ?? [])
-  const [loading, setLoading] = useState(() => !cache.has(CACHE_KEY))
+  const initial = cache.get(CACHE_KEY) ?? getSsgData<GuideItem[]>(ssgKeys.guides)
+  const [data, setData] = useState<GuideItem[]>(() => initial ?? [])
+  const [loading, setLoading] = useState(() => initial === undefined)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -57,14 +60,17 @@ export function useSanityGuides(): UseSanityGuidesResult {
       setError(sanityConfigError ?? 'Sanity is not configured.')
       return
     }
-    if (cache.has(CACHE_KEY)) {
+    const revalidate = !cache.has(CACHE_KEY) && hasSsgData(ssgKeys.guides)
+    if (cache.has(CACHE_KEY) && !revalidate) {
       setData(cache.get(CACHE_KEY)!)
       setLoading(false)
       return
     }
     let cancelled = false
-    setLoading(true)
-    setError(null)
+    if (!revalidate) {
+      setLoading(true)
+      setError(null)
+    }
     client
       .fetch<GuideItem[]>(GUIDES_QUERY)
       .then((result) => {
@@ -76,7 +82,7 @@ export function useSanityGuides(): UseSanityGuidesResult {
         }
       })
       .catch((err: unknown) => {
-        if (!cancelled) {
+        if (!cancelled && !revalidate) {
           setError(err instanceof Error ? err.message : 'Failed to load guides')
           setLoading(false)
         }

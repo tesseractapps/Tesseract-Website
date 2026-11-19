@@ -13,6 +13,7 @@ import BlogCard from '../../../components/blog/BlogCard'
 import WhitepaperCard from '../../../components/whitepapers/WhitepaperCard'
 import PortableTextRenderer from '../../../components/sanity/portable-text'
 import type { BlockContent } from '../../../../sanity.types'
+import { formatDate, formatUpdatedDate } from '../../../utils/formatDate'
 
 function SkeletonPage() {
   return (
@@ -69,11 +70,8 @@ export default function GuidePage() {
   const metaTitle       = guide.seo?.metaTitle ?? guide.title
   const metaDescription = guide.seo?.metaDescription ?? guide.excerpt ?? ''
 
-  const publishDate = guide.publishedAt
-    ? new Date(guide.publishedAt).toLocaleDateString('en-AU', {
-        day: 'numeric', month: 'long', year: 'numeric',
-      })
-    : null
+  const publishDate = guide.publishedAt ? formatDate(guide.publishedAt) : null
+  const updatedDate = formatUpdatedDate(guide.publishedAt, guide._updatedAt)
 
   const related = allGuides
     .filter(g => g._id !== guide._id && g.status !== 'coming_soon')
@@ -130,6 +128,11 @@ export default function GuidePage() {
                     <line x1="3" y1="10" x2="21" y2="10"/>
                   </svg>
                   {publishDate}
+                </span>
+              )}
+              {updatedDate && guide._updatedAt && (
+                <span className="gdp-meta-item">
+                  Updated <time dateTime={guide._updatedAt}>{updatedDate}</time>
                 </span>
               )}
             </div>

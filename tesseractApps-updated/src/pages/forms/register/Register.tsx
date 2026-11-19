@@ -52,7 +52,7 @@ const TEAM_SIZE_OPTIONS = [
   "2-5",
   "6-15",
   "16-60",
-  "60+",
+  "61+",
 ];
 
 const CURRENT_SOFTWARE_OPTIONS = [

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { SOLUTION_PAGE_BY_SLUG_QUERY } from '../sanity/lib/queries'
 import { sanityConfigError } from '../sanity/env'
+import { getSsgData, hasSsgData, ssgKeys } from '../sanity/lib/ssgData'
 import type { SolutionPageDocument } from '../types/sanityQueries'
 
 // Module-level cache, prevents redundant fetches when navigating back to a
@@ -15,10 +16,11 @@ type UseSanitySolutionPageResult = {
 }
 
 export function useSanitySolutionPage(slug: string): UseSanitySolutionPageResult {
-  const [page, setPage] = useState<SolutionPageDocument | null>(
-    () => cache.get(slug) ?? null
-  )
-  const [loading, setLoading] = useState(() => !cache.has(slug))
+  const ssgKey = ssgKeys.solution(slug)
+  // Pre-rendered data (build time / hydration) takes the place of a cache hit.
+  const initial = cache.get(slug) ?? getSsgData<SolutionPageDocument>(ssgKey) ?? null
+  const [page, setPage] = useState<SolutionPageDocument | null>(() => initial)
+  const [loading, setLoading] = useState(() => initial === null)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -34,8 +36,12 @@ export function useSanitySolutionPage(slug: string): UseSanitySolutionPageResult
       return
     }
 
+    // Pre-rendered content is already on screen: refresh it once, silently,
+    // so CMS edits made after the build still show up.
+    const revalidate = !cache.has(slug) && hasSsgData(ssgKey)
+
     // Serve from cache immediately, no loading state shown on repeated visits
-    if (cache.has(slug)) {
+    if (cache.has(slug) && !revalidate) {
       setPage(cache.get(slug)!)
       setLoading(false)
       return
@@ -43,8 +49,10 @@ export function useSanitySolutionPage(slug: string): UseSanitySolutionPageResult
 
     let cancelled = false
 
-    setLoading(true)
-    setError(null)
+    if (!revalidate) {
+      setLoading(true)
+      setError(null)
+    }
 
     client
       .fetch<SolutionPageDocument | null>(SOLUTION_PAGE_BY_SLUG_QUERY, { slug })
@@ -56,7 +64,8 @@ export function useSanitySolutionPage(slug: string): UseSanitySolutionPageResult
         }
       })
       .catch((err: unknown) => {
-        if (!cancelled) {
+        // A failed background refresh keeps the pre-rendered content.
+        if (!cancelled && !revalidate) {
           setError(err instanceof Error ? err.message : 'Failed to load solution page')
           setLoading(false)
         }
@@ -65,7 +74,7 @@ export function useSanitySolutionPage(slug: string): UseSanitySolutionPageResult
     return () => {
       cancelled = true
     }
-  }, [slug])
+  }, [slug, ssgKey])
 
   return { page, loading, error }
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { client } from '../sanity/lib/client'
 import { CAPABILITY_PAGE_BY_SLUG_QUERY } from '../sanity/lib/queries'
 import { sanityConfigError } from '../sanity/env'
+import { getSsgData, hasSsgData, ssgKeys } from '../sanity/lib/ssgData'
 import type { CapabilityPageDocument } from '../types/sanityQueries'
 
 // Module-level cache, prevents redundant fetches when navigating back to a
@@ -15,10 +16,11 @@ type UseSanityCapabilityPageResult = {
 }
 
 export function useSanityCapabilityPage(slug: string): UseSanityCapabilityPageResult {
-  const [page, setPage] = useState<CapabilityPageDocument | null>(
-    () => cache.get(slug) ?? null
-  )
-  const [loading, setLoading] = useState(() => !cache.has(slug))
+  const ssgKey = ssgKeys.capability(slug)
+  // Pre-rendered data (build time / hydration) takes the place of a cache hit.
+  const initial = cache.get(slug) ?? getSsgData<CapabilityPageDocument>(ssgKey) ?? null
+  const [page, setPage] = useState<CapabilityPageDocument | null>(() => initial)
+  const [loading, setLoading] = useState(() => initial === null)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -34,8 +36,12 @@ export function useSanityCapabilityPage(slug: string): UseSanityCapabilityPageRe
       return
     }
 
+    // Pre-rendered content is already on screen: refresh it once, silently,
+    // so CMS edits made after the build still show up.
+    const revalidate = !cache.has(slug) && hasSsgData(ssgKey)
+
     // Serve from cache immediately, no loading state shown on repeated visits
-    if (cache.has(slug)) {
+    if (cache.has(slug) && !revalidate) {
       setPage(cache.get(slug)!)
       setLoading(false)
       return
@@ -43,8 +49,10 @@ export function useSanityCapabilityPage(slug: string): UseSanityCapabilityPageRe
 
     let cancelled = false
 
-    setLoading(true)
-    setError(null)
+    if (!revalidate) {
+      setLoading(true)
+      setError(null)
+    }
 
     client
       .fetch<CapabilityPageDocument | null>(CAPABILITY_PAGE_BY_SLUG_QUERY, { slug })
@@ -56,7 +64,8 @@ export function useSanityCapabilityPage(slug: string): UseSanityCapabilityPageRe
         }
       })
       .catch((err: unknown) => {
-        if (!cancelled) {
+        // A failed background refresh keeps the pre-rendered content.
+        if (!cancelled && !revalidate) {
           setError(err instanceof Error ? err.message : 'Failed to load capability page')
           setLoading(false)
         }
@@ -65,7 +74,7 @@ export function useSanityCapabilityPage(slug: string): UseSanityCapabilityPageRe
     return () => {
       cancelled = true
     }
-  }, [slug])
+  }, [slug, ssgKey])
 
   return { page, loading, error }
 }

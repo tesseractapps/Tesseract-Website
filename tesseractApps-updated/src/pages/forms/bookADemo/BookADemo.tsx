@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { trackBookDemoSubmit, trackFormStepComplete, trackFormStart } from "../../../utils/analytics";
 import CalendarPicker from "../../../components/forms/bookADemo/CalendarPicker";
+import { formatSydney } from "../../../utils/sydneyTime";
 
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -163,7 +164,7 @@ const BookADemo = () => {
         organisation: formData.companyName,
         role: formData.organisationType,
         areas: formData.staff,
-        preferredTime: formData.schedule,
+        preferredTime: `${formatSydney(formData.schedule).label} [${formData.schedule}]`,
       })
     )
       .then(() => {
@@ -184,9 +185,8 @@ const BookADemo = () => {
   };
 
   const confirmationMail = () => {
-    const scheduledDate = new Date(formData.schedule);
-    const date = scheduledDate.toLocaleDateString("en-AU", { day: "2-digit", month: "2-digit", year: "numeric" });
-    const time = scheduledDate.toLocaleTimeString("en-AU", { hour: "2-digit", minute: "2-digit", hour12: true }).toUpperCase();
+    const { date, time: sydTime, abbrev } = formatSydney(formData.schedule);
+    const time = `${sydTime} ${abbrev}`;
     sendEmail(
       formData.firstName,
       formData.email,
@@ -266,7 +266,7 @@ const BookADemo = () => {
             <div id="bookADemo-stepper-wrapper">
               <h2 id="bookADemo-page-heading">Book a Demo</h2>
               <FormStepper
-                steps={["Organisation", "Staff Size", "Service Type"]}
+                steps={["Organisation", "Staff Size", "Contact Details & Booking"]}
                 activeStep={currentStep}
               />
             </div>

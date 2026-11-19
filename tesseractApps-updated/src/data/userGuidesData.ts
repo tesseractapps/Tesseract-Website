@@ -27,7 +27,7 @@ export const stages: Stage[] = [
     name: "Growth",
     tagline: "Stabilise payroll and operations",
     focus: "CONTROL",
-    staffRange: "15–60 staff",
+    staffRange: "16–60 staff",
     description:
       "Automate SCHADS interpretation, connect timesheets to invoicing, and gain real-time oversight across your workforce.",
     accent: "#10B981",
@@ -38,7 +38,7 @@ export const stages: Stage[] = [
     name: "Scale",
     tagline: "Enforce governance across every site",
     focus: "GOVERNANCE",
-    staffRange: "60–120 staff",
+    staffRange: "61–120 staff",
     description:
       "Approval workflows and multi-site consistency. The platform enforces the rules you set, everywhere.",
     accent: "#10B981",
@@ -49,7 +49,7 @@ export const stages: Stage[] = [
     name: "Enterprise",
     tagline: "Consolidate finance, payroll & reporting",
     focus: "CONSOLIDATION",
-    staffRange: "120+ staff",
+    staffRange: "121+ staff",
     description:
       "Unify multi-site operations and surface the data your leadership needs to act.",
     accent: "#10B981",

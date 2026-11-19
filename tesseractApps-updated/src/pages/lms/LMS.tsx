@@ -115,19 +115,19 @@ const MATURITY_STAGES: MaturityStage[] = [
   },
   {
     stage: "Growth",
-    staffRange: "15–60 staff",
+    staffRange: "16–60 staff",
     focusWord: "CONTROL",
     body: "Role-based pathways, expiry tracking, and completion visible inside the roster. Training stays current as the team grows.",
   },
   {
     stage: "Scale",
-    staffRange: "60–120 staff",
+    staffRange: "61–120 staff",
     focusWord: "GOVERNANCE",
     body: "Multi-site training governance. Consistent pathway delivery and compliance visibility across every site.",
   },
   {
     stage: "Enterprise",
-    staffRange: "120+ staff",
+    staffRange: "121+ staff",
     focusWord: "CONSOLIDATION",
     body: "Board-level workforce compliance reporting. Training data connected to governance and audit requirements across the organisation.",
   },

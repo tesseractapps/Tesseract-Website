@@ -416,6 +416,7 @@ const SupportCoordination = () => {
           <VideoThumbnailPlayButton
             onClick={() => setVideoOpen(true)}
             videoData={scVideo}
+            label="Support Coordination Overview"
           />
           <div id="sc-hero-ctas">
             <button
@@ -436,6 +437,7 @@ const SupportCoordination = () => {
           <VideoThumbnailPlayButtonMobile
             onClick={() => setVideoOpen(true)}
             videoData={scVideo}
+            label="Support Coordination Overview"
           />
           <p className="sc-cta-note">
             No credit card required. ISO 27001 certified. Australian hosted.
@@ -452,7 +454,11 @@ const SupportCoordination = () => {
         </div>
       </section>
       {videoOpen && (
-        <VideoModal onClose={() => setVideoOpen(false)} videoData={scVideo} />
+        <VideoModal
+          onClose={() => setVideoOpen(false)}
+          videoData={scVideo}
+          label="Support Coordination Overview"
+        />
       )}
       {/* ── Pain Points ── */}
       <section id="sc-pain">

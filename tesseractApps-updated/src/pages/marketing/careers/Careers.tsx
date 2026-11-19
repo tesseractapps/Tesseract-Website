@@ -178,7 +178,7 @@ const Careers = () => {
             </div>
             <a
               id="careers-bottom-link"
-              href="mailto:bec.mcfarland@tesseractapps.com?subject=Speculative%20Application%3A%20TesseractApps"
+              href="mailto:careers@tesseractapps.com?subject=Speculative%20Application%3A%20TesseractApps"
             >
               Send Your Resume
             </a>

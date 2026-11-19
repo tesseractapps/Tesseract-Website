@@ -238,7 +238,7 @@ const FooterComponent = () => {
           <Link className="footer-text" to="/about/">
             About Us
           </Link>
-          <Link className="footer-text" to="/contact-us/">
+          <Link className="footer-text" to="/contact-us">
             Contact Us
           </Link>
           {/* <Link className="footer-text" to="/careers/">
@@ -262,8 +262,9 @@ const FooterComponent = () => {
           <Link className="footer-text" to="/blogs/">
             Blog
           </Link>
-          <Link className="footer-text" to="/whitepapers/">
-            Whitepapers
+          {/* Whitepapers hidden until content is published; Guides shown instead */}
+          <Link className="footer-text" to="/guides">
+            Guides
           </Link>
           <Link className="footer-text" to="/brochures/">
             Brochures

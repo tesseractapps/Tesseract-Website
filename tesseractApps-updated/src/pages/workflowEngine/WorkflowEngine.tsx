@@ -108,7 +108,7 @@ const MATURITY_STAGES: MaturityStage[] = [
   },
   {
     stage: "Growth",
-    staffRange: "15–60 staff",
+    staffRange: "16–60 staff",
     focusWord: "CONTROL",
     body: "Approval chains across teams. Escalation paths for incidents. Automated notifications and compliance gates.",
     layer: "Workflow Engine",
@@ -116,7 +116,7 @@ const MATURITY_STAGES: MaturityStage[] = [
   },
   {
     stage: "Scale",
-    staffRange: "60–120 staff",
+    staffRange: "61–120 staff",
     focusWord: "GOVERNANCE",
     body: "Multi-site workflow consistency. Cross-platform automation begins, payroll, finance, and reporting connections.",
     layer: "Workflow Engine + TFlow",
@@ -124,7 +124,7 @@ const MATURITY_STAGES: MaturityStage[] = [
   },
   {
     stage: "Enterprise",
-    staffRange: "120+ staff",
+    staffRange: "121+ staff",
     focusWord: "CONSOLIDATION",
     body: "Full cross-system automation. Board-level reporting flows. Complex operational environments with minimal manual handoff.",
     layer: "Workflow Engine + TFlow",

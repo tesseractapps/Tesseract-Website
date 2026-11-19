@@ -160,7 +160,7 @@ const NDISGlossary = () => {
                   <li><Link to="/pricing/">NDIS Software Pricing</Link></li>
                   <li><Link to="/sc-pricing/">Support Coordination Pricing</Link></li>
                   <li><Link to="/blogs/">Blog</Link></li>
-                  <li><Link to="/whitepapers/">Whitepapers</Link></li>
+                  <li><Link to="/guides/">Guides</Link></li>
                   <li><Link to="/brochures/">Brochures</Link></li>
                   <li><Link to="/help-centre/">Help Centre</Link></li>
                 </ul>

@@ -3,12 +3,15 @@ import "./VideoModal.css";
 const VideoThumbnailPlayButton = ({
   onClick,
   videoData,
+  label = "Overview",
   marginTop,
   marginBottom,
   center,
 }: {
   onClick: () => void;
   videoData: string;
+  /** Accessible name of the video, e.g. "Growth Plan Overview" */
+  label?: string;
   marginTop?: string;
   marginBottom?: string;
   center?: boolean;
@@ -19,7 +22,7 @@ const VideoThumbnailPlayButton = ({
       id="pr-featured-header-video"
       className={center ? "pr-featured-header-video-center" : ""}
       onClick={onClick}
-      aria-label="Play Start Plan Overview video"
+      aria-label={`Play ${label} video`}
       style={{
         marginTop: marginTop ? marginTop : 0,
         marginBottom: marginBottom ? marginBottom : 0,

@@ -18,7 +18,8 @@ import {
 import useAppNavigate from "../../hooks/useAppNavigate";
 import { testimonialDummyData } from "../../data/testimonialData";
 import { accordiaDummyData } from "../../data/faqData";
-import dashboardImg from "../../assets/Website-home-image.webp";
+import dashboardImg from "../../assets/home-hero-dashboard-1200.webp";
+import dashboardImg2x from "../../assets/home-hero-dashboard-1920.webp";
 import starIcon from "../../assets/star.webp";
 import { useSanityClientLogos } from "../../hooks/useSanityClientLogos";
 
@@ -165,7 +166,7 @@ const MATURITY_STAGES = [
   },
   {
     stage: "Growth",
-    range: "15–60 staff",
+    range: "16–60 staff",
     focus: "CONTROL",
     color: "#0c78ba",
     desc: "Stabilise payroll and operations. Automate SCHADS interpretation, connect timesheets to invoicing, and gain real-time oversight across your workforce.",
@@ -173,7 +174,7 @@ const MATURITY_STAGES = [
   },
   {
     stage: "Scale",
-    range: "60–120 staff",
+    range: "61–120 staff",
     focus: "GOVERNANCE",
     color: "#7c3aed",
     desc: "Enforce governance across every site. Approval workflows & multi-site consistency. The platform enforces the rules you set.",
@@ -181,7 +182,7 @@ const MATURITY_STAGES = [
   },
   {
     stage: "Enterprise",
-    range: "120+ staff",
+    range: "121+ staff",
     focus: "CONSOLIDATION",
     color: "#002a52",
     desc: "Consolidate finance, payroll, and board reporting. Unify multi-site operations and surface the data your leadership needs to act.",
@@ -667,10 +668,12 @@ export default function Home() {
             <div className="hv4-hero-img-wrap">
               <img
                 src={dashboardImg}
-                alt="TesseractApps Dashboard"
+                srcSet={`${dashboardImg} 1200w, ${dashboardImg2x} 1920w`}
+                sizes="(max-width: 960px) min(100vw, 640px), 560px"
+                alt="TesseractApps dashboard showing staff, shifts, roster management, compliance documents and task approvals"
                 className="hv4-hero-img"
-                width={1819}
-                height={1536}
+                width={1920}
+                height={990}
                 fetchPriority="high"
                 loading="eager"
                 decoding="async"

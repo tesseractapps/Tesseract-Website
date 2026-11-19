@@ -11,16 +11,17 @@ The official website for [TesseractApps](https://tesseractapps.com.au) — NDIS 
 | Framework | React 19 + TypeScript (strict) |
 | Build tool | Vite 6 |
 | Routing | React Router DOM v7 |
-| Styling | Plain CSS per component (no Tailwind) |
-| UI components | MUI v7, keen-slider, framer-motion |
-| CMS | Sanity v3 (embedded studio at `/studio`) |
+| Pre-rendering | vite-react-ssg (one static HTML file per route) + beasties critical CSS |
+| Styling | Plain CSS per component (no Tailwind), some styled-components |
+| Icons | lucide-react |
+| CMS | Sanity v5 (embedded studio at `/studio`) |
 | Deployment | Apache on AWS (static `dist/` upload; see [Deployment](#deployment)) |
 
 ---
 
 ## Prerequisites
 
-- **Node.js** 18 or higher
+- **Node.js** 20 or higher (required by Sanity v5)
 - **npm** 9 or higher
 - A **Sanity project** (free tier is fine) — see [sanity.io/manage](https://sanity.io/manage)
 
@@ -38,14 +39,22 @@ npm install
 
 ### 2. Configure environment variables
 
-Create a `.env.local` file in the project root:
+Copy the template and fill in real values:
+
+```bash
+cp .env.example .env.local
+```
 
 ```env
 VITE_SANITY_PROJECT_ID=your_project_id_here
 VITE_SANITY_DATASET=production
+VITE_SANITY_API_VERSION=2024-01-01
+SANITY_API_WRITE_TOKEN=   # only needed for scripts that write to Sanity
 ```
 
-> `VITE_SANITY_DATASET` defaults to `production` if omitted.
+> `VITE_SANITY_DATASET` defaults to `production` and `VITE_SANITY_API_VERSION` to `2024-01-01` if omitted.
+>
+> **Never commit `.env` / `.env.local`** — they are gitignored. Never prefix the write token with `VITE_`, or Vite will bundle it into the public JavaScript.
 
 ### 3. Configure Sanity CORS
 
@@ -165,6 +174,16 @@ npm run typegen
 ```
 
 This updates `sanity.types.ts` from your live Sanity project.
+
+### Pre-rendered CMS content
+
+Capability, solution, comparison (`/tesseract-vs/*`), guide and blog pages, the guides list, and the navbar/footer capability and solution links are rendered into the static HTML at build time. They don't load as skeletons.
+
+1. `src/main.tsx` calls `prefetchSanityForRoute()` (`src/sanity/lib/ssgData.ts`) before each route is pre-rendered.
+2. `vite.config.ts` (`onPageRendered`) writes that route's data into the page as `window.__SANITY_SSG__`.
+3. In the browser, the data is loaded before hydration, so the first render matches the HTML. The hooks then refetch once in the background, so Sanity edits show up without a rebuild.
+
+To pre-render another Sanity-driven page, add its query to `prefetchSanityForRoute()` and read it in the hook with `getSsgData()` / `hasSsgData()`. See `useSanityGuidePage.ts` for the pattern. Format any dates with a fixed timezone (`formatDate()` uses `Australia/Sydney`); otherwise the build server and the visitor's browser can disagree and hydration fails.
 
 ---
 

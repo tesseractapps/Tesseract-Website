@@ -162,6 +162,14 @@
   flex-shrink: 0;
 }
 
+#cal-tz-note {
+  font-size: 0.625rem;
+  color: var(--color-text-gray2);
+  font-family: "Inter", "Inter Fallback", sans-serif;
+  margin: -4px 0 8px;
+  flex-shrink: 0;
+}
+
 #cal-time-list {
   height: 220px;
   overflow-y: auto;
@@ -203,7 +211,12 @@
   white-space: nowrap;
 }
 
-.cal-time-row:hover:not(.selected) {
+.cal-time-row.past {
+  color: #d0dae4;
+  cursor: not-allowed;
+}
+
+.cal-time-row:hover:not(.selected):not(.past) {
   border-color: var(--color-primary);
   background: rgba(12, 120, 186, 0.04);
   color: var(--color-primary);

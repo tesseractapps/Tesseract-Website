@@ -39,3 +39,7 @@ docs/
 .env
 .env.local
 /.vite-react-ssg-temp
+
+*.stackdump
+.env.*
+!.env.example

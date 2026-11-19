@@ -767,7 +767,8 @@
   font-family: "Inter", "Inter Fallback", sans-serif;
 }
 
-#bookADemo-success-message {
+#bookADemo-success-message,
+#bookADemo-success-time {
   font-size: 1rem;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.78);

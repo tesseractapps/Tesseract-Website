@@ -76,7 +76,7 @@ const FLIP_STAGES: Stage[] = [
     id: "growth",
     label: "Growth",
     tagline: "Operational Control",
-    staffRange: "15–60 staff",
+    staffRange: "16–60 staff",
     bestFor:
       "Providers experiencing workforce expansion, payroll pressure, and increasing reporting needs.",
     whatYouNeed:
@@ -99,7 +99,7 @@ const FLIP_STAGES: Stage[] = [
     id: "scale",
     label: "Scale",
     tagline: "Governance & Oversight",
-    staffRange: "60–120 staff",
+    staffRange: "61–120 staff",
     bestFor:
       "Multi-site providers, SIL providers, and organisations managing increasing governance pressure.",
     whatYouNeed:
@@ -122,7 +122,7 @@ const FLIP_STAGES: Stage[] = [
     id: "enterprise",
     label: "Enterprise",
     tagline: "Consolidation & Executive Visibility",
-    staffRange: "120+ staff",
+    staffRange: "121+ staff",
     bestFor:
       "Executive teams requiring financial consolidation, multi-entity oversight, and board-level reporting.",
     whatYouNeed:
@@ -425,6 +425,16 @@ const Pricing = () => {
   type VideoKey = keyof typeof videos;
 
   const [clickedVideo, setClickedVideo] = useState<VideoKey>("starterVideo");
+  const VIDEO_LABELS: Record<VideoKey, string> = {
+    starterVideo: "Start Plan Overview",
+    growthVideo: "Growth Plan Overview",
+    scaleVideo: "Scale Plan Overview",
+    enterpriseVideo: "Enterprise Plan Overview",
+  };
+  const stageVideoKey = (label: string): VideoKey =>
+    label.toLowerCase() === "start"
+      ? "starterVideo"
+      : ((label.toLowerCase() + "Video") as VideoKey);
   const watchOverviewHandler = (videoName: VideoKey) => {
     setClickedVideo(videoName);
     setVideoOpen(true);
@@ -449,7 +459,7 @@ const Pricing = () => {
         "@type": "Offer",
         name: "Growth",
         description:
-          "Operational control for scaling providers. For 15–60 staff. Per seat per month.",
+          "Operational control for scaling providers. For 16–60 staff. Per seat per month.",
         price: "39.99",
         priceCurrency: "AUD",
         eligibleRegion: "AU",
@@ -458,7 +468,7 @@ const Pricing = () => {
         "@type": "Offer",
         name: "Scale",
         description:
-          "Governance and oversight for multi-site providers. For 60–120 staff. Per seat per month.",
+          "Governance and oversight for multi-site providers. For 61–120 staff. Per seat per month.",
         price: "39.99",
         priceCurrency: "AUD",
         eligibleRegion: "AU",
@@ -467,7 +477,7 @@ const Pricing = () => {
         "@type": "Offer",
         name: "Enterprise",
         description:
-          "Full platform for large organisations with 120+ staff. Contact us for custom pricing.",
+          "Full platform for large organisations with 121+ staff. Contact us for custom pricing.",
         eligibleRegion: "AU",
       },
     ],
@@ -512,8 +522,9 @@ const Pricing = () => {
           </div>
           <p id="pr-hero-start-note">
             Start is designed for early-stage providers during the first 18
-            months of operational formation. Growth, Scale, and Enterprise are
-            $39.99 per seat / month.
+            months of operational formation. Growth and Scale are $39.99 per
+            seat / month. Enterprise offers custom pricing for large
+            organisations.
           </p>
           <div id="pr-hero-ctas">
             <button
@@ -581,7 +592,8 @@ const Pricing = () => {
             </button> */}
             <VideoThumbnailPlayButton
               onClick={() => watchOverviewHandler("starterVideo")}
-              videoData={videos[clickedVideo]}
+              videoData={videos.starterVideo}
+              label={VIDEO_LABELS.starterVideo}
             />
 
             <div id="pr-featured-left">
@@ -631,7 +643,8 @@ const Pricing = () => {
               </button> */}
               <VideoThumbnailPlayButtonMobile
                 onClick={() => watchOverviewHandler("starterVideo")}
-                videoData={videos[clickedVideo]}
+                videoData={videos.starterVideo}
+                label={VIDEO_LABELS.starterVideo}
               />
 
               <div id="pr-featured-detail-grid">
@@ -779,10 +792,7 @@ const Pricing = () => {
 
                         {/* <div
                           onClick={() =>
-                            watchOverviewHandler(
-                              (stage.label.toLocaleLowerCase() +
-                                "Video") as VideoKey,
-                            )
+                            watchOverviewHandler(stageVideoKey(stage.label))
                           }
                           className="pr-cmp-plan-overview "
                         >
@@ -790,12 +800,10 @@ const Pricing = () => {
                         </div> */}
                         <VideoThumbnailPlayButton
                           onClick={() =>
-                            watchOverviewHandler(
-                              (stage.label.toLocaleLowerCase() +
-                                "Video") as VideoKey,
-                            )
+                            watchOverviewHandler(stageVideoKey(stage.label))
                           }
-                          videoData={videos[clickedVideo]}
+                          videoData={videos[stageVideoKey(stage.label)]}
+                          label={VIDEO_LABELS[stageVideoKey(stage.label)]}
                           center={true}
                         />
                       </th>
@@ -873,12 +881,10 @@ const Pricing = () => {
                     <VideoThumbnailPlayButtonMobile
                       marginTop={"20px"}
                       onClick={() =>
-                        watchOverviewHandler(
-                          (stage.label.toLocaleLowerCase() +
-                            "Video") as VideoKey,
-                        )
+                        watchOverviewHandler(stageVideoKey(stage.label))
                       }
-                      videoData={videos[clickedVideo]}
+                      videoData={videos[stageVideoKey(stage.label)]}
+                      label={VIDEO_LABELS[stageVideoKey(stage.label)]}
                     />
                   </div>
                   <dl className="pr-cmp-mobile-rows">
@@ -948,7 +954,8 @@ const Pricing = () => {
       {videoOpen && (
         <VideoModal
           onClose={() => setVideoOpen(false)}
-          videoData={videos[`${clickedVideo}`]}
+          videoData={videos[clickedVideo]}
+          label={VIDEO_LABELS[clickedVideo]}
         />
       )}
 

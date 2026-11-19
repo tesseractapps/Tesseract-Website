@@ -46,7 +46,7 @@ const emptyForm: FormState = {
   role: '',
   phone: '',
   providerType: '',
-  subscribe: true,
+  subscribe: false, // marketing opt-in must be unticked by default
   privacyConsent: false,
 }
 
@@ -246,7 +246,7 @@ export default function GuideAccessForm({ guideTitle, pdfUrl, isComingSoon, form
         {errors.providerType && <span className="gaf-error" role="alert">{errors.providerType}</span>}
       </div>
 
-      {/* Subscribe checkbox — pre-checked */}
+      {/* Optional marketing opt-in, unticked by default and separate from receiving the checklist */}
       <div className="gaf-checkbox-row">
         <input
           id="gaf-subscribe"
@@ -257,7 +257,7 @@ export default function GuideAccessForm({ guideTitle, pdfUrl, isComingSoon, form
           disabled={disabled}
         />
         <label htmlFor="gaf-subscribe" className="gaf-checkbox-label">
-          Keep me updated with NDIS insights and TesseractApps news
+          Optional: keep me updated with NDIS insights and TesseractApps news
         </label>
       </div>
 
@@ -275,7 +275,9 @@ export default function GuideAccessForm({ guideTitle, pdfUrl, isComingSoon, form
           disabled={disabled}
         />
         <label htmlFor="gaf-privacy-consent" className="gaf-checkbox-label">
-          I agree to receive the checklist and marketing emails from TesseractApps
+          I agree to the{' '}
+          <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+          {' '}and to receive this checklist by email
           <span className="gaf-required" aria-hidden="true"> *</span>
         </label>
       </div>

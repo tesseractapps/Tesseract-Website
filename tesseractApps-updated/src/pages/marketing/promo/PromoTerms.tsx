@@ -206,7 +206,7 @@ const PromoTerms = () => {
             <div className="link-grid">
               <a href="/pricing">View Pricing</a>
               <a href="/faq">Frequently Asked Questions</a>
-              <a href="/contact">Contact Us</a>
+              <a href="/contact-us">Contact Us</a>
               <a href="/book-demo" className="cta-button">
                 Book a Demo
               </a>

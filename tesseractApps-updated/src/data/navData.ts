@@ -196,11 +196,11 @@ export const navBarDummyData: {
     ],
     "BY STAGE": [
       { title: "Start", subTitle: "1–15 staff", href: "/solutions/start" },
-      { title: "Growth", subTitle: "15–60 staff", href: "/solutions/growth" },
-      { title: "Scale", subTitle: "60–120 staff", href: "/solutions/scale" },
+      { title: "Growth", subTitle: "16–60 staff", href: "/solutions/growth" },
+      { title: "Scale", subTitle: "61–120 staff", href: "/solutions/scale" },
       {
         title: "Enterprise",
-        subTitle: "120+ staff",
+        subTitle: "121+ staff",
         href: "/solutions/enterprise",
       },
     ],
@@ -211,7 +211,8 @@ export const navBarDummyData: {
     { title: "Blog", subTitle: "Insights & Updates", href: "/blogs" },
     { title: "Guides", subTitle: "Checklists & Toolkits", href: "/guides" },
     // { title: "User Guides", subTitle: "user guides", href: "/user-guide" },
-    { title: "Whitepapers", subTitle: "Research", href: "/whitepapers" },
+    // Whitepapers hidden until content is published (Nov 2026 dev brief)
+    // { title: "Whitepapers", subTitle: "Research", href: "/whitepapers" },
     { title: "Brochures", subTitle: "Product Guides", href: "/brochures" },
   ],
 

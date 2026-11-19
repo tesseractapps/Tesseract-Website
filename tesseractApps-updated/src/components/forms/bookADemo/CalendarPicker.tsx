@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Clock, CheckCircle } from "lucide-react";
 import "./CalendarPicker.css";
+import { sydneyIso, sydneyToday, sydneyAbbrev } from "../../../utils/sydneyTime";
 
 // Generate all 30-min slots from 09:00 to 17:30
 function generateTimeSlots(): string[] {
@@ -31,14 +32,27 @@ const MONTH_NAMES = [
 ];
 const DAY_LABELS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
-const pad = (n: number) => String(n).padStart(2, "0");
+// Slots are Sydney wall-clock times. Returns [hours (0-23), minutes].
+function parseSlot(slot: string): [number, number] {
+  const [timePart, meridiem] = slot.split(" ");
+  const [h, m] = timePart.split(":").map(Number);
+  const hours = meridiem === "PM" && h !== 12 ? h + 12 : meridiem === "AM" && h === 12 ? 0 : h;
+  return [hours, m];
+}
+
+const slotIso = (date: Date, slot: string) => {
+  const [h, m] = parseSlot(slot);
+  return sydneyIso(date.getFullYear(), date.getMonth(), date.getDate(), h, m);
+};
 
 interface Props {
   onChange: (isoString: string) => void;
 }
 
 const CalendarPicker: React.FC<Props> = ({ onChange }) => {
-  const today = new Date();
+  // "Today" is Sydney's date, since slots are offered in Sydney time.
+  const sydToday = sydneyToday();
+  const today = new Date(sydToday.year, sydToday.month, sydToday.day);
   const [viewYear, setViewYear] = useState(today.getFullYear());
   const [viewMonth, setViewMonth] = useState(today.getMonth());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -59,9 +73,7 @@ const CalendarPicker: React.FC<Props> = ({ onChange }) => {
   };
 
   const isPast = (day: number) => {
-    const d = new Date(viewYear, viewMonth, day);
-    const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    return d < todayStart;
+    return new Date(viewYear, viewMonth, day) < today;
   };
 
   const isToday = (day: number) =>
@@ -83,22 +95,22 @@ const CalendarPicker: React.FC<Props> = ({ onChange }) => {
     setTimeout(() => timeListRef.current?.scrollTo({ top: 0 }), 0);
   };
 
+  const dateForSlots = selectedDate ?? today;
+  // A slot is unavailable once its start time has passed (in absolute time).
+  const isSlotPast = (slot: string) => Date.parse(slotIso(dateForSlots, slot)) <= Date.now();
+  const tzAbbrev = sydneyAbbrev(slotIso(dateForSlots, TIME_SLOTS[0]));
+
   const selectTime = (slot: string) => {
+    if (isSlotPast(slot)) return;
     // If no date selected yet, default to today
-    const dateToUse = selectedDate ?? new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const dateToUse = dateForSlots;
     if (!selectedDate) {
       setSelectedDate(dateToUse);
       setTimeout(() => timeListRef.current?.scrollTo({ top: 0 }), 0);
     }
     setSelectedTime(slot);
-    // Parse "9:00 AM" / "12:30 PM" style
-    const [timePart, meridiem] = slot.split(" ");
-    const [h, m] = timePart.split(":").map(Number);
-    const hours = meridiem === "PM" && h !== 12 ? h + 12 : meridiem === "AM" && h === 12 ? 0 : h;
-    const dt = new Date(dateToUse);
-    dt.setHours(hours, m, 0, 0);
-    const iso = `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(dt.getDate())}T${pad(dt.getHours())}:${pad(dt.getMinutes())}`;
-    onChange(iso);
+    // e.g. "2026-11-20T09:00+11:00", an unambiguous instant
+    onChange(slotIso(dateToUse, slot));
   };
 
   // Scroll selected time slot into view
@@ -118,7 +130,7 @@ const CalendarPicker: React.FC<Props> = ({ onChange }) => {
     : null;
 
   const selectionSummary = formattedSelected && selectedTime
-    ? `${formattedSelected} · ${selectedTime}`
+    ? `${formattedSelected} · ${selectedTime} ${tzAbbrev} (Sydney)`
     : null;
 
   return (
@@ -175,13 +187,22 @@ const CalendarPicker: React.FC<Props> = ({ onChange }) => {
             <Clock size={13} />
             <span>{formattedSelected ?? "Select a time"}</span>
           </div>
+          <div id="cal-tz-note">
+            Times in Sydney time ({tzAbbrev}, Australia/Sydney)
+          </div>
           <div id="cal-time-list" ref={timeListRef}>
             {TIME_SLOTS.map(slot => (
               <button
                 key={slot}
                 type="button"
-                className={"cal-time-row" + (selectedTime === slot ? " selected" : "")}
+                className={
+                  "cal-time-row" +
+                  (selectedTime === slot ? " selected" : "") +
+                  (isSlotPast(slot) ? " past" : "")
+                }
                 onClick={() => selectTime(slot)}
+                disabled={isSlotPast(slot)}
+                aria-label={`${slot} ${tzAbbrev}`}
               >
                 {slot}
               </button>

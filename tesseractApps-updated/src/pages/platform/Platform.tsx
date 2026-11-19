@@ -37,7 +37,7 @@ const MATURITY_STAGES: MaturityStage[] = [
   },
   {
     stage: "Growth",
-    staffRange: "15–60 staff",
+    staffRange: "16–60 staff",
     focusWord: "CONTROL",
     focus:
       "Control & consistency. SCHADS Award engine activates. Operational dashboards provide cross-site visibility. Payroll data flows clean. Reporting moves from reactive to real-time.",
@@ -45,7 +45,7 @@ const MATURITY_STAGES: MaturityStage[] = [
   },
   {
     stage: "Scale",
-    staffRange: "60–120 staff",
+    staffRange: "61–120 staff",
     focusWord: "GOVERNANCE",
     focus:
       "Governance & enforcement. Approval workflows for rosters, expenditure, and escalations. Multi-site audit trail depth. Executive reporting surfaces activated.",
@@ -53,7 +53,7 @@ const MATURITY_STAGES: MaturityStage[] = [
   },
   {
     stage: "Enterprise",
-    staffRange: "120+ staff",
+    staffRange: "121+ staff",
     focusWord: "CONSOLIDATION",
     focus:
       "Consolidation & executive truth. Native payroll and accounting. Multi-entity consolidation. Board reporting generated from live operational data. Single source of truth across every site and service line.",

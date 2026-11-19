@@ -120,7 +120,7 @@ Thank you for booking a demo with TesseractApps! We’re excited to show you how
 
 Demo Details:
   Date: ${date}
-  Time: ${time} (AEST)
+  Time: ${time} (Sydney time)
 
 If you have any questions or need to reschedule, simply reply to this email or contact us at:
   Phone: 1300 252 808
@@ -139,7 +139,7 @@ Phone: 1300 252 808 | Email: sales@tesseractapps.com`,
       <p><strong>Demo Details:</strong></p>
       <ul>
         <li><strong>Date:</strong> ${date}</li>
-        <li><strong>Time:</strong> ${time} (AEST)</li>
+        <li><strong>Time:</strong> ${time} (Sydney time)</li>
       </ul>
       <p>If you have any questions or need to reschedule, simply reply to this email or contact us at:</p>
       <ul>
