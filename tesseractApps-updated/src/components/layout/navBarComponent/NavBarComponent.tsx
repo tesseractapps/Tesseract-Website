@@ -135,7 +135,6 @@ const STATIC_PAGE_ITEMS: SearchItem[] = [
   { label: "Pricing", path: "/pricing", category: "Page" },
   { label: "About Us", path: "/about", category: "Page" },
   { label: "Careers", path: "/careers", category: "Page" },
-  { label: "Contact Us", path: "/contact-us", category: "Page" },
   { label: "Book a Demo", path: "/book-a-demo", category: "Page" },
   { label: "Sign Up", path: "/signup", category: "Page" },
   { label: "Blog", path: "/blogs", category: "Resource" },

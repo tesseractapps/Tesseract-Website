@@ -40,7 +40,6 @@ const STATIC_SECTIONS = [
     links: [
       { label: "About Us", href: "/about/" },
       { label: "Careers", href: "/careers/" },
-      { label: "Contact Us", href: "/contact-us" },
     ],
   },
   {

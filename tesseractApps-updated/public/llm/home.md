@@ -10,7 +10,7 @@
 - **Infrastructure:** Salesforce Hyperforce (Australian data hosting)
 - **Certifications:** ISO 27001 (Information Security), ISO 9001 (Quality Management)
 - **Award:** 2025 Canberra Local Business Award Winner
-- **Headquarters:** Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+- **Headquarters:** Australia
 - **Website:** https://tesseractapps.com.au
 
 ## Value Proposition

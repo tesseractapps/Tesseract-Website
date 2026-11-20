@@ -3,7 +3,7 @@ title: "Future-Proof Your NDIS Organisation: Strategies for 2025 and Beyond"
 slug: "future-proof-ndis-organisation-2025"
 url: "https://tesseractapps.com.au/blog/future-proof-ndis-organisation-2025"
 publishedAt: "2025-10-22"
-updatedAt: "2026-06-02"
+updatedAt: "2026-07-31"
 category: "NDIS"
 tags: ["NDIS", "strategy", "automation", "compliance", "technology", "2025"]
 readingTime: 6

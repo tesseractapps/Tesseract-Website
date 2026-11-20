@@ -12,7 +12,7 @@
 - **Infrastructure:** Salesforce Hyperforce (Australian data hosting)
 - **Certifications:** ISO 27001 (Information Security), ISO 9001 (Quality Management)
 - **Award:** 2025 Canberra Local Business Award Winner
-- **Headquarters:** Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+- **Headquarters:** Australia
 - **Website:** https://tesseractapps.com.au
 
 ## Value Proposition
@@ -72,7 +72,7 @@ To simplify NDIS compliance and care management so providers can focus on delive
 
 ## Headquarters
 
-Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+Australia
 
 ## Contact
 
@@ -193,7 +193,7 @@ Connects with Australian payroll providers, NDIS portals, accounting systems, an
 
 # Careers at TesseractApps
 
-TesseractApps is an Australian SaaS company based in Canberra, ACT, building workforce management software for the NDIS and care sector. We hire technologists, product specialists, and sector experts.
+TesseractApps is an Australian SaaS company building workforce management software for the NDIS and care sector. We hire technologists, product specialists, and sector experts.
 
 ## Culture
 
@@ -214,7 +214,7 @@ Email: hello@tesseractapps.com.au
 
 ## Location
 
-Level 1/45 Colbee Ct, Phillip ACT 2606, Australia. Hybrid and remote arrangements considered for experienced candidates.
+Australia. Hybrid and remote arrangements considered for experienced candidates.
 
 --- End of careers.md ---
 
@@ -228,13 +228,12 @@ Level 1/45 Colbee Ct, Phillip ACT 2606, Australia. Hybrid and remote arrangement
 
 - **Website**: https://tesseractapps.com.au
 - **Email**: hello@tesseractapps.com.au
-- **Location**: Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+- **Location**: Australia
 
 ## Contact Options
 
 - **Book a Demo**: https://tesseractapps.com.au/book-a-demo — 30-minute live platform demo, configured for your care type and team size
 - **Start Free**: https://tesseractapps.com.au/signup — begin provider setup process
-- **Contact Form**: https://tesseractapps.com.au/contact-us — general inquiries and support
 
 ## Business Hours
 
@@ -769,7 +768,7 @@ The NDIS is a regulated sector with real consequences for failure. Participants 
 
 Compliance risk is manageable. It requires visibility, structure, and the right tools. None of that is beyond reach - but it does require a decision to invest in it before you need to.
 
-TesseractApps is designed to give NDIS providers the operational infrastructure they need to manage compliance proactively. [Book a Provider Maturity Review](/contact-us) and we'll show you exactly where your gaps are - and how to close them.
+TesseractApps is designed to give NDIS providers the operational infrastructure they need to manage compliance proactively. [Book a Provider Maturity Review](/book-a-demo) and we'll show you exactly where your gaps are - and how to close them.
 
 --- End of blog/how-to-manage-compliance-risk-ndis-providers.md ---
 
@@ -896,7 +895,7 @@ When the [NDIS Commission](/ndis-glossary) investigates a complaint, your case n
 
 Build the culture, enforce the workflow, and use software that supports both. Case notes aren't a chore - they're your profession's proof of work.
 
-Want to see how TesseractApps structures case notes for NDIS support workers - with templates, timestamps, and supervisor review built in? [Book a demo](/contact-us) and we'll show you the full workflow.
+Want to see how TesseractApps structures case notes for NDIS support workers - with templates, timestamps, and supervisor review built in? [Book a demo](/book-a-demo) and we'll show you the full workflow.
 
 --- End of blog/support-worker-case-note-best-practices-ndis.md ---
 
@@ -1002,7 +1001,7 @@ If you're still using a generic notes app for NDIS case notes, you're not just o
 
 The right app for taking case notes in NDIS support coordination isn't the one that's easiest to set up. It's the one that gives you an audit-ready record, keeps your team consistent, and actually connects documentation to outcomes. That's the standard you should hold your tools to.
 
-Ready to see how structured case notes work inside a fully connected NDIS platform? [Book a demo](/contact-us) with TesseractApps and we'll walk you through exactly how it works for support coordinators.
+Ready to see how structured case notes work inside a fully connected NDIS platform? [Book a demo](/book-a-demo) with TesseractApps and we'll walk you through exactly how it works for support coordinators.
 
 --- End of blog/best-app-for-case-notes-ndis-support-coordinators.md ---
 
@@ -1114,7 +1113,7 @@ Providers using integrated management platforms like TesseractApps consistently 
 
 Don't wait for an audit finding to address your [compliance gaps](/capabilities/compliance-audit-readiness). TesseractApps can help you build the systems, processes, and culture needed to pass audits confidently — and more importantly, to deliver safe, quality care every day.
 
-[Contact us](/contact-us) today to discuss your compliance challenges and discover how TesseractApps can help you prepare for 2026 and beyond.
+[Contact us](/book-a-demo) today to discuss your compliance challenges and discover how TesseractApps can help you prepare for 2026 and beyond.
 
 --- End of blog/ndis-compliance-audit-failures-2026.md ---
 
@@ -1250,7 +1249,7 @@ TesseractApps is built on [Salesforce](/capabilities/salesforce-native-architect
 
 The complexity of NDIS payroll — combining [SCHADS Award interpretation](/capabilities/timesheets-payroll-alignment), [NDIS pricing rules](/capabilities/ndis-claiming-invoicing), and multi-funder invoicing — means that off-the-shelf solutions often fall short. TesseractApps is purpose-built for NDIS providers, with deep expertise in the regulatory requirements of the care sector.
 
-Ready to simplify your payroll? [Request a demo](/contact-us) today to see how TesseractApps can transform your payroll processes.
+Ready to simplify your payroll? [Request a demo](/book-a-demo) today to see how TesseractApps can transform your payroll processes.
 
 --- End of blog/common-payroll-pitfalls-ndis.md ---
 
@@ -1640,7 +1639,7 @@ The energy at the Sydney Expo reinforced what we already know: the NDIS communit
 
 ## Missed the Expo?
 
-[Book a free demo](/contact-us) to see TesseractApps in action and discover how we can transform your NDIS operations.
+[Book a free demo](/book-a-demo) to see TesseractApps in action and discover how we can transform your NDIS operations.
 
 --- End of blog/sydney-disability-workability-expo-2025.md ---
 
@@ -1725,7 +1724,7 @@ If your organisation is ready to take the next step, TesseractApps offers cuttin
 
 ## Contact TesseractApps Today
 
-[Contact us](/contact-us) today to learn more about how TesseractApps can transform your workforce management strategies.
+[Contact us](/book-a-demo) today to learn more about how TesseractApps can transform your workforce management strategies.
 
 --- End of blog/hidden-costs-workforce-management.md ---
 
@@ -1814,7 +1813,7 @@ Hosted securely in Australia, with 24/7 support available under our Premium Plan
 
 With the NDIS set to exceed 800,000 participants by 2026, there's never been a better time to upgrade your systems. TesseractApps gives you the tools to scale sustainably, reduce admin costs, and exceed compliance expectations.
 
-[Book a Demo](/contact-us) to see how we can support your growth as an NDIS provider.
+[Book a Demo](/book-a-demo) to see how we can support your growth as an NDIS provider.
 
 ## Sources
 

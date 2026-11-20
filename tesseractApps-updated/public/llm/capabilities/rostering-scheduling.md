@@ -3,6 +3,7 @@ title: "Rostering & Scheduling"
 slug: "rostering-scheduling"
 url: "https://tesseractapps.com.au/capabilities/rostering-scheduling"
 navGroup: "Workforce"
+primaryKeyword: "NDIS Rostering & Scheduling Software"
 excerpt: "Auto-schedule by qualifications, manage SIL sleepovers, broadcast open shifts, enforce SCHADS rules."
 ---
 

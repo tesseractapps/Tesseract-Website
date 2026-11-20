@@ -221,7 +221,6 @@ export const navBarDummyData: {
     { title: "About", subTitle: "Who We Are", href: "/about" },
     // { title: "Events", subTitle: "Engage With Us", href: "/events" },
     { title: "Careers", subTitle: "Join Our Team", href: "/careers" },
-    { title: "Contact Us", subTitle: "Get In Touch", href: "/contact-us" },
     { title: "Help Centre", subTitle: "FAQs", href: "/help-centre" },
   ],
 

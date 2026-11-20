@@ -2,13 +2,13 @@
 title: "WYZED Integration"
 slug: "learning-management"
 url: "https://tesseractapps.com.au/capabilities/learning-management"
-navGroup: "Operational Intelligence"
-excerpt: "TesseractApps manages your workforce. WYZED manages your training. Together, every learning record, completion status, and compliance requirement sits inside the same platform your team already uses � connected to the roster, the role, and the worker profile."
+navGroup: "Workforce"
+excerpt: "TesseractApps manages your workforce. WYZED manages your training. Together, every learning record, completion status, and compliance requirement sits inside the same platform your team already uses - connected to the roster, the role, and the worker profile."
 ---
 
 # Training that lives inside your operations.
 
-TesseractApps manages your workforce. WYZED manages your training. Together, every learning record, completion status, and compliance requirement sits inside the same platform your team already uses � connected to the roster, the role, and the worker profile.
+TesseractApps manages your workforce. WYZED manages your training. Together, every learning record, completion status, and compliance requirement sits inside the same platform your team already uses - connected to the roster, the role, and the worker profile.
 
 ## The Problem
 

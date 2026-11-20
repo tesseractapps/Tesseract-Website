@@ -26,7 +26,6 @@ const HELPFUL_LINKS = [
   { label: "Solutions", to: "/solutions" },
   { label: "Pricing", to: "/pricing" },
   { label: "Blog", to: "/blogs" },
-  { label: "Contact Us", to: "/contact-us" },
 ];
 
 // ── Component ───────────────────────────────────────────────────────────────

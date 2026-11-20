@@ -2,7 +2,7 @@
 title: "Xero Integration"
 slug: "xero-integration"
 url: "https://tesseractapps.com.au/capabilities/xero-integration"
-navGroup: "Finance"
+navGroup: "Integrations"
 excerpt: "Bi-directional Xero integration syncing invoices, payments, and finance data without manual CSV workflows."
 ---
 

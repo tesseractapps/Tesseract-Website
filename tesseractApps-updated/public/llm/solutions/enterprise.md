@@ -1,14 +1,14 @@
 ---
-title: "Enterprise (120+ Staff)"
+title: "Enterprise (121+ Staff)"
 slug: "enterprise"
 url: "https://tesseractapps.com.au/solutions/enterprise"
 navCategory: "BY STAGE"
-excerpt: "Native payroll, multi-entity consolidation, board reporting, and full operational visibility - $39.99/seat/month with dedicated account management."
+excerpt: "Native payroll, multi-entity consolidation, board reporting, and full operational visibility with dedicated account management."
 ---
 
 # Your Organisation Deserves a Platform as Serious as Your Mission.
 
-Native payroll, multi-entity consolidation, board reporting, and full operational visibility - $39.99/seat/month with dedicated account management.
+Native payroll, multi-entity consolidation, board reporting, and full operational visibility with dedicated account management.
 
 ## Who Is This For?
 

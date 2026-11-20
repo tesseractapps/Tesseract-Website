@@ -1,5 +1,5 @@
 ---
-title: "Growth (15–60 Staff)"
+title: "Growth (16–60 Staff)"
 slug: "growth"
 url: "https://tesseractapps.com.au/solutions/growth"
 navCategory: "BY STAGE"
@@ -23,7 +23,7 @@ You are experiencing workforce expansion, payroll pressure, and increasing repor
 - Rostering scales - templates, auto-fill suggestions, and gap detection
 - Claiming keeps pace - auto-generated from delivered shifts, no bottleneck
 - Payroll-to-roster alignment visibility eliminates manual reconciliation
-- Manager-level reporting and documentation consistency across teams
+- Every manager, every site - one consistent view of reporting and documentation, built in.
 
 ## How We Support You
 

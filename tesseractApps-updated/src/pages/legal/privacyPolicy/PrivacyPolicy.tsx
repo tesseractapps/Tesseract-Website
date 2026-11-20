@@ -466,7 +466,7 @@ const PrivacyPolicy = () => {
               <p>Email: <a href="mailto:privacy@tesseractapps.com">privacy@tesseractapps.com</a></p>
               <p>General Enquiries: <a href="mailto:sales@tesseractapps.com">sales@tesseractapps.com</a></p>
               <p>Phone: 1300 252 808</p>
-              <p>Address: TesseractApps, Phillip ACT 2606</p>
+              <p>Address: Australia</p>
             </div>
           </section>
 

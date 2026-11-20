@@ -4,7 +4,6 @@ slug: "sil-compliance-readiness-checklist"
 url: "https://tesseractapps.com.au/guides/sil-compliance-readiness-checklist"
 type: "guide"
 publishedAt: "2026-06-02"
-topic: "SIL"
 audience: "SIL Providers and Compliance Managers"
 excerpt: "Download our free SIL Compliance Readiness Checklist and find out exactly where you stand before the 1 July 2026 deadline. Covers registration, governance, workforce, incidents, participant supports, and documentation systems."
 ---
@@ -12,8 +11,6 @@ excerpt: "Download our free SIL Compliance Readiness Checklist and find out exac
 # SIL Compliance Readiness Checklist
 
 Download our free SIL Compliance Readiness Checklist and find out exactly where you stand before the 1 July 2026 deadline. Covers registration, governance, workforce, incidents, participant supports, and documentation systems.
-
-**Topic:** SIL
 
 **Best for:** SIL Providers and Compliance Managers
 

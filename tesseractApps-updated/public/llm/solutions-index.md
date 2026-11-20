@@ -19,6 +19,6 @@
 ## BY STAGE
 
 - [Start (1–15 Staff)](https://tesseractapps.com.au/llm/solutions/start.md)
-- [Growth (15–60 Staff)](https://tesseractapps.com.au/llm/solutions/growth.md)
-- [Scale (60–120 Staff)](https://tesseractapps.com.au/llm/solutions/scale.md)
-- [Enterprise (120+ Staff)](https://tesseractapps.com.au/llm/solutions/enterprise.md)
+- [Growth (16–60 Staff)](https://tesseractapps.com.au/llm/solutions/growth.md)
+- [Scale (61–120 Staff)](https://tesseractapps.com.au/llm/solutions/scale.md)
+- [Enterprise (121+ Staff)](https://tesseractapps.com.au/llm/solutions/enterprise.md)

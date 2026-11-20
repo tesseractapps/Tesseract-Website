@@ -69,7 +69,7 @@ const STATIC_PAGES = {
 - **Infrastructure:** Salesforce Hyperforce (Australian data hosting)
 - **Certifications:** ISO 27001 (Information Security), ISO 9001 (Quality Management)
 - **Award:** 2025 Canberra Local Business Award Winner
-- **Headquarters:** Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+- **Headquarters:** Australia
 - **Website:** https://tesseractapps.com.au
 
 ## Value Proposition
@@ -124,7 +124,7 @@ To simplify NDIS compliance and care management so providers can focus on delive
 
 ## Headquarters
 
-Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+Australia
 
 ## Contact
 
@@ -225,7 +225,7 @@ Connects with Australian payroll providers, NDIS portals, accounting systems, an
 
   'careers.md': `# Careers at TesseractApps
 
-TesseractApps is an Australian SaaS company based in Canberra, ACT, building workforce management software for the NDIS and care sector. We hire technologists, product specialists, and sector experts.
+TesseractApps is an Australian SaaS company building workforce management software for the NDIS and care sector. We hire technologists, product specialists, and sector experts.
 
 ## Culture
 
@@ -246,7 +246,7 @@ Email: hello@tesseractapps.com.au
 
 ## Location
 
-Level 1/45 Colbee Ct, Phillip ACT 2606, Australia. Hybrid and remote arrangements considered for experienced candidates.
+Australia. Hybrid and remote arrangements considered for experienced candidates.
 `,
 
   'contact.md': `# Contact TesseractApps
@@ -255,13 +255,12 @@ Level 1/45 Colbee Ct, Phillip ACT 2606, Australia. Hybrid and remote arrangement
 
 - **Website**: https://tesseractapps.com.au
 - **Email**: hello@tesseractapps.com.au
-- **Location**: Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+- **Location**: Australia
 
 ## Contact Options
 
 - **Book a Demo**: https://tesseractapps.com.au/book-a-demo — 30-minute live platform demo, configured for your care type and team size
 - **Start Free**: https://tesseractapps.com.au/signup — begin provider setup process
-- **Contact Form**: https://tesseractapps.com.au/contact-us — general inquiries and support
 
 ## Business Hours
 

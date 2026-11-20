@@ -4,7 +4,6 @@ slug: "ndis-bcp-audit-checklist"
 url: "https://tesseractapps.com.au/guides/ndis-bcp-audit-checklist"
 type: "guide"
 publishedAt: "2026-06-02"
-topic: "SIL"
 audience: "SIL Providers and Compliance Managers"
 excerpt: "Most providers have a BCP document. Few can prove it works. Download our free BCP Audit Checklist to test your plan against what NDIS auditors now expect in 2026, including risk scenarios, participant communication, staff training, and plan governance."
 ---
@@ -12,8 +11,6 @@ excerpt: "Most providers have a BCP document. Few can prove it works. Download o
 # Business Continuity Plan (BCP) Audit Checklist
 
 Most providers have a BCP document. Few can prove it works. Download our free BCP Audit Checklist to test your plan against what NDIS auditors now expect in 2026, including risk scenarios, participant communication, staff training, and plan governance.
-
-**Topic:** SIL
 
 **Best for:** SIL Providers and Compliance Managers
 

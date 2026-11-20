@@ -1,23 +1,20 @@
 ---
-title: "Platform Provider Registration Readiness Guide"
+title: "NDIS Platform Provider Registration Readiness Guide"
 slug: "ndis-platform-provider-registration-guide"
 url: "https://tesseractapps.com.au/guides/ndis-platform-provider-registration-guide"
 type: "guide"
 publishedAt: "2026-06-02"
-topic: "SIL"
 audience: "NDIS Platform Providers and Digital Marketplace Operators"
 excerpt: "If your platform connects NDIS participants with support workers, mandatory registration starts 1 July 2026. Download our free Platform Provider Registration Guide for a plain-English walkthrough of what is required and how to prepare."
 ---
 
-# Platform Provider Registration Readiness Guide
+# NDIS Platform Provider Registration Readiness Guide
 
 If your platform connects NDIS participants with support workers, mandatory registration starts 1 July 2026. Download our free Platform Provider Registration Guide for a plain-English walkthrough of what is required and how to prepare.
 
-**Topic:** SIL
-
 **Best for:** NDIS Platform Providers and Digital Marketplace Operators
 
-## Are You a Platform Provider?
+## Are You a Provider?
 
 Answer these 3 questions:
 

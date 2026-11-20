@@ -47,10 +47,6 @@ const STATIC_META: Record<string, { title: string; description: string }> = {
     title: 'Careers at TesseractApps | Build NDIS Software',
     description: 'Explore careers at TesseractApps and help build workforce management and compliance software for Australian NDIS and care providers.',
   },
-  '/contact-us': {
-    title: 'Contact TesseractApps | Book a Demo or Get Support',
-    description: 'Contact TesseractApps to book a demo, ask about pricing, request support or discuss NDIS workforce management software for your organisation.',
-  },
   '/help-centre': {
     title: 'NDIS Software FAQ & Help Centre | TesseractApps',
     description: 'Find answers about TesseractApps setup, support, pricing, modules and NDIS workforce management workflows in the help centre.',
@@ -476,9 +472,6 @@ function injectMetaIntoHtml(
         email: 'hello@tesseractapps.com.au',
         address: {
           '@type': 'PostalAddress',
-          addressLocality: 'Level 1/45 Colbee Ct, Phillip',
-          addressRegion: 'ACT',
-          postalCode: '2606',
           addressCountry: 'AU',
         },
       },

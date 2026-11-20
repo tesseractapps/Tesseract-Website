@@ -3,6 +3,7 @@ title: "NDIS"
 slug: "ndis"
 url: "https://tesseractapps.com.au/solutions/ndis"
 navCategory: "BY CARE TYPE"
+primaryKeyword: "ndis software for providers"
 excerpt: "One connected platform - rostering, compliance, participant management, and NDIS claiming - designed specifically for the complexity of disability services."
 ---
 

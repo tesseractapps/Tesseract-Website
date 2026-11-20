@@ -14,21 +14,21 @@
 ## Product
 
 - [Product Overview](https://tesseractapps.com.au/llm/product.md): All platform modules and features
-
-
+- [Capabilities Index](https://tesseractapps.com.au/llm/capabilities-index.md): All product capabilities grouped by area
+- [Solutions Index](https://tesseractapps.com.au/llm/solutions-index.md): Solutions by care type, role, and provider stage
 
 ## Blog
 
-- [Blog](https://tesseractapps.com.au/blogs): NDIS industry insights and guides
+- [Blog Index](https://tesseractapps.com.au/llm/blog-index.md): All published articles on NDIS compliance, workforce management, and operations
 
 ## Resources
 
-
+- [Guides Index](https://tesseractapps.com.au/llm/guides-index.md): Free downloadable guides and checklists for NDIS providers
 
 
 ## Comparisons
 
-- Comparison pages available at https://tesseractapps.com.au
+- [Competitor Comparisons Index](https://tesseractapps.com.au/llm/competitors-index.md): Feature comparisons between TesseractApps and other NDIS software providers
 
 ## Full Context
 

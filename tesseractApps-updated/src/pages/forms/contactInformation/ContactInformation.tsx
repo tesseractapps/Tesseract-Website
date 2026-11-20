@@ -148,7 +148,7 @@ const ContactInformation = () => {
                 rel="noopener noreferrer"
                 className="contact-map-link"
               >
-                Level 1/45 Colbee Ct, Phillip ACT 2606, Australia
+                Australia
               </a>
             </div>
             <div className="contact-card-detail">

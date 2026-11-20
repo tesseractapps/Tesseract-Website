@@ -3,7 +3,6 @@
 > Feature comparison pages between TesseractApps and other NDIS software providers.
 
 - [TesseractApps vs ShiftCare](https://tesseractapps.com.au/llm/competitors/shiftcare.md)
-- [TesseractApps vs Lumary](https://tesseractapps.com.au/llm/competitors/lumary.md)
 - [TesseractApps vs Comm.care](https://tesseractapps.com.au/llm/competitors/commcare.md)
 - [TesseractApps vs iinsight](https://tesseractapps.com.au/llm/competitors/iinsight.md)
 - [TesseractApps vs MYP (Manage Your People)](https://tesseractapps.com.au/llm/competitors/myp.md)

@@ -3,7 +3,7 @@ title: "How to Manage Compliance Risk and Stay Out of the Headlines"
 slug: "how-to-manage-compliance-risk-ndis-providers"
 url: "https://tesseractapps.com.au/blog/how-to-manage-compliance-risk-ndis-providers"
 publishedAt: "2026-05-04"
-updatedAt: "2026-06-02"
+updatedAt: "2026-07-31"
 category: "NDIS"
 tags: ["NDIS compliance", "compliance risk", "audit", "NDIS Commission", "governance", "incident management"]
 readingTime: 8

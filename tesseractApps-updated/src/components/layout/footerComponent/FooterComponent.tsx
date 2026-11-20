@@ -238,9 +238,6 @@ const FooterComponent = () => {
           <Link className="footer-text" to="/about/">
             About Us
           </Link>
-          <Link className="footer-text" to="/contact-us">
-            Contact Us
-          </Link>
           {/* <Link className="footer-text" to="/careers/">
             Careers
           </Link> */}
@@ -368,17 +365,7 @@ const FooterComponent = () => {
 
           {/* Contact + Social */}
           <div id="footer-contact-block">
-            <address
-              className="footer-address"
-              itemScope
-              itemType="https://schema.org/PostalAddress"
-            >
-              <span itemProp="streetAddress">Level 1/45 Colbee Ct</span>,{" "}
-              <span itemProp="addressLocality">Phillip</span>{" "}
-              <span itemProp="addressRegion">ACT</span>{" "}
-              <span itemProp="postalCode">2606</span>,{" "}
-              <span itemProp="addressCountry">Australia</span>
-            </address>
+            <address className="footer-address">Australia</address>
             <span
               className="footer-about-actions"
               onClick={() => handleFooterActions("phone")}

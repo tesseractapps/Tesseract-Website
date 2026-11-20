@@ -309,7 +309,7 @@ const TermsAndConditions = () => {
               <p><strong>TesseractApps Pty Ltd</strong></p>
               <p>Email: <a href="mailto:sales@tesseractapps.com">sales@tesseractapps.com</a></p>
               <p>Phone: 1300 252 808</p>
-              <p>Address: TesseractApps, Phillip ACT 2606</p>
+              <p>Address: Australia</p>
             </div>
           </section>
 

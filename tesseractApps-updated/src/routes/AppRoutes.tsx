@@ -42,9 +42,10 @@ const SolutionsListing = lazy(
 const SolutionPage = lazy(
   () => import("../pages/solutions/solutionPage/SolutionPage"),
 );
-const ContactInformation = lazy(
-  () => import("../pages/forms/contactInformation/ContactInformation"),
-);
+// Contact Us page hidden.
+// const ContactInformation = lazy(
+//   () => import("../pages/forms/contactInformation/ContactInformation"),
+// );
 const About = lazy(() => import("../pages/marketing/about/About"));
 const Whitepapers = lazy(
   () => import("../pages/resources/whitepapers/Whitepapers"),
@@ -162,7 +163,9 @@ const AppRoutes = () => {
         <Route path="/help-centre" element={<FAQ />} />
         <Route path="/about" element={<About />} />
         <Route path="/careers" element={<Careers />} />
-        <Route path="/contact-us" element={<ContactInformation />} />
+        {/* <Route path="/contact-us" element={<ContactInformation />} /> */}
+        {/* Contact Us is hidden; old links (incl. CMS blog CTAs) go to Book a Demo. */}
+        <Route path="/contact-us" element={<Navigate to="/book-a-demo" replace />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/changelog" element={<ReleaseNotes />} />

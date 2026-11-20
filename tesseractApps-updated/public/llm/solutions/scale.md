@@ -1,5 +1,5 @@
 ---
-title: "Scale (60–120 Staff)"
+title: "Scale (61–120 Staff)"
 slug: "scale"
 url: "https://tesseractapps.com.au/solutions/scale"
 navCategory: "BY STAGE"
@@ -21,7 +21,7 @@ You are a multi-site provider, [SIL provider](/solutions/sil), or organisation m
 - Approval workflows lock in policy - rosters, expenditure, incidents require authorised sign-off
 - Audit trail depth grows - every action is logged, attributed, and retrievable
 - Executive dashboards surface compliance posture and operational KPIs in real time
-- SIRS escalation is automated - no more relying on individual knowledge
+- Standardised workflows ensure consistent processes as your organisation scales.
 - Multi-site audit trail depth ensures consistency across locations
 - Governance becomes a system property, not a management aspiration
 

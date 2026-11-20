@@ -3,6 +3,7 @@ title: "Operations Manager"
 slug: "operations-manager"
 url: "https://tesseractapps.com.au/solutions/operations-manager"
 navCategory: "BY ROLE"
+primaryKeyword: "NDIS Software for Operation Manager"
 excerpt: "Workforce oversight, roster coverage, incident management, and operational dashboards - built for NDIS Operations Managers who need visibility and control."
 ---
 

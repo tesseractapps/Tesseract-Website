@@ -1,6 +1,6 @@
 # Careers at TesseractApps
 
-TesseractApps is an Australian SaaS company based in Canberra, ACT, building workforce management software for the NDIS and care sector. We hire technologists, product specialists, and sector experts.
+TesseractApps is an Australian SaaS company building workforce management software for the NDIS and care sector. We hire technologists, product specialists, and sector experts.
 
 ## Culture
 
@@ -21,4 +21,4 @@ Email: hello@tesseractapps.com.au
 
 ## Location
 
-Level 1/45 Colbee Ct, Phillip ACT 2606, Australia. Hybrid and remote arrangements considered for experienced candidates.
+Australia. Hybrid and remote arrangements considered for experienced candidates.

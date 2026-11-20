@@ -7,12 +7,14 @@
 - [NDIS Claiming & Invoicing](https://tesseractapps.com.au/llm/capabilities/ndis-claiming-invoicing.md)
 - [Accounting & Financial Reporting](https://tesseractapps.com.au/llm/capabilities/accounting-financial-reporting.md)
 - [Quote Generator](https://tesseractapps.com.au/llm/capabilities/quote-generator.md)
+
+## Integrations
+
 - [Xero Integration](https://tesseractapps.com.au/llm/capabilities/xero-integration.md)
 
 ## Operational Intelligence
 
 - [Dashboards & Reporting](https://tesseractapps.com.au/llm/capabilities/dashboards-reporting.md)
-- [WYZED Integration](https://tesseractapps.com.au/llm/capabilities/learning-management.md)
 
 ## Participant & Care
 
@@ -29,5 +31,6 @@
 - [Timesheets & Payroll Alignment](https://tesseractapps.com.au/llm/capabilities/timesheets-payroll-alignment.md)
 - [Workforce Management](https://tesseractapps.com.au/llm/capabilities/workforce-management.md)
 - [Clock In/Out](https://tesseractapps.com.au/llm/capabilities/clock-in-out.md)
+- [WYZED Integration](https://tesseractapps.com.au/llm/capabilities/learning-management.md)
 - [Staff Self-Service Portal](https://tesseractapps.com.au/llm/capabilities/staff-self-service-portal.md)
 - [T Learning Hub](https://tesseractapps.com.au/llm/capabilities/t-learning-hub.md)
